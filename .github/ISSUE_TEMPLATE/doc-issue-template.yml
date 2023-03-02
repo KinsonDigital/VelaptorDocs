@@ -1,0 +1,72 @@
+name: 📜 Project Item
+description: Create an issue to change, add, or remove documentation.
+title: "📜"
+body:
+- type: checkboxes
+  attributes:
+    label: Complete The Item Below
+    options:
+    - label: I have updated the title without removing the 📜 emoji.
+      required: true
+
+- type: textarea
+  attributes:
+    label: Description
+    description: A description of the change to the documentation.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Acceptance Criteria
+    placeholder: |
+      Example:
+        - [ ] Item 1 complete
+        - [ ] Item 2 complete
+    description: The items to complete in order to satisfy the Definition of Done.
+  validations:
+    required: true
+    render: markdown
+
+- type: checkboxes
+  attributes:
+    label: ToDo Items
+    description: Complete the following items before requesting a PR review.
+    options:
+    - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
+    - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
+    - label: Issue linked to the correct project _(if applicable)_.
+    - label: Issue linked to the correct milestone _(if applicable)_.
+    - label: Draft pull request created and linked to this issue _(only required with code changes)_.
+
+- type: textarea
+  attributes:
+    label: "Additional Information:"
+    description: DO NOT CHANGE ANYTHING BELOW!!
+    value: |
+      **_<details closed><summary>Change Type Labels</summary>_**
+      
+      | Change Type  | Label           |
+      |--------------|-----------------|
+      | New Docs     | `✨new docs`    |
+      | CICD Changes | `cicd`          |
+      | Doc Changes  | `📝doc changes` |
+      </details>
+
+      **_<details closed><summary>Priority Type Labels</summary>_**
+      
+      | Priority Type       | Label             |
+      |---------------------|-------------------|
+      | Low Priority        | `low priority`    |
+      | Medium Priority     | `medium priority` |
+      | High Priority       | `high priority`   |
+      </details>
+
+- type: checkboxes
+  id: terms
+  attributes:
+    label: Code of Conduct
+    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/KinsonDigital/.github/blob/master/docs/CODE_OF_CONDUCT.md).
+    options:
+      - label: I agree to follow this project's Code of Conduct.
+        required: true

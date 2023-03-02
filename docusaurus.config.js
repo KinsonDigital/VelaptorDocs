@@ -94,7 +94,18 @@ const config = {
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownActiveClassDisabled: true,
-          },          
+          },
+
+          // ⚠️DO NOT CHANGE THIS⚠️
+          // This is used as part of the manual testing process for the CICD side of the project.
+          // <flag enabled>
+          {
+            type: 'doc',
+            docId: 'api/index',
+            position: 'left',
+            label: 'API',
+          },
+          // </flag>
         ],
       },
       footer: {

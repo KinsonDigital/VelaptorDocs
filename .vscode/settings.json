@@ -1,5 +1,5 @@
 {
-    "deno.enable": true,
+    "deno.enable": false,
     "cSpell.words": [
         "cicd",
         "defaultdocumentation",
@@ -13,6 +13,8 @@
         "Velaptor"
     ],
     "files.exclude": {
-        ".docusaurus/": true
+        ".docusaurus/": true,
+        "node_modules": true,
+        "VelaptorDocs.code-workspace": true
     }
 }

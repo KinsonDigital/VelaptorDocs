@@ -18,3 +18,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# manual testing items
+version-1.0.0-testing/
+versioned_sidebars/version-1.0.0-testing-sidebars.json

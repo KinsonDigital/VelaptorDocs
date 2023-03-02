@@ -1,0 +1,18 @@
+{
+    "deno.enable": true,
+    "cSpell.words": [
+        "cicd",
+        "defaultdocumentation",
+        "Deno",
+        "denoland",
+        "endgroup",
+        "Gaurd",
+        "Kinson",
+        "pwsh",
+        "Structs",
+        "Velaptor"
+    ],
+    "files.exclude": {
+        ".docusaurus/": true
+    }
+}

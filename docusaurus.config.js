@@ -78,6 +78,12 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
+          {
+            type: 'doc',
+            docId: 'api/index',
+            position: 'left',
+            label: 'API',
+          },
           // {to: '/blog', label: 'Blog', position: 'left'}, // DO NOT DELETE.  JUST TURNED OFF
           {
             href: 'https://github.com/facebook/docusaurus',
@@ -116,7 +122,7 @@ const config = {
             ],
           },
 
-          // DO NOT DELETE.  JUST TURNED OFF
+          
           // {
           //   title: 'More',
           //   items: [

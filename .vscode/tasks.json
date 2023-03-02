@@ -1,0 +1,13 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "reset-docs",
+            "type": "shell",
+            "windows": {
+                "command": "deno task reset-docs",
+            },
+            "problemMatcher": []
+        }
+    ]
+}

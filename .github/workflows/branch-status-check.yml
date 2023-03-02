@@ -1,0 +1,41 @@
+name: ✅Branch Status Check
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - "master"
+
+
+jobs:
+  release_website:
+    name: "Release Website"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: "Setup Deno"
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+
+    - name: "Validate Branch"
+      run: |
+        $targetBranch = "${{ github.base_ref }}";
+        $srcBranch = "${{ github.head_ref }}";
+
+        # Validate the source branch
+        Write-Host "::group::Source Branch Validation";
+        deno run "${{ github.workspace }}/.github/workflows/helpers/branch-status-check.ts" "$srcBranch" "feature";
+        Write-Host "::endgroup::";
+
+        # Validate the target branch
+        Write-Host "::group::Target Branch Validation";
+        deno run "${{ github.workspace }}/.github/workflows/helpers/branch-status-check.ts" "$targetBranch" "master";
+        Write-Host "::endgroup::";

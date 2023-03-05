@@ -5,9 +5,31 @@
             "label": "reset-docs",
             "type": "shell",
             "windows": {
-                "command": "deno task reset-docs",
-            },
-            "problemMatcher": []
+                "command": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'",
+            }
+        },
+        {
+            "label": "disable-testing-env",
+            "type": "shell",
+            "windows": {
+                "command": "deno",
+                "args": [
+                    "run",
+                    "--allow-read",
+                    "--allow-write",
+                    "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+                    "disable"
+                ]
+            }
+        },
+        {
+            "label": "build",
+            "dependsOn": [ "disable-testing-env" ],
+            "type": "shell",
+            "windows": {
+                "command": "yarn",
+                "args": ["build"]
+            }
         }
     ]
 }

@@ -1,5 +1,0 @@
-{
-    "tasks": {
-      "reset-docs": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'"
-    }
-}

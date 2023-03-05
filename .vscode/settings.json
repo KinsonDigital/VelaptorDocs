@@ -15,6 +15,13 @@
     "files.exclude": {
         ".docusaurus/": true,
         "node_modules": true,
-        "VelaptorDocs.code-workspace": true
+        "VelaptorDocs.code-workspace": true,
+        "build/": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "build/": true
     }
 }

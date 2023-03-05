@@ -18,8 +18,7 @@
                 "--allow-all",
             ],
             "args": [
-                "${workspaceFolder}/.github/cicd/manual-testing/processed-docs",
-                "v1.0.0-preview.17",
+                "${workspaceFolder}/versioned_docs/version-1.0.0-testing/api",
             ],
             "attachSimplePort": 9229
         },
@@ -36,14 +35,13 @@
                 "--allow-all",
             ],
             "args": [
-                "${workspaceFolder}/.github/cicd/manual-testing/processed-docs",
-                "v1.0.0-preview.17",
+                "${workspaceFolder}/versioned_docs/version-1.0.0-testing/api",
             ],
             "attachSimplePort": 9229
         },
         {
             "request": "launch",
-            "name": "Clean Docs Testing",
+            "name": "Reset Docs",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts",
             "cwd": "${workspaceFolder}",
@@ -52,6 +50,57 @@
                 "run",
                 "--inspect-wait",
                 "--allow-all",
+            ],
+            "attachSimplePort": 9229
+        },
+        {
+            "request": "launch",
+            "name": "Enable Testing Env",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+                "--allow-all",
+            ],
+            "args": [
+                "enable",
+            ],
+            "attachSimplePort": 9229
+        },
+        {
+            "request": "launch",
+            "name": "Disable Testing Env",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+                "--allow-all",
+            ],
+            "args": [
+                "disable",
+            ],
+            "attachSimplePort": 9229
+        },
+        {
+            "request": "launch",
+            "name": "Toggle Testing Env",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+                "--allow-all",
+            ],
+            "args": [
+                "toggle",
             ],
             "attachSimplePort": 9229
         }

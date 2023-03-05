@@ -7,5 +7,10 @@
 			"path": ".github/cicd"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.words": [
+			"cicd",
+			"Velaptor"
+		]
+	}
 }

@@ -1,7 +1,6 @@
 import { emptyDirSync } from "https://deno.land/std@0.178.0/fs/empty_dir.ts";
 import { copySync } from "https://deno.land/std@0.178.0/fs/copy.ts";
 import { ensureDirSync } from "https://deno.land/std@0.178.0/fs/ensure_dir.ts";
-import { FlagService } from "./FlagService.ts";
 
 const blueText = "\u001b[1;34m";
 const white = "\u001b[0m";
@@ -9,10 +8,6 @@ const baseDirPath: string = Deno.cwd();
 
 const unprocessedDirPath = `${baseDirPath}/.github/cicd/manual-testing/unprocessed-docs`;
 const apiTestingDirPath = `${baseDirPath}/versioned_docs/version-1.0.0-testing/api`;
-const docusaurusConfigFilePath = `${baseDirPath}/docusaurus.config.js`;
-const sidebarsConfigFilePath = `${baseDirPath}/sidebars.js`;
-
-const flagService: FlagService = new FlagService();
 
 console.clear();
 
@@ -30,11 +25,5 @@ emptyDirSync(apiTestingDirPath);
 
 console.log(`\tTesting documents copied to '${apiTestingDirPath}'`);
 copySync(unprocessedDirPath, apiTestingDirPath, { overwrite: true });
-
-console.log(`\tTesting flag in the '${docusaurusConfigFilePath}' enabled.`);
-flagService.enableFlag(docusaurusConfigFilePath);
-
-console.log(`\tTesting flag in the '${sidebarsConfigFilePath}' enabled.`);
-flagService.enableFlag(sidebarsConfigFilePath);
 
 console.log(white); // Set text color to white

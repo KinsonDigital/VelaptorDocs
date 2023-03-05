@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Velaptor Docs',
+  tagline: 'The easy and fun to use 2D game framework',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -45,7 +45,7 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
 
-        // DO NOT DELETE.  JUST TURNED OFF
+        // ❕DO NOT DELETE.  ONLY DISABLED❕
         // blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
@@ -66,10 +66,12 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Velaptor',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Velaptor Logo',
           src: 'img/logo.svg',
+          width: 32,
+          height: 32
         },
         items: [
           {
@@ -78,32 +80,44 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {
-            type: 'doc',
-            docId: 'api/index',
-            position: 'left',
-            label: 'API',
-          },
+          // ⚠️DO NOT CHANGE THIS⚠️
+          // This is used as part of the manual testing process for the CICD side of the project.
+          // <flag id=api enabled=false>
+          // {
+              // type: 'doc',
+              // docId: 'api/Namespaces',
+              // position: 'left',
+              // label: 'API',
+          // },
+          // </flag>
+
           // {to: '/blog', label: 'Blog', position: 'left'}, // DO NOT DELETE.  JUST TURNED OFF
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
           {
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownActiveClassDisabled: true,
           },
+          
+          {
+            href: 'https://github.com/KinsonDigital/Velaptor',
+            position: 'right',
+            className: "header-github-link"
+          },
+
+          {
+            href: 'https://discord.gg/qewu6fNgv7',
+            position: 'right',
+            className: "header-discord-link"
+          },
 
           // ⚠️DO NOT CHANGE THIS⚠️
           // This is used as part of the manual testing process for the CICD side of the project.
-          // <flag enabled>
+          // <flag id=testing enabled=true>
           {
-            type: 'doc',
-            docId: 'api/index',
-            position: 'left',
-            label: 'API',
+             type: 'doc',
+             label: 'API Testing',
+             position: 'left',
+             docId: 'api/Namespaces',
           },
           // </flag>
         ],
@@ -138,7 +152,7 @@ const config = {
             ],
           },
 
-          
+          // ❕DO NOT DELETE.  ONLY DISABLED❕
           // {
           //   title: 'More',
           //   items: [
@@ -158,6 +172,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['csharp'],
       },
     }),
 };

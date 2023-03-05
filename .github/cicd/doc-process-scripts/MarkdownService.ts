@@ -5,15 +5,23 @@ export class MarkdownService {
     private readonly textSectionRegEx: RegExp;
     private readonly urlSectionRegEx: RegExp;
     private readonly fullMarkdownLinkRegEx: RegExp;
-    private readonly headerRegEx: RegExp;
+    private readonly headerLineRegEx: RegExp;
     private readonly newLine: string;
     private readonly headerTypes: string[];
 
     constructor() {
         this.textSectionRegEx = /\[.+\]/g;
         this.urlSectionRegEx = /\(.+\)/g;
-        this.fullMarkdownLinkRegEx = /\[.+\]\(.+\)/m;
-        this.headerRegEx = /^#+ .+$/g;
+
+        // NOTE:
+        // /(?!.*\[\[)/ is 2 consecutive [ brackets
+        // /(?!.*\]\])/ is 2 consecutive ] brackets
+        // /(?!.*\(\()/ is 2 consecutive ( parenthesis
+        // /(?!.*\)\))/ is 2 consecutive ) parenthesis
+        
+        this.fullMarkdownLinkRegEx = /(?!.*\[\[)(?!.*\]\])(?!.*\(\()(?!.*\)\))(\[.+\]\(.+\))/;
+        this.headerLineRegEx = /^#+ .+$/g;
+
         this.newLine = Utils.isWindows() ? "\r\n" : "\n";
         this.headerTypes = ["#", "##", "###", "####", "#####", "######"];
     }
@@ -188,7 +196,7 @@ export class MarkdownService {
             return false;
         }
 
-        const matches = line.match(this.headerRegEx);
+        const matches = line.match(this.headerLineRegEx);
         return matches !== null && matches.length > 0;
     }
 
@@ -204,6 +212,40 @@ export class MarkdownService {
         const containsValidUrlSection: boolean = urlResults !== null && urlResults.entries.length >= 0;
 
         return containsValidTextSection && containsValidUrlSection;
+    }
+
+    public doesNotHaveLink(value: string): boolean {
+        const matches = value.match(this.fullMarkdownLinkRegEx);
+
+        return matches === null || matches.length === 0;
+    }
+
+    public createFrontMatter(title: string): string {
+        if (Utils.isUndefinedOrEmpty(title)) {
+            throw new Error("The 'title' parameter must not be null or empty when creating front matter.");
+        }
+
+        const firstLetter: string = title.split("")[0];
+
+        if (firstLetter === title[0].toLowerCase())
+        {
+            title = `${firstLetter.toUpperCase()}${title.slice(1)}`;
+        }
+
+        const lines: string[] = [];
+
+        lines.push("---");
+        lines.push(`title: ${title}`);
+        lines.push("---");
+
+        return `${lines.join(this.newLine)}${this.newLine}${this.newLine}`;
+    }
+
+    public replaceAngleBrackets(value: string): string {
+        value = value.replaceAll("<", "&lt;");
+        value = value.replaceAll(">", "&gt;");
+
+        return value;
     }
 
     private getHeader(content: string, headerName: string): string {

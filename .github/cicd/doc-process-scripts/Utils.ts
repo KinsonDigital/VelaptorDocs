@@ -4,6 +4,7 @@ export class Utils {
     private static readonly isPrevRegEx = /^v\d+\.\d+\.\d+(?:-preview\.\d+){1}$/gm;
     private static readonly containsPrevRegEx = /v\d+\.\d+\.\d+(?:-preview\.\d+){1}/;
     private static readonly newLineRegEx = /\r?\n/;
+    private static readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
 
     public static isUndefinedOrEmpty<T>(value: T | T[]): boolean {
         const isUndefined = value === undefined;
@@ -82,8 +83,37 @@ export class Utils {
         return value.split(this.newLineRegEx);
     }
 
+    public static toString(lines: string[]): string {
+        return lines.join(this.newLine);
+    }
+
     public static takeTop<T>(items: T[], total: number): T[] {
         return items.filter((_: T, i: number) => i <= total - 1);
+    }
+
+    public static underscoresToAngles(value: string): string {
+        if (Utils.isUndefinedOrEmpty(value)) {
+            return "";
+        }
+
+        if (value.indexOf("_") === -1) {
+            return value;
+        }
+
+        let currentChar = "<";
+
+        while(true) {
+            const doesNotContainUnderscore: boolean = value.indexOf("_") === -1;
+
+            if (doesNotContainUnderscore){
+                break;
+            }
+
+            value = value.replace("_", currentChar);
+            currentChar = currentChar === "<" ? ">" : "<";
+        }
+
+        return value;
     }
 
     private static compareVersions(a: string, b: string): number {

@@ -92,6 +92,22 @@ jobs:
     - name: "Install Default Docs Tool"
       run: dotnet tool install DefaultDocumentation.Console -g
 
+    - name: "Setup NodeJS"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.14.2
+
+    - name: "Setup YARN"
+      run: npm install --global yarn
+
+    - name: "Setup Docusaurus"
+      run: yarn install
+
+    - name: "Setup Deno"
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+
     - name: "Clone Velaptor"
       run: |
         git clone -b ${{ inputs.tag }} https://github.com/KinsonDigital/Velaptor.git "${{ github.workspace }}/Velaptor"
@@ -104,17 +120,18 @@ jobs:
 
     - name: "Create Documents"
       run: |
-        $outputDir = "${{ github.workspace }}/docs/API Reference/${{ inputs.tag }}(latest)";
+        $outputDir = "${{ github.workspace }}/docs/api";
         $exists = Test-Path -Path "$outputDir";
-        $outputDir = $outputDir.Replace(".", "_");
 
         # Create the new version docs directory
-        New-Item -Path "$outputDir" -ItemType Directory;
+        if ($exists -eq $true) {
+          Remove-Item -Path "$outputDir/*" -Recurse -Force
+        }
 
         defaultdocumentation `
           --AssemblyFilePath "${{ github.workspace }}/build-output/Velaptor.dll" `
           --OutputDirectoryPath "$outputDir" `
-          --ConfigurationFilePath "${{ github.workspace }}/doc-config.json";
+          --ConfigurationFilePath "${{ github.workspace }}/default-doc-config.json";
 
         Write-Host "::group::Documents Produced";
 
@@ -128,26 +145,36 @@ jobs:
 
         Write-Host "::endgroup::";
 
-    - name: "Setup Deno"
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
-
       # First deno arg is the working directory for the script.
       # Second deno arg is the version of the API
     - name: "Process Documents"
       run: |
-        $workingDir = "${{ github.workspace }}/docs";
+        $workingDir = "${{ github.workspace }}/docs/api";
         $version = "${{ inputs.tag }}";
 
         # Run the typescript scripts to process all of the markdown files before committing to the repo
-        deno run --allow-read --allow-write "${{ github.workspace }}/cicd/main.ts" "$workingDir" "$version";
+        deno run --allow-read --allow-write "${{ github.workspace }}/.github//cicd/doc-process-scripts/main.ts" "$workingDir" "$version";
+
+    - name: "Create Docusaurus Version"
+      run: |
+        $version = "${{ inputs.tag }}".Substring(1);
+        $testingEnvScriptPath = "${{ github.workspace }}/.github/cicd/manual-testing/testing-env.ts";
+
+        # Disable the API testing environment setup before cutting a new version
+        deno run --allow-read --allow-write "$testingEnvScriptPath" "disable";
+
+        # Create a new version
+        yarn docusaurus docs:version "$version";
+
+    - name: "Commit Release"
+      run: |
+        $version = "${{ inputs.tag }}";
 
         git config --global user.email "kinsondigital@gmail.com";
         git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";
 
         # Construct the commit msg
-        $commitMsg = "🚀API documentation update for version ${{ inputs.tag }}";
+        $commitMsg = "🚀API documentation update for version $version";
         $commitMsg += "`nWorkflow: ${{ github.workflow }}`n";
         $commitMsg += "Run ID: ${{ github.run_id }}`n";
         $commitMsg += "Run Number: ${{ github.run_number }}`n";

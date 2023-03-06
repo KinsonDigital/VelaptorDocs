@@ -1,0 +1,80 @@
+name: 🚀Non API Docs Release
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  release_website:
+    name: "Release Website"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: "Validate Branch"
+      run: |
+        $branch = "${{ github.ref }}";
+        if ($branch.EndsWith("master") -eq $false) {
+            Write-Host "::error::The branch '$branch' must be the branch 'master'";
+            exit 1;
+        }
+
+        # Remove the 'refs/heads/' section from the branch name
+        $branch = $branch.Split("/")[2];
+        Write-Host "::notice::The branch '$branch' is valid.";
+
+    - name: "Setup NodeJS"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.14.2
+
+    - name: "Setup YARN"
+      run: npm install --global yarn
+
+    - name: "Setup Docusaurus"
+      run: yarn install
+
+    - name: "Setup Deno"
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+
+    - name: "Set Document Site Version"
+      run: deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts";
+
+    - name: "Build Site"
+      run: yarn build
+
+    - name: "Setup Pages"
+      uses: actions/configure-pages@v3
+
+    - name: "Upload Artifact"
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: '${{ github.workspace }}/build'
+
+    - name: "Deploy to GitHub Pages"
+      id: deployment
+      uses: actions/deploy-pages@v1
+
+    - name: "Apply Version To Document Site"
+      id: apply_version_to_site
+      run: |
+        $envOutputFile = "${{ github.output }}"
+        deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts" "$envOutputFile";
+
+    - name: "Create Release Tag"
+      run: |
+        $tag = "${{ steps.apply_version_to_site.outputs.version }}";
+
+        git config --global user.email "kinsondigital@gmail.com";
+        git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";
+
+        git tag -a $tag -m "API Doc Release";
+        git push origin $tag;

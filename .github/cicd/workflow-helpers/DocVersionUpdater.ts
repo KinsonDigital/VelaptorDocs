@@ -32,6 +32,34 @@ export class DocVersionUpdater {
         Deno.writeTextFileSync(envOutputFile, workflowSetOutput, { append: true });
     }
 
+    public updateVersionNew(envOutputFile: string): void {       
+        const baseDirPath = Deno.cwd();
+        const path = `${baseDirPath}/docusaurus.config.js`;
+        let fileContent: string = Deno.readTextFileSync(path);
+        const fileLines: string[] = this.toLines(fileContent);
+        let version = "";
+
+        for (let i = 0; i < fileLines.length; i++) {
+            const line = fileLines[i];
+            
+            // If the copyright line has been found
+            if (line.indexOf("copyright: ") != -1) {
+                const oldVersion: string = this.getCurrentVersion(line);
+                const newVersion: string = this.createNewVersion();
+
+                fileLines[i] = line.replace(oldVersion, newVersion);
+
+                version = `${newVersion.replace("(", "").replace(")", "")}`;
+                break;
+            }
+        }
+
+        fileContent = fileLines.join(this.newLine);
+        Deno.writeTextFileSync(path, fileContent);
+
+        console.log(version);
+    }
+
     private toLines(value: string): string[] {
         if (value === undefined || value === "") {
             return [];
@@ -89,4 +117,4 @@ try {
 }
 
 const updater = new DocVersionUpdater();
-updater.updateVersion(envFile);
+updater.updateVersionNew(envFile);

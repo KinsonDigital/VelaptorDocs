@@ -64,14 +64,9 @@ jobs:
       uses: actions/deploy-pages@v1
 
     - name: "Apply Version To Document Site"
-      id: apply_version_to_site
       run: |
         $envOutputFile = "${{ github.output }}"
-        deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts" "$envOutputFile";
-
-    - name: "Create Release Tag"
-      run: |
-        $tag = "${{ steps.apply_version_to_site.outputs.version }}";
+        $tag = $(deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts" "$envOutputFile");
 
         git config --global user.email "kinsondigital@gmail.com";
         git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";

@@ -1,4 +1,4 @@
-name: 🚀API Release
+name: 🚀Non API Docs Release
 
 
 defaults:
@@ -8,11 +8,6 @@ defaults:
 
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "Release Tag"
-        required: true
-        type: string
 
 
 jobs:
@@ -21,6 +16,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
+    - name: "Validate Branch"
+      run: |
+        $branch = "${{ github.ref }}";
+        if ($branch.EndsWith("master") -eq $false) {
+            Write-Host "::error::The branch '$branch' must be the branch 'master'";
+            exit 1;
+        }
+
+        # Remove the 'refs/heads/' section from the branch name
+        $branch = $branch.Split("/")[2];
+        Write-Host "::notice::The branch '$branch' is valid.";
 
     - name: "Validate Tag Syntax"
       run: |
@@ -43,12 +50,16 @@ jobs:
         } else {
             Write-Host "::error::The version '$tag' is not valid.";
             exit 1;
-        }      
+        }
 
     - name: "Validate Tag In GitHub"
       run: |
         $uri = "https://api.github.com/repos/KinsonDigital/Velaptor/tags";
-        $headers = @{ "Accept" = "application/vnd.github.v3+json" };
+        $headers = @{
+            "Accept" = "application/vnd.github.v3+json"
+            "Authorization" = "token ${{ secrets.API_TOKEN }}"
+        };
+
         $response = Invoke-RestMethod -Method Get -Uri $uri -Headers $headers;
 
         $inputTag = "${{ inputs.tag }}";
@@ -166,6 +177,9 @@ jobs:
         # Create a new version
         yarn docusaurus docs:version "$version";
 
+    - name: "Build Site"
+      run: yarn build
+
     - name: "Commit Release"
       run: |
         $version = "${{ inputs.tag }}";
@@ -174,7 +188,7 @@ jobs:
         git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";
 
         # Construct the commit msg
-        $commitMsg = "🚀API documentation update for version $version";
+        $commitMsg = "🚀API doc release for version $version";
         $commitMsg += "`nWorkflow: ${{ github.workflow }}`n";
         $commitMsg += "Run ID: ${{ github.run_id }}`n";
         $commitMsg += "Run Number: ${{ github.run_number }}`n";
@@ -183,3 +197,15 @@ jobs:
         git add "*.*";
         git commit -m "$commitMsg";
         git push;
+
+    - name: "Setup Pages"
+      uses: actions/configure-pages@v3
+
+    - name: "Upload Artifact"
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: '${{ github.workspace }}/build'
+
+    - name: "Deploy to GitHub Pages"
+      id: deployment
+      uses: actions/deploy-pages@v1

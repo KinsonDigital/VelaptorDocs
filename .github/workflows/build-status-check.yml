@@ -1,0 +1,48 @@
+name: ✅Build Status Check
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - "master"
+
+
+jobs:
+  release_website:
+    name: "Release Website"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: testing
+      run: |
+        $outputFile = "${{ github.output }}";
+        Write-Host "Output File: $outputFile";
+
+        "pr-number=1234" >> $env:GITHUB_OUTPUT;
+
+        $content = Get-Content -Path $outputFile;
+
+        Write-Host "----File Content----"
+        Write-Host $content;
+
+
+    # - name: "Setup Deno"
+    #   uses: denoland/setup-deno@v1
+    #   with:
+    #     deno-version: v1.x
+
+    # - name: "Setup Docusaurus"
+    #   run: yarn install
+
+    # - name: "Disable Testing Env"
+    #   run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
+    
+    # - name: "Build"
+    #   run: yarn build

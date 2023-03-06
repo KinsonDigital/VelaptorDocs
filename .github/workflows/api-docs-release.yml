@@ -1,0 +1,232 @@
+name: 🚀API Docs Release
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release Tag"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+
+jobs:
+  release_website:
+    name: "Release Website"
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: "Validate Release Tag Syntax"
+      run: |
+        $tag = "${{ inputs.tag }}".Trim();
+
+        $tag = $tag.ToLower();
+        $tag = $tag.StartsWith("v") ? $tag : "v$tag";
+
+        [bool]$isPreview = $tag -like "*-preview.*";
+        $isValid = $false;
+
+        if ($isPreview) {
+            $isValid = $tag -match "^v\d+\.\d+\.\d+(?:-preview\.\d+){1}$";
+        } else {
+            $isValid = $tag -match "^v\d+\.\d+\.\d+(?:-preview){0}$";
+        }
+
+        if ($isValid) {
+            Write-Host "::notice::The version '$tag' is valid.";
+        } else {
+            Write-Host "::error::The version '$tag' is not valid.";
+            exit 1;
+        }
+
+    - name: "Validate Release Tag In GitHub"
+      run: |
+        $uri = "https://api.github.com/repos/KinsonDigital/Velaptor/tags";
+        $headers = @{
+            "Accept" = "application/vnd.github.v3+json"
+            "Authorization" = "token ${{ secrets.API_TOKEN }}"
+        };
+
+        $response = Invoke-RestMethod -Method Get -Uri $uri -Headers $headers;
+
+        $inputTag = "${{ inputs.tag }}";
+        $inputTag = $inputTag.ToLower();
+        $inputTag = $inputTag.StartsWith("v") ? $inputTag : "v$inputTag";
+
+        # Check each tag to see if it exists
+        foreach ($item in $response.SyncRoot) {
+            $githubTag = $item.name;
+            if ($githubTag -eq $inputTag) {
+                Write-Host "::notice::The tag '$githubTag' exists in GitHub.";
+                return;
+            }
+        }
+
+        Write-Host "::error::The tag '$inputTag' does not exist in GitHub.";
+        Write-Host "::error::The tag must exist in GitHub to confirm there is a release before performing a release.";
+        exit 1;
+
+    - name: "Validate Package Version In NuGet"
+      run: |
+        $uri = "https://api.nuget.org/v3-flatcontainer/kinsondigital.velaptor/index.json";
+        $headers = @{ "Accept" = "application/vnd.github.v3+json" };
+        $versions = (Invoke-RestMethod -Method Get -Uri $uri -Headers $headers).versions;
+
+        $tag = "${{ inputs.tag }}";
+        $tag = $tag.ToLower();
+        $tag = $tag.StartsWith("v") ? $tag : "v$tag";
+
+        foreach ($version in $versions) {
+            if ($tag -eq "v$version") {
+                Write-Host "::notice::The version '$tag' exists in NuGet.";
+                return;
+            }
+        }
+
+        Write-Host "::error::The NuGet package version '$tag' does not exist in NuGet.";
+        Write-Host "::error::The NuGet package must exist to confirm there is a release before performing a release.";
+        exit 1;
+
+    - name: "Install Default Docs Tool"
+      run: dotnet tool install DefaultDocumentation.Console -g
+
+    - name: "Setup NodeJS"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.14.2
+
+    - name: "Setup YARN"
+      run: npm install --global yarn
+
+    - name: "Setup Docusaurus"
+      run: yarn install
+
+    - name: "Setup Deno"
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+
+    - name: "Clone Velaptor"
+      run: |
+        git clone -b ${{ inputs.tag }} https://github.com/KinsonDigital/Velaptor.git "${{ github.workspace }}/Velaptor"
+    
+    - name: "Build Velaptor"
+      run: |
+        dotnet build "${{ github.workspace }}/Velaptor/Velaptor/Velaptor.csproj" `
+          -c Debug `
+          -o "${{ github.workspace }}/build-output"
+
+    - name: "Create API Documents"
+      run: |
+        $outputDir = "${{ github.workspace }}/docs/api";
+        $exists = Test-Path -Path "$outputDir";
+
+        # Create the new version docs directory
+        if ($exists -eq $true) {
+          Remove-Item -Path "$outputDir/*" -Recurse -Force
+        }
+
+        defaultdocumentation `
+          --AssemblyFilePath "${{ github.workspace }}/build-output/Velaptor.dll" `
+          --OutputDirectoryPath "$outputDir" `
+          --ConfigurationFilePath "${{ github.workspace }}/default-doc-config.json";
+
+        Write-Host "::group::Documents Produced";
+
+        Write-Host "`n";
+        Write-Host "Documents produced in the directory $outputDir;"
+        $files = Get-Item -Path "$outputDir/*";
+
+        foreach ($file in $files) {
+            Write-Host "`t$file";
+        }
+
+        Write-Host "::endgroup::";
+
+    - name: "Process Documents"
+      run: |
+        $workingDir = "${{ github.workspace }}/docs/api";
+        $version = "${{ inputs.tag }}";
+
+        # Run the typescript scripts to process all of the markdown files before committing to the repo
+        deno run --allow-read --allow-write "${{ github.workspace }}/.github//cicd/doc-process-scripts/main.ts" "$workingDir" "$version";
+
+    - name: "Apply Version To Document Site"
+      id: apply_version_to_site
+      run: |
+        $envOutputFile = "${{ github.output }}"
+        deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts" "$envOutputFile";
+
+    - name: "Create Docusaurus Version"
+      run: |
+        $version = "${{ inputs.tag }}".Substring(1);
+        $testingEnvScriptPath = "${{ github.workspace }}/.github/cicd/manual-testing/testing-env.ts";
+
+        # Disable the API testing environment setup before cutting a new version
+        deno run --allow-read --allow-write "$testingEnvScriptPath" "disable";
+
+        # Create a new version
+        yarn docusaurus docs:version "$version";
+
+    - name: "Build Site"
+      run: yarn build
+
+    - name: "Commit Release"
+      run: |
+        $version = "${{ inputs.tag }}";
+
+        git config --global user.email "kinsondigital@gmail.com";
+        git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";
+
+        # Construct the commit msg
+        $commitMsg = "🚀API documentation update for version $version";
+        $commitMsg += "`nWorkflow: ${{ github.workflow }}`n";
+        $commitMsg += "Run ID: ${{ github.run_id }}`n";
+        $commitMsg += "Run Number: ${{ github.run_number }}`n";
+        $commitMsg += "Job: ${{ github.job }}";
+
+        git add "*.*";
+        git commit -m "$commitMsg";
+        git push;
+
+    - name: "Setup Pages"
+      uses: actions/configure-pages@v3
+
+    - name: "Upload Artifact"
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: '${{ github.workspace }}/build'
+
+    - name: "Deploy to GitHub Pages"
+      id: deployment
+      uses: actions/deploy-pages@v1
+
+    - name: "Create Release Tag"
+      run: |
+        $tag = "${{ steps.apply_version_to_site.outputs.version }}";
+
+        git config --global user.email "kinsondigital@gmail.com";
+        git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";
+
+        git tag -a $tag -m "API Doc Release";
+        git push origin $tag;

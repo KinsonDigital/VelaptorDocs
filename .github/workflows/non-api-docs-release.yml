@@ -10,6 +10,12 @@ on:
   workflow_dispatch:
 
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
 jobs:
   release_website:
     name: "Release Website"
@@ -45,7 +51,14 @@ jobs:
       with:
         deno-version: v1.x
 
-    - name: "Set Document Site Version"
+    - name: "Disable Testing Environment"
+      run: |
+        $testingEnvScriptPath = "${{ github.workspace }}/.github/cicd/manual-testing/testing-env.ts";
+
+        # Disable the API testing environment setup before cutting a new version
+        deno run --allow-read --allow-write "$testingEnvScriptPath" "disable";
+
+    - name: "Apply Version To Document Site"
       run: deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts";
 
     - name: "Build Site"

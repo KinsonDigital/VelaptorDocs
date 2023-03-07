@@ -174,8 +174,7 @@ jobs:
     - name: "Apply Version To Document Site"
       id: apply_version_to_site
       run: |
-        $envOutputFile = "${{ github.output }}"
-        deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts" "$envOutputFile";
+        deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts";
 
     - name: "Create Docusaurus Version"
       run: |

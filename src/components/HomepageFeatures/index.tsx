@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Velaptor was designed to be easy to start with and to get your 2D game up and running quickly.
+        Velaptor is designed to be easy to start with and to get your 2D game or application up and running quickly.
       </>
     ),
   },
@@ -28,11 +28,11 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: '',
+    title: 'Powered by . . .',
     Svg: require('@site/static/img/kd-silk-logo-combo.svg').default,
     description: (
       <>
-        Powered by <a href="https://github.com/KinsonDigital">KinsonDigital</a> tech and <a href="https://github.com/dotnet/Silk.NET">SILK.NET</a>
+        <a href="https://github.com/KinsonDigital">KinsonDigital</a> tech and <a href="https://github.com/dotnet/Silk.NET">SILK.NET</a>
       </>
     ),
   },

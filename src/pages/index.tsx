@@ -18,7 +18,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/tutorials/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            Velaptor Tutorial - 5min ⏱️
           </Link>
         </div>
       </div>

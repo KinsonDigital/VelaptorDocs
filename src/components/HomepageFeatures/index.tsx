@@ -10,17 +10,8 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use . . .',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Velaptor is designed to be easy to start with and to get your 2D game or application up and running quickly.
-      </>
-    ),
-  },
-  {
     title: 'Focus on What Matters . . .',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/space-invaders.svg').default,
     description: (
       <>
         Velaptor lets you focus on developing your game so you don't have to worry about the low level details.
@@ -57,6 +48,15 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
+          <div className='col col--4'>
+            <div className='text--center'>
+              <img src={require('@site/static/img/code-snippet.png').default}/>
+            </div>
+            <div className='text--center padding-horiz--md'>
+              <h3 style={{marginTop: '-5'}}>Easy to Use . . .</h3>
+              <p>Velaptor is designed to be easy to start with and to get your 2D game or application up and running quickly.</p>
+            </div>
+          </div>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

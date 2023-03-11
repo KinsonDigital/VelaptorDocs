@@ -1,0 +1,166 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Hello Velaptor
+
+This tutorial will show you the basics to creating a simple Velaptor **Hello World** application.
+
+:::note
+There are plans in the future to create a project template for Visual Studio and JetBrains Rider users
+for quickly and easily creating a minimal Velaptor application.
+:::
+
+First things first.  You have to create a project with the preferred IDE!!
+
+### Step 1: Create the application
+
+Create a new console application using dotnet _**v7.0**_
+
+### Step 2: Add Velaptor project
+
+Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Velaptor) to the project.
+   - Make sure to click the preview check box in your IDE of choice.
+   :::note
+   Velaptor is currently in preview, so this is required to see the NuGet package for download.
+   :::
+     <Tabs>
+       <TabItem value="vs" label="Visual Studio" default>
+         <img src={require('@site/static/img/tutorials/quick-tutorial/nuget-vs.jpg').default} alt="Example banner"/>
+       </TabItem>
+       <TabItem value="banana" label="JetBrains Rider">
+         <img src={require('@site/static/img/tutorials/quick-tutorial/nuget-rider.jpg').default} alt="Example banner"/>
+       </TabItem>
+     </Tabs>
+
+### Step 3: Create a new class
+
+Create a new class file named `Game`.  This will be used to hold the necessary game loop and content loading methods.  These methods
+are used for things such as loading and unloading content, updating your game objects and rendering graphics to the screen.
+```csharp
+namespace HelloVelaptor;
+
+public class Game : Window
+{
+}
+```
+### Step 4: Loading content
+
+#### Step 4.1
+Once the game class file has been created, we need a way to load content.  We can load sounds, textures, fonts, atlas textures and atlas data.
+But we only need to load a single font for this simple hello velaptor application.  Create a `Window.Load()` method override.
+in the `Game` class as shown below.
+```csharp
+protected override void OnLoad()
+{
+}
+```
+
+#### Step 4.2
+
+The `OnLoad()` method will be called one time when the `Game()` class has finished being constructed.  Now that we have a place to load content,
+let's load a font which can be used to render text to the screen! To load fonts, we need a font name and size, but first let's create a class field
+of type `IFont`.  This will be the font loaded in the `OnLoad()` method.
+```csharp
+namespace HelloVelaptor;
+
+public class Game : Window
+{
+  private IFont font; // Add the font field here
+  
+  protected override void OnLoad()
+  {
+    base.OnLoad();
+  }
+}  
+```
+
+#### Step 4.2
+
+Now lets load the font using the `ContentLoader` property that belongs to the `Window` class.
+```csharp
+protected override void OnLoad()
+{
+  this.font = ContentLoader.LoadFont("TimesNewRoman-Regular.ttf", 24); // Loads the font into the class field
+  base.OnLoad();
+}
+```
+
+### Step 5: Rendering text
+
+#### Step 5.1
+
+Now that we have loaded a font to be applied to the text we want to render, we can now move on to rendering the text.
+Before we can render the font, we need to create the appropriate renderer to render what we want.
+We can create the renderer we need by using the renderer factory.  Let's create a class field named `fontRenderer` of type `IFontRenderer`.
+```csharp
+public class Game : Window
+{
+  private IFont font;
+  private IRenderer fontRenderer; // Add the renderer field here
+  ...
+}
+```
+
+#### Step 5.2
+
+Now lets go into the `OnLoad()` method and add the code right below the code that loads the font.
+```csharp
+protected override void OnLoad()
+{
+  this.font = ContentLoader.LoadFont("TimesNewRoman-Regular.ttf", 24);
+
+  var rendererFactory = new RendererFactory(); // Create a renderer factory
+  this.fontRenderer = rendererFactory.CreateFontRenderer(); // Create a font renderer
+
+  base.OnLoad();
+}
+```
+
+#### Step 5.3
+
+Now that we have a renenderer and a font to render text to the screen, we need to create an `Window.OnLoad()` 
+method override. Create the method below the `OnLoad()` method.
+```csharp
+protected override void OnLoad()
+{
+  ...
+  base.OnLoad();
+}
+
+// Create the new method override for rendering to the screen
+protected override void OnDraw(FrameTime frameTime)
+{
+  base.OnDraw(frameTime);
+}
+```  
+
+#### Step 5.4
+
+Next we need to use the renderer to render some text to the screen using our font.  Add the code below to
+to the `OnDraw()` method to accomplish this.
+```csharp
+protected override void OnDraw(FrameTime frameTime)
+{
+  var x = (int)(Width / 2); // Get horizontal mid-point of the window
+  var y = (int)(Height / 2); // Get the vertical mid-point of the window.
+
+  IRenderer.Begin(); // This must be called before we can render anything
+
+  // Render the string to the screen with the color of orange
+  this.fontRenderer.Render(this.font, "Hello Velaptor!!", x, y, Color.Orange);
+
+  IRenderer.End(); // This must be called to end the rendering process
+
+  base.OnDraw(frameTime);
+}
+```
+
+### Step 6: See the result
+
+Now the best part!! Let's see the fruits or your labor and run the application.
+You should see the result below!!
+<img style={{width: '75%'}} src={require('@site/static/img/tutorials/quick-tutorial/hello-velaptor-window.jpg').default} alt="Example banner"/>

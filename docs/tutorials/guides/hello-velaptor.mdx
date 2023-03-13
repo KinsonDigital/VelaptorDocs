@@ -7,11 +7,11 @@ import TabItem from '@theme/TabItem';
 
 # Hello Velaptor
 
-This guide will show you the basics of creating a simple Velaptor **Hello World** application.
+This guide will show you the basics of creating a simple **Hello World** application using Velaptor.
 
 :::note Project Templates
 There are plans in the future to create a project template for Visual Studio and JetBrains Rider users
-to easily create a minimal Velaptor application.
+to easily create a basic Velaptor application.
 
 To see a complete working project of this example, look at the [HelloVelaptor](https://github.com/KinsonDigital/VelaptorTutorials/tree/master/HelloVelaptor) project in the [VelaptorTutorials](https://github.com/KinsonDigital/VelaptorTutorials) repository.
 :::
@@ -27,7 +27,7 @@ Create a new console application using dotnet _**v7.0**_
 ### <span class="color-step">Step 2: Add Velaptor to the project</span>
 
 Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Velaptor) to the project.
-   - Make sure to click the preview check box in your IDE of choice.
+   - Make sure to click the preview check box in your IDE of choice. Since Velaptor is currently only in preview, clicking the checkbox will allow you to see the NuGet package.
     <Tabs>
        <TabItem value="vs" label="Visual Studio" default>
             <img src={require('@site/static/img/tutorials/guides/hello-velaptor/nuget-vs.jpg').default} alt="Example banner"/>
@@ -37,15 +37,11 @@ Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Ve
         </TabItem>
     </Tabs>
 
-   :::info Important
-   Velaptor is currently in preview. This is required to see the NuGet package.
-   :::
-
 
 ### <span class="color-step">Step 3: Create the game class</span>
 
 Create a new class file named `Game`.  This will be necessary to take advantage of the game-related methods of Velaptor.  These methods
-are used for things such as loading and unloading content, updating your game objects and rendering graphics to the screen.
+are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
 
 ```csharp
 namespace HelloVelaptor;
@@ -59,9 +55,10 @@ public class Game : Window
 ### <span class="color-step">Step 4: Loading content</span>
 
 #### <span class="color-sub-step">Step 4.1</span>
-Once the game class file has been created, we need a way to load content.  We can load sounds, textures, fonts, atlas textures and atlas data.
-But we only need to load a single font for this simple hello Velaptor application.  Create a method override of the `Window.Load()` method
-in the `Game` class as shown below.
+Once the game class file has been created, we need a way to load content.  We can load sounds, textures, fonts, atlas textures and atlas data but
+we only need to load a single font for this basic **Hello Velaptor** application.  Create a method override of the `Window.Load()` method
+in the `Game` class as shown below:
+
 
 ```csharp
 protected override void OnLoad()

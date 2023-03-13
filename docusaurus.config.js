@@ -140,7 +140,7 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Find Us',
             items: [
               {
                 label: 'GitHub',
@@ -172,6 +172,11 @@ const config = {
           //   ],
           // },
         ],
+        logo: {
+          alt: 'Kinson Digital Logo',
+          src: 'img/kinson-digital-logo.png',
+          href: 'https://github.com/KinsonDigital',
+        },
         copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v0000.00.00.000000) - Built with Docusaurus.`,
       },
       prism: {

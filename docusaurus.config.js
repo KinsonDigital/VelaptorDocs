@@ -87,13 +87,13 @@ const config = {
           },
           // ⚠️DO NOT CHANGE THIS⚠️
           // This is used as part of the manual testing process for the CICD side of the project.
-          // <flag id=api enabled=false>
-          // {
-              // type: 'doc',
-              // docId: 'api/Namespaces',
-              // position: 'left',
-              // label: 'API',
-          // },
+          // <flag id=api enabled=true>
+          {
+              type: 'doc',
+              docId: 'api/Namespaces',
+              position: 'left',
+              label: 'API',
+          },
           // </flag>
 
           // {to: '/blog', label: 'Blog', position: 'left'}, // DO NOT DELETE.  JUST TURNED OFF
@@ -117,13 +117,13 @@ const config = {
 
           // ⚠️DO NOT CHANGE THIS⚠️
           // This is used as part of the manual testing process for the CICD side of the project.
-          // <flag id=testing enabled=true>
-          {
-             type: 'doc',
-             label: 'API Testing',
-             position: 'left',
-             docId: 'api/Namespaces',
-          },
+          // <flag id=testing enabled=false>
+          // {
+             // type: 'doc',
+             // label: 'API Testing',
+             // position: 'left',
+             // docId: 'api/Namespaces',
+          // },
           // </flag>
         ],
       },
@@ -177,7 +177,7 @@ const config = {
           src: 'img/kinson-digital-logo.png',
           href: 'https://github.com/KinsonDigital',
         },
-        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v0000.00.00.000000) - Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2023.02.01.174515) - Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

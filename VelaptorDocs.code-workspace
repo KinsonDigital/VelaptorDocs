@@ -15,6 +15,7 @@
         "testing.followRunningTest": true,
         "testing.gutterEnabled": false,
         "testing.openTesting": "neverOpen",
-        "deno.testing.enable": false
+        "deno.testing.enable": false,
+        "typescript.referencesCodeLens.enabled": true,
 	}
 }

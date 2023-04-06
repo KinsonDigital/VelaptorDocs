@@ -54,7 +54,7 @@ export class DocVersionUpdater {
         const currentDate: Date = new Date();
         const year = currentDate.getFullYear().toString();
         let month = currentDate.getMonth().toString();
-        let day = currentDate.getDay().toString();
+        let day = currentDate.getDate().toString();
         let hour = currentDate.getHours().toString();
         let minute = currentDate.getMinutes().toString();
         let second = currentDate.getSeconds().toString();

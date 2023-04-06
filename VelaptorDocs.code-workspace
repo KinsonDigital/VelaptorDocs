@@ -11,6 +11,10 @@
 		"cSpell.words": [
 			"cicd",
 			"Velaptor"
-		]
+        ],
+        "testing.followRunningTest": true,
+        "testing.gutterEnabled": false,
+        "testing.openTesting": "neverOpen",
+        "deno.testing.enable": false
 	}
 }

@@ -2,6 +2,7 @@
     "deno.enable": false,
     "cSpell.words": [
         "cicd",
+        "clsx",
         "defaultdocumentation",
         "Deno",
         "denoland",

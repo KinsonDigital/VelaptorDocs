@@ -32,11 +32,11 @@ export class File {
     public static writeTextFileSync(filePath: string, fileContent: string): void {
         Guard.isNotUndefinedOrEmpty(filePath, "filePath");
 
-        if (Utils.isUndefinedOrEmpty(fileContent)) {
+        if (Utils.isNullOrEmpty(fileContent)) {
             return;
         }
 
-        if (Utils.isUndefinedOrEmpty(filePath)) {
+        if (Utils.isNullOrEmpty(filePath)) {
             throw new Error(`The parameter '${filePath}' must not be null or empty.`);
         }
 

@@ -31,7 +31,7 @@ export class Directory {
         }
 
         // Default value if undefined or empty
-        extension = Utils.isUndefinedOrEmpty(extension)
+        extension = Utils.isNullOrEmpty(extension)
             ? "*.*"
             : extension;
 
@@ -101,7 +101,7 @@ export class Directory {
     }
 
     public static delete(dirPath: string): void {
-        if (Utils.isUndefinedOrEmpty(dirPath)) {
+        if (Utils.isNullOrEmpty(dirPath)) {
             return;
         }
 

@@ -3,7 +3,7 @@ import { extname, dirname } from "https://deno.land/std@0.178.0/path/mod.ts";
 
 export class Path {
     public static getFileName(filePath: string): string {
-        if (Utils.isUndefinedOrEmpty(filePath)) {
+        if (Utils.isNullOrEmpty(filePath)) {
             return "";
         }
 
@@ -57,7 +57,7 @@ export class Path {
     }
 
     public static getDirectory(filePath: string): string {
-        if (Utils.isUndefinedOrEmpty(filePath)) {
+        if (Utils.isNullOrEmpty(filePath)) {
             return "";
         }
 
@@ -71,7 +71,7 @@ export class Path {
     }
 
     public static isFilePath(path: string): boolean {
-        if (Utils.isUndefinedOrEmpty(path)) {
+        if (Utils.isNullOrEmpty(path)) {
             return false;
         }
 
@@ -97,7 +97,7 @@ export class Path {
     }
 
     public static getExtension(filePath: string): string {
-        if (Utils.isUndefinedOrEmpty(filePath)) {
+        if (Utils.isNullOrEmpty(filePath)) {
             return "";
         }
 
@@ -109,7 +109,7 @@ export class Path {
     }
 
     public static containsPathSeparator(value: string): boolean {
-        if (Utils.isUndefinedOrEmpty(value)) {
+        if (Utils.isNullOrEmpty(value)) {
             return false;
         }
         const containsBackslashes: boolean = value.indexOf("\\") != -1;
@@ -119,7 +119,7 @@ export class Path {
     }
 
     public static isDirPath(dirPath: string): boolean {
-        if (Utils.isUndefinedOrEmpty(dirPath)) {
+        if (Utils.isNullOrEmpty(dirPath)) {
             return false;
         }
 
@@ -136,7 +136,7 @@ export class Path {
     }
 
     public static normalizeSeparators(path: string): string {
-        if (Utils.isUndefinedOrEmpty(path)) {
+        if (Utils.isNullOrEmpty(path)) {
             return "";
         }
 
@@ -153,7 +153,7 @@ export class Path {
     }
 
     public static getLastDirName(dirPath: string): string {
-        if (Utils.isUndefinedOrEmpty(dirPath)) {
+        if (Utils.isNullOrEmpty(dirPath)) {
             return "";
         }
 
@@ -167,7 +167,7 @@ export class Path {
     }
 
     public static getLastDirNames(dirPaths: string[]): string[] {
-        if (Utils.isUndefinedOrEmpty(dirPaths)) {
+        if (Utils.isNullOrEmpty(dirPaths)) {
             return [];
         }
 
@@ -181,7 +181,7 @@ export class Path {
     }
 
     public static removeLastDir(path: string): string {
-        if (Utils.isUndefinedOrEmpty(path)) {
+        if (Utils.isNullOrEmpty(path)) {
             return "";
         }
 

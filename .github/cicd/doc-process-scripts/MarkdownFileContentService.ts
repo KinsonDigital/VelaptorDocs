@@ -76,7 +76,7 @@ export class MarkdownFileContentService {
     }
 
     private processHeaders(fileContent: string): string {
-        if (Utils.isUndefinedOrEmpty(fileContent)) {
+        if (Utils.isNullOrEmpty(fileContent)) {
             return "";
         }
 

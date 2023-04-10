@@ -6,17 +6,14 @@ export class Utils {
     private static readonly newLineRegEx = /\r?\n/;
     private static readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
 
-    public static isUndefinedOrEmpty<T>(value: T | T[]): boolean {
+    public static isNullOrEmpty<T>(value: T | T[]): boolean {
         const isUndefined = value === undefined;
-        if (typeof(String) === "string") {
-            return isUndefined || value === "";
-        }
-
+        const isNull = value === null;
         const isEmpty: boolean = Array.isArray(value)
             ? (<T[]>value).length <= 0
-            : false;
-        
-        return value === undefined || isEmpty;
+            : value === "";
+
+        return isUndefined || isNull || isEmpty;
     }
 
     public static cwd(): string {
@@ -32,7 +29,7 @@ export class Utils {
     }
 
     public static isProdVersion(version: string): boolean {
-        if (Utils.isUndefinedOrEmpty(version)) {
+        if (Utils.isNullOrEmpty(version)) {
             return false;
         }
 
@@ -44,7 +41,7 @@ export class Utils {
     }
     
     public static containsProdVersion(value: string): boolean {
-        if (Utils.isUndefinedOrEmpty(value)) {
+        if (Utils.isNullOrEmpty(value)) {
             return false;
         }
 
@@ -54,7 +51,7 @@ export class Utils {
     }
 
     public static isPrevVersion(version: string): boolean {
-        if (Utils.isUndefinedOrEmpty(version)) {
+        if (Utils.isNullOrEmpty(version)) {
             return false;
         }
 
@@ -66,7 +63,7 @@ export class Utils {
     }
 
     public static containsPrevVersion(value: string): boolean {
-        if (Utils.isUndefinedOrEmpty(value)) {
+        if (Utils.isNullOrEmpty(value)) {
             return false;
         }
 
@@ -76,7 +73,7 @@ export class Utils {
     }
 
     public static toLines(value: string): string[] {
-        if (this.isUndefinedOrEmpty(value)) {
+        if (this.isNullOrEmpty(value)) {
             return [];
         }
 
@@ -92,7 +89,7 @@ export class Utils {
     }
 
     public static underscoresToAngles(value: string): string {
-        if (Utils.isUndefinedOrEmpty(value)) {
+        if (Utils.isNullOrEmpty(value)) {
             return "";
         }
 

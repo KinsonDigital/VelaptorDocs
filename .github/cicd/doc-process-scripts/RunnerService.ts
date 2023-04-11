@@ -11,7 +11,11 @@ export class RunnerService {
 	 * @param [boolean] doNotWriteToConsole Whether or not to write the output to the console.
 	 * @returns {Promise<void>} A promise that resolves when the commands have been run.
 	 */
-	public async run(commands: string[], logStdToConsole = true, logErrToConsole = true): Promise<[success: boolean, msg: string]> {
+	public async run(
+		commands: string[],
+		logStdToConsole = true,
+		logErrToConsole = true,
+	): Promise<[success: boolean, msg: string]> {
 		try {
 			const process = Deno.run({
 				cmd: commands,
@@ -64,7 +68,7 @@ export class RunnerService {
 			collectedOutput.push(line);
 
 			if (doNotWriteToConsole) {
-                await writeAll(writer, encoder.encode(`\n${prefix} ${line}`));
+				await writeAll(writer, encoder.encode(`\n${prefix} ${line}`));
 			}
 		}
 
@@ -81,17 +85,16 @@ export class RunnerService {
 		reader: Deno.Reader,
 		writer: Deno.Writer,
 		prefix = "",
-        logErrToConsole: boolean
+		logErrToConsole: boolean,
 	): Promise<void> {
 		const encoder = new TextEncoder();
 
 		prefix = prefix === undefined || prefix === null || prefix === "" ? "" : `[${prefix.trim()}]`;
 
 		for await (const line of readLines(reader)) {
-
-            if (logErrToConsole) {
-			    await writeAll(writer, encoder.encode(`\n${prefix} ${line}`));
-            }
+			if (logErrToConsole) {
+				await writeAll(writer, encoder.encode(`\n${prefix} ${line}`));
+			}
 		}
 	}
 }

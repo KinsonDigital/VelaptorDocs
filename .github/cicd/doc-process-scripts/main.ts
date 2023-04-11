@@ -7,7 +7,7 @@ const argService: ArgService = new ArgService();
 const [argsValid, errorMsg] = argService.argsAreValid(Deno.args);
 
 if (!argsValid) {
-    throw new Error(errorMsg);
+	throw new Error(errorMsg);
 }
 
 const apiDirPath: string = Deno.args[0];

@@ -1,30 +1,30 @@
 import { Utils } from "./Utils.ts";
 
 export class HTMLService {
-    private readonly linkTagRegEx: RegExp;
-    
-    constructor() {
-        this.linkTagRegEx = /<a name='(.+)'><\/a>/;
-    }
+	private readonly linkTagRegEx: RegExp;
 
-    public isHTMLLink(value: string): boolean {
-        if (Utils.isNullOrEmpty(value)) {
-            return false;
-        }
+	constructor() {
+		this.linkTagRegEx = /<a name='(.+)'><\/a>/;
+	}
 
-        const matches = value.match(this.linkTagRegEx);
+	public isHTMLLink(value: string): boolean {
+		if (Utils.isNullOrEmpty(value)) {
+			return false;
+		}
 
-        return matches !== null && matches.length > 0;
-    }
+		const matches = value.match(this.linkTagRegEx);
 
-    public getNameAttrValue(linkTag: string): string {
-        linkTag = linkTag.replace("<a name='", "");
-        linkTag = linkTag.replace("'></a>", "");
+		return matches !== null && matches.length > 0;
+	}
 
-        return linkTag;
-    }
+	public getNameAttrValue(linkTag: string): string {
+		linkTag = linkTag.replace("<a name='", "");
+		linkTag = linkTag.replace("'></a>", "");
 
-    public createLinkTag(nameValue: string): string {
-        return `<a name='${nameValue}'></a>`;
-    }
+		return linkTag;
+	}
+
+	public createLinkTag(nameValue: string): string {
+		return `<a name='${nameValue}'></a>`;
+	}
 }

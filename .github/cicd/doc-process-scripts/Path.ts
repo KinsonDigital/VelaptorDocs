@@ -1,197 +1,183 @@
 import { Utils } from "./Utils.ts";
-import { extname, dirname } from "https://deno.land/std@0.178.0/path/mod.ts";
+import { dirname, extname } from "https://deno.land/std@0.178.0/path/mod.ts";
 
 export class Path {
-    public static getFileName(filePath: string): string {
-        if (Utils.isNullOrEmpty(filePath)) {
-            return "";
-        }
+	public static getFileName(filePath: string): string {
+		if (Utils.isNullOrEmpty(filePath)) {
+			return "";
+		}
 
-        const hasPathSeparator = this.containsPathSeparator(filePath);
+		const hasPathSeparator = this.containsPathSeparator(filePath);
 
-        if (hasPathSeparator)
-        {
-            filePath = hasPathSeparator
-                ? filePath = filePath.replace("\\", "/")
-                : filePath;
-    
-            if (filePath.endsWith("/")) {
-                return "";
-            }
+		if (hasPathSeparator) {
+			filePath = hasPathSeparator ? filePath = filePath.replace("\\", "/") : filePath;
 
-            const pathSections = filePath.split("/");
+			if (filePath.endsWith("/")) {
+				return "";
+			}
 
-            return pathSections[pathSections.length - 1];
-        } else {
-            return filePath;
-        }
-    }
+			const pathSections = filePath.split("/");
 
-    public static getFileNameWithoutExtension(filePath: string): string {
-        let fileName: string = this.getFileName(filePath);
+			return pathSections[pathSections.length - 1];
+		} else {
+			return filePath;
+		}
+	}
 
-        if (fileName.indexOf(".") === -1) {
-            return fileName;
-        } else {
-            const lastPeriodIndex: number = fileName.lastIndexOf(".");
-            fileName = fileName.replaceAll(".", "*");
+	public static getFileNameWithoutExtension(filePath: string): string {
+		let fileName: string = this.getFileName(filePath);
 
-            let newFileName = "";
-            for (let i = 0; i < fileName.length; i++) {
-                newFileName += i === lastPeriodIndex
-                    ? "."
-                    : fileName[i];
-            }
+		if (fileName.indexOf(".") === -1) {
+			return fileName;
+		} else {
+			const lastPeriodIndex: number = fileName.lastIndexOf(".");
+			fileName = fileName.replaceAll(".", "*");
 
-            let sections: string[] = newFileName.split(".");
-            sections.pop(); // Remove the extension
+			let newFileName = "";
+			for (let i = 0; i < fileName.length; i++) {
+				newFileName += i === lastPeriodIndex ? "." : fileName[i];
+			}
 
-            // Remove empty entires
-            sections = sections.filter((value: string) => value !== "");
-            
-            newFileName = sections[0];
-            newFileName = newFileName.replaceAll("*", ".");
-            
-            return newFileName;
-        }
-    }
+			let sections: string[] = newFileName.split(".");
+			sections.pop(); // Remove the extension
 
-    public static getDirectory(filePath: string): string {
-        if (Utils.isNullOrEmpty(filePath)) {
-            return "";
-        }
+			// Remove empty entires
+			sections = sections.filter((value: string) => value !== "");
 
-        if (this.isFilePath(filePath)) {
-            const fileName: string = this.getFileName(filePath);
+			newFileName = sections[0];
+			newFileName = newFileName.replaceAll("*", ".");
 
-            return this.normalizeSeparators(filePath.replace(fileName, ""));
-        }
+			return newFileName;
+		}
+	}
 
-        return this.normalizeSeparators(filePath);
-    }
+	public static getDirectory(filePath: string): string {
+		if (Utils.isNullOrEmpty(filePath)) {
+			return "";
+		}
 
-    public static isFilePath(path: string): boolean {
-        if (Utils.isNullOrEmpty(path)) {
-            return false;
-        }
+		if (this.isFilePath(filePath)) {
+			const fileName: string = this.getFileName(filePath);
 
-        return this.containsPathSeparator(path) && this.hasExtension(path);
-    }
+			return this.normalizeSeparators(filePath.replace(fileName, ""));
+		}
 
-    public static hasExtension(path: string, extension = ""): boolean {
-        extension = extension === undefined
-            ? ""
-            : extension;
+		return this.normalizeSeparators(filePath);
+	}
 
-        extension = extension.startsWith("*")
-            ? extension.slice(1, extension.length - 2)
-            : extension;
+	public static isFilePath(path: string): boolean {
+		if (Utils.isNullOrEmpty(path)) {
+			return false;
+		}
 
-        const pathExtension: string = extname(path);
+		return this.containsPathSeparator(path) && this.hasExtension(path);
+	}
 
-        if (extension === "") {
-            return pathExtension != "";
-        } else {
-            return pathExtension === extension;
-        }
-    }
+	public static hasExtension(path: string, extension = ""): boolean {
+		extension = extension === undefined ? "" : extension;
 
-    public static getExtension(filePath: string): string {
-        if (Utils.isNullOrEmpty(filePath)) {
-            return "";
-        }
+		extension = extension.startsWith("*") ? extension.slice(1, extension.length - 2) : extension;
 
-        if (filePath.indexOf(".") === -1) {
-            return "";
-        }
+		const pathExtension: string = extname(path);
 
-        return `.${filePath.split(".").pop()}`;
-    }
+		if (extension === "") {
+			return pathExtension != "";
+		} else {
+			return pathExtension === extension;
+		}
+	}
 
-    public static containsPathSeparator(value: string): boolean {
-        if (Utils.isNullOrEmpty(value)) {
-            return false;
-        }
-        const containsBackslashes: boolean = value.indexOf("\\") != -1;
-        const containsForwardSlashes: boolean = value.indexOf("/") != -1;
+	public static getExtension(filePath: string): string {
+		if (Utils.isNullOrEmpty(filePath)) {
+			return "";
+		}
 
-        return containsBackslashes || containsForwardSlashes;
-    }
+		if (filePath.indexOf(".") === -1) {
+			return "";
+		}
 
-    public static isDirPath(dirPath: string): boolean {
-        if (Utils.isNullOrEmpty(dirPath)) {
-            return false;
-        }
+		return `.${filePath.split(".").pop()}`;
+	}
 
-        dirPath = Path.normalizeSeparators(dirPath);
+	public static containsPathSeparator(value: string): boolean {
+		if (Utils.isNullOrEmpty(value)) {
+			return false;
+		}
+		const containsBackslashes: boolean = value.indexOf("\\") != -1;
+		const containsForwardSlashes: boolean = value.indexOf("/") != -1;
 
-        const containsPathSeparator: boolean = this.containsPathSeparator(dirPath);
-        const doesNotContainExtension = !this.hasExtension(dirPath);
+		return containsBackslashes || containsForwardSlashes;
+	}
 
-        return containsPathSeparator && doesNotContainExtension;
-    }
+	public static isDirPath(dirPath: string): boolean {
+		if (Utils.isNullOrEmpty(dirPath)) {
+			return false;
+		}
 
-    public static isNotDirPath(dirPath: string): boolean {
-        return !this.isDirPath(dirPath);
-    }
+		dirPath = Path.normalizeSeparators(dirPath);
 
-    public static normalizeSeparators(path: string): string {
-        if (Utils.isNullOrEmpty(path)) {
-            return "";
-        }
+		const containsPathSeparator: boolean = this.containsPathSeparator(dirPath);
+		const doesNotContainExtension = !this.hasExtension(dirPath);
 
-        path = path.replaceAll("\\", "/");
+		return containsPathSeparator && doesNotContainExtension;
+	}
 
+	public static isNotDirPath(dirPath: string): boolean {
+		return !this.isDirPath(dirPath);
+	}
 
-        if (this.isFilePath(path)) {
-            return path;
-        }
-        
-        return path.endsWith("/")
-            ? path
-            : `${path}/`;
-    }
+	public static normalizeSeparators(path: string): string {
+		if (Utils.isNullOrEmpty(path)) {
+			return "";
+		}
 
-    public static getLastDirName(dirPath: string): string {
-        if (Utils.isNullOrEmpty(dirPath)) {
-            return "";
-        }
+		path = path.replaceAll("\\", "/");
 
-        const sectionToRemove = dirname(dirPath);
+		if (this.isFilePath(path)) {
+			return path;
+		}
 
-        const lastDir = dirPath.replace(`${sectionToRemove}/`, "");
+		return path.endsWith("/") ? path : `${path}/`;
+	}
 
-        return lastDir.endsWith("/")
-            ? lastDir.slice(0, lastDir.length - 1)
-            : lastDir;
-    }
+	public static getLastDirName(dirPath: string): string {
+		if (Utils.isNullOrEmpty(dirPath)) {
+			return "";
+		}
 
-    public static getLastDirNames(dirPaths: string[]): string[] {
-        if (Utils.isNullOrEmpty(dirPaths)) {
-            return [];
-        }
+		const sectionToRemove = dirname(dirPath);
 
-        const result: string[] = [];
+		const lastDir = dirPath.replace(`${sectionToRemove}/`, "");
 
-        for (const path of dirPaths) {
-            result.push(this.getLastDirName(path));
-        }
+		return lastDir.endsWith("/") ? lastDir.slice(0, lastDir.length - 1) : lastDir;
+	}
 
-        return result;
-    }
+	public static getLastDirNames(dirPaths: string[]): string[] {
+		if (Utils.isNullOrEmpty(dirPaths)) {
+			return [];
+		}
 
-    public static removeLastDir(path: string): string {
-        if (Utils.isNullOrEmpty(path)) {
-            return "";
-        }
+		const result: string[] = [];
 
-        if (!this.containsPathSeparator(path)) {
-            return path;
-        }
+		for (const path of dirPaths) {
+			result.push(this.getLastDirName(path));
+		}
 
-        const lastDirName: string = this.getLastDirName(path);
-        const lastDirIndex: number = path.lastIndexOf(lastDirName);
+		return result;
+	}
 
-        return path.slice(0, lastDirIndex);
-    }
+	public static removeLastDir(path: string): string {
+		if (Utils.isNullOrEmpty(path)) {
+			return "";
+		}
+
+		if (!this.containsPathSeparator(path)) {
+			return path;
+		}
+
+		const lastDirName: string = this.getLastDirName(path);
+		const lastDirIndex: number = path.lastIndexOf(lastDirName);
+
+		return path.slice(0, lastDirIndex);
+	}
 }

@@ -6,173 +6,177 @@ import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 
 export class MarkdownFileContentService {
-    private readonly markDownService: MarkdownService;
-    private readonly htmlService: HTMLService;
-    private readonly codeBlockService: CodeBlockService;
-    private readonly markDownLinkRegEx: RegExp;
-    private readonly linkTagRegEx: RegExp;
-    private readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
-    private readonly htmlArrow = "&#129106;";
+	private readonly markDownService: MarkdownService;
+	private readonly htmlService: HTMLService;
+	private readonly codeBlockService: CodeBlockService;
+	private readonly markDownLinkRegEx: RegExp;
+	private readonly linkTagRegEx: RegExp;
+	private readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
+	private readonly htmlArrow = "&#129106;";
 
-    constructor() {
-        this.markDownService = new MarkdownService();
-        this.htmlService = new HTMLService();
-        this.codeBlockService = new CodeBlockService();
-        this.markDownLinkRegEx = /\[(.*?)\]\((.*?)\)/g;
-        this.linkTagRegEx = /<a name='(.+)'><\/a>/;
-    }
+	constructor() {
+		this.markDownService = new MarkdownService();
+		this.htmlService = new HTMLService();
+		this.codeBlockService = new CodeBlockService();
+		this.markDownLinkRegEx = /\[(.*?)\]\((.*?)\)/g;
+		this.linkTagRegEx = /<a name='(.+)'><\/a>/;
+	}
 
-    public processMarkdownFile(filePath: string): void {
-        let fileContent: string = File.readTextFileSync(filePath);
-        fileContent = fileContent.replaceAll(this.htmlArrow, "→");
+	public processMarkdownFile(filePath: string): void {
+		let fileContent: string = File.readTextFileSync(filePath);
+		fileContent = fileContent.replaceAll(this.htmlArrow, "→");
 
-        // Replace all links to the 'index.md' file with the 'namespaces.md' file
-        fileContent = this.replaceAllLinkUrls(fileContent, "Namespaces.md 'Velaptor Namespaces'",
-            (_: string, url: string) => {
-                return url.startsWith("index.md");
-            });
+		// Replace all links to the 'index.md' file with the 'namespaces.md' file
+		fileContent = this.replaceAllLinkUrls(
+			fileContent,
+			"Namespaces.md 'Velaptor Namespaces'",
+			(_: string, url: string) => {
+				return url.startsWith("index.md");
+			},
+		);
 
-        // If the file is the index.md file
-        if (filePath.toLowerCase().endsWith("index.md")) {
-            fileContent = this.processTable(fileContent);
-        }
+		// If the file is the index.md file
+		if (filePath.toLowerCase().endsWith("index.md")) {
+			fileContent = this.processTable(fileContent);
+		}
 
-        // Process all link tags which are these 👉🏼 <a name/>
-        fileContent = this.processLinkTags(fileContent);
+		// Process all link tags which are these 👉🏼 <a name/>
+		fileContent = this.processLinkTags(fileContent);
 
-        // Process all markdown headers with no markdown links like these 👉🏼 ### MyHeader
-        // This will replace all headers that contain angle brackets with html safe alternatives
-        fileContent = this.processHeaders(fileContent);
+		// Process all markdown headers with no markdown links like these 👉🏼 ### MyHeader
+		// This will replace all headers that contain angle brackets with html safe alternatives
+		fileContent = this.processHeaders(fileContent);
 
-        // Process paragraph type content for angle brackets
-        fileContent = this.processParagraphs(fileContent);
+		// Process paragraph type content for angle brackets
+		fileContent = this.processParagraphs(fileContent);
 
-        const title: string = Utils.underscoresToAngles(Path.getFileNameWithoutExtension(filePath));
-        const frontMatter: string = this.markDownService.createFrontMatter(title);
+		const title: string = Utils.underscoresToAngles(Path.getFileNameWithoutExtension(filePath));
+		const frontMatter: string = this.markDownService.createFrontMatter(title);
 
-        fileContent = `${frontMatter}${fileContent}`;
+		fileContent = `${frontMatter}${fileContent}`;
 
-        File.writeTextFileSync(filePath, fileContent);
-    }
+		File.writeTextFileSync(filePath, fileContent);
+	}
 
-    private processLinkTags(fileContent: string) : string {
-        const fileLines: string[] = Utils.toLines(fileContent);
+	private processLinkTags(fileContent: string): string {
+		const fileLines: string[] = Utils.toLines(fileContent);
 
-        for (let i = 0; i < fileLines.length; i++) {
-            const line = fileLines[i];
-            
-            const linkTagMatches = line.match(this.linkTagRegEx);
-            const isLinkTag: boolean = linkTagMatches != null && linkTagMatches.length > 0;
+		for (let i = 0; i < fileLines.length; i++) {
+			const line = fileLines[i];
 
-            if (isLinkTag) {
-                let nameValue: string = this.htmlService.getNameAttrValue(line);
-                nameValue =  Utils.underscoresToAngles(nameValue);
-        
-                fileLines[i] = this.htmlService.createLinkTag(nameValue);
-            }
-        }
+			const linkTagMatches = line.match(this.linkTagRegEx);
+			const isLinkTag: boolean = linkTagMatches != null && linkTagMatches.length > 0;
 
-        return Utils.toString(fileLines);
-    }
+			if (isLinkTag) {
+				let nameValue: string = this.htmlService.getNameAttrValue(line);
+				nameValue = Utils.underscoresToAngles(nameValue);
 
-    private processHeaders(fileContent: string): string {
-        if (Utils.isNullOrEmpty(fileContent)) {
-            return "";
-        }
+				fileLines[i] = this.htmlService.createLinkTag(nameValue);
+			}
+		}
 
-        const fileLines: string[] = Utils.toLines(fileContent);
+		return Utils.toString(fileLines);
+	}
 
-        for (let i = 0; i < fileLines.length; i++) {
-            const line = fileLines[i];
-            
-            if (this.markDownService.isHeaderLine(line) && this.markDownService.doesNotHaveLink(line)) {
-                fileLines[i] = this.markDownService.replaceAngleBrackets(line);
-            }
-        }
+	private processHeaders(fileContent: string): string {
+		if (Utils.isNullOrEmpty(fileContent)) {
+			return "";
+		}
 
-        return Utils.toString(fileLines);
-    }
+		const fileLines: string[] = Utils.toLines(fileContent);
 
-    private processParagraphs(fileContent: string): string {
-        const codeBlocks: [number, number][] = this.codeBlockService.getCodeBlockIndices(fileContent);
+		for (let i = 0; i < fileLines.length; i++) {
+			const line = fileLines[i];
 
-        const fileLines: string[] = Utils.toLines(fileContent);
+			if (this.markDownService.isHeaderLine(line) && this.markDownService.doesNotHaveLink(line)) {
+				fileLines[i] = this.markDownService.replaceAngleBrackets(line);
+			}
+		}
 
-        for (let i = 0; i < fileLines.length; i++) {
-            const line = fileLines[i];
-            
-            const notEmpty = line != "";
-            const containsAngles: boolean = line.indexOf("<") != -1 && line.indexOf(">") != -1;
-            const notCodeBlock = !this.codeBlockService.inAnyCodeBlocks(codeBlocks, i);
-            const notHeader = !this.markDownService.isHeaderLine(line);
-            const notHTMLLink = !this.htmlService.isHTMLLink(line);
-            const containsMarkdownLink = this.markDownService.containsMarkdownLink(line);
+		return Utils.toString(fileLines);
+	}
 
-            if (notEmpty && containsAngles && notCodeBlock && notHeader && notHTMLLink && containsMarkdownLink) {
-                // Skip the processing of any markdown link content
-                
-                // Find the index of the first '[' and the last index of the ')'
-                const start = line.indexOf("[");
-                const end = line.lastIndexOf(")") + 1;
+	private processParagraphs(fileContent: string): string {
+		const codeBlocks: [number, number][] = this.codeBlockService.getCodeBlockIndices(fileContent);
 
-                // Get the markdown link content between
-                const markdownLinkContent: string = line.slice(start, end);
-                
-                // Split the content by the markdown link content
-                const nonMarkdownSections: string[] = line.split(markdownLinkContent);
+		const fileLines: string[] = Utils.toLines(fileContent);
 
-                // Process any angle brackets from the non markdown link content
-                for (let i = 0; i < nonMarkdownSections.length; i++) {
-                    nonMarkdownSections[i] = this.markDownService.replaceAngleBrackets(nonMarkdownSections[i]);
-                }
+		for (let i = 0; i < fileLines.length; i++) {
+			const line = fileLines[i];
 
-                // Rejoin the items and the markdown link section
-                const newLineSections: string[] = [];
-                newLineSections.push(nonMarkdownSections[0]);
-                newLineSections.push(markdownLinkContent);
-                newLineSections.push(nonMarkdownSections[1]);
-                
-                const newLine: string = newLineSections.join("");
+			const notEmpty = line != "";
+			const containsAngles: boolean = line.indexOf("<") != -1 && line.indexOf(">") != -1;
+			const notCodeBlock = !this.codeBlockService.inAnyCodeBlocks(codeBlocks, i);
+			const notHeader = !this.markDownService.isHeaderLine(line);
+			const notHTMLLink = !this.htmlService.isHTMLLink(line);
+			const containsMarkdownLink = this.markDownService.containsMarkdownLink(line);
 
-                fileLines[i] = newLine;
-            }
-        }
+			if (notEmpty && containsAngles && notCodeBlock && notHeader && notHTMLLink && containsMarkdownLink) {
+				// Skip the processing of any markdown link content
 
-        return Utils.toString(fileLines);
-    }
+				// Find the index of the first '[' and the last index of the ')'
+				const start = line.indexOf("[");
+				const end = line.lastIndexOf(")") + 1;
 
-    private processTable(fileContent: string): string {
-        const fileLines: string[] = Utils.toLines(fileContent);
-        
-        for (let i = 0; i < fileLines.length; i++) {
-            const line = fileLines[i];
-            
-            if (line.lastIndexOf("| |") != -1) {
-                fileLines[i] = line.replace("| |", "|");
-            } else if (line.indexOf("| :--- |") != -1) {
-                fileLines[i] = "| :--- |";
-            }
-        }
+				// Get the markdown link content between
+				const markdownLinkContent: string = line.slice(start, end);
 
-        return Utils.toString(fileLines);
-    }
+				// Split the content by the markdown link content
+				const nonMarkdownSections: string[] = line.split(markdownLinkContent);
 
-    private replaceAllLinkUrls(
-            fileContent: string,
-            newUrl: string,
-            predicate: ((text: string, url: string) => boolean) | null = null): string {
-        const matches = fileContent.match(this.markDownLinkRegEx);
-        matches?.forEach(link => {
-            const text: string = this.markDownService.extractLinkText(link);
-            const url: string = this.markDownService.extractLinkUrl(link);
+				// Process any angle brackets from the non markdown link content
+				for (let i = 0; i < nonMarkdownSections.length; i++) {
+					nonMarkdownSections[i] = this.markDownService.replaceAngleBrackets(nonMarkdownSections[i]);
+				}
 
-            if (predicate === null || predicate(text, url)) {
-                const newLink: string = this.markDownService.replaceUrl(link, newUrl);
+				// Rejoin the items and the markdown link section
+				const newLineSections: string[] = [];
+				newLineSections.push(nonMarkdownSections[0]);
+				newLineSections.push(markdownLinkContent);
+				newLineSections.push(nonMarkdownSections[1]);
 
-                fileContent = fileContent.replaceAll(link, newLink);
-            }
-        });
+				const newLine: string = newLineSections.join("");
 
-        return fileContent;
-    }
+				fileLines[i] = newLine;
+			}
+		}
+
+		return Utils.toString(fileLines);
+	}
+
+	private processTable(fileContent: string): string {
+		const fileLines: string[] = Utils.toLines(fileContent);
+
+		for (let i = 0; i < fileLines.length; i++) {
+			const line = fileLines[i];
+
+			if (line.lastIndexOf("| |") != -1) {
+				fileLines[i] = line.replace("| |", "|");
+			} else if (line.indexOf("| :--- |") != -1) {
+				fileLines[i] = "| :--- |";
+			}
+		}
+
+		return Utils.toString(fileLines);
+	}
+
+	private replaceAllLinkUrls(
+		fileContent: string,
+		newUrl: string,
+		predicate: ((text: string, url: string) => boolean) | null = null,
+	): string {
+		const matches = fileContent.match(this.markDownLinkRegEx);
+		matches?.forEach((link) => {
+			const text: string = this.markDownService.extractLinkText(link);
+			const url: string = this.markDownService.extractLinkUrl(link);
+
+			if (predicate === null || predicate(text, url)) {
+				const newLink: string = this.markDownService.replaceUrl(link, newUrl);
+
+				fileContent = fileContent.replaceAll(link, newLink);
+			}
+		});
+
+		return fileContent;
+	}
 }

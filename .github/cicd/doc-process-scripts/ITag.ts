@@ -1,3 +1,3 @@
 export interface ITag {
-    name: string;
+	name: string;
 }

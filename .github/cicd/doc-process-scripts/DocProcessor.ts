@@ -17,179 +17,182 @@ import { Yarn } from "./Yarn.ts";
  * Generates and performs post-processing on Velaptor API documentation.
  */
 export class DocProcessor {
-    private readonly cloneService: CloneRepoService;
-    private readonly runnerService: RunnerService;
-    private readonly validateReleaseService: ValidateReleaseService;
-    private readonly defaultDocTool: DefaultDocTool;
-    private readonly flagService: FlagService;
-    private readonly versionService: VersionsFileService;
-    private readonly yarn: Yarn;
+	private readonly cloneService: CloneRepoService;
+	private readonly runnerService: RunnerService;
+	private readonly validateReleaseService: ValidateReleaseService;
+	private readonly defaultDocTool: DefaultDocTool;
+	private readonly flagService: FlagService;
+	private readonly versionService: VersionsFileService;
+	private readonly yarn: Yarn;
 
-    /**
-     * Initializes a new instance of the DocProcessor class.
-     */
-    constructor() {
-        this.cloneService = new CloneRepoService();
-        this.runnerService = new RunnerService();
-        this.validateReleaseService = new ValidateReleaseService();
-        this.defaultDocTool = new DefaultDocTool();
-        this.flagService = new FlagService();
-        this.versionService = new VersionsFileService();
-        this.yarn = new Yarn();
-    }
+	/**
+	 * Initializes a new instance of the DocProcessor class.
+	 */
+	constructor() {
+		this.cloneService = new CloneRepoService();
+		this.runnerService = new RunnerService();
+		this.validateReleaseService = new ValidateReleaseService();
+		this.defaultDocTool = new DefaultDocTool();
+		this.flagService = new FlagService();
+		this.versionService = new VersionsFileService();
+		this.yarn = new Yarn();
+	}
 
-    /**
-     * Runs the documentation generation and post-processing process.
-     * @param apiDocDirPath The directory path to the API documentation output.
-     * @param releaseTag The Velaptor release tag. 
-     */
-    public async run(apiDocDirPath: string, releaseTag: string): Promise<void> {
-        if (Utils.isNullOrEmpty(apiDocDirPath)) {
-            console.log(ChalkColor.error("The API doc dir path is required."));
-            Deno.exit();
-        }
+	/**
+	 * Runs the documentation generation and post-processing process.
+	 * @param apiDocDirPath The directory path to the API documentation output.
+	 * @param releaseTag The Velaptor release tag.
+	 */
+	public async run(apiDocDirPath: string, releaseTag: string): Promise<void> {
+		if (Utils.isNullOrEmpty(apiDocDirPath)) {
+			console.log(ChalkColor.error("The API doc dir path is required."));
+			Deno.exit();
+		}
 
-        if (Utils.isNullOrEmpty(releaseTag)) {
-            console.log(ChalkColor.error("The release tag is required."));
-            Deno.exit();
-        }
+		if (Utils.isNullOrEmpty(releaseTag)) {
+			console.log(ChalkColor.error("The release tag is required."));
+			Deno.exit();
+		}
 
-        console.log(ChalkColor.header(`Validating Release '${releaseTag}'. . .`));
-        const isValid = await this.validateReleaseService.releaseExists(releaseTag);
+		console.log(ChalkColor.header(`Validating Release '${releaseTag}'. . .`));
+		const isValid = await this.validateReleaseService.releaseExists(releaseTag);
 
-        if (!isValid) {
-            console.log(ChalkColor.error(`The release '${releaseTag}' is not valid.`));
-            Deno.exit();
-        }
+		if (!isValid) {
+			console.log(ChalkColor.error(`The release '${releaseTag}' is not valid.`));
+			Deno.exit();
+		}
 
-        console.log(ChalkColor.header(`Release '${releaseTag}' Valid.`));
+		console.log(ChalkColor.header(`Release '${releaseTag}' Valid.`));
 
-        // Remove the RepoSrc directory if it exists.
-        const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
-        if (Directory.exists(repoSrcDirPath)) {
-            console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-            console.log(ChalkColor.header("Cleaning up previous build. . ."));
-        
-            Deno.removeSync(repoSrcDirPath, { recursive: true });
-        
-            console.log(ChalkColor.header("Cleaning Complete."));
-        }
+		// Remove the RepoSrc directory if it exists.
+		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
+		if (Directory.exists(repoSrcDirPath)) {
+			console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+			console.log(ChalkColor.header("Cleaning up previous build. . ."));
 
-        // Clone the Velaptor repository into the RepoSrc directory
-        // so documentation can be generated from it.
-        console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-        console.log(ChalkColor.header("Cloning Velaptor. . ."));
-        
-        await this.cloneService.cloneRepo("v1.0.0-preview.19");
-        
-        console.log(ChalkColor.header("Cloning Complete."));
+			Deno.removeSync(repoSrcDirPath, { recursive: true });
 
-        // Build the project so the assembly can be used for generating documentation.
-        console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-        console.log(ChalkColor.header("Building Velaptor. . ."));
+			console.log(ChalkColor.header("Cleaning Complete."));
+		}
 
-        await this.buildVelaptor();
-        
-        console.log(ChalkColor.header("Building Complete."));
+		// Clone the Velaptor repository into the RepoSrc directory
+		// so documentation can be generated from it.
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.header("Cloning Velaptor. . ."));
 
-        // Generate the documentation.
-        console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-        console.log(ChalkColor.header("Generating Documentation. . ."));
-        
-        await this.defaultDocTool.generateDocumentation(
-            `${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
-            `${Deno.cwd()}/docs/api`,
-            `${Deno.cwd()}/default-doc-config.json`);
+		await this.cloneService.cloneRepo("v1.0.0-preview.19");
 
-        console.log(ChalkColor.header("Documentation Generation Complete."));
+		console.log(ChalkColor.header("Cloning Complete."));
 
-        // Perform post-processing on the documentation.
-        console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-        console.log(ChalkColor.header("Performing Documentation Post-Processing. . ."));
+		// Build the project so the assembly can be used for generating documentation.
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.header("Building Velaptor. . ."));
 
-        this.runPostProcessing(apiDocDirPath);
+		await this.buildVelaptor();
 
-        console.log(ChalkColor.header("Documentation Post-Processing Complete."));
+		console.log(ChalkColor.header("Building Complete."));
 
-        // Create website version snapshot
-        console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-        console.log(ChalkColor.header("Creating website version snapshot. . ."));
+		// Generate the documentation.
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.header("Generating Documentation. . ."));
 
-        await this.createAPIWebsiteVersion(releaseTag);
+		await this.defaultDocTool.generateDocumentation(
+			`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
+			`${Deno.cwd()}/docs/api`,
+			`${Deno.cwd()}/default-doc-config.json`,
+		);
 
-        console.log(ChalkColor.header("Website Version Snapshot Complete."));
-    }
+		console.log(ChalkColor.header("Documentation Generation Complete."));
 
-    /**
-     * Builds the Velaptor project.
-     */
-    private async buildVelaptor(): Promise<void> {
-        const csprojFilePath = `${Deno.cwd()}/RepoSrc/Velaptor/Velaptor.csproj`;
-        const buildOutputDirPath = `${Deno.cwd()}/RepoSrc/BuildOutput`;
-        const commands = ["dotnet", "build", csprojFilePath, "-c", "Debug", "-o", buildOutputDirPath];
-        
-        await this.runnerService.run(commands, false);
-    }
+		// Perform post-processing on the documentation.
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.header("Performing Documentation Post-Processing. . ."));
 
-    /**
-     * Performs post-processing on the generated API documentation.
-     * @param apiDocDirPath The directory path to the generated API documentation.
-     */
-    private runPostProcessing(apiDocDirPath: string): void {
-        const baseAPIDirPath: string = Path.normalizeSeparators(apiDocDirPath);
-        const fileContentService: MarkdownFileContentService = new MarkdownFileContentService();
-        const markDownService: MarkdownService = new MarkdownService();
+		this.runPostProcessing(apiDocDirPath);
 
-        try {
-            const oldNamespaceFilePath = `${baseAPIDirPath}index.md`;
-            const newNamespaceFilePath = `${baseAPIDirPath}Namespaces.md`;
-            File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
-            
-            const filePaths: string[] = Directory.getFiles(baseAPIDirPath, ".md");
+		console.log(ChalkColor.header("Documentation Post-Processing Complete."));
 
-            // Go through each file and perform content processing
-            filePaths.forEach((filePath: string) => {
-                fileContentService.processMarkdownFile(filePath);
-            });
+		// Create website version snapshot
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.header("Creating website version snapshot. . ."));
 
-            let namespaceContent:string = File.readTextFileSync(newNamespaceFilePath);
-            namespaceContent = markDownService.renameHeader(namespaceContent, "Velaptor Assembly", "Velaptor API Namespaces");
+		await this.createAPIWebsiteVersion(releaseTag);
 
-            File.writeTextFileSync(newNamespaceFilePath, namespaceContent);
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
-    }
+		console.log(ChalkColor.header("Website Version Snapshot Complete."));
+	}
 
-    /**
-     * Creates a new version of the website documentation as it currently sits.
-     * @param version The version to create.
-     */
-    private async createAPIWebsiteVersion(version: string): Promise<void> {
-        this.disableTestingEnvironment();
+	/**
+	 * Builds the Velaptor project.
+	 */
+	private async buildVelaptor(): Promise<void> {
+		const csprojFilePath = `${Deno.cwd()}/RepoSrc/Velaptor/Velaptor.csproj`;
+		const buildOutputDirPath = `${Deno.cwd()}/RepoSrc/BuildOutput`;
+		const commands = ["dotnet", "build", csprojFilePath, "-c", "Debug", "-o", buildOutputDirPath];
 
-        version = version.startsWith("v")
-            ? version.substring(1)
-            : version;
+		await this.runnerService.run(commands, false);
+	}
 
-        const commands = ["docusaurus", "docs:version", version];
-        await this.yarn.run(commands);
-    }
+	/**
+	 * Performs post-processing on the generated API documentation.
+	 * @param apiDocDirPath The directory path to the generated API documentation.
+	 */
+	private runPostProcessing(apiDocDirPath: string): void {
+		const baseAPIDirPath: string = Path.normalizeSeparators(apiDocDirPath);
+		const fileContentService: MarkdownFileContentService = new MarkdownFileContentService();
+		const markDownService: MarkdownService = new MarkdownService();
 
-    /**
-     * Disables the testing environment, if it is enabled.
-     */
-    private disableTestingEnvironment(): void {
-        const baseDirPath = Deno.cwd();
-        const docusaurusConfigFilePath = `${baseDirPath}/docusaurus.config.js`;
-        const sidebarsConfigFilePath = `${baseDirPath}/sidebars.js`;
+		try {
+			const oldNamespaceFilePath = `${baseAPIDirPath}index.md`;
+			const newNamespaceFilePath = `${baseAPIDirPath}Namespaces.md`;
+			File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
 
-        this.flagService.enableFlag(docusaurusConfigFilePath, "api");
-        this.flagService.enableFlag(sidebarsConfigFilePath, "api");
-        this.flagService.disableFlag(docusaurusConfigFilePath, "testing");
-        this.flagService.disableFlag(sidebarsConfigFilePath, "testing");
+			const filePaths: string[] = Directory.getFiles(baseAPIDirPath, ".md");
 
-        this.versionService.disableTestVersion();
-    }
+			// Go through each file and perform content processing
+			filePaths.forEach((filePath: string) => {
+				fileContentService.processMarkdownFile(filePath);
+			});
+
+			let namespaceContent: string = File.readTextFileSync(newNamespaceFilePath);
+			namespaceContent = markDownService.renameHeader(
+				namespaceContent,
+				"Velaptor Assembly",
+				"Velaptor API Namespaces",
+			);
+
+			File.writeTextFileSync(newNamespaceFilePath, namespaceContent);
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	}
+
+	/**
+	 * Creates a new version of the website documentation as it currently sits.
+	 * @param version The version to create.
+	 */
+	private async createAPIWebsiteVersion(version: string): Promise<void> {
+		this.disableTestingEnvironment();
+
+		version = version.startsWith("v") ? version.substring(1) : version;
+
+		const commands = ["docusaurus", "docs:version", version];
+		await this.yarn.run(commands);
+	}
+
+	/**
+	 * Disables the testing environment, if it is enabled.
+	 */
+	private disableTestingEnvironment(): void {
+		const baseDirPath = Deno.cwd();
+		const docusaurusConfigFilePath = `${baseDirPath}/docusaurus.config.js`;
+		const sidebarsConfigFilePath = `${baseDirPath}/sidebars.js`;
+
+		this.flagService.enableFlag(docusaurusConfigFilePath, "api");
+		this.flagService.enableFlag(sidebarsConfigFilePath, "api");
+		this.flagService.disableFlag(docusaurusConfigFilePath, "testing");
+		this.flagService.disableFlag(sidebarsConfigFilePath, "testing");
+
+		this.versionService.disableTestVersion();
+	}
 }

@@ -2,276 +2,274 @@ import { Guard } from "./Gaurd.ts";
 import { Utils } from "./Utils.ts";
 
 export class MarkdownService {
-    private readonly textSectionRegEx: RegExp;
-    private readonly urlSectionRegEx: RegExp;
-    private readonly fullMarkdownLinkRegEx: RegExp;
-    private readonly headerLineRegEx: RegExp;
-    private readonly newLine: string;
-    private readonly headerTypes: string[];
+	private readonly textSectionRegEx: RegExp;
+	private readonly urlSectionRegEx: RegExp;
+	private readonly fullMarkdownLinkRegEx: RegExp;
+	private readonly headerLineRegEx: RegExp;
+	private readonly newLine: string;
+	private readonly headerTypes: string[];
 
-    constructor() {
-        this.textSectionRegEx = /\[.+\]/g;
-        this.urlSectionRegEx = /\(.+\)/g;
+	constructor() {
+		this.textSectionRegEx = /\[.+\]/g;
+		this.urlSectionRegEx = /\(.+\)/g;
 
-        // NOTE:
-        // /(?!.*\[\[)/ is 2 consecutive [ brackets
-        // /(?!.*\]\])/ is 2 consecutive ] brackets
-        // /(?!.*\(\()/ is 2 consecutive ( parenthesis
-        // /(?!.*\)\))/ is 2 consecutive ) parenthesis
-        
-        this.fullMarkdownLinkRegEx = /(?!.*\[\[)(?!.*\]\])(?!.*\(\()(?!.*\)\))(\[.+\]\(.+\))/;
-        this.headerLineRegEx = /^#+ .+$/g;
+		// NOTE:
+		// /(?!.*\[\[)/ is 2 consecutive [ brackets
+		// /(?!.*\]\])/ is 2 consecutive ] brackets
+		// /(?!.*\(\()/ is 2 consecutive ( parenthesis
+		// /(?!.*\)\))/ is 2 consecutive ) parenthesis
 
-        this.newLine = Utils.isWindows() ? "\r\n" : "\n";
-        this.headerTypes = ["#", "##", "###", "####", "#####", "######"];
-    }
+		this.fullMarkdownLinkRegEx = /(?!.*\[\[)(?!.*\]\])(?!.*\(\()(?!.*\)\))(\[.+\]\(.+\))/;
+		this.headerLineRegEx = /^#+ .+$/g;
 
-    public createLink(text: string, url: string): string {
-        Guard.isNotUndefinedOrEmpty(text);
-        Guard.isNotUndefinedOrEmpty(url);
+		this.newLine = Utils.isWindows() ? "\r\n" : "\n";
+		this.headerTypes = ["#", "##", "###", "####", "#####", "######"];
+	}
 
-        // TODO: The URL link is going to have to change somehow
-        // once we start having versions. Maybe bring in a version parameter somehow
-        return `[${text}](<${url}>)`;
-    }
+	public createLink(text: string, url: string): string {
+		Guard.isNotUndefinedOrEmpty(text);
+		Guard.isNotUndefinedOrEmpty(url);
 
-    public prefixUrl(markDownLink: string, prefix: string): string {
-        if (!this.containsMarkdownLink(markDownLink)) {
-            throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
-        }
+		// TODO: The URL link is going to have to change somehow
+		// once we start having versions. Maybe bring in a version parameter somehow
+		return `[${text}](<${url}>)`;
+	}
 
-        const text: string = this.extractLinkText(markDownLink);
-        const url: string = this.extractLinkUrl(markDownLink);
+	public prefixUrl(markDownLink: string, prefix: string): string {
+		if (!this.containsMarkdownLink(markDownLink)) {
+			throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
+		}
 
-        return `[${text}](${prefix}${url})`;
-    }
+		const text: string = this.extractLinkText(markDownLink);
+		const url: string = this.extractLinkUrl(markDownLink);
 
-    public replaceUrl(markDownLink: string, newUrl: string): string {
-        if (!this.containsMarkdownLink(markDownLink)) {
-            throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
-        }
+		return `[${text}](${prefix}${url})`;
+	}
 
-        const text: string = this.extractLinkText(markDownLink);
+	public replaceUrl(markDownLink: string, newUrl: string): string {
+		if (!this.containsMarkdownLink(markDownLink)) {
+			throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
+		}
 
-        return `[${text}](${newUrl})`;
-    }
+		const text: string = this.extractLinkText(markDownLink);
 
-    public extractLinkText(markDownLink: string): string {
-        if (!this.containsMarkdownLink(markDownLink)) {
-            throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
-        }
+		return `[${text}](${newUrl})`;
+	}
 
-        const results = markDownLink.match(this.textSectionRegEx);
-        let result = "";
+	public extractLinkText(markDownLink: string): string {
+		if (!this.containsMarkdownLink(markDownLink)) {
+			throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
+		}
 
-        results?.forEach(value => {
-            result = value.replace("[", "");
-            result = result.replace("]", "");
-        });
+		const results = markDownLink.match(this.textSectionRegEx);
+		let result = "";
 
-        return result;
-    }
+		results?.forEach((value) => {
+			result = value.replace("[", "");
+			result = result.replace("]", "");
+		});
 
-    public extractLinkUrl(markDownLink: string): string {
-        if (!this.containsMarkdownLink(markDownLink)) {
-            throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
-        }
+		return result;
+	}
 
-        const results = markDownLink.match(this.urlSectionRegEx);
-        let result = "";
+	public extractLinkUrl(markDownLink: string): string {
+		if (!this.containsMarkdownLink(markDownLink)) {
+			throw new Error(`The markdown link is invalid.\`n${markDownLink}`);
+		}
 
-        results?.forEach(value => {
-            result = value.replace("(", "");
-            result = result.replace(")", "");
-        });
+		const results = markDownLink.match(this.urlSectionRegEx);
+		let result = "";
 
-        return result;
-    }
+		results?.forEach((value) => {
+			result = value.replace("(", "");
+			result = result.replace(")", "");
+		});
 
-    public renameHeader(content: string, currentName: string, newName: string): string {
-        if (!this.headerExists(currentName, content)) {
-            return content;
-        }
+		return result;
+	}
 
-        const currentHeader: string = this.getHeader(content, currentName);
-        const newHeader = `${currentHeader.split(" ")[0]} ${newName}`;
+	public renameHeader(content: string, currentName: string, newName: string): string {
+		if (!this.headerExists(currentName, content)) {
+			return content;
+		}
 
-        return content.replace(currentHeader, newHeader);
-    }
+		const currentHeader: string = this.getHeader(content, currentName);
+		const newHeader = `${currentHeader.split(" ")[0]} ${newName}`;
 
-    public insertAfterHeader(name: string, contentLines: string[], linesToAdd: string[]): string {
-        Guard.isNotUndefinedOrEmpty(name);
+		return content.replace(currentHeader, newHeader);
+	}
 
-        const noContentLines: boolean = contentLines === undefined || contentLines.length <= 0;
-        const hasContentLines = !noContentLines;
-        const noLinesToAdd: boolean = linesToAdd === undefined || linesToAdd.length <= 0;
-        const hasLinesToAdd = !noLinesToAdd;
+	public insertAfterHeader(name: string, contentLines: string[], linesToAdd: string[]): string {
+		Guard.isNotUndefinedOrEmpty(name);
 
-        if (noContentLines && noLinesToAdd) {
-            return "";
-        }
+		const noContentLines: boolean = contentLines === undefined || contentLines.length <= 0;
+		const hasContentLines = !noContentLines;
+		const noLinesToAdd: boolean = linesToAdd === undefined || linesToAdd.length <= 0;
+		const hasLinesToAdd = !noLinesToAdd;
 
-        if (hasContentLines && noLinesToAdd) {
-            return contentLines.join(this.newLine);    
-        }
+		if (noContentLines && noLinesToAdd) {
+			return "";
+		}
 
-        if (noContentLines && hasLinesToAdd) {
-            return linesToAdd.join(this.newLine);
-        }
+		if (hasContentLines && noLinesToAdd) {
+			return contentLines.join(this.newLine);
+		}
 
-        const insertIndex: number = this.headerLineIndexOf(name, contentLines) + 1;
+		if (noContentLines && hasLinesToAdd) {
+			return linesToAdd.join(this.newLine);
+		}
 
-        for (let i = 0; i < linesToAdd.length; i++) {
-            const line = linesToAdd[i];
-            
-            contentLines.splice(i + insertIndex, 0, line);
-        }
+		const insertIndex: number = this.headerLineIndexOf(name, contentLines) + 1;
 
-        return contentLines.join(this.newLine);
-    }
+		for (let i = 0; i < linesToAdd.length; i++) {
+			const line = linesToAdd[i];
 
-    public headerExists(name: string, lines: string[]): boolean;
-    public headerExists(name: string, content: string): boolean;
-    public headerExists(name: string, linesOrContent: string[] | string): boolean {
-        if (Utils.isNullOrEmpty(name)) {
-            return false;
-        }
-        
-        const isArray: boolean = Array.isArray(linesOrContent);
+			contentLines.splice(i + insertIndex, 0, line);
+		}
 
-        name = name.trim();
+		return contentLines.join(this.newLine);
+	}
 
-        if (isArray) {
-            for (let i = 0; i < linesOrContent.length; i++) {
-                const line = linesOrContent[i];
-                
-                if (this.isHeaderLine(line)) {
-                    const currentHeaderName: string = line.replaceAll("#", "").trim();
-                    
-                    if (name === currentHeaderName)
-                    {
-                        return true;
-                    }
-                }
-            }
-        } else {
-            for (let i = 0; i < this.headerTypes.length; i++) {
-                const type = this.headerTypes[i];
-                
-                if (linesOrContent.indexOf(`${type} ${name}`) != -1) {
-                    return true;
-                }
-            }
-        }
+	public headerExists(name: string, lines: string[]): boolean;
+	public headerExists(name: string, content: string): boolean;
+	public headerExists(name: string, linesOrContent: string[] | string): boolean {
+		if (Utils.isNullOrEmpty(name)) {
+			return false;
+		}
 
-        return false;
-    }
+		const isArray: boolean = Array.isArray(linesOrContent);
 
-    public headerLineIndexOf(startIndex: number, lines: string[]): number;
-    public headerLineIndexOf(headerName: string, lines: string[]): number;
-    public headerLineIndexOf(nameOrIndex: string | number, lines: string[]): number {
-        const paramIsNum = Number.isInteger(nameOrIndex);
-        const startIndex: number = paramIsNum ? <number>nameOrIndex : 0;
+		name = name.trim();
 
-        for (let i = startIndex; i < lines.length; i++) {
-            if (this.isHeaderLine(lines[i])) {
-                if (paramIsNum) {
-                    return i;
-                } else {
-                    const name: string = <string>nameOrIndex;
-                    const currentHeaderName: string = lines[i].replaceAll("#", "").trim();
+		if (isArray) {
+			for (let i = 0; i < linesOrContent.length; i++) {
+				const line = linesOrContent[i];
 
-                    if (currentHeaderName === name) {
-                        return i;
-                    }
-                }
-            }
-        }
+				if (this.isHeaderLine(line)) {
+					const currentHeaderName: string = line.replaceAll("#", "").trim();
 
-        return -1;
-    }
+					if (name === currentHeaderName) {
+						return true;
+					}
+				}
+			}
+		} else {
+			for (let i = 0; i < this.headerTypes.length; i++) {
+				const type = this.headerTypes[i];
 
-    public isHeaderLine(line: string): boolean {
-        if (Utils.isNullOrEmpty(line)) {
-            return false;
-        }
+				if (linesOrContent.indexOf(`${type} ${name}`) != -1) {
+					return true;
+				}
+			}
+		}
 
-        const matches = line.match(this.headerLineRegEx);
-        return matches !== null && matches.length > 0;
-    }
+		return false;
+	}
 
-    public containsMarkdownLink(markDownLink: string): boolean {
-        if (Utils.isNullOrEmpty(markDownLink)) {
-            return false;
-        }
+	public headerLineIndexOf(startIndex: number, lines: string[]): number;
+	public headerLineIndexOf(headerName: string, lines: string[]): number;
+	public headerLineIndexOf(nameOrIndex: string | number, lines: string[]): number {
+		const paramIsNum = Number.isInteger(nameOrIndex);
+		const startIndex: number = paramIsNum ? <number> nameOrIndex : 0;
 
-        const textResults = markDownLink.match(this.textSectionRegEx);
-        const urlResults = markDownLink.match(this.urlSectionRegEx);
+		for (let i = startIndex; i < lines.length; i++) {
+			if (this.isHeaderLine(lines[i])) {
+				if (paramIsNum) {
+					return i;
+				} else {
+					const name: string = <string> nameOrIndex;
+					const currentHeaderName: string = lines[i].replaceAll("#", "").trim();
 
-        const containsValidTextSection: boolean = textResults !== null && textResults.entries.length >= 0;
-        const containsValidUrlSection: boolean = urlResults !== null && urlResults.entries.length >= 0;
+					if (currentHeaderName === name) {
+						return i;
+					}
+				}
+			}
+		}
 
-        return containsValidTextSection && containsValidUrlSection;
-    }
+		return -1;
+	}
 
-    public doesNotHaveLink(value: string): boolean {
-        const matches = value.match(this.fullMarkdownLinkRegEx);
+	public isHeaderLine(line: string): boolean {
+		if (Utils.isNullOrEmpty(line)) {
+			return false;
+		}
 
-        return matches === null || matches.length === 0;
-    }
+		const matches = line.match(this.headerLineRegEx);
+		return matches !== null && matches.length > 0;
+	}
 
-    public createFrontMatter(title: string): string {
-        if (Utils.isNullOrEmpty(title)) {
-            throw new Error("The 'title' parameter must not be null or empty when creating front matter.");
-        }
+	public containsMarkdownLink(markDownLink: string): boolean {
+		if (Utils.isNullOrEmpty(markDownLink)) {
+			return false;
+		}
 
-        const firstLetter: string = title.split("")[0];
+		const textResults = markDownLink.match(this.textSectionRegEx);
+		const urlResults = markDownLink.match(this.urlSectionRegEx);
 
-        if (firstLetter === title[0].toLowerCase())
-        {
-            title = `${firstLetter.toUpperCase()}${title.slice(1)}`;
-        }
+		const containsValidTextSection: boolean = textResults !== null && textResults.entries.length >= 0;
+		const containsValidUrlSection: boolean = urlResults !== null && urlResults.entries.length >= 0;
 
-        const lines: string[] = [];
+		return containsValidTextSection && containsValidUrlSection;
+	}
 
-        lines.push("---");
-        lines.push(`title: ${title}`);
-        lines.push("---");
+	public doesNotHaveLink(value: string): boolean {
+		const matches = value.match(this.fullMarkdownLinkRegEx);
 
-        return `${lines.join(this.newLine)}${this.newLine}${this.newLine}`;
-    }
+		return matches === null || matches.length === 0;
+	}
 
-    public replaceAngleBrackets(value: string): string {
-        value = value.replaceAll("<", "&lt;");
-        value = value.replaceAll(">", "&gt;");
+	public createFrontMatter(title: string): string {
+		if (Utils.isNullOrEmpty(title)) {
+			throw new Error("The 'title' parameter must not be null or empty when creating front matter.");
+		}
 
-        return value;
-    }
+		const firstLetter: string = title.split("")[0];
 
-    private getHeader(content: string, headerName: string): string {
-        if (!this.headerExists(headerName, content)) {
-            return "";
-        }
+		if (firstLetter === title[0].toLowerCase()) {
+			title = `${firstLetter.toUpperCase()}${title.slice(1)}`;
+		}
 
-        const possibleHeaders: string[] = [];
+		const lines: string[] = [];
 
-        headerName = headerName.trim();
+		lines.push("---");
+		lines.push(`title: ${title}`);
+		lines.push("---");
 
-        this.headerTypes.forEach(type => {
-            possibleHeaders.push(`${type} ${headerName}`);
-        });
+		return `${lines.join(this.newLine)}${this.newLine}${this.newLine}`;
+	}
 
-        const headerRegExStr = `^#+ ${headerName}`;
-        const regEx = new RegExp(headerRegExStr, "gm");
+	public replaceAngleBrackets(value: string): string {
+		value = value.replaceAll("<", "&lt;");
+		value = value.replaceAll(">", "&gt;");
 
-        for (let i = 0; i < possibleHeaders.length; i++) {
-            const matches = regEx.exec(content);
+		return value;
+	}
 
-            if (matches != null && matches.length > 0) {
-                return matches[0];
-            }
-        }
+	private getHeader(content: string, headerName: string): string {
+		if (!this.headerExists(headerName, content)) {
+			return "";
+		}
 
-        return "";
-    }
+		const possibleHeaders: string[] = [];
+
+		headerName = headerName.trim();
+
+		this.headerTypes.forEach((type) => {
+			possibleHeaders.push(`${type} ${headerName}`);
+		});
+
+		const headerRegExStr = `^#+ ${headerName}`;
+		const regEx = new RegExp(headerRegExStr, "gm");
+
+		for (let i = 0; i < possibleHeaders.length; i++) {
+			const matches = regEx.exec(content);
+
+			if (matches != null && matches.length > 0) {
+				return matches[0];
+			}
+		}
+
+		return "";
+	}
 }

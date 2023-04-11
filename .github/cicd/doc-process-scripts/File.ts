@@ -3,75 +3,79 @@ import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 
 export class File {
-    public static exists(filePath: string): boolean {
-        try {
-            return Deno.statSync(filePath).isFile;
-        } catch (error) {
-            if (error instanceof(Deno.errors.NotFound)) {
-                return false;
-            } else {
-                throw error;
-            }
-        }
-    }
+	public static exists(filePath: string): boolean {
+		try {
+			return Deno.statSync(filePath).isFile;
+		} catch (error) {
+			if (error instanceof (Deno.errors.NotFound)) {
+				return false;
+			} else {
+				throw error;
+			}
+		}
+	}
 
-    public static doesNotExist(filePath: string): boolean {
-        return !this.exists(filePath);
-    }
+	public static doesNotExist(filePath: string): boolean {
+		return !this.exists(filePath);
+	}
 
-    public static readTextFileSync(filePath: string): string {
-        Guard.isNotUndefinedOrEmpty(filePath, "filePath");
-        
-        if (this.doesNotExist(filePath)) {
-            throw new Error(`The file '${filePath}' does not exist.`);
-        }
+	public static readTextFileSync(filePath: string): string {
+		Guard.isNotUndefinedOrEmpty(filePath, "filePath");
 
-        return Deno.readTextFileSync(filePath);
-    }
+		if (this.doesNotExist(filePath)) {
+			throw new Error(`The file '${filePath}' does not exist.`);
+		}
 
-    public static writeTextFileSync(filePath: string, fileContent: string): void {
-        Guard.isNotUndefinedOrEmpty(filePath, "filePath");
+		return Deno.readTextFileSync(filePath);
+	}
 
-        if (Utils.isNullOrEmpty(fileContent)) {
-            return;
-        }
+	public static writeTextFileSync(filePath: string, fileContent: string): void {
+		Guard.isNotUndefinedOrEmpty(filePath, "filePath");
 
-        if (Utils.isNullOrEmpty(filePath)) {
-            throw new Error(`The parameter '${filePath}' must not be null or empty.`);
-        }
+		if (Utils.isNullOrEmpty(fileContent)) {
+			return;
+		}
 
-        Deno.writeTextFileSync(filePath, fileContent, {
-            create: true
-        });
-    }
+		if (Utils.isNullOrEmpty(filePath)) {
+			throw new Error(`The parameter '${filePath}' must not be null or empty.`);
+		}
 
-    public static renameFileSync(oldFilePath: string, newFilePath: string) : void {
-        Guard.isNotUndefinedOrEmpty(oldFilePath, "oldFilePath");
-        Guard.isNotUndefinedOrEmpty(newFilePath, "newFilePath");
-        
-        if (!Path.isFilePath(oldFilePath)) {
-            throw new Error(`The 'oldFilePath' parameter value of '${oldFilePath}' must be a file path, not a directory path.`);
-        }
+		Deno.writeTextFileSync(filePath, fileContent, {
+			create: true,
+		});
+	}
 
-        if (!Path.isFilePath(newFilePath)) {
-            throw new Error(`The 'newFilePath' parameter value of '${newFilePath}' must be a file path, not a directory path.`);
-        }
+	public static renameFileSync(oldFilePath: string, newFilePath: string): void {
+		Guard.isNotUndefinedOrEmpty(oldFilePath, "oldFilePath");
+		Guard.isNotUndefinedOrEmpty(newFilePath, "newFilePath");
 
-        const oldFileDoesNotExist: boolean = File.doesNotExist(oldFilePath);
+		if (!Path.isFilePath(oldFilePath)) {
+			throw new Error(
+				`The 'oldFilePath' parameter value of '${oldFilePath}' must be a file path, not a directory path.`,
+			);
+		}
 
-        if (oldFileDoesNotExist && File.exists(newFilePath)) {
-            return;
-        }
+		if (!Path.isFilePath(newFilePath)) {
+			throw new Error(
+				`The 'newFilePath' parameter value of '${newFilePath}' must be a file path, not a directory path.`,
+			);
+		}
 
-        const oldDirPath: string = Path.getDirectory(oldFilePath);
-        const newDirPath: string = Path.getDirectory(newFilePath);
+		const oldFileDoesNotExist: boolean = File.doesNotExist(oldFilePath);
 
-        if (oldDirPath !== newDirPath) {
-            throw new Error(`The 'oldFilePath' and 'newFilePath' must be in the same directory.`);
-        }
+		if (oldFileDoesNotExist && File.exists(newFilePath)) {
+			return;
+		}
 
-        if (Path.isFilePath(oldFilePath)) {
-            Deno.renameSync(oldFilePath, newFilePath);
-        }
-    }
+		const oldDirPath: string = Path.getDirectory(oldFilePath);
+		const newDirPath: string = Path.getDirectory(newFilePath);
+
+		if (oldDirPath !== newDirPath) {
+			throw new Error(`The 'oldFilePath' and 'newFilePath' must be in the same directory.`);
+		}
+
+		if (Path.isFilePath(oldFilePath)) {
+			Deno.renameSync(oldFilePath, newFilePath);
+		}
+	}
 }

@@ -19,6 +19,7 @@
         "VelaptorDocs.code-workspace": true,
         "build/": true,
         ".github/cicd/": true,
+        "RepoSrc/": true,
     },
     "search.exclude": {
         "**/node_modules": true,

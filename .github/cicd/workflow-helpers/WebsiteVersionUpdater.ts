@@ -112,7 +112,7 @@ export class WebsiteVersionUpdater {
 	 * @param name The name of the output.
 	 * @param value The value of the output.
 	 */
-	private saveToOutputFile(name: string, value: string) {
+	private saveToOutputFile(name: string, value: string): void {
 		const output = `${name}=${value}`;
 
 		if (File.doesNotExist(this.outputFilePath)) {

@@ -8,8 +8,6 @@ export class BranchValidator {
 			case BranchType.master:
 				return branch === "master";
 			case BranchType.feature: {
-				const matches = branch.match(this.featureBranchRegEx);
-
 				return this.featureBranchRegEx.test(branch);
 			}
 			default:

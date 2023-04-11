@@ -41,7 +41,7 @@
         },
         {
             "request": "launch",
-            "name": "Generage API Docs",
+            "name": "Generate API Docs",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts",
             "cwd": "${workspaceFolder}",
@@ -51,10 +51,7 @@
                 "--inspect-wait",
                 "--allow-all",
             ],
-            "args": [
-                "${workspaceFolder}/docs/api",
-                "v1.0.0-preview.19"
-            ],
+            "args": ["${workspaceFolder}/docs/api"],
             "attachSimplePort": 9229,
             "console": "integratedTerminal"
         },

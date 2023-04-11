@@ -1,9 +1,9 @@
 import { ArgService } from "./ArgService.ts";
-import { Directory } from "./Directory.ts";
-import { File } from "./File.ts";
-import { MarkdownFileContentService } from "./MarkdownFileContentService.ts";
-import { MarkdownService } from "./MarkdownService.ts";
-import { Path } from "./Path.ts";
+import { DocProcessor } from "./DocProcessor.ts";
+import { Console } from "./Console.ts";
+import { ChalkColor } from "./ChalkColor.ts";
+import { RunnerService } from "./RunnerService.ts";
+import { Yarn } from "./Yarn.ts";
 
 const argService: ArgService = new ArgService();
 const [argsValid, errorMsg] = argService.argsAreValid(Deno.args);
@@ -12,26 +12,22 @@ if (!argsValid) {
     throw new Error(errorMsg);
 }
 
-const baseAPIDirPath: string = Path.normalizeSeparators(Deno.args[0]);
-const fileContentService: MarkdownFileContentService = new MarkdownFileContentService();
-const markDownService: MarkdownService = new MarkdownService();
+const yarn = new Yarn();
+const commands = ["-h"];
+await yarn.run(commands);
 
-try {
-    const oldNamespaceFilePath = `${baseAPIDirPath}/index.md`;
-    const newNamespaceFilePath = `${baseAPIDirPath}/Namespaces.md`;
-    File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
-    
-    const filePaths: string[] = Directory.getFiles(baseAPIDirPath, ".md");
-    // Go through each file and perform content processing
-    filePaths.forEach((filePath: string) => {
-        fileContentService.processMarkdownFile(filePath);
-    });
+debugger;
+Deno.exit();
 
-    let namespaceContent:string = File.readTextFileSync(newNamespaceFilePath);
-    namespaceContent = markDownService.renameHeader(namespaceContent, "Velaptor Assembly", "Velaptor API Namespaces");
+const apiDirPath: string = Deno.args[0];
 
-    File.writeTextFileSync(newNamespaceFilePath, namespaceContent);
-} catch (error) {
-    console.error(error);
-    throw error;
-}
+const denoConsole: Console = new Console();
+denoConsole.writeLine(ChalkColor.prompt("? Enter the release version: "));
+
+const result: string = await denoConsole.readLine();
+
+// Make sure that there is a 'v' in front of the release version.
+const releaseVersion: string = result.startsWith("v") ? result : `v${result}`;
+
+const docProcessor = new DocProcessor();
+await docProcessor.run(apiDirPath, releaseVersion);

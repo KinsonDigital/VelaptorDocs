@@ -1,5 +1,9 @@
 {
     "deno.enable": false,
+    "editor.autoIndent": "full",
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
     "cSpell.words": [
         "cicd",
         "clsx",
@@ -17,7 +21,9 @@
         ".docusaurus/": true,
         "node_modules": true,
         "VelaptorDocs.code-workspace": true,
-        "build/": true
+        "build/": true,
+        ".github/cicd/": true,
+        "RepoSrc/": true,
     },
     "search.exclude": {
         "**/node_modules": true,

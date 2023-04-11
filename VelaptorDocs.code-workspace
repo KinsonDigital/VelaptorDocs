@@ -9,8 +9,10 @@
 	],
 	"settings": {
 		"cSpell.words": [
-			"cicd",
-			"Velaptor"
+            "cicd",
+            "defaultdocumentation",
+            "Gaurd",
+            "Velaptor"
         ],
         "testing.followRunningTest": true,
         "testing.gutterEnabled": false,

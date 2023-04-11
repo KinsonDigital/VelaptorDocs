@@ -1,0 +1,107 @@
+name: 🚀Production Release
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+
+jobs:
+  release_website:
+    name: "Release Website"
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: "Validate Branch"
+      run: |
+        $branch = "${{ github.ref }}";
+        
+        if ($branch -ne "refs/heads/master") {
+          Write-Host "::error::This workflow can only be run on the master branch.";
+          exit 1; # Fail workflow
+        }
+
+    - uses: actions/checkout@v3
+
+    - name: "Setup NodeJS"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.14.2
+
+    - name: "Setup YARN"
+      run: npm install --global yarn
+
+    - name: "Setup Docusaurus"
+      run: yarn install
+
+    - name: "Setup Deno"
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.32.x
+
+    - name: "Update Website Version"
+      id: apply_version_to_site
+      run: |
+        $outputFilePath = $GITHUB_OUTPUT;
+
+        if ($outputFilePath -eq "") {
+          Write-Host "::error::Failed to get output file path from the 'GITHUB_OUTPUT' environment variable.";
+          exit 1; # Fail workflow
+        }
+
+        Write-Host "::notice::Output File Path: $outputFilePath";
+
+        deno run `
+          --allow-read `
+          --allow-write `
+          --allow-env `
+          "${{ github.workspace }}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts" `
+          "$outputFilePath";
+
+    - name: "Build Site"
+      run: yarn build
+
+    - name: "Setup Pages"
+      uses: actions/configure-pages@v3 # https://github.com/marketplace/actions/configure-github-pages
+
+    - name: "Upload Artifact"
+      uses: actions/upload-pages-artifact@v1.0.8
+      with:
+        path: '${{ github.workspace }}/build'
+
+    - name: "Deploy to GitHub Pages"
+      id: deployment
+      uses: actions/deploy-pages@v2
+
+    - name: "Create Release Tag"
+      run: |
+        $tag = "${{ steps.apply_version_to_site.outputs.version }}";
+
+        if ($tag -eq "") {
+          Write-Host "::error::Failed to get version from the 'apply_version_to_site' step output.";
+          exit 1; # Fail workflow
+        }
+
+        git config --global user.email "kinsondigital@gmail.com";
+        git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)";
+
+        git tag -a $tag -m "API Doc Release";
+        git push origin $tag;

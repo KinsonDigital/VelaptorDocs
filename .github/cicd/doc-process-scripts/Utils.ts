@@ -1,197 +1,188 @@
 export class Utils {
-    private static readonly isProdRegEx = /^v\d+\.\d+\.\d+(?:-preview){0}$/gm;
-    private static readonly containsProdRegEx = /v\d+\.\d+\.\d+(?:-preview){0}/;
-    private static readonly isPrevRegEx = /^v\d+\.\d+\.\d+(?:-preview\.\d+){1}$/gm;
-    private static readonly containsPrevRegEx = /v\d+\.\d+\.\d+(?:-preview\.\d+){1}/;
-    private static readonly newLineRegEx = /\r?\n/;
-    private static readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
+	private static readonly isProdRegEx = /^v\d+\.\d+\.\d+(?:-preview){0}$/gm;
+	private static readonly containsProdRegEx = /v\d+\.\d+\.\d+(?:-preview){0}/;
+	private static readonly isPrevRegEx = /^v\d+\.\d+\.\d+(?:-preview\.\d+){1}$/gm;
+	private static readonly containsPrevRegEx = /v\d+\.\d+\.\d+(?:-preview\.\d+){1}/;
+	private static readonly newLineRegEx = /\r?\n/;
+	private static readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
 
-    public static isUndefinedOrEmpty<T>(value: T | T[]): boolean {
-        const isUndefined = value === undefined;
-        if (typeof(String) === "string") {
-            return isUndefined || value === "";
-        }
+	public static isNullOrEmpty<T>(value: T | T[]): boolean {
+		const isUndefined = value === undefined;
+		const isNull = value === null;
+		const isEmpty: boolean = Array.isArray(value) ? (<T[]> value).length <= 0 : value === "";
 
-        const isEmpty: boolean = Array.isArray(value)
-            ? (<T[]>value).length <= 0
-            : false;
-        
-        return value === undefined || isEmpty;
-    }
+		return isUndefined || isNull || isEmpty;
+	}
 
-    public static cwd(): string {
-        return Deno.cwd();
-    }
+	public static cwd(): string {
+		return Deno.cwd();
+	}
 
-    public static isWindows(): boolean {
-        return Deno.build.os === "windows";
-    }
+	public static isWindows(): boolean {
+		return Deno.build.os === "windows";
+	}
 
-    public static sortVersions(versions: string[]): string[] {
-        return versions.sort((a: string, b:string) => this.compareVersions(a, b));
-    }
+	public static sortVersions(versions: string[]): string[] {
+		return versions.sort((a: string, b: string) => this.compareVersions(a, b));
+	}
 
-    public static isProdVersion(version: string): boolean {
-        if (Utils.isUndefinedOrEmpty(version)) {
-            return false;
-        }
+	public static isProdVersion(version: string): boolean {
+		if (Utils.isNullOrEmpty(version)) {
+			return false;
+		}
 
-        version = version.trim();
+		version = version.trim();
 
-        const matches = version.match(this.isProdRegEx)
-        
-        return matches === null ? false : matches.length > 0;
-    }
-    
-    public static containsProdVersion(value: string): boolean {
-        if (Utils.isUndefinedOrEmpty(value)) {
-            return false;
-        }
+		const matches = version.match(this.isProdRegEx);
 
-        const matches = value.match(this.containsProdRegEx);
+		return matches === null ? false : matches.length > 0;
+	}
 
-        return matches === null ? false : matches.length > 0;
-    }
+	public static containsProdVersion(value: string): boolean {
+		if (Utils.isNullOrEmpty(value)) {
+			return false;
+		}
 
-    public static isPrevVersion(version: string): boolean {
-        if (Utils.isUndefinedOrEmpty(version)) {
-            return false;
-        }
+		const matches = value.match(this.containsProdRegEx);
 
-        version = version.trim();
+		return matches === null ? false : matches.length > 0;
+	}
 
-        const matches = version.match(this.isPrevRegEx);
+	public static isPrevVersion(version: string): boolean {
+		if (Utils.isNullOrEmpty(version)) {
+			return false;
+		}
 
-        return matches === null ? false : matches.length > 0;
-    }
+		version = version.trim();
 
-    public static containsPrevVersion(value: string): boolean {
-        if (Utils.isUndefinedOrEmpty(value)) {
-            return false;
-        }
+		const matches = version.match(this.isPrevRegEx);
 
-        const matches = value.match(this.containsPrevRegEx);
+		return matches === null ? false : matches.length > 0;
+	}
 
-        return matches === null ? false : matches.length > 0;
-    }
+	public static containsPrevVersion(value: string): boolean {
+		if (Utils.isNullOrEmpty(value)) {
+			return false;
+		}
 
-    public static toLines(value: string): string[] {
-        if (this.isUndefinedOrEmpty(value)) {
-            return [];
-        }
+		const matches = value.match(this.containsPrevRegEx);
 
-        return value.split(this.newLineRegEx);
-    }
+		return matches === null ? false : matches.length > 0;
+	}
 
-    public static toString(lines: string[]): string {
-        return lines.join(this.newLine);
-    }
+	public static toLines(value: string): string[] {
+		if (this.isNullOrEmpty(value)) {
+			return [];
+		}
 
-    public static takeTop<T>(items: T[], total: number): T[] {
-        return items.filter((_: T, i: number) => i <= total - 1);
-    }
+		return value.split(this.newLineRegEx);
+	}
 
-    public static underscoresToAngles(value: string): string {
-        if (Utils.isUndefinedOrEmpty(value)) {
-            return "";
-        }
+	public static toString(lines: string[]): string {
+		return lines.join(this.newLine);
+	}
 
-        if (value.indexOf("_") === -1) {
-            return value;
-        }
+	public static takeTop<T>(items: T[], total: number): T[] {
+		return items.filter((_: T, i: number) => i <= total - 1);
+	}
 
-        let currentChar = "<";
+	public static underscoresToAngles(value: string): string {
+		if (Utils.isNullOrEmpty(value)) {
+			return "";
+		}
 
-        while(true) {
-            const doesNotContainUnderscore: boolean = value.indexOf("_") === -1;
+		if (value.indexOf("_") === -1) {
+			return value;
+		}
 
-            if (doesNotContainUnderscore){
-                break;
-            }
+		let currentChar = "<";
 
-            value = value.replace("_", currentChar);
-            currentChar = currentChar === "<" ? ">" : "<";
-        }
+		while (true) {
+			const doesNotContainUnderscore: boolean = value.indexOf("_") === -1;
 
-        return value;
-    }
+			if (doesNotContainUnderscore) {
+				break;
+			}
 
-    private static compareVersions(a: string, b: string): number {
-        const aIsPrev = this.isPrevVersion(a);
-        const bIsPrev = this.isPrevVersion(b);
-        const aIsProd = this.isProdVersion(a);
-        const bIsProd = this.isProdVersion(b);
+			value = value.replace("_", currentChar);
+			currentChar = currentChar === "<" ? ">" : "<";
+		}
 
-        // If one of the versions is production and one is preview
-        if (aIsProd && bIsProd) {
-            return this.compareProdVersions(a, b);
-        } else if (aIsPrev && bIsPrev) {
-            return this.comparePrevVersions(a, b);
-        } else {
-            const aStart: string = aIsPrev
-                ? a.split("-")[0]
-                : a;
-            const bStart: string = bIsPrev
-                ? b.split("-")[0]
-                : b;
+		return value;
+	}
 
-            // If both versions have the same major, minor, and patch
-            if (aStart === bStart) {
-                return aIsPrev ? 1 : -1;
-            } else {
-                // Get the major, minor, and patch number sections
-                const aNumSections: string[] = aIsPrev
-                    ? a.replace("v", "").replace("-preview", "").split(".").slice(0, -1)
-                    : a.replace("v", "").split(".");
-                const bNumSections: string[] = bIsPrev
-                    ? b.replace("v", "").replace("-preview", "").split(".").slice(0, -1)
-                    : b.replace("v", "").split(".");
+	private static compareVersions(a: string, b: string): number {
+		const aIsPrev = this.isPrevVersion(a);
+		const bIsPrev = this.isPrevVersion(b);
+		const aIsProd = this.isProdVersion(a);
+		const bIsProd = this.isProdVersion(b);
 
-                const aNumbers = aNumSections.map((value: string) => Number(value));
-                const bNumbers = bNumSections.map((value: string) => Number(value));
+		// If one of the versions is production and one is preview
+		if (aIsProd && bIsProd) {
+			return this.compareProdVersions(a, b);
+		} else if (aIsPrev && bIsPrev) {
+			return this.comparePrevVersions(a, b);
+		} else {
+			const aStart: string = aIsPrev ? a.split("-")[0] : a;
+			const bStart: string = bIsPrev ? b.split("-")[0] : b;
 
-                return this.compareNumArrays(aNumbers, bNumbers);
-            }
-        }
-    }
+			// If both versions have the same major, minor, and patch
+			if (aStart === bStart) {
+				return aIsPrev ? 1 : -1;
+			} else {
+				// Get the major, minor, and patch number sections
+				const aNumSections: string[] = aIsPrev
+					? a.replace("v", "").replace("-preview", "").split(".").slice(0, -1)
+					: a.replace("v", "").split(".");
+				const bNumSections: string[] = bIsPrev
+					? b.replace("v", "").replace("-preview", "").split(".").slice(0, -1)
+					: b.replace("v", "").split(".");
 
-    private static compareProdVersions(a: string, b: string): number {
-        // Get the major, minor, and patch number sections
-        const aNumSections: string[] = a.replace("v", "").split(".");
-        const bNumSections: string[] = b.replace("v", "").split(".");
-        const aNumbers = aNumSections.map((value: string) => Number(value));
-        const bNumbers = bNumSections.map((value: string) => Number(value));
+				const aNumbers = aNumSections.map((value: string) => Number(value));
+				const bNumbers = bNumSections.map((value: string) => Number(value));
 
-        return this.compareNumArrays(aNumbers, bNumbers);
-    }
+				return this.compareNumArrays(aNumbers, bNumbers);
+			}
+		}
+	}
 
-    private static comparePrevVersions(a: string, b: string): number {
-        // Get the major, minor, and patch number sections
-        const aNumSections: string[] = a.replace("v", "").replace("-preview", "").split(".");
-        const bNumSections: string[] = b.replace("v", "").replace("-preview", "").split(".");
+	private static compareProdVersions(a: string, b: string): number {
+		// Get the major, minor, and patch number sections
+		const aNumSections: string[] = a.replace("v", "").split(".");
+		const bNumSections: string[] = b.replace("v", "").split(".");
+		const aNumbers = aNumSections.map((value: string) => Number(value));
+		const bNumbers = bNumSections.map((value: string) => Number(value));
 
-        const aNumbers = aNumSections.map((value: string) => Number(value));
-        const bNumbers = bNumSections.map((value: string) => Number(value));
+		return this.compareNumArrays(aNumbers, bNumbers);
+	}
 
-        return this.compareNumArrays(aNumbers, bNumbers);
-    }
+	private static comparePrevVersions(a: string, b: string): number {
+		// Get the major, minor, and patch number sections
+		const aNumSections: string[] = a.replace("v", "").replace("-preview", "").split(".");
+		const bNumSections: string[] = b.replace("v", "").replace("-preview", "").split(".");
 
-    private static compareNumArrays(a: number[], b: number[]): number {
-        if (a.length != b.length) {
-            throw new Error("Both arrays must be the same length for sorting.");
-        }
+		const aNumbers = aNumSections.map((value: string) => Number(value));
+		const bNumbers = bNumSections.map((value: string) => Number(value));
 
-        for (let i = 0; i < a.length; i++) {
-            const valueA = a[i];
-            const valueB = b[i];
-            
-            if (valueA === valueB) {
-                continue;
-            }
+		return this.compareNumArrays(aNumbers, bNumbers);
+	}
 
-            return valueA < valueB ? 1 : -1;
-        }
+	private static compareNumArrays(a: number[], b: number[]): number {
+		if (a.length != b.length) {
+			throw new Error("Both arrays must be the same length for sorting.");
+		}
 
-        return 0;
-    }
+		for (let i = 0; i < a.length; i++) {
+			const valueA = a[i];
+			const valueB = b[i];
+
+			if (valueA === valueB) {
+				continue;
+			}
+
+			return valueA < valueB ? 1 : -1;
+		}
+
+		return 0;
+	}
 }

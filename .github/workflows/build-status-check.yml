@@ -20,29 +20,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: testing
-      run: |
-        $outputFile = "${{ github.output }}";
-        Write-Host "Output File: $outputFile";
+    - name: "Setup Deno"
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.32.x
 
-        "pr-number=1234" >> $env:GITHUB_OUTPUT;
+    - name: "Setup Docusaurus"
+      run: yarn install
 
-        $content = Get-Content -Path $outputFile;
-
-        Write-Host "----File Content----"
-        Write-Host $content;
-
-
-    # - name: "Setup Deno"
-    #   uses: denoland/setup-deno@v1
-    #   with:
-    #     deno-version: v1.x
-
-    # - name: "Setup Docusaurus"
-    #   run: yarn install
-
-    # - name: "Disable Testing Env"
-    #   run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
+    - name: "Disable Testing Env"
+      run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
     
-    # - name: "Build"
-    #   run: yarn build
+    - name: "Build"
+      run: yarn build

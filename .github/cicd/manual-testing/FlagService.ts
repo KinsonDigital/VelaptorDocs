@@ -227,7 +227,7 @@ export class FlagService {
         return result;
     }
 
-    private isUndefinedOrEmpty<T>(value: T[] | string | undefined) {
+    private isUndefinedOrEmpty<T>(value: T[] | string | undefined): boolean {
         if (value === undefined) {
             return true;
         }

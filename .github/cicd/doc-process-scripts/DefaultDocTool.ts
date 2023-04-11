@@ -1,6 +1,5 @@
 import { Directory } from "./Directory.ts";
 import { DotNetToolService } from "./DotNetToolService.ts";
-import { File } from "./File.ts";
 import { RunnerService } from "./RunnerService.ts";
 
 /**
@@ -44,7 +43,7 @@ export class DefaultDocTool {
             "--ConfigurationFilePath",
             `${configFilePath}`];
 
-        const result = await this.runnerService.run(commands, false, true);
+        const result = await this.runnerService.run(commands, false, false);
 
         if (result[0] === true) {
             return;

@@ -2,8 +2,6 @@ import { ArgService } from "./ArgService.ts";
 import { DocProcessor } from "./DocProcessor.ts";
 import { Console } from "./Console.ts";
 import { ChalkColor } from "./ChalkColor.ts";
-import { RunnerService } from "./RunnerService.ts";
-import { Yarn } from "./Yarn.ts";
 
 const argService: ArgService = new ArgService();
 const [argsValid, errorMsg] = argService.argsAreValid(Deno.args);
@@ -11,13 +9,6 @@ const [argsValid, errorMsg] = argService.argsAreValid(Deno.args);
 if (!argsValid) {
     throw new Error(errorMsg);
 }
-
-const yarn = new Yarn();
-const commands = ["-h"];
-await yarn.run(commands);
-
-debugger;
-Deno.exit();
 
 const apiDirPath: string = Deno.args[0];
 

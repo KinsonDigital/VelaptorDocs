@@ -11,6 +11,7 @@ import { Path } from "./Path.ts";
 import { RunnerService } from "./RunnerService.ts";
 import { Utils } from "./Utils.ts";
 import { ValidateReleaseService } from "./ValidateReleaseService.ts";
+import { Yarn } from "./Yarn.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -22,7 +23,7 @@ export class DocProcessor {
     private readonly defaultDocTool: DefaultDocTool;
     private readonly flagService: FlagService;
     private readonly versionService: VersionsFileService;
-
+    private readonly yarn: Yarn;
 
     /**
      * Initializes a new instance of the DocProcessor class.
@@ -34,6 +35,7 @@ export class DocProcessor {
         this.defaultDocTool = new DefaultDocTool();
         this.flagService = new FlagService();
         this.versionService = new VersionsFileService();
+        this.yarn = new Yarn();
     }
 
     /**
@@ -171,9 +173,8 @@ export class DocProcessor {
             ? version.substring(1)
             : version;
 
-        const commands = ["yarn", "docusaurus", "docs:version", version];
-
-        await this.runnerService.run(commands, false);
+        const commands = ["docusaurus", "docs:version", version];
+        await this.yarn.run(commands);
     }
 
     /**

@@ -1,6 +1,7 @@
 name: 📜 Tutorial Documentation Change
 description: Create an issue to add or update tutorial documentation.
 title: "📜"
+labels: ['📜tutorial doc changes']
 body:
 - type: checkboxes
   attributes:
@@ -44,21 +45,13 @@ body:
     label: "Additional Information:"
     description: DO NOT CHANGE ANYTHING BELOW!!
     value: |
-      **_<details closed><summary>Change Type Labels</summary>_**
-      
-      | Change Type  | Label                            |
-      |--------------|----------------------------------|
-      | New Docs             | https://github.com/KinsonDigital/VelaptorDocs/issues?q=is%3Aopen+label%3A%22%F0%9F%93%9Ctutorial+doc+changes%22 |
-      | Tutorial Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Ctutorial%20doc%20changes |
-      </details>
-
       **_<details closed><summary>Priority Type Labels</summary>_**
       
-      | Priority Type       | Label             |
-      |---------------------|-------------------|
-      | Low Priority        | `low priority`    |
-      | Medium Priority     | `medium priority` |
-      | High Priority       | `high priority`   |
+      | Priority Type       | Label                                                                  |
+      |---------------------|------------------------------------------------------------------------|
+      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
+      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
+      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
       </details>
 
 - type: checkboxes

@@ -1,28 +1,32 @@
-name: 🛡️ API Documentation Change
-description: Create an issue to add or update the API documentation.
-title: "🛡️API Doc Change - "
-labels: ['🛡️api doc changes']
+name: 📋 Other Changes
+description: Create an issue for non documentation related changes.
+title: "📋"
 body:
 - type: checkboxes
   attributes:
     label: Complete The Item Below
     options:
-    - label: I have added the version to the very end of the issue title.
-      required: true
-    - label: I have added the https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%9B%A1%EF%B8%8Fapi%20doc%20changes label to the issue.
-      required: true
-    - label: I have added one of the priority labels from the priority table below.
+    - label: I have updated the title without removing the 📋 emoji.
       required: true
 
-- type: checkboxes
+- type: textarea
+  attributes:
+    label: Description
+    description: A description of the change to the documentation.
+  validations:
+    required: true
+
+- type: textarea
   attributes:
     label: Acceptance Criteria
-    options:
-    - label: If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
-      required: false
-    - label: If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
-      required: false
-    - label: Any documentation changes have been checked for proper spelling and grammar.
+    placeholder: |
+      Example:
+        - [ ] Item 1 complete
+        - [ ] Item 2 complete
+    description: The items to complete in order to satisfy the Definition of Done.
+  validations:
+    required: true
+    render: markdown
 
 - type: checkboxes
   attributes:
@@ -40,12 +44,24 @@ body:
     label: "Additional Information:"
     description: DO NOT CHANGE ANYTHING BELOW!!
     value: |
-      **Priority Type Labels**
+      **_<details closed><summary>Change Type Labels</summary>_**
+      
+      | Change Type  | Label                                                                                             |
+      |--------------|---------------------------------------------------------------------------------------------------|
+      | CICD                 | https://github.com/KinsonDigital/VelaptorDocs/labels/%E2%99%BB%EF%B8%8Fcicd               |
+      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/dependency%20update                  |
+      | Miscellaneous        | https://github.com/KinsonDigital/VelaptorDocs/labels/miscellaneous                        |
+      | Tutorial Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Ctutorial%20doc%20changes |
+      </details>
+
+      **_<details closed><summary>Priority Type Labels</summary>_**
+      
       | Priority Type       | Label                                                                  |
       |---------------------|------------------------------------------------------------------------|
       | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
       | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
       | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
+      </details>
 
 - type: checkboxes
   id: terms

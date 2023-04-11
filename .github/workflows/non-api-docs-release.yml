@@ -59,7 +59,7 @@ jobs:
         deno run --allow-read --allow-write "$testingEnvScriptPath" "disable";
 
     - name: "Apply Version To Document Site"
-      run: deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts";
+      run: deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts";
 
     - name: "Build Site"
       run: yarn build
@@ -79,7 +79,7 @@ jobs:
     - name: "Apply Version To Document Site"
       run: |
         $envOutputFile = "${{ github.output }}"
-        $tag = $(deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/DocVersionUpdater.ts" "$envOutputFile");
+        $tag = $(deno run --allow-read --allow-write "${{ github.workspace }}//.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts" "$envOutputFile");
 
         git config --global user.email "kinsondigital@gmail.com";
         git config --global user.name "KinsonDigital CICD - (On behalf of Calvin Wilkinson)";

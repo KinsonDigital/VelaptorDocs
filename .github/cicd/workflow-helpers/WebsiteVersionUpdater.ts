@@ -1,8 +1,27 @@
-export class DocVersionUpdater {
+import { File } from "../doc-process-scripts/File.ts";
+
+/**
+ * Updates the version in the docusaurus.config.js file.
+ */
+export class WebsiteVersionUpdater {
 	private readonly newLine: string = Deno.build.os === "windows" ? "\r\n" : "\n";
 	private readonly newLineRegEx: RegExp = /\r?\n/;
 	private readonly versionRegEx: RegExp = /\(v\d{4}\.\d{2}\.\d{2}\.\d{6}\)/;
+	private readonly outputFilePath: string;
 
+	/**
+	 * Initializes a new instance of the WebsiteVersionUpdater class.
+	 */
+	constructor() {
+		const envVarValue: string | undefined = Deno.env.get("GITHUB_OUTPUT");
+		this.outputFilePath = envVarValue === undefined ? "" : envVarValue.trim();
+
+		console.log(`\n::notice::Workflow Output File Path: ${this.outputFilePath}\n`);
+	}
+
+	/**
+	 * Updates the version in the docusaurus.config.js file.
+	 */
 	public updateVersion(): void {
 		const baseDirPath = Deno.cwd();
 		const path = `${baseDirPath}/docusaurus.config.js`;
@@ -28,18 +47,31 @@ export class DocVersionUpdater {
 		fileContent = fileLines.join(this.newLine);
 		Deno.writeTextFileSync(path, fileContent);
 
+		// Append the version to the output file for the rest of the workflow to use
+		this.saveToOutputFile("version", version);
+
 		// This will log the version to the console which is captured by the workflows
 		console.log(version);
 	}
 
+	/**
+	 * Splits the given value into lines.
+	 * @param value The value to split into lines.
+	 * @returns The lines.
+	 */
 	private toLines(value: string): string[] {
 		if (value === undefined || value === "") {
 			return [];
 		}
 
-		return value.split(this.newLineRegEx);
+		return value.split(this.newLine);
 	}
 
+	/**
+	 * Gets the current version in the given copyright text line.
+	 * @param copyrightLine The copyright line to get the current version from.
+	 * @returns The current version.
+	 */
 	private getCurrentVersion(copyrightLine: string): string {
 		const matches = copyrightLine.match(this.versionRegEx);
 
@@ -50,6 +82,10 @@ export class DocVersionUpdater {
 		return matches[0];
 	}
 
+	/**
+	 * Creates a new version string in the format of (vYYYY.MM.DD.HHMMSS).
+	 * @returns A new version.
+	 */
 	private createNewVersion(): string {
 		const currentDate: Date = new Date();
 		const year = currentDate.getFullYear().toString();
@@ -70,7 +106,28 @@ export class DocVersionUpdater {
 
 		return `(v${version})`;
 	}
+
+	/**
+	 * Saves a workflow output to the output file.
+	 * @param name The name of the output.
+	 * @param value The value of the output.
+	 */
+	private saveToOutputFile(name: string, value: string) {
+		const output = `${name}=${value}`;
+
+		if (File.doesNotExist(this.outputFilePath)) {
+			throw new Error(`The output file '${this.outputFilePath}' does not exist.`);
+		}
+
+		const envOutputFileData: string = Deno.readTextFileSync(this.outputFilePath);
+		const fileLines: string[] = this.toLines(envOutputFileData);
+		fileLines.push(output);
+
+		const newFileData: string = fileLines.join(this.newLine);
+
+		Deno.writeTextFileSync(this.outputFilePath, newFileData, { append: true });
+	}
 }
 
-const updater = new DocVersionUpdater();
+const updater = new WebsiteVersionUpdater();
 updater.updateVersion();

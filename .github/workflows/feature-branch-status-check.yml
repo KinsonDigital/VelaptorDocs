@@ -14,8 +14,8 @@ on:
 
 
 jobs:
-  release_website:
-    name: "Release Website"
+  feature_branch_status_check:
+    name: "Feature Branch Status Check"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

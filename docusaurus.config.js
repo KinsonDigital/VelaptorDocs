@@ -63,6 +63,28 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          name: 'twitter:image',
+          content: 'https://docs.velaptor.io/img/meta-image.jpg'
+        },
+        {
+          name: 'twitter:site',
+          content: '@KDCoder'
+        },
+        {
+          name: 'twitter:creator',
+          content: '@KDCoder'
+        },
+        {
+          name: 'keywords',
+          content: 'Velaptor, 2D, Game, Game Development, Framework, Cross Platform, C#, .NET, OpenGL'
+        }
+      ],
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,

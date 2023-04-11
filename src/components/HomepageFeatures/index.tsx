@@ -2,13 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
-<head>
-	<meta name="twitter:image" content="https://docs.velaptor.io/img/meta-image.jpg"></meta>
-	<meta name="twitter:card" content="summary_large_image"></meta>
-	<meta name="twitter:site" content="@KDCoder"></meta>
-	<meta name="twitter:creator" content="@KDCoder"></meta>
-</head>
-
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;

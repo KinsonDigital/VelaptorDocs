@@ -53,7 +53,7 @@ export class DocVersionUpdater {
 	private createNewVersion(): string {
 		const currentDate: Date = new Date();
 		const year = currentDate.getFullYear().toString();
-		let month = currentDate.getMonth().toString();
+		let month = (currentDate.getMonth() + 1).toString();
 		let day = currentDate.getDate().toString();
 		let hour = currentDate.getHours().toString();
 		let minute = currentDate.getMinutes().toString();

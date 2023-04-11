@@ -12,6 +12,7 @@ if (!argsValid) {
 
 const apiDirPath: string = Deno.args[0];
 
+console.clear();
 const denoConsole: Console = new Console();
 denoConsole.writeLine(ChalkColor.prompt("? Enter the release version: "));
 

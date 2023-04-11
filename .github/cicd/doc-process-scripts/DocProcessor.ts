@@ -146,6 +146,17 @@ export class DocProcessor {
 			const newNamespaceFilePath = `${baseAPIDirPath}Namespaces.md`;
 			File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
 
+			// Replace the extra table column in the Namespaces.md file
+			let namespaceFileContent: string = File.readTextFileSync(newNamespaceFilePath);
+
+			// Remove the extra column from the header and divider
+			namespaceFileContent = namespaceFileContent.replace("| Namespaces | |", "| Namespaces |");
+			namespaceFileContent = namespaceFileContent.replace("| :--- | :--- |", "| :--- |");
+
+			// Remove the extra column from each row
+			namespaceFileContent = namespaceFileContent.replaceAll(") | |", ") |");
+			File.writeTextFileSync(newNamespaceFilePath, namespaceFileContent);
+
 			const filePaths: string[] = Directory.getFiles(baseAPIDirPath, ".md");
 
 			// Go through each file and perform content processing

@@ -1,5 +1,5 @@
-name: 📜 Project Item
-description: Create an issue to change, add, or remove documentation.
+name: 📜 Tutorial Documentation Change
+description: Create an issue to add or update tutorial documentation.
 title: "📜"
 body:
 - type: checkboxes
@@ -46,11 +46,10 @@ body:
     value: |
       **_<details closed><summary>Change Type Labels</summary>_**
       
-      | Change Type  | Label           |
-      |--------------|-----------------|
-      | New Docs     | `✨new docs`    |
-      | CICD Changes | `cicd`          |
-      | Doc Changes  | `📝doc changes` |
+      | Change Type  | Label                            |
+      |--------------|----------------------------------|
+      | New Docs             | https://github.com/KinsonDigital/VelaptorDocs/issues?q=is%3Aopen+label%3A%22%F0%9F%93%9Ctutorial+doc+changes%22 |
+      | Tutorial Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Ctutorial%20doc%20changes |
       </details>
 
       **_<details closed><summary>Priority Type Labels</summary>_**

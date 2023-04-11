@@ -1,0 +1,56 @@
+name: 🛡️ API Documentation Change
+description: Create an issue to add or update the API documentation.
+title: "🛡️API Doc Change - "
+body:
+- type: checkboxes
+  attributes:
+    label: Complete The Item Below
+    options:
+    - label: I have added the version to the very end of the issue title.
+      required: true
+    - label: I have added the https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%9B%A1%EF%B8%8Fapi%20doc%20changes label to the issue.
+      required: true
+    - label: I have added one of the priority labels from the priority table below.
+      required: true
+
+- type: checkboxes
+  attributes:
+    label: Acceptance Criteria
+    options:
+    - label: If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
+      required: false
+    - label: If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
+      required: false
+    - label: Any documentation changes have been checked for proper spelling and grammar.
+
+- type: checkboxes
+  attributes:
+    label: ToDo Items
+    description: Complete the following items before requesting a PR review.
+    options:
+    - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
+    - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
+    - label: Issue linked to the correct project _(if applicable)_.
+    - label: Issue linked to the correct milestone _(if applicable)_.
+    - label: Draft pull request created and linked to this issue _(only required with code changes)_.
+
+- type: textarea
+  attributes:
+    label: "Additional Information:"
+    description: DO NOT CHANGE ANYTHING BELOW!!
+    value: |
+      **Priority Type Labels**
+      | Priority Type       | Label             |
+      |---------------------|-------------------|
+      | Low Priority        | `low priority`    |
+      | Medium Priority     | `medium priority` |
+      | High Priority       | `high priority`   |
+
+- type: checkboxes
+  id: terms
+  attributes:
+    label: Code of Conduct
+    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/KinsonDigital/.github/blob/master/docs/CODE_OF_CONDUCT.md).
+    options:
+      - label: I agree to follow this project's Code of Conduct.
+        required: true

@@ -1,0 +1,288 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Hello Velaptor
+
+This guide will show you the basics of creating a simple **Hello World** application using Velaptor.
+
+:::note Project Templates
+There are plans in the future to create a project template for Visual Studio and JetBrains Rider users
+to easily create a basic Velaptor application.
+
+To see a complete working project of this example, look at the [HelloVelaptor](https://github.com/KinsonDigital/VelaptorTutorials/tree/master/HelloVelaptor) project in the [VelaptorTutorials](https://github.com/KinsonDigital/VelaptorTutorials) repository.
+:::
+
+First things first.  You have to create a project with the preferred IDE!!
+
+
+### <span class="color-step">Step 1: Create the application</span>
+
+Create a new console application using dotnet _**v7.0**_
+
+
+### <span class="color-step">Step 2: Add Velaptor to the project</span>
+
+Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Velaptor) to the project.
+   - Make sure to click the preview check box in your IDE of choice. Since Velaptor is currently only in preview, clicking the checkbox will allow you to see the NuGet package.
+    <Tabs>
+       <TabItem value="vs" label="Visual Studio" default>
+            <img src={require('@site/static/img/tutorials/guides/hello-velaptor/nuget-vs.jpg').default} alt="Example banner"/>
+        </TabItem>
+        <TabItem value="banana" label="JetBrains Rider">
+            <img src={require('@site/static/img/tutorials/guides/hello-velaptor/nuget-rider.jpg').default} alt="Example banner"/>
+        </TabItem>
+    </Tabs>
+
+
+### <span class="color-step">Step 3: Create the game class</span>
+
+Create a new class file named `Game`.  This will be necessary to take advantage of the game-related methods of Velaptor.  These methods
+are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
+
+```csharp
+namespace HelloVelaptor;
+
+public class Game : Window
+{
+}
+```
+
+
+### <span class="color-step">Step 4: Loading content</span>
+
+#### <span class="color-sub-step">Step 4.1</span>
+Once the game class file has been created, we need a way to load content.  We can load sounds, textures, fonts, atlas textures and atlas data but
+we only need to load a single font for this basic **Hello Velaptor** application.  Create a method override of the `Window.Load()` method
+in the `Game` class as shown below:
+
+
+```csharp
+protected override void OnLoad()
+{
+}
+```
+
+#### <span class="color-sub-step">Step 4.2</span>
+
+The `OnLoad()` method will be called one time when the `Game` class has finished being constructed.  Now that we have a place to load content,
+let's load a font that can be used to render text to the screen! To load fonts, we need a font name and size, but first, let's create a class field
+of type `IFont`.  This will be the font loaded in the `OnLoad()` method.
+
+```csharp
+using Velaptor.Content.Fonts; 👈🏼
+
+namespace HelloVelaptor;
+
+public class Game : Window
+{
+    private IFont font; // The type of font 👈🏼
+    
+    protected override void OnLoad()
+    {
+        base.OnLoad();
+    }
+}  
+```
+
+#### <span class="color-sub-step">Step 4.2</span>
+
+Now let's load the font using the `ContentLoader` property that belongs to the `Window` class.
+
+```csharp
+protected override void OnLoad()
+{
+    this.font = ContentLoader.LoadFont("TimesNewRoman-Regular", 24); // Loads the font into the class field 👈🏼
+    base.OnLoad();
+}
+```
+:::tip content name
+The name of the content to load is the same as the content file minus the file extension.  You can use or
+omit the file extension when using the `ContentLoader.LoadFont()` method. Also, the name is not _**case-sensitive**_.  
+Example: The content names _**'my-texture'**_ and _**'My-Texture'**_ are equivalent.
+:::
+
+:::caution Warning
+Since the name of the content to load is based on the name of the file, renaming the file will break your application!!
+:::
+
+
+### <span class="color-step">Step 5: Rendering text</span>
+
+#### <span class="color-sub-step">Step 5.1</span>
+
+Now that we have loaded a font to be applied to the text we want to render, we can now move on to rendering the text.
+Before we can render the font, we need to create the appropriate renderer to render what we want.
+We can create the renderer we need by using the renderer factory.  Let's create a class field named `fontRenderer` of type `IFontRenderer`.
+
+```csharp
+public class Game : Window
+{
+    private readonly IFontRenderer fontRenderer; // Renders text 👈🏼
+    private IFont font;
+    ...
+}
+```
+
+#### <span class="color-sub-step">Step 5.2</span>
+
+Create the font renderer in the constructor.  First, we create a renderer factory and then use
+the factory to create the renderer.
+
+```csharp
+public Game()
+{
+    var rendererFactory = new RendererFactory(); // Create a renderer factory 👈🏼
+    this.fontRenderer = rendererFactory.CreateFontRenderer(); // Create a font renderer 👈🏼
+}
+```
+
+#### <span class="color-sub-step">Step 5.3</span>
+
+Go into the `OnLoad()` method and add the code right below the code that loads the font.
+
+```csharp
+protected override void OnLoad()
+{
+    this.font = ContentLoader.LoadFont("TimesNewRoman-Regular", 24);
+
+    base.OnLoad();
+}
+```
+:::info
+Currently, Velaptor comes with 4 different default fonts.  All of the default fonts are _**Times New Roman**_.
+The 4 different default font types are:
+- TimesNewRoman-Regular
+- TimesNewRoman-Bold
+- TimesNewRoman-Italic
+- TimesNewRoman-BoldItalic
+
+<!-- TODO: Need to create a link to the guide once it is created.-->
+Default font types are the 4 types of fonts that come _**built-into**_ Velaptor. For more info, refer to the font guide.
+:::
+
+
+#### <span class="color-sub-step">Step 5.4</span>
+
+Now that we have a renderer and a font to render text to the screen, we need to create a method override of the `Window.OnDraw()` method.
+The `OnDraw()` method is part of the game loop.
+
+```csharp
+protected override void OnLoad()
+{
+    ...
+    base.OnLoad();
+}
+
+// Create the new method override for rendering to the screen
+protected override void OnDraw(FrameTime frameTime)
+{
+    base.OnDraw(frameTime);
+}
+```  
+
+#### <span class="color-sub-step">Step 5.5</span>
+
+Next, we need to use the renderer to render some text to the screen using our font.  Add the code below to the `OnDraw()` method to accomplish this.
+
+```csharp
+// Draws to the screen.  Executes one time for every iteration of the game loop
+// and always AFTER the OnUpdate() method has finished.
+protected override void OnDraw(FrameTime frameTime)
+{
+    var x = (int)(Width / 2); // Get the center of the window horizontallly 👈🏼
+    var y = (int)(Height / 2); // Get the center of the window vertically 👈🏼
+
+    IRenderer.Begin(); // This must be called before we can render anything 👈🏼
+
+    // Render the string to the screen with the color orange 👇🏻
+    this.fontRenderer.Render(this.font, "Hello Velaptor!!", x, y, Color.Orange);
+
+    IRenderer.End(); // This must be called to end the rendering process 👈🏼
+
+    base.OnDraw(frameTime);
+}
+```
+
+:::note
+Some game engines and frameworks use the top left corner of an object when rendering at a particular position.  Velaptor does not work like this.
+When rendering text, the position of the text is relative to the center of the entire text or texture content.
+
+What this means is if you render the text at position _**(0,0)**_, you would only be able to see the bottom right quadrant of the text because
+the other 3 quadrants would be rendered off-screen!!  Make sure to take this into account when it comes to text and object render positioning.
+<img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/text-origin.png').default} alt="Example banner"/>
+:::
+
+#### <span class="color-sub-step">Step 5.6</span>
+
+Now the best part!! Let's see the fruits of your labor and run the application.
+You should see the result below!! 🥳
+<img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/hello-velaptor-window.jpg').default} alt="Example banner"/>
+
+
+### <span class="color-step">Step 6: Something to update</span>
+
+A game cannot be a game without adding interactivity and updating it to make things happen.  Otherwise, you are just looking at a still picture!
+All games have 2 pieces that make up the game loop.  The first piece is the ability to update your game before you render it to the screen.  The second piece
+is rendering to the screen.  Let's add something to give the application some life.
+
+#### <span class="color-sub-step">Step 6.1</span>
+
+Let's change the text to a random color every second.  To accomplish this, we need some more class fields to work with.
+
+```csharp
+public class Game : Window
+{
+    private readonly Random random = new(); // Creates random numbers 👈🏼
+    private readonly IFontRenderer fontRenderer; // Renders text 👈🏼
+    private IFont font;
+    private Color textColor = Color.White; // The color of the text 👈🏼
+    private double elapsedMS; // Total amount of time that has passed in milliseconds 👈🏼
+    ...
+}
+```
+
+#### <span class="color-sub-step">Step 6.2</span>
+
+To create a random color every second, we need to hook into the update part of the game loop.  To do this, add an empty method override of the `Window.OnUpdate()` method.
+
+```csharp
+protected override void OnUpdate(FrameTime frameTime)
+{
+    base.OnUpdate(frameTime);
+}
+```
+
+#### <span class="color-sub-step">Step 6.3</span>
+
+Add the logic into the `OnUpdate()` method to randomize the text color every second.
+
+```csharp
+protected override void OnUpdate(FrameTime frameTime)
+{
+    // If 1,000 milli-seconds(1 second) has passed
+    this.elapsedMS += frameTime.ElapsedTime.TotalMilliseconds;
+
+    // If 1,000 milli-seconds(1 second) has passed
+    if (this.elapsedMS >= 1000)
+    {
+        this.elapsedMS = 0; // Reset back to zero to restart the timer
+
+        var red = this.random.Next(0, 255); // Create a random red value
+        var green = this.random.Next(0, 255); // Create a random green value
+        var blue = this.random.Next(0, 255); // Create a random blue value
+
+        // Set the text color
+        this.textColor = Color.FromArgb(255, red, green, blue);
+    }
+
+    base.OnUpdate(frameTime);
+}
+```
+
+#### <span class="color-sub-step">Step 6.4</span>
+Run the application and see the result!!
+<img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/update-text-color.gif').default} alt="Example banner"/>

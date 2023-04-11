@@ -9,7 +9,8 @@ export class BranchValidator {
 				return branch === "master";
 			case BranchType.feature: {
 				const matches = branch.match(this.featureBranchRegEx);
-				return matches != null && matches.length > 0;
+
+				return this.featureBranchRegEx.test(branch);
 			}
 			default:
 				return false;

@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Adding Content
+
+All games need content.  Content is the lifeblood of a game.  Without content, there is no game.  In this section, we will
+learn how to add content to our game.
+
+Various types of content can be added to a game.  In this tutorial, we will be adding an image to our game.  This image is what
+is loaded and consumed by Velaptor to be converted into a `Texture` object.  Other kinds of content can be added to a game, such as
+fonts, sounds, and more.  You can even build custom content loaders to load content types for your game to use.
+
+The default kinds of content supported by Velaptor are:
+- PNG images
+- OGG audio files
+- MP3 audio files
+- Texture atlas meta-data files (these are in JSON format)
+- Fonts (TTF files)
+
+Below are the steps to add content to your game and is the same process no matter what kind of content you are adding.
+The only difference is the folder location you are adding your content to based on the type of content you are adding.
+
+:::info
+There are plans in the future to build a content management tool to automate and simplify the process of adding content to a game.
+The process laid out below is a process specific to Visual Studio and JetBrains Rider.
+:::
+
+
+### <span class="color-step">Step 1: Create Project</span>
+
+Create a basic Velaptor application.
+:::note
+For more info, refer to the [Project Setup](./project-setup) guide.
+:::
+
+
+### <span class="color-step">Step 2: Create content folder</span>
+
+Create a content folder based on the type of content being added.
+
+
+In the solution explorer, add a folder named _**Content**_ to the root of the project, then add a folder named _**Graphics**_ to the _**Content**_ folder.
+Once this is complete, download the Velaptor mascot image and put it into the _**./Content/Graphics**_ folder.
+
+
+
+<Tabs>
+    <TabItem value="vs" label="Visual Studio" default>
+        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/add-texture-vs.gif').default} alt="Example banner"/>
+    </TabItem>
+    <TabItem value="banana" label="JetBrains Rider">
+        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/add-texture-rider.gif').default} alt="Example banner"/>
+    </TabItem>
+</Tabs>
+
+:::info IMPORTANT
+In the same location as the running application, the _**Content/Graphics**_ folder is _**required**_ for Velaptor's default content location for graphics file content.
+:::
+
+
+### <span class="color-step">Step 3: Set as content</span>
+
+Now that the image file is added to the project, we can tell our IDE to copy the file and its directory
+structure to the build output location of where the application lives.  This will update the
+appropriate content directory every time the project is built.  Every time you add another content
+item to the project, you will need to follow this same process.
+
+:::note
+These copy file features are part of Visual Studio and JetBrains Rider, not of Velaptor.
+:::
+
+<Tabs>
+    <TabItem value="vs" label="Visual Studio" default>
+        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/texture-properties-vs.gif').default} alt="Example banner"/>
+    </TabItem>
+    <TabItem value="banana" label="JetBrains Rider">
+        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/texture-properties-rider.gif').default} alt="Example banner"/>
+    </TabItem>
+</Tabs>

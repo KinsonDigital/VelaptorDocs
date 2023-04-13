@@ -56,24 +56,27 @@ Keep your needs into account as you develop your game and do not worry about per
 
 :::info
 Atlas Texture Scenario
-<details><summary>Expand me for more info!!</summary>
+<details open><summary>Expand me for more info!!</summary>
 
-Let's say that you have a spaceship game where there are 20 different enemies to shoot at.  If you
-were going to create this game without using an atlas texture, you would need to create 21 different
-image files, instead of a single atlas texture.  One image for the main player ship and 20 for all
-of the enemies.  During runtime, you would instantiate 21 different `Texture`s for each enemy.
-This is fine of course but the problem comes with rendering.  Since you have 21 different textures,
-you would have to render each one individually with a rendering call, this could lead to performance
-issues.  The performance bottleneck comes from switching the rendering from one texture to another.
+Let's consider a 2D space shooter game with lots of bullets and enemies. In this type of game, there may be a large
+number of sprites for the player, the enemies, and the projectiles.
+Loading and rendering all of these individually can quickly lead to performance issues due to the large number
+of draw calls required.
 
-Every time you tell the GPU to load a different texture, the GPU has to work harder to perform this
-operation. This does not mean that it is bad to do this.  It depends on what you are trying to
-accomplish.  If you are creating a space shooter game with many bullets on the screen including many
-enemies, then this might be an issue.  
+By using atlas textures, you can pack all of these sprites into a single texture, which can be loaded and rendered
+more efficiently. For example, an atlas texture can contain all of the different enemy sprites,
+along with their animations and various attack patterns. Similarly, you can create another atlas texture that contains
+all of the different bullet sprites, including the various types of projectiles and their associated effects.
 
-This was more of an issue many years ago when computer resources were more scarce.  Now with more
-powerful computers, this has become less of an issue.  This can though be an issue with more
-resource-constrained environments such as mobile devices.
+By doing this, the game engine can render multiple sprites in a single draw call, significantly improving performance.
+Additionally, since all of the sprites are contained within a single atlas texture, there's no need to switch textures
+between draw calls, which reduces overhead and leads to smoother gameplay.
+
+Another benefit of using atlas textures is that it can reduce the overall size of the game's asset files.
+This is because all of the sprites are packed into a single texture, reducing the amount of duplicated
+metadata and overhead that would be required for individual files.
+
+Overall, using atlas textures in a game can improve performance, reduce file size, and lead to smoother gameplay.
 </details>
 :::
 

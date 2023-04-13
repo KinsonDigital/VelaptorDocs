@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';
@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Rendering Textures
 
-A game cannot be a game without having the ability to render textures.  This guide will show you how to render non-animating
+A game cannot be a game without having the ability to render textures.  This guide will show you how to render whole
 textures to the screen.
 
 :::note project example
@@ -19,93 +19,63 @@ To see a complete working sample project of this tutorial, look at the [Renderin
 
 Create a basic Velaptor application.
 :::note
-For more info, refer to the [Hello Velaptor](./hello-velaptor) guide.
+For more info, refer to the [Project Setup](./project-setup) guide.
 :::
 
-#### <span class="color-sub-step"> Step 1.2</span>
+#### <span class="color-sub-step"> Step 1.2: Create game class</span>
 
 Create a `Game` class with an empty `OnLoad()` and `OnDraw()` method overrides.
 
-#### <span class="color-sub-step">Step 1.3</span>
+#### <span class="color-sub-step">Step 1.3: Create game object</span>
 
 In the _**Program.cs**_ file, create a new `Game` object and invoke the `Show()` method.
 
 
 ### <span class="color-step">Step 2: Rendering a texture</span>
 
-#### <span class="color-sub-step">Step 2.1</span>
+#### <span class="color-sub-step">Step 2.1: Create class fields</span>
 
 Create the `ITexture` and `ITextureRenderer` class fields.  This will be used to render the Velaptor mascot texture to the screen.
 
 ```csharp
 public class Game : Window
 {
-    private ITextRenderer textureRenderer; // Renders textures 👈🏼
-    private ITexture mascotTexture; // The texture to render 👈🏼
+    private ITextRenderer textureRenderer; // Renders textures
+    private ITexture mascotTexture; // The texture to render
     ...
 }
 ```
 
-#### <span class="color-sub-step">Step 2.2</span>
+#### <span class="color-sub-step">Step 2.2: Create renderer</span>
 
 In the constructor, create a render factory and then use the factory to create an instance of a texture renderer.
 
 ```csharp
 public Game()
 {
-    var renderFactory = new RendererFactory(); // Creates renderers 👈🏼
-    this.textureRenderer = renderFactory.CreateTextureRenderer(); // Renders textures 👈🏼
+    var renderFactory = new RendererFactory(); // Creates renderers
+    this.textureRenderer = renderFactory.CreateTextureRenderer(); // Renders textures
 }
 ```
 
-#### <span class="color-sub-step">Step 2.3</span>
+#### <span class="color-sub-step">Step 2.3: Get content</span>
 
-In the solution explorer, add a folder to the project named _**Content**_, then add a folder to the _**Content**_ folder
-named _**Graphics**_.  
-Once this is complete, download the Velaptor mascot image and put it into the _**./Content/Graphics**_ folder.
+Download or create any _**.png**_ file you want.
 
-:::note Velaptor Mascot Image
+:::info Velaptor Mascot Image
 You can download the Velaptor mascot <a target="\_blank" href={require('@site/static/img/downloads/velaptor-mascot.png').default}>here</a>
-
-Name the file _**velaptor-mascot.png**_
 :::
 
-<Tabs>
-    <TabItem value="vs" label="Visual Studio" default>
-        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/add-texture-vs.gif').default} alt="Example banner"/>
-    </TabItem>
-    <TabItem value="banana" label="JetBrains Rider">
-        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/add-texture-rider.gif').default} alt="Example banner"/>
-    </TabItem>
-</Tabs>
+#### <span class="color-sub-step">Step 2.4: Add as content</span>
 
-:::info IMPORTANT
-In the same location as the running application, the _**Content/Graphics**_ folder is _**required**_ for Velaptor's default content location for graphics file content.
-:::
+Add the image to the project and set it as content by following the steps in the [Adding Content](./adding-content) tutorial.
+Make sure to add the image to the `Content/Graphics` folder in the project.
 
-#### <span class="color-sub-step">Step 2.4</span>
+#### <span class="color-sub-step">Step 2.5: Load content</span>
 
-Now that the image file is part of the project, we can tell our IDE to copy the file and its directory structure to the 
-build output location of where the application lives.  This will update the appropriate 
-content directory every time the project is built.  Every time you add another piece of content to the project, you will
-need to follow this same process.
+Now that our content has been successfully added to the project, we can now move on to loading the texture and
+rendering it!! Let's load the texture to the class field in the `OnLoad()` method.
 
-:::note
-These copy file features are part of Visual Studio and JetBrains Rider, not of Velaptor.
-:::
-<Tabs>
-    <TabItem value="vs" label="Visual Studio" default>
-        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/texture-properties-vs.gif').default} alt="Example banner"/>
-    </TabItem>
-    <TabItem value="banana" label="JetBrains Rider">
-        <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/texture-properties-rider.gif').default} alt="Example banner"/>
-    </TabItem>
-</Tabs>
-
-#### <span class="color-sub-step">Step 2.5</span>
-
-Our content has been successfully added to the project and is also set up to copy to the build output directory.
-We can now move on to loading the texture and rendering it!! Let's load the texture to the class field in the `OnLoad()` method.
 ```csharp
 protected override void OnLoad()
 {
@@ -114,9 +84,9 @@ protected override void OnLoad()
 }
 ```
 
-#### <span class="color-sub-step">Step 2.6</span>
+#### <span class="color-sub-step">Step 2.6: Render the image</span>
 
-Finally, we can get to rendering our little Velaptor mascot image. Add the code below to the `OnDraw()` method.
+Finally, we can get to rendering our image. Add the code below to the `OnDraw()` method.
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
 {
@@ -135,7 +105,7 @@ protected override void OnDraw(FrameTime frameTime)
 ```
 
 
-### <span class="color-step">Step 3: Run it!!</span>
+### <span class="color-step">Step 3: Run it</span>
 
 Run the application. You should see the result below!!
 <img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/render-textures-complete.png').default} alt="Example banner"/>

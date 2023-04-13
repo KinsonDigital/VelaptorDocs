@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,11 +13,20 @@ This guide will show you the basics of creating a simple **Hello World** applica
 To see a complete working sample project of this tutorial, look at the [HelloVelaptor](https://github.com/KinsonDigital/VelaptorTutorials/tree/master/HelloVelaptor) project in the [VelaptorTutorials](https://github.com/KinsonDigital/VelaptorTutorials) repository.
 :::
 
-### <span class="color-step">Step 1: Loading content</span>
+
+### <span class="color-step">Step 1: Create project</span>
+
+Create a basic Velaptor application.
+:::note
+For more info, refer to the [Project Setup](./project-setup) guide.
+:::
 
 
+### <span class="color-step">Step 2: Loading content</span>
 
-#### <span class="color-sub-step">Step 1.1</span>
+TODO: refer to adding content tutorial
+
+#### <span class="color-sub-step">Step 2.1: Create font field</span>
 
 Create a class field named `font` at the top of the class.  This will the loaded font to use for rendering text.
 
@@ -25,7 +34,7 @@ Create a class field named `font` at the top of the class.  This will the loaded
 private IFont? font;
 ```
 
-#### <span class="color-sub-step">Step 1.2</span>
+#### <span class="color-sub-step">Step 2.2: Load the font</span>
 
 Now let's load the font using the `ContentLoader` property that belongs to the `Window` class.
 
@@ -47,9 +56,9 @@ Since the name of the content to load is based on the name of the file, renaming
 :::
 
 
-### <span class="color-step">Step 2: Rendering text</span>
+### <span class="color-step">Step 3: Rendering text</span>
 
-#### <span class="color-sub-step">Step 2.1</span>
+#### <span class="color-sub-step">Step 3.1: Create renderer field</span>
 
 Now that we have loaded a font to be applied to the text we want to render, we can now move on to rendering the text.
 Before we can render the font, we need to create the appropriate renderer to render what we want.
@@ -63,7 +72,7 @@ public class Game : Window
 }
 ```
 
-#### <span class="color-sub-step">Step 2.2</span>
+#### <span class="color-sub-step">Step 3.2: Create renderer</span>
 
 Create the font renderer in the constructor.  First, we create a renderer factory and then use the factory to create the renderer.
 
@@ -75,7 +84,7 @@ public Game()
 }
 ```
 
-#### <span class="color-sub-step">Step 2.3</span>
+#### <span class="color-sub-step">Step 3.3: Load the font</span>
 
 Go into the `OnLoad()` method and add the code that loads the font.
 
@@ -104,19 +113,19 @@ Default font types are the 4 types of fonts that come _**built-into**_ Velaptor.
 </details>
 :::
 
+#### <span class="color-sub-step">Step 3.4: Render the text</span>
 
-#### <span class="color-sub-step">Step 2.4</span>
-
-Now that we have a renderer and a font to render text to the screen we need to use the renderer to render some text to the screen using our font.
-Add the code below to the `OnDraw()` method to accomplish this.  Note that we need to invoke `IRenderer.Begin()` before we invoke any `Render()` methods
-for any renderers and then invoke the `IRenderer.End()` when we are finished with all of our rendering.
+Now that we have a text renderer and a font to render text, we need to use the font renderer to render
+some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
+this.  Note that we need to invoke `IRenderer.Begin()` before we invoke any `Render()` methods for
+any renderers and then invoke the `IRenderer.End()` when we are finished with all of our renderings.
 
 :::info
-What is this render begin and end thing?
+What is this render `Begin()` and `End()` thing?
 
 <details><summary>Expand me to learn more!</summary>
 
-This has to do with batching.  When we call `Begin()`, we are telling Velaptor that we are ready to start _**'batching'**_ all of our textures together.
+These have to do with batching.  When we call `Begin()`, we are telling Velaptor that we are ready to start _**'batching'**_ all of our textures together.
 As we call any `Render()` method for any renderer types, we are adding textures to the _**'batch'**_.  Once we invoke the `End()` method,
 this tells Velaptor that we are done batching all of our textures.
 Once we invoked the `End()` method, this is when the actual rendering occurs.
@@ -161,20 +170,20 @@ the other 3 quadrants would be rendered off-screen!!  Make sure to take this int
 </details>
 :::
 
-#### <span class="color-sub-step">Step 2.5</span>
+#### <span class="color-sub-step">Step 3.5: See the result</span>
 
 Now the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/hello-velaptor-window.jpg').default} alt="Example banner"/>
 
 
-### <span class="color-step">Step 6: Let's update something</span>
+### <span class="color-step">Step 4: Let's update something</span>
 
 A game cannot be a game without adding interactivity to make things happen.  Otherwise, you are just looking at a still picture!
 All games have 2 pieces that make up the game loop.  The first piece is the ability to update your game before you render it to the screen.  The second piece
 is rendering the screen.  Let's add something to give the application some life.
 
-#### <span class="color-sub-step">Step 6.1</span>
+#### <span class="color-sub-step">Step 4.1: Create fields</span>
 
 Let's change the text to a random color every second.  To accomplish this, we need some more class fields to work with.
 
@@ -187,9 +196,10 @@ public class Game : Window
 }
 ```
 
-#### <span class="color-sub-step">Step 6.2</span>
+#### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
 
-To create a random color every second, we need to hook into the update part of the game loop.  To do this, add an empty method override of the `Window.OnUpdate()` method.
+To create a random color every second, we need to hook into the update part of the game loop.  If an
+`OnUpdate()` method does not already exist, create an empty method override of the `Window.OnUpdate()` method.
 
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
@@ -198,7 +208,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-#### <span class="color-sub-step">Step 6.3</span>
+#### <span class="color-sub-step">Step 4.3: Randomize text color</span>
 
 Add some logic in the `OnUpdate()` method to randomize the text color every second.
 
@@ -225,6 +235,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-#### <span class="color-sub-step">Step 6.4</span>
+
+### <span class="color-step">Step 5: Run It</span>
 Run the application and see the result!!
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/update-text-color.gif').default} alt="Example banner"/>

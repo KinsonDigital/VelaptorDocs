@@ -30,10 +30,13 @@ With an atlas texture, you can pack all of the sequences of animation into the a
 and the associated meta-data.  At this point, it is very easy to automate the process of switching between textures to run an animation.  Velaptor comes with loading
 atlas textures and their associated meta-data built in.
 
-Benefits:
-- Increased performance.
-- Decrease in required animation and rendering code.
-- Easy to deal with animations.
+**Benefits:**
+
+- **Reduces draw calls:** Reduces the number of times Velaptor needs to send data to the GPU and reduces the number of draw calls. This is because instead of sending data and making draw calls for each individual texture, you only have to for a single atlas texture.
+- **Improved performance:** Reduces draw calls to improve the performance of your game.
+- **Easier management:** Easier to manage one large texture than many small ones, especially when it comes to loading and unloading textures and coordinating the draw calls between textures.  This results in less code.
+- **Smoother Animations:** Makes animations smoother by reducing the amount of time your game spends loading and unloading textures..
+- **Reduced memory usage:** Reduces the amount of memory your games use since you only need to load one large texture instead of many smaller ones.
 
 It all depends on your goals.  All games do a mix between whole texture and atlas texture rendering.
 

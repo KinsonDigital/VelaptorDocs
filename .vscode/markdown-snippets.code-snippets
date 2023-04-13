@@ -17,11 +17,35 @@
 	// }
 
 	"Code Block C#": {
-		"scope": "markdown",
-		"prefix": "code-block-cs",
+		"scope": "mdx",
+		"prefix": "csharp",
 		"body": [
-			"```csharp\n```"
+			"```csharp\n${1: code}\n```\n$2"
 		],
 		"description": "C# Code Block"
+	},
+	"Bold & Italic": {
+		"scope": "mdx",
+		"prefix": "bold-italic",
+		"body": [
+			"_**${1: text}**_$2"
+		],
+		"description": "Bold & Italic Text"
+	},
+	"Step": {
+		"scope": "mdx",
+		"prefix": "step",
+		"body": [
+			"### <span class=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n$3"
+		],
+		"description": "Tutorial Step"
+	},
+	"Sub-Step": {
+		"scope": "mdx",
+		"prefix": "sub-step",
+		"body": [
+			"#### <span class=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n$3"
+		],
+		"description": "Tutorial Sub Step"
 	},
 }

@@ -32,6 +32,14 @@
 		],
 		"description": "Bold & Italic Text"
 	},
+	"Bold": {
+		"scope": "mdx",
+		"prefix": "bold",
+		"body": [
+			"**${1: text}**$2"
+		],
+		"description": "Bold Text"
+	},
 	"Step": {
 		"scope": "mdx",
 		"prefix": "step",

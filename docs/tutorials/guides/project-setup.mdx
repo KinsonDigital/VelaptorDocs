@@ -18,7 +18,6 @@ To see a complete working project of this tutorial, look at the [EmptyProject](h
 
 First things first.  You have to create a project with the preferred IDE!!
 
-
 ### <span class="color-step">Step 1: Create the application</span>
 
 Create a new C# console application using dotnet _**v7.0**_
@@ -53,6 +52,30 @@ public class Game : Window
 
 
 ### <span class="color-step">Step 4: Creating game methods</span>
+
+When developing games, you need to take advantage of various methods that are _**hooked**_ into
+various parts of the game lifecycle.  These lifecycle events are things such as content loading,
+content unloading, updating, drawing, etc.
+
+Here is a diagram that shows the lifecycle of a Velaptor game.
+
+```mermaid
+flowchart LR
+	subgraph id5 ["Game Window"]
+	
+	id1("Load Content - <b><i>OnLoad()</i></b>") -.Called Once.-> id2("Update Game - <b><i>OnUpdate()</i></b>")
+	id2 ==Game==> id3("Draw Game - <b><i>OnDraw()</i></b>")
+	id3 ==Loop==> id2
+	id3 -.Window/Game Shutdown.-> id4("Unload Content - <b><i>OnUnload()</i></b>")
+	end
+
+	id5 --Size Changed--> id6("<b><i>OnResize()</i></b>")
+
+	style id1 stroke:#8ac194
+	linkStyle 1 stroke:#81B1DB,stroke-width:3px,stroke-dasharray: 4
+	linkStyle 2 stroke:#81B1DB,stroke-width:3px,stroke-dasharray: 4
+	style id4 stroke:#c5635c
+```
 
 #### <span class="color-sub-step">Step 4.1: Create `OnLoad()` method</span>
 Once the game class file has been created, we need a way to load content.  We can load sounds, textures, fonts, atlas textures and atlas data, or any

@@ -15,7 +15,7 @@ Want more detail about what an atlas texture is? Refer to the links below:
 :::
 
 An atlas texture is a large image with multiple sub-images packed into a single image.  With this single image, you use another file
-of a particular format such as JSON or XML, that describes the location, size, and other kinds of meta-data for each image in the atlas texture.
+of a particular format such as JSON or XML, that describes the location, size, and other kinds of metadata for each image in the atlas texture.
 
 :::info
 If you are an experienced developer, you know what _**JSON**_ is.  For people who are learning and new to development,
@@ -26,8 +26,8 @@ When [rendering textures](./rendering-textures) the standard way, you render the
 Though there is nothing wrong with rendering whole textures one at a time, there are pros and cons.  In the end, it all depends on what you are trying to accomplish.
 
 With an atlas texture, you can pack all of the sequences of animation into the atlas.  This is usually loaded by a library that loads the atlas texture
-and the associated meta-data.  At this point, it is very easy to automate the process of switching between textures to run an animation.  Velaptor comes with loading
-atlas textures and their associated meta-data built in.
+and the associated metadata.  At this point, it is very easy to automate the process of switching between textures to run an animation.  Velaptor comes with loading
+atlas textures and their associated metadata built in.
 
 **Benefits:**
 
@@ -39,11 +39,11 @@ atlas textures and their associated meta-data built in.
 
 It all depends on your goals.  A lot of games use a combination of whole texture and atlas texture rendering.
 
-Various tools out there give you the ability to easily create atlas textures and meta-data. A couple of examples are: [Texture Packer](https://www.codeandweb.com/texturepacker)
+Various tools out there give you the ability to easily create atlas textures and metadata. A couple of examples are: [Texture Packer](https://www.codeandweb.com/texturepacker)
 and [Spine](https://esotericsoftware.com/).
 
 :::note
-Velaptor does not currently have a tool to build these atlas texture images with the associated meta-data.
+Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
 Plans are in the works to add _**Texture Packer**_ integration.  Though, it is not that difficult to write your
 code to load the _**Texture Packer**_ JSON data for use.
 :::
@@ -110,7 +110,7 @@ Click the GitHub download button shown below to download the file
 
 ### <span class="color-step">Step 3: Add content to project</span>
 
-Add the downloaded atlas texture and meta-data JSON file to the _**Content/Atlas/**_ directory in the project.
+Add the downloaded atlas texture and metadata JSON file to the _**Content/Atlas/**_ directory in the project.
 :::note
 For more info, refer to the [Adding Content](./adding-content) guide.
 :::
@@ -120,12 +120,12 @@ The two files you downloaded should be named _**atlas.png**_ and _**atlas.json**
 
 :::note
 You can name the files whatever you want, but the file names, excluding the extensions must match.
-When you load an atlas texture, you will specify the name of the atlas image and meta-data and both
+When you load an atlas texture, you will specify the name of the atlas image and metadata and both
 files will be loaded at the same time. 
 :::
 
 :::caution
-If you have an image file with no meta-data file or vice versa, Velaptor will throw an exception  
+If you have an image file with no metadata file or vice versa, Velaptor will throw an exception  
 letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
 :::
 
@@ -181,7 +181,7 @@ protected override void OnLoad()
 	base.OnLoad();
 }
 ```
-The `atlasData` variable will contain the loaded texture and the meta-data for the texture.
+The `atlasData` variable will contain the loaded texture and the metadata for the texture.
 We can use this data to make decisions on animation, positioning and more.
 
 :::note
@@ -190,11 +190,11 @@ No file extensions are required and no need to load the _**.png**_ and _**.json*
 :::
 
 :::info
-Meta-data format
+metadata format
 
 <details><summary>Expand me for more info!!</summary>
 
-Let's go over the JSON data that is contained in the meta-data file.
+Let's go over the JSON data that is contained in the metadata file.
 
 _**$type**_: This is the type of object that is used by the JSON serializer to know what type of object to create.  
 There is no need to worry about this key.  Do not change it and you will be fine.
@@ -206,7 +206,7 @@ _**FrameIndex**_: This is the frame number of an animation.  If the frame number
 animation. This is what you will use to keep track of which frame of animation you want to render.
 
 _**Name**_: This is the name of the sub-texture and is what you will use in determining which group of frames animation
-you want to load and when calling the `GetFrames()` method.  If you wanted to load the meta-data for the _**ship**_
+you want to load and when calling the `GetFrames()` method.  If you wanted to load the metadata for the _**ship**_
 sub-texture, you would call `GetFrames("ship")` and you would only get an array with a single item.
 
 ```json
@@ -392,7 +392,7 @@ protected override void OnDraw(FrameTime frameTime)
 }
 ```
 
-Here we are using the location data from the frame meta-data to know where in the atlas
+Here we are using the location data from the frame metadata to know where in the atlas
 the current frame or sub-texture is located.  We then render only that sub-texture to the screen.
 
 The `srcRect` and `destRect` variables are what tell Velaptor the _**section**_ of the atlas to render.

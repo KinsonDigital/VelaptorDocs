@@ -7,25 +7,22 @@ import TabItem from '@theme/TabItem';
 
 # Adding Content
 
-All games need content.  Content is the lifeblood of a game.  Without content, there is no game.  In this section, we will
+Content is the lifeblood of a game; without it, there is no game.  In this section, we will
 learn how to add content to our game.
 
-Various types of content can be added to a game.  In this tutorial, we will be adding an image to our game.  This image is what
-is loaded and consumed by Velaptor to be converted into a `Texture` object.  Other kinds of content can be added to a game, such as
-fonts, sounds, and more.  You can even build custom content loaders to load content types for your game to use.
-
-The default kinds of content supported by Velaptor are:
+Various types of content can be added to a game.  In this tutorial, we will be adding an image to our game which will be loaded and consumed by Velaptor and converted into a `Texture` object.  Other content such as fonts and sounds can also be added.  You can even build custom content loaders to load other types of content for your game.
+The types of content supported by Velaptor are:
 - PNG images
 - OGG audio files
 - MP3 audio files
 - Atlas texture meta-data files (these are in JSON format)
 - Fonts (TTF files)
 
-Below are the steps to add content to your game and is the same process no matter what kind of content you are adding.
-The only difference is the folder location you are adding your content to based on the type of content you are adding.
+Below are the steps to add content to your game.  The steps are the same, no matter what kind of content you are adding;
+the only difference is the folder location.
 
 :::info
-There are plans in the future to build a content management tool to automate and simplify the process of adding content to a game.
+There are plans in the future to improve how content is managed as well as support more file formats.
 The process laid out below is a process specific to Visual Studio and JetBrains Rider.
 :::
 

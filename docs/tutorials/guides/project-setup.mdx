@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Project Setup
 
-This guide will show you the basics of creating a simple empty Velaptor application.
+This guide will show you the basics of creating a simple, empty Velaptor application.
 
 :::note Project Templates
 There are plans in the future to create a project template for Visual Studio and JetBrains Rider users
@@ -120,8 +120,8 @@ protected override void OnDraw(FrameTime frameTime)
 
 If you want to have your game react when the window size changes, you can create a method override of the `Window.OnResize()` method.
 The `OnResize()` method is invoked anytime the window's size is changed.  This includes minimizing, maximizing, and restoring the window.
-This is a great location to run game logic that can do anything you need.  One good example of something to use this for is to pause your game
-automatically when minimized and to unpause when the window is maximized or restored.
+This is a great location to run game logic that can do anything you need.  One good example is to pause your game automatically
+when minimized and to unpause when the window is maximized or restored.
 
 ```csharp
 protected override void OnResize(SizeU size)

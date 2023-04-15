@@ -94,9 +94,7 @@ protected override void OnLoad()
     base.OnLoad();
 }
 ```
-:::info
-
-Default fonts
+:::info Built In Fonts
 <details><summary>Expand me to learn more!</summary>
 
 Currently, four fonts come _**built-into**_ Velaptor and are _**Times New Roman**_.
@@ -117,8 +115,7 @@ some text to the screen using our font. Add the code below to the `OnDraw()` met
 this. Note that we need to invoke `IRenderer.Begin()` before we invoke any `Render()` methods for
 any renderers and then invoke the `IRenderer.End()` when we are finished with all of our renderings.
 
-:::info
-What is this render `Begin()` and `End()` thing?
+:::info What is this render `Begin()` and `End()`?
 
 <details><summary>Expand me to learn more!</summary>
 
@@ -152,9 +149,7 @@ protected override void OnDraw(FrameTime frameTime)
 }
 ```
 
-:::info
-
-Texture and text origin
+:::info Texture And Text Origin
 <details><summary>Expand me to learn more!</summary>
 
 Some game engines and frameworks use the top left corner of an object when rendering at a particular position.

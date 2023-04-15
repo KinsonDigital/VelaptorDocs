@@ -6,20 +6,21 @@ sidebar_position: 1
 
 Velaptor is an open-source framework for building high-performant, high-quality, cross-platform 2D games using C#/dotnet.
 
-:::info
+:::info Framework Vs. Library
 [Here](https://www.freecodecamp.org/news/the-difference-between-a-framework-and-a-library-bd133054023f/) is a good explanation of a framework vs a library.
 :::
 
 ## Overview
 
-Velaptor focuses on building your game instead of having to write low-level code. Rendering graphics, keyboard and mouse input, sound, and other common things
-required by games can take hours (trust me, I know). With Velaptor, you can just focus on developing your game!!
+Velaptor focuses on building your game instead of having to write low-level code. Rendering graphics,
+keyboard and mouse input, sound, and other common features required by games can take hours
+(trust me, I know). This is where Velaptor can help!!
 
-Writing these things from scratch can take hours when all you want to do is create.  This is where Velaptor can help!!
+Now you can just focus on developing your game!!
 
 :::info Quick Note
-Velaptor is currently only in preview and under development.  You can create games with Velaptor in
-its current state to run on Windows.  We are constantly adding improvements and there are plans for Velaptor to run on other platforms such as
+Velaptor is currently only in preview and under development. You can create games with Velaptor in
+its current state to run on Windows. We are constantly adding improvements and there are plans for Velaptor to run on other platforms such as
 Linux, Android, and iOS. As of right now, there are no plans to support MacOS.
 :::
 
@@ -35,53 +36,54 @@ Velaptor has been built with performance in mind and we strive for it to be as p
 ### Simple
 
 Creating games can be some of the most complicated and resource-demanding applications out there.
-Our goal is to make the process as simple as possible.  We are willing to change the API if it
+Our goal is to make the process as simple as possible. We are willing to change the API if it
 means there is a gain in simplicity while taking performance into account.
 
 ### Reliable
 
-We strive to make Velaptor as reliable and free of bugs as possible.  We all know that there is no such thing as
+We strive to make Velaptor as reliable and free of bugs as possible. We all know that there is no such thing as
 100% bug-free software but that does not mean we can't strive for it!!
-Velaptor is highly tested.  We maintain a very high level of code coverage to make sure that nothing slips through
-the cracks. In addition, we are always maintaining and improving our unit tests.
+Velaptor is highly tested with manual testing, a very high level of code coverage and regular testing application and
+unit test maintenance to make sure that nothing slips through the cracks.
 
-We have achieved reliability by designing the Velaptor architecture to be loosely coupled as well as making use of the observable
-pattern and dependency injection to make the code as testable as possible.
+We have achieved reliability by designing the Velaptor architecture to be loosely coupled as well as making use
+of the observable pattern and dependency injection to make the code as testable as possible.
 
-Manual testing is also performed using a custom testing application that is regularly maintained to catch anything
-that unit tests do not catch.
+<details><summary>A quick note about unit testing</summary>
 
-:::note A quick note about unit testing
-Unit tests are not the end-all-be-all solution for reliable bug-free software.  We do not strive to have
-100% code coverage for the goal of having 100% code coverage.  There are areas of Velaptor that _**CANNOT**_ be tested
-due to some of the interaction with low-level pieces of the framework such as [OpenGL](https://www.opengl.org/), sound,
-and other low-level operating system interactions.  These pieces are abstracted away to achieve high testability
+Unit tests are not the end-all-be-all solution for reliable bug-free software. We do not strive to have
+100% code coverage for the goal of having 100% code coverage. There are areas of Velaptor that _**CANNOT**_ be tested
+due to some of the low-level interactions with systems and libraries such as [OpenGL](https://www.opengl.org/), sound,
+[FreeType](https://freetype.org/), and other low-level interactions. These pieces are abstracted away to achieve high testability
 on the Velaptor side.
 
 This is one reason why we do lots of manual testing to cover the areas that unit tests cannot.
-:::
+</details>
 
 ## Join the community
 
-We are always ready to welcome people to the community.  If you just want to say hi, ask some questions,
-or ask how you can contribute to Velaptor or any of the many KinsonDigital organizational projects, we are here
-to guide you.
+Joining our GitHub community is a great opportunity to get to know us and our software. Our community is always eager to welcome
+new members, and we value every contribution, no matter how big or small.
+Whether you want to connect with like-minded individuals, ask questions, or offer your skills to
+support Velaptor or any of our numerous KinsonDigital projects, we are here to guide and support
+you every step of the way. So why wait? Come join us and be part of the community that
+fosters growth, collaboration, and innovation!
 
 - [Discord](https://discord.gg/qewu6fNgv7): For getting help, asking questions, conversation, and where we post updates and releases.
 - [Twitter](https://twitter.com/KDCoder): Where we post updates on releases as well as other software related topics.
-- [KinsonDigital](https://github.com/kinsondigital): The KinsonDigital organization where you can find Velaptor and as well as other projects.
+- [KinsonDigital](https://github.com/kinsondigital): The KinsonDigital organization where you can find Velaptor and many other projects.
 
 ## Learn how to contribute
 
-The Velaptor project is run and maintained by [Calvin Wilkinson](https://twitter.com/KDCoder) and [Kristen Wilkinson](https://twitter.com/kswilky).  We work on this full-time
-and work hard to make this project as well as all of the [KinsonDigital](https://github.com/KinsonDigital) projects in working order.  Any open-source developer will tell you
-that maintaining open-source projects are a ton of work.🥱  
-Any contribution, no matter how small, is welcome and greatly appreciated.  If you are interested in contributing, refer to
-the links below for more info.
+The Velaptor project is run and maintained by [Calvin Wilkinson](https://twitter.com/KDCoder) and [Kristen Wilkinson](https://twitter.com/kswilky).
+We work on this full-time and work hard to make Velaptor and all of the [KinsonDigital](https://github.com/KinsonDigital)
+projects as high quality, user-friendly and helpful as possible. Any open-source developer will tell you that maintaining
+open-source projects are a ton of work.🥱
+If you are interested in contributing, refer to the links below for more info.
 - Click [here](https://github.com/KinsonDigital/.github/blob/master/docs/CONTRIBUTING.md) to learn how to contribute your time.
 - Click [here](https://github.com/sponsors/KinsonDigital) if you are interested in contributing your funds via one-time or recurring donations.
 
 ## License
 
-The Ionic UI Toolkit is a free and open-source project, released under the permissible [MIT license](https://github.com/KinsonDigital/Velaptor/blob/release/v1.0.0/LICENSE.md)
+Velaptor is a free and open-source project, released under the permissible [MIT license](https://github.com/KinsonDigital/Velaptor/blob/release/v1.0.0/LICENSE.md)
 which means it can be used in personal or commercial projects for free.

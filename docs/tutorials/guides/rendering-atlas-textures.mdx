@@ -5,7 +5,7 @@ sidebar_position: 5
 # Rendering With An Atlas Texture
 
 Another way to render textures is by using an atlas texture. This guide is a little more
-in-depth and longer than the previous guides.  Stick with it though, it will be worth it!!
+in-depth and longer than the previous guides. Stick with it though, it will be worth it!!
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
@@ -14,42 +14,42 @@ Want more detail about what an atlas texture is? Refer to the links below:
 3. [Examples](https://www.pinterest.com/pin/676877018967605282/)
 :::
 
-An atlas texture is a large image with multiple sub-images packed into a single image.  With this single image, you use another file
+An atlas texture is a large image with multiple sub-images packed into a single image. With this single image, you use another file
 of a particular format such as JSON or XML, that describes the location, size, and other kinds of metadata for each image in the atlas texture.
 
 :::info JSON
-If you are an experienced developer, you know what _**JSON**_ is.  For people who are learning and new to development,
+If you are an experienced developer, you know what _**JSON**_ is. For people who are learning and new to development,
 click [here](https://www.youtube.com/watch?v=iiADhChRriM) for a great 10-minute video on what JSON is.
 :::
 
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
-Though there is nothing wrong with rendering whole textures one at a time, there are pros and cons.  In the end, it all depends on what you are trying to accomplish.
+Though there is nothing wrong with rendering whole textures one at a time, there are pros and cons. In the end, it all depends on what you are trying to accomplish.
 
-With an atlas texture, you can pack all of the sequences of animation into the atlas.  This is usually loaded by a library that loads the atlas texture
-and the associated metadata.  At this point, it is very easy to automate the process of switching between textures to run an animation.  Velaptor comes with loading
+With an atlas texture, you can pack all of the sequences of animation into the atlas. This is usually loaded by a library that loads the atlas texture
+and the associated metadata. At this point, it is very easy to automate the process of switching between textures to run an animation. Velaptor comes with loading
 atlas textures and their associated metadata built in.
 
 **Benefits:**
 
 - **Reduces draw calls:** Reduces the number of times Velaptor needs to send data to the GPU and reduces the number of draw calls. Instead of sending data and making draw calls for each texture, you only have to for a single atlas texture.
 - **Improved performance:** Reduces draw calls to improve the performance of your game.
-- **Easier management:** Easier to manage one large texture than many small ones, especially when it comes to loading and unloading textures and coordinating the draw calls between textures.  This result is less code.
+- **Easier management:** Easier to manage one large texture than many small ones, especially when it comes to loading and unloading textures and coordinating the draw calls between textures. This result is less code.
 - **Smoother Animations:** Makes animations smoother by reducing the amount of time your game spends loading and unloading textures.
 - **Reduced memory usage:** Reduces the amount of memory your games use since you only need to load one large texture instead of many smaller ones.
 
-It all depends on your goals.  A lot of games use a combination of whole texture and atlas texture rendering.
+It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
 
 Various tools out there give you the ability to easily create atlas textures and metadata. A couple of examples are: [Texture Packer](https://www.codeandweb.com/texturepacker)
 and [Spine](https://esotericsoftware.com/).
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
-Plans are in the works to add _**Texture Packer**_ integration.  One option is you could create a tool to
+Plans are in the works to add _**Texture Packer**_ integration. One option is you could create a tool to
 load the _**Texture Packer**_ JSON data for use.
 :::
 
 :::tip
-Do not overstress about whole vs. atlas texture rendering.  This comes with practice and depends on your needs.
+Do not overstress about whole vs. atlas texture rendering. This comes with practice and depends on your needs.
 Keep your needs into account as you develop your game and do not worry about performance until it starts to become an issue.
 :::
 
@@ -184,7 +184,7 @@ The `atlasData` variable will contain the loaded texture and the metadata for th
 We can use this data to make decisions on animation, positioning and more.
 
 :::tip
-All you have to provide is the _**name**_ of the atlas.  Though you can use the file extension,
+All you have to provide is the _**name**_ of the atlas. Though you can use the file extension,
 it is not required and there is no need to load the _**.png**_ and _**.json**_ files separately
 :::
 
@@ -195,16 +195,16 @@ it is not required and there is no need to load the _**.png**_ and _**.json**_ f
 Let's go over the JSON data that is contained in the metadata file.
 
 _**$type**_: This is the type of object that is used by the JSON serializer to know what type of object to create.  
-There is no need to worry about this key.  Do not change it and you will be fine.
+There is no need to worry about this key. Do not change it and you will be fine.
 
-_**Bounds**_: This is the x, y, width, and height of the sub-texture in the atlas.  This is used to determine where
+_**Bounds**_: This is the x, y, width, and height of the sub-texture in the atlas. This is used to determine where
 the sub-texture is located in the atlas. These are what you will use during the rendering process to render the frame of the animation.
 
-_**FrameIndex**_: This is the frame number of an animation.  If the frame number is -1, then this is not part of an
+_**FrameIndex**_: This is the frame number of an animation. If the frame number is -1, then this is not part of an
 animation. This is what you will use to keep track of which frame of animation you want to render.
 
 _**Name**_: This is the name of the sub-texture and is what you will use in determining which group of frames animation
-you want to load and when calling the `GetFrames()` method.  If you wanted to load the metadata for the _**ship**_
+you want to load and when calling the `GetFrames()` method. If you wanted to load the metadata for the _**ship**_
 sub-texture, you would call `GetFrames("ship")` and you would only get an array with a single item.
 
 ```json
@@ -254,15 +254,15 @@ public class Game : Window
 :::info WHY?
 <details><summary>Expand me for more info!!</summary>
 
-Think of a [flip book](https://www.youtube.com/watch?v=Un-BdBSOGKY).  If you were to flip through the pages of a flip book, you would see the animation.
-The faster you flip through the pages, the faster the animation will appear.  The slower you flip
-through the pages, the slower the animation will appear.  The same concept applies to animations in games.
+Think of a [flip book](https://www.youtube.com/watch?v=Un-BdBSOGKY). If you were to flip through the pages of a flip book, you would see the animation.
+The faster you flip through the pages, the faster the animation will appear. The slower you flip
+through the pages, the slower the animation will appear. The same concept applies to animations in games.
 
-The problem with software is that it runs each frame very fast.  If we changed the frames of the
-animation as fast as the game would run, the animation would move too fast.  We need to slow down the
+The problem with software is that it runs each frame very fast. If we changed the frames of the
+animation as fast as the game would run, the animation would move too fast. We need to slow down the
 animation to the desired speed so that it runs smoothly.
 
-How fast you want to run your animation is up to you.  You can make it run as fast or as slow as you want.
+How fast you want to run your animation is up to you. You can make it run as fast or as slow as you want.
 </details>
 :::
 
@@ -304,12 +304,12 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-This code will check if 124ms has passed.  If it has, then it will move to the next frame of
-the animation.  If the last frame has been reached, then it will reset to the first frame.
+This code will check if 124ms has passed. If it has, then it will move to the next frame of
+the animation. If the last frame has been reached, then it will reset to the first frame.
 Now we have our flip book!!
 
-The `startFrame` is the frame where the animation starts, which will be either 0 or 8.  If the flame has not grown to
-full size, frames 0-7 will be used.  If the flame has grown to full size, frames 8-15 will be used.
+The `startFrame` is the frame where the animation starts, which will be either 0 or 8. If the flame has not grown to
+full size, frames 0-7 will be used. If the flame has grown to full size, frames 8-15 will be used.
 
 :::tip
 If you want to calculate how many milliseconds it takes for a particular frame rate, just take
@@ -317,7 +317,7 @@ the value 1000 and divide it by the desired frame rate.
 
 _**Formula:**_ ms/sec <span style={{fontSize: '14pt', fontWeight: 'bold'}}>÷</span> fps = ms/frame.
 
-For example, 1000 <span style={{fontSize: '14pt', fontWeight: 'bold'}}>÷</span> 60 = 16.66ms.  This means if you want to run something at 60fps, you would need to
+For example, 1000 <span style={{fontSize: '14pt', fontWeight: 'bold'}}>÷</span> 60 = 16.66ms. This means if you want to run something at 60fps, you would need to
 to make something happen every 16ms to obtain that frame rate.
 :::
 
@@ -326,25 +326,25 @@ to make something happen every 16ms to obtain that frame rate.
 
 FPS stands for frames per second, which, as the name implies, is the number of frames that are rendered every second.
 The game loop of a game consists of the two most important methods: `OnUpdate()` and `OnRender()`.
-The `OnUpdate()` and `OnRender()` methods are called once per frame.  The speed (or frequency) at
-which these methods are called is what determines the FPS of the game.  The faster the methods run,
+The `OnUpdate()` and `OnRender()` methods are called once per frame. The speed (or frequency) at
+which these methods are called is what determines the FPS of the game. The faster the methods run,
 the higher the FPS.
 
 To calculate the FPS, divide the number of frames rendered by the number of seconds that
-a game loop iteration has run.  For example, if a game loop iteration runs for 1 second and 60 frames,
-then the FPS would be 60.  If a game loop iteration runs for 1 second and 30 frames, then the FPS would
+a game loop iteration has run. For example, if a game loop iteration runs for 1 second and 60 frames,
+then the FPS would be 60. If a game loop iteration runs for 1 second and 30 frames, then the FPS would
 be 30.
 
-Since we can keep track of how much time has passed, we can calculate the FPS of the game.  We can
+Since we can keep track of how much time has passed, we can calculate the FPS of the game. We can
 take advantage of this time metric coming into the `OnUpdate()` and `OnDraw()` methods to have things
-happen at a certain frequency.  In this case, the speed at which we want our animation to run.
+happen at a certain frequency. In this case, the speed at which we want our animation to run.
 </details>
 :::
 
 
 ### <span class="color-step">Step 7: Render animation</span>
 
-Now we can finally render the animation to the screen.  Add the following code to the `OnDraw()` method.
+Now we can finally render the animation to the screen. Add the following code to the `OnDraw()` method.
 
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
@@ -383,7 +383,7 @@ protected override void OnDraw(FrameTime frameTime)
 ```
 
 Here we are using the location data from the frame metadata to know where in the atlas
-the current frame or sub-texture is located.  We then render only that sub-texture to the screen.
+the current frame or sub-texture is located. We then render only that sub-texture to the screen.
 
 The `srcRect` and `destRect` variables are what tell Velaptor the _**section**_ of the atlas to render.
 
@@ -408,8 +408,8 @@ bit of extra fun?  Let's improve the randomness of the flame animation.
 
 #### <span class="color-sub-step">Step 9.1: Add more fields</span>
 
-Add two more class fields to the `Game` class.  The `random` field will be used to randomly choose between horizontal
-or non-horizontal orientation.  The `horizontalLayout` field will be the layout setting at the time of rendering.
+Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between horizontal
+or non-horizontal orientation. The `horizontalLayout` field will be the layout setting at the time of rendering.
 
 ```csharp
 public class Game: Window
@@ -424,8 +424,8 @@ public class Game: Window
 #### <span class="color-sub-step">Step 9.2: Add flip behavior</span>
 
 Add the following code to randomly choose whether or not the flame should be flipped horizontally to the
-bottom of the `if` block.  This will choose a number between the values 0 and 1. If 0 is chosen,
-the flame will be flipped horizontally.  If 1 is chosen, the flame will not be flipped horizontally.
+bottom of the `if` block. This will choose a number between the values 0 and 1. If 0 is chosen,
+the flame will be flipped horizontally. If 1 is chosen, the flame will not be flipped horizontally.
 
 This is synonymous with flipping a coin.
 

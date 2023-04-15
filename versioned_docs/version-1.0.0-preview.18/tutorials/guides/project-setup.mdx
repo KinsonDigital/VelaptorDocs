@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Project Setup
 
-This guide will show you the basics of creating a simple empty Velaptor application.
+This guide will show you the basics of creating a simple, empty Velaptor application.
 
 :::note Project Templates
 There are plans in the future to create a project template for Visual Studio and JetBrains Rider users
@@ -16,8 +16,7 @@ to easily create a basic Velaptor application.
 To see a complete working project of this tutorial, look at the [EmptyProject](https://github.com/KinsonDigital/VelaptorTutorials/tree/master/EmptyProject) project in the [VelaptorTutorials](https://github.com/KinsonDigital/VelaptorTutorials) repository.
 :::
 
-First things first.  You have to create a project with the preferred IDE!!
-
+First things first. You have to create a project with the preferred IDE!!
 
 ### <span class="color-step">Step 1: Create the application</span>
 
@@ -40,7 +39,7 @@ Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Ve
 
 ### <span class="color-step">Step 3: Create the game class</span>
 
-Create a new class file named `Game`.  This will be necessary to take advantage of the game-related methods of Velaptor.  These methods
+Create a new class file named `Game`. This will be necessary to take advantage of the game-related methods of Velaptor. These methods
 are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
 
 ```csharp
@@ -54,9 +53,33 @@ public class Game : Window
 
 ### <span class="color-step">Step 4: Creating game methods</span>
 
+When developing games, you need to take advantage of various methods that are _**hooked**_ into
+various parts of the game lifecycle. These lifecycle events are things such as content loading,
+content unloading, updating, drawing, etc.
+
+Here is a diagram that shows the lifecycle of a Velaptor game.
+
+```mermaid
+flowchart LR
+	subgraph id5 ["Game Window"]
+	
+	id1("Load Content - <b><i>OnLoad()</i></b>") -.Called Once.-> id2("Update Game - <b><i>OnUpdate()</i></b>")
+	id2 ==Game==> id3("Draw Game - <b><i>OnDraw()</i></b>")
+	id3 ==Loop==> id2
+	id3 -.Window/Game Shutdown.-> id4("Unload Content - <b><i>OnUnload()</i></b>")
+	end
+
+	id5 --Size Changed--> id6("<b><i>OnResize()</i></b>")
+
+	style id1 stroke:#8ac194
+	linkStyle 1 stroke:#81B1DB,stroke-width:3px,stroke-dasharray: 4
+	linkStyle 2 stroke:#81B1DB,stroke-width:3px,stroke-dasharray: 4
+	style id4 stroke:#c5635c
+```
+
 #### <span class="color-sub-step">Step 4.1: Create `OnLoad()` method</span>
-Once the game class file has been created, we need a way to load content.  We can load sounds, textures, fonts, atlas textures and atlas data, or any
-kind of content your game needs.  This method will be invoked once time as the application loads up.
+Once the game class file has been created, we need a way to load content. We can load sounds, textures, fonts, atlas textures and atlas data, or any
+kind of content your game needs. This method will be invoked once time as the application loads up.
 
 Create a method override of the `Window.Load()` method in the `Game` class as shown below:
 
@@ -69,9 +92,9 @@ protected override void OnLoad()
 
 #### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
 
-The next method to create is the `OnUpdate()` method.  This method will be invoked once every frame and always before the `OnDraw()` method is
-invoked.  This is where you should add your game logic and update your game state.  The point of
-this method is to add _**behavior**_ to your game.  Think of it as the brains of your game.
+The next method to create is the `OnUpdate()` method. This method will be invoked once every frame and always before the `OnDraw()` method is
+invoked. This is where you should add your game logic and update your game state. The point of
+this method is to add _**behavior**_ to your game. Think of it as the brains of your game.
 
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
@@ -96,9 +119,9 @@ protected override void OnDraw(FrameTime frameTime)
 #### <span class="color-sub-step">Step 4.4: Create `OnResize()` method</span>
 
 If you want to have your game react when the window size changes, you can create a method override of the `Window.OnResize()` method.
-The `OnResize()` method is invoked anytime the window's size is changed.  This includes minimizing, maximizing, and restoring the window.
-This is a great location to run game logic that can do anything you need.  One good example of something to use this for is to pause your game
-automatically when minimized and to unpause when the window is maximized or restored.
+The `OnResize()` method is invoked anytime the window's size is changed. This includes minimizing, maximizing, and restoring the window.
+This is a great location to run game logic that can do anything you need. One good example is to pause your game automatically
+when minimized and to unpause when the window is maximized or restored.
 
 ```csharp
 protected override void OnResize(SizeU size)
@@ -110,8 +133,8 @@ protected override void OnResize(SizeU size)
 #### <span class="color-sub-step">Step 4.5: Create `OnUnload()` method</span>
 
 We need a way to unload our content. This can be performed by creating a method override of the `Window.OnUnload()` method.
-The `OnUnload()` method is invoked one time when the window is closed.  This is to free resources and content from your game on
-the CPU side as well as loaded textures from the GPU.  This is also where scene management unloading can be performed.
+The `OnUnload()` method is invoked one time when the window is closed. This is to free resources and content from your game on
+the CPU side as well as loaded textures from the GPU. This is also where scene management unloading can be performed.
 
 ```csharp
 protected override void OnUnload()

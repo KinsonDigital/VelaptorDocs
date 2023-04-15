@@ -17,18 +17,16 @@ To see a complete working sample project of this tutorial, look at the [HelloVel
 ### <span class="color-step">Step 1: Create project</span>
 
 Create a basic Velaptor application.
-:::note
+:::note Refer To
 For more info, refer to the [Project Setup](./project-setup) guide.
 :::
 
 
 ### <span class="color-step">Step 2: Loading content</span>
 
-TODO: refer to adding content tutorial
-
 #### <span class="color-sub-step">Step 2.1: Create font field</span>
 
-Create a class field named `font` at the top of the class.  This will the loaded font to use for rendering text.
+Create a class field named `font` at the top of the class. This will be the loaded font to use for rendering text.
 
 ```csharp
 private IFont? font;
@@ -46,7 +44,7 @@ protected override void OnLoad()
 }
 ```
 :::tip content name
-The name of the content to load is the same as the content file minus the file extension.  You can use or
+The name of the content to load is the same as the content file minus the file extension. You can use or
 omit the file extension when using the `ContentLoader.LoadFont()` method. Also, the name is not _**case-sensitive**_.  
 Example: The content names _**'my-texture'**_ and _**'My-Texture'**_ are equivalent.
 :::
@@ -60,9 +58,9 @@ Since the name of the content to load is based on the name of the file, renaming
 
 #### <span class="color-sub-step">Step 3.1: Create renderer field</span>
 
-Now that we have loaded a font to be applied to the text we want to render, we can now move on to rendering the text.
-Before we can render the font, we need to create the appropriate renderer to render what we want.
-We can create the renderer we need by using the renderer factory.  Let's create a class field named `fontRenderer` of type `IFontRenderer`.
+After setting up a text renderer and selecting a font for rendering text, we can now render text on the screen using the
+font renderer. To achieve this, you can add the following code to the `OnDraw()` method. Remember to call `IRenderer.Begin()`
+before using any `Render()` methods for any renderers, and then call `IRenderer.End()` when you're done with all the renderings.
 
 ```csharp
 public class Game : Window
@@ -74,7 +72,7 @@ public class Game : Window
 
 #### <span class="color-sub-step">Step 3.2: Create renderer</span>
 
-Create the font renderer in the constructor.  First, we create a renderer factory and then use the factory to create the renderer.
+Create the font renderer in the constructor. First, we create a renderer factory and then use the factory to create the renderer.
 
 ```csharp
 public Game()
@@ -101,15 +99,14 @@ protected override void OnLoad()
 Default fonts
 <details><summary>Expand me to learn more!</summary>
 
-Currently, Velaptor comes with 4 different default fonts.  All of the default fonts are _**Times New Roman**_.
-The 4 different default font types are:
+Currently, four fonts come _**built-into**_ Velaptor and are _**Times New Roman**_.
+The 4 different font types are:
 - TimesNewRoman-Regular
 - TimesNewRoman-Bold
 - TimesNewRoman-Italic
 - TimesNewRoman-BoldItalic
 
-<!-- TODO: Need to create a link to the guide once it is created.-->
-Default font types are the 4 types of fonts that come _**built-into**_ Velaptor. For more info, refer to the font guide.
+Refer to the [Fonts](./Coming-Soon/fonts.mdx) guide for more details.
 </details>
 :::
 
@@ -117,7 +114,7 @@ Default font types are the 4 types of fonts that come _**built-into**_ Velaptor.
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
-this.  Note that we need to invoke `IRenderer.Begin()` before we invoke any `Render()` methods for
+this. Note that we need to invoke `IRenderer.Begin()` before we invoke any `Render()` methods for
 any renderers and then invoke the `IRenderer.End()` when we are finished with all of our renderings.
 
 :::info
@@ -125,14 +122,13 @@ What is this render `Begin()` and `End()` thing?
 
 <details><summary>Expand me to learn more!</summary>
 
-These have to do with batching.  When we call `Begin()`, we are telling Velaptor that we are ready to start _**'batching'**_ all of our textures together.
-As we call any `Render()` method for any renderer types, we are adding textures to the _**'batch'**_.  Once we invoke the `End()` method,
-this tells Velaptor that we are done batching all of our textures.
-Once we invoked the `End()` method, this is when the actual rendering occurs.
+These have to do with batching. When we call `Begin()`, we are telling Velaptor that we are ready to start _**'batching'**_
+all of our textures together. When we call any `Render()` method for any renderer type, we are adding textures to the
+_**'batch'**_. Once we invoke the `End()` method, it tells Velaptor that we are done batching all of our textures and it renders them. 
 
 Just remember the steps:
 1. Invoke `IRenderer.Begin()` method
-2. Invoked all `Render()` methods for the current frame
+2. Invoke all `Render()` methods for the current frame
 3. Invoke the `IRenderer.End()` method
 
 That's it!!
@@ -161,8 +157,9 @@ protected override void OnDraw(FrameTime frameTime)
 Texture and text origin
 <details><summary>Expand me to learn more!</summary>
 
-Some game engines and frameworks use the top left corner of an object when rendering at a particular position.  Velaptor does not work like this.
-When rendering text, the position of the text is relative to the center of the entire text or texture content.
+Some game engines and frameworks use the top left corner of an object when rendering at a particular position.
+Velaptor does not work like that. When rendering text, the position of the text is relative to the center of
+the entire text or texture content.
 
 What this means is if you render the text at position _**(0,0)**_, you would only be able to see the bottom right quadrant of the text because
 the other 3 quadrants would be rendered off-screen!!  Make sure to take this into account when it comes to text and object render positioning.
@@ -172,20 +169,20 @@ the other 3 quadrants would be rendered off-screen!!  Make sure to take this int
 
 #### <span class="color-sub-step">Step 3.5: See the result</span>
 
-Now the best part!! Let's see the fruits of your labor and run the application.
+Now for the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/hello-velaptor-window.jpg').default} alt="Example banner"/>
 
 
 ### <span class="color-step">Step 4: Let's update something</span>
 
-A game cannot be a game without adding interactivity to make things happen.  Otherwise, you are just looking at a still picture!
-All games have 2 pieces that make up the game loop.  The first piece is the ability to update your game before you render it to the screen.  The second piece
-is rendering the screen.  Let's add something to give the application some life.
+A game isn't a game without behavior and interaction, otherwise, you're just looking at a still picture!
+All games have 2 pieces that make up the game loop. The first piece is the ability to update your game before you render it to the screen.
+The second piece is rendered on the screen. Let's add something to give the application some life.
 
 #### <span class="color-sub-step">Step 4.1: Create fields</span>
 
-Let's change the text to a random color every second.  To accomplish this, we need some more class fields to work with.
+Let's change the text to a random color every second. To accomplish this, we need some more class fields to work with.
 
 ```csharp
 public class Game : Window
@@ -198,7 +195,7 @@ public class Game : Window
 
 #### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
 
-To create a random color every second, we need to hook into the update part of the game loop.  If an
+To create a random color every second, we need to hook into the update part of the game loop. If an
 `OnUpdate()` method does not already exist, create an empty method override of the `Window.OnUpdate()` method.
 
 ```csharp

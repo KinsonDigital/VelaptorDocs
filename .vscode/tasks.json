@@ -1,15 +1,20 @@
 {
     "version": "2.0.0",
     "tasks": [
+		{
+            "label": "Generate API Docs",
+            "type": "shell",
+            "command": "deno run --allow-read --allow-write --allow-net --allow-run --allow-env '${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts' '${workspaceFolder}/docs/api'"
+        },
         {
-            "label": "reset-docs",
+            "label": "Reset Docs",
             "type": "shell",
             "windows": {
                 "command": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'",
             }
         },
         {
-            "label": "disable-testing-env",
+            "label": "Disable Testing Environment",
             "type": "shell",
             "windows": {
                 "command": "deno",

@@ -62,7 +62,7 @@ jobs:
         deno run `
           --allow-read `
           --allow-write `
-          "${{ github.workspace }}\.github\cicd\manual-testing\FlagService.ts" `
+          "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
           "${{ github.workspace }}/docusaurus.config.js" `
           "next-version" `
           "disable";

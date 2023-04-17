@@ -5,14 +5,17 @@ import { Utils } from "./Utils.ts";
  * Processes markdown headers.
  */
 export class MarkdownHeaderService {
-	private ctorGroupHeaderRegex: RegExp;
-	private ctorHeaderRegex: RegExp;
-	private methodGroupHeaderRegex: RegExp;
-	private methodHeaderRegex: RegExp;
-	private propGroupHeaderRegex: RegExp;
-	private propHeaderRegex: RegExp;
-	private remarksGroupRegex: RegExp;
-	private fieldsGroupRegex: RegExp;
+	private readonly classHeaderRegEx: RegExp;
+	private readonly structRegEx: RegExp;
+	private readonly interfaceRegEx: RegExp;
+	private readonly ctorGroupHeaderRegex: RegExp;
+	private readonly ctorHeaderRegex: RegExp;
+	private readonly methodGroupHeaderRegex: RegExp;
+	private readonly methodHeaderRegex: RegExp;
+	private readonly propGroupHeaderRegex: RegExp;
+	private readonly propHeaderRegex: RegExp;
+	private readonly remarksGroupRegex: RegExp;
+	private readonly fieldsGroupRegex: RegExp;
 	private readonly headerLineRegEx: RegExp;
 	private readonly newLine: string;
 
@@ -20,6 +23,9 @@ export class MarkdownHeaderService {
 	 * Creates an instance of MarkdownHeaderService.
 	 */
 	constructor() {
+		this.classHeaderRegEx = /^#{1,6} .+Class$/;
+		this.structRegEx = /^#{1,6} .+Struct$/;
+		this.interfaceRegEx = /^#{1,6} .+Interface$/;
 		this.ctorGroupHeaderRegex = /^#{1,6} Constructors$/;
 		this.ctorHeaderRegex = /^#{1,6} .+\(.*\) Constructor$/;
 		this.methodGroupHeaderRegex = /^#{1,6} Methods$/;
@@ -45,7 +51,13 @@ export class MarkdownHeaderService {
 		for (let i = 0; i < lines.length; i++) {
 			let line: string = lines[i].trim();
 
-			if (this.isValidHeader(line, this.ctorGroupHeaderRegex)) {
+			if (this.isValidHeader(line, this.classHeaderRegEx)) {
+				lines[i] = this.decreaseHeaderSize(line, 2);
+			} else if (this.isValidHeader(line, this.structRegEx)) {
+				lines[i] = this.decreaseHeaderSize(line, 2);
+			} else if (this.isValidHeader(line, this.interfaceRegEx)) {
+				lines[i] = this.decreaseHeaderSize(line, 2);
+			} else if (this.isValidHeader(line, this.ctorGroupHeaderRegex)) {
 				lines[i] = this.increaseHeaderSize(line, 1);
 			} else if(this.isValidHeader(line, this.ctorHeaderRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
@@ -54,11 +66,13 @@ export class MarkdownHeaderService {
 			} else if(this.isValidHeader(line, this.methodHeaderRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
 				lines[i] = this.stripClassFromHeader(lines[i]);
+				lines[i] = lines[i].replace("Method", "");
 			} else if(this.isValidHeader(line, this.propGroupHeaderRegex)) {
 				lines[i] = this.increaseHeaderSize(line, 1);
 			} else if(this.isValidHeader(line, this.propHeaderRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
 				lines[i] = this.stripClassFromHeader(lines[i]);
+				lines[i] = lines[i].replace("Property", "");
 			} else if(this.isValidHeader(line, this.remarksGroupRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
 			} else if(this.isValidHeader(line, this.fieldsGroupRegex)) {
@@ -127,13 +141,15 @@ export class MarkdownHeaderService {
 		decreaseBy = decreaseBy > 6 ? 6 : decreaseBy;
 
 		if (header.startsWith("#") && decreaseBy != 0) {
+			const totalHashes: number = this.getTotal(header, "#");
+			const totalToAdd: number = totalHashes + decreaseBy;
 			let newHeader = "";
 
-			for (let i = 0; i <= decreaseBy; i++) {
+			for (let i = 0; i < totalToAdd; i++) {
 				newHeader += "#";
 			}
 
-			newHeader += header.substring(decreaseBy);
+			newHeader += header.replaceAll("#", "");
 
 			return newHeader;
 		}
@@ -159,5 +175,23 @@ export class MarkdownHeaderService {
 		const headerHashes: string = mainSections[0].split(" ")[0];
 
 		return `${headerHashes} ${mainSections[1]}`;
+	}
+
+	/**
+	 * Returns the total number that the given character is found in the given value.
+	 * @param value The value containing the characters to count.
+	 * @param char The character to count.
+	 * @returns The total characters found in the value.
+	 */
+	private getTotal(value: string, char: string): number {
+		let total: number = 0;
+
+		for (let i = 0; i < value.length; i++) {
+			if (value[i] === char) {
+				total++;
+			}
+		}
+
+		return total;
 	}
 }

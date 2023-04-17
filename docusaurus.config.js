@@ -53,8 +53,8 @@ const config = {
           // This is used as part of the manual testing process for the CICD side of the project.
           // This will always be disabled during the build process before a release.
           // When disabled, the 'Next' version is enabled by default.
-          // <flag id=api enabled=true>
-          includeCurrentVersion: false,
+          // <flag id=next-version enabled=false>
+          // includeCurrentVersion: false,
 		      // </flag>
         },
 		

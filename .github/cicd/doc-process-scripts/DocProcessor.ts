@@ -80,7 +80,7 @@ export class DocProcessor {
 		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
 		console.log(ChalkColor.header("Cloning Velaptor. . ."));
 
-		await this.cloneService.cloneRepo("v1.0.0-preview.19");
+		await this.cloneService.cloneRepo(releaseTag);
 
 		console.log(ChalkColor.header("Cloning Complete."));
 

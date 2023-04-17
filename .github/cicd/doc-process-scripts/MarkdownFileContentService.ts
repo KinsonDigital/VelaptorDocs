@@ -50,7 +50,7 @@ export class MarkdownFileContentService {
 		fileContent = this.processHeaderAngleBrackets(fileContent);
 
 		// Process paragraph type content for angle brackets
-		fileContent = this.processParagraphs(fileContent);
+		fileContent = this.processParagraphAngleBrackets(fileContent);
 
 		const title: string = Utils.underscoresToAngles(Path.getFileNameWithoutExtension(filePath));
 		const frontMatter: string = this.markDownService.createFrontMatter(title);
@@ -98,7 +98,7 @@ export class MarkdownFileContentService {
 		return Utils.toString(fileLines);
 	}
 
-	private processParagraphs(fileContent: string): string {
+	private processParagraphAngleBrackets(fileContent: string): string {
 		const codeBlocks: [number, number][] = this.codeBlockService.getCodeBlockIndices(fileContent);
 
 		const fileLines: string[] = Utils.toLines(fileContent);

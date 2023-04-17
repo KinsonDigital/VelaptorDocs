@@ -65,7 +65,7 @@ jobs:
           "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
           "${{ github.workspace }}/docusaurus.config.js" `
           "next-version" `
-          "disable";
+          "enable";
 
     - name: "Update Website Version"
       id: apply_version_to_site

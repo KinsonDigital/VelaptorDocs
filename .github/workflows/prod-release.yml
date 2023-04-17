@@ -57,8 +57,15 @@ jobs:
       with:
         deno-version: v1.32.x
 
-    - name: "Disable Testing Env"
-      run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
+    - name: "Disable Next Version Feature"
+      run: |
+        deno run `
+          --allow-read `
+          --allow-write `
+          "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+          "${{ github.workspace }}/docusaurus.config.js" `
+          "next-version" `
+          "disable";
 
     - name: "Update Website Version"
       id: apply_version_to_site

@@ -1,17 +1,13 @@
 name: 🛡️ API Documentation Change
 description: Create an issue to add or update the API documentation.
 title: "🛡️API Doc Change - "
-labels: ['🛡️api doc changes']
+labels: ['🛡️api doc changes', 'high priority']
 body:
 - type: checkboxes
   attributes:
     label: Complete The Item Below
     options:
     - label: I have added the version to the very end of the issue title.
-      required: true
-    - label: I have added the https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%9B%A1%EF%B8%8Fapi%20doc%20changes label to the issue.
-      required: true
-    - label: I have added one of the priority labels from the priority table below.
       required: true
 
 - type: checkboxes

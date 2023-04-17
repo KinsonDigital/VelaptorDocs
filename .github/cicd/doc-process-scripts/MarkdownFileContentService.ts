@@ -52,6 +52,9 @@ export class MarkdownFileContentService {
 		// Process paragraph type content for angle brackets
 		fileContent = this.processParagraphAngleBrackets(fileContent);
 
+		// Process all headers to change them to the appropriate size
+		fileContent = this.markdownHeaderService.processHeaders(fileContent);
+
 		const title: string = Utils.underscoresToAngles(Path.getFileNameWithoutExtension(filePath));
 		const frontMatter: string = this.markDownService.createFrontMatter(title);
 

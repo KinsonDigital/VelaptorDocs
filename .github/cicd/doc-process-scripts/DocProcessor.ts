@@ -67,8 +67,8 @@ export class DocProcessor {
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 		if (Directory.exists(repoSrcDirPath)) {
-			console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
-			console.log(ChalkColor.header("Cleaning up previous build. . ."));
+			console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
+			console.log(ChalkColor.header("Cleaning up previous clone and build. . ."));
 
 			Deno.removeSync(repoSrcDirPath, { recursive: true });
 
@@ -77,7 +77,7 @@ export class DocProcessor {
 
 		// Clone the Velaptor repository into the RepoSrc directory
 		// so documentation can be generated from it.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
 		console.log(ChalkColor.header("Cloning Velaptor. . ."));
 
 		await this.cloneService.cloneRepo("v1.0.0-preview.19");
@@ -85,7 +85,7 @@ export class DocProcessor {
 		console.log(ChalkColor.header("Cloning Complete."));
 
 		// Build the project so the assembly can be used for generating documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
 		console.log(ChalkColor.header("Building Velaptor. . ."));
 
 		await this.buildVelaptor();
@@ -93,7 +93,7 @@ export class DocProcessor {
 		console.log(ChalkColor.header("Building Complete."));
 
 		// Generate the documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
 		console.log(ChalkColor.header("Generating Documentation. . ."));
 
 		await this.defaultDocTool.generateDocumentation(
@@ -105,7 +105,7 @@ export class DocProcessor {
 		console.log(ChalkColor.header("Documentation Generation Complete."));
 
 		// Perform post-processing on the documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
 		console.log(ChalkColor.header("Performing Documentation Post-Processing. . ."));
 
 		this.runPostProcessing(apiDocDirPath);
@@ -113,7 +113,7 @@ export class DocProcessor {
 		console.log(ChalkColor.header("Documentation Post-Processing Complete."));
 
 		// Create website version snapshot
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------"));
+		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
 		console.log(ChalkColor.header("Creating website version snapshot. . ."));
 
 		await this.createAPIWebsiteVersion(releaseTag);

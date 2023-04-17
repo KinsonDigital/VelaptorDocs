@@ -23,6 +23,34 @@
             }
         },
         {
+            "label": "Enable Testing Environment",
+            "type": "shell",
+            "windows": {
+                "command": "deno",
+                "args": [
+                    "run",
+                    "--allow-read",
+                    "--allow-write",
+                    "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+                    "enable"
+                ]
+            }
+        },
+		{
+            "label": "Toggle Testing Environment",
+            "type": "shell",
+            "windows": {
+                "command": "deno",
+                "args": [
+                    "run",
+                    "--allow-read",
+                    "--allow-write",
+                    "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+                    "toggle"
+                ]
+            }
+        },
+        {
             "label": "build",
             "dependsOn": [ "disable-testing-env" ],
             "type": "shell",

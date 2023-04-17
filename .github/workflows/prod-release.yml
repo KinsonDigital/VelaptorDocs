@@ -57,6 +57,9 @@ jobs:
       with:
         deno-version: v1.32.x
 
+    - name: "Disable Testing Env"
+      run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
+
     - name: "Update Website Version"
       id: apply_version_to_site
       run: |

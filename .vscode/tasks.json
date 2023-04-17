@@ -55,6 +55,38 @@
                 ]
             }
         },
+		{
+            "label": "Disable Next Version",
+            "type": "shell",
+            "windows": {
+                "command": "deno",
+                "args": [
+                    "run",
+                    "--allow-read",
+                    "--allow-write",
+                    "${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+					"${workspaceFolder}/docusaurus.config.js",
+					"next-version",
+                    "enable"
+                ]
+            }
+        },
+		{
+            "label": "Enable Next Version",
+            "type": "shell",
+            "windows": {
+                "command": "deno",
+                "args": [
+                    "run",
+                    "--allow-read",
+                    "--allow-write",
+                    "${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+					"${workspaceFolder}/docusaurus.config.js",
+					"next-version",
+                    "disable"
+                ]
+            }
+        },
         {
             "label": "build",
             "dependsOn": [ "disable-testing-env" ],

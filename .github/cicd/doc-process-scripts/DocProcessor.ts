@@ -183,27 +183,9 @@ export class DocProcessor {
 	 * @param version The version to create.
 	 */
 	private async createAPIWebsiteVersion(version: string): Promise<void> {
-		this.disableTestingEnvironment();
-
 		version = version.startsWith("v") ? version.substring(1) : version;
 
 		const commands = ["docusaurus", "docs:version", version];
 		await this.yarn.run(commands);
-	}
-
-	/**
-	 * Disables the testing environment, if it is enabled.
-	 */
-	private disableTestingEnvironment(): void {
-		const baseDirPath = Deno.cwd();
-		const docusaurusConfigFilePath = `${baseDirPath}/docusaurus.config.js`;
-		const sidebarsConfigFilePath = `${baseDirPath}/sidebars.js`;
-
-		this.flagService.enableFlag(docusaurusConfigFilePath, "api");
-		this.flagService.enableFlag(sidebarsConfigFilePath, "api");
-		this.flagService.disableFlag(docusaurusConfigFilePath, "testing");
-		this.flagService.disableFlag(sidebarsConfigFilePath, "testing");
-
-		this.versionService.disableTestVersion();
 	}
 }

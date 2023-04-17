@@ -1,21 +1,23 @@
 import { CodeBlockService } from "./CodeBlockService.ts";
 import { File } from "./File.ts";
 import { HTMLService } from "./HTMLService.ts";
+import { MarkdownHeaderService } from "./MarkdownHeaderService.ts";
 import { MarkdownService } from "./MarkdownService.ts";
 import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 
 export class MarkdownFileContentService {
 	private readonly markDownService: MarkdownService;
+	private readonly markdownHeaderService: MarkdownHeaderService;
 	private readonly htmlService: HTMLService;
 	private readonly codeBlockService: CodeBlockService;
 	private readonly markDownLinkRegEx: RegExp;
 	private readonly linkTagRegEx: RegExp;
-	private readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
 	private readonly htmlArrow = "&#129106;";
 
 	constructor() {
 		this.markDownService = new MarkdownService();
+		this.markdownHeaderService = new MarkdownHeaderService();
 		this.htmlService = new HTMLService();
 		this.codeBlockService = new CodeBlockService();
 		this.markDownLinkRegEx = /\[(.*?)\]\((.*?)\)/g;
@@ -45,7 +47,7 @@ export class MarkdownFileContentService {
 
 		// Process all markdown headers with no markdown links like these 👉🏼 ### MyHeader
 		// This will replace all headers that contain angle brackets with html safe alternatives
-		fileContent = this.processHeaders(fileContent);
+		fileContent = this.processHeaderAngleBrackets(fileContent);
 
 		// Process paragraph type content for angle brackets
 		fileContent = this.processParagraphs(fileContent);
@@ -78,7 +80,7 @@ export class MarkdownFileContentService {
 		return Utils.toString(fileLines);
 	}
 
-	private processHeaders(fileContent: string): string {
+	private processHeaderAngleBrackets(fileContent: string): string {
 		if (Utils.isNullOrEmpty(fileContent)) {
 			return "";
 		}

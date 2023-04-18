@@ -91,7 +91,6 @@ export class VersionsFileService {
 		}
 
 		const testingVersion = "1.0.0-testing";
-		let fileContents: string = Deno.readTextFileSync(this.filePath);
 		let versions: string[] = this.getVersions();
 
 		// If the version list contains the testing version,

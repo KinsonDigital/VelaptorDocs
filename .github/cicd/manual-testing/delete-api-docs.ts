@@ -29,5 +29,3 @@ const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionServic
 delAPIVersionService.deleteDocs(chosenVersion);
 
 console.log(ChalkColor.header(`API docs for version '${chosenVersion}' fully removed.`));
-
-debugger;

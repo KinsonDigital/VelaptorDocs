@@ -49,7 +49,7 @@ export class MarkdownHeaderService {
 		const lines: string[] = fileContent.split(this.newLine);
 
 		for (let i = 0; i < lines.length; i++) {
-			let line: string = lines[i].trim();
+			const line: string = lines[i].trim();
 
 			if (this.isValidHeader(line, this.classHeaderRegEx)) {
 				lines[i] = this.decreaseHeaderSize(line, 2);
@@ -110,13 +110,13 @@ export class MarkdownHeaderService {
 		increaseBy = increaseBy > 6 ? 6 : increaseBy;
 
 		if (header.startsWith("#") && increaseBy != 0) {
-			let headerHashes: string[] = header.split("").filter(c => c === "#");
+			const headerHashes: string[] = header.split("").filter(c => c === "#");
 
 			if (headerHashes.length <= increaseBy) {
 				return header.replaceAll("#", "");
 			}
 
-			let headersToUse: string[] = [];
+			const headersToUse: string[] = [];
 
 			for (let i = 0; i <= increaseBy; i++) {
 				headersToUse.push("#");
@@ -184,7 +184,7 @@ export class MarkdownHeaderService {
 	 * @returns The total characters found in the value.
 	 */
 	private getTotal(value: string, char: string): number {
-		let total: number = 0;
+		let total = 0;
 
 		for (let i = 0; i < value.length; i++) {
 			if (value[i] === char) {

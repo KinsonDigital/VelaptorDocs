@@ -1,5 +1,3 @@
-import { FlagService } from "../manual-testing/FlagService.ts";
-import { VersionsFileService } from "../manual-testing/VersionsFileService.ts";
 import { ChalkColor } from "./ChalkColor.ts";
 import { CloneRepoService } from "./CloneRepoService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
@@ -21,8 +19,6 @@ export class DocProcessor {
 	private readonly runnerService: RunnerService;
 	private readonly validateReleaseService: ValidateReleaseService;
 	private readonly defaultDocTool: DefaultDocTool;
-	private readonly flagService: FlagService;
-	private readonly versionService: VersionsFileService;
 	private readonly yarn: Yarn;
 
 	/**
@@ -33,8 +29,6 @@ export class DocProcessor {
 		this.runnerService = new RunnerService();
 		this.validateReleaseService = new ValidateReleaseService();
 		this.defaultDocTool = new DefaultDocTool();
-		this.flagService = new FlagService();
-		this.versionService = new VersionsFileService();
 		this.yarn = new Yarn();
 	}
 

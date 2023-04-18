@@ -95,6 +95,20 @@
                 "command": "yarn",
                 "args": ["build"]
             }
-        }
+        },
+		{ // DELETE API DOCS
+			"label": "Delete API Docs",
+			"dependsOn": [ "disable-testing-env" ],
+			"type": "shell",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"--allow-read",
+					"--allow-write",
+					"${workspaceFolder}/.github/cicd/manual-testing/delete-api-docs.ts",
+				]
+			}
+		}
     ]
 }

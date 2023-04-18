@@ -2,6 +2,7 @@ import { Directory } from "../doc-process-scripts/Directory.ts";
 import { Path } from "../doc-process-scripts/Path.ts";
 import { Select } from "https://deno.land/x/cliffy@v0.25.7/prompt/select.ts";
 import { ChalkColor } from "../helpers/ChalkColor.ts";
+import { DeleteAPIVersionService } from "../doc-process-scripts/DeleteAPIVersionService.ts";
 
 /**
  * DESCRIPTION: This script is used locally by VSCode to make it easy to delete
@@ -22,16 +23,11 @@ const chosenVersion: string = await Select.prompt({
 	info: true,
 });
 
-console.log(ChalkColor.normal(`Deleting '${chosenVersion}' API docs. . .`));
+console.log(ChalkColor.header(`Deleting '${chosenVersion}' API docs. . .`));
 
-const chosenPath: string | undefined = versionDirPaths.find(p => p.indexOf(chosenVersion.replace("v", "")) !== -1);
+const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionService();
+delAPIVersionService.deleteDocs(chosenVersion);
 
-if (chosenPath === undefined) {
-	throw new Error(`Could not find the directory path for the '${chosenVersion}' API docs.`);
-}
-
-Directory.delete(chosenPath);
-
-console.log(ChalkColor.normal(`Deleted '${chosenVersion}' API docs.`));
+console.log(ChalkColor.header(`API docs for version '${chosenVersion}' fully removed.`));
 
 debugger;

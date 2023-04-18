@@ -27,10 +27,7 @@ export class VersionsFileService {
 		if (versions.indexOf(testingVersion) === -1) {
 			versions.push(testingVersion);
 
-			const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
-
-			Deno.writeTextFileSync(this.filePath, fileDataToWrite);
-
+			this.saveVersions(versions);
 			console.log(`\tTesting version added to '${this.filePath}'`);
 		}
 	}
@@ -54,9 +51,7 @@ export class VersionsFileService {
 				return version != testingVersion;
 			});
 
-			const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
-
-			Deno.writeTextFileSync(this.filePath, fileDataToWrite);
+			this.saveVersions(versions);
 			console.log(`\tTesting version removed from '${this.filePath}'`);
 		}
 	}
@@ -81,16 +76,14 @@ export class VersionsFileService {
 				return version != testingVersion;
 			});
 
-			fileContents = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
-
+			this.saveVersions(versions);
 			console.log(`\tTesting version removed from '${this.filePath}'`);
 		} else {
 			versions.push(testingVersion);
 
-			fileContents = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
+			this.saveVersions(versions);
+			console.log(`\tTesting version added to '${this.filePath}'`);
 		}
-
-		Deno.writeTextFileSync(this.filePath, fileContents);
 	}
 
 	/**
@@ -102,5 +95,15 @@ export class VersionsFileService {
 		const versions: string[] = JSON.parse(fileContents);
 
 		return versions;
+	}
+
+	/**
+	 * Saves the given versions to the versions file.
+	 * @param {string[]} versions The versions to save to the versions file.
+	 */
+	private saveVersions(versions: string[]): void {
+		const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
+
+		Deno.writeTextFileSync(this.filePath, fileDataToWrite);
 	}
 }

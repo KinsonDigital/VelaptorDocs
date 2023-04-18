@@ -102,7 +102,7 @@ export class Directory {
 		}
 
 		if (this.exists(dirPath)) {
-			Deno.removeSync(dirPath);
+			Deno.removeSync(dirPath, { recursive: true });
 		}
 	}
 }

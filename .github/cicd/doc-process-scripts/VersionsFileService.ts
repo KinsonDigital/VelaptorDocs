@@ -1,6 +1,9 @@
 import { extname } from "https://deno.land/std@0.182.0/path/mod.ts";
 import { Guard } from "./Gaurd.ts";
 
+/**
+ * Manages the versions file.
+ */
 export class VersionsFileService {
 	private readonly newLine: string;
 	private readonly filePath: string;
@@ -8,6 +11,28 @@ export class VersionsFileService {
 	constructor() {
 		this.newLine = Deno.build.os === "windows" ? "\r\n" : "\n";
 		this.filePath = `${Deno.cwd()}/versions.json`;
+	}
+
+	/**
+	 * Deletes the given version from the versions file.
+	 * @param {string} version The version to delete from the versions file.
+	 */
+	public deleteVersion(version: string): void {
+		Guard.isNotUndefinedOrEmpty(version, "version");
+
+		// If the version begins with a 'v', remove it
+		version = version.startsWith("v") ? version.replace("v", "") : version;
+
+		const versions: string[] = this.getVersions()
+			.filter((v: string) => v !== version);
+
+		// If there is nothing to delete
+		if (versions.length === 0) {
+			return;
+		}
+
+		this.saveVersions(versions);
+		console.log(`\tDeleted version '${version}' from '${this.filePath}'`);
 	}
 
 	public enableTestVersion(): void {

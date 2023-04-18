@@ -5,18 +5,18 @@ title: Velaptor.Graphics.Renderers.ITextureRenderer
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics.Renderers](Velaptor.Graphics.Renderers.md 'Velaptor.Graphics.Renderers')
 
-## ITextureRenderer Interface
+#### ITextureRenderer Interface
 
 Renders textures to the screen.
 
 ```csharp
 public interface ITextureRenderer
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,int)'></a>
 
-## ITextureRenderer.Render(ITexture, int, int, int) Method
+### Render(ITexture, int, int, int) 
 
 Renders the given texture at the given [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, int).y') coordinates.
 
@@ -54,7 +54,7 @@ The layer to render the texture.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, int).y') position are based on the center of the texture.  
   
@@ -78,7 +78,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,int)'></a>
 
-## ITextureRenderer.Render(ITexture, int, int, Color, int) Method
+### Render(ITexture, int, int, Color, int) 
 
 Renders the given texture at the given [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, int).y') coordinates.
 
@@ -122,7 +122,7 @@ The layer to render the texture.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, int).y') position is based on the center of the texture.  
   
@@ -146,7 +146,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int)'></a>
 
-## ITextureRenderer.Render(ITexture, int, int, Color, RenderEffects, int) Method
+### Render(ITexture, int, int, Color, RenderEffects, int) 
 
 Renders the given texture at the given [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, Velaptor.Graphics.RenderEffects, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, Velaptor.Graphics.RenderEffects, int).y') coordinates.
 
@@ -196,7 +196,7 @@ The layer to render the texture.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, Velaptor.Graphics.RenderEffects, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, System.Drawing.Color, Velaptor.Graphics.RenderEffects, int).y') position is based on the center of the texture.  
   
@@ -220,7 +220,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,Velaptor.Graphics.RenderEffects,int)'></a>
 
-## ITextureRenderer.Render(ITexture, int, int, RenderEffects, int) Method
+### Render(ITexture, int, int, RenderEffects, int) 
 
 Renders the given texture at the given [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,Velaptor.Graphics.RenderEffects,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, Velaptor.Graphics.RenderEffects, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,Velaptor.Graphics.RenderEffects,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, Velaptor.Graphics.RenderEffects, int).y') coordinates.
 
@@ -264,7 +264,7 @@ The layer to render the texture.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,Velaptor.Graphics.RenderEffects,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, Velaptor.Graphics.RenderEffects, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,Velaptor.Graphics.RenderEffects,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, Velaptor.Graphics.RenderEffects, int).y') position is based on the center of the texture.  
   
@@ -288,7 +288,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,System.Drawing.Rectangle,System.Drawing.Rectangle,float,float,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int)'></a>
 
-## ITextureRenderer.Render(ITexture, Rectangle, Rectangle, float, float, Color, RenderEffects, int) Method
+### Render(ITexture, Rectangle, Rectangle, float, float, Color, RenderEffects, int) 
 
 Renders the given [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture') using the given parameters.
 
@@ -350,7 +350,7 @@ The layer to render the texture.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The position in the [destRect](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,System.Drawing.Rectangle,System.Drawing.Rectangle,float,float,System.Drawing.Color,Velaptor.Graphics.RenderEffects,int).destRect 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, System.Drawing.Rectangle, System.Drawing.Rectangle, float, float, System.Drawing.Color, Velaptor.Graphics.RenderEffects, int).destRect') is based on the center of the texture.  
   

@@ -5,18 +5,18 @@ title: Velaptor.Content.IContentPathResolver
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## IContentPathResolver Interface
+#### IContentPathResolver Interface
 
 Resolves file paths.
 
 ```csharp
 public interface IContentPathResolver
 ```
-### Properties
+## Properties
 
 <a name='Velaptor.Content.IContentPathResolver.ContentDirectoryName'></a>
 
-## IContentPathResolver.ContentDirectoryName Property
+### ContentDirectoryName 
 
 Gets the name of the content directory.
 
@@ -27,7 +27,7 @@ string ContentDirectoryName { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-### Remarks
+#### Remarks
   
 This directory is not a path. It is just a name and is always located  
 as a child directory of the [RootDirectoryPath](Velaptor.Content.IContentPathResolver.md#Velaptor.Content.IContentPathResolver.RootDirectoryPath 'Velaptor.Content.IContentPathResolver.RootDirectoryPath').  
@@ -37,7 +37,7 @@ deepest child directory name will be used.
 
 <a name='Velaptor.Content.IContentPathResolver.RootDirectoryPath'></a>
 
-## IContentPathResolver.RootDirectoryPath Property
+### RootDirectoryPath 
 
 Gets the root directory of the content.
 
@@ -47,11 +47,11 @@ string RootDirectoryPath { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.IContentPathResolver.ResolveDirPath()'></a>
 
-## IContentPathResolver.ResolveDirPath() Method
+### ResolveDirPath() 
 
 Resolves the full directory path to some content.
 
@@ -65,7 +65,7 @@ The directory only path to some content.
 
 <a name='Velaptor.Content.IContentPathResolver.ResolveFilePath(string)'></a>
 
-## IContentPathResolver.ResolveFilePath(string) Method
+### ResolveFilePath(string) 
 
 Resolves the full file path to a content item that matches the given [contentName](Velaptor.Content.IContentPathResolver.md#Velaptor.Content.IContentPathResolver.ResolveFilePath(string).contentName 'Velaptor.Content.IContentPathResolver.ResolveFilePath(string).contentName').
 

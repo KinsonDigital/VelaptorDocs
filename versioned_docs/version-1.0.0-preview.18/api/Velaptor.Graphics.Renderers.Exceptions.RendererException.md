@@ -5,7 +5,7 @@ title: Velaptor.Graphics.Renderers.Exceptions.RendererException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics.Renderers.Exceptions](Velaptor.Graphics.Renderers.Exceptions.md 'Velaptor.Graphics.Renderers.Exceptions')
 
-## RendererException Class
+#### RendererException Class
 
 Thrown when there is a renderer type of issue.
 
@@ -14,11 +14,11 @@ public sealed class RendererException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → RendererException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException()'></a>
 
-## RendererException() Constructor
+### RendererException() Constructor
 
 Initializes a new instance of the [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') class.
 
@@ -28,7 +28,7 @@ public RendererException();
 
 <a name='Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException(string,System.Exception)'></a>
 
-## RendererException(string, Exception) Constructor
+### RendererException(string, Exception) Constructor
 
 Initializes a new instance of the [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException(string)'></a>
 
-## RendererException(string) Constructor
+### RendererException(string) Constructor
 
 Initializes a new instance of the [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') class.
 

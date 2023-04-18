@@ -5,7 +5,7 @@ title: Velaptor.Input.Exceptions.NoMouseException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Input.Exceptions](Velaptor.Input.Exceptions.md 'Velaptor.Input.Exceptions')
 
-## NoMouseException Class
+#### NoMouseException Class
 
 Occurs when a mouse has not been detected in the system.
 
@@ -14,11 +14,11 @@ public sealed class NoMouseException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → NoMouseException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Input.Exceptions.NoMouseException.NoMouseException()'></a>
 
-## NoMouseException() Constructor
+### NoMouseException() Constructor
 
 Initializes a new instance of the [NoMouseException](Velaptor.Input.Exceptions.NoMouseException.md 'Velaptor.Input.Exceptions.NoMouseException') class.
 
@@ -28,7 +28,7 @@ public NoMouseException();
 
 <a name='Velaptor.Input.Exceptions.NoMouseException.NoMouseException(string,System.Exception)'></a>
 
-## NoMouseException(string, Exception) Constructor
+### NoMouseException(string, Exception) Constructor
 
 Initializes a new instance of the [NoMouseException](Velaptor.Input.Exceptions.NoMouseException.md 'Velaptor.Input.Exceptions.NoMouseException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Input.Exceptions.NoMouseException.NoMouseException(string)'></a>
 
-## NoMouseException(string) Constructor
+### NoMouseException(string) Constructor
 
 Initializes a new instance of the [NoMouseException](Velaptor.Input.Exceptions.NoMouseException.md 'Velaptor.Input.Exceptions.NoMouseException') class.
 

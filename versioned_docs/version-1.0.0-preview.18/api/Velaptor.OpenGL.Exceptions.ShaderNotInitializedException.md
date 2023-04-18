@@ -5,7 +5,7 @@ title: Velaptor.OpenGL.Exceptions.ShaderNotInitializedException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.OpenGL.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor.OpenGL.Exceptions')
 
-## ShaderNotInitializedException Class
+#### ShaderNotInitializedException Class
 
 Thrown when a shader has not been initialized.
 
@@ -14,11 +14,11 @@ public sealed class ShaderNotInitializedException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → ShaderNotInitializedException
-### Constructors
+## Constructors
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException()'></a>
 
-## ShaderNotInitializedException() Constructor
+### ShaderNotInitializedException() Constructor
 
 Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
 
@@ -28,7 +28,7 @@ public ShaderNotInitializedException();
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,string)'></a>
 
-## ShaderNotInitializedException(string, string) Constructor
+### ShaderNotInitializedException(string, string) Constructor
 
 Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
 
@@ -51,7 +51,7 @@ The name of the shader.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,System.Exception)'></a>
 
-## ShaderNotInitializedException(string, Exception) Constructor
+### ShaderNotInitializedException(string, Exception) Constructor
 
 Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
 

@@ -5,18 +5,18 @@ title: Velaptor.Graphics.Renderers.IFontRenderer
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics.Renderers](Velaptor.Graphics.Renderers.md 'Velaptor.Graphics.Renderers')
 
-## IFontRenderer Interface
+#### IFontRenderer Interface
 
 Renders text to the screen using a particular font.
 
 ```csharp
 public interface IFontRenderer
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int)'></a>
 
-## IFontRenderer.Render(IFont, string, int, int, float, float, int) Method
+### Render(IFont, string, int, int, float, float, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, int).font')  
 at the position determined by the given [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, int).y') coordinates.
@@ -73,7 +73,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, int).y') position is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -101,7 +101,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int)'></a>
 
-## IFontRenderer.Render(IFont, string, int, int, float, float, Color, int) Method
+### Render(IFont, string, int, int, float, float, Color, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, System.Drawing.Color, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, System.Drawing.Color, int).font')  
 at the position determined by the given [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, System.Drawing.Color, int).y') coordinates,  
@@ -165,7 +165,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,float,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, float, System.Drawing.Color, int).y') position is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -193,7 +193,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int)'></a>
 
-## IFontRenderer.Render(IFont, string, int, int, float, Color, int) Method
+### Render(IFont, string, int, int, float, Color, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, System.Drawing.Color, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, System.Drawing.Color, int).font')  
 at the position determined by the given [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, System.Drawing.Color, int).y') coordinates,  
@@ -246,7 +246,7 @@ The color to apply to the rendering.
 
 The layer to render the text.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,float,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, float, System.Drawing.Color, int).y') position is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -271,7 +271,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int)'></a>
 
-## IFontRenderer.Render(IFont, string, int, int, int) Method
+### Render(IFont, string, int, int, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, int).font')  
 at the position determined by the given [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, int).y') coordinates.
@@ -316,7 +316,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, int).y') position is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -341,7 +341,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int)'></a>
 
-## IFontRenderer.Render(IFont, string, int, int, Color, int) Method
+### Render(IFont, string, int, int, Color, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, System.Drawing.Color, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, System.Drawing.Color, int).font')  
 at the position determined by the given [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, System.Drawing.Color, int).y') coordinates  
@@ -393,7 +393,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [x](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int).x 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, System.Drawing.Color, int).x') and [y](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,int,int,System.Drawing.Color,int).y 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, int, int, System.Drawing.Color, int).y') position is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -421,7 +421,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int)'></a>
 
-## IFontRenderer.Render(IFont, string, Vector2, float, float, int) Method
+### Render(IFont, string, Vector2, float, float, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, float, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, float, int).font')  
 at the given [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, float, int).position'), with the given [renderSize](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int).renderSize 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, float, int).renderSize'), and [angle](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int).angle 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, float, int).angle').
@@ -472,7 +472,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,float,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, float, int).position') is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -500,7 +500,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int)'></a>
 
-## IFontRenderer.Render(IFont, string, Vector2, float, Color, int) Method
+### Render(IFont, string, Vector2, float, Color, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, System.Drawing.Color, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, System.Drawing.Color, int).font')  
 at the given [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, System.Drawing.Color, int).position'), [angle](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int).angle 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, System.Drawing.Color, int).angle'), and [color](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int).color 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, System.Drawing.Color, int).color').
@@ -551,7 +551,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,float,System.Drawing.Color,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, float, System.Drawing.Color, int).position') is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -576,7 +576,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,int)'></a>
 
-## IFontRenderer.Render(IFont, string, Vector2, int) Method
+### Render(IFont, string, Vector2, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, int).font')  
 and [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, int).position').
@@ -615,7 +615,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, int).position') is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  
@@ -640,7 +640,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 <a name='Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,System.Drawing.Color,int)'></a>
 
-## IFontRenderer.Render(IFont, string, Vector2, Color, int) Method
+### Render(IFont, string, Vector2, Color, int) 
 
 Renders the given [text](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,System.Drawing.Color,int).text 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, System.Drawing.Color, int).text') using the given [font](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,System.Drawing.Color,int).font 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, System.Drawing.Color, int).font')  
 at the given [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,System.Drawing.Color,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, System.Drawing.Color, int).position') with the given [color](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,System.Drawing.Color,int).color 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, System.Drawing.Color, int).color').
@@ -685,7 +685,7 @@ The layer to render the text.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 The [position](Velaptor.Graphics.Renderers.IFontRenderer.md#Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont,string,System.Numerics.Vector2,System.Drawing.Color,int).position 'Velaptor.Graphics.Renderers.IFontRenderer.Render(Velaptor.Content.Fonts.IFont, string, System.Numerics.Vector2, System.Drawing.Color, int).position') is based on the center of the text.  
 The center of the text is based on the furthest most left, right, top, and bottom edges of the text.  

@@ -17,111 +17,60 @@ System.IEquatable<Velaptor.Graphics.ImageData>
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
 ## Constructors
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string)'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint)'></a>
 
-### ImageData(Color[,], uint, uint, string) Constructor
+### ImageData(Color[,], uint, uint) Constructor
 
 Initializes a new instance of the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') struct.
 
 ```csharp
-public ImageData(System.Drawing.Color[,]? pixels, uint width, uint height, string filePath="");
+public ImageData(System.Drawing.Color[,]? pixels, uint width, uint height);
 ```
 #### Parameters
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).pixels'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint).pixels'></a>
 
 `pixels` [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 The pixel data of the image.
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).width'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint).width'></a>
 
 `width` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
 The width of the image.
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).height'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint).height'></a>
 
 `height` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
 The height of the image.
-
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).filePath'></a>
-
-`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The file path of where the image exists.
-
-#### Remarks
-The [filePath](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).filePath 'Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,], uint, uint, string).filePath') is used for reference only.
-## Properties
-
-<a name='Velaptor.Graphics.ImageData.FilePath'></a>
-
-### FilePath 
-
-Gets the file path of the image.
-
-```csharp
-public string FilePath { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-#### Remarks
-This is only for reference.
+#### Fields
 
 <a name='Velaptor.Graphics.ImageData.Height'></a>
 
-### Height 
+## ImageData.Height Field
 
-Gets the height of the image.
+Gets or sets the height of the image.
 
 ```csharp
-public uint Height { get; }
+public readonly uint Height;
 ```
 
-#### Property Value
+#### Field Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-
-<a name='Velaptor.Graphics.ImageData.IsFlippedHorizontally'></a>
-
-### IsFlippedHorizontally 
-
-Gets a value indicating whether or not the image is flipped horizontally.
-
-```csharp
-public bool IsFlippedHorizontally { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='Velaptor.Graphics.ImageData.IsFlippedVertically'></a>
-
-### IsFlippedVertically 
-
-Gets a value indicating whether or not the image is flipped vertically.
-
-```csharp
-public bool IsFlippedVertically { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='Velaptor.Graphics.ImageData.Pixels'></a>
 
-### Pixels 
+## ImageData.Pixels Field
 
-Gets the pixel colors of the image.
+Gets or sets the pixel colors of the image.
 
 ```csharp
-public System.Drawing.Color[,] Pixels { get; }
+public readonly Color[,] Pixels;
 ```
 
-#### Property Value
+#### Field Value
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 #### Remarks
@@ -132,15 +81,15 @@ The 32-bit color component byte layout is ARGB.
 
 <a name='Velaptor.Graphics.ImageData.Width'></a>
 
-### Width 
+## ImageData.Width Field
 
-Gets the width of the image.
+Gets or sets the width of the image.
 
 ```csharp
-public uint Width { get; }
+public readonly uint Width;
 ```
 
-#### Property Value
+#### Field Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 ## Methods
 
@@ -177,11 +126,30 @@ This current image with the given [image](Velaptor.Graphics.ImageData.md#Velapto
 If a pixel of the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') is out side of the bounds of this  
 image, it will be skipped.
 
+<a name='Velaptor.Graphics.ImageData.Equals(object)'></a>
+
+### Equals(object) 
+
+Indicates whether this instance and a specified object are equal.
+
+```csharp
+public override bool Equals(object? obj);
+```
+#### Parameters
+
+<a name='Velaptor.Graphics.ImageData.Equals(object).obj'></a>
+
+`obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
+
+The object to compare with the current instance.
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') if [obj](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.Equals(object).obj 'Velaptor.Graphics.ImageData.Equals(object).obj') and this instance are the same type and represent the same value; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool').
+
 <a name='Velaptor.Graphics.ImageData.Equals(Velaptor.Graphics.ImageData)'></a>
 
 ### Equals(ImageData) 
-
-Returns a value indicating whether or not this instance is equal to the given [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData').
 
 ```csharp
 public bool Equals(Velaptor.Graphics.ImageData other);
@@ -192,31 +160,8 @@ public bool Equals(Velaptor.Graphics.ImageData other);
 
 `other` [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')
 
-The other data to compare.
-
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if equal.
-
-<a name='Velaptor.Graphics.ImageData.FlipHorizontally()'></a>
-
-### FlipHorizontally() 
-
-Flips the image horizontally.
-
-```csharp
-public void FlipHorizontally();
-```
-
-<a name='Velaptor.Graphics.ImageData.FlipVertically()'></a>
-
-### FlipVertically() 
-
-Flips the image vertically.
-
-```csharp
-public void FlipVertically();
-```
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='Velaptor.Graphics.ImageData.GetHashCode()'></a>
 
@@ -245,17 +190,58 @@ public bool IsEmpty();
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
 `true` if empty.
+### Operators
 
-<a name='Velaptor.Graphics.ImageData.ToString()'></a>
+<a name='Velaptor.Graphics.ImageData.op<Equality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData)'></a>
 
-### ToString() 
+## ImageData.operator ==(ImageData, ImageData) Operator
 
-Returns the fully qualified type name of this instance.
+Returns a value indicating whether or not the [left](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.op_Equality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).left 'Velaptor.Graphics.ImageData.op_Equality(Velaptor.Graphics.ImageData, Velaptor.Graphics.ImageData).left') operand is equal to the [right](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.op_Equality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).right 'Velaptor.Graphics.ImageData.op_Equality(Velaptor.Graphics.ImageData, Velaptor.Graphics.ImageData).right') operand.
 
 ```csharp
-public override string ToString();
+public static bool operator ==(Velaptor.Graphics.ImageData left, Velaptor.Graphics.ImageData right);
 ```
+#### Parameters
+
+<a name='Velaptor.Graphics.ImageData.op<Equality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).left'></a>
+
+`left` [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')
+
+The left operator.
+
+<a name='Velaptor.Graphics.ImageData.op<Equality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).right'></a>
+
+`right` [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')
+
+The right operator.
 
 #### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The fully qualified type name.
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if both are equal.
+
+<a name='Velaptor.Graphics.ImageData.op<Inequality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData)'></a>
+
+## ImageData.operator !=(ImageData, ImageData) Operator
+
+Returns a value indicating whether or not the [left](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.op_Inequality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).left 'Velaptor.Graphics.ImageData.op_Inequality(Velaptor.Graphics.ImageData, Velaptor.Graphics.ImageData).left') operand is not equal to the [right](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.op_Inequality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).right 'Velaptor.Graphics.ImageData.op_Inequality(Velaptor.Graphics.ImageData, Velaptor.Graphics.ImageData).right') operand.
+
+```csharp
+public static bool operator !=(Velaptor.Graphics.ImageData left, Velaptor.Graphics.ImageData right);
+```
+#### Parameters
+
+<a name='Velaptor.Graphics.ImageData.op<Inequality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).left'></a>
+
+`left` [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')
+
+The left operator.
+
+<a name='Velaptor.Graphics.ImageData.op<Inequality(Velaptor.Graphics.ImageData,Velaptor.Graphics.ImageData).right'></a>
+
+`right` [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')
+
+The right operator.
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if both are not equal.

@@ -5,7 +5,7 @@ title: Velaptor.Content.SoundLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## SoundLoader Class
+#### SoundLoader Class
 
 Loads sound content.
 
@@ -17,22 +17,22 @@ Velaptor.Content.ILoader<Velaptor.Content.ISound>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → SoundLoader
 
 Implements [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[ISound](Velaptor.Content.ISound.md 'Velaptor.Content.ISound')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.SoundLoader.SoundLoader()'></a>
 
-## SoundLoader() Constructor
+### SoundLoader() Constructor
 
 Initializes a new instance of the [SoundLoader](Velaptor.Content.SoundLoader.md 'Velaptor.Content.SoundLoader') class.
 
 ```csharp
 public SoundLoader();
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Content.SoundLoader.Load(string)'></a>
 
-## SoundLoader.Load(string) Method
+### Load(string) 
 
 Loads a sound with the given name.
 
@@ -55,7 +55,7 @@ The loaded sound.
 
 <a name='Velaptor.Content.SoundLoader.Unload(string)'></a>
 
-## SoundLoader.Unload(string) Method
+### Unload(string) 
 
 Unloads the data with the given contentPathOrName.
 

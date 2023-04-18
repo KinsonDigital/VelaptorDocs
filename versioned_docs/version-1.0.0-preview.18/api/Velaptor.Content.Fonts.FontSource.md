@@ -12,7 +12,7 @@ Represents the source of where a font was loaded.
 ```csharp
 public enum FontSource
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.Content.Fonts.FontSource.AppContent'></a>
 
@@ -32,7 +32,7 @@ Loaded from the system.
 
 Loaded from another location other then the system or application's font content directory.
 
-### Remarks
+#### Remarks
 When loading fonts, the font that is attempting to be loaded will be  
 checked for its existence in the application's content directory first.  
 If the font does not exist there, then the font will be checked for  

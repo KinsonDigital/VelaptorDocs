@@ -5,7 +5,7 @@ title: Velaptor.Hardware.SystemMonitor
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Hardware](Velaptor.Hardware.md 'Velaptor.Hardware')
 
-## SystemMonitor Class
+#### SystemMonitor Class
 
 Holds information about a single monitor in the system.
 
@@ -17,22 +17,22 @@ System.IEquatable<Velaptor.Hardware.SystemMonitor>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → SystemMonitor
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[SystemMonitor](Velaptor.Hardware.SystemMonitor.md 'Velaptor.Hardware.SystemMonitor')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Hardware.SystemMonitor.SystemMonitor()'></a>
 
-## SystemMonitor() Constructor
+### SystemMonitor() Constructor
 
 Initializes a new instance of the [SystemMonitor](Velaptor.Hardware.SystemMonitor.md 'Velaptor.Hardware.SystemMonitor') class.
 
 ```csharp
 public SystemMonitor();
 ```
-### Properties
+## Properties
 
 <a name='Velaptor.Hardware.SystemMonitor.BlueBitDepth'></a>
 
-## SystemMonitor.BlueBitDepth Property
+### BlueBitDepth 
 
 Gets the bit depth of the blue color channel in the current video mode.
 
@@ -45,7 +45,7 @@ public int BlueBitDepth { get; set; }
 
 <a name='Velaptor.Hardware.SystemMonitor.Center'></a>
 
-## SystemMonitor.Center Property
+### Center 
 
 Gets the center location of the monitor.
 
@@ -58,7 +58,7 @@ public System.Numerics.Vector2 Center { get; }
 
 <a name='Velaptor.Hardware.SystemMonitor.GreenBitDepth'></a>
 
-## SystemMonitor.GreenBitDepth Property
+### GreenBitDepth 
 
 Gets the bit depth of the green color channel in the current video mode.
 
@@ -71,7 +71,7 @@ public int GreenBitDepth { get; set; }
 
 <a name='Velaptor.Hardware.SystemMonitor.Height'></a>
 
-## SystemMonitor.Height Property
+### Height 
 
 Gets the height in screen coordinates in the current video mode.
 
@@ -84,7 +84,7 @@ public int Height { get; set; }
 
 <a name='Velaptor.Hardware.SystemMonitor.HorizontalDPI'></a>
 
-## SystemMonitor.HorizontalDPI Property
+### HorizontalDPI 
 
 Gets the approximate dpi of the monitor on the horizontal axis.
 
@@ -97,7 +97,7 @@ public float HorizontalDPI { get; }
 
 <a name='Velaptor.Hardware.SystemMonitor.HorizontalScale'></a>
 
-## SystemMonitor.HorizontalScale Property
+### HorizontalScale 
 
 Gets the scale of the monitor on the horizontal axis.
 
@@ -108,12 +108,12 @@ public float HorizontalScale { get; set; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-### Remarks
+#### Remarks
 If the monitor was set to a scale of 150%, this value of 1.5 should be used.
 
 <a name='Velaptor.Hardware.SystemMonitor.IsMain'></a>
 
-## SystemMonitor.IsMain Property
+### IsMain 
 
 Gets a value indicating whether or not the monitor is the primary monitor in the system.
 
@@ -126,7 +126,7 @@ public bool IsMain { get; set; }
 
 <a name='Velaptor.Hardware.SystemMonitor.RedBitDepth'></a>
 
-## SystemMonitor.RedBitDepth Property
+### RedBitDepth 
 
 Gets the bit depth of the red color channel in the current video mode.
 
@@ -139,7 +139,7 @@ public int RedBitDepth { get; set; }
 
 <a name='Velaptor.Hardware.SystemMonitor.RefreshRate'></a>
 
-## SystemMonitor.RefreshRate Property
+### RefreshRate 
 
 Gets the refresh rate in Hz in the current video mode.
 
@@ -152,7 +152,7 @@ public int RefreshRate { get; set; }
 
 <a name='Velaptor.Hardware.SystemMonitor.VerticalDPI'></a>
 
-## SystemMonitor.VerticalDPI Property
+### VerticalDPI 
 
 Gets the approximate dpi of the monitor on the vertical axis.
 
@@ -165,7 +165,7 @@ public float VerticalDPI { get; }
 
 <a name='Velaptor.Hardware.SystemMonitor.VerticalScale'></a>
 
-## SystemMonitor.VerticalScale Property
+### VerticalScale 
 
 Gets the scale of the monitor on the vertical axis.
 
@@ -176,12 +176,12 @@ public float VerticalScale { get; set; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-### Remarks
+#### Remarks
 If the monitor was set to a scale of 150%, this value of 1.5 should be used.
 
 <a name='Velaptor.Hardware.SystemMonitor.Width'></a>
 
-## SystemMonitor.Width Property
+### Width 
 
 Gets the width in screen coordinates in the current video mode.
 
@@ -191,11 +191,13 @@ public int Width { get; set; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-### Methods
+## Methods
 
 <a name='Velaptor.Hardware.SystemMonitor.Equals(object)'></a>
 
-## SystemMonitor.Equals(object) Method
+### Equals(object) 
+
+Determines whether the specified object is equal to the current object.
 
 ```csharp
 public override bool Equals(object? obj);
@@ -206,12 +208,15 @@ public override bool Equals(object? obj);
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
+The object to compare with the current object.
+
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') if the specified object  is equal to the current object; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool').
 
 <a name='Velaptor.Hardware.SystemMonitor.Equals(Velaptor.Hardware.SystemMonitor)'></a>
 
-## SystemMonitor.Equals(SystemMonitor) Method
+### Equals(SystemMonitor) 
 
 ```csharp
 public bool Equals(Velaptor.Hardware.SystemMonitor? other);
@@ -227,14 +232,17 @@ public bool Equals(Velaptor.Hardware.SystemMonitor? other);
 
 <a name='Velaptor.Hardware.SystemMonitor.GetHashCode()'></a>
 
-## SystemMonitor.GetHashCode() Method
+### GetHashCode() 
+
+Serves as the default hash function.
 
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A hash code for the current object.
 ### Operators
 
 <a name='Velaptor.Hardware.SystemMonitor.op<Equality(Velaptor.Hardware.SystemMonitor,Velaptor.Hardware.SystemMonitor)'></a>

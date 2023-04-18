@@ -5,7 +5,7 @@ title: Velaptor.Content.ITexture
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## ITexture Interface
+#### ITexture Interface
 
 The texture to render to a screen.
 
@@ -18,11 +18,11 @@ Derived
 &#8627; [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture')
 
 Implements [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Properties
+## Properties
 
 <a name='Velaptor.Content.ITexture.Height'></a>
 
-## ITexture.Height Property
+### Height 
 
 Gets the height of the texture.
 
@@ -35,7 +35,7 @@ uint Height { get; }
 
 <a name='Velaptor.Content.ITexture.Id'></a>
 
-## ITexture.Id Property
+### Id 
 
 Gets the ID of the texture.
 
@@ -48,7 +48,7 @@ uint Id { get; }
 
 <a name='Velaptor.Content.ITexture.Width'></a>
 
-## ITexture.Width Property
+### Width 
 
 Gets the width of the texture.
 

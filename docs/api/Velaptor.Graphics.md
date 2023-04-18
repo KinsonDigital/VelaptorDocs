@@ -9,7 +9,6 @@ title: Velaptor.Graphics
 | Classes | |
 | :--- | :--- |
 | [GraphicsExtensionMethods](Velaptor.Graphics.GraphicsExtensionMethods.md 'Velaptor.Graphics.GraphicsExtensionMethods') | Provides various helper extension methods. |
-| [ImageLoader](Velaptor.Graphics.ImageLoader.md 'Velaptor.Graphics.ImageLoader') | Loads images from disk. |
 
 | Structs | |
 | :--- | :--- |
@@ -22,7 +21,6 @@ title: Velaptor.Graphics
 
 | Interfaces | |
 | :--- | :--- |
-| [IImageLoader](Velaptor.Graphics.IImageLoader.md 'Velaptor.Graphics.IImageLoader') | Loads images from disk. |
 | [IRenderMediator](Velaptor.Graphics.IRenderMediator.md 'Velaptor.Graphics.IRenderMediator') | Manages rendering between the different renderers. |
 
 | Enums | |

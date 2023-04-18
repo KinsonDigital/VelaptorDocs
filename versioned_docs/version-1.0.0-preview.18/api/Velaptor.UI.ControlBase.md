@@ -5,7 +5,7 @@ title: Velaptor.UI.ControlBase
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## ControlBase Class
+#### ControlBase Class
 
 Represents a basic control with behavior that is shared among all controls.
 
@@ -25,11 +25,11 @@ Derived
 &#8627; [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label')
 
 Implements [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [IContentLoadable](Velaptor.Content.IContentLoadable.md 'Velaptor.Content.IContentLoadable'), [ISizable](Velaptor.UI.ISizable.md 'Velaptor.UI.ISizable')
-### Properties
+## Properties
 
 <a name='Velaptor.UI.ControlBase.Bottom'></a>
 
-## ControlBase.Bottom Property
+### Bottom 
 
 Gets or sets the position of the bottom of the control.
 
@@ -44,7 +44,7 @@ Implements [Bottom](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Bottom 'Velapto
 
 <a name='Velaptor.UI.ControlBase.Enabled'></a>
 
-## ControlBase.Enabled Property
+### Enabled 
 
 Gets or sets a value indicating whether or not the control is enabled.
 
@@ -59,7 +59,7 @@ Implements [Enabled](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Enabled 'Velap
 
 <a name='Velaptor.UI.ControlBase.Height'></a>
 
-## ControlBase.Height Property
+### Height 
 
 Gets or sets the height of the [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase').
 
@@ -74,7 +74,7 @@ Implements [Height](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.Height 'Velapto
 
 <a name='Velaptor.UI.ControlBase.IsLoaded'></a>
 
-## ControlBase.IsLoaded Property
+### IsLoaded 
 
 Gets a value indicating whether or not the content for an object is loaded.
 
@@ -89,7 +89,7 @@ Implements [IsLoaded](Velaptor.Content.IContentLoadable.md#Velaptor.Content.ICon
 
 <a name='Velaptor.UI.ControlBase.IsMouseOver'></a>
 
-## ControlBase.IsMouseOver Property
+### IsMouseOver 
 
 Gets a value indicating whether or not the mouse is hovering over the button.
 
@@ -104,7 +104,7 @@ Implements [IsMouseOver](Velaptor.UI.IControl.md#Velaptor.UI.IControl.IsMouseOve
 
 <a name='Velaptor.UI.ControlBase.Left'></a>
 
-## ControlBase.Left Property
+### Left 
 
 Gets or sets the position of the left side of the control.
 
@@ -119,7 +119,7 @@ Implements [Left](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Left 'Velaptor.UI
 
 <a name='Velaptor.UI.ControlBase.MouseDownColor'></a>
 
-## ControlBase.MouseDownColor Property
+### MouseDownColor 
 
 Gets or sets the color to apply to the control when the  
 mouse button is in the down position over the control.
@@ -133,7 +133,7 @@ public System.Drawing.Color MouseDownColor { get; set; }
 
 <a name='Velaptor.UI.ControlBase.MouseHoverColor'></a>
 
-## ControlBase.MouseHoverColor Property
+### MouseHoverColor 
 
 Gets or sets the color to apply to the control when the mouse button is hovering over the control.
 
@@ -146,7 +146,7 @@ public System.Drawing.Color MouseHoverColor { get; set; }
 
 <a name='Velaptor.UI.ControlBase.Name'></a>
 
-## ControlBase.Name Property
+### Name 
 
 Gets or sets the name of the control.
 
@@ -161,7 +161,7 @@ Implements [Name](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Name 'Velaptor.UI
 
 <a name='Velaptor.UI.ControlBase.Position'></a>
 
-## ControlBase.Position Property
+### Position 
 
 Gets or sets the position of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl') on the screen.
 
@@ -176,7 +176,7 @@ Implements [Position](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Position 'Vel
 
 <a name='Velaptor.UI.ControlBase.Right'></a>
 
-## ControlBase.Right Property
+### Right 
 
 Gets or sets the position of the right side of the control.
 
@@ -191,7 +191,7 @@ Implements [Right](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Right 'Velaptor.
 
 <a name='Velaptor.UI.ControlBase.Top'></a>
 
-## ControlBase.Top Property
+### Top 
 
 Gets or sets the position of the top of the control.
 
@@ -206,7 +206,7 @@ Implements [Top](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Top 'Velaptor.UI.I
 
 <a name='Velaptor.UI.ControlBase.Visible'></a>
 
-## ControlBase.Visible Property
+### Visible 
 
 Gets or sets a value indicating whether or not the control is visible.
 
@@ -221,7 +221,7 @@ Implements [Visible](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Visible 'Velap
 
 <a name='Velaptor.UI.ControlBase.Width'></a>
 
-## ControlBase.Width Property
+### Width 
 
 Gets or sets the width of the [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase').
 
@@ -233,11 +233,11 @@ Implements [Width](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.Width 'Velaptor.
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-### Methods
+## Methods
 
 <a name='Velaptor.UI.ControlBase.LoadContent()'></a>
 
-## ControlBase.LoadContent() Method
+### LoadContent() 
 
 Unloads the content for an object.
 
@@ -249,7 +249,7 @@ Implements [LoadContent()](Velaptor.Content.IContentLoadable.md#Velaptor.Content
 
 <a name='Velaptor.UI.ControlBase.Render()'></a>
 
-## ControlBase.Render() Method
+### Render() 
 
 Renders the control to the screen.
 
@@ -261,7 +261,7 @@ Implements [Render()](Velaptor.IDrawable.md#Velaptor.IDrawable.Render() 'Velapto
 
 <a name='Velaptor.UI.ControlBase.UnloadContent()'></a>
 
-## ControlBase.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the content for an object.
 
@@ -273,7 +273,7 @@ Implements [UnloadContent()](Velaptor.Content.IContentLoadable.md#Velaptor.Conte
 
 <a name='Velaptor.UI.ControlBase.Update(Velaptor.FrameTime)'></a>
 
-## ControlBase.Update(FrameTime) Method
+### Update(FrameTime) 
 
 A user interface object that can be updated and rendered to the screen.
 

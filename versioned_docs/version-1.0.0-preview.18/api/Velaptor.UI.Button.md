@@ -5,7 +5,7 @@ title: Velaptor.UI.Button
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## Button Class
+#### Button Class
 
 A button that can be clicked to execute functionality.
 
@@ -14,11 +14,11 @@ public sealed class Button : Velaptor.UI.ControlBase
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase') → Button
-### Constructors
+## Constructors
 
 <a name='Velaptor.UI.Button.Button()'></a>
 
-## Button() Constructor
+### Button() Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -28,7 +28,7 @@ public Button();
 
 <a name='Velaptor.UI.Button.Button(System.Drawing.Point,uint,uint,Velaptor.UI.Label)'></a>
 
-## Button(Point, uint, uint, Label) Constructor
+### Button(Point, uint, uint, Label) Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -63,7 +63,7 @@ The label to display on the face of the button.
 
 <a name='Velaptor.UI.Button.Button(System.Drawing.Point,uint,uint)'></a>
 
-## Button(Point, uint, uint) Constructor
+### Button(Point, uint, uint) Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -92,7 +92,7 @@ The height of the button.
 
 <a name='Velaptor.UI.Button.Button(System.Drawing.Point)'></a>
 
-## Button(Point) Constructor
+### Button(Point) Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -109,7 +109,7 @@ The position of the button.
 
 <a name='Velaptor.UI.Button.Button(uint,uint,Velaptor.UI.Label)'></a>
 
-## Button(uint, uint, Label) Constructor
+### Button(uint, uint, Label) Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -138,7 +138,7 @@ The label to display on the face of the button.
 
 <a name='Velaptor.UI.Button.Button(uint,uint)'></a>
 
-## Button(uint, uint) Constructor
+### Button(uint, uint) Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -161,7 +161,7 @@ The height of the button.
 
 <a name='Velaptor.UI.Button.Button(Velaptor.UI.Label)'></a>
 
-## Button(Label) Constructor
+### Button(Label) Constructor
 
 Initializes a new instance of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') class.
 
@@ -175,11 +175,11 @@ public Button(Velaptor.UI.Label? label);
 `label` [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label')
 
 The label to display on the face of the button.
-### Properties
+## Properties
 
 <a name='Velaptor.UI.Button.AutoSize'></a>
 
-## Button.AutoSize Property
+### AutoSize 
 
 Gets or sets a value indicating whether or not the size of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') will be  
 managed automatically based on the size of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label').
@@ -191,14 +191,14 @@ public bool AutoSize { get; set; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-### Remarks
+#### Remarks
 If [AutoSize](Velaptor.UI.Button.md#Velaptor.UI.Button.AutoSize 'Velaptor.UI.Button.AutoSize') is `false`, the user can set the size to anything they  
 desire.  If the size is less than the width or height of the text, then only the text characters  
 that are still within the bounds of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label') will be rendered.
 
 <a name='Velaptor.UI.Button.BorderColor'></a>
 
-## Button.BorderColor Property
+### BorderColor 
 
 Gets or sets the color of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') border.
 
@@ -211,7 +211,7 @@ public System.Drawing.Color BorderColor { get; set; }
 
 <a name='Velaptor.UI.Button.BorderThickness'></a>
 
-## Button.BorderThickness Property
+### BorderThickness 
 
 Gets or sets the thickness of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button')'s border.
 
@@ -222,12 +222,12 @@ public uint BorderThickness { get; set; }
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
-### Remarks
+#### Remarks
 This value uses pixels as unit of measure.
 
 <a name='Velaptor.UI.Button.BorderVisible'></a>
 
-## Button.BorderVisible Property
+### BorderVisible 
 
 Gets or sets a value indicating whether or not the border of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button') is visible.
 
@@ -240,7 +240,7 @@ public bool BorderVisible { get; set; }
 
 <a name='Velaptor.UI.Button.CornerRadius'></a>
 
-## Button.CornerRadius Property
+### CornerRadius 
 
 Gets or sets the radius values for each corner of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button')  
 border and face.
@@ -254,7 +254,7 @@ public Velaptor.Graphics.CornerRadius CornerRadius { get; set; }
 
 <a name='Velaptor.UI.Button.Enabled'></a>
 
-## Button.Enabled Property
+### Enabled 
 
 Gets or sets a value indicating whether or not the button is enabled.
 
@@ -269,7 +269,7 @@ Implements [Enabled](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Enabled 'Velap
 
 <a name='Velaptor.UI.Button.FaceColor'></a>
 
-## Button.FaceColor Property
+### FaceColor 
 
 Gets or sets the color of the face of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button').
 
@@ -282,7 +282,7 @@ public System.Drawing.Color FaceColor { get; set; }
 
 <a name='Velaptor.UI.Button.FontSize'></a>
 
-## Button.FontSize Property
+### FontSize 
 
 Gets or sets the font size of the text on the face of the button.
 
@@ -295,7 +295,7 @@ public uint FontSize { get; set; }
 
 <a name='Velaptor.UI.Button.Height'></a>
 
-## Button.Height Property
+### Height 
 
 Gets or sets the [Height](Velaptor.UI.Button.md#Velaptor.UI.Button.Height 'Velaptor.UI.Button.Height') of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button').
 
@@ -308,13 +308,13 @@ Implements [Height](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.Height 'Velapto
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
-### Remarks
+#### Remarks
 If [AutoSize](Velaptor.UI.Button.md#Velaptor.UI.Button.AutoSize 'Velaptor.UI.Button.AutoSize') is `true`, the [Height](Velaptor.UI.Button.md#Velaptor.UI.Button.Height 'Velaptor.UI.Button.Height') value will be set but ignored  
 and the [Height](Velaptor.UI.Button.md#Velaptor.UI.Button.Height 'Velaptor.UI.Button.Height') will be automatic based on the [Height](Velaptor.UI.Button.md#Velaptor.UI.Button.Height 'Velaptor.UI.Button.Height') of the [Text](Velaptor.UI.Button.md#Velaptor.UI.Button.Text 'Velaptor.UI.Button.Text').
 
 <a name='Velaptor.UI.Button.Label'></a>
 
-## Button.Label Property
+### Label 
 
 Gets the [Label](Velaptor.UI.Button.md#Velaptor.UI.Button.Label 'Velaptor.UI.Button.Label') of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button').
 
@@ -327,7 +327,7 @@ public Velaptor.UI.Label? Label { get; set; }
 
 <a name='Velaptor.UI.Button.Position'></a>
 
-## Button.Position Property
+### Position 
 
 A user interface object that can be updated and rendered to the screen.
 
@@ -342,7 +342,7 @@ Implements [Position](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Position 'Vel
 
 <a name='Velaptor.UI.Button.Text'></a>
 
-## Button.Text Property
+### Text 
 
 Gets or sets the text of the button.
 
@@ -355,7 +355,7 @@ public string Text { get; set; }
 
 <a name='Velaptor.UI.Button.Width'></a>
 
-## Button.Width Property
+### Width 
 
 Gets or sets the [Width](Velaptor.UI.Button.md#Velaptor.UI.Button.Width 'Velaptor.UI.Button.Width') of the [Button](Velaptor.UI.Button.md 'Velaptor.UI.Button').
 
@@ -368,14 +368,14 @@ Implements [Width](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.Width 'Velaptor.
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
-### Remarks
+#### Remarks
 If [AutoSize](Velaptor.UI.Button.md#Velaptor.UI.Button.AutoSize 'Velaptor.UI.Button.AutoSize') is `true`, the [Width](Velaptor.UI.Button.md#Velaptor.UI.Button.Width 'Velaptor.UI.Button.Width') value will be set but ignored  
 and the [Width](Velaptor.UI.Button.md#Velaptor.UI.Button.Width 'Velaptor.UI.Button.Width') will be automatic based on the [Width](Velaptor.UI.Button.md#Velaptor.UI.Button.Width 'Velaptor.UI.Button.Width') of the [Text](Velaptor.UI.Button.md#Velaptor.UI.Button.Text 'Velaptor.UI.Button.Text').
-### Methods
+## Methods
 
 <a name='Velaptor.UI.Button.LoadContent()'></a>
 
-## Button.LoadContent() Method
+### LoadContent() 
 
 Unloads the content for an object.
 
@@ -387,7 +387,7 @@ Implements [LoadContent()](Velaptor.Content.IContentLoadable.md#Velaptor.Content
 
 <a name='Velaptor.UI.Button.Render()'></a>
 
-## Button.Render() Method
+### Render() 
 
 Renders the object.
 
@@ -399,7 +399,7 @@ Implements [Render()](Velaptor.IDrawable.md#Velaptor.IDrawable.Render() 'Velapto
 
 <a name='Velaptor.UI.Button.UnloadContent()'></a>
 
-## Button.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the content for an object.
 

@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.SystemMonitorException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## SystemMonitorException Class
+#### SystemMonitorException Class
 
 Occurs when there is an issue with one of the system monitors.
 
@@ -14,11 +14,11 @@ public sealed class SystemMonitorException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → SystemMonitorException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.SystemMonitorException.SystemMonitorException()'></a>
 
-## SystemMonitorException() Constructor
+### SystemMonitorException() Constructor
 
 Initializes a new instance of the [SystemMonitorException](Velaptor.Exceptions.SystemMonitorException.md 'Velaptor.Exceptions.SystemMonitorException') class.
 
@@ -28,7 +28,7 @@ public SystemMonitorException();
 
 <a name='Velaptor.Exceptions.SystemMonitorException.SystemMonitorException(string,System.Exception)'></a>
 
-## SystemMonitorException(string, Exception) Constructor
+### SystemMonitorException(string, Exception) Constructor
 
 Initializes a new instance of the [SystemMonitorException](Velaptor.Exceptions.SystemMonitorException.md 'Velaptor.Exceptions.SystemMonitorException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.SystemMonitorException.SystemMonitorException(string)'></a>
 
-## SystemMonitorException(string) Constructor
+### SystemMonitorException(string) Constructor
 
 Initializes a new instance of the [SystemMonitorException](Velaptor.Exceptions.SystemMonitorException.md 'Velaptor.Exceptions.SystemMonitorException') class.
 

@@ -5,7 +5,7 @@ title: Velaptor.UI.ISizable
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## ISizable Interface
+#### ISizable Interface
 
 Represents the size of an object by its width and height.
 
@@ -16,11 +16,11 @@ public interface ISizable
 Derived  
 &#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')  
 &#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
-### Properties
+## Properties
 
 <a name='Velaptor.UI.ISizable.Height'></a>
 
-## ISizable.Height Property
+### Height 
 
 Gets the height of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl').
 
@@ -33,7 +33,7 @@ uint Height { get; }
 
 <a name='Velaptor.UI.ISizable.Width'></a>
 
-## ISizable.Width Property
+### Width 
 
 Gets the width of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl').
 

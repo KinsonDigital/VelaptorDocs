@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.LoadEmbeddedResourceException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## LoadEmbeddedResourceException Class
+#### LoadEmbeddedResourceException Class
 
 Occurs when something goes wrong with loading an embedded resource.
 
@@ -14,11 +14,11 @@ public sealed class LoadEmbeddedResourceException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → LoadEmbeddedResourceException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException()'></a>
 
-## LoadEmbeddedResourceException() Constructor
+### LoadEmbeddedResourceException() Constructor
 
 Initializes a new instance of the [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') class.
 
@@ -28,7 +28,7 @@ public LoadEmbeddedResourceException();
 
 <a name='Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException(string,System.Exception)'></a>
 
-## LoadEmbeddedResourceException(string, Exception) Constructor
+### LoadEmbeddedResourceException(string, Exception) Constructor
 
 Initializes a new instance of the [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException(string)'></a>
 
-## LoadEmbeddedResourceException(string) Constructor
+### LoadEmbeddedResourceException(string) Constructor
 
 Initializes a new instance of the [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') class.
 

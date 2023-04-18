@@ -12,7 +12,7 @@ Represents the buttons on a mouse.
 ```csharp
 public enum MouseButton
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.Input.MouseButton.LeftButton'></a>
 

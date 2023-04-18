@@ -5,7 +5,7 @@ title: Velaptor.AppStats
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## AppStats Class
+#### AppStats Class
 
 Records and retrieves information about the running application.
 
@@ -14,11 +14,11 @@ public static class AppStats
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → AppStats
-### Methods
+## Methods
 
 <a name='Velaptor.AppStats.GetFontGlyphRenderingData()'></a>
 
-## AppStats.GetFontGlyphRenderingData() Method
+### GetFontGlyphRenderingData() 
 
 Gets all of the rendered textures for the last two frames in `string` format.
 
@@ -32,7 +32,7 @@ The recorded frame information.
 
 <a name='Velaptor.AppStats.GetLoadedFonts()'></a>
 
-## AppStats.GetLoadedFonts() Method
+### GetLoadedFonts() 
 
 Returns all of the loaded fonts.
 
@@ -46,7 +46,7 @@ The string result of all the loaded fonts.
 
 <a name='Velaptor.AppStats.GetLoadedTextures()'></a>
 
-## AppStats.GetLoadedTextures() Method
+### GetLoadedTextures() 
 
 Returns all of the loaded textures.
 

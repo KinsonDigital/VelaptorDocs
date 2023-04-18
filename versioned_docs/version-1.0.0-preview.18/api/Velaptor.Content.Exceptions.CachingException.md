@@ -5,7 +5,7 @@ title: Velaptor.Content.Exceptions.CachingException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions')
 
-## CachingException Class
+#### CachingException Class
 
 Thrown when there is an issue caching items.
 
@@ -14,11 +14,11 @@ public sealed class CachingException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → CachingException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException()'></a>
 
-## CachingException() Constructor
+### CachingException() Constructor
 
 Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor.Content.Exceptions.CachingException') class.
 
@@ -28,7 +28,7 @@ public CachingException();
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception)'></a>
 
-## CachingException(string, Exception) Constructor
+### CachingException(string, Exception) Constructor
 
 Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor.Content.Exceptions.CachingException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException(string)'></a>
 
-## CachingException(string) Constructor
+### CachingException(string) Constructor
 
 Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor.Content.Exceptions.CachingException') class.
 

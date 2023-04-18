@@ -12,7 +12,7 @@ Represents the type of gradient a color can.
 ```csharp
 public enum ColorGradient
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.Graphics.ColorGradient.Horizontal'></a>
 

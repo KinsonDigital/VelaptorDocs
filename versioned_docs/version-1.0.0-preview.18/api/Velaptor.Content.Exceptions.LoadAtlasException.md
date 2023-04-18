@@ -5,7 +5,7 @@ title: Velaptor.Content.Exceptions.LoadAtlasException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions')
 
-## LoadAtlasException Class
+#### LoadAtlasException Class
 
 Thrown when there is an issue loading atlas data content.
 
@@ -14,11 +14,11 @@ public sealed class LoadAtlasException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → LoadAtlasException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException()'></a>
 
-## LoadAtlasException() Constructor
+### LoadAtlasException() Constructor
 
 Initializes a new instance of the [LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor.Content.Exceptions.LoadAtlasException') class.
 
@@ -28,7 +28,7 @@ public LoadAtlasException();
 
 <a name='Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException(string,System.Exception)'></a>
 
-## LoadAtlasException(string, Exception) Constructor
+### LoadAtlasException(string, Exception) Constructor
 
 Initializes a new instance of the [LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor.Content.Exceptions.LoadAtlasException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException(string)'></a>
 
-## LoadAtlasException(string) Constructor
+### LoadAtlasException(string) Constructor
 
 Initializes a new instance of the [LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor.Content.Exceptions.LoadAtlasException') class.
 

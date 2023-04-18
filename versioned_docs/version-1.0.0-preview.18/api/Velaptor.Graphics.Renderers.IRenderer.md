@@ -5,18 +5,18 @@ title: Velaptor.Graphics.Renderers.IRenderer
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics.Renderers](Velaptor.Graphics.Renderers.md 'Velaptor.Graphics.Renderers')
 
-## IRenderer Interface
+#### IRenderer Interface
 
 Provides basic rendering functionality.
 
 ```csharp
 public interface IRenderer
 ```
-### Properties
+## Properties
 
 <a name='Velaptor.Graphics.Renderers.IRenderer.ClearColor'></a>
 
-## IRenderer.ClearColor Property
+### ClearColor 
 
 Gets or sets the color of the back buffer when cleared.
 
@@ -26,11 +26,11 @@ static System.Drawing.Color ClearColor { get; set; }
 
 #### Property Value
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.Renderers.IRenderer.Begin()'></a>
 
-## IRenderer.Begin() Method
+### Begin() 
 
 Starts the batch rendering process.  Must be called before invoking any render methods.
 
@@ -40,7 +40,7 @@ static void Begin();
 
 <a name='Velaptor.Graphics.Renderers.IRenderer.Clear()'></a>
 
-## IRenderer.Clear() Method
+### Clear() 
 
 Clears the buffers.
 
@@ -48,14 +48,14 @@ Clears the buffers.
 static void Clear();
 ```
 
-### Remarks
+#### Remarks
 It is best to clear the buffer before rendering all of the textures.  
 This is to make sure smearing does not occur during texture  
 movement or animation.
 
 <a name='Velaptor.Graphics.Renderers.IRenderer.End()'></a>
 
-## IRenderer.End() Method
+### End() 
 
 Ends the batch process.  Calling this will render any textures  
 still in the batch.

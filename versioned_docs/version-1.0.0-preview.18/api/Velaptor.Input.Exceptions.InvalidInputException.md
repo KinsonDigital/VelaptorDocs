@@ -5,7 +5,7 @@ title: Velaptor.Input.Exceptions.InvalidInputException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Input.Exceptions](Velaptor.Input.Exceptions.md 'Velaptor.Input.Exceptions')
 
-## InvalidInputException Class
+#### InvalidInputException Class
 
 Occurs when invalid input has occured.
 
@@ -14,11 +14,11 @@ public sealed class InvalidInputException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → InvalidInputException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException()'></a>
 
-## InvalidInputException() Constructor
+### InvalidInputException() Constructor
 
 Initializes a new instance of the [InvalidInputException](Velaptor.Input.Exceptions.InvalidInputException.md 'Velaptor.Input.Exceptions.InvalidInputException') class.
 
@@ -28,7 +28,7 @@ public InvalidInputException();
 
 <a name='Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException(string,System.Exception)'></a>
 
-## InvalidInputException(string, Exception) Constructor
+### InvalidInputException(string, Exception) Constructor
 
 Initializes a new instance of the [InvalidInputException](Velaptor.Input.Exceptions.InvalidInputException.md 'Velaptor.Input.Exceptions.InvalidInputException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException(string)'></a>
 
-## InvalidInputException(string) Constructor
+### InvalidInputException(string) Constructor
 
 Initializes a new instance of the [InvalidInputException](Velaptor.Input.Exceptions.InvalidInputException.md 'Velaptor.Input.Exceptions.InvalidInputException') class.
 

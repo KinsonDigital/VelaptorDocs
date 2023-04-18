@@ -1,5 +1,5 @@
 import { FlagService } from "./FlagService.ts";
-import { VersionsFileService } from "./VersionsFileService.ts";
+import { VersionsFileService } from "../doc-process-scripts/VersionsFileService.ts";
 
 if (Deno.args.length <= 0) {
 	let errorMsg = "The testing environment script must provide a single argument";

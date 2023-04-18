@@ -1,4 +1,5 @@
 import { extname } from "https://deno.land/std@0.182.0/path/mod.ts";
+import { Guard } from "./Gaurd.ts";
 
 export class VersionsFileService {
 	private readonly newLine: string;
@@ -19,8 +20,7 @@ export class VersionsFileService {
 		}
 
 		const testingVersion = "1.0.0-testing";
-		const fileContents: string = Deno.readTextFileSync(this.filePath);
-		const versions: string[] = JSON.parse(fileContents);
+		const versions: string[] = this.getVersions();
 
 		// If the version list does not contain the testing version,
 		// add it and save back to the file
@@ -45,8 +45,7 @@ export class VersionsFileService {
 		}
 
 		const testingVersion = "1.0.0-testing";
-		const fileContents: string = Deno.readTextFileSync(this.filePath);
-		let versions: string[] = JSON.parse(fileContents);
+		let versions: string[] = this.getVersions();
 
 		// If the version list contains the testing version,
 		// remove it and save back to the file
@@ -73,7 +72,7 @@ export class VersionsFileService {
 
 		const testingVersion = "1.0.0-testing";
 		let fileContents: string = Deno.readTextFileSync(this.filePath);
-		let versions: string[] = JSON.parse(fileContents);
+		let versions: string[] = this.getVersions();
 
 		// If the version list contains the testing version,
 		// remove it and save back to the file
@@ -92,5 +91,16 @@ export class VersionsFileService {
 		}
 
 		Deno.writeTextFileSync(this.filePath, fileContents);
+	}
+
+	/**
+	 * Returns a list of all the versions from the versions file.
+	 * @returns {string[]} The versions from the versions file.
+	 */
+	private getVersions(): string[] {
+		const fileContents: string = Deno.readTextFileSync(this.filePath);
+		const versions: string[] = JSON.parse(fileContents);
+
+		return versions;
 	}
 }

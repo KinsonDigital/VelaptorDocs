@@ -2,6 +2,9 @@ import { Guard } from "./Gaurd.ts";
 import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 
+/**
+ * Provides file related operations.
+ */
 export class File {
 	public static exists(filePath: string): boolean {
 		try {
@@ -77,5 +80,25 @@ export class File {
 		if (Path.isFilePath(oldFilePath)) {
 			Deno.renameSync(oldFilePath, newFilePath);
 		}
+	}
+
+	/**
+	 * Deletes the specified file.
+	 * @param {string} filePath The file to delete.
+	 */
+	public static deleteFile(filePath: string): void {
+		if (Utils.isNullOrEmpty(filePath)) {
+			throw new Error(`The 'filePath' parameter must not be null or empty.`);
+		}
+
+		if (File.doesNotExist(filePath)) {
+			throw new Error(`The file '${filePath}' does not exist.`);
+		}
+
+		if (!Path.isFilePath(filePath)) {
+			throw new Error(`The path '${filePath}' is not a file path.`);
+		}
+
+		Deno.removeSync(filePath);
 	}
 }

@@ -49,7 +49,7 @@ export class MarkdownHeaderService {
 		const lines: string[] = fileContent.split(this.newLine);
 
 		for (let i = 0; i < lines.length; i++) {
-			let line: string = lines[i].trim();
+			const line: string = lines[i].trim();
 
 			if (this.isValidHeader(line, this.classHeaderRegEx)) {
 				lines[i] = this.decreaseHeaderSize(line, 2);
@@ -59,23 +59,23 @@ export class MarkdownHeaderService {
 				lines[i] = this.decreaseHeaderSize(line, 2);
 			} else if (this.isValidHeader(line, this.ctorGroupHeaderRegex)) {
 				lines[i] = this.increaseHeaderSize(line, 1);
-			} else if(this.isValidHeader(line, this.ctorHeaderRegex)) {
+			} else if (this.isValidHeader(line, this.ctorHeaderRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
-			} else if(this.isValidHeader(line, this.methodGroupHeaderRegex)) {
+			} else if (this.isValidHeader(line, this.methodGroupHeaderRegex)) {
 				lines[i] = this.increaseHeaderSize(line, 1);
-			} else if(this.isValidHeader(line, this.methodHeaderRegex)) {
+			} else if (this.isValidHeader(line, this.methodHeaderRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
 				lines[i] = this.stripClassFromHeader(lines[i]);
 				lines[i] = lines[i].replace("Method", "");
-			} else if(this.isValidHeader(line, this.propGroupHeaderRegex)) {
+			} else if (this.isValidHeader(line, this.propGroupHeaderRegex)) {
 				lines[i] = this.increaseHeaderSize(line, 1);
-			} else if(this.isValidHeader(line, this.propHeaderRegex)) {
+			} else if (this.isValidHeader(line, this.propHeaderRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
 				lines[i] = this.stripClassFromHeader(lines[i]);
 				lines[i] = lines[i].replace("Property", "");
-			} else if(this.isValidHeader(line, this.remarksGroupRegex)) {
+			} else if (this.isValidHeader(line, this.remarksGroupRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
-			} else if(this.isValidHeader(line, this.fieldsGroupRegex)) {
+			} else if (this.isValidHeader(line, this.fieldsGroupRegex)) {
 				lines[i] = this.decreaseHeaderSize(line, 1);
 			}
 		}
@@ -102,7 +102,7 @@ export class MarkdownHeaderService {
 	 * @param header The header to increase in size by the given amount.
 	 * @param increaseBy The amount to increase the header by.
 	 * @returns The header with the increased size.
-	 */	
+	 */
 	private increaseHeaderSize(header: string, increaseBy: number): string {
 		Guard.isNotUndefinedOrEmpty(header);
 
@@ -110,13 +110,13 @@ export class MarkdownHeaderService {
 		increaseBy = increaseBy > 6 ? 6 : increaseBy;
 
 		if (header.startsWith("#") && increaseBy != 0) {
-			let headerHashes: string[] = header.split("").filter(c => c === "#");
+			const headerHashes: string[] = header.split("").filter((c) => c === "#");
 
 			if (headerHashes.length <= increaseBy) {
 				return header.replaceAll("#", "");
 			}
 
-			let headersToUse: string[] = [];
+			const headersToUse: string[] = [];
 
 			for (let i = 0; i <= increaseBy; i++) {
 				headersToUse.push("#");
@@ -184,7 +184,7 @@ export class MarkdownHeaderService {
 	 * @returns The total characters found in the value.
 	 */
 	private getTotal(value: string, char: string): number {
-		let total: number = 0;
+		let total = 0;
 
 		for (let i = 0; i < value.length; i++) {
 			if (value[i] === char) {

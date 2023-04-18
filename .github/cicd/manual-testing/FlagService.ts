@@ -1,4 +1,3 @@
-import { File } from "../doc-process-scripts/File.ts";
 import { Utils } from "../doc-process-scripts/Utils.ts";
 
 export class FlagService {

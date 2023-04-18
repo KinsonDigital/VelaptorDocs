@@ -152,6 +152,11 @@ export class Path {
 		return lastDir.endsWith("/") ? lastDir.slice(0, lastDir.length - 1) : lastDir;
 	}
 
+	/**
+	 * Returns a list of the last directory names from the directory paths.
+	 * @param dirPaths The directory paths to pull the last directory name from.
+	 * @returns The list of directory names from the directory paths.
+	 */
 	public static getLastDirNames(dirPaths: string[]): string[] {
 		if (Utils.isNullOrEmpty(dirPaths)) {
 			return [];

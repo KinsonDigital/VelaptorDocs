@@ -1,5 +1,9 @@
 import { extname } from "https://deno.land/std@0.182.0/path/mod.ts";
+import { Guard } from "./Gaurd.ts";
 
+/**
+ * Manages the versions file.
+ */
 export class VersionsFileService {
 	private readonly newLine: string;
 	private readonly filePath: string;
@@ -7,6 +11,28 @@ export class VersionsFileService {
 	constructor() {
 		this.newLine = Deno.build.os === "windows" ? "\r\n" : "\n";
 		this.filePath = `${Deno.cwd()}/versions.json`;
+	}
+
+	/**
+	 * Deletes the given version from the versions file.
+	 * @param {string} version The version to delete from the versions file.
+	 */
+	public deleteVersion(version: string): void {
+		Guard.isNotUndefinedOrEmpty(version, "version");
+
+		// If the version begins with a 'v', remove it
+		version = version.startsWith("v") ? version.replace("v", "") : version;
+
+		const versions: string[] = this.getVersions()
+			.filter((v: string) => v !== version);
+
+		// If there is nothing to delete
+		if (versions.length === 0) {
+			return;
+		}
+
+		this.saveVersions(versions);
+		console.log(`\tDeleted version '${version}' from '${this.filePath}'`);
 	}
 
 	public enableTestVersion(): void {
@@ -19,18 +45,14 @@ export class VersionsFileService {
 		}
 
 		const testingVersion = "1.0.0-testing";
-		const fileContents: string = Deno.readTextFileSync(this.filePath);
-		const versions: string[] = JSON.parse(fileContents);
+		const versions: string[] = this.getVersions();
 
 		// If the version list does not contain the testing version,
 		// add it and save back to the file
 		if (versions.indexOf(testingVersion) === -1) {
 			versions.push(testingVersion);
 
-			const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
-
-			Deno.writeTextFileSync(this.filePath, fileDataToWrite);
-
+			this.saveVersions(versions);
 			console.log(`\tTesting version added to '${this.filePath}'`);
 		}
 	}
@@ -45,8 +67,7 @@ export class VersionsFileService {
 		}
 
 		const testingVersion = "1.0.0-testing";
-		const fileContents: string = Deno.readTextFileSync(this.filePath);
-		let versions: string[] = JSON.parse(fileContents);
+		let versions: string[] = this.getVersions();
 
 		// If the version list contains the testing version,
 		// remove it and save back to the file
@@ -55,9 +76,7 @@ export class VersionsFileService {
 				return version != testingVersion;
 			});
 
-			const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
-
-			Deno.writeTextFileSync(this.filePath, fileDataToWrite);
+			this.saveVersions(versions);
 			console.log(`\tTesting version removed from '${this.filePath}'`);
 		}
 	}
@@ -72,8 +91,7 @@ export class VersionsFileService {
 		}
 
 		const testingVersion = "1.0.0-testing";
-		let fileContents: string = Deno.readTextFileSync(this.filePath);
-		let versions: string[] = JSON.parse(fileContents);
+		let versions: string[] = this.getVersions();
 
 		// If the version list contains the testing version,
 		// remove it and save back to the file
@@ -82,15 +100,34 @@ export class VersionsFileService {
 				return version != testingVersion;
 			});
 
-			fileContents = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
-
+			this.saveVersions(versions);
 			console.log(`\tTesting version removed from '${this.filePath}'`);
 		} else {
 			versions.push(testingVersion);
 
-			fileContents = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
+			this.saveVersions(versions);
+			console.log(`\tTesting version added to '${this.filePath}'`);
 		}
+	}
 
-		Deno.writeTextFileSync(this.filePath, fileContents);
+	/**
+	 * Returns a list of all the versions from the versions file.
+	 * @returns {string[]} The versions from the versions file.
+	 */
+	private getVersions(): string[] {
+		const fileContents: string = Deno.readTextFileSync(this.filePath);
+		const versions: string[] = JSON.parse(fileContents);
+
+		return versions;
+	}
+
+	/**
+	 * Saves the given versions to the versions file.
+	 * @param {string[]} versions The versions to save to the versions file.
+	 */
+	private saveVersions(versions: string[]): void {
+		const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
+
+		Deno.writeTextFileSync(this.filePath, fileDataToWrite);
 	}
 }

@@ -14,6 +14,74 @@ public interface ITextureRenderer
 ```
 ## Methods
 
+<a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int)'></a>
+
+### Render(ITexture, int, int, float, int) 
+
+Renders the given texture at the given [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).y') coordinates and the given [angle](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).angle 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).angle').
+
+```csharp
+void Render(Velaptor.Content.ITexture texture, int x, int y, float angle, int layer=0);
+```
+#### Parameters
+
+<a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).texture'></a>
+
+`texture` [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture')
+
+The texture to render.
+
+<a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).x'></a>
+
+`x` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The X location of the texture.
+
+<a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).y'></a>
+
+`y` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The Y location of the texture.
+
+<a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).angle'></a>
+
+`angle` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The angle of rotation in degrees of the rendering.
+
+<a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).layer'></a>
+
+`layer` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The layer to render the texture.
+
+#### Exceptions
+
+[System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
+Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
+
+#### Remarks
+  
+The [x](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).x 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).x') and [y](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).y 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).y') position are based on the center of the texture.  
+  
+Lower [layer](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).layer 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).layer 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).layer') values.  
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ITextureRenderer.md#Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,float,int).layer 'Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture, int, int, float, int).layer') value, they will  
+render in the order that the method was invoked.  
+  
+Example below:<b>Render Method Invoked Order:</b>  
+1. Texture 1 (Layer -10)  
+2. Texture 2 (Layer -20)  
+3. Texture 3 (Layer 0)  
+4. Texture 4 (Layer 0)  
+5. Texture 5 (Layer 4)  
+6. Texture 6 (Layer 3)<b>Texture Render Order:</b>  
+- Texture 2  
+- Texture 1  
+- Texture 3  
+- Texture 4  
+- Texture 6  
+- Texture 5
+
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.ITexture,int,int,int)'></a>
 
 ### Render(ITexture, int, int, int) 

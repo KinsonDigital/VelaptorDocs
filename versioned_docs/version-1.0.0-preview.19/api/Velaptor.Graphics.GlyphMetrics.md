@@ -5,7 +5,7 @@ title: Velaptor.Graphics.GlyphMetrics
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
 
-## GlyphMetrics Struct
+#### GlyphMetrics Struct
 
 Holds all of the various metrics of a glyph for rendering purposes.
 
@@ -15,11 +15,11 @@ System.IEquatable<Velaptor.Graphics.GlyphMetrics>
 ```
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor.Graphics.GlyphMetrics')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Properties
+## Properties
 
 <a name='Velaptor.Graphics.GlyphMetrics.Ascender'></a>
 
-## GlyphMetrics.Ascender Property
+### Ascender 
 
 Gets or sets the vertical distance from the horizontal baseline to the highest 'character'  
 coordinate in a font face.
@@ -31,7 +31,7 @@ public float Ascender { get; set; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-### Remarks
+#### Remarks
 Unfortunately, font formats don't define the ascender in a  
 uniform way. For some formats, it represents the ascent of all capital Latin characters  
 (without accents). For others it is the ascent of the highest accented character. Finally,  
@@ -39,7 +39,7 @@ other formats define it as being equal to Y max value of the global bounding box
 
 <a name='Velaptor.Graphics.GlyphMetrics.CharIndex'></a>
 
-## GlyphMetrics.CharIndex Property
+### CharIndex 
 
 Gets or sets the glyph index.
 
@@ -50,12 +50,12 @@ public uint CharIndex { get; set; }
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
-### Remarks
+#### Remarks
 The value of 0 means ‘undefined character code’.
 
 <a name='Velaptor.Graphics.GlyphMetrics.Descender'></a>
 
-## GlyphMetrics.Descender Property
+### Descender 
 
 Gets or sets the vertical distance from the horizontal baseline to the lowest ‘character’ coordinate in a font face.
 
@@ -66,7 +66,7 @@ public float Descender { get; set; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-### Remarks
+#### Remarks
 Unfortunately, font formats don't define the descender in a uniform way. For some formats,  
 it represents the descent of all capital Latin characters (without accents). For others it is  
 the ascent of the lowest accented character. Finally, other formats define it as being equal  
@@ -74,7 +74,7 @@ to the Y min value of the global bounding box. This field is negative for values
 
 <a name='Velaptor.Graphics.GlyphMetrics.Glyph'></a>
 
-## GlyphMetrics.Glyph Property
+### Glyph 
 
 Gets or sets the glyph character.
 
@@ -87,7 +87,7 @@ public char Glyph { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.GlyphBounds'></a>
 
-## GlyphMetrics.GlyphBounds Property
+### GlyphBounds 
 
 Gets or sets the rectangular bounds of where in a font texture  
 atlas the given [Glyph](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Glyph 'Velaptor.Graphics.GlyphMetrics.Glyph') resides.
@@ -101,7 +101,7 @@ public System.Drawing.RectangleF GlyphBounds { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.GlyphHeight'></a>
 
-## GlyphMetrics.GlyphHeight Property
+### GlyphHeight 
 
 Gets or sets the glyph's height.
 
@@ -114,7 +114,7 @@ public float GlyphHeight { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.GlyphWidth'></a>
 
-## GlyphMetrics.GlyphWidth Property
+### GlyphWidth 
 
 Gets or sets the glyph's width.
 
@@ -127,7 +127,7 @@ public float GlyphWidth { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.HoriBearingX'></a>
 
-## GlyphMetrics.HoriBearingX Property
+### HoriBearingX 
 
 Gets or sets the horizontal distance from the current cursor position to  
 the leftmost border of the glyph image's bounding box.
@@ -141,7 +141,7 @@ public float HoriBearingX { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.HoriBearingY'></a>
 
-## GlyphMetrics.HoriBearingY Property
+### HoriBearingY 
 
 Gets or sets the vertical distance from the current cursor position  
 (on the baseline) to the topmost border of the glyph image's bounding box.
@@ -155,7 +155,7 @@ public float HoriBearingY { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.HorizontalAdvance'></a>
 
-## GlyphMetrics.HorizontalAdvance Property
+### HorizontalAdvance 
 
 Gets or sets the horizontal distance to increment the pen position when the glyph  
 is drawn as part of a string of text.
@@ -169,7 +169,7 @@ public float HorizontalAdvance { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.XMax'></a>
 
-## GlyphMetrics.XMax Property
+### XMax 
 
 Gets or sets the horizontal maximum (right-most).
 
@@ -182,7 +182,7 @@ public float XMax { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.XMin'></a>
 
-## GlyphMetrics.XMin Property
+### XMin 
 
 Gets or sets the horizontal minimum (left-most).
 
@@ -195,7 +195,7 @@ public float XMin { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.YMax'></a>
 
-## GlyphMetrics.YMax Property
+### YMax 
 
 Gets or sets the vertical maximum (top-most).
 
@@ -208,7 +208,7 @@ public float YMax { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.YMin'></a>
 
-## GlyphMetrics.YMin Property
+### YMin 
 
 Gets or sets the vertical minimum (bottom-most).
 
@@ -218,11 +218,11 @@ public float YMin { get; set; }
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.GlyphMetrics.Equals(object)'></a>
 
-## GlyphMetrics.Equals(object) Method
+### Equals(object) 
 
 Determines whether the specified object is equal to the current object.
 
@@ -243,7 +243,7 @@ The object to compare with the current object.
 
 <a name='Velaptor.Graphics.GlyphMetrics.Equals(Velaptor.Graphics.GlyphMetrics)'></a>
 
-## GlyphMetrics.Equals(GlyphMetrics) Method
+### Equals(GlyphMetrics) 
 
 Defines a generalized method that a value type or class implements to create a type-specific method for determining equality of instances.
 
@@ -261,7 +261,7 @@ public bool Equals(Velaptor.Graphics.GlyphMetrics other);
 
 <a name='Velaptor.Graphics.GlyphMetrics.GetHashCode()'></a>
 
-## GlyphMetrics.GetHashCode() Method
+### GetHashCode() 
 
 Returns the hash code for this instance.
 
@@ -275,7 +275,7 @@ A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Graphics.GlyphMetrics.ToString()'></a>
 
-## GlyphMetrics.ToString() Method
+### ToString() 
 
 Returns the fully qualified type name of this instance.
 

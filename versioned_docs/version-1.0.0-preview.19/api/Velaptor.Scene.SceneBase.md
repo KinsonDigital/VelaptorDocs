@@ -5,7 +5,7 @@ title: Velaptor.Scene.SceneBase
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Scene](Velaptor.Scene.md 'Velaptor.Scene')
 
-## SceneBase Class
+#### SceneBase Class
 
 A base scene to be used for creating new custom scenes.
 
@@ -20,11 +20,11 @@ System.IDisposable
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → SceneBase
 
 Implements [IScene](Velaptor.Scene.IScene.md 'Velaptor.Scene.IScene'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
-### Properties
+## Properties
 
 <a name='Velaptor.Scene.SceneBase.ContentLoader'></a>
 
-## SceneBase.ContentLoader Property
+### ContentLoader 
 
 Gets the content loader.
 
@@ -39,7 +39,7 @@ Implements [ContentLoader](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Conten
 
 <a name='Velaptor.Scene.SceneBase.Controls'></a>
 
-## SceneBase.Controls Property
+### Controls 
 
 Gets the list of controls that have been added to the scene.
 
@@ -52,7 +52,7 @@ public System.Collections.Generic.IReadOnlyList<Velaptor.UI.IControl> Controls {
 
 <a name='Velaptor.Scene.SceneBase.Id'></a>
 
-## SceneBase.Id Property
+### Id 
 
 Gets the unique ID of the scene.
 
@@ -67,7 +67,7 @@ Implements [Id](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Id 'Velaptor.Scen
 
 <a name='Velaptor.Scene.SceneBase.IsLoaded'></a>
 
-## SceneBase.IsLoaded Property
+### IsLoaded 
 
 Gets the name of the scene.
 
@@ -82,7 +82,7 @@ Implements [IsLoaded](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.IsLoaded 'V
 
 <a name='Velaptor.Scene.SceneBase.Name'></a>
 
-## SceneBase.Name Property
+### Name 
 
 Gets the name of the scene.
 
@@ -97,7 +97,7 @@ Implements [Name](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Name 'Velaptor.
 
 <a name='Velaptor.Scene.SceneBase.WindowCenter'></a>
 
-## SceneBase.WindowCenter Property
+### WindowCenter 
 
 Gets the center of the window.
 
@@ -112,7 +112,7 @@ Implements [WindowCenter](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowC
 
 <a name='Velaptor.Scene.SceneBase.WindowSize'></a>
 
-## SceneBase.WindowSize Property
+### WindowSize 
 
 Gets the size of the window.
 
@@ -124,11 +124,11 @@ Implements [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSiz
 
 #### Property Value
 [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')
-### Methods
+## Methods
 
 <a name='Velaptor.Scene.SceneBase.AddControl(Velaptor.UI.IControl)'></a>
 
-## SceneBase.AddControl(IControl) Method
+### AddControl(IControl) 
 
 Adds a control to the scene to be updated and rendered.
 
@@ -147,7 +147,7 @@ Implements [AddControl(IControl)](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene
 
 <a name='Velaptor.Scene.SceneBase.Dispose()'></a>
 
-## SceneBase.Dispose() Method
+### Dispose() 
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 
@@ -159,7 +159,7 @@ Implements [Dispose()](https://docs.microsoft.com/en-us/dotnet/api/System.IDispo
 
 <a name='Velaptor.Scene.SceneBase.LoadContent()'></a>
 
-## SceneBase.LoadContent() Method
+### LoadContent() 
 
 Loads the scene content.
 
@@ -171,7 +171,7 @@ Implements [LoadContent()](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.LoadCo
 
 <a name='Velaptor.Scene.SceneBase.RemoveControl(Velaptor.UI.IControl)'></a>
 
-## SceneBase.RemoveControl(IControl) Method
+### RemoveControl(IControl) 
 
 Removes the given [control](Velaptor.Scene.SceneBase.md#Velaptor.Scene.SceneBase.RemoveControl(Velaptor.UI.IControl).control 'Velaptor.Scene.SceneBase.RemoveControl(Velaptor.UI.IControl).control') from the scene.
 
@@ -190,7 +190,7 @@ Implements [RemoveControl(IControl)](Velaptor.Scene.IScene.md#Velaptor.Scene.ISc
 
 <a name='Velaptor.Scene.SceneBase.Render()'></a>
 
-## SceneBase.Render() Method
+### Render() 
 
 Renders the object.
 
@@ -202,7 +202,7 @@ Implements [Render()](Velaptor.IDrawable.md#Velaptor.IDrawable.Render() 'Velapto
 
 <a name='Velaptor.Scene.SceneBase.UnloadContent()'></a>
 
-## SceneBase.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the scene's content.
 
@@ -214,7 +214,7 @@ Implements [UnloadContent()](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Unlo
 
 <a name='Velaptor.Scene.SceneBase.Update(Velaptor.FrameTime)'></a>
 
-## SceneBase.Update(FrameTime) Method
+### Update(FrameTime) 
 
 Updates the object.
 

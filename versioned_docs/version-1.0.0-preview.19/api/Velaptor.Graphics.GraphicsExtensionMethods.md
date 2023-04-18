@@ -5,7 +5,7 @@ title: Velaptor.Graphics.GraphicsExtensionMethods
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
 
-## GraphicsExtensionMethods Class
+#### GraphicsExtensionMethods Class
 
 Provides various helper extension methods.
 

@@ -5,7 +5,7 @@ title: Velaptor.PublicExtensionMethods
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## PublicExtensionMethods Class
+#### PublicExtensionMethods Class
 
 Provides extension helper methods for common game related operations.
 
@@ -14,11 +14,11 @@ public static class PublicExtensionMethods
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → PublicExtensionMethods
-### Methods
+## Methods
 
 <a name='Velaptor.PublicExtensionMethods.ApplySize(thisfloat,float)'></a>
 
-## PublicExtensionMethods.ApplySize(this float, float) Method
+### ApplySize(this float, float) 
 
 Returns the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisfloat,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this float, float).value') with the given [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisfloat,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this float, float).size') applied.
 
@@ -46,14 +46,14 @@ The value after the size has been applied.
 ### Example
 If the value was 3 and the size was 2, then the result would be 6.
 
-### Remarks
+#### Remarks
 A [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisfloat,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this float, float).size') value of 1 represents 100% or the unchanged normal size of the value.  
 If the value of [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisfloat,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this float, float).size') is 2, then the result would be the given  
 [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisfloat,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this float, float).value') that is doubled.
 
 <a name='Velaptor.PublicExtensionMethods.ApplySize(thisSystem.Drawing.RectangleF,float)'></a>
 
-## PublicExtensionMethods.ApplySize(this RectangleF, float) Method
+### ApplySize(this RectangleF, float) 
 
 Returns the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisSystem.Drawing.RectangleF,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this System.Drawing.RectangleF, float).value') with the given [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisSystem.Drawing.RectangleF,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this System.Drawing.RectangleF, float).size') applied.
 
@@ -78,7 +78,7 @@ The size to apply.
 [System.Drawing.RectangleF](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.RectangleF 'System.Drawing.RectangleF')  
 The result after the size has been applied.
 
-### Remarks
+#### Remarks
 The size will be applied to the following:  
 - [System.Drawing.RectangleF.X](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.RectangleF.X 'System.Drawing.RectangleF.X')  
 - [System.Drawing.RectangleF.Y](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.RectangleF.Y 'System.Drawing.RectangleF.Y')  
@@ -87,7 +87,7 @@ The size will be applied to the following:
 
 <a name='Velaptor.PublicExtensionMethods.ApplySize(thisSystem.Drawing.SizeF,float)'></a>
 
-## PublicExtensionMethods.ApplySize(this SizeF, float) Method
+### ApplySize(this SizeF, float) 
 
 Returns the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisSystem.Drawing.SizeF,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this System.Drawing.SizeF, float).value') with the given [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisSystem.Drawing.SizeF,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this System.Drawing.SizeF, float).size') applied.
 
@@ -112,14 +112,14 @@ The size to apply.
 [System.Drawing.SizeF](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.SizeF 'System.Drawing.SizeF')  
 The result after the size has been applied.
 
-### Remarks
+#### Remarks
 The size will be applied to the following:  
 - [System.Drawing.SizeF.Width](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.SizeF.Width 'System.Drawing.SizeF.Width')  
 - [System.Drawing.SizeF.Height](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.SizeF.Height 'System.Drawing.SizeF.Height')
 
 <a name='Velaptor.PublicExtensionMethods.ApplySize(thisuint,float)'></a>
 
-## PublicExtensionMethods.ApplySize(this uint, float) Method
+### ApplySize(this uint, float) 
 
 Returns the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisuint,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this uint, float).value') with the given [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisuint,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this uint, float).size') applied.
 
@@ -147,14 +147,14 @@ The value after the size has been applied.
 ### Example
 If the value was 3 and the size was 2, then the result would be 6.
 
-### Remarks
+#### Remarks
 A [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisuint,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this uint, float).size') value of 1 represents 100% or the unchanged normal size of the value.  
 If the value of [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisuint,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this uint, float).size') is 2, then the result would be the given  
 [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisuint,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this uint, float).value') that is doubled.
 
 <a name='Velaptor.PublicExtensionMethods.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float)'></a>
 
-## PublicExtensionMethods.ApplySize(this GlyphMetrics, float) Method
+### ApplySize(this GlyphMetrics, float) 
 
 Returns the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float).value 'Velaptor.PublicExtensionMethods.ApplySize(this Velaptor.Graphics.GlyphMetrics, float).value') with the given [size](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float).size 'Velaptor.PublicExtensionMethods.ApplySize(this Velaptor.Graphics.GlyphMetrics, float).size') applied.
 
@@ -179,7 +179,7 @@ The size to apply.
 [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor.Graphics.GlyphMetrics')  
 The result after the size has been applied.
 
-### Remarks
+#### Remarks
 The size will be applied to the following:  
 - [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor.Graphics.GlyphMetrics').[GlyphBounds](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.GlyphBounds 'Velaptor.Graphics.GlyphMetrics.GlyphBounds')  
 - [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor.Graphics.GlyphMetrics').[Ascender](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Ascender 'Velaptor.Graphics.GlyphMetrics.Ascender')  
@@ -200,7 +200,7 @@ The size will NOT be applied to the following:
 
 <a name='Velaptor.PublicExtensionMethods.DecreaseBrightness(thisSystem.Drawing.Color,float)'></a>
 
-## PublicExtensionMethods.DecreaseBrightness(this Color, float) Method
+### DecreaseBrightness(this Color, float) 
 
 Decreases the brightness of the color using the given [brightness](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.DecreaseBrightness(thisSystem.Drawing.Color,float).brightness 'Velaptor.PublicExtensionMethods.DecreaseBrightness(this System.Drawing.Color, float).brightness') value.
 
@@ -241,7 +241,7 @@ In the example above, the values would equal the results below:
 - Green component with brightness applied would result in a value of 16.  
 - Blue component with brightness applied would result in a value of 24.
 
-### Remarks
+#### Remarks
   
 The [brightness](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.DecreaseBrightness(thisSystem.Drawing.Color,float).brightness 'Velaptor.PublicExtensionMethods.DecreaseBrightness(this System.Drawing.Color, float).brightness') value must be a value between 0.0 and 1.0.  
   
@@ -254,7 +254,7 @@ The [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Dr
 
 <a name='Velaptor.PublicExtensionMethods.DoesNotContain(thisstring,char)'></a>
 
-## PublicExtensionMethods.DoesNotContain(this string, char) Method
+### DoesNotContain(this string, char) 
 
 Returns a value indicating whether or not a specified character occurs within this string.
 
@@ -281,7 +281,7 @@ The character to seek.
 
 <a name='Velaptor.PublicExtensionMethods.DoesNotContain(thisstring,string)'></a>
 
-## PublicExtensionMethods.DoesNotContain(this string, string) Method
+### DoesNotContain(this string, string) 
 
 Returns a value indicating whether or not a specified substring occurs within this string.
 
@@ -308,7 +308,7 @@ The string to seek.
 
 <a name='Velaptor.PublicExtensionMethods.DoesNotOnlyContainsLetters(thisstring)'></a>
 
-## PublicExtensionMethods.DoesNotOnlyContainsLetters(this string) Method
+### DoesNotOnlyContainsLetters(this string) 
 
 Returns a value indicating whether or not this string does not only contain letters.
 
@@ -329,7 +329,7 @@ The string to check.
 
 <a name='Velaptor.PublicExtensionMethods.ForceNegative(thisfloat)'></a>
 
-## PublicExtensionMethods.ForceNegative(this float) Method
+### ForceNegative(this float) 
 
 Sets the value to negative if it's positive.
 
@@ -350,7 +350,7 @@ The value as a negative number.
 
 <a name='Velaptor.PublicExtensionMethods.ForcePositive(thisfloat)'></a>
 
-## PublicExtensionMethods.ForcePositive(this float) Method
+### ForcePositive(this float) 
 
 Sets the value to positive if it's negative.
 
@@ -371,7 +371,7 @@ The value as a positive number.
 
 <a name='Velaptor.PublicExtensionMethods.GetPosition(thisSystem.Drawing.RectangleF)'></a>
 
-## PublicExtensionMethods.GetPosition(this RectangleF) Method
+### GetPosition(this RectangleF) 
 
 Returns the position in the given [rect](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.GetPosition(thisSystem.Drawing.RectangleF).rect 'Velaptor.PublicExtensionMethods.GetPosition(this System.Drawing.RectangleF).rect') as a [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2').
 
@@ -392,7 +392,7 @@ The [System.Drawing.RectangleF](https://docs.microsoft.com/en-us/dotnet/api/Syst
 
 <a name='Velaptor.PublicExtensionMethods.IncreaseBrightness(thisSystem.Drawing.Color,float)'></a>
 
-## PublicExtensionMethods.IncreaseBrightness(this Color, float) Method
+### IncreaseBrightness(this Color, float) 
 
 Increases the brightness of the color using the given [brightness](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.IncreaseBrightness(thisSystem.Drawing.Color,float).brightness 'Velaptor.PublicExtensionMethods.IncreaseBrightness(this System.Drawing.Color, float).brightness') value.
 
@@ -433,7 +433,7 @@ In the example above, the values would equal the results below:
 - Green component with brightness applied would result in a value of 24.  
 - Blue component with brightness applied would result in a value of 36.
 
-### Remarks
+#### Remarks
   
 The [brightness](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.IncreaseBrightness(thisSystem.Drawing.Color,float).brightness 'Velaptor.PublicExtensionMethods.IncreaseBrightness(this System.Drawing.Color, float).brightness') value must be a value between 0.0 and 1.0.  
   
@@ -446,7 +446,7 @@ The [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Dr
 
 <a name='Velaptor.PublicExtensionMethods.IsLetter(thischar)'></a>
 
-## PublicExtensionMethods.IsLetter(this char) Method
+### IsLetter(this char) 
 
 Returns a value indicating whether or not the character is a letter.
 
@@ -467,7 +467,7 @@ True if the character is an upper or lower case letter.
 
 <a name='Velaptor.PublicExtensionMethods.IsNotLetter(thischar)'></a>
 
-## PublicExtensionMethods.IsNotLetter(this char) Method
+### IsNotLetter(this char) 
 
 Returns a value indicating whether or not the character is not a letter.
 
@@ -488,7 +488,7 @@ True if the character is not an upper or lower case letter.
 
 <a name='Velaptor.PublicExtensionMethods.MapValue(thisbyte,byte,byte,byte,byte)'></a>
 
-## PublicExtensionMethods.MapValue(this byte, byte, byte, byte, byte) Method
+### MapValue(this byte, byte, byte, byte, byte) 
 
 Maps the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.MapValue(thisbyte,byte,byte,byte,byte).value 'Velaptor.PublicExtensionMethods.MapValue(this byte, byte, byte, byte, byte).value') from one range to another.
 
@@ -531,7 +531,7 @@ The to ending range value.
 [System.Byte](https://docs.microsoft.com/en-us/dotnet/api/System.Byte 'System.Byte')  
 A value that has been mapped to a range between [toStart](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.MapValue(thisbyte,byte,byte,byte,byte).toStart 'Velaptor.PublicExtensionMethods.MapValue(this byte, byte, byte, byte, byte).toStart') and [toStop](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.MapValue(thisbyte,byte,byte,byte,byte).toStop 'Velaptor.PublicExtensionMethods.MapValue(this byte, byte, byte, byte, byte).toStop').
 
-### Remarks
+#### Remarks
 Be careful when restricting the 'to' values to a value between 0 and 1.  This will always return a value  
 of 0.  This is because the return type is a byte and any value between the values of 0 and 1 is  
 a floating point value and floating point values cannot be represented with a byte data type.  
@@ -541,7 +541,7 @@ is between the values of 0 and 1, use the method overload [MapValue(this int, fl
 
 <a name='Velaptor.PublicExtensionMethods.MapValue(thisbyte,float,float,float,float)'></a>
 
-## PublicExtensionMethods.MapValue(this byte, float, float, float, float) Method
+### MapValue(this byte, float, float, float, float) 
 
 Maps the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.MapValue(thisbyte,float,float,float,float).value 'Velaptor.PublicExtensionMethods.MapValue(this byte, float, float, float, float).value') from one range to another.
 
@@ -586,7 +586,7 @@ A value that has been mapped to a range between [toStart](Velaptor.PublicExtensi
 
 <a name='Velaptor.PublicExtensionMethods.MapValue(thisfloat,float,float,float,float)'></a>
 
-## PublicExtensionMethods.MapValue(this float, float, float, float, float) Method
+### MapValue(this float, float, float, float, float) 
 
 Maps the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.MapValue(thisfloat,float,float,float,float).value 'Velaptor.PublicExtensionMethods.MapValue(this float, float, float, float, float).value') from one range to another.
 
@@ -631,7 +631,7 @@ A value that has been mapped to a range between [toStart](Velaptor.PublicExtensi
 
 <a name='Velaptor.PublicExtensionMethods.MapValue(thisint,float,float,float,float)'></a>
 
-## PublicExtensionMethods.MapValue(this int, float, float, float, float) Method
+### MapValue(this int, float, float, float, float) 
 
 Maps the given [value](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.MapValue(thisint,float,float,float,float).value 'Velaptor.PublicExtensionMethods.MapValue(this int, float, float, float, float).value') from one range to another.
 
@@ -676,7 +676,7 @@ A value that has been mapped to a range between [toStart](Velaptor.PublicExtensi
 
 <a name='Velaptor.PublicExtensionMethods.OnlyContainsLetters(thisstring)'></a>
 
-## PublicExtensionMethods.OnlyContainsLetters(this string) Method
+### OnlyContainsLetters(this string) 
 
 Returns a value indicating whether or not this string only contains letters.
 
@@ -697,7 +697,7 @@ The string to check.
 
 <a name='Velaptor.PublicExtensionMethods.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool)'></a>
 
-## PublicExtensionMethods.RotateAround(this Vector2, Vector2, float, bool) Method
+### RotateAround(this Vector2, Vector2, float, bool) 
 
 Rotates the [vector](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool).vector 'Velaptor.PublicExtensionMethods.RotateAround(this System.Numerics.Vector2, System.Numerics.Vector2, float, bool).vector') around the [origin](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool).origin 'Velaptor.PublicExtensionMethods.RotateAround(this System.Numerics.Vector2, System.Numerics.Vector2, float, bool).origin') at the given [angle](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool).angle 'Velaptor.PublicExtensionMethods.RotateAround(this System.Numerics.Vector2, System.Numerics.Vector2, float, bool).angle').
 
@@ -736,7 +736,7 @@ The [vector](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.
 
 <a name='Velaptor.PublicExtensionMethods.ToDegrees(thisfloat)'></a>
 
-## PublicExtensionMethods.ToDegrees(this float) Method
+### ToDegrees(this float) 
 
 Converts the given [radians](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ToDegrees(thisfloat).radians 'Velaptor.PublicExtensionMethods.ToDegrees(this float).radians') value into degrees.
 
@@ -757,7 +757,7 @@ The radians converted into degrees.
 
 <a name='Velaptor.PublicExtensionMethods.ToRadians(thisfloat)'></a>
 
-## PublicExtensionMethods.ToRadians(this float) Method
+### ToRadians(this float) 
 
 Converts the given [degrees](Velaptor.PublicExtensionMethods.md#Velaptor.PublicExtensionMethods.ToRadians(thisfloat).degrees 'Velaptor.PublicExtensionMethods.ToRadians(this float).degrees') value into radians.
 
@@ -778,7 +778,7 @@ The degrees converted into radians.
 
 <a name='Velaptor.PublicExtensionMethods.ToVector4(thisSystem.Drawing.Color)'></a>
 
-## PublicExtensionMethods.ToVector4(this Color) Method
+### ToVector4(this Color) 
 
 Converts the given [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color') to a [System.Numerics.Vector4](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector4 'System.Numerics.Vector4')  
 with each component holding the color component values.

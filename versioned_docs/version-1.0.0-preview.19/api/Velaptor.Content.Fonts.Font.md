@@ -5,7 +5,7 @@ title: Velaptor.Content.Fonts.Font
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Fonts](Velaptor.Content.Fonts.md 'Velaptor.Content.Fonts')
 
-## Font Class
+#### Font Class
 
 Represents a font with a set size and style that can be used to render text to the screen.
 
@@ -18,11 +18,11 @@ Velaptor.Content.IContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Font
 
 Implements [IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Properties
+## Properties
 
 <a name='Velaptor.Content.Fonts.Font.Atlas'></a>
 
-## Font.Atlas Property
+### Atlas 
 
 Gets the font atlas texture that contains all of the bitmap data for all available glyphs for the font.
 
@@ -37,7 +37,7 @@ Implements [Atlas](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.
 
 <a name='Velaptor.Content.Fonts.Font.AvailableStylesForFamily'></a>
 
-## Font.AvailableStylesForFamily Property
+### AvailableStylesForFamily 
 
 Gets a list of all the available font styles for the current font [FamilyName](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.FamilyName 'Velaptor.Content.Fonts.IFont.FamilyName').
 
@@ -52,7 +52,7 @@ Implements [AvailableStylesForFamily](Velaptor.Content.Fonts.IFont.md#Velaptor.C
 
 <a name='Velaptor.Content.Fonts.Font.FamilyName'></a>
 
-## Font.FamilyName Property
+### FamilyName 
 
 Gets the name of the font family.
 
@@ -67,7 +67,7 @@ Implements [FamilyName](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.I
 
 <a name='Velaptor.Content.Fonts.Font.FilePath'></a>
 
-## Font.FilePath Property
+### FilePath 
 
 Gets the path to the content.
 
@@ -82,7 +82,7 @@ Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Fil
 
 <a name='Velaptor.Content.Fonts.Font.HasKerning'></a>
 
-## Font.HasKerning Property
+### HasKerning 
 
 Gets a value indicating whether or not the font has kerning for text rendering layout.
 
@@ -97,7 +97,7 @@ Implements [HasKerning](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.I
 
 <a name='Velaptor.Content.Fonts.Font.IsDefaultFont'></a>
 
-## Font.IsDefaultFont Property
+### IsDefaultFont 
 
 Gets a value indicating whether or not the font is a default font.
 
@@ -112,7 +112,7 @@ Implements [IsDefaultFont](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Font
 
 <a name='Velaptor.Content.Fonts.Font.LineSpacing'></a>
 
-## Font.LineSpacing Property
+### LineSpacing 
 
 Gets the spacing between lines of text in pixels.
 
@@ -127,7 +127,7 @@ Implements [LineSpacing](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.
 
 <a name='Velaptor.Content.Fonts.Font.Metrics'></a>
 
-## Font.Metrics Property
+### Metrics 
 
 Gets the list of metrics for all of the glyphs supported by the font.
 
@@ -142,7 +142,7 @@ Implements [Metrics](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFon
 
 <a name='Velaptor.Content.Fonts.Font.Name'></a>
 
-## Font.Name Property
+### Name 
 
 Gets the name of the content.
 
@@ -157,7 +157,7 @@ Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'V
 
 <a name='Velaptor.Content.Fonts.Font.Size'></a>
 
-## Font.Size Property
+### Size 
 
 Gets or sets the size of the font in points.
 
@@ -172,7 +172,7 @@ Implements [Size](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.S
 
 <a name='Velaptor.Content.Fonts.Font.Source'></a>
 
-## Font.Source Property
+### Source 
 
 Gets the source of where the font was loaded.
 
@@ -187,7 +187,7 @@ Implements [Source](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont
 
 <a name='Velaptor.Content.Fonts.Font.Style'></a>
 
-## Font.Style Property
+### Style 
 
 Gets or sets the style of the font.
 
@@ -199,11 +199,11 @@ Implements [Style](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.
 
 #### Property Value
 [FontStyle](Velaptor.Content.Fonts.FontStyle.md 'Velaptor.Content.Fonts.FontStyle')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2)'></a>
 
-## Font.GetCharacterBounds(string, Vector2) Method
+### GetCharacterBounds(string, Vector2) 
 
 Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2).text 'Velaptor.Content.Fonts.Font.GetCharacterBounds(string, System.Numerics.Vector2).text') based on the  
 given [textPos](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2).textPos 'Velaptor.Content.Fonts.Font.GetCharacterBounds(string, System.Numerics.Vector2).textPos').
@@ -231,13 +231,13 @@ Implements [GetCharacterBounds(string, Vector2)](Velaptor.Content.Fonts.IFont.md
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System.ValueTuple')[System.Char](https://docs.microsoft.com/en-us/dotnet/api/System.Char 'System.Char')[,](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System.ValueTuple')[System.Drawing.RectangleF](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.RectangleF 'System.Drawing.RectangleF')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System.ValueTuple')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')  
 The bounds for each character.
 
-### Remarks
+#### Remarks
 The bounds include the width, height, and position of the character relative to  
 the [textPos](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2).textPos 'Velaptor.Content.Fonts.Font.GetCharacterBounds(string, System.Numerics.Vector2).textPos').  The position is relative to the top left corner of the character.
 
 <a name='Velaptor.Content.Fonts.Font.GetKerning(uint,uint)'></a>
 
-## Font.GetKerning(uint, uint) Method
+### GetKerning(uint, uint) 
 
 Gets the kerning value between two glyphs.
 
@@ -264,14 +264,14 @@ Implements [GetKerning(uint, uint)](Velaptor.Content.Fonts.IFont.md#Velaptor.Con
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')  
 The kerning (horizontal spacing) between the glyphs.
 
-### Remarks
+#### Remarks
 Refer to the URL below for more info.  
   
 https://freetype.org/freetype2/docs/glyphs/glyphs-4.html#section-1.
 
 <a name='Velaptor.Content.Fonts.Font.Measure(string)'></a>
 
-## Font.Measure(string) Method
+### Measure(string) 
 
 Measures the width and height bounds of the given [text](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.Measure(string).text 'Velaptor.Content.Fonts.Font.Measure(string).text').
 
@@ -294,7 +294,7 @@ The width and height of the text in pixels.
 
 <a name='Velaptor.Content.Fonts.Font.ToGlyphMetrics(string)'></a>
 
-## Font.ToGlyphMetrics(string) Method
+### ToGlyphMetrics(string) 
 
 Returns all of the glyph metrics for the given text.
 

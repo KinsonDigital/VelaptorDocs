@@ -5,7 +5,7 @@ title: Velaptor.UI.IControl
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## IControl Interface
+#### IControl Interface
 
 A user interface object that can be updated and rendered to the screen.
 
@@ -21,11 +21,11 @@ Derived
 &#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')
 
 Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [IContentLoadable](Velaptor.Content.IContentLoadable.md 'Velaptor.Content.IContentLoadable'), [ISizable](Velaptor.UI.ISizable.md 'Velaptor.UI.ISizable')
-### Properties
+## Properties
 
 <a name='Velaptor.UI.IControl.Bottom'></a>
 
-## IControl.Bottom Property
+### Bottom 
 
 Gets or sets the position of the bottom of the control.
 
@@ -38,7 +38,7 @@ int Bottom { get; set; }
 
 <a name='Velaptor.UI.IControl.Enabled'></a>
 
-## IControl.Enabled Property
+### Enabled 
 
 Gets or sets a value indicating whether or not the control is enabled.
 
@@ -51,7 +51,7 @@ bool Enabled { get; set; }
 
 <a name='Velaptor.UI.IControl.IsMouseOver'></a>
 
-## IControl.IsMouseOver Property
+### IsMouseOver 
 
 Gets a value indicating whether or not the mouse is hovering over the button.
 
@@ -64,7 +64,7 @@ bool IsMouseOver { get; }
 
 <a name='Velaptor.UI.IControl.Left'></a>
 
-## IControl.Left Property
+### Left 
 
 Gets or sets the position of the left side of the control.
 
@@ -77,7 +77,7 @@ int Left { get; set; }
 
 <a name='Velaptor.UI.IControl.Name'></a>
 
-## IControl.Name Property
+### Name 
 
 Gets or sets the name of the control.
 
@@ -90,7 +90,7 @@ string Name { get; set; }
 
 <a name='Velaptor.UI.IControl.Position'></a>
 
-## IControl.Position Property
+### Position 
 
 Gets or sets the position of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl') on the screen.
 
@@ -103,7 +103,7 @@ System.Drawing.Point Position { get; set; }
 
 <a name='Velaptor.UI.IControl.Right'></a>
 
-## IControl.Right Property
+### Right 
 
 Gets or sets the position of the right side of the control.
 
@@ -116,7 +116,7 @@ int Right { get; set; }
 
 <a name='Velaptor.UI.IControl.Top'></a>
 
-## IControl.Top Property
+### Top 
 
 Gets or sets the position of the top of the control.
 
@@ -129,7 +129,7 @@ int Top { get; set; }
 
 <a name='Velaptor.UI.IControl.Visible'></a>
 
-## IControl.Visible Property
+### Visible 
 
 Gets or sets a value indicating whether or not the control is visible.
 

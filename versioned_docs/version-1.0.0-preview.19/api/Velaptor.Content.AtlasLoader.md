@@ -5,7 +5,7 @@ title: Velaptor.Content.AtlasLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## AtlasLoader Class
+#### AtlasLoader Class
 
 Loads atlas data.
 
@@ -17,22 +17,22 @@ Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → AtlasLoader
 
 Implements [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IAtlasData](Velaptor.Content.IAtlasData.md 'Velaptor.Content.IAtlasData')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.AtlasLoader.AtlasLoader()'></a>
 
-## AtlasLoader() Constructor
+### AtlasLoader() Constructor
 
 Initializes a new instance of the [AtlasLoader](Velaptor.Content.AtlasLoader.md 'Velaptor.Content.AtlasLoader') class.
 
 ```csharp
 public AtlasLoader();
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Content.AtlasLoader.Load(string)'></a>
 
-## AtlasLoader.Load(string) Method
+### Load(string) 
 
 Loads texture atlas data using the given [contentPathOrName](Velaptor.Content.AtlasLoader.md#Velaptor.Content.AtlasLoader.Load(string).contentPathOrName 'Velaptor.Content.AtlasLoader.Load(string).contentPathOrName').
 
@@ -79,7 +79,7 @@ The specified path is invalid (for example, it is on an unmapped drive).
 [System.NotSupportedException](https://docs.microsoft.com/en-us/dotnet/api/System.NotSupportedException 'System.NotSupportedException')  
 The path contains a colon character `:` that is not part of a drive label.
 
-### Remarks
+#### Remarks
 Valid Values:  
 - MyAtlas  
 - C:/Atlas/MyAtlas.png  
@@ -91,7 +91,7 @@ Invalid Values:
 
 <a name='Velaptor.Content.AtlasLoader.Unload(string)'></a>
 
-## AtlasLoader.Unload(string) Method
+### Unload(string) 
 
 Unloads the data with the given [contentPathOrName](Velaptor.Content.AtlasLoader.md#Velaptor.Content.AtlasLoader.Unload(string).contentPathOrName 'Velaptor.Content.AtlasLoader.Unload(string).contentPathOrName').
 

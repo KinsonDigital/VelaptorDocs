@@ -5,7 +5,7 @@ title: Velaptor.Content.IContent
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## IContent Interface
+#### IContent Interface
 
 Represents loadable content data.
 
@@ -22,11 +22,11 @@ Derived
 &#8627; [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture')  
 &#8627; [Sound](Velaptor.Content.Sound.md 'Velaptor.Content.Sound')  
 &#8627; [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture')
-### Properties
+## Properties
 
 <a name='Velaptor.Content.IContent.FilePath'></a>
 
-## IContent.FilePath Property
+### FilePath 
 
 Gets the path to the content.
 
@@ -39,7 +39,7 @@ string FilePath { get; }
 
 <a name='Velaptor.Content.IContent.Name'></a>
 
-## IContent.Name Property
+### Name 
 
 Gets the name of the content.
 

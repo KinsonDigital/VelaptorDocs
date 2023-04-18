@@ -5,7 +5,7 @@ title: Velaptor.Factories.RendererFactory
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
 
-## RendererFactory Class
+#### RendererFactory Class
 
 Creates renderer instances.
 
@@ -17,11 +17,11 @@ Velaptor.Graphics.Renderers.IRendererFactory
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → RendererFactory
 
 Implements [IRendererFactory](Velaptor.Graphics.Renderers.IRendererFactory.md 'Velaptor.Graphics.Renderers.IRendererFactory')
-### Methods
+## Methods
 
 <a name='Velaptor.Factories.RendererFactory.CreateFontRenderer()'></a>
 
-## RendererFactory.CreateFontRenderer() Method
+### CreateFontRenderer() 
 
 Creates an instance of the [IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor.Graphics.Renderers.IFontRenderer').
 
@@ -35,12 +35,12 @@ Implements [CreateFontRenderer()](Velaptor.Graphics.Renderers.IRendererFactory.m
 [IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor.Graphics.Renderers.IFontRenderer')  
 The font renderer.
 
-### Remarks
+#### Remarks
 `NOTE:` the renderer is a singleton.
 
 <a name='Velaptor.Factories.RendererFactory.CreateLineRenderer()'></a>
 
-## RendererFactory.CreateLineRenderer() Method
+### CreateLineRenderer() 
 
 Creates an instance of the [ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor.Graphics.Renderers.ILineRenderer').
 
@@ -54,12 +54,12 @@ Implements [CreateLineRenderer()](Velaptor.Graphics.Renderers.IRendererFactory.m
 [ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor.Graphics.Renderers.ILineRenderer')  
 The line renderer.
 
-### Remarks
+#### Remarks
 `NOTE:` the renderer is a singleton.
 
 <a name='Velaptor.Factories.RendererFactory.CreateRectangleRenderer()'></a>
 
-## RendererFactory.CreateRectangleRenderer() Method
+### CreateRectangleRenderer() 
 
 Creates an instance of the [IRectangleRenderer](Velaptor.Graphics.Renderers.IRectangleRenderer.md 'Velaptor.Graphics.Renderers.IRectangleRenderer').
 
@@ -73,12 +73,12 @@ Implements [CreateRectangleRenderer()](Velaptor.Graphics.Renderers.IRendererFact
 [IRectangleRenderer](Velaptor.Graphics.Renderers.IRectangleRenderer.md 'Velaptor.Graphics.Renderers.IRectangleRenderer')  
 The rectangle renderer.
 
-### Remarks
+#### Remarks
 `NOTE:` the renderer is a singleton.
 
 <a name='Velaptor.Factories.RendererFactory.CreateTextureRenderer()'></a>
 
-## RendererFactory.CreateTextureRenderer() Method
+### CreateTextureRenderer() 
 
 Creates an instance of the [ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor.Graphics.Renderers.ITextureRenderer').
 
@@ -92,5 +92,5 @@ Implements [CreateTextureRenderer()](Velaptor.Graphics.Renderers.IRendererFactor
 [ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor.Graphics.Renderers.ITextureRenderer')  
 The texture renderer.
 
-### Remarks
+#### Remarks
 `NOTE:` the renderer is a singleton.

@@ -5,7 +5,7 @@ title: Velaptor.Graphics.ImageData
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
 
-## ImageData Struct
+#### ImageData Struct
 
 Holds image data such as the pixel colors for each X and Y location, the image width, and height.
 
@@ -15,11 +15,11 @@ System.IEquatable<Velaptor.Graphics.ImageData>
 ```
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string)'></a>
 
-## ImageData(Color[,], uint, uint, string) Constructor
+### ImageData(Color[,], uint, uint, string) Constructor
 
 Initializes a new instance of the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') struct.
 
@@ -52,13 +52,13 @@ The height of the image.
 
 The file path of where the image exists.
 
-### Remarks
+#### Remarks
 The [filePath](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).filePath 'Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,], uint, uint, string).filePath') is used for reference only.
-### Properties
+## Properties
 
 <a name='Velaptor.Graphics.ImageData.FilePath'></a>
 
-## ImageData.FilePath Property
+### FilePath 
 
 Gets the file path of the image.
 
@@ -69,12 +69,12 @@ public string FilePath { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-### Remarks
+#### Remarks
 This is only for reference.
 
 <a name='Velaptor.Graphics.ImageData.Height'></a>
 
-## ImageData.Height Property
+### Height 
 
 Gets the height of the image.
 
@@ -87,7 +87,7 @@ public uint Height { get; }
 
 <a name='Velaptor.Graphics.ImageData.IsFlippedHorizontally'></a>
 
-## ImageData.IsFlippedHorizontally Property
+### IsFlippedHorizontally 
 
 Gets a value indicating whether or not the image is flipped horizontally.
 
@@ -100,7 +100,7 @@ public bool IsFlippedHorizontally { get; }
 
 <a name='Velaptor.Graphics.ImageData.IsFlippedVertically'></a>
 
-## ImageData.IsFlippedVertically Property
+### IsFlippedVertically 
 
 Gets a value indicating whether or not the image is flipped vertically.
 
@@ -113,7 +113,7 @@ public bool IsFlippedVertically { get; }
 
 <a name='Velaptor.Graphics.ImageData.Pixels'></a>
 
-## ImageData.Pixels Property
+### Pixels 
 
 Gets the pixel colors of the image.
 
@@ -124,7 +124,7 @@ public System.Drawing.Color[,] Pixels { get; }
 #### Property Value
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
-### Remarks
+#### Remarks
 The first dimension is the X location of the pixel and the second  
 dimension is the Y location of the pixel.  
   
@@ -132,7 +132,7 @@ The 32-bit color component byte layout is ARGB.
 
 <a name='Velaptor.Graphics.ImageData.Width'></a>
 
-## ImageData.Width Property
+### Width 
 
 Gets the width of the image.
 
@@ -142,11 +142,11 @@ public uint Width { get; }
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point)'></a>
 
-## ImageData.DrawImage(ImageData, Point) Method
+### DrawImage(ImageData, Point) 
 
 Draws the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') onto this image,  
 starting at the given [location](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).location 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).location').
@@ -173,13 +173,13 @@ References the top left corner of the given [image](Velaptor.Graphics.ImageData.
 [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')  
 This current image with the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') painted onto it.
 
-### Remarks
+#### Remarks
 If a pixel of the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') is out side of the bounds of this  
 image, it will be skipped.
 
 <a name='Velaptor.Graphics.ImageData.Equals(Velaptor.Graphics.ImageData)'></a>
 
-## ImageData.Equals(ImageData) Method
+### Equals(ImageData) 
 
 Returns a value indicating whether or not this instance is equal to the given [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData').
 
@@ -200,7 +200,7 @@ The other data to compare.
 
 <a name='Velaptor.Graphics.ImageData.FlipHorizontally()'></a>
 
-## ImageData.FlipHorizontally() Method
+### FlipHorizontally() 
 
 Flips the image horizontally.
 
@@ -210,7 +210,7 @@ public void FlipHorizontally();
 
 <a name='Velaptor.Graphics.ImageData.FlipVertically()'></a>
 
-## ImageData.FlipVertically() Method
+### FlipVertically() 
 
 Flips the image vertically.
 
@@ -220,7 +220,7 @@ public void FlipVertically();
 
 <a name='Velaptor.Graphics.ImageData.GetHashCode()'></a>
 
-## ImageData.GetHashCode() Method
+### GetHashCode() 
 
 Returns the hash code for this instance.
 
@@ -234,7 +234,7 @@ A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Graphics.ImageData.IsEmpty()'></a>
 
-## ImageData.IsEmpty() Method
+### IsEmpty() 
 
 Returns a value indicating whether or not the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') contents are empty.
 
@@ -248,7 +248,7 @@ public bool IsEmpty();
 
 <a name='Velaptor.Graphics.ImageData.ToString()'></a>
 
-## ImageData.ToString() Method
+### ToString() 
 
 Returns the fully qualified type name of this instance.
 

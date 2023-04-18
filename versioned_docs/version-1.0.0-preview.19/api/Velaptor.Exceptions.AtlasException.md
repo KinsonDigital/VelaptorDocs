@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.AtlasException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## AtlasException Class
+#### AtlasException Class
 
 Thrown when there is an issue with an atlas.
 
@@ -14,11 +14,11 @@ public sealed class AtlasException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → AtlasException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.AtlasException.AtlasException()'></a>
 
-## AtlasException() Constructor
+### AtlasException() Constructor
 
 Initializes a new instance of the [AtlasException](Velaptor.Exceptions.AtlasException.md 'Velaptor.Exceptions.AtlasException') class.
 
@@ -28,7 +28,7 @@ public AtlasException();
 
 <a name='Velaptor.Exceptions.AtlasException.AtlasException(string,System.Exception)'></a>
 
-## AtlasException(string, Exception) Constructor
+### AtlasException(string, Exception) Constructor
 
 Initializes a new instance of the [AtlasException](Velaptor.Exceptions.AtlasException.md 'Velaptor.Exceptions.AtlasException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.AtlasException.AtlasException(string)'></a>
 
-## AtlasException(string) Constructor
+### AtlasException(string) Constructor
 
 Initializes a new instance of the [AtlasException](Velaptor.Exceptions.AtlasException.md 'Velaptor.Exceptions.AtlasException') class.
 

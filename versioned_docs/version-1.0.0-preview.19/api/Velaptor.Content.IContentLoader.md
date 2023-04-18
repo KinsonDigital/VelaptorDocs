@@ -5,7 +5,7 @@ title: Velaptor.Content.IContentLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## IContentLoader Interface
+#### IContentLoader Interface
 
 Loads various kinds of content.
 
@@ -15,11 +15,11 @@ public interface IContentLoader
 
 Derived  
 &#8627; [ContentLoader](Velaptor.Content.ContentLoader.md 'Velaptor.Content.ContentLoader')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.IContentLoader.LoadAtlas(string)'></a>
 
-## IContentLoader.LoadAtlas(string) Method
+### LoadAtlas(string) 
 
 Loads the texture atlas data using the given [nameOrFilePath](Velaptor.Content.IContentLoader.md#Velaptor.Content.IContentLoader.LoadAtlas(string).nameOrFilePath 'Velaptor.Content.IContentLoader.LoadAtlas(string).nameOrFilePath').
 
@@ -40,7 +40,7 @@ The loaded texture atlas data.
 
 <a name='Velaptor.Content.IContentLoader.LoadFont(string,uint)'></a>
 
-## IContentLoader.LoadFont(string, uint) Method
+### LoadFont(string, uint) 
 
 Loads font content using the given [nameOrFilePath](Velaptor.Content.IContentLoader.md#Velaptor.Content.IContentLoader.LoadFont(string,uint).nameOrFilePath 'Velaptor.Content.IContentLoader.LoadFont(string, uint).nameOrFilePath') and [size](Velaptor.Content.IContentLoader.md#Velaptor.Content.IContentLoader.LoadFont(string,uint).size 'Velaptor.Content.IContentLoader.LoadFont(string, uint).size').
 
@@ -67,7 +67,7 @@ The loaded font content.
 
 <a name='Velaptor.Content.IContentLoader.LoadSound(string)'></a>
 
-## IContentLoader.LoadSound(string) Method
+### LoadSound(string) 
 
 Loads sound content using the given [nameOrFilePath](Velaptor.Content.IContentLoader.md#Velaptor.Content.IContentLoader.LoadSound(string).nameOrFilePath 'Velaptor.Content.IContentLoader.LoadSound(string).nameOrFilePath').
 
@@ -88,7 +88,7 @@ The loaded sound content.
 
 <a name='Velaptor.Content.IContentLoader.LoadTexture(string)'></a>
 
-## IContentLoader.LoadTexture(string) Method
+### LoadTexture(string) 
 
 Loads texture content using the given [nameOrFilePath](Velaptor.Content.IContentLoader.md#Velaptor.Content.IContentLoader.LoadTexture(string).nameOrFilePath 'Velaptor.Content.IContentLoader.LoadTexture(string).nameOrFilePath').
 
@@ -109,7 +109,7 @@ The loaded texture content.
 
 <a name='Velaptor.Content.IContentLoader.UnloadAtlas(Velaptor.Content.IAtlasData)'></a>
 
-## IContentLoader.UnloadAtlas(IAtlasData) Method
+### UnloadAtlas(IAtlasData) 
 
 Unloads the atlas data content.
 
@@ -126,7 +126,7 @@ The content to unload.
 
 <a name='Velaptor.Content.IContentLoader.UnloadFont(Velaptor.Content.Fonts.IFont)'></a>
 
-## IContentLoader.UnloadFont(IFont) Method
+### UnloadFont(IFont) 
 
 Unloads the font.
 
@@ -143,7 +143,7 @@ The content to unload.
 
 <a name='Velaptor.Content.IContentLoader.UnloadSound(Velaptor.Content.ISound)'></a>
 
-## IContentLoader.UnloadSound(ISound) Method
+### UnloadSound(ISound) 
 
 Unloads the sound content.
 
@@ -160,7 +160,7 @@ The content to unload.
 
 <a name='Velaptor.Content.IContentLoader.UnloadTexture(Velaptor.Content.ITexture)'></a>
 
-## IContentLoader.UnloadTexture(ITexture) Method
+### UnloadTexture(ITexture) 
 
 Unloads the texture content.
 

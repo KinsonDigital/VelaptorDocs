@@ -5,7 +5,7 @@ title: Velaptor.Content.Texture
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## Texture Class
+#### Texture Class
 
 The texture to render to a screen.
 
@@ -18,11 +18,11 @@ Velaptor.Content.IContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Texture
 
 Implements [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Texture.Texture(string,string)'></a>
 
-## Texture(string, string) Constructor
+### Texture(string, string) Constructor
 
 Initializes a new instance of the [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture') class.
 
@@ -50,7 +50,7 @@ Thrown if the [filePath](Velaptor.Content.Texture.md#Velaptor.Content.Texture.Te
 
 <a name='Velaptor.Content.Texture.Texture(string,Velaptor.Graphics.ImageData)'></a>
 
-## Texture(string, ImageData) Constructor
+### Texture(string, ImageData) Constructor
 
 Initializes a new instance of the [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture') class.
 
@@ -75,11 +75,11 @@ The image data of the texture.
 
 [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException')  
 Thrown if the [imageData](Velaptor.Content.Texture.md#Velaptor.Content.Texture.Texture(string,Velaptor.Graphics.ImageData).imageData 'Velaptor.Content.Texture.Texture(string, Velaptor.Graphics.ImageData).imageData') is empty.
-### Properties
+## Properties
 
 <a name='Velaptor.Content.Texture.FilePath'></a>
 
-## Texture.FilePath Property
+### FilePath 
 
 Gets the path to the content.
 
@@ -94,7 +94,7 @@ Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Fil
 
 <a name='Velaptor.Content.Texture.Height'></a>
 
-## Texture.Height Property
+### Height 
 
 Gets the height of the texture.
 
@@ -109,7 +109,7 @@ Implements [Height](Velaptor.Content.ITexture.md#Velaptor.Content.ITexture.Heigh
 
 <a name='Velaptor.Content.Texture.Id'></a>
 
-## Texture.Id Property
+### Id 
 
 Gets the ID of the texture.
 
@@ -124,7 +124,7 @@ Implements [Id](Velaptor.Content.ITexture.md#Velaptor.Content.ITexture.Id 'Velap
 
 <a name='Velaptor.Content.Texture.Name'></a>
 
-## Texture.Name Property
+### Name 
 
 Gets the name of the content.
 
@@ -139,7 +139,7 @@ Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'V
 
 <a name='Velaptor.Content.Texture.Width'></a>
 
-## Texture.Width Property
+### Width 
 
 Gets the width of the texture.
 

@@ -5,7 +5,7 @@ title: Velaptor.Content.IContentLoadable
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## IContentLoadable Interface
+#### IContentLoadable Interface
 
 Provides the ability to load content.
 
@@ -16,11 +16,11 @@ public interface IContentLoadable
 Derived  
 &#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')  
 &#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
-### Properties
+## Properties
 
 <a name='Velaptor.Content.IContentLoadable.IsLoaded'></a>
 
-## IContentLoadable.IsLoaded Property
+### IsLoaded 
 
 Gets a value indicating whether or not the content for an object is loaded.
 
@@ -30,11 +30,11 @@ bool IsLoaded { get; }
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.IContentLoadable.LoadContent()'></a>
 
-## IContentLoadable.LoadContent() Method
+### LoadContent() 
 
 Loads the content for an object.
 
@@ -44,7 +44,7 @@ void LoadContent();
 
 <a name='Velaptor.Content.IContentLoadable.UnloadContent()'></a>
 
-## IContentLoadable.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the content for an object.
 

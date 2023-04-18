@@ -5,7 +5,7 @@ title: Velaptor.Factories.PathResolverFactory
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
 
-## PathResolverFactory Class
+#### PathResolverFactory Class
 
 Creates path resolver instances.
 
@@ -14,11 +14,11 @@ public static class PathResolverFactory
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → PathResolverFactory
-### Methods
+## Methods
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateAtlasPathResolver()'></a>
 
-## PathResolverFactory.CreateAtlasPathResolver() Method
+### CreateAtlasPathResolver() 
 
 Creates a path resolver that resolves paths to texture atlas textures.
 
@@ -32,7 +32,7 @@ The resolver to texture content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateContentFontPathResolver()'></a>
 
-## PathResolverFactory.CreateContentFontPathResolver() Method
+### CreateContentFontPathResolver() 
 
 Creates a path resolver that resolves paths to fonts in the application's content directory.
 
@@ -46,7 +46,7 @@ The resolver instance.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateFontPathResolver()'></a>
 
-## PathResolverFactory.CreateFontPathResolver() Method
+### CreateFontPathResolver() 
 
 Creates a path resolver that resolves paths to font content.
 
@@ -60,7 +60,7 @@ The resolver to atlas content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateSoundPathResolver()'></a>
 
-## PathResolverFactory.CreateSoundPathResolver() Method
+### CreateSoundPathResolver() 
 
 Creates a path resolver that resolves paths to sound content.
 
@@ -74,7 +74,7 @@ The resolver to sound content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateSystemFontPathResolver()'></a>
 
-## PathResolverFactory.CreateSystemFontPathResolver() Method
+### CreateSystemFontPathResolver() 
 
 Creates a path resolver that resolves paths to fonts in the system's font directory.
 
@@ -88,7 +88,7 @@ The resolver instance.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateTexturePathResolver()'></a>
 
-## PathResolverFactory.CreateTexturePathResolver() Method
+### CreateTexturePathResolver() 
 
 Creates a path resolver that resolves paths to texture content.
 

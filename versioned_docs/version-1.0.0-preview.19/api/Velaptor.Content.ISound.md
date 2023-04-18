@@ -5,7 +5,7 @@ title: Velaptor.Content.ISound
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## ISound Interface
+#### ISound Interface
 
 A single sound that can be played, paused etc.
 
@@ -20,11 +20,11 @@ Derived
 &#8627; [Sound](Velaptor.Content.Sound.md 'Velaptor.Content.Sound')
 
 Implements [CASL.ISound](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound 'CASL.ISound'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Properties
+## Properties
 
 <a name='Velaptor.Content.ISound.FilePath'></a>
 
-## ISound.FilePath Property
+### FilePath 
 
 Gets the fully qualified path to the content file.
 
@@ -39,7 +39,7 @@ Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Fil
 
 <a name='Velaptor.Content.ISound.Id'></a>
 
-## ISound.Id Property
+### Id 
 
 Gets the unique ID of the sound.
 
@@ -52,7 +52,7 @@ uint Id { get; }
 
 <a name='Velaptor.Content.ISound.Name'></a>
 
-## ISound.Name Property
+### Name 
 
 Gets the name of the content.
 

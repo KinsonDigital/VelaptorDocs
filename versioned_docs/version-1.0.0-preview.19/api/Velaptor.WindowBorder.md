@@ -12,7 +12,7 @@ The different kinds of borders that a [IWindow](Velaptor.UI.IWindow.md 'Velaptor
 ```csharp
 public enum WindowBorder
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.WindowBorder.Fixed'></a>
 

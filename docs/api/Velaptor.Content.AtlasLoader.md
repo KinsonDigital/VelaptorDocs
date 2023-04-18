@@ -34,16 +34,16 @@ public AtlasLoader();
 
 ### Load(string) 
 
-Loads texture atlas data using the given [contentNameOrPath](Velaptor.Content.AtlasLoader.md#Velaptor.Content.AtlasLoader.Load(string).contentNameOrPath 'Velaptor.Content.AtlasLoader.Load(string).contentNameOrPath').
+Loads texture atlas data using the given [contentPathOrName](Velaptor.Content.AtlasLoader.md#Velaptor.Content.AtlasLoader.Load(string).contentPathOrName 'Velaptor.Content.AtlasLoader.Load(string).contentPathOrName').
 
 ```csharp
-public Velaptor.Content.IAtlasData Load(string contentNameOrPath);
+public Velaptor.Content.IAtlasData Load(string contentPathOrName);
 ```
 #### Parameters
 
-<a name='Velaptor.Content.AtlasLoader.Load(string).contentNameOrPath'></a>
+<a name='Velaptor.Content.AtlasLoader.Load(string).contentPathOrName'></a>
 
-`contentNameOrPath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`contentPathOrName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The content name or file path to the atlas data.
 
@@ -56,13 +56,28 @@ The loaded atlas data.
 #### Exceptions
 
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Occurs if [contentNameOrPath](Velaptor.Content.AtlasLoader.md#Velaptor.Content.AtlasLoader.Load(string).contentNameOrPath 'Velaptor.Content.AtlasLoader.Load(string).contentNameOrPath') is null or empty.
+Thrown if the [contentPathOrName](Velaptor.Content.AtlasLoader.md#Velaptor.Content.AtlasLoader.Load(string).contentPathOrName 'Velaptor.Content.AtlasLoader.Load(string).contentPathOrName') is null or empty.
 
-[LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor.Content.Exceptions.LoadAtlasException')  
-If the given full file path is not a `Texture(.png)` or `Atlas Data(.json)` file.
+[LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException')  
+Thrown if the resulting texture content file path is invalid.
 
-[LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException')  
-Occurs if directory path is used.  A non path content name or fully qualified file path is required.
+[System.IO.FileNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.FileNotFoundException 'System.IO.FileNotFoundException')  
+Thrown if the texture file does not exist.
+
+[System.IO.IOException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.IOException 'System.IO.IOException')  
+The directory specified a file or the network name is not known.
+
+[System.UnauthorizedAccessException](https://docs.microsoft.com/en-us/dotnet/api/System.UnauthorizedAccessException 'System.UnauthorizedAccessException')  
+The caller does not have the required permissions.
+
+[System.IO.PathTooLongException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.PathTooLongException 'System.IO.PathTooLongException')  
+The specified path, file name, or both exceed the system-defined maximum length.
+
+[System.IO.DirectoryNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.DirectoryNotFoundException 'System.IO.DirectoryNotFoundException')  
+The specified path is invalid (for example, it is on an unmapped drive).
+
+[System.NotSupportedException](https://docs.microsoft.com/en-us/dotnet/api/System.NotSupportedException 'System.NotSupportedException')  
+The path contains a colon character `:` that is not part of a drive label.
 
 #### Remarks
 Valid Values:  

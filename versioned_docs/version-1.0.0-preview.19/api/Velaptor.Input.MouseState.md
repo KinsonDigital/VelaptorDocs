@@ -5,7 +5,7 @@ title: Velaptor.Input.MouseState
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Input](Velaptor.Input.md 'Velaptor.Input')
 
-## MouseState Struct
+#### MouseState Struct
 
 Represents the state of the mouse.
 
@@ -15,11 +15,11 @@ System.IEquatable<Velaptor.Input.MouseState>
 ```
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[MouseState](Velaptor.Input.MouseState.md 'Velaptor.Input.MouseState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Methods
+## Methods
 
 <a name='Velaptor.Input.MouseState.AnyButtonsDown()'></a>
 
-## MouseState.AnyButtonsDown() Method
+### AnyButtonsDown() 
 
 Returns a value indicating whether or not any of the mouse buttons are in the down position.
 
@@ -33,7 +33,7 @@ True if any buttons are in the down position.
 
 <a name='Velaptor.Input.MouseState.Equals(object)'></a>
 
-## MouseState.Equals(object) Method
+### Equals(object) 
 
 Indicates whether this instance and a specified object are equal.
 
@@ -54,7 +54,7 @@ The object to compare with the current instance.
 
 <a name='Velaptor.Input.MouseState.Equals(Velaptor.Input.MouseState)'></a>
 
-## MouseState.Equals(MouseState) Method
+### Equals(MouseState) 
 
 ```csharp
 public bool Equals(Velaptor.Input.MouseState other);
@@ -70,7 +70,7 @@ public bool Equals(Velaptor.Input.MouseState other);
 
 <a name='Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton)'></a>
 
-## MouseState.GetButtonState(MouseButton) Method
+### GetButtonState(MouseButton) 
 
 Returns a value indicating whether or not the state for the given [mouseButton](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton 'Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton')  
 is in the down or up position.
@@ -92,7 +92,7 @@ The button state to retrieve.
 
 <a name='Velaptor.Input.MouseState.GetHashCode()'></a>
 
-## MouseState.GetHashCode() Method
+### GetHashCode() 
 
 Returns the hash code for this instance.
 
@@ -106,7 +106,7 @@ A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Input.MouseState.GetPosition()'></a>
 
-## MouseState.GetPosition() Method
+### GetPosition() 
 
 Gets or sets the position of the mouse.
 
@@ -120,7 +120,7 @@ The position relative to the top left corner of the window.
 
 <a name='Velaptor.Input.MouseState.GetScrollDirection()'></a>
 
-## MouseState.GetScrollDirection() Method
+### GetScrollDirection() 
 
 Gets the direction that the mouse wheel has been turned.
 
@@ -134,7 +134,7 @@ The scroll direction of the mouse wheel.
 
 <a name='Velaptor.Input.MouseState.GetScrollWheelValue()'></a>
 
-## MouseState.GetScrollWheelValue() Method
+### GetScrollWheelValue() 
 
 Gets the position value of the mouse scroll wheel.
 
@@ -148,7 +148,7 @@ The value of the scroll wheel.
 
 <a name='Velaptor.Input.MouseState.GetX()'></a>
 
-## MouseState.GetX() Method
+### GetX() 
 
 Gets or sets the X position of the mouse.
 
@@ -162,7 +162,7 @@ The X position relative to the top left corner of the window.
 
 <a name='Velaptor.Input.MouseState.GetY()'></a>
 
-## MouseState.GetY() Method
+### GetY() 
 
 Gets or sets the Y position of the mouse.
 
@@ -176,7 +176,7 @@ The Y position relative to the top left corner of the window.
 
 <a name='Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton)'></a>
 
-## MouseState.IsButtonDown(MouseButton) Method
+### IsButtonDown(MouseButton) 
 
 Returns a value indicating whether or not the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button')  
 is in the down position.
@@ -198,7 +198,7 @@ True if the mouse button is in the down position.
 
 <a name='Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton)'></a>
 
-## MouseState.IsButtonUp(MouseButton) Method
+### IsButtonUp(MouseButton) 
 
 Returns a value indicating whether or not the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button')  
 is in the up position.
@@ -220,7 +220,7 @@ True if the mouse button is in the up position.
 
 <a name='Velaptor.Input.MouseState.IsLeftButtonDown()'></a>
 
-## MouseState.IsLeftButtonDown() Method
+### IsLeftButtonDown() 
 
 Gets or sets a value indicating whether or not the left mouse button is in the down position.
 
@@ -234,7 +234,7 @@ public bool IsLeftButtonDown();
 
 <a name='Velaptor.Input.MouseState.IsLeftButtonUp()'></a>
 
-## MouseState.IsLeftButtonUp() Method
+### IsLeftButtonUp() 
 
 Returns a value indicating whether or not the left mouse button is in the up position.
 
@@ -248,7 +248,7 @@ public bool IsLeftButtonUp();
 
 <a name='Velaptor.Input.MouseState.IsMiddleButtonDown()'></a>
 
-## MouseState.IsMiddleButtonDown() Method
+### IsMiddleButtonDown() 
 
 Gets or sets a value indicating whether or not the middle mouse button is in the down position.
 
@@ -262,7 +262,7 @@ public bool IsMiddleButtonDown();
 
 <a name='Velaptor.Input.MouseState.IsMiddleButtonUp()'></a>
 
-## MouseState.IsMiddleButtonUp() Method
+### IsMiddleButtonUp() 
 
 Returns a value indicating whether or not the middle mouse button is in the up position.
 
@@ -276,7 +276,7 @@ public bool IsMiddleButtonUp();
 
 <a name='Velaptor.Input.MouseState.IsRightButtonDown()'></a>
 
-## MouseState.IsRightButtonDown() Method
+### IsRightButtonDown() 
 
 Gets or sets a value indicating whether or not the right mouse button is in the down position.
 
@@ -290,7 +290,7 @@ public bool IsRightButtonDown();
 
 <a name='Velaptor.Input.MouseState.IsRightButtonUp()'></a>
 
-## MouseState.IsRightButtonUp() Method
+### IsRightButtonUp() 
 
 Returns a value indicating whether or not the right mouse button is in the up position.
 

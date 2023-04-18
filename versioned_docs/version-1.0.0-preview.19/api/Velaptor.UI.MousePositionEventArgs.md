@@ -5,7 +5,7 @@ title: Velaptor.UI.MousePositionEventArgs
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## MousePositionEventArgs Class
+#### MousePositionEventArgs Class
 
 Holds information about the mouse position over a control.
 
@@ -14,11 +14,11 @@ public class MousePositionEventArgs : System.EventArgs
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.EventArgs](https://docs.microsoft.com/en-us/dotnet/api/System.EventArgs 'System.EventArgs') → MousePositionEventArgs
-### Constructors
+## Constructors
 
 <a name='Velaptor.UI.MousePositionEventArgs.MousePositionEventArgs(System.Drawing.Point)'></a>
 
-## MousePositionEventArgs(Point) Constructor
+### MousePositionEventArgs(Point) Constructor
 
 Initializes a new instance of the [MousePositionEventArgs](Velaptor.UI.MousePositionEventArgs.md 'Velaptor.UI.MousePositionEventArgs') class.
 
@@ -32,11 +32,11 @@ public MousePositionEventArgs(System.Drawing.Point mousePosition);
 `mousePosition` [System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Point 'System.Drawing.Point')
 
 The position of the mouse.
-### Properties
+## Properties
 
 <a name='Velaptor.UI.MousePositionEventArgs.MousePosition'></a>
 
-## MousePositionEventArgs.MousePosition Property
+### MousePosition 
 
 Gets the position of the mouse relative to the top right corner of the control.
 

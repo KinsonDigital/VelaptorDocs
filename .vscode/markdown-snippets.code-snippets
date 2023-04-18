@@ -44,7 +44,7 @@
 		"scope": "mdx",
 		"prefix": "step",
 		"body": [
-			"### <span class=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n$3"
+			"## <span class=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n$3"
 		],
 		"description": "Tutorial Step"
 	},
@@ -52,7 +52,7 @@
 		"scope": "mdx",
 		"prefix": "sub-step",
 		"body": [
-			"#### <span class=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n$3"
+			"### <span class=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n$3"
 		],
 		"description": "Tutorial Sub Step"
 	},

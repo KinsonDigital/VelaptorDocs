@@ -5,7 +5,7 @@ title: Velaptor.Content.ContentLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## ContentLoader Class
+#### ContentLoader Class
 
 Loads content.
 
@@ -17,11 +17,11 @@ Velaptor.Content.IContentLoader
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → ContentLoader
 
 Implements [IContentLoader](Velaptor.Content.IContentLoader.md 'Velaptor.Content.IContentLoader')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.ContentLoader.ContentLoader(Velaptor.Content.ILoader<Velaptor.Content.ITexture>,Velaptor.Content.ILoader<Velaptor.Content.ISound>,Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>,Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont>)'></a>
 
-## ContentLoader(ILoader&lt;ITexture&gt;, ILoader&lt;ISound&gt;, ILoader&lt;IAtlasData&gt;, ILoader&lt;IFont&gt;) Constructor
+### ContentLoader(ILoader&lt;ITexture&gt;, ILoader&lt;ISound&gt;, ILoader&lt;IAtlasData&gt;, ILoader&lt;IFont&gt;) Constructor
 
 Initializes a new instance of the [ContentLoader](Velaptor.Content.ContentLoader.md 'Velaptor.Content.ContentLoader') class.
 
@@ -53,11 +53,11 @@ Loads a texture atlas.
 `fontLoader` [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')
 
 Loads fonts for rendering text.
-### Methods
+## Methods
 
 <a name='Velaptor.Content.ContentLoader.LoadAtlas(string)'></a>
 
-## ContentLoader.LoadAtlas(string) Method
+### LoadAtlas(string) 
 
 Loads the texture atlas data using the given [nameOrFilePath](Velaptor.Content.ContentLoader.md#Velaptor.Content.ContentLoader.LoadAtlas(string).nameOrFilePath 'Velaptor.Content.ContentLoader.LoadAtlas(string).nameOrFilePath').
 
@@ -80,7 +80,7 @@ The loaded texture atlas data.
 
 <a name='Velaptor.Content.ContentLoader.LoadFont(string,uint)'></a>
 
-## ContentLoader.LoadFont(string, uint) Method
+### LoadFont(string, uint) 
 
 Loads font content using the given [nameOrFilePath](Velaptor.Content.ContentLoader.md#Velaptor.Content.ContentLoader.LoadFont(string,uint).nameOrFilePath 'Velaptor.Content.ContentLoader.LoadFont(string, uint).nameOrFilePath') and [size](Velaptor.Content.ContentLoader.md#Velaptor.Content.ContentLoader.LoadFont(string,uint).size 'Velaptor.Content.ContentLoader.LoadFont(string, uint).size').
 
@@ -109,7 +109,7 @@ The loaded font content.
 
 <a name='Velaptor.Content.ContentLoader.LoadSound(string)'></a>
 
-## ContentLoader.LoadSound(string) Method
+### LoadSound(string) 
 
 Loads sound content using the given [nameOrFilePath](Velaptor.Content.ContentLoader.md#Velaptor.Content.ContentLoader.LoadSound(string).nameOrFilePath 'Velaptor.Content.ContentLoader.LoadSound(string).nameOrFilePath').
 
@@ -132,7 +132,7 @@ The loaded sound content.
 
 <a name='Velaptor.Content.ContentLoader.LoadTexture(string)'></a>
 
-## ContentLoader.LoadTexture(string) Method
+### LoadTexture(string) 
 
 Loads texture content using the given [nameOrFilePath](Velaptor.Content.ContentLoader.md#Velaptor.Content.ContentLoader.LoadTexture(string).nameOrFilePath 'Velaptor.Content.ContentLoader.LoadTexture(string).nameOrFilePath').
 
@@ -155,7 +155,7 @@ The loaded texture content.
 
 <a name='Velaptor.Content.ContentLoader.UnloadAtlas(Velaptor.Content.IAtlasData)'></a>
 
-## ContentLoader.UnloadAtlas(IAtlasData) Method
+### UnloadAtlas(IAtlasData) 
 
 Unloads the atlas data content.
 
@@ -174,7 +174,7 @@ Implements [UnloadAtlas(IAtlasData)](Velaptor.Content.IContentLoader.md#Velaptor
 
 <a name='Velaptor.Content.ContentLoader.UnloadFont(Velaptor.Content.Fonts.IFont)'></a>
 
-## ContentLoader.UnloadFont(IFont) Method
+### UnloadFont(IFont) 
 
 Unloads the font.
 
@@ -193,7 +193,7 @@ Implements [UnloadFont(IFont)](Velaptor.Content.IContentLoader.md#Velaptor.Conte
 
 <a name='Velaptor.Content.ContentLoader.UnloadSound(Velaptor.Content.ISound)'></a>
 
-## ContentLoader.UnloadSound(ISound) Method
+### UnloadSound(ISound) 
 
 Unloads the sound content.
 
@@ -212,7 +212,7 @@ Implements [UnloadSound(ISound)](Velaptor.Content.IContentLoader.md#Velaptor.Con
 
 <a name='Velaptor.Content.ContentLoader.UnloadTexture(Velaptor.Content.ITexture)'></a>
 
-## ContentLoader.UnloadTexture(ITexture) Method
+### UnloadTexture(ITexture) 
 
 Unloads the texture content.
 

@@ -5,7 +5,7 @@ title: Velaptor.FrameTime
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## FrameTime Struct
+#### FrameTime Struct
 
 Holds timing information for a loop iteration.
 
@@ -15,11 +15,11 @@ System.IEquatable<Velaptor.FrameTime>
 ```
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Properties
+## Properties
 
 <a name='Velaptor.FrameTime.ElapsedTime'></a>
 
-## FrameTime.ElapsedTime Property
+### ElapsedTime 
 
 Gets the total time that has passed for the current frame.
 
@@ -32,7 +32,7 @@ public System.TimeSpan ElapsedTime { get; set; }
 
 <a name='Velaptor.FrameTime.TotalTime'></a>
 
-## FrameTime.TotalTime Property
+### TotalTime 
 
 Gets the total time that the entire application has been running.
 

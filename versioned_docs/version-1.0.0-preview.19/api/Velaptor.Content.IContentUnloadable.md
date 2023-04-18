@@ -5,18 +5,18 @@ title: Velaptor.Content.IContentUnloadable
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## IContentUnloadable Interface
+#### IContentUnloadable Interface
 
 Provides the ability to unload content.
 
 ```csharp
 public interface IContentUnloadable
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Content.IContentUnloadable.UnloadContent(Velaptor.Content.IContentLoader)'></a>
 
-## IContentUnloadable.UnloadContent(IContentLoader) Method
+### UnloadContent(IContentLoader) 
 
 Unloads the content using the given [contentLoader](Velaptor.Content.IContentUnloadable.md#Velaptor.Content.IContentUnloadable.UnloadContent(Velaptor.Content.IContentLoader).contentLoader 'Velaptor.Content.IContentUnloadable.UnloadContent(Velaptor.Content.IContentLoader).contentLoader').
 

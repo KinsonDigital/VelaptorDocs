@@ -5,18 +5,18 @@ title: Velaptor.Graphics.Renderers.IRectangleRenderer
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics.Renderers](Velaptor.Graphics.Renderers.md 'Velaptor.Graphics.Renderers')
 
-## IRectangleRenderer Interface
+#### IRectangleRenderer Interface
 
 Renders rectangles to the screen.
 
 ```csharp
 public interface IRectangleRenderer
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape,int)'></a>
 
-## IRectangleRenderer.Render(RectShape, int) Method
+### Render(RectShape, int) 
 
 Renders the given [rectangle](Velaptor.Graphics.Renderers.IRectangleRenderer.md#Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape,int).rectangle 'Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape, int).rectangle').
 
@@ -42,7 +42,7 @@ The layer to render the rectangle.
 [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
 Thrown if the [Begin()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Begin() 'Velaptor.Graphics.Renderers.IRenderer.Begin()') method has not been called.
 
-### Remarks
+#### Remarks
   
 Lower [layer](Velaptor.Graphics.Renderers.IRectangleRenderer.md#Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape,int).layer 'Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.IRectangleRenderer.md#Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape,int).layer 'Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape, int).layer') values.  
 If two separate textures have the same [layer](Velaptor.Graphics.Renderers.IRectangleRenderer.md#Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape,int).layer 'Velaptor.Graphics.Renderers.IRectangleRenderer.Render(Velaptor.Graphics.RectShape, int).layer') value, they will  

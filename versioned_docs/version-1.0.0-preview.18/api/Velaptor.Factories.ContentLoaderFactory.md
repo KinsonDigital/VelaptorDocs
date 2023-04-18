@@ -5,7 +5,7 @@ title: Velaptor.Factories.ContentLoaderFactory
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
 
-## ContentLoaderFactory Class
+#### ContentLoaderFactory Class
 
 Creates instances of a content loader.
 
@@ -14,11 +14,11 @@ public static class ContentLoaderFactory
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → ContentLoaderFactory
-### Methods
+## Methods
 
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateAtlasLoader()'></a>
 
-## ContentLoaderFactory.CreateAtlasLoader() Method
+### CreateAtlasLoader() 
 
 Creates a loader for loading atlas data from disk.
 
@@ -32,7 +32,7 @@ A loader for loading texture atlas data.
 
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateContentLoader()'></a>
 
-## ContentLoaderFactory.CreateContentLoader() Method
+### CreateContentLoader() 
 
 Creates a single instance of a content loader.
 
@@ -46,7 +46,7 @@ A framework content loader implementation.
 
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateFontLoader()'></a>
 
-## ContentLoaderFactory.CreateFontLoader() Method
+### CreateFontLoader() 
 
 Creates a loader that loads fonts from disk for rendering test.
 
@@ -60,7 +60,7 @@ A loader for loading sound data.
 
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateSoundLoader()'></a>
 
-## ContentLoaderFactory.CreateSoundLoader() Method
+### CreateSoundLoader() 
 
 Creates a loader that loads sounds from disk.
 
@@ -74,7 +74,7 @@ A loader for loading sound data.
 
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateTextureLoader()'></a>
 
-## ContentLoaderFactory.CreateTextureLoader() Method
+### CreateTextureLoader() 
 
 Creates a loader that loads textures from disk.
 

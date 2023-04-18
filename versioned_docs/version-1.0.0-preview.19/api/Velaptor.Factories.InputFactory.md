@@ -5,7 +5,7 @@ title: Velaptor.Factories.InputFactory
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
 
-## InputFactory Class
+#### InputFactory Class
 
 Generates input type objects for processing input such as the keyboard and mouse.
 
@@ -14,11 +14,11 @@ public static class InputFactory
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → InputFactory
-### Methods
+## Methods
 
 <a name='Velaptor.Factories.InputFactory.CreateKeyboard()'></a>
 
-## InputFactory.CreateKeyboard() Method
+### CreateKeyboard() 
 
 Creates a keyboard object.
 
@@ -32,7 +32,7 @@ The keyboard singleton object.
 
 <a name='Velaptor.Factories.InputFactory.CreateMouse()'></a>
 
-## InputFactory.CreateMouse() Method
+### CreateMouse() 
 
 Creates a mouse object.
 

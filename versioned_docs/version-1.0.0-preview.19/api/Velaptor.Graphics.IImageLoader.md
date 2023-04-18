@@ -5,7 +5,7 @@ title: Velaptor.Graphics.IImageLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
 
-## IImageLoader Interface
+#### IImageLoader Interface
 
 Loads images from disk.
 
@@ -15,11 +15,11 @@ public interface IImageLoader
 
 Derived  
 &#8627; [ImageLoader](Velaptor.Graphics.ImageLoader.md 'Velaptor.Graphics.ImageLoader')
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.IImageLoader.LoadImage(string)'></a>
 
-## IImageLoader.LoadImage(string) Method
+### LoadImage(string) 
 
 Loads an image from the specified file path.
 

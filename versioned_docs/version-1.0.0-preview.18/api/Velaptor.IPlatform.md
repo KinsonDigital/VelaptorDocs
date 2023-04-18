@@ -5,7 +5,7 @@ title: Velaptor.IPlatform
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## IPlatform Interface
+#### IPlatform Interface
 
 Represents the current platform.
 
@@ -15,11 +15,11 @@ public interface IPlatform
 
 Derived  
 &#8627; [Platform](Velaptor.Platform.md 'Velaptor.Platform')
-### Properties
+## Properties
 
 <a name='Velaptor.IPlatform.CurrentPlatform'></a>
 
-## IPlatform.CurrentPlatform Property
+### CurrentPlatform 
 
 Gets the current platform of the system.
 
@@ -32,7 +32,7 @@ System.Runtime.InteropServices.OSPlatform CurrentPlatform { get; }
 
 <a name='Velaptor.IPlatform.Is32BitProcess'></a>
 
-## IPlatform.Is32BitProcess Property
+### Is32BitProcess 
 
 Gets a value indicating whether or not the system is a 32 bit process.
 
@@ -45,7 +45,7 @@ bool Is32BitProcess { get; }
 
 <a name='Velaptor.IPlatform.Is64BitProcess'></a>
 
-## IPlatform.Is64BitProcess Property
+### Is64BitProcess 
 
 Gets a value indicating whether or not the system is a 64 bit process.
 

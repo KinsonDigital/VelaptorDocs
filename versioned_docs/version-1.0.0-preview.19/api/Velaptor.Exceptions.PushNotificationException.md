@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.PushNotificationException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## PushNotificationException Class
+#### PushNotificationException Class
 
 Thrown when there is an issue with the push notification system.
 
@@ -14,11 +14,11 @@ public sealed class PushNotificationException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → PushNotificationException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException()'></a>
 
-## PushNotificationException() Constructor
+### PushNotificationException() Constructor
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 
@@ -28,7 +28,7 @@ public PushNotificationException();
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Exception)'></a>
 
-## PushNotificationException(string, Exception) Constructor
+### PushNotificationException(string, Exception) Constructor
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Guid)'></a>
 
-## PushNotificationException(string, Guid) Constructor
+### PushNotificationException(string, Guid) Constructor
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 
@@ -74,7 +74,7 @@ The subscription ID.
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string)'></a>
 
-## PushNotificationException(string) Constructor
+### PushNotificationException(string) Constructor
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 

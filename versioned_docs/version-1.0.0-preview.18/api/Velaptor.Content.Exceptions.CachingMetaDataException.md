@@ -5,7 +5,7 @@ title: Velaptor.Content.Exceptions.CachingMetaDataException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions')
 
-## CachingMetaDataException Class
+#### CachingMetaDataException Class
 
 Thrown when there is an issue with processing metadata, when loading fonts during the caching process.
 
@@ -14,11 +14,11 @@ public sealed class CachingMetaDataException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → CachingMetaDataException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException()'></a>
 
-## CachingMetaDataException() Constructor
+### CachingMetaDataException() Constructor
 
 Initializes a new instance of the [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor.Content.Exceptions.CachingMetaDataException') class.
 
@@ -28,7 +28,7 @@ public CachingMetaDataException();
 
 <a name='Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException(string,System.Exception)'></a>
 
-## CachingMetaDataException(string, Exception) Constructor
+### CachingMetaDataException(string, Exception) Constructor
 
 Initializes a new instance of the [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor.Content.Exceptions.CachingMetaDataException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException(string)'></a>
 
-## CachingMetaDataException(string) Constructor
+### CachingMetaDataException(string) Constructor
 
 Initializes a new instance of the [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor.Content.Exceptions.CachingMetaDataException') class.
 

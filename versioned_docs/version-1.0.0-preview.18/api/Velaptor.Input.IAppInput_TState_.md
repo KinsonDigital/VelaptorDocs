@@ -5,7 +5,7 @@ title: Velaptor.Input.IAppInput<TState>
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Input](Velaptor.Input.md 'Velaptor.Input')
 
-## IAppInput&lt;TState&gt; Interface
+#### IAppInput&lt;TState&gt; Interface
 
 Gets the state of game-specific input such as a mouse or keyboard.
 
@@ -20,11 +20,11 @@ public interface IAppInput<out TState>
 `TState`
 
 The state of the input.
-### Methods
+## Methods
 
 <a name='Velaptor.Input.IAppInput<TState>.GetState()'></a>
 
-## IAppInput&lt;TState&gt;.GetState() Method
+### GetState() 
 
 Returns the current state of the input.
 

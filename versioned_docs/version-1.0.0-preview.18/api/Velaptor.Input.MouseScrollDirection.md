@@ -12,7 +12,7 @@ Represents the different scroll directions of a mouse.
 ```csharp
 public enum MouseScrollDirection
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.Input.MouseScrollDirection.None'></a>
 

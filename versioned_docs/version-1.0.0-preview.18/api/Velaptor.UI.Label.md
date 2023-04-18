@@ -5,7 +5,7 @@ title: Velaptor.UI.Label
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## Label Class
+#### Label Class
 
 A label that renders text on the screen.
 
@@ -14,22 +14,22 @@ public class Label : Velaptor.UI.ControlBase
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase') → Label
-### Constructors
+## Constructors
 
 <a name='Velaptor.UI.Label.Label()'></a>
 
-## Label() Constructor
+### Label() Constructor
 
 Initializes a new instance of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label') class.
 
 ```csharp
 public Label();
 ```
-### Properties
+## Properties
 
 <a name='Velaptor.UI.Label.AutoSize'></a>
 
-## Label.AutoSize Property
+### AutoSize 
 
 Gets or sets a value indicating whether or not the size of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label') will be  
 managed automatically based on the size of the text.
@@ -41,14 +41,14 @@ public bool AutoSize { get; set; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-### Remarks
+#### Remarks
 If [AutoSize](Velaptor.UI.Label.md#Velaptor.UI.Label.AutoSize 'Velaptor.UI.Label.AutoSize') is `false`, it means that the user can set the size to what they  
 want.  If the size is less than the width or height of the text, then only the text characters  
 that are still within the bounds of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label') will be rendered.
 
 <a name='Velaptor.UI.Label.CharacterBounds'></a>
 
-## Label.CharacterBounds Property
+### CharacterBounds 
 
 Gets a list of all the bounds for each character of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label').[Text](Velaptor.UI.Label.md#Velaptor.UI.Label.Text 'Velaptor.UI.Label.Text').
 
@@ -61,7 +61,7 @@ public System.Collections.ObjectModel.ReadOnlyCollection<(char character,System.
 
 <a name='Velaptor.UI.Label.Color'></a>
 
-## Label.Color Property
+### Color 
 
 Gets or sets the color of the text.
 
@@ -74,7 +74,7 @@ public System.Drawing.Color Color { get; set; }
 
 <a name='Velaptor.UI.Label.Font'></a>
 
-## Label.Font Property
+### Font 
 
 Gets the font for the label.
 
@@ -87,7 +87,7 @@ public Velaptor.Content.Fonts.IFont Font { get; }
 
 <a name='Velaptor.UI.Label.Height'></a>
 
-## Label.Height Property
+### Height 
 
 Gets or sets the height of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label').
 
@@ -102,7 +102,7 @@ Implements [Height](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.Height 'Velapto
 
 <a name='Velaptor.UI.Label.Position'></a>
 
-## Label.Position Property
+### Position 
 
 Gets or sets the position of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl') on the screen.
 
@@ -117,7 +117,7 @@ Implements [Position](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Position 'Vel
 
 <a name='Velaptor.UI.Label.Style'></a>
 
-## Label.Style Property
+### Style 
 
 Gets or sets the font style of the text.
 
@@ -130,7 +130,7 @@ public Velaptor.Content.Fonts.FontStyle Style { get; set; }
 
 <a name='Velaptor.UI.Label.Text'></a>
 
-## Label.Text Property
+### Text 
 
 Gets or sets the labelText of the label.
 
@@ -143,7 +143,7 @@ public string Text { get; set; }
 
 <a name='Velaptor.UI.Label.Width'></a>
 
-## Label.Width Property
+### Width 
 
 Gets or sets the width of the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label').
 
@@ -155,11 +155,11 @@ Implements [Width](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.Width 'Velaptor.
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-### Methods
+## Methods
 
 <a name='Velaptor.UI.Label.LoadContent()'></a>
 
-## Label.LoadContent() Method
+### LoadContent() 
 
 Unloads the content for an object.
 
@@ -171,7 +171,7 @@ Implements [LoadContent()](Velaptor.Content.IContentLoadable.md#Velaptor.Content
 
 <a name='Velaptor.UI.Label.Render()'></a>
 
-## Label.Render() Method
+### Render() 
 
 Renders the [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label').
 
@@ -183,7 +183,7 @@ Implements [Render()](Velaptor.IDrawable.md#Velaptor.IDrawable.Render() 'Velapto
 
 <a name='Velaptor.UI.Label.UnloadContent()'></a>
 
-## Label.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the content for an object.
 

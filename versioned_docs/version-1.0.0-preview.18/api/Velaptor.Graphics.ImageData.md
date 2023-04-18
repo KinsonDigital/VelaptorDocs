@@ -5,7 +5,7 @@ title: Velaptor.Graphics.ImageData
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
 
-## ImageData Struct
+#### ImageData Struct
 
 Holds image data such as the pixel colors for each X and Y location, the image width, and height.
 
@@ -15,11 +15,11 @@ System.IEquatable<Velaptor.Graphics.ImageData>
 ```
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint)'></a>
 
-## ImageData(Color[,], uint, uint) Constructor
+### ImageData(Color[,], uint, uint) Constructor
 
 Initializes a new instance of the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') struct.
 
@@ -45,7 +45,7 @@ The width of the image.
 `height` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
 The height of the image.
-### Fields
+#### Fields
 
 <a name='Velaptor.Graphics.ImageData.Height'></a>
 
@@ -73,7 +73,7 @@ public readonly Color[,] Pixels;
 #### Field Value
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
-### Remarks
+#### Remarks
 The first dimension is the X location of the pixel and the second  
 dimension is the Y location of the pixel.  
   
@@ -91,11 +91,11 @@ public readonly uint Width;
 
 #### Field Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point)'></a>
 
-## ImageData.DrawImage(ImageData, Point) Method
+### DrawImage(ImageData, Point) 
 
 Draws the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') onto this image,  
 starting at the given [location](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).location 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).location').
@@ -122,13 +122,15 @@ References the top left corner of the given [image](Velaptor.Graphics.ImageData.
 [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')  
 This current image with the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') painted onto it.
 
-### Remarks
+#### Remarks
 If a pixel of the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') is out side of the bounds of this  
 image, it will be skipped.
 
 <a name='Velaptor.Graphics.ImageData.Equals(object)'></a>
 
-## ImageData.Equals(object) Method
+### Equals(object) 
+
+Indicates whether this instance and a specified object are equal.
 
 ```csharp
 public override bool Equals(object? obj);
@@ -139,12 +141,15 @@ public override bool Equals(object? obj);
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
+The object to compare with the current instance.
+
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') if [obj](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.Equals(object).obj 'Velaptor.Graphics.ImageData.Equals(object).obj') and this instance are the same type and represent the same value; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool').
 
 <a name='Velaptor.Graphics.ImageData.Equals(Velaptor.Graphics.ImageData)'></a>
 
-## ImageData.Equals(ImageData) Method
+### Equals(ImageData) 
 
 ```csharp
 public bool Equals(Velaptor.Graphics.ImageData other);
@@ -160,18 +165,21 @@ public bool Equals(Velaptor.Graphics.ImageData other);
 
 <a name='Velaptor.Graphics.ImageData.GetHashCode()'></a>
 
-## ImageData.GetHashCode() Method
+### GetHashCode() 
+
+Returns the hash code for this instance.
 
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Graphics.ImageData.IsEmpty()'></a>
 
-## ImageData.IsEmpty() Method
+### IsEmpty() 
 
 Returns a value indicating whether or not the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') contents are empty.
 

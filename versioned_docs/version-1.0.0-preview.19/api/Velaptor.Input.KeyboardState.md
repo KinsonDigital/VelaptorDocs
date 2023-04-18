@@ -5,7 +5,7 @@ title: Velaptor.Input.KeyboardState
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Input](Velaptor.Input.md 'Velaptor.Input')
 
-## KeyboardState Struct
+#### KeyboardState Struct
 
 Represents a single keyboard state at a particular time.
 
@@ -15,11 +15,11 @@ System.IEquatable<Velaptor.Input.KeyboardState>
 ```
 
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[KeyboardState](Velaptor.Input.KeyboardState.md 'Velaptor.Input.KeyboardState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
-### Methods
+## Methods
 
 <a name='Velaptor.Input.KeyboardState.AnyAltKeysDown()'></a>
 
-## KeyboardState.AnyAltKeysDown() Method
+### AnyAltKeysDown() 
 
 Returns a value indicating whether or not any of the alt keys are in the down position.
 
@@ -33,7 +33,7 @@ public bool AnyAltKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyCtrlKeysDown()'></a>
 
-## KeyboardState.AnyCtrlKeysDown() Method
+### AnyCtrlKeysDown() 
 
 Returns a value indicating whether or not any of the control keys are in the down position.
 
@@ -47,7 +47,7 @@ public bool AnyCtrlKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyKeysDown()'></a>
 
-## KeyboardState.AnyKeysDown() Method
+### AnyKeysDown() 
 
 Gets a value indicating whether or not any keys are in the down position.
 
@@ -61,7 +61,7 @@ public bool AnyKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyKeysDown(System.Collections.Generic.IEnumerable<Velaptor.Input.KeyCode>)'></a>
 
-## KeyboardState.AnyKeysDown(IEnumerable&lt;KeyCode&gt;) Method
+### AnyKeysDown(IEnumerable&lt;KeyCode&gt;) 
 
 Returns a value indicating whether or not any of the given [keys](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.AnyKeysDown(System.Collections.Generic.IEnumerable_Velaptor.Input.KeyCode_).keys 'Velaptor.Input.KeyboardState.AnyKeysDown(System.Collections.Generic.IEnumerable<Velaptor.Input.KeyCode>).keys') are in the down position.
 
@@ -82,7 +82,7 @@ The list of key codes to check.
 
 <a name='Velaptor.Input.KeyboardState.AnyNumpadNumberKeysDown()'></a>
 
-## KeyboardState.AnyNumpadNumberKeysDown() Method
+### AnyNumpadNumberKeysDown() 
 
 Returns a value indicating whether or not any of the numpad number keys  
 are in the down position.
@@ -97,7 +97,7 @@ public bool AnyNumpadNumberKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyShiftKeysDown()'></a>
 
-## KeyboardState.AnyShiftKeysDown() Method
+### AnyShiftKeysDown() 
 
 Returns a value indicating whether or not any of the shift keys are in the down position.
 
@@ -111,7 +111,7 @@ public bool AnyShiftKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyStandardNumberKeysDown()'></a>
 
-## KeyboardState.AnyStandardNumberKeysDown() Method
+### AnyStandardNumberKeysDown() 
 
 Returns a value indicating whether or not any of the standard number keys,  
 above the letter keys, are in the down position.
@@ -126,7 +126,7 @@ public bool AnyStandardNumberKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.Equals(object)'></a>
 
-## KeyboardState.Equals(object) Method
+### Equals(object) 
 
 Indicates whether this instance and a specified object are equal.
 
@@ -147,7 +147,7 @@ The object to compare with the current instance.
 
 <a name='Velaptor.Input.KeyboardState.Equals(Velaptor.Input.KeyboardState)'></a>
 
-## KeyboardState.Equals(KeyboardState) Method
+### Equals(KeyboardState) 
 
 ```csharp
 public bool Equals(Velaptor.Input.KeyboardState other);
@@ -163,7 +163,7 @@ public bool Equals(Velaptor.Input.KeyboardState other);
 
 <a name='Velaptor.Input.KeyboardState.GetDownKeys()'></a>
 
-## KeyboardState.GetDownKeys() Method
+### GetDownKeys() 
 
 Returns all of the keys that are in the down position.
 
@@ -177,7 +177,7 @@ A list of the keys that are currently in the down position.
 
 <a name='Velaptor.Input.KeyboardState.GetHashCode()'></a>
 
-## KeyboardState.GetHashCode() Method
+### GetHashCode() 
 
 Returns the hash code for this instance.
 
@@ -191,7 +191,7 @@ A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Input.KeyboardState.GetKeyStates()'></a>
 
-## KeyboardState.GetKeyStates() Method
+### GetKeyStates() 
 
 Returns all of the keys and their states.
 
@@ -205,7 +205,7 @@ The keys and given state for each key.
 
 <a name='Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode)'></a>
 
-## KeyboardState.IsKeyDown(KeyCode) Method
+### IsKeyDown(KeyCode) 
 
 Returns a value indicating whether or not the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
 
@@ -226,7 +226,7 @@ The key to check.
 
 <a name='Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode)'></a>
 
-## KeyboardState.IsKeyUp(KeyCode) Method
+### IsKeyUp(KeyCode) 
 
 Returns a value indicating whether or not the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
 
@@ -247,7 +247,7 @@ The key to check.
 
 <a name='Velaptor.Input.KeyboardState.IsLeftAltKeyDown()'></a>
 
-## KeyboardState.IsLeftAltKeyDown() Method
+### IsLeftAltKeyDown() 
 
 Gets a value indicating whether or not the left alt key is in the down position.
 
@@ -261,7 +261,7 @@ public bool IsLeftAltKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsLeftCtrlKeyDown()'></a>
 
-## KeyboardState.IsLeftCtrlKeyDown() Method
+### IsLeftCtrlKeyDown() 
 
 Gets a value indicating whether or not the left control key is in the down position.
 
@@ -275,7 +275,7 @@ public bool IsLeftCtrlKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsLeftShiftKeyDown()'></a>
 
-## KeyboardState.IsLeftShiftKeyDown() Method
+### IsLeftShiftKeyDown() 
 
 Gets a value indicating whether or not the left shift key is in the down position.
 
@@ -289,7 +289,7 @@ public bool IsLeftShiftKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsRightAltKeyDown()'></a>
 
-## KeyboardState.IsRightAltKeyDown() Method
+### IsRightAltKeyDown() 
 
 Gets a value indicating whether or not the right alt key is in the down position.
 
@@ -303,7 +303,7 @@ public bool IsRightAltKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsRightCtrlKeyDown()'></a>
 
-## KeyboardState.IsRightCtrlKeyDown() Method
+### IsRightCtrlKeyDown() 
 
 Gets a value indicating whether or not the right control key is in the down position.
 
@@ -317,7 +317,7 @@ public bool IsRightCtrlKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsRightShiftKeyDown()'></a>
 
-## KeyboardState.IsRightShiftKeyDown() Method
+### IsRightShiftKeyDown() 
 
 Gets a value indicating whether or not the right shift key is in the down position.
 
@@ -331,7 +331,7 @@ public bool IsRightShiftKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.KeyToChar(Velaptor.Input.KeyCode)'></a>
 
-## KeyboardState.KeyToChar(KeyCode) Method
+### KeyToChar(KeyCode) 
 
 Returns the character equivalent of the given key if it is  
 a letter, number or symbol key.  The value of 0 will be returned  
@@ -354,7 +354,7 @@ The character that matches the given key.
 
 <a name='Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool)'></a>
 
-## KeyboardState.SetKeyState(KeyCode, bool) Method
+### SetKeyState(KeyCode, bool) 
 
 Sets the state of the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool).key 'Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode, bool).key') to the given [state](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool).state 'Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode, bool).state') value.
 

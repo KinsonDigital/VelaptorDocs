@@ -5,7 +5,7 @@ title: Velaptor.Graphics.ImageLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
 
-## ImageLoader Class
+#### ImageLoader Class
 
 Loads images from disk.
 
@@ -17,22 +17,22 @@ Velaptor.Graphics.IImageLoader
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → ImageLoader
 
 Implements [IImageLoader](Velaptor.Graphics.IImageLoader.md 'Velaptor.Graphics.IImageLoader')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Graphics.ImageLoader.ImageLoader()'></a>
 
-## ImageLoader() Constructor
+### ImageLoader() Constructor
 
 Initializes a new instance of the [ImageLoader](Velaptor.Graphics.ImageLoader.md 'Velaptor.Graphics.ImageLoader') class.
 
 ```csharp
 public ImageLoader();
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Graphics.ImageLoader.LoadImage(string)'></a>
 
-## ImageLoader.LoadImage(string) Method
+### LoadImage(string) 
 
 <inheritdoc/>
 
@@ -53,7 +53,7 @@ Implements [LoadImage(string)](Velaptor.Graphics.IImageLoader.md#Velaptor.Graphi
 [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')  
 The image data.
 
-### Remarks
+#### Remarks
 If the [filePath](Velaptor.Graphics.ImageLoader.md#Velaptor.Graphics.ImageLoader.LoadImage(string).filePath 'Velaptor.Graphics.ImageLoader.LoadImage(string).filePath') is a relative path, it will be resolved  
 to the content directory of the application.  
 <br/>  

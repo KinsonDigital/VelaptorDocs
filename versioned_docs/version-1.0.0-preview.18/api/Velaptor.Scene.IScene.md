@@ -5,7 +5,7 @@ title: Velaptor.Scene.IScene
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Scene](Velaptor.Scene.md 'Velaptor.Scene')
 
-## IScene Interface
+#### IScene Interface
 
 Represents a single scene that can be rendered to the screen.
 
@@ -20,11 +20,11 @@ Derived
 &#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')
 
 Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
-### Properties
+## Properties
 
 <a name='Velaptor.Scene.IScene.ContentLoader'></a>
 
-## IScene.ContentLoader Property
+### ContentLoader 
 
 Gets the content loader.
 
@@ -37,7 +37,7 @@ Velaptor.Content.IContentLoader ContentLoader { get; }
 
 <a name='Velaptor.Scene.IScene.Id'></a>
 
-## IScene.Id Property
+### Id 
 
 Gets the unique ID of the scene.
 
@@ -50,7 +50,7 @@ System.Guid Id { get; }
 
 <a name='Velaptor.Scene.IScene.IsLoaded'></a>
 
-## IScene.IsLoaded Property
+### IsLoaded 
 
 Gets a value indicating whether or not the scene has been loaded.
 
@@ -63,7 +63,7 @@ bool IsLoaded { get; }
 
 <a name='Velaptor.Scene.IScene.Name'></a>
 
-## IScene.Name Property
+### Name 
 
 Gets the name of the scene.
 
@@ -76,7 +76,7 @@ string Name { get; }
 
 <a name='Velaptor.Scene.IScene.WindowCenter'></a>
 
-## IScene.WindowCenter Property
+### WindowCenter 
 
 Gets the center of the window.
 
@@ -89,7 +89,7 @@ System.Drawing.Point WindowCenter { get; }
 
 <a name='Velaptor.Scene.IScene.WindowSize'></a>
 
-## IScene.WindowSize Property
+### WindowSize 
 
 Gets the size of the window.
 
@@ -99,11 +99,11 @@ Velaptor.SizeU WindowSize { get; }
 
 #### Property Value
 [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')
-### Methods
+## Methods
 
 <a name='Velaptor.Scene.IScene.AddControl(Velaptor.UI.IControl)'></a>
 
-## IScene.AddControl(IControl) Method
+### AddControl(IControl) 
 
 Adds a control to the scene to be updated and rendered.
 
@@ -120,7 +120,7 @@ The control to add to the scene.
 
 <a name='Velaptor.Scene.IScene.LoadContent()'></a>
 
-## IScene.LoadContent() Method
+### LoadContent() 
 
 Loads the scene content.
 
@@ -130,7 +130,7 @@ void LoadContent();
 
 <a name='Velaptor.Scene.IScene.RemoveControl(Velaptor.UI.IControl)'></a>
 
-## IScene.RemoveControl(IControl) Method
+### RemoveControl(IControl) 
 
 Removes the given [control](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.RemoveControl(Velaptor.UI.IControl).control 'Velaptor.Scene.IScene.RemoveControl(Velaptor.UI.IControl).control') from the scene.
 
@@ -147,7 +147,7 @@ The control to remove.
 
 <a name='Velaptor.Scene.IScene.UnloadContent()'></a>
 
-## IScene.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the scene's content.
 

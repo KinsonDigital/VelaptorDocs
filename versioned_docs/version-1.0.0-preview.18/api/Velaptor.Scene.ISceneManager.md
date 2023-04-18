@@ -5,7 +5,7 @@ title: Velaptor.Scene.ISceneManager
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Scene](Velaptor.Scene.md 'Velaptor.Scene')
 
-## ISceneManager Interface
+#### ISceneManager Interface
 
 Manages scenes by loading and unloading content, updating, and rendering scenes.
 
@@ -17,11 +17,11 @@ System.IDisposable
 ```
 
 Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
-### Properties
+## Properties
 
 <a name='Velaptor.Scene.ISceneManager.CurrentScene'></a>
 
-## ISceneManager.CurrentScene Property
+### CurrentScene 
 
 Gets the current scene.
 
@@ -34,7 +34,7 @@ Velaptor.Scene.IScene? CurrentScene { get; }
 
 <a name='Velaptor.Scene.ISceneManager.InActiveScenes'></a>
 
-## ISceneManager.InActiveScenes Property
+### InActiveScenes 
 
 Gets a list of all the [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/System.Guid 'System.Guid')'s for the scenes that are inactive.
 
@@ -44,11 +44,11 @@ System.Collections.Generic.IReadOnlyCollection<System.Guid> InActiveScenes { get
 
 #### Property Value
 [System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[System.Guid](https://docs.microsoft.com/en-us/dotnet/api/System.Guid 'System.Guid')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')
-### Methods
+## Methods
 
 <a name='Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene,bool)'></a>
 
-## ISceneManager.AddScene(IScene, bool) Method
+### AddScene(IScene, bool) 
 
 Adds the given scene and sets it as active or inactive.
 
@@ -72,7 +72,7 @@ all other scenes will bet set to inactive.
 
 <a name='Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene)'></a>
 
-## ISceneManager.AddScene(IScene) Method
+### AddScene(IScene) 
 
 Adds the given scene.
 
@@ -87,12 +87,12 @@ void AddScene(Velaptor.Scene.IScene scene);
 
 The scene to add.
 
-### Remarks
+#### Remarks
 The scene will not be activated when added using this method.
 
 <a name='Velaptor.Scene.ISceneManager.LoadContent()'></a>
 
-## ISceneManager.LoadContent() Method
+### LoadContent() 
 
 Loads the content for the manager and the current scene.
 
@@ -102,7 +102,7 @@ void LoadContent();
 
 <a name='Velaptor.Scene.ISceneManager.NextScene()'></a>
 
-## ISceneManager.NextScene() Method
+### NextScene() 
 
 Moves to the next scene.
 
@@ -112,7 +112,7 @@ void NextScene();
 
 <a name='Velaptor.Scene.ISceneManager.PreviousScene()'></a>
 
-## ISceneManager.PreviousScene() Method
+### PreviousScene() 
 
 Moves to the previous scene.
 
@@ -122,7 +122,7 @@ void PreviousScene();
 
 <a name='Velaptor.Scene.ISceneManager.RemoveScene(System.Guid)'></a>
 
-## ISceneManager.RemoveScene(Guid) Method
+### RemoveScene(Guid) 
 
 Removes the scene that matches the given [sceneId](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.RemoveScene(System.Guid).sceneId 'Velaptor.Scene.ISceneManager.RemoveScene(System.Guid).sceneId').
 
@@ -139,7 +139,7 @@ The ID of the scene to remove.
 
 <a name='Velaptor.Scene.ISceneManager.SceneExists(System.Guid)'></a>
 
-## ISceneManager.SceneExists(Guid) Method
+### SceneExists(Guid) 
 
 Returns a value indicating whether or not a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id 'Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id').
 
@@ -160,7 +160,7 @@ The ID of the scene.
 
 <a name='Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid)'></a>
 
-## ISceneManager.SetSceneAsActive(Guid) Method
+### SetSceneAsActive(Guid) 
 
 Sets a scene that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid).id 'Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid).id') to be the active scene.
 
@@ -175,12 +175,12 @@ void SetSceneAsActive(System.Guid id);
 
 The ID of the scene.
 
-### Remarks
+#### Remarks
 This will set all of the other scenes to inactive.
 
 <a name='Velaptor.Scene.ISceneManager.UnloadContent()'></a>
 
-## ISceneManager.UnloadContent() Method
+### UnloadContent() 
 
 Unloads the scene manager content and added scenes.
 

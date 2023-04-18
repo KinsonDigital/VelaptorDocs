@@ -5,7 +5,7 @@ title: Velaptor.OpenGL.Exceptions.BufferNotInitializedException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.OpenGL.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor.OpenGL.Exceptions')
 
-## BufferNotInitializedException Class
+#### BufferNotInitializedException Class
 
 Thrown when a buffer has not been initialized.
 
@@ -14,11 +14,11 @@ public sealed class BufferNotInitializedException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → BufferNotInitializedException
-### Constructors
+## Constructors
 
 <a name='Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException()'></a>
 
-## BufferNotInitializedException() Constructor
+### BufferNotInitializedException() Constructor
 
 Initializes a new instance of the [BufferNotInitializedException](Velaptor.OpenGL.Exceptions.BufferNotInitializedException.md 'Velaptor.OpenGL.Exceptions.BufferNotInitializedException') class.
 
@@ -28,7 +28,7 @@ public BufferNotInitializedException();
 
 <a name='Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException(string,string)'></a>
 
-## BufferNotInitializedException(string, string) Constructor
+### BufferNotInitializedException(string, string) Constructor
 
 Initializes a new instance of the [BufferNotInitializedException](Velaptor.OpenGL.Exceptions.BufferNotInitializedException.md 'Velaptor.OpenGL.Exceptions.BufferNotInitializedException') class.
 
@@ -51,7 +51,7 @@ The name of the buffer.
 
 <a name='Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException(string,System.Exception)'></a>
 
-## BufferNotInitializedException(string, Exception) Constructor
+### BufferNotInitializedException(string, Exception) Constructor
 
 Initializes a new instance of the [BufferNotInitializedException](Velaptor.OpenGL.Exceptions.BufferNotInitializedException.md 'Velaptor.OpenGL.Exceptions.BufferNotInitializedException') class.
 

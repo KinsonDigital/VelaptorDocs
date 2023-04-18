@@ -5,7 +5,7 @@ title: Velaptor.IDrawable
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## IDrawable Interface
+#### IDrawable Interface
 
 Provides the ability for an object to be rendered.
 
@@ -19,11 +19,11 @@ Derived
 &#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')  
 &#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')  
 &#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
-### Methods
+## Methods
 
 <a name='Velaptor.IDrawable.Render()'></a>
 
-## IDrawable.Render() Method
+### Render() 
 
 Renders the object.
 

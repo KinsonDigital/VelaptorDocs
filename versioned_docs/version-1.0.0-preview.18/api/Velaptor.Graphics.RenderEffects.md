@@ -12,7 +12,7 @@ Adds basic effects to a texture when rendered.
 ```csharp
 public enum RenderEffects
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.Graphics.RenderEffects.FlipBothDirections'></a>
 

@@ -5,7 +5,7 @@ title: Velaptor.Content.Sound
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## Sound Class
+#### Sound Class
 
 A single sound that can be played, paused etc.
 
@@ -20,11 +20,11 @@ Velaptor.Content.IContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Sound
 
 Implements [ISound](Velaptor.Content.ISound.md 'Velaptor.Content.ISound'), [CASL.ISound](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound 'CASL.ISound'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Sound.Sound(string)'></a>
 
-## Sound(string) Constructor
+### Sound(string) Constructor
 
 Initializes a new instance of the [Sound](Velaptor.Content.Sound.md 'Velaptor.Content.Sound') class.
 
@@ -38,11 +38,11 @@ public Sound(string filePath);
 `filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The path to the sound file.
-### Properties
+## Properties
 
 <a name='Velaptor.Content.Sound.FilePath'></a>
 
-## Sound.FilePath Property
+### FilePath 
 
 Gets the fully qualified path to the sound file.
 
@@ -57,7 +57,7 @@ Implements [FilePath](Velaptor.Content.ISound.md#Velaptor.Content.ISound.FilePat
 
 <a name='Velaptor.Content.Sound.Id'></a>
 
-## Sound.Id Property
+### Id 
 
 Gets the unique ID of the sound.
 
@@ -72,7 +72,7 @@ Implements [Id](Velaptor.Content.ISound.md#Velaptor.Content.ISound.Id 'Velaptor.
 
 <a name='Velaptor.Content.Sound.IsLooping'></a>
 
-## Sound.IsLooping Property
+### IsLooping 
 
 Gets or sets a value indicating whether or not the sound loops back to the beginning once the end has been reached.
 
@@ -87,7 +87,7 @@ Implements [IsLooping](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.I
 
 <a name='Velaptor.Content.Sound.Length'></a>
 
-## Sound.Length Property
+### Length 
 
 Gets the length of the sound.
 
@@ -102,7 +102,7 @@ Implements [Length](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Leng
 
 <a name='Velaptor.Content.Sound.Name'></a>
 
-## Sound.Name Property
+### Name 
 
 Gets the name of the sound.
 
@@ -117,7 +117,7 @@ Implements [Name](Velaptor.Content.ISound.md#Velaptor.Content.ISound.Name 'Velap
 
 <a name='Velaptor.Content.Sound.PlaySpeed'></a>
 
-## Sound.PlaySpeed Property
+### PlaySpeed 
 
 Gets or sets the play speed to the given value.
 
@@ -130,14 +130,14 @@ Implements [PlaySpeed](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.P
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-### Remarks
+#### Remarks
 The valid range of value is between 0.25 and 2.0  
 with a value less than 0.25 defaulting to 0.25 and  
 with a value greater than 2.0 defaulting to 2.0.
 
 <a name='Velaptor.Content.Sound.Position'></a>
 
-## Sound.Position Property
+### Position 
 
 Gets the current time position of the sound.
 
@@ -152,7 +152,7 @@ Implements [Position](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Po
 
 <a name='Velaptor.Content.Sound.State'></a>
 
-## Sound.State Property
+### State 
 
 Gets the state of the sound.
 
@@ -167,7 +167,7 @@ Implements [State](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.State
 
 <a name='Velaptor.Content.Sound.Volume'></a>
 
-## Sound.Volume Property
+### Volume 
 
 Gets or sets the volume of the sound.
 
@@ -180,14 +180,14 @@ Implements [Volume](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Volu
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-### Remarks
+#### Remarks
 The only valid value accepted is 0-100. If a value outside of  
 this range is used, it will be set within that range.
-### Methods
+## Methods
 
 <a name='Velaptor.Content.Sound.Dispose()'></a>
 
-## Sound.Dispose() Method
+### Dispose() 
 
 <inheritdoc/>
 
@@ -199,7 +199,7 @@ Implements [Dispose()](https://docs.microsoft.com/en-us/dotnet/api/System.IDispo
 
 <a name='Velaptor.Content.Sound.FastForward(float)'></a>
 
-## Sound.FastForward(float) Method
+### FastForward(float) 
 
 Advances the sound forward by the given amount of [seconds](Velaptor.Content.Sound.md#Velaptor.Content.Sound.FastForward(float).seconds 'Velaptor.Content.Sound.FastForward(float).seconds').
 
@@ -218,7 +218,7 @@ Implements [FastForward(float)](https://docs.microsoft.com/en-us/dotnet/api/CASL
 
 <a name='Velaptor.Content.Sound.Pause()'></a>
 
-## Sound.Pause() Method
+### Pause() 
 
 Pauses the sound.
 
@@ -230,7 +230,7 @@ Implements [Pause()](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Pau
 
 <a name='Velaptor.Content.Sound.Play()'></a>
 
-## Sound.Play() Method
+### Play() 
 
 Plays the sound.
 
@@ -242,7 +242,7 @@ Implements [Play()](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Play
 
 <a name='Velaptor.Content.Sound.Reset()'></a>
 
-## Sound.Reset() Method
+### Reset() 
 
 Resets the sound.
 
@@ -252,12 +252,12 @@ public void Reset();
 
 Implements [Reset()](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Reset 'CASL.ISound.Reset')
 
-### Remarks
+#### Remarks
 This will stop the sound and set the time position back to the beginning.
 
 <a name='Velaptor.Content.Sound.Rewind(float)'></a>
 
-## Sound.Rewind(float) Method
+### Rewind(float) 
 
 Rewinds the sound by the given amount of [seconds](Velaptor.Content.Sound.md#Velaptor.Content.Sound.Rewind(float).seconds 'Velaptor.Content.Sound.Rewind(float).seconds').
 
@@ -276,7 +276,7 @@ Implements [Rewind(float)](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISou
 
 <a name='Velaptor.Content.Sound.SetTimePosition(float)'></a>
 
-## Sound.SetTimePosition(float) Method
+### SetTimePosition(float) 
 
 Sets the time position of the sound to the given value.
 
@@ -295,7 +295,7 @@ Implements [SetTimePosition(float)](https://docs.microsoft.com/en-us/dotnet/api/
 
 <a name='Velaptor.Content.Sound.Stop()'></a>
 
-## Sound.Stop() Method
+### Stop() 
 
 Stops the sound.
 
@@ -305,5 +305,5 @@ public void Stop();
 
 Implements [Stop()](https://docs.microsoft.com/en-us/dotnet/api/CASL.ISound.Stop 'CASL.ISound.Stop')
 
-### Remarks
+#### Remarks
 This will set the time position back to the beginning.

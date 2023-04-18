@@ -5,7 +5,7 @@ title: Velaptor.Factories.UIControlFactory
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
 
-## UIControlFactory Class
+#### UIControlFactory Class
 
 Creates UI controls.
 
@@ -17,11 +17,11 @@ Velaptor.Factories.IUIControlFactory
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → UIControlFactory
 
 Implements [IUIControlFactory](Velaptor.Factories.IUIControlFactory.md 'Velaptor.Factories.IUIControlFactory')
-### Methods
+## Methods
 
 <a name='Velaptor.Factories.UIControlFactory.CreateLabel(string,Velaptor.Content.Fonts.IFont)'></a>
 
-## UIControlFactory.CreateLabel(string, IFont) Method
+### CreateLabel(string, IFont) 
 
 Creates a new [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label') control to display text.
 
@@ -50,7 +50,7 @@ The label to render.
 
 <a name='Velaptor.Factories.UIControlFactory.CreateLabel(string)'></a>
 
-## UIControlFactory.CreateLabel(string) Method
+### CreateLabel(string) 
 
 Creates a new [Label](Velaptor.UI.Label.md 'Velaptor.UI.Label') control to display text.
 

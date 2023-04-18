@@ -5,7 +5,7 @@ title: Velaptor.UI.Window
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## Window Class
+#### Window Class
 
 A system window where graphics can be rendered.
 
@@ -18,11 +18,11 @@ System.IDisposable
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Window
 
 Implements [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
-### Properties
+## Properties
 
 <a name='Velaptor.UI.Window.AutoClearBuffer'></a>
 
-## Window.AutoClearBuffer Property
+### AutoClearBuffer 
 
 Gets or sets a value indicating whether or not the buffers should  
 be automatically cleared before rendering any textures.
@@ -36,7 +36,7 @@ Implements [AutoClearBuffer](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoClea
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-### Remarks
+#### Remarks
   
 If this is set to true, this means you do not have to  
 use or invoke the [Clear()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Clear() 'Velaptor.Graphics.Renderers.IRenderer.Clear()')() method.  
@@ -50,7 +50,7 @@ and set this property to true.  That would be a waste of resources.
 
 <a name='Velaptor.UI.Window.ContentLoader'></a>
 
-## Window.ContentLoader Property
+### ContentLoader 
 
 Gets or sets the content loader for loading content.
 
@@ -65,7 +65,7 @@ Implements [ContentLoader](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.ContentLoa
 
 <a name='Velaptor.UI.Window.Draw'></a>
 
-## Window.Draw Property
+### Draw 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked per frame for rendering.
 
@@ -80,7 +80,7 @@ Implements [Draw](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Draw 'Velaptor.UI.I
 
 <a name='Velaptor.UI.Window.Height'></a>
 
-## Window.Height Property
+### Height 
 
 Gets or sets the height of the window.
 
@@ -95,7 +95,7 @@ Implements [Height](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Height 'Velaptor.
 
 <a name='Velaptor.UI.Window.Initialize'></a>
 
-## Window.Initialize Property
+### Initialize 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate to be invoked one time to initialize the window.
 
@@ -110,7 +110,7 @@ Implements [Initialize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Initialize 'V
 
 <a name='Velaptor.UI.Window.Initialized'></a>
 
-## Window.Initialized Property
+### Initialized 
 
 Gets a value indicating whether or not the window has been initialized.
 
@@ -125,7 +125,7 @@ Implements [Initialized](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Initialized 
 
 <a name='Velaptor.UI.Window.MouseCursorVisible'></a>
 
-## Window.MouseCursorVisible Property
+### MouseCursorVisible 
 
 Gets or sets a value indicating whether or not the mouse cursor is visible.
 
@@ -140,7 +140,7 @@ Implements [MouseCursorVisible](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Mouse
 
 <a name='Velaptor.UI.Window.Position'></a>
 
-## Window.Position Property
+### Position 
 
 Gets or sets the position of the window.
 
@@ -155,7 +155,7 @@ Implements [Position](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Position 'Velap
 
 <a name='Velaptor.UI.Window.SceneManager'></a>
 
-## Window.SceneManager Property
+### SceneManager 
 
 Gets the scene manager.
 
@@ -170,7 +170,7 @@ Implements [SceneManager](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.SceneManage
 
 <a name='Velaptor.UI.Window.Title'></a>
 
-## Window.Title Property
+### Title 
 
 Gets or sets the title of the window.
 
@@ -185,7 +185,7 @@ Implements [Title](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Title 'Velaptor.UI
 
 <a name='Velaptor.UI.Window.TypeOfBorder'></a>
 
-## Window.TypeOfBorder Property
+### TypeOfBorder 
 
 Gets or sets the type of border that the [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow') will have.
 
@@ -200,7 +200,7 @@ Implements [TypeOfBorder](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.TypeOfBorde
 
 <a name='Velaptor.UI.Window.Uninitialize'></a>
 
-## Window.Uninitialize Property
+### Uninitialize 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate to be invoked one time to uninitialize the window.
 
@@ -215,7 +215,7 @@ Implements [Uninitialize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Uninitializ
 
 <a name='Velaptor.UI.Window.Update'></a>
 
-## Window.Update Property
+### Update 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked per frame for updating.
 
@@ -230,7 +230,7 @@ Implements [Update](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Update 'Velaptor.
 
 <a name='Velaptor.UI.Window.UpdateFrequency'></a>
 
-## Window.UpdateFrequency Property
+### UpdateFrequency 
 
 Gets or sets the value of how often the update and render calls are invoked in the value of hertz.
 
@@ -245,7 +245,7 @@ Implements [UpdateFrequency](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.UpdateFr
 
 <a name='Velaptor.UI.Window.Width'></a>
 
-## Window.Width Property
+### Width 
 
 Gets or sets the width of the window.
 
@@ -260,7 +260,7 @@ Implements [Width](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Width 'Velaptor.UI
 
 <a name='Velaptor.UI.Window.WindowState'></a>
 
-## Window.WindowState Property
+### WindowState 
 
 Gets or sets the state of the window.
 
@@ -275,7 +275,7 @@ Implements [WindowState](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.WindowState 
 
 <a name='Velaptor.UI.Window.WinResize'></a>
 
-## Window.WinResize Property
+### WinResize 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked every time the window is resized.
 
@@ -287,11 +287,11 @@ Implements [WinResize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.WinResize 'Vel
 
 #### Property Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
-### Methods
+## Methods
 
 <a name='Velaptor.UI.Window.Close()'></a>
 
-## Window.Close() Method
+### Close() 
 
 Closes the window.
 
@@ -303,7 +303,7 @@ Implements [Close()](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Close() 'Velapto
 
 <a name='Velaptor.UI.Window.Dispose()'></a>
 
-## Window.Dispose() Method
+### Dispose() 
 
 <inheritdoc cref="M:System.IDisposable.Dispose"/>
 
@@ -315,7 +315,7 @@ Implements [Dispose()](https://docs.microsoft.com/en-us/dotnet/api/System.IDispo
 
 <a name='Velaptor.UI.Window.Show()'></a>
 
-## Window.Show() Method
+### Show() 
 
 Shows the window.
 
@@ -327,7 +327,7 @@ Implements [Show()](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Show() 'Velaptor.
 
 <a name='Velaptor.UI.Window.ShowAsync(System.Action,System.Action)'></a>
 
-## Window.ShowAsync(Action, Action) Method
+### ShowAsync(Action, Action) 
 
 Shows the window asynchronously.
 
@@ -354,5 +354,5 @@ Implements [ShowAsync(Action, Action)](Velaptor.UI.IWindow.md#Velaptor.UI.IWindo
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')  
 A [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task') representing the result of the asynchronous operation.
 
-### Remarks
+#### Remarks
 This runs the window on another thread.

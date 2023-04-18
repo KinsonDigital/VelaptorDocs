@@ -12,7 +12,7 @@ The different states that a [Window](Velaptor.UI.Window.md 'Velaptor.UI.Window')
 ```csharp
 public enum StateOfWindow
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.StateOfWindow.FullScreen'></a>
 
@@ -32,7 +32,7 @@ The window covers the whole working area, which includes the desktop but not the
 
 The window is minimized to the taskbar.
 
-### Remarks
+#### Remarks
 This is also known as .iconified'.
 
 <a name='Velaptor.StateOfWindow.Normal'></a>

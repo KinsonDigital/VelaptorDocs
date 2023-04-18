@@ -5,7 +5,7 @@ title: Velaptor.Content.TextureLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## TextureLoader Class
+#### TextureLoader Class
 
 Loads textures.
 
@@ -17,22 +17,22 @@ Velaptor.Content.ILoader<Velaptor.Content.ITexture>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → TextureLoader
 
 Implements [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.TextureLoader.TextureLoader()'></a>
 
-## TextureLoader() Constructor
+### TextureLoader() Constructor
 
 Initializes a new instance of the [TextureLoader](Velaptor.Content.TextureLoader.md 'Velaptor.Content.TextureLoader') class.
 
 ```csharp
 public TextureLoader();
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Content.TextureLoader.Load(string)'></a>
 
-## TextureLoader.Load(string) Method
+### Load(string) 
 
 Loads a texture with the given [contentPathOrName](Velaptor.Content.TextureLoader.md#Velaptor.Content.TextureLoader.Load(string).contentPathOrName 'Velaptor.Content.TextureLoader.Load(string).contentPathOrName').
 
@@ -63,7 +63,7 @@ Thrown if the texture file does not exist.
 
 <a name='Velaptor.Content.TextureLoader.Unload(string)'></a>
 
-## TextureLoader.Unload(string) Method
+### Unload(string) 
 
 Unloads the data with the given contentPathOrName.
 

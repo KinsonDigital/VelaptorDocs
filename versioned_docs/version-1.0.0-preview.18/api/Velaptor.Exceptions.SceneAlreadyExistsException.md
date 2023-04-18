@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.SceneAlreadyExistsException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## SceneAlreadyExistsException Class
+#### SceneAlreadyExistsException Class
 
 Thrown when a scene already exists.
 
@@ -14,11 +14,11 @@ public sealed class SceneAlreadyExistsException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → SceneAlreadyExistsException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException()'></a>
 
-## SceneAlreadyExistsException() Constructor
+### SceneAlreadyExistsException() Constructor
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Exceptions.SceneAlreadyExistsException') class.
 
@@ -28,7 +28,7 @@ public SceneAlreadyExistsException();
 
 <a name='Velaptor.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string,System.Exception)'></a>
 
-## SceneAlreadyExistsException(string, Exception) Constructor
+### SceneAlreadyExistsException(string, Exception) Constructor
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Exceptions.SceneAlreadyExistsException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string,System.Guid)'></a>
 
-## SceneAlreadyExistsException(string, Guid) Constructor
+### SceneAlreadyExistsException(string, Guid) Constructor
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Exceptions.SceneAlreadyExistsException') class.
 
@@ -74,7 +74,7 @@ The scene ID.
 
 <a name='Velaptor.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string)'></a>
 
-## SceneAlreadyExistsException(string) Constructor
+### SceneAlreadyExistsException(string) Constructor
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Exceptions.SceneAlreadyExistsException') class.
 

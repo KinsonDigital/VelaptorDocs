@@ -5,7 +5,7 @@ title: Velaptor.Content.Fonts.FontLoader
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Fonts](Velaptor.Content.Fonts.md 'Velaptor.Content.Fonts')
 
-## FontLoader Class
+#### FontLoader Class
 
 Loads font content for rendering text.
 
@@ -17,22 +17,22 @@ Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → FontLoader
 
 Implements [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Fonts.FontLoader.FontLoader()'></a>
 
-## FontLoader() Constructor
+### FontLoader() Constructor
 
 Initializes a new instance of the [FontLoader](Velaptor.Content.Fonts.FontLoader.md 'Velaptor.Content.Fonts.FontLoader') class.
 
 ```csharp
 public FontLoader();
 ```
-### Methods
+## Methods
 
 <a name='Velaptor.Content.Fonts.FontLoader.Load(string)'></a>
 
-## FontLoader.Load(string) Method
+### Load(string) 
 
 Loads font content from the application's content directory or directly using a full file path.
 
@@ -79,14 +79,14 @@ ContentLoader.Load("my-font|size:12");
 ContentLoader.Load("my-font|size:12");  
 ```
 
-### Remarks
+#### Remarks
 If a path is used, it must be a fully qualified file path.  
   
 Directory paths are not valid.
 
 <a name='Velaptor.Content.Fonts.FontLoader.Unload(string)'></a>
 
-## FontLoader.Unload(string) Method
+### Unload(string) 
 
 Unloads the data with the given contentPathOrName.
 

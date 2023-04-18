@@ -12,7 +12,7 @@ The kind of font styles.
 ```csharp
 public enum FontStyle
 ```
-### Fields
+#### Fields
 
 <a name='Velaptor.Content.Fonts.FontStyle.Bold'></a>
 

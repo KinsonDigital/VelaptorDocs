@@ -5,7 +5,7 @@ title: Velaptor.Platform
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## Platform Class
+#### Platform Class
 
 Represents the current platform.
 
@@ -17,11 +17,11 @@ Velaptor.IPlatform
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Platform
 
 Implements [IPlatform](Velaptor.IPlatform.md 'Velaptor.IPlatform')
-### Properties
+## Properties
 
 <a name='Velaptor.Platform.CurrentPlatform'></a>
 
-## Platform.CurrentPlatform Property
+### CurrentPlatform 
 
 Gets the current platform of the system.
 
@@ -36,7 +36,7 @@ Implements [CurrentPlatform](Velaptor.IPlatform.md#Velaptor.IPlatform.CurrentPla
 
 <a name='Velaptor.Platform.Is32BitProcess'></a>
 
-## Platform.Is32BitProcess Property
+### Is32BitProcess 
 
 Gets a value indicating whether or not the system is a 32 bit process.
 
@@ -51,7 +51,7 @@ Implements [Is32BitProcess](Velaptor.IPlatform.md#Velaptor.IPlatform.Is32BitProc
 
 <a name='Velaptor.Platform.Is64BitProcess'></a>
 
-## Platform.Is64BitProcess Property
+### Is64BitProcess 
 
 Gets a value indicating whether or not the system is a 64 bit process.
 

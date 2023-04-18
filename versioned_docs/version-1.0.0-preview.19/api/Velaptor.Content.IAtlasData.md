@@ -5,7 +5,7 @@ title: Velaptor.Content.IAtlasData
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## IAtlasData Interface
+#### IAtlasData Interface
 
 Holds data for a texture atlas.
 
@@ -18,11 +18,11 @@ Derived
 &#8627; [AtlasData](Velaptor.Content.AtlasData.md 'Velaptor.Content.AtlasData')
 
 Implements [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Properties
+## Properties
 
 <a name='Velaptor.Content.IAtlasData.AtlasDataFilePath'></a>
 
-## IAtlasData.AtlasDataFilePath Property
+### AtlasDataFilePath 
 
 Gets the file path to the atlas data.
 
@@ -35,7 +35,7 @@ string AtlasDataFilePath { get; }
 
 <a name='Velaptor.Content.IAtlasData.Height'></a>
 
-## IAtlasData.Height Property
+### Height 
 
 Gets the height of the entire texture atlas texture.
 
@@ -48,7 +48,7 @@ uint Height { get; }
 
 <a name='Velaptor.Content.IAtlasData.SubTextureNames'></a>
 
-## IAtlasData.SubTextureNames Property
+### SubTextureNames 
 
 Gets the list of frame names.
 
@@ -61,7 +61,7 @@ System.Collections.ObjectModel.ReadOnlyCollection<string> SubTextureNames { get;
 
 <a name='Velaptor.Content.IAtlasData.Texture'></a>
 
-## IAtlasData.Texture Property
+### Texture 
 
 Gets the the texture of the atlas.
 
@@ -74,7 +74,7 @@ Velaptor.Content.ITexture Texture { get; }
 
 <a name='Velaptor.Content.IAtlasData.this[int]'></a>
 
-## IAtlasData.this[int] Property
+### this[int] 
 
 The iterator for the atlas sub texture data.
 
@@ -94,7 +94,7 @@ The index of the item to retrieve.
 
 <a name='Velaptor.Content.IAtlasData.Width'></a>
 
-## IAtlasData.Width Property
+### Width 
 
 Gets the width of the entire texture atlas texture.
 
@@ -104,11 +104,11 @@ uint Width { get; }
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.IAtlasData.GetFrames(string)'></a>
 
-## IAtlasData.GetFrames(string) Method
+### GetFrames(string) 
 
 Gets the all of the frames that have the given sub texture id.
 

@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.AppSettingsException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## AppSettingsException Class
+#### AppSettingsException Class
 
 Thrown when there is an issue loading the application settings.
 
@@ -14,11 +14,11 @@ public sealed class AppSettingsException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → AppSettingsException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException()'></a>
 
-## AppSettingsException() Constructor
+### AppSettingsException() Constructor
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor.Exceptions.AppSettingsException') class.
 
@@ -28,7 +28,7 @@ public AppSettingsException();
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException(string,System.Exception)'></a>
 
-## AppSettingsException(string, Exception) Constructor
+### AppSettingsException(string, Exception) Constructor
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor.Exceptions.AppSettingsException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException(string)'></a>
 
-## AppSettingsException(string) Constructor
+### AppSettingsException(string) Constructor
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor.Exceptions.AppSettingsException') class.
 

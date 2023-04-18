@@ -5,7 +5,7 @@ title: Velaptor.Exceptions.EnumOutOfRangeException<T>
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions')
 
-## EnumOutOfRangeException&lt;T&gt; Class
+#### EnumOutOfRangeException&lt;T&gt; Class
 
 Thrown when an invalid [RenderEffects](Velaptor.Graphics.RenderEffects.md 'Velaptor.Graphics.RenderEffects') value is used.
 
@@ -22,11 +22,11 @@ public sealed class EnumOutOfRangeException<T> : System.Exception
 The type of enumeration.
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → EnumOutOfRangeException&lt;T&gt;
-### Constructors
+## Constructors
 
 <a name='Velaptor.Exceptions.EnumOutOfRangeException<T>.EnumOutOfRangeException()'></a>
 
-## EnumOutOfRangeException() Constructor
+### EnumOutOfRangeException() Constructor
 
 Initializes a new instance of the [EnumOutOfRangeException&lt;T&gt;](Velaptor.Exceptions.EnumOutOfRangeException_T_.md 'Velaptor.Exceptions.EnumOutOfRangeException<T>') class.
 
@@ -36,7 +36,7 @@ public EnumOutOfRangeException();
 
 <a name='Velaptor.Exceptions.EnumOutOfRangeException<T>.EnumOutOfRangeException(string,string)'></a>
 
-## EnumOutOfRangeException(string, string) Constructor
+### EnumOutOfRangeException(string, string) Constructor
 
 Initializes a new instance of the [EnumOutOfRangeException&lt;T&gt;](Velaptor.Exceptions.EnumOutOfRangeException_T_.md 'Velaptor.Exceptions.EnumOutOfRangeException<T>') class.
 
@@ -59,7 +59,7 @@ The name of the method where the exception occured.
 
 <a name='Velaptor.Exceptions.EnumOutOfRangeException<T>.EnumOutOfRangeException(string,System.Exception)'></a>
 
-## EnumOutOfRangeException(string, Exception) Constructor
+### EnumOutOfRangeException(string, Exception) Constructor
 
 Initializes a new instance of the [EnumOutOfRangeException&lt;T&gt;](Velaptor.Exceptions.EnumOutOfRangeException_T_.md 'Velaptor.Exceptions.EnumOutOfRangeException<T>') class.
 
@@ -82,7 +82,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.EnumOutOfRangeException<T>.EnumOutOfRangeException(string)'></a>
 
-## EnumOutOfRangeException(string) Constructor
+### EnumOutOfRangeException(string) Constructor
 
 Initializes a new instance of the [EnumOutOfRangeException&lt;T&gt;](Velaptor.Exceptions.EnumOutOfRangeException_T_.md 'Velaptor.Exceptions.EnumOutOfRangeException<T>') class.
 

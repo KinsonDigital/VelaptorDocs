@@ -5,7 +5,7 @@ title: Velaptor.Content.Exceptions.LoadSoundException
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions')
 
-## LoadSoundException Class
+#### LoadSoundException Class
 
 Thrown when there is an issue loading sounds.
 
@@ -14,11 +14,11 @@ public sealed class LoadSoundException : System.Exception
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → LoadSoundException
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.Exceptions.LoadSoundException.LoadSoundException()'></a>
 
-## LoadSoundException() Constructor
+### LoadSoundException() Constructor
 
 Initializes a new instance of the [LoadSoundException](Velaptor.Content.Exceptions.LoadSoundException.md 'Velaptor.Content.Exceptions.LoadSoundException') class.
 
@@ -28,7 +28,7 @@ public LoadSoundException();
 
 <a name='Velaptor.Content.Exceptions.LoadSoundException.LoadSoundException(string,System.Exception)'></a>
 
-## LoadSoundException(string, Exception) Constructor
+### LoadSoundException(string, Exception) Constructor
 
 Initializes a new instance of the [LoadSoundException](Velaptor.Content.Exceptions.LoadSoundException.md 'Velaptor.Content.Exceptions.LoadSoundException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.LoadSoundException.LoadSoundException(string)'></a>
 
-## LoadSoundException(string) Constructor
+### LoadSoundException(string) Constructor
 
 Initializes a new instance of the [LoadSoundException](Velaptor.Content.Exceptions.LoadSoundException.md 'Velaptor.Content.Exceptions.LoadSoundException') class.
 

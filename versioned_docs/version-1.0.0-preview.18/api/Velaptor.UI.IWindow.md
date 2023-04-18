@@ -5,7 +5,7 @@ title: Velaptor.UI.IWindow
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI')
 
-## IWindow Interface
+#### IWindow Interface
 
 Provides the core of an application window which facilitates how the  
 window behaves, its state and the ability to be used in various types  
@@ -20,11 +20,11 @@ Derived
 &#8627; [Window](Velaptor.UI.Window.md 'Velaptor.UI.Window')
 
 Implements [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
-### Properties
+## Properties
 
 <a name='Velaptor.UI.IWindow.AutoClearBuffer'></a>
 
-## IWindow.AutoClearBuffer Property
+### AutoClearBuffer 
 
 Gets or sets a value indicating whether or not the buffers should  
 be automatically cleared before rendering any textures.
@@ -36,7 +36,7 @@ bool AutoClearBuffer { get; set; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-### Remarks
+#### Remarks
   
 If this is set to true, this means you do not have to  
 use or invoke the [Clear()](Velaptor.Graphics.Renderers.IRenderer.md#Velaptor.Graphics.Renderers.IRenderer.Clear() 'Velaptor.Graphics.Renderers.IRenderer.Clear()')() method.  
@@ -50,7 +50,7 @@ and set this property to true.  That would be a waste of resources.
 
 <a name='Velaptor.UI.IWindow.ContentLoader'></a>
 
-## IWindow.ContentLoader Property
+### ContentLoader 
 
 Gets or sets the content loader for loading content.
 
@@ -63,7 +63,7 @@ Velaptor.Content.IContentLoader ContentLoader { get; set; }
 
 <a name='Velaptor.UI.IWindow.Draw'></a>
 
-## IWindow.Draw Property
+### Draw 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked per frame for rendering.
 
@@ -76,7 +76,7 @@ System.Action<Velaptor.FrameTime>? Draw { get; set; }
 
 <a name='Velaptor.UI.IWindow.Height'></a>
 
-## IWindow.Height Property
+### Height 
 
 Gets or sets the height of the window.
 
@@ -89,7 +89,7 @@ uint Height { get; set; }
 
 <a name='Velaptor.UI.IWindow.Initialize'></a>
 
-## IWindow.Initialize Property
+### Initialize 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate to be invoked one time to initialize the window.
 
@@ -102,7 +102,7 @@ System.Action? Initialize { get; set; }
 
 <a name='Velaptor.UI.IWindow.Initialized'></a>
 
-## IWindow.Initialized Property
+### Initialized 
 
 Gets a value indicating whether or not the window has been initialized.
 
@@ -115,7 +115,7 @@ bool Initialized { get; }
 
 <a name='Velaptor.UI.IWindow.MouseCursorVisible'></a>
 
-## IWindow.MouseCursorVisible Property
+### MouseCursorVisible 
 
 Gets or sets a value indicating whether or not the mouse cursor is visible.
 
@@ -128,7 +128,7 @@ bool MouseCursorVisible { get; set; }
 
 <a name='Velaptor.UI.IWindow.Position'></a>
 
-## IWindow.Position Property
+### Position 
 
 Gets or sets the position of the window.
 
@@ -141,7 +141,7 @@ System.Numerics.Vector2 Position { get; set; }
 
 <a name='Velaptor.UI.IWindow.SceneManager'></a>
 
-## IWindow.SceneManager Property
+### SceneManager 
 
 Gets the scene manager.
 
@@ -154,7 +154,7 @@ Velaptor.Scene.ISceneManager SceneManager { get; }
 
 <a name='Velaptor.UI.IWindow.Title'></a>
 
-## IWindow.Title Property
+### Title 
 
 Gets or sets the title of the window.
 
@@ -167,7 +167,7 @@ string Title { get; set; }
 
 <a name='Velaptor.UI.IWindow.TypeOfBorder'></a>
 
-## IWindow.TypeOfBorder Property
+### TypeOfBorder 
 
 Gets or sets the type of border that the [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow') will have.
 
@@ -180,7 +180,7 @@ Velaptor.WindowBorder TypeOfBorder { get; set; }
 
 <a name='Velaptor.UI.IWindow.Uninitialize'></a>
 
-## IWindow.Uninitialize Property
+### Uninitialize 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate to be invoked one time to uninitialize the window.
 
@@ -193,7 +193,7 @@ System.Action? Uninitialize { get; set; }
 
 <a name='Velaptor.UI.IWindow.Update'></a>
 
-## IWindow.Update Property
+### Update 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked per frame for updating.
 
@@ -206,7 +206,7 @@ System.Action<Velaptor.FrameTime>? Update { get; set; }
 
 <a name='Velaptor.UI.IWindow.UpdateFrequency'></a>
 
-## IWindow.UpdateFrequency Property
+### UpdateFrequency 
 
 Gets or sets the value of how often the update and render calls are invoked in the value of hertz.
 
@@ -219,7 +219,7 @@ int UpdateFrequency { get; set; }
 
 <a name='Velaptor.UI.IWindow.Width'></a>
 
-## IWindow.Width Property
+### Width 
 
 Gets or sets the width of the window.
 
@@ -232,7 +232,7 @@ uint Width { get; set; }
 
 <a name='Velaptor.UI.IWindow.WindowState'></a>
 
-## IWindow.WindowState Property
+### WindowState 
 
 Gets or sets the state of the window.
 
@@ -245,7 +245,7 @@ Velaptor.StateOfWindow WindowState { get; set; }
 
 <a name='Velaptor.UI.IWindow.WinResize'></a>
 
-## IWindow.WinResize Property
+### WinResize 
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked every time the window is resized.
 
@@ -255,11 +255,11 @@ System.Action<Velaptor.SizeU>? WinResize { get; set; }
 
 #### Property Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
-### Methods
+## Methods
 
 <a name='Velaptor.UI.IWindow.Close()'></a>
 
-## IWindow.Close() Method
+### Close() 
 
 Closes the window.
 
@@ -269,7 +269,7 @@ void Close();
 
 <a name='Velaptor.UI.IWindow.Show()'></a>
 
-## IWindow.Show() Method
+### Show() 
 
 Shows the window.
 
@@ -279,7 +279,7 @@ void Show();
 
 <a name='Velaptor.UI.IWindow.ShowAsync(System.Action,System.Action)'></a>
 
-## IWindow.ShowAsync(Action, Action) Method
+### ShowAsync(Action, Action) 
 
 Shows the window asynchronously.
 

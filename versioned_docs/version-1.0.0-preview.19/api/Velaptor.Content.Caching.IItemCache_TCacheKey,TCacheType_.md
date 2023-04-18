@@ -5,7 +5,7 @@ title: Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content.Caching](Velaptor.Content.Caching.md 'Velaptor.Content.Caching')
 
-## IItemCache&lt;TCacheKey,TCacheType&gt; Interface
+#### IItemCache&lt;TCacheKey,TCacheType&gt; Interface
 
 Caches items for retrieval at a later time.
 
@@ -25,11 +25,11 @@ The unique key assigned for a particular cached item.
 `TCacheType`
 
 The type of item being cached.
-### Properties
+## Properties
 
 <a name='Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.CacheKeys'></a>
 
-## IItemCache&lt;TCacheKey,TCacheType&gt;.CacheKeys Property
+### CacheKeys 
 
 Gets the list of all cache keys.
 
@@ -42,7 +42,7 @@ System.Collections.ObjectModel.ReadOnlyCollection<TCacheKey> CacheKeys { get; }
 
 <a name='Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TotalCachedItems'></a>
 
-## IItemCache&lt;TCacheKey,TCacheType&gt;.TotalCachedItems Property
+### TotalCachedItems 
 
 Gets the total number of cached items.
 
@@ -52,11 +52,11 @@ int TotalCachedItems { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.GetItem(TCacheKey)'></a>
 
-## IItemCache&lt;TCacheKey,TCacheType&gt;.GetItem(TCacheKey) Method
+### GetItem(TCacheKey) 
 
 Gets a cached item that matches the given [cacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.GetItem(TCacheKey).cacheKey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.GetItem(TCacheKey).cacheKey').
 
@@ -75,7 +75,7 @@ The unique key to identify a cached item.
 [TCacheType](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.TCacheType 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheType')  
 The cached item.
 
-### Remarks
+#### Remarks
   
 If the item does not already exist in the cache, it gets created, then cached.  
   
@@ -83,7 +83,7 @@ If the item does already exist in the cache, then that cached item is returned.
 
 <a name='Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.Unload(TCacheKey)'></a>
 
-## IItemCache&lt;TCacheKey,TCacheType&gt;.Unload(TCacheKey) Method
+### Unload(TCacheKey) 
 
 Unloads a cached item that matches the given [cacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.Unload(TCacheKey).cacheKey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.Unload(TCacheKey).cacheKey').
 

@@ -1,19 +1,19 @@
 {
     "version": "2.0.0",
     "tasks": [
-		{
+		{ // GENERATE API DOCS
             "label": "Generate API Docs",
             "type": "shell",
             "command": "deno run --allow-read --allow-write --allow-net --allow-run --allow-env '${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts' '${workspaceFolder}/docs/api'"
         },
-        {
+        { // RESET DOCS
             "label": "Reset Docs",
             "type": "shell",
             "windows": {
                 "command": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'",
             }
         },
-        {
+        { // DISABLE TESTING ENVIRONMENT
             "label": "Disable Testing Environment",
             "type": "shell",
             "windows": {
@@ -27,7 +27,7 @@
                 ]
             }
         },
-        {
+        { // ENABLE TESTING ENVIRONMENT
             "label": "Enable Testing Environment",
             "type": "shell",
             "windows": {
@@ -41,7 +41,7 @@
                 ]
             }
         },
-		{
+		{ // TOGGLE TESTING ENVIRONMENT
             "label": "Toggle Testing Environment",
             "type": "shell",
             "windows": {
@@ -55,7 +55,7 @@
                 ]
             }
         },
-		{
+		{ // DISABLE NEXT VERSION
             "label": "Disable Next Version",
             "type": "shell",
             "windows": {
@@ -71,7 +71,7 @@
                 ]
             }
         },
-		{
+		{ // ENABLE NEXT VERSION
             "label": "Enable Next Version",
             "type": "shell",
             "windows": {
@@ -87,7 +87,7 @@
                 ]
             }
         },
-        {
+        { // BUILD
             "label": "build",
             "dependsOn": [ "disable-testing-env" ],
             "type": "shell",
@@ -95,6 +95,20 @@
                 "command": "yarn",
                 "args": ["build"]
             }
-        }
+        },
+		{ // DELETE API DOCS
+			"label": "Delete API Docs",
+			"dependsOn": [ "disable-testing-env" ],
+			"type": "shell",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"--allow-read",
+					"--allow-write",
+					"${workspaceFolder}/.github/cicd/manual-testing/delete-api-docs.ts",
+				]
+			}
+		}
     ]
 }

@@ -5,7 +5,7 @@ title: Velaptor.Content.AtlasData
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
 
-## AtlasData Class
+#### AtlasData Class
 
 Holds data relating to a texture atlas.
 
@@ -18,11 +18,11 @@ Velaptor.Content.IContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → AtlasData
 
 Implements [IAtlasData](Velaptor.Content.IAtlasData.md 'Velaptor.Content.IAtlasData'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-### Constructors
+## Constructors
 
 <a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string)'></a>
 
-## AtlasData(IItemCache&lt;string,ITexture&gt;, IDirectory, IPath, IEnumerable&lt;AtlasSubTextureData&gt;, string, string) Constructor
+### AtlasData(IItemCache&lt;string,ITexture&gt;, IDirectory, IPath, IEnumerable&lt;AtlasSubTextureData&gt;, string, string) Constructor
 
 Initializes a new instance of the [AtlasData](Velaptor.Content.AtlasData.md 'Velaptor.Content.AtlasData') class.
 
@@ -74,11 +74,11 @@ Thrown if any of the constructor parameters are null.
 
 [System.IO.DirectoryNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.DirectoryNotFoundException 'System.IO.DirectoryNotFoundException')  
 Thrown if the [dirPath](Velaptor.Content.AtlasData.md#Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache_string,Velaptor.Content.ITexture_,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable_Velaptor.Graphics.AtlasSubTextureData_,string,string).dirPath 'Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>, System.IO.Abstractions.IDirectory, System.IO.Abstractions.IPath, System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>, string, string).dirPath') does not exist.
-### Properties
+## Properties
 
 <a name='Velaptor.Content.AtlasData.AtlasDataFilePath'></a>
 
-## AtlasData.AtlasDataFilePath Property
+### AtlasDataFilePath 
 
 Gets the file path to the atlas data.
 
@@ -93,7 +93,7 @@ Implements [AtlasDataFilePath](Velaptor.Content.IAtlasData.md#Velaptor.Content.I
 
 <a name='Velaptor.Content.AtlasData.FilePath'></a>
 
-## AtlasData.FilePath Property
+### FilePath 
 
 Gets the path to the texture.
 
@@ -108,7 +108,7 @@ Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Fil
 
 <a name='Velaptor.Content.AtlasData.Height'></a>
 
-## AtlasData.Height Property
+### Height 
 
 Gets the height of the entire texture atlas texture.
 
@@ -123,7 +123,7 @@ Implements [Height](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.H
 
 <a name='Velaptor.Content.AtlasData.Name'></a>
 
-## AtlasData.Name Property
+### Name 
 
 Gets the name of the atlas.
 
@@ -138,7 +138,7 @@ Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'V
 
 <a name='Velaptor.Content.AtlasData.SubTextureNames'></a>
 
-## AtlasData.SubTextureNames Property
+### SubTextureNames 
 
 Gets a list of unique sub texture names.
 
@@ -151,13 +151,13 @@ Implements [SubTextureNames](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAt
 #### Property Value
 [System.Collections.ObjectModel.ReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.ObjectModel.ReadOnlyCollection-1 'System.Collections.ObjectModel.ReadOnlyCollection`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.ObjectModel.ReadOnlyCollection-1 'System.Collections.ObjectModel.ReadOnlyCollection`1')
 
-### Remarks
+#### Remarks
 Will not return duplicate names of animating sub textures.  
 Animating sub textures will have identical names.
 
 <a name='Velaptor.Content.AtlasData.Texture'></a>
 
-## AtlasData.Texture Property
+### Texture 
 
 Gets the the texture of the atlas.
 
@@ -172,7 +172,7 @@ Implements [Texture](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.
 
 <a name='Velaptor.Content.AtlasData.this[int]'></a>
 
-## AtlasData.this[int] Property
+### this[int] 
 
 The iterator for the atlas sub texture data.
 
@@ -194,7 +194,7 @@ Implements [this[int]](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasDat
 
 <a name='Velaptor.Content.AtlasData.Width'></a>
 
-## AtlasData.Width Property
+### Width 
 
 Gets the width of the entire texture atlas texture.
 
@@ -206,11 +206,11 @@ Implements [Width](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.Wi
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-### Methods
+## Methods
 
 <a name='Velaptor.Content.AtlasData.GetFrames(string)'></a>
 
-## AtlasData.GetFrames(string) Method
+### GetFrames(string) 
 
 Gets the all of the frames that have the given sub texture id.
 

@@ -5,7 +5,7 @@ title: Velaptor.IUpdatable
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
 ### [Velaptor](Velaptor.md 'Velaptor')
 
-## IUpdatable Interface
+#### IUpdatable Interface
 
 Provides the ability for an object to be updated.
 
@@ -19,11 +19,11 @@ Derived
 &#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')  
 &#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')  
 &#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
-### Methods
+## Methods
 
 <a name='Velaptor.IUpdatable.Update(Velaptor.FrameTime)'></a>
 
-## IUpdatable.Update(FrameTime) Method
+### Update(FrameTime) 
 
 Updates the object.
 

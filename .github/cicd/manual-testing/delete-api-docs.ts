@@ -12,7 +12,7 @@ import { DeleteAPIVersionService } from "../doc-process-scripts/DeleteAPIVersion
 
 const versionDirPaths: string[] = Directory.getDirs("./versioned_docs");
 const apiDocVersions: string[] = Path.getLastDirNames(versionDirPaths)
-	.map(d => `v${d.replace("version-", "")}`);
+	.map((d) => `v${d.replace("version-", "")}`);
 
 //"This will delete the API docs for the chosen version locally."
 

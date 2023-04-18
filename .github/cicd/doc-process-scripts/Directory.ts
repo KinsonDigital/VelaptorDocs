@@ -101,7 +101,7 @@ export class Directory {
 	}
 
 	/**
-	 * Renames a directory from the old directory path to the new directory path.	
+	 * Renames a directory from the old directory path to the new directory path.
 	 * @param {string} oldDirPath The old directory to rename.
 	 * @param {string} newDirPath The new directory name.
 	 */

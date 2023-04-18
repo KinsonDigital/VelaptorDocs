@@ -8,7 +8,7 @@ import { VersionsFileService } from "./VersionsFileService.ts";
  * Deletes API docs for a specific version and updates the config files.
  */
 export class DeleteAPIVersionService {
-	private readonly versionFileService: VersionsFileService
+	private readonly versionFileService: VersionsFileService;
 	private readonly sideBarService: VersionSideBarService;
 
 	/**
@@ -30,7 +30,7 @@ export class DeleteAPIVersionService {
 
 		const versionDirPaths: string[] = Directory.getDirs("./versioned_docs");
 
-		const apiDocDirPath: string | undefined = versionDirPaths.find(p => p.indexOf(version) !== -1);
+		const apiDocDirPath: string | undefined = versionDirPaths.find((p) => p.indexOf(version) !== -1);
 
 		if (apiDocDirPath === undefined) {
 			throw new Error(`Could not find the API docs directory path for version '${version}'.`);

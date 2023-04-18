@@ -96,7 +96,7 @@ export class DocProcessor {
 			`${Deno.cwd()}/default-doc-config.json`,
 		);
 
-		console.log(ChalkColor.header("Documentation Generation Complete."));
+		console.log(ChalkColor.header("\n\nDocumentation Generation Complete."));
 
 		// Perform post-processing on the documentation.
 		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
@@ -112,7 +112,7 @@ export class DocProcessor {
 
 		await this.createAPIWebsiteVersion(releaseTag);
 
-		console.log(ChalkColor.header("Website Version Snapshot Complete."));
+		console.log(ChalkColor.header("\n\nWebsite Version Snapshot Complete."));
 	}
 
 	/**

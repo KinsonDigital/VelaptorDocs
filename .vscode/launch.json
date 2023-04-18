@@ -53,6 +53,21 @@
             ],
             "attachSimplePort": 9229
         },
+		{
+            "request": "launch",
+            "name": "Delete API Doc (DEBUG)",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/manual-testing/delete-api-docs.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+                "--allow-all",
+            ],
+            "attachSimplePort": 9229,
+			"console": "integratedTerminal"
+        },
         {
             "request": "launch",
             "name": "Enable Testing Env",

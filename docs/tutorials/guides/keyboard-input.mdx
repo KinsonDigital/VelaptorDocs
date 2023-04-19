@@ -6,15 +6,18 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 
 # Keyboard Input
 
-The wonder of interactivity.  Being able to control your game with a keyboard or other types of hardware input is a must.  Without the ability
-to control your game, you are just staring at a looping animation.  The "interface" between the human playing the game
-and the game responding to the human is the hardware such as a keyboard or mouse.
+The first sentence could be improved by adding a subject. For example: "The wonder of interactivity lies in being able
+to control your game with a keyboard or other types of hardware input.  Without the ability to control your game, you
+are just staring at a looping animation.  The "interface" between the human playing the game and the game responding
+to the human is the hardware such as a keyboard or mouse.
 
-Hardware for interacting with games can come in many forms.  The most common is a keyboard, mouse, or game controller.
+Hardware for interacting with games can come in many forms.  The most common types of input hardware are a keyboard,
+mouse, or game controller. The type of hardware you use to interact with a game though depends on the type of
+game and some preference.
 
-This guide will show you how to use the keyboard to control your game.  The options for how to respond to keyboard input are
-endless. Examples of what you can do with the keyboard are character movement, pausing the game,
-and unfortunately, quitting the game.  Most of the time we don't want to quit and just keep playing. 😁
+In addition, this guide will show you how to use the keyboard to control your game.  The options for how to respond
+to keyboard input are endless. Examples of what you can do with the keyboard are character movement, pausing the game,
+and exiting the game when necessary.
 
 :::note project example
 Go to the <TutorialLink projectName="KeyboardInput"/> tutorial project to see a fully working example.
@@ -23,22 +26,21 @@ Go to the <TutorialLink projectName="KeyboardInput"/> tutorial project to see a 
 
 ## <span class="color-step">Step 1: Project setup</span>
 
-This tutorial will use keyboard input to move the game window around and also change the size of the window.
+This tutorial will demonstrate how to use keyboard input to move and resize the game window in a Velaptor application.
+While this may seem simple, it is a crucial skill for any game developer to master
 
-I know, not very exciting but we want to keep the tutorials as simple as possible so as not to introduce concepts or Velaptor
-features that you are not familiar with yet.
-
-Create a basic Velaptor application.
-The only game loop methods required for this tutorial will be the `OnUpdate()` and `OnResize()` methods.
-
+To get started, create a new Velaptor application.
 :::note REFER TO
 For more info, refer to the [Project Setup](./project-setup) guide.  
 :::
 
+The only game loop methods required for this tutorial will be the `OnUpdate()` method, which we
+will be used to update the game state and resize and move the window respectively.
+
 
 ## <span class="color-step">Step 2: Creating game state</span>
 
-We need to create some class fields to hold onto some state.  Let's do this now.
+We need to create some class fields to hold onto the state of the game.  Let's do this now.
 
 ### <span class="color-sub-step">Step 2.1: Creating the class fields</span>
 
@@ -59,9 +61,9 @@ public class Game : Window
 
 ### <span class="color-sub-step">Step 2.2: Creating a keyboard object</span>
 
-Create a new instance of `IAppInput<KeyboardState>` which will be used to get the state of the keyboard.  This can easily be done by using
-Velaptors handy `InputFactory` class to easily create keyboard objects.  Save this object instance to the class field `keyboard`
-in the `Game()` constructor.
+To enable keyboard input in your Velaptor game, you'll need to create a new instance of `IAppInput<KeyboardState>`,
+which will be set to the class field 'keyboard'.  This will provide access to the current state of the keyboard.
+You can create a new keyboard object quickly and easily using Velaptor's 'InputFactory' class.
 
 ```csharp
 public Game() => this.keyboard = InputFactory.CreateKeyboard();
@@ -132,21 +134,15 @@ field component to a value that will move the window in the direction described 
 This will be called later in our `OnUpdate()` method.
 
 :::info How are time, velocity, and displacement related?
-
 <details><summary>Expand me for more info!!</summary>
-Why are we multiplying the velocity by the time?  This is because we want to move the window at a constant speed regardless of the
-frame rate.  If we didn't multiply the velocity by the time, the faster the CPU, the faster the window would move.
-The frame rate is not the same on all computers.  The faster the CPU, the faster the framerate.  Basically, it is all
-about movement over time!
+In our code, we're multiplying the velocity of the window's movement by the elapsed time since the last frame. This ensures
+that the window moves at a consistent speed, regardless of the frame rate. Because the CPU is responsible for executing the
+game logic and rendering each frame, a faster CPU can complete more operations in the same amount of time, resulting in
+a higher frame rate.
 
-<br/>
-<br/>
-
-**Example:** If you moved the window 10 pixels every frame and the frame rate was 60 frames per second, then the window would
-move 600 pixels per second.  Now let's say that the window moved 10 pixels every frame and the frame rate was 30 frames per second.
-The window would move 300 pixels per second.  As you can see, the window would move at a different speed on a slow CPU
-vs a fast CPU.  This is not what we want.  Games need to be consistent and game objects need to move at the same speed
-on all computers, regardless of the CPU speed.
+To ensure that players have a consistent experience, game objects must move at the same speed on all computers,
+regardless of the CPU speed. This means that game developers must account for differences in hardware and optimize
+their code to achieve consistent results.
 </details>
 ::: 
 
@@ -191,10 +187,9 @@ the window based on the state of the keyboard keys.
 
 ### <span class="color-sub-step">Step 4.1: Getting the keyboard state</span>
 
-When you want to be able to check the state of the keyboard keys, you need to get the state of the entire
-keyboard during the _**current**_ frame of the game loop, and for every frame of the game loop.  Once you have the state of
-the keyboard, you can analyze which keys are in the up or down position.  With this information, you can make decisions
-about what to do when a single key or combination of key(s) is in the up or down position.
+To check the state of keyboard keys in your game, you need to retrieve the keyboard state for each frame of
+the game loop. This will allow you to analyze which keys are currently in the up or down position. With this
+information, you can make decisions about what actions to take based on the state of a single key or a combination of keys.
 
 First, set the _**current**_ and _**previous**_ state of the keyboard.
 
@@ -239,10 +234,27 @@ If this is the case, then the window will be moved.  If not, then the window siz
 
 ### <span class="color-sub-step">Step 4.3: Run It</span>
 
-Run the application to see it in action!!  First, only press the _**arrow keys**_ and you will see the width and height
-of the window increase and decrease in size.  Notice that the size will not change unless you lift your fingers off
-of the arrow keys from the down position.
+Run the application and then begin by pressing the arrow keys to observe the window's width and height increase
+or decrease. The window will only resize when you release the arrow key from the down position.
 
-Now press and hold down any _**Ctrl**_ key and then press the _**arrow keys**_.  You will see the window move around
-the screen.  Notice, that you do not have to lift your finger off the arrow keys to continue to move the window.
-This is because we are not looking for a _**full**_ key press of the arrow keys.
+Next, hold down any Ctrl key and then use the arrow keys to move the window around the screen. You'll notice that you can keep
+the window moving without releasing the arrow keys, as we're not looking for a full key press.
+
+Now you have all that you need to get input from the user via the keyboard!!
+
+## <span class="color-step">Step 5: Bonus</span>
+
+It would be nice to see the current size and position of the window.  To do this, we can override the `OnResize()` method
+and update the window's title with the new size and position.
+
+Add the method below in the `Game` class.
+
+```csharp
+protected override void OnResize(SizeU size)
+{
+	Title = $"Window Size: W: {Width} H: {Height} | Window Position: X: {Position.X} Y: {Position.Y}";
+	base.OnResize(size);
+}
+```
+
+Run the application and now you can see the size and position of the window in the title bar.

@@ -19,12 +19,12 @@ Go to the <TutorialLink projectName="EmptyProject"/> tutorial project to see a f
 
 First things first. You have to create a project with the preferred IDE!!
 
-### <span class="color-step">Step 1: Create the application</span>
+## <span class="color-step">Step 1: Create the application</span>
 
 Create a new C# console application using dotnet _**v7.0**_
 
 
-### <span class="color-step">Step 2: Add Velaptor to the project</span>
+## <span class="color-step">Step 2: Add Velaptor to the project</span>
 
 Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Velaptor) to the project.
    - Make sure to click the preview check box in your IDE of choice. Since Velaptor is currently only in preview, clicking the checkbox will allow you to see the NuGet package.
@@ -38,7 +38,7 @@ Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Ve
     </Tabs>
 
 
-### <span class="color-step">Step 3: Create the game class</span>
+## <span class="color-step">Step 3: Create the game class</span>
 
 Create a new class file named `Game`. This will be necessary to take advantage of the game-related methods of Velaptor. These methods
 are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
@@ -52,7 +52,7 @@ public class Game : Window
 ```
 
 
-### <span class="color-step">Step 4: Creating game methods</span>
+## <span class="color-step">Step 4: Creating game methods</span>
 
 When developing games, you need to take advantage of various methods that are _**hooked**_ into
 various parts of the game lifecycle. These lifecycle events are things such as content loading,
@@ -78,7 +78,7 @@ flowchart LR
 	style id4 stroke:#c5635c
 ```
 
-#### <span class="color-sub-step">Step 4.1: Create `OnLoad()` method</span>
+### <span class="color-sub-step">Step 4.1: Create `OnLoad()` method</span>
 Once the game class file has been created, we need a way to load content. We can load sounds, textures, fonts, atlas textures and atlas data, or any
 kind of content your game needs. This method will be invoked once time as the application loads up.
 
@@ -91,7 +91,7 @@ protected override void OnLoad()
 }
 ```
 
-#### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
+### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
 
 The next method to create is the `OnUpdate()` method. This method will be invoked once every frame and always before the `OnDraw()` method is
 invoked. This is where you should add your game logic and update your game state. The point of
@@ -104,7 +104,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-#### <span class="color-sub-step">Step 4.3: Create `OnDraw()` method</span>
+### <span class="color-sub-step">Step 4.3: Create `OnDraw()` method</span>
 
 Now that we have a way to update our game state, we need to create a method to render our game to the screen. Create a method override of the `Window.OnDraw()` method.
 The `OnDraw()` method is invoked once every frame and always after the `OnUpdate()` method is invoked.
@@ -117,7 +117,7 @@ protected override void OnDraw(FrameTime frameTime)
 }
 ```
 
-#### <span class="color-sub-step">Step 4.4: Create `OnResize()` method</span>
+### <span class="color-sub-step">Step 4.4: Create `OnResize()` method</span>
 
 If you want to have your game react when the window size changes, you can create a method override of the `Window.OnResize()` method.
 The `OnResize()` method is invoked anytime the window's size is changed. This includes minimizing, maximizing, and restoring the window.
@@ -131,7 +131,7 @@ protected override void OnResize(SizeU size)
 }
 ```
 
-#### <span class="color-sub-step">Step 4.5: Create `OnUnload()` method</span>
+### <span class="color-sub-step">Step 4.5: Create `OnUnload()` method</span>
 
 We need a way to unload our content. This can be performed by creating a method override of the `Window.OnUnload()` method.
 The `OnUnload()` method is invoked one time when the window is closed. This is to free resources and content from your game on
@@ -144,7 +144,7 @@ protected override void OnUnload()
 }
 ```
 
-#### <span class="color-sub-step">Step 4.6: Run It</span>
+## <span class="color-step">Step 5: Run It</span>
 
 Run the application!!
 

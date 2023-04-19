@@ -2,7 +2,6 @@
 sidebar_position: 5
 ---
 
-import OpenNewTab from '@site/static/img/new-tab.svg';
 import { TutorialLink } from "@site/src/components/TutorialLink";
 
 # Rendering With An Atlas Texture
@@ -25,8 +24,7 @@ An atlas texture is a large image with multiple sub-images packed into a single 
 of a particular format such as JSON or XML, that describes the location, size, and other kinds of metadata for each image in the atlas texture.
 
 :::info JSON
-If you are an experienced developer, you know what _**JSON**_ is. For people who are learning and new to development,
-click [here](https://www.youtube.com/watch?v=iiADhChRriM) for a great 10-minute video on what JSON is.
+Don't know what _**JSON**_ is? If new to JSOn, click [here](https://www.youtube.com/watch?v=iiADhChRriM) for a great 10-minute video.
 :::
 
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
@@ -46,7 +44,8 @@ atlas textures and their associated metadata built in.
 
 It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
 
-Various tools out there give you the ability to easily create atlas textures and metadata. A couple of examples are: [Texture Packer](https://www.codeandweb.com/texturepacker)
+Various tools out there give you the ability to easily create atlas textures and metadata.  
+A couple of examples are: [Texture Packer](https://www.codeandweb.com/texturepacker)
 and [Spine](https://esotericsoftware.com/).
 
 :::note Loading Metadata
@@ -91,11 +90,6 @@ For this tutorial, we are going to build a simple game that will show a blue ani
 This flame will be rendered in the center of the window and will animate in a loop indefinitely.
 We will also add a very small amount of randomness to it as well to enhance the animation.
 
-:::note Project Templates
-To see a complete working sample project of this tutorial, look at the <a target="_blank" rel="noopener" class="link" href="https://github.com/KinsonDigital/VelaptorTutorials/tree/master/AtlasTextures">AtlasTextures<OpenNewTab style={{paddingTop: '10', paddingLeft: '0.25%', width: '2%'}}/></a>
-&nbsp;project in the <a target="_blank" rel="noopener" class="link" href="https://github.com/KinsonDigital/VelaptorTutorials/tree/master/VelaptorTutorials">
-VelaptorTutorials<OpenNewTab style={{paddingTop: '10', paddingLeft: '0.25%', width: '2%'}}/></a> repository.
-:::
 
 ### <span class="color-step">Step 1: Create Project</span>
 

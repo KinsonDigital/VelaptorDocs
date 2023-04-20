@@ -4,17 +4,18 @@ sidebar_position: 3
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { TutorialLink } from "@site/src/components/TutorialLink";
 
 # Hello Velaptor
 
 This guide will show you the basics of creating a simple **Hello World** application using Velaptor.
 
-:::note Project Templates
-To see a complete working sample project of this tutorial, look at the [HelloVelaptor](https://github.com/KinsonDigital/VelaptorTutorials/tree/master/HelloVelaptor) project in the [VelaptorTutorials](https://github.com/KinsonDigital/VelaptorTutorials) repository.
+:::note Project Example
+Go to the <TutorialLink projectName="HelloVelaptor"/> tutorial project to see a fully working example.
 :::
 
 
-### <span class="color-step">Step 1: Create project</span>
+## <span class="color-step">Step 1: Create project</span>
 
 Create a basic Velaptor application.
 :::note Refer To
@@ -22,9 +23,9 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 :::
 
 
-### <span class="color-step">Step 2: Loading content</span>
+## <span class="color-step">Step 2: Loading content</span>
 
-#### <span class="color-sub-step">Step 2.1: Create font field</span>
+### <span class="color-sub-step">Step 2.1: Create font field</span>
 
 Create a class field named `font` at the top of the class. This will be the loaded font to use for rendering text.
 
@@ -32,7 +33,7 @@ Create a class field named `font` at the top of the class. This will be the load
 private IFont? font;
 ```
 
-#### <span class="color-sub-step">Step 2.2: Load the font</span>
+### <span class="color-sub-step">Step 2.2: Load the font</span>
 
 Now let's load the font using the `ContentLoader` property that belongs to the `Window` class.
 
@@ -54,9 +55,9 @@ Since the name of the content to load is based on the name of the file, renaming
 :::
 
 
-### <span class="color-step">Step 3: Rendering text</span>
+## <span class="color-step">Step 3: Rendering text</span>
 
-#### <span class="color-sub-step">Step 3.1: Create renderer field</span>
+### <span class="color-sub-step">Step 3.1: Create renderer field</span>
 
 After setting up a text renderer and selecting a font for rendering text, we can now render text on the screen using the
 font renderer. To achieve this, you can add the following code to the `OnDraw()` method. Remember to call `IRenderer.Begin()`
@@ -70,7 +71,7 @@ public class Game : Window
 }
 ```
 
-#### <span class="color-sub-step">Step 3.2: Create renderer</span>
+### <span class="color-sub-step">Step 3.2: Create renderer</span>
 
 Create the font renderer in the constructor. First, we create a renderer factory and then use the factory to create the renderer.
 
@@ -82,7 +83,7 @@ public Game()
 }
 ```
 
-#### <span class="color-sub-step">Step 3.3: Load the font</span>
+### <span class="color-sub-step">Step 3.3: Load the font</span>
 
 Go into the `OnLoad()` method and add the code that loads the font.
 
@@ -108,7 +109,7 @@ Refer to the [Fonts](./coming-soon/fonts.mdx) guide for more details.
 </details>
 :::
 
-#### <span class="color-sub-step">Step 3.4: Render the text</span>
+### <span class="color-sub-step">Step 3.4: Render the text</span>
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
@@ -161,20 +162,20 @@ the other 3 quadrants would be rendered off-screen!!  Make sure to take this int
 </details>
 :::
 
-#### <span class="color-sub-step">Step 3.5: See the result</span>
+### <span class="color-sub-step">Step 3.5: See the result</span>
 
 Now for the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/hello-velaptor-window.jpg').default} alt="Example banner"/>
 
 
-### <span class="color-step">Step 4: Let's update something</span>
+## <span class="color-step">Step 4: Let's update something</span>
 
 A game isn't a game without behavior and interaction, otherwise, you're just looking at a still picture!
 All games have 2 pieces that make up the game loop. The first piece is the ability to update your game before you render it to the screen.
 The second piece is rendered on the screen. Let's add something to give the application some life.
 
-#### <span class="color-sub-step">Step 4.1: Create fields</span>
+### <span class="color-sub-step">Step 4.1: Create fields</span>
 
 Let's change the text to a random color every second. To accomplish this, we need some more class fields to work with.
 
@@ -187,7 +188,7 @@ public class Game : Window
 }
 ```
 
-#### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
+### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
 
 To create a random color every second, we need to hook into the update part of the game loop. If an
 `OnUpdate()` method does not already exist, create an empty method override of the `Window.OnUpdate()` method.
@@ -199,7 +200,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-#### <span class="color-sub-step">Step 4.3: Randomize text color</span>
+### <span class="color-sub-step">Step 4.3: Randomize text color</span>
 
 Add some logic in the `OnUpdate()` method to randomize the text color every second.
 
@@ -227,6 +228,6 @@ protected override void OnUpdate(FrameTime frameTime)
 ```
 
 
-### <span class="color-step">Step 5: Run It</span>
+## <span class="color-step">Step 5: Run It</span>
 Run the application and see the result!!
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/update-text-color.gif').default} alt="Example banner"/>

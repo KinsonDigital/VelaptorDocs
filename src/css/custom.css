@@ -30,6 +30,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.link {
+	color: #c29f8a;
+}
+
 .color-step {
   color: #c29f8a;
 }

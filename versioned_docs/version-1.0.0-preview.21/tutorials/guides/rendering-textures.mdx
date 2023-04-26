@@ -1,0 +1,108 @@
+---
+sidebar_position: 4
+---
+
+# Rendering Textures
+
+A game cannot be a game without having the ability to render textures. This guide will show you how to render whole
+textures to the screen.
+
+:::note project example
+Go to the <TutorialLink projectName="RenderingTextures"/> tutorial project to see a fully working example.
+:::
+
+
+## <span class="color-step">Step 1: Project setup</span>
+
+Create a basic Velaptor application.
+:::note REFER TO
+For more info, refer to the [Project Setup](./project-setup) guide.
+:::
+
+### <span class="color-sub-step"> Step 1.1: Create game class</span>
+
+Create a `Game` class with an empty `OnLoad()` and `OnDraw()` method overrides.
+
+### <span class="color-sub-step">Step 1.2: Create game object</span>
+
+In the _**Program.cs**_ file, create a new `Game` object and invoke the `Show()` method.
+
+
+## <span class="color-step">Step 2: Rendering a texture</span>
+
+### <span class="color-sub-step">Step 2.1: Create class fields</span>
+
+Create the `ITexture` and `ITextureRenderer` class fields. This will be used to render the Velaptor mascot texture to the screen.
+
+```csharp
+public class Game : Window
+{
+    private ITextRenderer textureRenderer; // Renders textures
+    private ITexture mascotTexture; // The texture to render
+    ...
+}
+```
+
+### <span class="color-sub-step">Step 2.2: Create renderer</span>
+
+In the constructor, create a render factory and then use the factory to create an instance of a texture renderer.
+
+```csharp
+public Game()
+{
+    var renderFactory = new RendererFactory(); // Creates renderers
+    this.textureRenderer = renderFactory.CreateTextureRenderer(); // Renders textures
+}
+```
+
+### <span class="color-sub-step">Step 2.3: Get content</span>
+
+Download or create any _**.png**_ file you want.
+
+:::info Velaptor Mascot Image
+You can download the Velaptor mascot <a target="\_blank" href={require('@site/static/img/downloads/velaptor-mascot.png').default}>here</a>
+:::
+
+### <span class="color-sub-step">Step 2.4: Add as content</span>
+
+Add the image to the project and set it as content by following the steps in the [Adding Content](./adding-content) tutorial.
+Make sure to add the image to the `Content/Graphics` folder in the project.
+
+### <span class="color-sub-step">Step 2.5: Load content</span>
+
+Now that our content has been successfully added to the project, we can now move on to loading the texture and
+rendering it!! Let's load the texture to the class field in the `OnLoad()` method.
+
+```csharp
+protected override void OnLoad()
+{
+    this.mascotTexture = ContentLoader.LoadTexture("velaptor-mascot");
+    base.OnLoad();
+}
+```
+
+### <span class="color-sub-step">Step 2.6: Render the image</span>
+
+Finally, we can get to rendering our image. Add the code below to the `OnDraw()` method.
+```csharp
+protected override void OnDraw(FrameTime frameTime)
+{
+    IRenderer.Begin();
+
+    var x = (int)(Width / 2); // Center of the window horizontally
+    var y = (int)(Height / 2); // Center of the window vertically
+
+    // Render the mascot image in the center of the window
+    this.textureRenderer.Render(this.mascotTexture, x, y);
+
+    IRenderer.End();
+
+    base.OnDraw(frameTime);
+}
+```
+
+
+## <span class="color-step">Step 3: Run it</span>
+
+Run the application. You should see the result below!!
+<img style={{width: '70%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/render-textures-complete.png').default} alt="Example banner"/>

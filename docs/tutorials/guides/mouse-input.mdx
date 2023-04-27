@@ -39,8 +39,8 @@ Let's create some class fields to help us control the window size.
 
 ### <span class="color-sub-step">Step 2.1: Creating the class fields</span>
 
-Create some class fields that can hold the state of the mouse and also the amount of how much we want to change
-the height of the window.
+Create some class fields that can hold the state of the mouse and the amount that will be applied to the height of the
+window.
 
 ```csharp
 public class Game : Window
@@ -88,7 +88,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 ### <span class="color-sub-step">Step 3.2: Changing the window width</span>
 
-Next, between the two mouse states in the `OnUpdate()` method, add the code below to change the width of the window.
+Next, between the two mouse states in the `OnUpdate()` method, change the width of the window by adding the code below:
 
 ```csharp
 private void OnUpdate(FrameTime frameTime)
@@ -114,9 +114,9 @@ private void OnUpdate(FrameTime frameTime)
 }
 ```
 
-This code checks if the left mouse button is currently being held down. If it is, then the width of the window will be
-changed based on the difference between the current and previous mouse positions.  As you move the mouse left and right,
-it will take the difference between the position on the X-axis and apply that to the width of the window.
+This code checks whether or not the left mouse button is currently being held down. If it is, then the width of the
+window will change based on the difference between the current and previous mouse positions.  As you move the mouse
+left and right, it will take the difference between the position on the X-axis and apply that to the width of the window.
 
 The important part here is the `this.prevMouseState = currMouseState`.  As long as the logic is added between the current
 and previous mouse states, there is something to compare to know if the mouse has moved.
@@ -124,7 +124,7 @@ and previous mouse states, there is something to compare to know if the mouse ha
 ### <span class="color-sub-step">Step 3.3: Changing the window height</span>
 
 Now we can add the code to change the height of the window as we scroll the mouse wheel.
-Add the following code right below the `if` block added in the previous step.
+Below the `if` block we added in the previous step, add the following code:
 
 ```csharp
 private void OnUpdate(FrameTime frameTime)
@@ -153,9 +153,9 @@ private void OnUpdate(FrameTime frameTime)
 }
 ```
 
-This code will get the current value of the mouse wheel and use this to detect which direction the mouse wheel was scrolled.
-When the mouse wheel is scrolled down toward you, it returns a negative value and when it is scrolled up away from you,
-it returns a positive value.
+This code gets the current value of the mouse wheel and uses it to detect which direction the mouse wheel was scrolled.
+When the mouse wheel is scrolled toward you like you are scrolling down a web page, it returns a negative value and when
+it is scrolled up away from you like scrolling back to the top of a web page, it returns a positive value.
 
 If the mouse wheel has not been scrolled at all for the current frame, it will be 0.  Only change the height if the mouse
 has been scrolled.
@@ -174,10 +174,10 @@ To change the height of the window, scroll the mouse wheel up or down.
 
 ## <span class="color-step">Step 4: Bonus</span>
 
-It would be nice to see the current size of the window. To do this, we can override the `OnResize()` method
+It would be nice to see the current size of the window, right? To do that, we can override the `OnResize()` method
 and update the window's title with the new size.
 
-Add the method below in the `Game` class.
+In the `Game` class, add the method shown below:
 
 ```csharp
 protected override void OnResize(SizeU size)

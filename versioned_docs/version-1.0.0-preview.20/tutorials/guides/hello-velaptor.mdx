@@ -185,6 +185,7 @@ public class Game : Window
 	...
     private readonly Random random = new(); // Creates random numbers
     private double elapsedMs; // Total amount of time that has passed in milliseconds
+	private Color textColor; // Represents the color of the text
 }
 ```
 
@@ -227,6 +228,17 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
+Inside `OnDraw()` method, pass `textColor` variable to the `Render()` method.
+
+```csharp
+protected override void OnDraw(FrameTime frameTime)
+{
+	...
+    // Render the text to the center of the screen with the random color
+    this.fontRenderer.Render(this.font, "Hello Velaptor!!", x, y, this.textColor);
+	...
+}
+```
 
 ## <span class="color-step">Step 5: Run It</span>
 Run the application and see the result!!

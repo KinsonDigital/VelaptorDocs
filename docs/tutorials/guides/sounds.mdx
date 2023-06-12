@@ -11,11 +11,11 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 Go to the <TutorialLink projectName="Sounds"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
-Sounds are a great way to add some life to your game.  Whether it is background music or sound effects, Velaptor has you covered.
-Could you ever imagine playing Mario Brothers games without that sound effect when you jump?
-Or how about all of the weapon sound effects in Metroid?  Don't forget the music in Metroid which was amazing.
+Can you imagine playing Mario Brothers games without the **jump** sound effect? How about playing Metroid with no amazing music
+and no weapon sound effects?  Sounds are a great way to add some life to your game.  Whether it is background music or sound
+effects, Velaptor has you covered.
 
-Check some of these out!! For some of us, this brings back some memories. 😀
+Check out some of these sounds!! They might bring back memories. 😉
 <table>
   <tr style={{ border: 'none' }}>
     <td style={{ border: 'none' }}>
@@ -60,7 +60,7 @@ public class Game : Window
 
 ## <span class="color-step">Step 3: Setup window</span>
 
-Let's set up our window to not be so large.  Create a `Game()` constructor and add the following code.
+Let's set up our window to not be so large.  Create a `Game()` constructor and add the following code:
 
 ```csharp
 public Game()
@@ -116,24 +116,23 @@ following code to the `OnLoad()` method to load the sound and create our keyboar
 ```
 
 :::tip Content name
-Remember, the name of the audio file without its extension is the name of the content.  The audio file added previously
-is the name of the file if you downloaded the file from the tutorial project.  If you provided an audio file,
-make sure the content name matches the file name that you decided to use.
+Remember, the name of the audio file **_without its extension**_ will be the name of the content. 
+Example: 'deep-consistency.ogg' will become 'deep-consistency'.
 :::
 
 
 ## <span class="color-step">Step 5: Displaying sound info</span>
 
-So we have an audio file to play, but we need to know some information such as the current duration of the audio
-if it is playing or paused, and some basic instructions for the user on how to control the audio playback.  Since we are going
+So we have an audio file to play, but we need to know some information like the current duration of the audio,
+if it's playing or paused, and some basic instructions for the user on how to control the audio playback.  Since we are going
 to be using the keyboard to control the sound, it makes sense to tell the user which keyboard keys to use to stop, play, and
 other sound-related operations.
 
-In the spirit of keeping things simple, we will just display the information in the title bar of the window.
+In the spirit of keeping things simple, we'll display the information in the title bar of the window.
 
 ### <span class="color-sub-step">Step 5.1: Displaying audo state</span>
 
-We will create a method that will be used to display the information we want in the title bar.  Create the following `UpdateTitle()`
+We'll create a method that will be used to display the information we want in the title bar.  Create the following `UpdateTitle()`
 method and add some code to get a string representing the current state of the audio file.
 
 ```csharp
@@ -154,7 +153,7 @@ private void UpdateTitle()
 
 ### <span class="color-sub-step">Step 5.2: Display time and instructions</span>
 
-Now add the following code below the code you added previously.  This code will get the minutes and seconds of the audio
+Now, add the code below the code you added previously added.  This code will get the minutes and seconds of the audio
 playback in the correct 2-digit format as well as the instructions for the user on how to play, pause, fast forward,
 and rewind the audio.
 
@@ -184,13 +183,13 @@ Great!  Now we have a method to update useful information about the audio as wel
 For more info, refer to the [Keyboard Input](./keyboard-input) guide.
 :::
 
-We can put this all together so we can control the audio playback.  But to do this we need to inspect the state of the keyboard
+We can put this all together so we can control the audio playback but first, we need to inspect the state of the keyboard
 to see which key is being pressed.
 
 ### <span class="color-sub-step">Step 6.1: Keyboard state & key pressed</span>
 
-Add the following code to the `OnUpdate()` method that will get the current state of the
-keyboard and also check if any key has been fully pressed.
+To get the current state of the keyboard and to check if any key has been fully pressed, add the code below to the
+`OnUpdate()` method. 
 
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
@@ -205,7 +204,7 @@ protected override void OnUpdate(FrameTime frameTime)
 ```
 
 :::tip Local Functions
-This code snippet uses a local function to check if a key is pressed.  This is a new feature in C# 7.0.  If you are not
+This code snippet uses a local function to check whether or not a key is pressed, which is a new feature in C# 7.0.  If you are not
 familiar with local functions, you can read more about them [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions).  
 ```csharp
 // This is a local function
@@ -218,8 +217,8 @@ bool IsPressed(KeyCode key)
 
 ### <span class="color-sub-step">Step 6.2: Audio control with keyboard</span>
 
-This tutorial would be kind of useless if we did not provide any control over the audio for demo and learning purposes. 😉
-Make this happen by adding the following code after the local function in the `OnUpdate()` method.
+This tutorial would be pretty useless if we didn't provide control over the audio for demo and learning purposes, right?😉
+You can make that happen by adding the following code after the local function in the `OnUpdate()` method.
 
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
@@ -276,11 +275,11 @@ protected override void OnUpdate(FrameTime frameTime)
 
 ## <span class="color-step">Step 7: Run it</span>
 
-Run the game and let's play some music!  You should see the following window.
+Run the game and let's play some music!  You should see the following window:
 
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/sounds/sounds-window.png').default} alt="Example banner"/>
 
-As the instructions in the title bar state, press the space bar to play and pause the audio, escape to stop the audio, and set
-it back to the beginning, the left arrow key to rewind 5 seconds, and the right arrow key to fast forward 5 seconds.
+As the instructions in the title bar state, press the space bar to play and pause the audio, escape to stop or restart the
+audio, the left arrow key to rewind 5 seconds, and the right arrow key to fast forward 5 seconds.
 
 Simple!!  Now you can add sound effects and/or music to your games!!

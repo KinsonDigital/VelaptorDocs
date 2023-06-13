@@ -56,4 +56,74 @@
 		],
 		"description": "Tutorial Sub Step"
 	},
+	"Note Admonition": {
+		"scope": "mdx",
+		"prefix": "note-admonition",
+		"body": [
+			":::note ${1: Note Title}",
+			"${2: Note Content}",
+			":::\n"
+		],
+		"description": "Note Admonition"
+	},
+	"Tip Admonition": {
+		"scope": "mdx",
+		"prefix": "tip-admonition",
+		"body": [
+			":::tip ${1: Note Title}",
+			"${2: Note Content}",
+			":::\n"
+		],
+		"description": "Tip Admonition"
+	},
+	"info Admonition": {
+		"scope": "mdx",
+		"prefix": "info-admonition",
+		"body": [
+			":::info ${1: Note Title}",
+			"${2: Note Content}",
+			":::\n"
+		],
+		"description": "Info Admonition"
+	},
+	"Caution Admonition": {
+		"scope": "mdx",
+		"prefix": "caution-admonition",
+		"body": [
+			":::caution ${1: Note Title}",
+			"${2: Note Content}",
+			":::\n"
+		],
+		"description": "Caution Admonition"
+	},
+	"Danger Admonition": {
+		"scope": "mdx",
+		"prefix": "danger-admonition",
+		"body": [
+			":::danger ${1: Note Title}",
+			"${2: Note Content}",
+			":::\n"
+		],
+		"description": "Danger Admonition"
+	},
+	"Guide Reference": {
+		"scope": "mdx",
+		"prefix": "guide-ref",
+		"body": [
+			":::note Refer To Guide",
+			"For more info, refer to the [${1: guide name}](./${2: guide file name}) guide.",
+			":::\n"
+		],
+		"description": "Reference link to another guide."
+	},
+	"Tutorial Project Reference": {
+		"scope": "mdx",
+		"prefix": "tutorial-proj-ref",
+		"body": [
+			":::note Guide Source Code",
+			"Go to the <TutorialLink projectName=\"${1: project name}\"/> tutorial project to see the source code for a fully working example of this guide.",
+			":::\n"
+		],
+		"description": "Reference to the open source guide tutorial project."
+	},
 }

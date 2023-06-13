@@ -10,14 +10,16 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 
 This guide will show you the basics of creating a simple, empty Velaptor application.
 
-:::note Project Templates
-There are plans in the future to create a project template for [Visual Studio](https://visualstudio.microsoft.com/) and
-[JetBrains Rider](https://www.jetbrains.com/rider/) users to easily create a basic Velaptor application.
-
-Go to the <TutorialLink projectName="EmptyProject"/> tutorial project to see a fully working example.
+:::note Guide Source Code
+Go to the <TutorialLink projectName="EmptyProject"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
-First things first. You have to create a project with the preferred IDE!!
+:::note Guide Source Code
+There are plans in the future to create a project template for [Visual Studio](https://visualstudio.microsoft.com/) and
+[JetBrains Rider](https://www.jetbrains.com/rider/) users to easily create a basic Velaptor application.
+:::
+
+First things first. You have to create a project with your preferred IDE!!
 
 ## <span class="color-step">Step 1: Create the application</span>
 
@@ -38,7 +40,12 @@ Add the Velaptor [NuGet package](https://www.nuget.org/packages/KinsonDigital.Ve
     </Tabs>
 
 
-## <span class="color-step">Step 3: Create the game class</span>
+## <span class="color-step">Step 3: Create main classes</span>
+
+The game class is the class used to contain all of the game loop/lifecycle methods.  These are the update and render methods,
+the load and unload content methods and more.
+
+### <span class="color-sub-step">Step 3.1: Create game class</span>
 
 Create a new class file named `Game`. This will be necessary to take advantage of the game-related methods of Velaptor. These methods
 are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
@@ -51,6 +58,23 @@ public class Game : Window
 }
 ```
 
+:::tip Top Level Statements
+Top-level statements are a newer feature added in C#10 that enables you to avoid the extra ceremony of creating the `main` entry point method
+in a class.
+Click [here](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements) to learn more!!
+:::
+
+
+### <span class="color-sub-step">Step 3.2: Create app entry point</span>
+
+All applications need some kind of entry point.  This is the starting point of your application.  In the case of Velaptor as well as
+all C# applications, the entry point is the `main` method in the `Program` class.  Let's take advantage of the latest C#
+features and use top-level statements.  Create a new `Program.cs` file and add the following code:
+
+```csharp
+var game = new EmptyProject.Game();
+game.Show();
+```
 
 ## <span class="color-step">Step 4: Creating game methods</span>
 
@@ -144,7 +168,7 @@ protected override void OnUnload()
 }
 ```
 
-## <span class="color-step">Step 5: Run It</span>
+## <span class="color-step">Step 5: Run it</span>
 
 Run the application!!
 

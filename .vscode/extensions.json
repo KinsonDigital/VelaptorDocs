@@ -2,6 +2,7 @@
 	"recommendations": [
 		"redhat.vscode-yaml",
 		"unifiedjs.vscode-mdx",
-		"yzhang.markdown-all-in-one"
+		"yzhang.markdown-all-in-one",
+		"streetsidesoftware.code-spell-checker"
 	]
 }

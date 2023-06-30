@@ -28,6 +28,7 @@ body:
     - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
     - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
     - label: Issue linked to the correct project _(if applicable)_.
+    - label: If more than 5 versions exist after adding the new version, the oldest version is removed.
     - label: Draft pull request created and linked to this issue _(only required with code changes)_.
 
 - type: textarea
@@ -41,6 +42,9 @@ body:
       | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
       | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
       | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
+
+      > **Note** Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.
+      > Just follow the CLI instructions to remove the version.
 
 - type: checkboxes
   id: terms

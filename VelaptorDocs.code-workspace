@@ -20,5 +20,16 @@
         "testing.openTesting": "neverOpen",
         "deno.testing.enable": false,
         "typescript.referencesCodeLens.enabled": true,
+	},
+	"extensions": {
+		"recommendations": [
+			"znck.grammarly",
+			"redhat.vscode-yaml",
+			"unifiedjs.vscode-mdx",
+			"streetsidesoftware.code-spell-checker",
+			"yzhang.markdown-all-in-one",
+			"denoland.vscode-deno",
+			"github.vscode-github-actions"
+		]
 	}
 }

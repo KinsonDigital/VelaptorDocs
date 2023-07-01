@@ -106,7 +106,7 @@
 					"run",
 					"--allow-read",
 					"--allow-write",
-					"${workspaceFolder}/.github/cicd/manual-testing/delete-api-docs.ts",
+					"${workspaceFolder}/.github/cicd/utils/delete-api-docs.ts",
 				]
 			}
 		}

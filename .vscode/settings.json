@@ -1,36 +1,49 @@
 {
-    "deno.enable": false,
-    "editor.autoIndent": "full",
-    "editor.detectIndentation": false,
-    "editor.tabSize": 4,
-    "editor.insertSpaces": false,
-    "cSpell.words": [
-        "cicd",
-        "clsx",
-        "defaultdocumentation",
-        "Deno",
-        "denoland",
-        "endgroup",
-        "Gaurd",
-        "Kinson",
-        "pwsh",
-        "Structs",
-        "Velaptor",
+	"deno.enable": false,
+	"cSpell.words": [
+		"cicd",
+		"clsx",
+		"defaultdocumentation",
+		"Deno",
+		"denoland",
+		"endgroup",
+		"Gaurd",
+		"Kinson",
+		"pwsh",
+		"Structs",
+		"Velaptor",
 		"typecheck"
-    ],
-    "files.exclude": {
-        ".docusaurus/": true,
-        "node_modules": true,
-        "VelaptorDocs.code-workspace": true,
-        "build/": true,
-        ".github/cicd/": true,
+	],
+	"files.exclude": {
+		".docusaurus/": true,
+		"node_modules": true,
+		"VelaptorDocs.code-workspace": true,
+		"build/": true,
+		".github/cicd/": true,
 		".config": true,
-        "RepoSrc/": true,
-    },
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/*.code-search": true,
-        "build/": true
-    }
+		"RepoSrc/": true,
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/bower_components": true,
+		"**/*.code-search": true,
+		"build/": true
+	},
+	"[typescript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+	},
+	"[jsonc]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"editor.detectIndentation": false,
+	"[github-actions-workflow]": {
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true
+	}
 }

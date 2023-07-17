@@ -34,8 +34,8 @@ jobs:
       run: |
         $branch = "${{ github.ref }}";
         
-        if ($branch -ne "refs/heads/master") {
-          Write-Host "::error::This workflow can only be run on the master branch.";
+        if ($branch -ne "refs/heads/main") {
+          Write-Host "::error::This workflow can only be run on the main branch.";
           exit 1; # Fail workflow
         }
 

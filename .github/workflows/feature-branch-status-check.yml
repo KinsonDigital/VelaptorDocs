@@ -9,8 +9,7 @@ defaults:
 on:
   workflow_dispatch:
   pull_request:
-    branches:
-      - "master"
+    branches: main
 
 
 jobs:
@@ -37,5 +36,5 @@ jobs:
 
         # Validate the target branch
         Write-Host "::group::Target Branch Validation";
-        deno run "${{ github.workspace }}/.github/cicd/workflow-helpers/branch-status-check.ts" "$targetBranch" "master";
+        deno run "${{ github.workspace }}/.github/cicd/workflow-helpers/branch-status-check.ts" "$targetBranch" "main";
         Write-Host "::endgroup::";

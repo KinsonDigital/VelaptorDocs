@@ -5,8 +5,8 @@ export class BranchValidator {
 
 	public static isValidBranch(branch: string, type: BranchType): boolean {
 		switch (type) {
-			case BranchType.master:
-				return branch === "master";
+			case BranchType.main:
+				return branch === "main";
 			case BranchType.feature: {
 				return this.featureBranchRegEx.test(branch);
 			}

@@ -19,7 +19,7 @@ Below are simple steps you will need when contributing.
 2. Create a feature branch with the syntax `feature/<issue-number>-<branch-description>`.
    > **Example** feature/123-my-branch
 
-   > **Note** Feature branches are created from `master` and are merged back into `master`.
+   > **Note** Feature branches are created from `main` and are merged back into `main`.
 3. Start and [Early Pull Requests](https://medium.com/practical-blend/pull-request-first-f6bb667a9b6) with the first empty commit with the value `Start work for issue #<issue-number>`.
    > **Note** Create the pull request in draft please. 😀
 4. Perform your work.  Make sure to test locally!!

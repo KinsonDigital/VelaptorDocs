@@ -13,11 +13,11 @@ if (branch === undefined || branch === "") {
 }
 
 const type: string = Deno.args[1].trim().toLowerCase();
-if (type != "master" && type != "feature") {
-	throw new Error("The branch type argument value of 'master' or 'feature' must be passed in.");
+if (type != "main" && type != "feature") {
+	throw new Error("The branch type argument value of 'main' or 'feature' must be passed in.");
 }
 
-const branchType: BranchType = type === "master" ? BranchType.master : BranchType.feature;
+const branchType: BranchType = type === "main" ? BranchType.main : BranchType.feature;
 
 console.log(`::notice::Validating that the '${branch}' branch is correct.`);
 const isInvalid = !BranchValidator.isValidBranch(branch, branchType);

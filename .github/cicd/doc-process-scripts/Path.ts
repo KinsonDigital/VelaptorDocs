@@ -1,5 +1,5 @@
 import { Utils } from "./Utils.ts";
-import { dirname, extname } from "https://deno.land/std@0.182.0/path/mod.ts";
+import { dirname, extname } from "std/path/mod.ts";
 
 export class Path {
 	public static getFileName(filePath: string): string {

@@ -1,4 +1,4 @@
-import { resolve } from "https://deno.land/std@0.182.0/path/mod.ts";
+import { resolve } from "std/path/mod.ts";
 import { RunnerService } from "./RunnerService.ts";
 import { Utils } from "./Utils.ts";
 

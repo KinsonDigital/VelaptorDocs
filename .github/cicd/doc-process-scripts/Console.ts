@@ -1,4 +1,4 @@
-import { writeAllSync } from "https://deno.land/std@0.182.0/streams/write_all.ts";
+import { writeAllSync } from "std/streams/write_all.ts";
 
 /**
  * Provides the ability read from and write to the console.

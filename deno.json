@@ -1,6 +1,6 @@
 {
 	"imports": {
-		"std/": "https://deno.land/std@0.182.0/"
+		"std/": "https://deno.land/std@0.195.0/"
 	},
 	"fmt": {
 		"files": {

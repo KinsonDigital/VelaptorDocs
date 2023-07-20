@@ -1,5 +1,5 @@
-import { readLines } from "https://deno.land/std@0.182.0/io/mod.ts";
-import { writeAll } from "https://deno.land/std@0.182.0/streams/write_all.ts";
+import { readLines } from "std/io/mod.ts";
+import { writeAll } from "std/streams/write_all.ts";
 
 /**
  * Represents a service for running commands.

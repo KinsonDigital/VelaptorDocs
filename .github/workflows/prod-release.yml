@@ -24,40 +24,40 @@ concurrency:
 
 jobs:
   release_website:
-    name: "Release Website"
+    name: Release Website
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-    - name: "Validate Branch"
+    - name: Validate Branch
       run: |
         $branch = "${{ github.ref }}";
         
         if ($branch -ne "refs/heads/main") {
           Write-Host "::error::This workflow can only be run on the main branch.";
-          exit 1; # Fail workflow
+          exit 1;
         }
 
     - uses: actions/checkout@v3
 
-    - name: "Setup NodeJS"
+    - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:
         node-version: 18.14.2
 
-    - name: "Setup YARN"
+    - name: Setup YARN
       run: npm install --global yarn
 
-    - name: "Setup Docusaurus"
+    - name: Setup Docusaurus
       run: yarn install
 
-    - name: "Setup Deno"
+    - name: Setup Deno
       uses: denoland/setup-deno@v1
       with:
-        deno-version: v1.32.x
+        deno-version: v1.35.x
 
-    - name: "Disable Next Version Feature"
+    - name: Disable Next Version Feature
       run: |
         deno run `
           --allow-read `
@@ -67,14 +67,15 @@ jobs:
           "next-version" `
           "enable";
 
-    - name: "Update Website Version"
+    - name: Update Website Version
       id: apply_version_to_site
       run: |
-        $outputFilePath = $GITHUB_OUTPUT;
+        # Get the path to the output file created by the GitHub hosted runner
+        $outputFilePath = $env:GITHUB_OUTPUT;
 
         if ($outputFilePath -eq "") {
           Write-Host "::error::Failed to get output file path from the 'GITHUB_OUTPUT' environment variable.";
-          exit 1; # Fail workflow
+          exit 1;
         }
 
         Write-Host "::notice::Output File Path: $outputFilePath";
@@ -86,28 +87,28 @@ jobs:
           "${{ github.workspace }}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts" `
           "$outputFilePath";
 
-    - name: "Build Site"
+    - name: Build Site
       run: yarn build
 
-    - name: "Setup Pages"
+    - name: Setup Pages
       uses: actions/configure-pages@v3 # https://github.com/marketplace/actions/configure-github-pages
 
-    - name: "Upload Artifact"
-      uses: actions/upload-pages-artifact@v1.0.8
+    - name: Upload Artifact
+      uses: actions/upload-pages-artifact@v2.0.0
       with:
         path: '${{ github.workspace }}/build'
 
-    - name: "Deploy to GitHub Pages"
+    - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
 
-    - name: "Create Release Tag"
+    - name: Create Release Tag
       run: |
         $tag = "${{ steps.apply_version_to_site.outputs.version }}";
 
         if ($tag -eq "") {
           Write-Host "::error::Failed to get version from the 'apply_version_to_site' step output.";
-          exit 1; # Fail workflow
+          exit 1;
         }
 
         git config --global user.email "kinsondigital@gmail.com";

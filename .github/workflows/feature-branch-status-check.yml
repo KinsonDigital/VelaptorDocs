@@ -14,27 +14,26 @@ on:
 
 jobs:
   feature_branch_status_check:
-    name: "Feature Branch Status Check"
+    name: Feature Branch Status Check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
-    - name: "Setup Deno"
+    - name: Setup Deno
       uses: denoland/setup-deno@v1
       with:
-        deno-version: v1.32.x
+        deno-version: v1.35.x
 
-    - name: "Validate Branch"
+    - name: Validate Branch
       run: |
-        $targetBranch = "${{ github.base_ref }}";
-        $srcBranch = "${{ github.head_ref }}";
+        $realativeScriptDirPath = ".github/cicd/workflow-helpers";
 
         # Validate the source branch
         Write-Host "::group::Source Branch Validation";
-        deno run "${{ github.workspace }}/.github/cicd/workflow-helpers/branch-status-check.ts" "$srcBranch" "feature";
+        deno run "${{ github.workspace }}/$realativeScriptDirPath/branch-status-check.ts" "${{ github.head_ref }}" "feature";
         Write-Host "::endgroup::";
 
         # Validate the target branch
         Write-Host "::group::Target Branch Validation";
-        deno run "${{ github.workspace }}/.github/cicd/workflow-helpers/branch-status-check.ts" "$targetBranch" "main";
+        deno run "${{ github.workspace }}/$realativeScriptDirPath/branch-status-check.ts" "${{ github.base_ref }}" "main";
         Write-Host "::endgroup::";

@@ -8,7 +8,7 @@ defaults:
 
 on:
   pull_request:
-    branches: main
+    branches: [main, preview]
 
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
       - name: Set Up Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v1.35.x
 
       - name: Run Sync Status Check
         run: |
@@ -37,14 +37,16 @@ jobs:
           }
 
           <# Deno Args:
-            1. Project Name
-            2. Pull Request Number
-            3. Event Type - Valid values are 'pr' or 'issue'.  Should be set to 'pr'.
-            4. Pat
+            1. Organization name
+            2. Project name
+            3. Pull request number
+            4. Event Type - set to pull request event type
+            5. PAT
           #>
           deno run `
             --allow-net `
             "$scriptUrl" `
+            "${{ vars.ORGANIZATION_NAME }}" `
             "${{ vars.PROJECT_NAME }}" `
             "$prNumber" `
             "pr" `

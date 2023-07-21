@@ -1,9 +1,16 @@
 <span align="center">
 
-# Velaptor Documentation Website
+# 📃 Velaptor Documentation Website 📃
 </span>
 
-Hello!!  This repository is for the documentation website for [Velaptor](https://github.com/KinsonDigital/Velaptor) and contains the Velaptor API documentation as well as tutorials.
+<span align="center">
+
+[![Build PR Status Check](https://img.shields.io/github/actions/workflow/status/KinsonDigital/Velaptor/build-status-check.yml?label=%E2%9A%99%EF%B8%8FBuild)](https://github.com/KinsonDigital/Velaptor/actions/workflows/build-status-check.yml)
+
+![Website Status](https://img.shields.io/website/https/docs.velaptor.io?label=Doc%20Site%20Status&up_message=Site%20Up🤘🏻&up_color=seagreen&down_message=Site%20Down🥺&down_color=indianred)
+</span>
+
+Hello!!  This repository is for the documentation website for [Velaptor](https://github.com/KinsonDigital/Velaptor) and contains Velaptor tutorials and API documentation.
 
 <span align="center">
 
@@ -20,10 +27,14 @@ Below are simple steps you will need when contributing.
    > **Example** feature/123-my-branch
 
    > **Note** Feature branches are created from `main` and are merged back into `main`.
-3. Start and [Early Pull Requests](https://medium.com/practical-blend/pull-request-first-f6bb667a9b6) with the first empty commit with the value `Start work for issue #<issue-number>`.
-   > **Note** Create the pull request in draft please. 😀
-4. Perform your work.  Make sure to test locally!!
-5. Take the PR out of draft which will request a review.
+3. Every issue has a pull request.  Make sure that it is ok to work on the issue by contacting a maintainer.
+   > **Note** You can contact a maintainer in the comments of the issue and in [Discord](https://discord.gg/qewu6fNgv7).  Leaving a comment in the issue is a must so the maintainer can assign the issue to you.
+4. Create pull request.
+   > **Note** Please use [Early Pull Requests](https://medium.com/practical-blend/pull-request-first-f6bb667a9b6)
+   > - The first commit should be an empty commit with the message of `Start work for issue #<issue-number>`.
+   > - Please create the pull request in draft. 😀
+5. Perform your work.  Make sure to test locally!!
+6. Take the PR out of draft which will request a review.
    > **Note** Let a maintainer know that it is ready for review!
 
 <span align="center">
@@ -51,9 +62,9 @@ This command starts a local development server and opens up a browser window. Mo
 yarn build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command performs a production build into the `build` directory and can be served using any static content hosting service.
 
-### **Run Build Locally**
+### **Serve Build Locally**
 
 ```bash
 yarn serve

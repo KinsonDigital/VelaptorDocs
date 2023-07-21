@@ -1,6 +1,6 @@
-import { emptyDirSync } from "https://deno.land/std@0.182.0/fs/empty_dir.ts";
-import { copySync } from "https://deno.land/std@0.182.0/fs/copy.ts";
-import { ensureDirSync } from "https://deno.land/std@0.182.0/fs/ensure_dir.ts";
+import { emptyDirSync } from "std/fs/empty_dir.ts";
+import { copySync } from "std/fs/copy.ts";
+import { ensureDirSync } from "std/fs/ensure_dir.ts";
 
 const blueText = "\u001b[1;34m";
 const white = "\u001b[0m";

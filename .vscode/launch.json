@@ -4,6 +4,26 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+		{
+            "name": "Playground (DEBUG)",
+            "request": "launch",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/playground.ts",
+            "cwd": "${workspaceFolder}/.github/cicd",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+                "--allow-all"
+            ],
+			"args": ["${workspaceFolder}"],
+            "attachSimplePort": 9229,
+            "windows": {
+                "runtimeExecutable": "${userHome}/.deno/bin/deno.exe"
+            },
+            "linux": {
+                "runtimeExecutable": "${userHome}/.deno/bin/deno"
+            }
+        },
         {
             "request": "launch",
             "name": "Launch (With Doc Reset)",
@@ -11,7 +31,7 @@
             "program": "${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts",
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "reset-docs",
-            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -28,7 +48,7 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -45,7 +65,7 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -59,7 +79,7 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/manual-testing/delete-api-docs.ts",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -74,7 +94,7 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -91,7 +111,7 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "C:/Users/kinso/.deno/bin/deno.EXE",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",

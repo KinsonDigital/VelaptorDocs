@@ -1,4 +1,4 @@
-import { extname } from "https://deno.land/std@0.182.0/path/mod.ts";
+import { extname } from "std/path/mod.ts";
 import { Guard } from "./Gaurd.ts";
 
 /**

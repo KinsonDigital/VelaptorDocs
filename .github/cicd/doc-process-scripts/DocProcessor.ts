@@ -118,7 +118,7 @@ export class DocProcessor {
 	private async buildVelaptor(): Promise<void> {
 		const csprojFilePath = `${Deno.cwd()}/RepoSrc/Velaptor/Velaptor.csproj`;
 		const buildOutputDirPath = `${Deno.cwd()}/RepoSrc/BuildOutput`;
-		
+
 		const command = new Deno.Command("dotnet", {
 			args: ["build", csprojFilePath, "-c", "Debug", "-o", buildOutputDirPath],
 		});

@@ -30,12 +30,12 @@ export class DotNetToolService {
 		});
 
 		const { code, stdout, stderr } = await command.output();
-		
+
 		if (code === 0) {
 			const commandOutput = new TextDecoder().decode(stdout);
 			const lines = this.toLines(commandOutput);
 			const tools = this.parseToolList(lines);
-			
+
 			return tools.some((tool) => tool.packageId === toolName && tool.version === version);
 		} else {
 			console.log(new TextDecoder().decode(stderr));
@@ -77,7 +77,7 @@ export class DotNetToolService {
 
 		const { code, stdout, stderr } = await command.output();
 		console.log(new TextDecoder().decode(stdout));
-		
+
 		if (code !== 0) {
 			console.log(new TextDecoder().decode(stderr));
 			Deno.exit(code);

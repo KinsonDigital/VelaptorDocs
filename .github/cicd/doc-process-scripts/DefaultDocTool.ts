@@ -47,7 +47,7 @@ export class DefaultDocTool {
 		});
 
 		const { code, stdout, stderr } = await command.output();
-		
+
 		if (code === 0) {
 			console.log(new TextDecoder().decode(stdout));
 		} else {

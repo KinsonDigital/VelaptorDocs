@@ -1,12 +1,12 @@
 {
-  "version": 1,
-  "isRoot": true,
-  "tools": {
-    "defaultdocumentation.console": {
-      "version": "0.8.3-beta1",
-      "commands": [
-        "defaultdocumentation"
-      ]
-    }
-  }
+	"version": 1,
+	"isRoot": true,
+	"tools": {
+		"defaultdocumentation.console": {
+			"version": "0.8.3-beta1",
+			"commands": [
+				"defaultdocumentation"
+			]
+		}
+	}
 }

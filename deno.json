@@ -7,7 +7,7 @@
         "exclude": [
             ".vscode",
             ".docusaurus",
-            "README.md",
+            "**/*.md",
             "versions.json",
             "tsconfig.json",
             "package.json",

@@ -1,71 +1,65 @@
 {
 	"imports": {
-		"std/": "https://deno.land/std@0.195.0/"
+		"std/": "https://deno.land/std@0.196.0/"
 	},
 	"fmt": {
-		"files": {
-            "include": [".github/cicd/"],
-			"exclude": [
-                ".vscode",
-                ".docusaurus",
-                "README.md",
-                "versions.json",
-                "tsconfig.json",
-                "package.json",
-                "package-lock.json",
-                "deno.json",
-                "default-doc-config.json",
-                "sidebars.js",
-                "docusaurus.config.js",
-                "babel.config.js",
-                ".github/cicd/.vscode/",
-                ".github/cicd/manual-testing/unprocessed-docs/",
-                "code_coverage/",
-                "build/",
-                "src/",
-                "static/",
-                "versioned_docs/",
-                "versioned_sidebars/",
-                "docs/",
-                "blog/",
-                "RepoSrc/"
-            ]
-		},
-		"options": {
-			"useTabs": true,
-			"lineWidth": 120,
-			"indentWidth": 4,
-			"singleQuote": false,
-			"semiColons": true
-		}
+        "include": [".github/cicd/.*\\.ts$"],
+        "exclude": [
+            ".vscode",
+            ".docusaurus",
+            "**/*.md",
+            "versions.json",
+            "tsconfig.json",
+            "package.json",
+            "package-lock.json",
+            "deno.json",
+            "default-doc-config.json",
+            "sidebars.js",
+            "docusaurus.config.js",
+            "babel.config.js",
+            ".github/cicd/.vscode/",
+            ".github/cicd/manual-testing/unprocessed-docs/",
+            "code_coverage/",
+            "build/",
+            "src/",
+            "static/",
+            "versioned_docs/",
+            "versioned_sidebars/",
+            "docs/",
+            "blog/",
+            "RepoSrc/"
+        ],
+        "useTabs": true,
+        "lineWidth": 130,
+        "indentWidth": 4,
+        "semiColons": true,
+        "singleQuote": false
 	},
 	"lint": {
-        "files": {
-            "include": [".github/cicd/"],
-            "exclude": [
-                "README.md",
-                "versions.json",
-                "tsconfig.json",
-                "package.json",
-                "package-lock.json",
-                "deno.json",
-                "settings.json",
-                "default-doc-config.json",
-                "sidebars.js",
-                "docusaurus.config.js",
-                "babel.config.js",
-                ".docusaurus/",
-                "code_coverage/",
-                "build/",
-                "src/",
-                "static/",
-                "versioned_docs/",
-                "versioned_sidebars/",
-                "docs/",
-                "blog/",
-                "RepoSrc/"
-            ]
-        },
+        "include": [".github/cicd/.*\\.ts$"],
+        "exclude": [
+            "README.md",
+            "versions.json",
+            "tsconfig.json",
+            "package.json",
+            "package-lock.json",
+            "deno.json",
+            "settings.json",
+            "default-doc-config.json",
+            "sidebars.js",
+            "docusaurus.config.js",
+            "babel.config.js",
+            ".docusaurus/",
+            "code_coverage/",
+            "build/",
+            "src/",
+            "static/",
+            "versioned_docs/",
+            "versioned_sidebars/",
+            "docs/",
+            "blog/",
+            "RepoSrc/"
+        ],
 		"rules": {
 			"include": [
 				"explicit-function-return-type"

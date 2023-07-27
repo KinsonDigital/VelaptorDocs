@@ -1,19 +1,9 @@
 import { ChalkColor } from "./ChalkColor.ts";
-import { RunnerService } from "./RunnerService.ts";
 
 /**
  * Executes yarn commands.
  */
 export class Yarn {
-	private readonly runnerService: RunnerService;
-
-	/**
-	 * Initializes a new instance of the YarnRunner class.
-	 */
-	constructor() {
-		this.runnerService = new RunnerService();
-	}
-
 	/**
 	 * Runs yarn commands.
 	 */
@@ -25,25 +15,27 @@ export class Yarn {
 
 		const yarn = this.getYarnLocation();
 
-		// Make sure 'yarn' is the first command
-		commands = commands.indexOf("yarn") === -1 ? [yarn, ...commands] : commands.map((c) => c === "yarn" ? yarn : c);
+		console.log(ChalkColor.dim(`Running Yarn Command: ${commands.join(" ")}`));
 
-		await this.runnerService.run(commands, true, true);
-	}
+		const command = new Deno.Command(yarn, {
+			args: commands,
+		});
 
-	/**
-	 * Returns a value indicating whether or not the current environment is windows.
-	 * @returns True if the current environment is windows; otherwise false.
-	 */
-	public isWindowsEnv(): boolean {
-		return Deno.build.os === "windows";
+		const { code, stdout, stderr } = await command.output();
+
+		if (code === 0) {
+			console.log(new TextDecoder().decode(stdout));
+		} else {
+			console.log(new TextDecoder().decode(stderr));
+			Deno.exit(code);
+		}
 	}
 
 	/**
 	 * Returns the system user name.
 	 * @returns The system user name.
 	 */
-	public sysUserName(): string {
+	private sysUserName(): string {
 		const envUserName: string | undefined = this.isWindowsEnv() ? Deno.env.get("USERNAME") : Deno.env.get("USER");
 
 		if (envUserName === undefined) {
@@ -58,7 +50,15 @@ export class Yarn {
 	 * Returns the executable location of yarn.
 	 * @returns The executable location of yarn.
 	 */
-	public getYarnLocation(): string {
+	private getYarnLocation(): string {
 		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/user/bin/yarn";
+	}
+
+	/**
+	 * Returns a value indicating whether or not the current environment is windows.
+	 * @returns True if the current environment is windows; otherwise false.
+	 */
+	private isWindowsEnv(): boolean {
+		return Deno.build.os === "windows";
 	}
 }

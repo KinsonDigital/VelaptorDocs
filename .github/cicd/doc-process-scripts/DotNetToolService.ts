@@ -1,20 +1,10 @@
 import { IDotNetTool } from "./IDotNetTool.ts";
-import { RunnerService } from "./RunnerService.ts";
 import { Utils } from "./Utils.ts";
 
 /**
  * Provides functionality for setting up dotnet tools.
  */
 export class DotNetToolService {
-	private readonly runnerService: RunnerService;
-
-	/**
-	 * Initializes a new instance of the DotNetToolService class.
-	 */
-	constructor() {
-		this.runnerService = new RunnerService();
-	}
-
 	/**
 	 * Sets up any required dotnet tools.
 	 */
@@ -35,18 +25,22 @@ export class DotNetToolService {
 	 * @returns True if the tool is installed; otherwise false.
 	 */
 	private async isToolInstalled(toolName: string, version: string): Promise<boolean> {
-		const commands = ["dotnet", "tool", "list", "-g"];
-		const result = await this.runnerService.run(commands);
+		const command = new Deno.Command("dotnet", {
+			args: ["tool", "list", "-g"],
+		});
 
-		if (result[0] === true) {
-			const lines = this.toLines(result[1]);
+		const { code, stdout, stderr } = await command.output();
+
+		if (code === 0) {
+			const commandOutput = new TextDecoder().decode(stdout);
+			const lines = this.toLines(commandOutput);
 			const tools = this.parseToolList(lines);
 
 			return tools.some((tool) => tool.packageId === toolName && tool.version === version);
+		} else {
+			console.log(new TextDecoder().decode(stderr));
+			Deno.exit(code);
 		}
-
-		console.error(result[1]);
-		Deno.exit();
 	}
 
 	/**
@@ -77,12 +71,16 @@ export class DotNetToolService {
 	 * @param version The version of the dotnet tool to install.
 	 */
 	private async installTool(toolName: string, version: string): Promise<void> {
-		const commands = ["dotnet", "tool", "install", toolName, "-g", "--version", version];
-		const result = await this.runnerService.run(commands);
+		const command = new Deno.Command("dotnet", {
+			args: ["tool", "install", toolName, "-g", "--version", version],
+		});
 
-		if (result[0] === false) {
-			console.error(result[1]);
-			Deno.exit();
+		const { code, stdout, stderr } = await command.output();
+		console.log(new TextDecoder().decode(stdout));
+
+		if (code !== 0) {
+			console.log(new TextDecoder().decode(stderr));
+			Deno.exit(code);
 		}
 	}
 

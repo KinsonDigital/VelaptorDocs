@@ -1,10 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"name": "VelaptorDocs",
+			"path": ".",
 		},
 		{
-			"path": ".github/cicd"
+			"name": "CICD",
+			"path": ".github/cicd",
 		}
 	],
 	"settings": {

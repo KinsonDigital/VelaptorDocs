@@ -6,7 +6,6 @@ import { File } from "./File.ts";
 import { MarkdownFileContentService } from "./MarkdownFileContentService.ts";
 import { MarkdownService } from "./MarkdownService.ts";
 import { Path } from "./Path.ts";
-import { RunnerService } from "./RunnerService.ts";
 import { Utils } from "./Utils.ts";
 import { ValidateReleaseService } from "./ValidateReleaseService.ts";
 import { Yarn } from "./Yarn.ts";
@@ -16,7 +15,6 @@ import { Yarn } from "./Yarn.ts";
  */
 export class DocProcessor {
 	private readonly cloneService: CloneRepoService;
-	private readonly runnerService: RunnerService;
 	private readonly validateReleaseService: ValidateReleaseService;
 	private readonly defaultDocTool: DefaultDocTool;
 	private readonly yarn: Yarn;
@@ -26,7 +24,6 @@ export class DocProcessor {
 	 */
 	constructor() {
 		this.cloneService = new CloneRepoService();
-		this.runnerService = new RunnerService();
 		this.validateReleaseService = new ValidateReleaseService();
 		this.defaultDocTool = new DefaultDocTool();
 		this.yarn = new Yarn();
@@ -121,9 +118,19 @@ export class DocProcessor {
 	private async buildVelaptor(): Promise<void> {
 		const csprojFilePath = `${Deno.cwd()}/RepoSrc/Velaptor/Velaptor.csproj`;
 		const buildOutputDirPath = `${Deno.cwd()}/RepoSrc/BuildOutput`;
-		const commands = ["dotnet", "build", csprojFilePath, "-c", "Debug", "-o", buildOutputDirPath];
 
-		await this.runnerService.run(commands, false);
+		const command = new Deno.Command("dotnet", {
+			args: ["build", csprojFilePath, "-c", "Debug", "-o", buildOutputDirPath],
+		});
+
+		const { code, stdout, stderr } = await command.output();
+
+		if (code === 0) {
+			console.log(new TextDecoder().decode(stdout));
+		} else {
+			console.log(new TextDecoder().decode(stderr));
+			Deno.exit(code);
+		}
 	}
 
 	/**

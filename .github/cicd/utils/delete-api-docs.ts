@@ -1,6 +1,6 @@
 import { Directory } from "../doc-process-scripts/Directory.ts";
 import { Path } from "../doc-process-scripts/Path.ts";
-import { Select } from "https://deno.land/x/cliffy@v0.25.7/prompt/select.ts";
+import { Select } from "https://deno.land/x/cliffy@v1.0.0-rc.2/prompt/select.ts";
 import { ChalkColor } from "../helpers/ChalkColor.ts";
 import { DeleteAPIVersionService } from "../doc-process-scripts/DeleteAPIVersionService.ts";
 

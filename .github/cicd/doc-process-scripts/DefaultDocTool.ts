@@ -1,13 +1,11 @@
 import { Directory } from "./Directory.ts";
 import { DotNetToolService } from "./DotNetToolService.ts";
-import { RunnerService } from "./RunnerService.ts";
 
 /**
  * Provides ability to generate documentation.
  */
 export class DefaultDocTool {
 	private readonly dotNetToolService: DotNetToolService;
-	private readonly runnerService: RunnerService;
 	private readonly defaultDocToolVersion = "0.8.2";
 	private readonly defaultDocToolName = "defaultdocumentation.console";
 
@@ -16,7 +14,6 @@ export class DefaultDocTool {
 	 */
 	constructor() {
 		this.dotNetToolService = new DotNetToolService();
-		this.runnerService = new RunnerService();
 	}
 
 	/**
@@ -38,22 +35,24 @@ export class DefaultDocTool {
 
 		Deno.mkdirSync(outputDirPath, { recursive: true });
 
-		const commands = [
-			"defaultdocumentation",
-			"--AssemblyFilePath",
-			`${assemblyPath}`,
-			"--OutputDirectoryPath",
-			`${outputDirPath}`,
-			"--ConfigurationFilePath",
-			`${configFilePath}`,
-		];
+		const command = new Deno.Command("defaultdocumentation", {
+			args: [
+				"--AssemblyFilePath",
+				`${assemblyPath}`,
+				"--OutputDirectoryPath",
+				`${outputDirPath}`,
+				"--ConfigurationFilePath",
+				`${configFilePath}`,
+			],
+		});
 
-		const result = await this.runnerService.run(commands, false, false);
-
-		if (result[0] === true) {
-			return;
+		const { code, stdout, stderr } = await command.output();
+		
+		if (code === 0) {
+			console.log(new TextDecoder().decode(stdout));
+		} else {
+			console.log(new TextDecoder().decode(stderr));
+			Deno.exit(code);
 		}
-
-		console.error(result[1]);
 	}
 }

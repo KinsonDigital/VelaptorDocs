@@ -1,7 +1,8 @@
 {
     "deno.enable": true,
-    "editor.autoIndent": "full",
-    "editor.detectIndentation": false,
-    "editor.tabSize": 4,
-    "editor.insertSpaces": false,
+	"[typescript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"editor.detectIndentation": false,
 }

@@ -49,7 +49,7 @@ body:
       | Change Type  | Label                                                                                             |
       |--------------|---------------------------------------------------------------------------------------------------|
       | CICD                 | https://github.com/KinsonDigital/VelaptorDocs/labels/%E2%99%BB%EF%B8%8Fcicd               |
-      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/dependency%20update                  |
+      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%A6dependency%20update                  |
       | Miscellaneous        | https://github.com/KinsonDigital/VelaptorDocs/labels/miscellaneous                        |
       | Tutorial Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Ctutorial%20doc%20changes |
       </details>

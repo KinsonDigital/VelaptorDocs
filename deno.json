@@ -40,6 +40,7 @@
 	"lint": {
         "include": [".github/cicd/.*\\.ts$"],
         "exclude": [
+            "**/playground.ts",
             "README.md",
             "versions.json",
             "tsconfig.json",

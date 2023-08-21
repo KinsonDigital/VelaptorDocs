@@ -1,7 +1,7 @@
 import { ArgService } from "./ArgService.ts";
 import { DocProcessor } from "./DocProcessor.ts";
 import { Console } from "./Console.ts";
-import { ChalkColor } from "./ChalkColor.ts";
+import chalk from "npm:chalk@5.3.0";
 
 const argService: ArgService = new ArgService();
 const [argsValid, errorMsg] = argService.argsAreValid(Deno.args);
@@ -14,7 +14,7 @@ const apiDirPath: string = Deno.args[0];
 
 console.clear();
 const denoConsole: Console = new Console();
-denoConsole.writeLine(ChalkColor.prompt("? Enter the release version: "));
+denoConsole.writeLine(chalk.yellow("? Enter the release version: "));
 
 const result: string = await denoConsole.readLine();
 

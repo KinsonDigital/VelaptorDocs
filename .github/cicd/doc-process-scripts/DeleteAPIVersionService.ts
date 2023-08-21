@@ -1,4 +1,3 @@
-import { ChalkColor } from "../helpers/ChalkColor.ts";
 import { Directory } from "./Directory.ts";
 import { Guard } from "./Guard.ts";
 import { VersionSideBarService } from "./VersionSidebarService.ts";
@@ -37,12 +36,12 @@ export class DeleteAPIVersionService {
 		}
 
 		Directory.delete(apiDocDirPath);
-		console.log(ChalkColor.normal(`Deleted '${version}' API docs.`));
+		console.log(`Deleted '${version}' API docs.`);
 
 		this.versionFileService.deleteVersion(version);
-		console.log(ChalkColor.normal(`Updated the 'versions.json' file by removing version '${version}'.`));
+		console.log(`Updated the 'versions.json' file by removing version '${version}'.`);
 
 		this.sideBarService.deleteSideBar(version);
-		console.log(ChalkColor.normal(`Sidebar file for version '${version}' deleted.`));
+		console.log(`Sidebar file for version '${version}' deleted.`);
 	}
 }

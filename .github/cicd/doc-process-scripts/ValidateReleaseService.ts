@@ -1,7 +1,5 @@
 import { TagClient } from "clients/TagClient.ts";
 import { NuGetClient } from "clients/NuGetClient.ts";
-import { ChalkColor } from "./ChalkColor.ts";
-import { ITag } from "./ITag.ts";
 import { Utils } from "./Utils.ts";
 
 /**

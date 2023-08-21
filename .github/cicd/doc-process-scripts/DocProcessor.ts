@@ -1,4 +1,4 @@
-import { ChalkColor } from "./ChalkColor.ts";
+import chalk from "npm:chalk@5";
 import { CloneRepoService } from "./CloneRepoService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Directory } from "./Directory.ts";
@@ -36,56 +36,56 @@ export class DocProcessor {
 	 */
 	public async run(apiDocDirPath: string, releaseTag: string): Promise<void> {
 		if (Utils.isNullOrEmpty(apiDocDirPath)) {
-			console.log(ChalkColor.error("The API doc dir path is required."));
+			console.log(chalk.red("The API doc dir path is required."));
 			Deno.exit();
 		}
 
 		if (Utils.isNullOrEmpty(releaseTag)) {
-			console.log(ChalkColor.error("The release tag is required."));
+			console.log(chalk.red("The release tag is required."));
 			Deno.exit();
 		}
 
-		console.log(ChalkColor.header(`Validating Release '${releaseTag}'. . .`));
+		console.log(chalk.cyan(`Validating Release '${releaseTag}'. . .`));
 		const isValid = await this.validateReleaseService.releaseExists(releaseTag);
 
 		if (!isValid) {
-			console.log(ChalkColor.error(`The release '${releaseTag}' is not valid.`));
+			console.log(chalk.red(`The release '${releaseTag}' is not valid.`));
 			Deno.exit();
 		}
 
-		console.log(ChalkColor.header(`Release '${releaseTag}' Valid.`));
+		console.log(chalk.cyan(`Release '${releaseTag}' Valid.`));
 
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 		if (Directory.exists(repoSrcDirPath)) {
-			console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-			console.log(ChalkColor.header("Cleaning up previous clone and build. . ."));
+			console.log("\n-----------------------------------------------------------------\n");
+			console.log(chalk.cyan("Cleaning up previous clone and build. . ."));
 
 			Deno.removeSync(repoSrcDirPath, { recursive: true });
 
-			console.log(ChalkColor.header("Cleaning Complete."));
+			console.log(chalk.cyan("Cleaning Complete."));
 		}
 
 		// Clone the Velaptor repository into the RepoSrc directory
 		// so documentation can be generated from it.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Cloning Velaptor. . ."));
+		console.log("\n-----------------------------------------------------------------\n");
+		console.log(chalk.cyan("Cloning Velaptor. . ."));
 
 		this.cloneService.cloneRepo(releaseTag);
 
-		console.log(ChalkColor.header("Cloning Complete."));
+		console.log(chalk.cyan("Cloning Complete."));
 
 		// Build the project so the assembly can be used for generating documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Building Velaptor. . ."));
+		console.log("\n-----------------------------------------------------------------\n");
+		console.log(chalk.cyan("Building Velaptor. . ."));
 
 		await this.buildVelaptor();
 
-		console.log(ChalkColor.header("Building Complete."));
+		console.log(chalk.cyan("Building Complete."));
 
 		// Generate the documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Generating Documentation. . ."));
+		console.log("\n-----------------------------------------------------------------\n");
+		console.log(chalk.cyan("Generating Documentation. . ."));
 
 		await this.defaultDocTool.generateDocumentation(
 			`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
@@ -93,23 +93,23 @@ export class DocProcessor {
 			`${Deno.cwd()}/default-doc-config.json`,
 		);
 
-		console.log(ChalkColor.header("\n\nDocumentation Generation Complete."));
+		console.log(chalk.cyan("\n\nDocumentation Generation Complete."));
 
 		// Perform post-processing on the documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Performing Documentation Post-Processing. . ."));
+		console.log("\n-----------------------------------------------------------------\n");
+		console.log(chalk.cyan("Performing Documentation Post-Processing. . ."));
 
 		this.runPostProcessing(apiDocDirPath);
 
-		console.log(ChalkColor.header("Documentation Post-Processing Complete."));
+		console.log(chalk.cyan("Documentation Post-Processing Complete."));
 
 		// Create website version snapshot
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Creating website version snapshot. . ."));
+		console.log("\n-----------------------------------------------------------------\n");
+		console.log(chalk.cyan("Creating website version snapshot. . ."));
 
 		await this.createAPIWebsiteVersion(releaseTag);
 
-		console.log(ChalkColor.header("\n\nWebsite Version Snapshot Complete."));
+		console.log(chalk.cyan("\n\nWebsite Version Snapshot Complete."));
 	}
 
 	/**

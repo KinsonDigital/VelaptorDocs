@@ -1,6 +1,7 @@
 name: 📋 Other Changes
 description: Create an issue for non documentation related changes.
 title: "📋"
+projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes
   attributes:

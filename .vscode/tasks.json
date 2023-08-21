@@ -4,7 +4,7 @@
 		{ // GENERATE API DOCS
             "label": "Generate API Docs",
             "type": "shell",
-            "command": "deno run --allow-read --allow-write --allow-net --allow-run --allow-env '${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts' '${workspaceFolder}/docs/api'"
+            "command": "deno run -A '${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts' '${workspaceFolder}/docs/api'"
         },
         { // RESET DOCS
             "label": "Reset Docs",
@@ -20,8 +20,7 @@
                 "command": "deno",
                 "args": [
                     "run",
-                    "--allow-read",
-                    "--allow-write",
+                    "-A",
                     "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
                     "disable"
                 ]
@@ -34,8 +33,7 @@
                 "command": "deno",
                 "args": [
                     "run",
-                    "--allow-read",
-                    "--allow-write",
+                    "-A",
                     "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
                     "enable"
                 ]
@@ -48,8 +46,7 @@
                 "command": "deno",
                 "args": [
                     "run",
-                    "--allow-read",
-                    "--allow-write",
+                    "-A",
                     "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
                     "toggle"
                 ]
@@ -62,8 +59,7 @@
                 "command": "deno",
                 "args": [
                     "run",
-                    "--allow-read",
-                    "--allow-write",
+                    "-A",
                     "${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
 					"${workspaceFolder}/docusaurus.config.js",
 					"next-version",
@@ -78,8 +74,7 @@
                 "command": "deno",
                 "args": [
                     "run",
-                    "--allow-read",
-                    "--allow-write",
+                    "-A",
                     "${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
 					"${workspaceFolder}/docusaurus.config.js",
 					"next-version",
@@ -104,8 +99,7 @@
 				"command": "deno",
 				"args": [
 					"run",
-					"--allow-read",
-					"--allow-write",
+                    "-A",
 					"${workspaceFolder}/.github/cicd/scripts/delete-api-docs.ts",
 				]
 			}

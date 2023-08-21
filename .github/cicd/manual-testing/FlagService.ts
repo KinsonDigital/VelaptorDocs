@@ -1,4 +1,4 @@
-import { Utils } from "../doc-process-scripts/Utils.ts";
+import { Utils } from "../core/Utils.ts";
 
 export class FlagService {
 	private readonly newLine: string;

@@ -1,7 +1,7 @@
-import { DeleteAPIVersionService } from "../doc-process-scripts/DeleteAPIVersionService.ts";
+import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
 import chalk from "npm:chalk@5.3.0";
-import { VersionsFileService } from "../doc-process-scripts/VersionsFileService.ts";
-import { Utils } from "../doc-process-scripts/Utils.ts";
+import { VersionsFileService } from "../core/VersionsFileService.ts";
+import { Utils } from "../core/Utils.ts";
 
 /**
  * DESCRIPTION: This script is used as part of the api docs release cicd process and is used

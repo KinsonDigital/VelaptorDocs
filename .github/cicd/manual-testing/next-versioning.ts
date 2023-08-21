@@ -1,4 +1,4 @@
-import { File } from "../doc-process-scripts/File.ts";
+import { File } from "../core/File.ts";
 import { FlagService } from "./FlagService.ts";
 
 // Check the arguments

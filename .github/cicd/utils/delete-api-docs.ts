@@ -1,7 +1,7 @@
-import { Directory } from "../doc-process-scripts/Directory.ts";
-import { Path } from "../doc-process-scripts/Path.ts";
+import { Directory } from "../core/Directory.ts";
+import { Path } from "../core/Path.ts";
 import { Select } from "cliffy/prompt/select.ts";
-import { DeleteAPIVersionService } from "../doc-process-scripts/DeleteAPIVersionService.ts";
+import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
 import chalk from "npm:chalk@5.3.0";
 
 /**

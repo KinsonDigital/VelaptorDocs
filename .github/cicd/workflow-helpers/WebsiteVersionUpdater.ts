@@ -1,11 +1,10 @@
-import { File } from "../doc-process-scripts/File.ts";
+import { File } from "../core/File.ts";
 
 /**
  * Updates the version in the docusaurus.config.js file.
  */
 export class WebsiteVersionUpdater {
 	private readonly newLine: string = Deno.build.os === "windows" ? "\r\n" : "\n";
-	private readonly newLineRegEx: RegExp = /\r?\n/;
 	private readonly versionRegEx: RegExp = /\(v\d{4}\.\d{2}\.\d{2}\.\d{6}\)/;
 	private readonly outputFilePath: string;
 

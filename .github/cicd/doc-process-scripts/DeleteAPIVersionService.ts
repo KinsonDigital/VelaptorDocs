@@ -44,4 +44,19 @@ export class DeleteAPIVersionService {
 		this.sideBarService.deleteSideBar(version);
 		console.log(`Sidebar file for version '${version}' deleted.`);
 	}
+
+	/**
+	 * Deletes the oldest version of the API docs.
+	 */
+	public deleteOldestDocs(): void {
+		const versions: string[] = this.versionFileService.getVersions();
+
+		if (versions.length <= 1) {
+			throw new Error("There is only one version of the API docs. There must be at least two versions to delete the oldest one.");
+		}
+
+		const oldestVersion: string = versions[versions.length - 1];
+
+		this.deleteDocs(oldestVersion);
+	}
 }

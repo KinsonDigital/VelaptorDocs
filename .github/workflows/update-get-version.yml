@@ -1,0 +1,47 @@
+name: 🚀Update/Return Version
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_call:
+    outputs:
+      version:
+        description: The new version of the website.
+        value: ${{ jobs.update_and_get_version.outputs.version }} 
+
+
+jobs:
+  update_and_get_version:
+    name: Update Version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.apply_version_to_site.outputs.version }}
+    steps:
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+    
+      - name: Update Website Version
+        id: apply_version_to_site
+        run: |
+          # Get the path to the output file created by the GitHub hosted runner
+          $outputFilePath = $env:GITHUB_OUTPUT;
+
+          if ($outputFilePath -eq "") {
+            Write-Host "::error::Failed to get output file path from the 'GITHUB_OUTPUT' environment variable.";
+            exit 1;
+          }
+
+          Write-Host "::notice::Output File Path: $outputFilePath";
+
+          deno run `
+            --allow-read `
+            --allow-write `
+            --allow-env `
+            "${{ github.workspace }}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts" `
+            "$outputFilePath";

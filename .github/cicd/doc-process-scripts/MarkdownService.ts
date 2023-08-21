@@ -1,4 +1,4 @@
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 import { Utils } from "./Utils.ts";
 
 export class MarkdownService {

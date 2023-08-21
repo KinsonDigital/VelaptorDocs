@@ -1,5 +1,5 @@
 import { extname } from "std/path/mod.ts";
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 
 /**
  * Manages the versions file.

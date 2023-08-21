@@ -1,6 +1,6 @@
 import { ChalkColor } from "../helpers/ChalkColor.ts";
 import { Directory } from "./Directory.ts";
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 import { VersionSideBarService } from "./VersionSidebarService.ts";
 import { VersionsFileService } from "./VersionsFileService.ts";
 

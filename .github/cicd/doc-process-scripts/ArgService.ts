@@ -1,5 +1,5 @@
 import { Directory } from "./Directory.ts";
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 
 export class ArgService {
 	public argsAreValid(args: string[]): [boolean, string] {

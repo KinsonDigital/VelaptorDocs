@@ -1,5 +1,6 @@
 import { extname } from "std/path/mod.ts";
 import { Guard } from "./Guard.ts";
+import { Utils } from "./Utils.ts";
 
 /**
  * Manages the versions file.
@@ -126,54 +127,10 @@ export class VersionsFileService {
 	 * @param {string[]} versions The versions to save to the versions file.
 	 */
 	private saveVersions(versions: string[]): void {
-		// Sort the versions in descending order taking semver into account
-		// This will determine the order that the versions appear on the website version selector
-		versions = versions.sort(this.semverSort);
+		versions = Utils.sortVersions(versions);
 
 		const fileDataToWrite = `${JSON.stringify(versions, null, 2)}${this.newLine}`;
 
 		Deno.writeTextFileSync(this.filePath, fileDataToWrite);
-	}
-
-	/**
-	 * Sorts the given version strings in descending order.
-	 * @param a The left version string to compare to the right.
-	 * @param b The right version string to compare to the left
-	 * @returns The sort result used by the Array.sort() method.
-	 */
-	private semverSort(a: string, b: string): number {
-		// split the version strings into arrays of numbers
-		const aParts = a.split(".").map((part) => parseInt(part));
-		const bParts = b.split(".").map((part) => parseInt(part));
-
-		// compare the major, minor, and patch versions
-		for (let i = 0; i < 3; i++) {
-			if (aParts[i] > bParts[i]) {
-				return -1;
-			} else if (aParts[i] < bParts[i]) {
-				return 1;
-			}
-		}
-
-		// if the versions are the same, check if one is a pre-release and the other is not
-		if (a.includes("-preview") && !b.includes("-preview")) {
-			return 1;
-		} else if (!a.includes("-preview") && b.includes("-preview")) {
-			return -1;
-		}
-
-		// if the versions are the same, check if one is a pre-release and the other is not
-		if (a.includes("-preview") && b.includes("-preview")) {
-			const aParts = a.split("-preview.");
-			const bParts = b.split("-preview.");
-
-			if (aParts[1] > bParts[1]) {
-				return -1;
-			} else if (aParts[1] < bParts[1]) {
-				return 1;
-			}
-		}
-
-		return 0;
 	}
 }

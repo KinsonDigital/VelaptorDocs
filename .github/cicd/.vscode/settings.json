@@ -4,5 +4,9 @@
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
 	},
-	"editor.detectIndentation": false,
+    "editor.detectIndentation": false,
+    "cSpell.words": [
+        "kinsondigital",
+        "velaptor"
+    ],
 }

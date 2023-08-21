@@ -1,8 +1,6 @@
 export class Utils {
-	private static readonly isProdRegEx = /^v\d+\.\d+\.\d+(?:-preview){0}$/gm;
-	private static readonly containsProdRegEx = /v\d+\.\d+\.\d+(?:-preview){0}/;
-	private static readonly isPrevRegEx = /^v\d+\.\d+\.\d+(?:-preview\.\d+){1}$/gm;
-	private static readonly containsPrevRegEx = /v\d+\.\d+\.\d+(?:-preview\.\d+){1}/;
+	private static readonly prevVersionRegex = /^v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+$/;
+	private static readonly prodVersionRegex = /^v[0-9]+\.[0-9]+\.[0-9]+$/;
 	private static readonly newLineRegEx = /\r?\n/;
 	private static readonly newLine: string = Utils.isWindows() ? "\r\n" : "\n";
 
@@ -49,48 +47,43 @@ export class Utils {
 		return oldestVersion;
 	}
 
+	/**
+	 * Returns a value indicating whether or not the given {@link version} is a production version.
+	 * @param version The version to check.
+	 * @returns True if the version is a preview or production version; Otherwise, false.
+	 */
 	public static isProdVersion(version: string): boolean {
 		if (Utils.isNullOrEmpty(version)) {
 			return false;
 		}
 
-		version = version.trim();
-
-		const matches = version.match(this.isProdRegEx);
-
-		return matches === null ? false : matches.length > 0;
+		return this.prodVersionRegex.test(version);
 	}
 
-	public static containsProdVersion(value: string): boolean {
-		if (Utils.isNullOrEmpty(value)) {
-			return false;
-		}
-
-		const matches = value.match(this.containsProdRegEx);
-
-		return matches === null ? false : matches.length > 0;
-	}
-
+	/**
+	 * Returns a value indicating whether or not the given {@link version} is a preview version.
+	 * @param version The version to check.
+	 * @returns True if the version is a preview or production version; Otherwise, false.
+	 */
 	public static isPrevVersion(version: string): boolean {
 		if (Utils.isNullOrEmpty(version)) {
 			return false;
 		}
 
-		version = version.trim();
-
-		const matches = version.match(this.isPrevRegEx);
-
-		return matches === null ? false : matches.length > 0;
+		return this.prevVersionRegex.test(version);
 	}
 
-	public static containsPrevVersion(value: string): boolean {
-		if (Utils.isNullOrEmpty(value)) {
+	/**
+	 * Returns a value indicating whether or not the given {@link version} is a preview or production version.
+	 * @param version The version to check.
+	 * @returns True if the version is a preview or production version; Otherwise, false.
+	 */
+	public static isPrevOrProdVersion(version: string): boolean {
+		if (Utils.isNullOrEmpty(version)) {
 			return false;
 		}
 
-		const matches = value.match(this.containsPrevRegEx);
-
-		return matches === null ? false : matches.length > 0;
+		return this.prevVersionRegex.test(version) || this.prodVersionRegex.test(version);
 	}
 
 	public static toLines(value: string): string[] {

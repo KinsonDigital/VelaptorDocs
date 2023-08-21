@@ -6,36 +6,20 @@ import { Utils } from "./Utils.ts";
  * Validates that a Velaptor release exists.
  */
 export class ValidateReleaseService {
-	private readonly prevVersionRegex = /^v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+$/;
-	private readonly prodVersionRegex = /^v[0-9]+\.[0-9]+\.[0-9]+$/;
-
 	/**
 	 * Returns a value indicating whether or not the release exists.
 	 * @param version The release version to check.
 	 * @returns True if the release exists; Otherwise, false.
 	 */
 	public async releaseExists(version: string): Promise<boolean> {
-		const versionIsValid = this.validateVersion(version);
-		const releaseTagExists: boolean = await this.releaseTagExists(version);
-		const nugetPackageExists: boolean = await this.nugetPackageExists(version);
-
-		return versionIsValid && releaseTagExists && nugetPackageExists;
-	}
-
-	/**
-	 * Returns a value indicating whether or not the version syntax is valid.
-	 * @param version The version to validate.
-	 * @returns True if the version syntax is valid; Otherwise, false.
-	 */
-	private validateVersion(version: string): boolean {
-		if (Utils.isNullOrEmpty(version)) {
+		if (!Utils.isPrevOrProdVersion(version)) {
 			return false;
 		}
 
-		const isValidPrev = this.prevVersionRegex.test(version);
-		const isValidProd = this.prodVersionRegex.test(version);
+		const releaseTagExists: boolean = await this.releaseTagExists(version);
+		const nugetPackageExists: boolean = await this.nugetPackageExists(version);
 
-		return isValidPrev || isValidProd;
+		return releaseTagExists && nugetPackageExists;
 	}
 
 	/**

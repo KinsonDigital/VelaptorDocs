@@ -1,3 +1,5 @@
+import { TagClient } from "clients/TagClient.ts";
+import { NuGetClient } from "clients/NuGetClient.ts";
 import { ChalkColor } from "./ChalkColor.ts";
 import { ITag } from "./ITag.ts";
 import { Utils } from "./Utils.ts";
@@ -44,27 +46,13 @@ export class ValidateReleaseService {
 	 * @returns True if the tag exists; Otherwise, false.
 	 */
 	private async releaseTagExists(tagToCheck: string): Promise<boolean> {
-		const headers = new Headers();
-		headers.append("Accept", `application/vnd.github.v3+json`);
-
-		const url = "https://api.github.com/repos/KinsonDigital/Velaptor/tags";
-
-		const response = await fetch(url, {
-			headers: headers,
-			method: "GET",
-		});
-
-		if (response.status != 200) {
-			console.log(ChalkColor.error(`Error: ${response.status} - ${response.statusText}`));
-			Deno.exit();
+		if (Utils.isNullOrEmpty(tagToCheck)) {
+			throw Error("The tag to check is required.");
 		}
 
-		const responseText: string = await response.text();
-		const releaseTags: ITag[] = JSON.parse(responseText);
+		const tagClient: TagClient = new TagClient();
 
-		const tagExists: boolean = releaseTags.some((tag: ITag) => tag.name === tagToCheck);
-
-		return tagExists;
+		return await tagClient.tagExists("Velaptor", tagToCheck);
 	}
 
 	/**
@@ -73,22 +61,23 @@ export class ValidateReleaseService {
 	 * @returns True if the NuGet package exists; Otherwise, false.
 	 */
 	private async nugetPackageExists(versionToCheck: string): Promise<boolean> {
-		const url = "https://api.nuget.org/v3-flatcontainer/kinsondigital.velaptor/index.json";
-
-		const response = await fetch(url, { method: "GET" });
-
-		if (response.status != 200) {
-			console.log(ChalkColor.error(`Error: ${response.status} - ${response.statusText}`));
-			Deno.exit();
+		if (Utils.isNullOrEmpty(versionToCheck)) {
+			throw Error("The version to check is required.");
 		}
 
 		versionToCheck = versionToCheck.startsWith("v") ? versionToCheck.substring(1) : versionToCheck;
 
-		const responseText: string = await response.text();
-		const nugetVersions: string[] = JSON.parse(responseText).versions;
+		const nugetClient: NuGetClient = new NuGetClient();
 
-		const nugetExists: boolean = nugetVersions.some((version: string) => version === versionToCheck);
+		const velaptorPackageName = "kinsondigital.velaptor";
+		const packageExists = await nugetClient.packageExists(velaptorPackageName);
 
-		return nugetExists;
+		if (!packageExists) {
+			return false;
+		}
+
+		const packageVersions = await nugetClient.getPackageVersions(velaptorPackageName);
+
+		return packageVersions.some((version: string) => version === versionToCheck);
 	}
 }

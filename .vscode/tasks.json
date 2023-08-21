@@ -89,7 +89,7 @@
         },
         { // BUILD
             "label": "build",
-            "dependsOn": [ "disable-testing-env" ],
+            "dependsOn": [ "Disable Testing Environment" ],
             "type": "shell",
             "windows": {
                 "command": "yarn",
@@ -98,7 +98,7 @@
         },
 		{ // DELETE API DOCS
 			"label": "Delete API Docs",
-			"dependsOn": [ "disable-testing-env" ],
+			"dependsOn": [ "Disable Testing Environment" ],
 			"type": "shell",
 			"windows": {
 				"command": "deno",

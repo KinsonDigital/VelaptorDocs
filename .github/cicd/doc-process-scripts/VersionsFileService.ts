@@ -115,7 +115,7 @@ export class VersionsFileService {
 	 * Returns a list of all the versions from the versions file.
 	 * @returns {string[]} The versions from the versions file.
 	 */
-	private getVersions(): string[] {
+	public getVersions(): string[] {
 		const fileContents: string = Deno.readTextFileSync(this.filePath);
 		const versions: string[] = JSON.parse(fileContents);
 

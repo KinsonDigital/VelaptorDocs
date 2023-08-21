@@ -4,7 +4,7 @@
 		{ // GENERATE API DOCS
             "label": "Generate API Docs",
             "type": "shell",
-            "command": "deno run -A '${workspaceFolder}/.github/cicd/doc-process-scripts/main.ts' '${workspaceFolder}/docs/api'"
+            "command": "deno run -A '${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts' '${workspaceFolder}/docs/api'"
         },
         { // RESET DOCS
             "label": "Reset Docs",

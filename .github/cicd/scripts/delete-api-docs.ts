@@ -1,7 +1,7 @@
-import { Directory } from "../core/Directory.js";
-import { Path } from "../core/Path.js";
+import { Directory } from "../core/Directory.ts";
+import { Path } from "../core/Path.ts";
 import { Select } from "cliffy/prompt/select.ts";
-import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.js";
+import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
 import chalk from "npm:chalk@5.3.0";
 
 /**

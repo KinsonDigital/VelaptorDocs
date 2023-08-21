@@ -22,8 +22,14 @@ export class Utils {
 		return Deno.build.os === "windows";
 	}
 
+	/**
+	 * Sorts the given {@link versions} in descending order.
+	 * @param versions The versions to sort.
+	 * @returns The sorted versions.
+	 * @remarks This method will 
+	 */
 	public static sortVersions(versions: string[]): string[] {
-		return versions.sort((a: string, b: string) => this.compareVersions(a, b));
+		return versions.sort(Utils.semverSort);
 	}
 
 	public static isProdVersion(version: string): boolean {
@@ -111,76 +117,43 @@ export class Utils {
 		return value;
 	}
 
-	private static compareVersions(a: string, b: string): number {
-		const aIsPrev = this.isPrevVersion(a);
-		const bIsPrev = this.isPrevVersion(b);
-		const aIsProd = this.isProdVersion(a);
-		const bIsProd = this.isProdVersion(b);
+	/**
+	 * Sorts the given version strings in descending order.
+	 * @param a The left version string to compare to the right.
+	 * @param b The right version string to compare to the left
+	 * @returns The sort result used by the Array.sort() method.
+	 */
+	public static semverSort(a: string, b: string): number {
+		// split the version strings into arrays of numbers
+		const aParts = a.split(".").map((part) => parseInt(part));
+		const bParts = b.split(".").map((part) => parseInt(part));
 
-		// If one of the versions is production and one is preview
-		if (aIsProd && bIsProd) {
-			return this.compareProdVersions(a, b);
-		} else if (aIsPrev && bIsPrev) {
-			return this.comparePrevVersions(a, b);
-		} else {
-			const aStart: string = aIsPrev ? a.split("-")[0] : a;
-			const bStart: string = bIsPrev ? b.split("-")[0] : b;
-
-			// If both versions have the same major, minor, and patch
-			if (aStart === bStart) {
-				return aIsPrev ? 1 : -1;
-			} else {
-				// Get the major, minor, and patch number sections
-				const aNumSections: string[] = aIsPrev
-					? a.replace("v", "").replace("-preview", "").split(".").slice(0, -1)
-					: a.replace("v", "").split(".");
-				const bNumSections: string[] = bIsPrev
-					? b.replace("v", "").replace("-preview", "").split(".").slice(0, -1)
-					: b.replace("v", "").split(".");
-
-				const aNumbers = aNumSections.map((value: string) => Number(value));
-				const bNumbers = bNumSections.map((value: string) => Number(value));
-
-				return this.compareNumArrays(aNumbers, bNumbers);
+		// compare the major, minor, and patch versions
+		for (let i = 0; i < 3; i++) {
+			if (aParts[i] > bParts[i]) {
+				return -1;
+			} else if (aParts[i] < bParts[i]) {
+				return 1;
 			}
 		}
-	}
 
-	private static compareProdVersions(a: string, b: string): number {
-		// Get the major, minor, and patch number sections
-		const aNumSections: string[] = a.replace("v", "").split(".");
-		const bNumSections: string[] = b.replace("v", "").split(".");
-		const aNumbers = aNumSections.map((value: string) => Number(value));
-		const bNumbers = bNumSections.map((value: string) => Number(value));
-
-		return this.compareNumArrays(aNumbers, bNumbers);
-	}
-
-	private static comparePrevVersions(a: string, b: string): number {
-		// Get the major, minor, and patch number sections
-		const aNumSections: string[] = a.replace("v", "").replace("-preview", "").split(".");
-		const bNumSections: string[] = b.replace("v", "").replace("-preview", "").split(".");
-
-		const aNumbers = aNumSections.map((value: string) => Number(value));
-		const bNumbers = bNumSections.map((value: string) => Number(value));
-
-		return this.compareNumArrays(aNumbers, bNumbers);
-	}
-
-	private static compareNumArrays(a: number[], b: number[]): number {
-		if (a.length != b.length) {
-			throw new Error("Both arrays must be the same length for sorting.");
+		// if the versions are the same, check if one is a pre-release and the other is not
+		if (a.includes("-preview") && !b.includes("-preview")) {
+			return 1;
+		} else if (!a.includes("-preview") && b.includes("-preview")) {
+			return -1;
 		}
 
-		for (let i = 0; i < a.length; i++) {
-			const valueA = a[i];
-			const valueB = b[i];
+		// if the versions are the same, check if one is a pre-release and the other is not
+		if (a.includes("-preview") && b.includes("-preview")) {
+			const aParts = a.split("-preview.");
+			const bParts = b.split("-preview.");
 
-			if (valueA === valueB) {
-				continue;
+			if (aParts[1] > bParts[1]) {
+				return -1;
+			} else if (aParts[1] < bParts[1]) {
+				return 1;
 			}
-
-			return valueA < valueB ? 1 : -1;
 		}
 
 		return 0;

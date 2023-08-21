@@ -32,6 +32,23 @@ export class Utils {
 		return versions.sort(Utils.semverSort);
 	}
 
+	/**
+	 * Gets the oldest version from the given list of {@link versions}.
+	 * @param versions The list of versions to look through.
+	 */
+	public static getOldestVersion(versions: string[]): string {
+		if (Utils.isNullOrEmpty(versions)) {
+			throw new Error("The 'versions' parameter must not be null or empty.");
+		}
+
+		const sortedVersions = Utils.sortVersions(versions);
+		let oldestVersion =  sortedVersions[sortedVersions.length - 1];
+		oldestVersion = Utils.isNullOrEmpty(oldestVersion) ? "" : oldestVersion;
+		oldestVersion = oldestVersion.startsWith("v") ? oldestVersion : `v${oldestVersion}`;
+
+		return oldestVersion;
+	}
+
 	public static isProdVersion(version: string): boolean {
 		if (Utils.isNullOrEmpty(version)) {
 			return false;

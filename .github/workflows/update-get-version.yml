@@ -21,6 +21,9 @@ jobs:
     outputs:
       version: ${{ steps.apply_version_to_site.outputs.version }}
     steps:
+      - name:  Checkout Repository
+        uses: actions/checkout@v3
+
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
@@ -43,5 +46,5 @@ jobs:
             --allow-read `
             --allow-write `
             --allow-env `
-            "${{ github.workspace }}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts" `
+            "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
             "$outputFilePath";

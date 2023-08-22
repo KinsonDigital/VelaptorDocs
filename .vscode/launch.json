@@ -122,9 +122,9 @@
         },
         {
             "request": "launch",
-            "name": "Update Version",
+            "name": "Update Website Version",
             "type": "node",
-            "program": "${workspaceFolder}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts",
+            "program": "${workspaceFolder}/.github/cicd/scripts/update-website-version.ts",
             "cwd": "${workspaceFolder}",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [

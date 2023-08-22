@@ -1,5 +1,6 @@
 import { Directory } from "./Directory.ts";
 import { DotNetToolService } from "./DotNetToolService.ts";
+import { Utils } from "./Utils.ts";
 
 /**
  * Provides ability to generate documentation.
@@ -27,6 +28,10 @@ export class DefaultDocTool {
 		outputDirPath: string,
 		configFilePath: string,
 	): Promise<void> {
+		Utils.isNullOrEmpty(assemblyPath);
+		Utils.isNullOrEmpty(outputDirPath);
+		Utils.isNullOrEmpty(configFilePath);
+
 		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, this.defaultDocToolVersion);
 
 		if (Directory.exists(outputDirPath)) {

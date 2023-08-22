@@ -186,7 +186,52 @@ export class DocProcessor {
 	private async createAPIWebsiteVersion(version: string): Promise<void> {
 		version = version.startsWith("v") ? version.substring(1) : version;
 
-		const commands = ["docusaurus", "docs:version", version];
-		await this.yarn.run(commands);
+		const yarnAppPath = this.getYarnPath();
+
+		version = "v1.0.0-preview.100";
+		const command = new Deno.Command(yarnAppPath, {
+			args: ["docusaurus", "docs:version", version],
+		});
+
+		const { code, stdout, stderr } = await command.output();
+
+		if (code != 0) {
+			console.log(`:error::There was a problem creating a snapshot of the docusaurus version '${version}'.`);
+			console.log(new TextDecoder().decode(stderr));
+			Deno.exit(code);
+		} else {
+			console.log(new TextDecoder().decode(stdout));
+		}
+	}
+
+	/**
+	 * Returns the system user name.
+	 * @returns The system user name.
+	 */
+	private sysUserName(): string {
+		const envUserName: string | undefined = this.isWindowsEnv() ? Deno.env.get("USERNAME") : Deno.env.get("USER");
+
+		if (envUserName === undefined) {
+			console.log(chalk.red("Could not find the system user name."));
+			Deno.exit();
+		}
+
+		return envUserName;
+	}
+
+	/**
+	 * Returns the executable location of yarn.
+	 * @returns The executable location of yarn.
+	 */
+	private getYarnPath(): string {
+		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/usr/bin/yarn";
+	}
+
+	/**
+	 * Returns a value indicating whether or not the current environment is windows.
+	 * @returns True if the current environment is windows; otherwise false.
+	 */
+	private isWindowsEnv(): boolean {
+		return Deno.build.os === "windows";
 	}
 }

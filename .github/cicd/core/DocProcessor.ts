@@ -92,13 +92,6 @@ export class DocProcessor {
 			"Performing Documentation Post-Processing. . .",
 			() => this.runPostProcessing(apiDocDirPath),
 			"Documentation Post-Processing Complete.")
-
-
-		// Create website version snapshot
-		await this.runProcess(
-			"Creating website version snapshot. . .",
-			() => this.createAPIWebsiteVersion(releaseTag),
-			"Website Version Snapshot Complete.");
 	}
 
 	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {
@@ -181,60 +174,5 @@ export class DocProcessor {
 			console.error(error);
 			throw error;
 		}
-	}
-
-	/**
-	 * Creates a new version of the website documentation as it currently sits.
-	 * @param version The version to create.
-	 */
-	private async createAPIWebsiteVersion(version: string): Promise<void> {
-		version = version.startsWith("v") ? version.substring(1) : version;
-
-		const yarnAppPath = this.getYarnPath();
-
-		const command = new Deno.Command(yarnAppPath, {
-			args: ["docusaurus", "docs:version", version],
-		});
-
-		const { code, stdout, stderr } = await command.output();
-
-		if (code != 0) {
-			console.log(`:error::There was a problem creating a snapshot of the docusaurus version '${version}'.`);
-			console.log(new TextDecoder().decode(stderr));
-			Deno.exit(code);
-		} else {
-			console.log(new TextDecoder().decode(stdout));
-		}
-	}
-
-	/**
-	 * Returns the system user name.
-	 * @returns The system user name.
-	 */
-	private sysUserName(): string {
-		const envUserName: string | undefined = this.isWindowsEnv() ? Deno.env.get("USERNAME") : Deno.env.get("USER");
-
-		if (envUserName === undefined) {
-			console.log(chalk.red("Could not find the system user name."));
-			Deno.exit();
-		}
-
-		return envUserName;
-	}
-
-	/**
-	 * Returns the executable location of yarn.
-	 * @returns The executable location of yarn.
-	 */
-	private getYarnPath(): string {
-		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/usr/bin/yarn";
-	}
-
-	/**
-	 * Returns a value indicating whether or not the current environment is windows.
-	 * @returns True if the current environment is windows; otherwise false.
-	 */
-	private isWindowsEnv(): boolean {
-		return Deno.build.os === "windows";
 	}
 }

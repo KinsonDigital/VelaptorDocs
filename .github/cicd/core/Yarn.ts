@@ -51,7 +51,7 @@ export class Yarn {
 	 * @returns The executable location of yarn.
 	 */
 	private getYarnLocation(): string {
-		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/user/bin/yarn";
+		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/usr/bin/yarn";
 	}
 
 	/**

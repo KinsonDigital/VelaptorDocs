@@ -1,23 +1,21 @@
 import { Input } from "cliffy/prompt/mod.ts";
-import { ArgService } from "../core/ArgService.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
 
-const argService: ArgService = new ArgService();
-const [argsValid, errorMsg] = argService.argsAreValid(Deno.args);
-
-if (!argsValid) {
-	throw new Error(errorMsg);
+if (Deno.args.length < 2) {
+	const errorMsg = `The required number of arguments is 2 but only '${Deno.args.length}' were given.`;
+	console.error(`::error::${errorMsg}`);
 }
 
 const apiDirPath: string = Deno.args[0];
+let apiVersion = Deno.args[1].trim().toLowerCase();
 
-const isInteractive = Deno.args.length >= 3 && Deno.args[2].trim().toLowerCase() === "true";
+const isInteractive = Deno.args.length >= 3 &&
+	Deno.args.length === 3 &&
+	Deno.args[2].trim().toLowerCase() === "true";
 
 console.log(apiDirPath);
 
 console.clear();
-
-let apiVersion = "";
 
 if (isInteractive) {
 	apiVersion = await Input.prompt({
@@ -26,7 +24,6 @@ if (isInteractive) {
 		transform: (v) => v.startsWith("v") ? v : `v${v}`,
 	});
 } else {
-	apiVersion = Deno.args[1].trim().toLowerCase();
 	apiVersion = apiVersion.startsWith("v") ? apiVersion : `v${apiVersion}`;
 }
 

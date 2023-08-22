@@ -58,58 +58,56 @@ export class DocProcessor {
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 		if (Directory.exists(repoSrcDirPath)) {
-			console.log("\n-----------------------------------------------------------------\n");
-			console.log(chalk.cyan("Cleaning up previous clone and build. . ."));
-
-			Deno.removeSync(repoSrcDirPath, { recursive: true });
-
-			console.log(chalk.cyan("Cleaning Complete."));
+			await this.runProcess(
+				"Cleaning up previous clone and build. . .",
+				() => Deno.removeSync(repoSrcDirPath, { recursive: true }),
+				"Cleaning Complete.");
 		}
 
 		// Clone the Velaptor repository into the RepoSrc directory
 		// so documentation can be generated from it.
-		console.log("\n-----------------------------------------------------------------\n");
-		console.log(chalk.cyan("Cloning Velaptor. . ."));
-
-		this.cloneService.cloneRepo(releaseTag);
-
-		console.log(chalk.cyan("Cloning Complete."));
+		await this.runProcess(
+			"Cloning Velaptor. . .",
+			() => this.cloneService.cloneRepo(releaseTag),
+			"Cloning Complete.");
 
 		// Build the project so the assembly can be used for generating documentation.
-		console.log("\n-----------------------------------------------------------------\n");
-		console.log(chalk.cyan("Building Velaptor. . ."));
-
-		await this.buildVelaptor();
-
-		console.log(chalk.cyan("Building Complete."));
+		await this.runProcess(
+			"Building Velaptor. . .",
+			() => this.buildVelaptor(),
+			"Building Complete.");
 
 		// Generate the documentation.
-		console.log("\n-----------------------------------------------------------------\n");
-		console.log(chalk.cyan("Generating Documentation. . ."));
-
-		await this.defaultDocTool.generateDocumentation(
-			`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
-			`${Deno.cwd()}/docs/api`,
-			`${Deno.cwd()}/default-doc-config.json`,
-		);
-
-		console.log(chalk.cyan("\n\nDocumentation Generation Complete."));
+		await this.runProcess(
+			"Generating Documentation. . .",
+			() => this.defaultDocTool.generateDocumentation(
+				`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
+				`${Deno.cwd()}/docs/api`,
+				`${Deno.cwd()}/default-doc-config.json`,
+				),
+			"Documentation Generation Complete.");
 
 		// Perform post-processing on the documentation.
-		console.log("\n-----------------------------------------------------------------\n");
-		console.log(chalk.cyan("Performing Documentation Post-Processing. . ."));
+		await this.runProcess(
+			"Performing Documentation Post-Processing. . .",
+			() => this.runPostProcessing(apiDocDirPath),
+			"Documentation Post-Processing Complete.")
 
-		this.runPostProcessing(apiDocDirPath);
-
-		console.log(chalk.cyan("Documentation Post-Processing Complete."));
 
 		// Create website version snapshot
+		await this.runProcess(
+			"Creating website version snapshot. . .",
+			() => this.createAPIWebsiteVersion(releaseTag),
+			"Website Version Snapshot Complete.");
+	}
+
+	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {
 		console.log("\n-----------------------------------------------------------------\n");
-		console.log(chalk.cyan("Creating website version snapshot. . ."));
+		console.log(chalk.cyan(startMsg));
 
-		await this.createAPIWebsiteVersion(releaseTag);
+		await process();
 
-		console.log(chalk.cyan("\n\nWebsite Version Snapshot Complete."));
+		console.log(chalk.cyan(`\n\n${endMsg}`));
 	}
 
 	/**
@@ -146,6 +144,9 @@ export class DocProcessor {
 			const oldNamespaceFilePath = `${baseAPIDirPath}index.md`;
 			const newNamespaceFilePath = `${baseAPIDirPath}Namespaces.md`;
 			File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
+			console.log(`File renamed from '${oldNamespaceFilePath}' to '${newNamespaceFilePath}'.`);
+
+			console.log("Performing post-processing on the API documentation. . .");
 
 			// Replace the extra table column in the Namespaces.md file
 			let namespaceFileContent: string = File.readTextFileSync(newNamespaceFilePath);
@@ -162,6 +163,7 @@ export class DocProcessor {
 
 			// Go through each file and perform content processing
 			filePaths.forEach((filePath: string) => {
+				console.log(`\tProcessing file '${filePath}' . . .`);
 				fileContentService.processMarkdownFile(filePath);
 			});
 
@@ -173,6 +175,8 @@ export class DocProcessor {
 			);
 
 			File.writeTextFileSync(newNamespaceFilePath, namespaceContent);
+
+			console.log("API documentation post-processing complete.");
 		} catch (error) {
 			console.error(error);
 			throw error;
@@ -188,7 +192,6 @@ export class DocProcessor {
 
 		const yarnAppPath = this.getYarnPath();
 
-		version = "v1.0.0-preview.100";
 		const command = new Deno.Command(yarnAppPath, {
 			args: ["docusaurus", "docs:version", version],
 		});

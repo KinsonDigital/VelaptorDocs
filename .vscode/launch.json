@@ -98,7 +98,8 @@
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
-                "--allow-all",
+                "--allow-read",
+				"--allow-write",
             ],
             "attachSimplePort": 9229,
 			"console": "integratedTerminal"

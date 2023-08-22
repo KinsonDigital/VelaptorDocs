@@ -1,0 +1,163 @@
+name: 🚀Production API Release
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      api-version:
+        description: 'The version of API docs to release.'
+        required: true
+        type: string
+
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+
+jobs:
+  validate_branch:
+    name: Validate Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Validation
+        run: |
+          $branch = "${{ github.ref }}";
+
+          if ($branch -ne "refs/heads/${{ vars.RELEASE_BRANCH }}") {
+            Write-Host "::error::This workflow can only be run on the '${{ vars.RELEASE_BRANCH }}' branch.";
+            exit 1;
+          }
+
+
+  validate_api_version:
+    name: Validate API Version
+    needs: validate_branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Syntax
+        run: |
+          if ("${{ inputs.api-version }}" -notmatch "^v[0-9]+\.[0-9]+\.[0-9]+(|-preview\.[0-9]+)$") {
+            Write-Host "::error::The API version '${{ inputs.api-version }}' is not valid.";
+            exit 1;
+          }
+
+      - name: Set Up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+
+      - name: Validate Version Exists
+        run: |
+          deno run `
+            --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts" `
+            "${{ inputs.api-version }}";
+
+
+# - name: Validate Version Exists
+# run: |
+#   deno run `
+#     --allow-read `
+#     --allow-write `
+#     "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
+#     "${{ github.workspace }}/docs/api";
+
+  # TODO: ADD JOB TO DELETE OLDEST VERSION OF THE API DOCS
+  # TODO: ADD JOB TO GENERATE API DOCS FOR THE LATEST VESION OF VELAPTOR
+
+  update_and_get_website_version:
+    name: Update Version
+    needs: validate_branch
+    uses: ./.github/workflows/update-get-version.yml
+
+
+  disable_next_version_feature:
+    name: Disable Next Version Feature
+    needs: [validate_branch, validate_api_version, update_and_get_website_version]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+      
+      - name: Disable Next Version Feature
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+            "${{ github.workspace }}/docusaurus.config.js" `
+            "next-version" `
+            "enable";
+
+
+  generate_api_docs:
+    name: Disable Next Version Feature
+    needs: [validate_branch, validate_api_version, update_and_get_website_version]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+
+        # This sdk version SHOULD be the same as the version set in the Velaptor project
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
+
+          # This should be setup in the DefaultDocTool class.  If the workflow works, remove this
+      # - name: Setup Default Documentation Tool
+      #   run: dotnet tool restore
+
+      - name: Generate API Docs
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            --allow-run `
+            --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
+            "${{ github.workspace }}/docs/api";
+
+      - name: Commit API Docs
+        run: |
+          $version = "${{ inputs.api-version }}";
+          $version = $version.StartsWith("v") ? $version : "v" + $version;
+          
+          git config --global user.email "${{ vars.GIT_CONFIG_EMAIL }}";
+          git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)";
+
+          git add *.*;
+          git commit -m "🚀Generate API Docs for Velaptor version $version";
+          git push;
+
+
+  release_website:
+    name: Release Website
+    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature]
+    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
+    with:
+      node-version: "${{ vars.NODE_VERSION }}"
+      artifact-dir-path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
+      release-version: "${{ needs.update_and_get_website_version.outputs.version }}"
+      git-config-email: "${{ vars.GIT_CONFIG_EMAIL }}"
+      git-config-name: 'Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)'
+      runs-on: "ubuntu-latest"
+      environment-name: "github-pages"
+      tag-message: "API Doc Release"

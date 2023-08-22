@@ -5,8 +5,8 @@ export class ArgService {
 	public argsAreValid(args: string[]): [boolean, string] {
 		Guard.isNotUndefined(args);
 
-		if (args.length < 2) {
-			const errorMsg = `The required number of arguments is 2 but the total number received is '${args.length}'.`;
+		if (args.length === 0) {
+			const errorMsg = `The required number of arguments is 1.`;
 			return [false, errorMsg];
 		}
 

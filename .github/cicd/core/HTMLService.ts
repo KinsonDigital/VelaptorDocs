@@ -14,7 +14,7 @@ export class HTMLService {
 
 		const matches = value.match(this.linkTagRegEx);
 
-		return matches !== null && matches.length > 0;
+		return matches != null && matches.length > 0;
 	}
 
 	public getNameAttrValue(linkTag: string): string {

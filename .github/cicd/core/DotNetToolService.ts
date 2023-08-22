@@ -53,7 +53,7 @@ export class DotNetToolService {
 		const tools: IDotNetTool[] = [];
 
 		list.forEach((line: string) => {
-			const parts = line.split(" ").filter((part) => part !== "");
+			const parts = line.split(" ").filter((part) => part != "");
 			const tool: IDotNetTool = {
 				packageId: parts[0],
 				version: parts[1],
@@ -81,7 +81,7 @@ export class DotNetToolService {
 		const { code, stdout, stderr } = await command.output();
 		console.log(new TextDecoder().decode(stdout));
 
-		if (code !== 0) {
+		if (code != 0) {
 			console.log(`::error::There was a problem installing the dotnet tool '${toolName}' version '${version}'.`);
 			console.log(new TextDecoder().decode(stderr));
 			Deno.exit(code);

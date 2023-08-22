@@ -42,7 +42,7 @@ export class Path {
 			sections.pop(); // Remove the extension
 
 			// Remove empty entires
-			sections = sections.filter((value: string) => value !== "");
+			sections = sections.filter((value: string) => value != "");
 
 			newFileName = sections[0];
 			newFileName = newFileName.replaceAll("*", ".");

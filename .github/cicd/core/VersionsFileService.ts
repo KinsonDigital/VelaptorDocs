@@ -25,7 +25,7 @@ export class VersionsFileService {
 		version = version.startsWith("v") ? version.replace("v", "") : version;
 
 		const versions: string[] = this.getVersions()
-			.filter((v: string) => v !== version);
+			.filter((v: string) => v != version);
 
 		// If there is nothing to delete
 		if (versions.length === 0) {

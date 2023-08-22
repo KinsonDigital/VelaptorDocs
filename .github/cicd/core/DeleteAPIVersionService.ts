@@ -29,7 +29,7 @@ export class DeleteAPIVersionService {
 
 		const versionDirPaths: string[] = Directory.getDirs("./versioned_docs");
 
-		const apiDocDirPath: string | undefined = versionDirPaths.find((p) => p.indexOf(version) !== -1);
+		const apiDocDirPath: string | undefined = versionDirPaths.find((p) => p.indexOf(version) != -1);
 
 		if (apiDocDirPath === undefined) {
 			throw new Error(`Could not find the API docs directory path for version '${version}'.`);

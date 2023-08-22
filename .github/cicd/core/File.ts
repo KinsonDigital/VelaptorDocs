@@ -73,7 +73,7 @@ export class File {
 		const oldDirPath: string = Path.getDirectory(oldFilePath);
 		const newDirPath: string = Path.getDirectory(newFilePath);
 
-		if (oldDirPath !== newDirPath) {
+		if (oldDirPath != newDirPath) {
 			throw new Error(`The 'oldFilePath' and 'newFilePath' must be in the same directory.`);
 		}
 

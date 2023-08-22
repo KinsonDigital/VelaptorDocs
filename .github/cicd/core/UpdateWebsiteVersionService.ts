@@ -63,7 +63,7 @@ export class UpdateWebsiteVersionService {
 			return [];
 		}
 
-		return value.split(this.newLine).filter((item) => item !== "");
+		return value.split(this.newLine).filter((item) => item != "");
 	}
 
 	/**

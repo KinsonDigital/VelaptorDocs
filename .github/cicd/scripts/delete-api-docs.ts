@@ -2,7 +2,7 @@ import { Directory } from "../core/Directory.ts";
 import { Path } from "../core/Path.ts";
 import { Select } from "cliffy/prompt/select.ts";
 import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
-import chalk from "npm:chalk@5.3.0";
+import { chalk } from "../core/chalk.ts";
 
 /**
  * DESCRIPTION: This script is used locally by VSCode to make it easy to delete

@@ -1,4 +1,4 @@
-import chalk from "npm:chalk@5.3.0";
+import { chalk } from "./chalk.ts";
 
 /**
  * Executes yarn commands.

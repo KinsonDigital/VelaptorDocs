@@ -1,4 +1,3 @@
-import chalk from "npm:chalk@5";
 import { CloneRepoService } from "./CloneRepoService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Directory } from "./Directory.ts";
@@ -9,6 +8,7 @@ import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 import { ValidateReleaseService } from "./ValidateReleaseService.ts";
 import { Yarn } from "./Yarn.ts";
+import { chalk } from "./chalk.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.

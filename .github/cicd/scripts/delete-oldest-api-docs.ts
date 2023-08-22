@@ -1,5 +1,5 @@
 import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
-import chalk from "npm:chalk@5.3.0";
+import { chalk } from "../core/chalk.ts";
 import { VersionsFileService } from "../core/VersionsFileService.ts";
 import { Utils } from "../core/Utils.ts";
 

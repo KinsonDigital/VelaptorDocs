@@ -16,12 +16,6 @@ permissions:
   id-token: write
 
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-
 jobs:
   validate_branch:
     name: Validate Branch
@@ -37,17 +31,20 @@ jobs:
           }
 
 
-  update_and_get_version:
-    name: Update Version
+  update_and_get_website_version:
+    name: Update And Get Website Version
     uses: ./.github/workflows/update-get-version.yml
 
 
   disable_next_version_feature:
     name: Disable Next Version Feature
-    needs: [validate_branch, update_and_get_version]
+    needs: [validate_branch, update_and_get_website_version]
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Deno
+      - name:  Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ vars.DENO_VERSION }}
@@ -63,14 +60,27 @@ jobs:
             "enable";
 
 
+  get_artifact_dir_path:
+    name: Get Artifact Dir Path
+    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature]
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-dir-path: ${{ steps.get-artifact-dir-path.outputs.artifact-dir-path }}
+    steps:
+      - name: Get Dir Path
+        id: get-artifact-dir-path
+        run: |
+          "artifact-dir-path=${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}" >> $env:GITHUB_OUTPUT;
+
+
   release_website:
-    name: Release Website
-    needs: [validate_branch, update_and_get_version, disable_next_version_feature]
+    name: Release Website (${{ needs.update_and_get_website_version.outputs.version }})
+    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature, get_artifact_dir_path]
     uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
     with:
       node-version: "${{ vars.NODE_VERSION }}"
-      artifact-dir-path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
-      release-version: "${{ needs.update_and_get_version.outputs.version }}"
+      artifact-dir-path: "${{ needs.get_artifact_dir_path.outputs.artifact-dir-path }}"
+      release-version: "${{ needs.update_and_get_website_version.outputs.version }}"
       git-config-email: "${{ vars.GIT_CONFIG_EMAIL }}"
       git-config-name: 'Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)'
       runs-on: "ubuntu-latest"

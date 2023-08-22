@@ -17,7 +17,7 @@ export class DotNetToolService {
 		}
 
 		// Install the default documentation dotnet tool
-		this.installTool(toolName, toolVersion);
+		await this.installTool(toolName, toolVersion);
 	}
 
 	/**

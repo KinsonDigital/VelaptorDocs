@@ -136,6 +136,26 @@
         },
 		{
             "request": "launch",
+            "name": "Generate New API Docs",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+                "--allow-all",
+            ],
+			"args": [
+				"${workspaceFolder}/docs/api",
+				"v1.0.0-preview.23",
+				"false" // Is Interactive
+			],
+			"console": "integratedTerminal",
+            "attachSimplePort": 9229
+        },
+		{
+            "request": "launch",
             "name": "Velaptor Tag Exists",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/velaptor-version-exists.ts",

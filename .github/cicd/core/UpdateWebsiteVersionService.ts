@@ -1,11 +1,10 @@
-import { File } from "../doc-process-scripts/File.ts";
+import { File } from "./File.ts";
 
 /**
  * Updates the version in the docusaurus.config.js file.
  */
-export class WebsiteVersionUpdater {
+export class UpdateWebsiteVersionService {
 	private readonly newLine: string = Deno.build.os === "windows" ? "\r\n" : "\n";
-	private readonly newLineRegEx: RegExp = /\r?\n/;
 	private readonly versionRegEx: RegExp = /\(v\d{4}\.\d{2}\.\d{2}\.\d{6}\)/;
 	private readonly outputFilePath: string;
 
@@ -64,7 +63,7 @@ export class WebsiteVersionUpdater {
 			return [];
 		}
 
-		return value.split(this.newLine);
+		return value.split(this.newLine).filter((item) => item != "");
 	}
 
 	/**
@@ -96,11 +95,11 @@ export class WebsiteVersionUpdater {
 		let second = currentDate.getSeconds().toString();
 
 		// Make sure that the different numbers are 2 digits
-		month = month.length == 1 ? `0${month}` : month;
-		day = day.length == 1 ? `0${day}` : day;
-		hour = hour.length == 1 ? `0${hour}` : hour;
-		minute = minute.length == 1 ? `0${minute}` : minute;
-		second = second.length == 1 ? `0${second}` : second;
+		month = month.length === 1 ? `0${month}` : month;
+		day = day.length === 1 ? `0${day}` : day;
+		hour = hour.length === 1 ? `0${hour}` : hour;
+		minute = minute.length === 1 ? `0${minute}` : minute;
+		second = second.length === 1 ? `0${second}` : second;
 
 		const version = `${year}.${month}.${day}.${hour}${minute}${second}`;
 
@@ -116,7 +115,7 @@ export class WebsiteVersionUpdater {
 		const output = `${name}=${value}`;
 
 		if (File.doesNotExist(this.outputFilePath)) {
-			throw new Error(`The output file '${this.outputFilePath}' does not exist.`);
+			throw new Error(`The GitHub outputs file '${this.outputFilePath}' does not exist.`);
 		}
 
 		const envOutputFileData: string = Deno.readTextFileSync(this.outputFilePath);
@@ -125,9 +124,6 @@ export class WebsiteVersionUpdater {
 
 		const newFileData: string = fileLines.join(this.newLine);
 
-		Deno.writeTextFileSync(this.outputFilePath, newFileData, { append: true });
+		Deno.writeTextFileSync(this.outputFilePath, newFileData, { append: false });
 	}
 }
-
-const updater = new WebsiteVersionUpdater();
-updater.updateVersion();

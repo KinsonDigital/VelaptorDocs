@@ -1,6 +1,7 @@
 name: 📋 Other Changes
 description: Create an issue for non documentation related changes.
 title: "📋"
+projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes
   attributes:
@@ -35,8 +36,6 @@ body:
     options:
     - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
     - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-    - label: Issue linked to the correct project _(if applicable)_.
-    - label: Draft pull request created and linked to this issue _(only required with code changes)_.
 
 - type: textarea
   attributes:
@@ -48,7 +47,7 @@ body:
       | Change Type  | Label                                                                                             |
       |--------------|---------------------------------------------------------------------------------------------------|
       | CICD                 | https://github.com/KinsonDigital/VelaptorDocs/labels/%E2%99%BB%EF%B8%8Fcicd               |
-      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/dependency%20update                  |
+      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%A6dependency%20update                  |
       | Miscellaneous        | https://github.com/KinsonDigital/VelaptorDocs/labels/miscellaneous                        |
       | Tutorial Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Ctutorial%20doc%20changes |
       </details>

@@ -1,4 +1,4 @@
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 import { Utils } from "./Utils.ts";
 
 export class MarkdownService {
@@ -196,7 +196,7 @@ export class MarkdownService {
 		}
 
 		const matches = line.match(this.headerLineRegEx);
-		return matches !== null && matches.length > 0;
+		return matches != null && matches.length > 0;
 	}
 
 	public containsMarkdownLink(markDownLink: string): boolean {
@@ -207,8 +207,8 @@ export class MarkdownService {
 		const textResults = markDownLink.match(this.textSectionRegEx);
 		const urlResults = markDownLink.match(this.urlSectionRegEx);
 
-		const containsValidTextSection: boolean = textResults !== null && textResults.entries.length >= 0;
-		const containsValidUrlSection: boolean = urlResults !== null && urlResults.entries.length >= 0;
+		const containsValidTextSection: boolean = textResults != null && textResults.entries.length >= 0;
+		const containsValidUrlSection: boolean = urlResults != null && urlResults.entries.length >= 0;
 
 		return containsValidTextSection && containsValidUrlSection;
 	}

@@ -1,4 +1,3 @@
-import { ChalkColor } from "./ChalkColor.ts";
 import { CloneRepoService } from "./CloneRepoService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Directory } from "./Directory.ts";
@@ -9,6 +8,7 @@ import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 import { ValidateReleaseService } from "./ValidateReleaseService.ts";
 import { Yarn } from "./Yarn.ts";
+import { chalk } from "./chalk.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -36,80 +36,77 @@ export class DocProcessor {
 	 */
 	public async run(apiDocDirPath: string, releaseTag: string): Promise<void> {
 		if (Utils.isNullOrEmpty(apiDocDirPath)) {
-			console.log(ChalkColor.error("The API doc dir path is required."));
+			console.log(chalk.red("The API doc dir path is required."));
 			Deno.exit();
 		}
 
 		if (Utils.isNullOrEmpty(releaseTag)) {
-			console.log(ChalkColor.error("The release tag is required."));
+			console.log(chalk.red("The release tag is required."));
 			Deno.exit();
 		}
 
-		console.log(ChalkColor.header(`Validating Release '${releaseTag}'. . .`));
+		console.log(chalk.cyan(`Validating Release '${releaseTag}'. . .`));
 		const isValid = await this.validateReleaseService.releaseExists(releaseTag);
 
 		if (!isValid) {
-			console.log(ChalkColor.error(`The release '${releaseTag}' is not valid.`));
+			console.log(chalk.red(`The release '${releaseTag}' is not valid.`));
 			Deno.exit();
 		}
 
-		console.log(ChalkColor.header(`Release '${releaseTag}' Valid.`));
+		console.log(chalk.cyan(`Release '${releaseTag}' Valid.`));
 
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 		if (Directory.exists(repoSrcDirPath)) {
-			console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-			console.log(ChalkColor.header("Cleaning up previous clone and build. . ."));
-
-			Deno.removeSync(repoSrcDirPath, { recursive: true });
-
-			console.log(ChalkColor.header("Cleaning Complete."));
+			await this.runProcess(
+				"Cleaning up previous clone and build. . .",
+				() => Deno.removeSync(repoSrcDirPath, { recursive: true }),
+				"Cleaning Complete.",
+			);
 		}
 
 		// Clone the Velaptor repository into the RepoSrc directory
 		// so documentation can be generated from it.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Cloning Velaptor. . ."));
-
-		this.cloneService.cloneRepo(releaseTag);
-
-		console.log(ChalkColor.header("Cloning Complete."));
-
-		// Build the project so the assembly can be used for generating documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Building Velaptor. . ."));
-
-		await this.buildVelaptor();
-
-		console.log(ChalkColor.header("Building Complete."));
-
-		// Generate the documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Generating Documentation. . ."));
-
-		await this.defaultDocTool.generateDocumentation(
-			`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
-			`${Deno.cwd()}/docs/api`,
-			`${Deno.cwd()}/default-doc-config.json`,
+		await this.runProcess(
+			"Cloning Velaptor. . .",
+			() => this.cloneService.cloneRepo(releaseTag),
+			"Cloning Complete.",
 		);
 
-		console.log(ChalkColor.header("\n\nDocumentation Generation Complete."));
+		// Build the project so the assembly can be used for generating documentation.
+		await this.runProcess(
+			"Building Velaptor. . .",
+			() => this.buildVelaptor(),
+			"Building Complete.",
+		);
+
+		// Generate the documentation.
+		await this.runProcess(
+			"Generating Documentation. . .",
+			() =>
+				this.defaultDocTool.generateDocumentation(
+					`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
+					`${Deno.cwd()}/docs/api`,
+					`${Deno.cwd()}/default-doc-config.json`,
+				),
+			"Documentation Generation Complete.",
+		);
 
 		// Perform post-processing on the documentation.
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Performing Documentation Post-Processing. . ."));
+		await this.runProcess(
+			"Performing Documentation Post-Processing. . .",
+			() => this.runPostProcessing(apiDocDirPath),
+			"Documentation Post-Processing Complete.",
+		);
+	}
 
-		this.runPostProcessing(apiDocDirPath);
+	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {
+		console.log("\n-----------------------------------------------------------------\n");
+		console.log(chalk.cyan(startMsg));
 
-		console.log(ChalkColor.header("Documentation Post-Processing Complete."));
+		await process();
 
-		// Create website version snapshot
-		console.log(ChalkColor.normal("\n-----------------------------------------------------------------\n"));
-		console.log(ChalkColor.header("Creating website version snapshot. . ."));
-
-		await this.createAPIWebsiteVersion(releaseTag);
-
-		console.log(ChalkColor.header("\n\nWebsite Version Snapshot Complete."));
+		console.log(chalk.cyan(`\n\n${endMsg}`));
 	}
 
 	/**
@@ -146,6 +143,9 @@ export class DocProcessor {
 			const oldNamespaceFilePath = `${baseAPIDirPath}index.md`;
 			const newNamespaceFilePath = `${baseAPIDirPath}Namespaces.md`;
 			File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
+			console.log(`File renamed from '${oldNamespaceFilePath}' to '${newNamespaceFilePath}'.`);
+
+			console.log("Performing post-processing on the API documentation. . .");
 
 			// Replace the extra table column in the Namespaces.md file
 			let namespaceFileContent: string = File.readTextFileSync(newNamespaceFilePath);
@@ -162,6 +162,7 @@ export class DocProcessor {
 
 			// Go through each file and perform content processing
 			filePaths.forEach((filePath: string) => {
+				console.log(`\tProcessing file '${filePath}' . . .`);
 				fileContentService.processMarkdownFile(filePath);
 			});
 
@@ -173,20 +174,11 @@ export class DocProcessor {
 			);
 
 			File.writeTextFileSync(newNamespaceFilePath, namespaceContent);
+
+			console.log("API documentation post-processing complete.");
 		} catch (error) {
 			console.error(error);
 			throw error;
 		}
-	}
-
-	/**
-	 * Creates a new version of the website documentation as it currently sits.
-	 * @param version The version to create.
-	 */
-	private async createAPIWebsiteVersion(version: string): Promise<void> {
-		version = version.startsWith("v") ? version.substring(1) : version;
-
-		const commands = ["docusaurus", "docs:version", version];
-		await this.yarn.run(commands);
 	}
 }

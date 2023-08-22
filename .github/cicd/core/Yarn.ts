@@ -1,4 +1,4 @@
-import { ChalkColor } from "./ChalkColor.ts";
+import { chalk } from "./chalk.ts";
 
 /**
  * Executes yarn commands.
@@ -9,13 +9,13 @@ export class Yarn {
 	 */
 	public async run(commands: string[]): Promise<void> {
 		if (commands === undefined || commands.length === 0) {
-			console.log(ChalkColor.error("The commands parameter must not be empty."));
+			console.log(chalk.red("The commands parameter must not be empty."));
 			Deno.exit();
 		}
 
 		const yarn = this.getYarnLocation();
 
-		console.log(ChalkColor.dim(`Running Yarn Command: ${commands.join(" ")}`));
+		console.log(chalk.gray(`Running Yarn Command: ${commands.join(" ")}`));
 
 		const command = new Deno.Command(yarn, {
 			args: commands,
@@ -39,7 +39,7 @@ export class Yarn {
 		const envUserName: string | undefined = this.isWindowsEnv() ? Deno.env.get("USERNAME") : Deno.env.get("USER");
 
 		if (envUserName === undefined) {
-			console.log(ChalkColor.error("Could not find the system user name."));
+			console.log(chalk.red("Could not find the system user name."));
 			Deno.exit();
 		}
 
@@ -51,7 +51,7 @@ export class Yarn {
 	 * @returns The executable location of yarn.
 	 */
 	private getYarnLocation(): string {
-		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/user/bin/yarn";
+		return this.isWindowsEnv() ? `C:/Users/${this.sysUserName()}/AppData/Roaming/npm/yarn.cmd` : "/usr/bin/yarn";
 	}
 
 	/**

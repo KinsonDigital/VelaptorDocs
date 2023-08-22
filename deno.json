@@ -1,33 +1,27 @@
 {
 	"imports": {
-		"std/": "https://deno.land/std@0.196.0/"
+		"std/": "https://deno.land/std@0.196.0/",
+        "clients/": "https://raw.githubusercontent.com/kinsondigital/Infrastructure/v12.1.0/cicd/clients/",
+        "cliffy/": "https://deno.land/x/cliffy@v1.0.0-rc.2/"
 	},
 	"fmt": {
-        "include": [".github/cicd/.*\\.ts$"],
+        "include": ["**/.github/cicd/*\\.ts$"],
         "exclude": [
-            ".vscode",
-            ".docusaurus",
+            "**/.config/",
+            "**/.docusaurus/",
+            "**/.vscode/",
+            "**/node_modules/",
+            "**/build/",
+            "**/src/",
+            "**/static/",
+            "**/code_coverage/",
             "**/*.md",
-            "versions.json",
-            "tsconfig.json",
-            "package.json",
-            "package-lock.json",
-            "deno.json",
-            "default-doc-config.json",
-            "sidebars.js",
-            "docusaurus.config.js",
-            "babel.config.js",
-            ".github/cicd/.vscode/",
-            ".github/cicd/manual-testing/unprocessed-docs/",
-            "code_coverage/",
-            "build/",
-            "src/",
-            "static/",
-            "versioned_docs/",
-            "versioned_sidebars/",
-            "docs/",
-            "blog/",
-            "RepoSrc/"
+            "**/*.json",
+            "**/*.js",
+            "**/blog/",
+            "**/RepoSrc/",
+            "**/versioned_docs/",
+            "**/unprocessed-docs/"
         ],
         "useTabs": true,
         "lineWidth": 130,
@@ -38,6 +32,7 @@
 	"lint": {
         "include": [".github/cicd/.*\\.ts$"],
         "exclude": [
+            "**/playground.ts",
             "README.md",
             "versions.json",
             "tsconfig.json",

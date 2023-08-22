@@ -1,5 +1,5 @@
 import { File } from "./File.ts";
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 
 /**
  * Provides management of versioned sidebars.

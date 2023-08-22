@@ -16,103 +16,73 @@ permissions:
   id-token: write
 
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-
 jobs:
-  release_website:
-    name: Release Website
+  validate_branch:
+    name: Validate Branch
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-    - name: Validate Branch
-      run: |
-        $branch = "${{ github.ref }}";
-        
-        if ($branch -ne "refs/heads/main") {
-          Write-Host "::error::This workflow can only be run on the main branch.";
-          exit 1;
-        }
+      - name: Run Validation
+        run: |
+          $branch = "${{ github.ref }}";
 
-    - uses: actions/checkout@v3
+          if ($branch -ne "refs/heads/${{ vars.RELEASE_BRANCH }}") {
+            Write-Host "::error::This workflow can only be run on the '${{ vars.RELEASE_BRANCH }}' branch.";
+            exit 1;
+          }
 
-    - name: Setup NodeJS
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.14.2
 
-    - name: Setup YARN
-      run: npm install --global yarn
+  update_and_get_website_version:
+    name: Update And Get Website Version
+    uses: ./.github/workflows/update-get-version.yml
 
-    - name: Setup Docusaurus
-      run: yarn install
 
-    - name: Setup Deno
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.35.x
+  disable_next_version_feature:
+    name: Disable Next Version Feature
+    needs: [validate_branch, update_and_get_website_version]
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Disable Next Version Feature
-      run: |
-        deno run `
-          --allow-read `
-          --allow-write `
-          "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
-          "${{ github.workspace }}/docusaurus.config.js" `
-          "next-version" `
-          "enable";
+      - name: Setup Deno (${{ vars.DENO_VERSION }})
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+      
+      - name: Disable Next Version Feature
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+            "${{ github.workspace }}/docusaurus.config.js" `
+            "next-version" `
+            "enable";
 
-    - name: Update Website Version
-      id: apply_version_to_site
-      run: |
-        # Get the path to the output file created by the GitHub hosted runner
-        $outputFilePath = $env:GITHUB_OUTPUT;
 
-        if ($outputFilePath -eq "") {
-          Write-Host "::error::Failed to get output file path from the 'GITHUB_OUTPUT' environment variable.";
-          exit 1;
-        }
+  get_artifact_dir_path:
+    name: Get Artifact Dir Path
+    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature]
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-dir-path: ${{ steps.get-artifact-dir-path.outputs.artifact-dir-path }}
+    steps:
+      - name: Get Dir Path
+        id: get-artifact-dir-path
+        run: |
+          "artifact-dir-path=${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}" >> $env:GITHUB_OUTPUT;
 
-        Write-Host "::notice::Output File Path: $outputFilePath";
 
-        deno run `
-          --allow-read `
-          --allow-write `
-          --allow-env `
-          "${{ github.workspace }}/.github/cicd/workflow-helpers/WebsiteVersionUpdater.ts" `
-          "$outputFilePath";
-
-    - name: Build Site
-      run: yarn build
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v3 # https://github.com/marketplace/actions/configure-github-pages
-
-    - name: Upload Artifact
-      uses: actions/upload-pages-artifact@v2.0.0
-      with:
-        path: '${{ github.workspace }}/build'
-
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
-
-    - name: Create Release Tag
-      run: |
-        $tag = "${{ steps.apply_version_to_site.outputs.version }}";
-
-        if ($tag -eq "") {
-          Write-Host "::error::Failed to get version from the 'apply_version_to_site' step output.";
-          exit 1;
-        }
-
-        git config --global user.email "kinsondigital@gmail.com";
-        git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)";
-
-        git tag -a $tag -m "API Doc Release";
-        git push origin $tag;
+  release_website:
+    name: Release Website (${{ needs.update_and_get_website_version.outputs.version }})
+    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature, get_artifact_dir_path]
+    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
+    with:
+      node-version: "${{ vars.NODE_VERSION }}"
+      artifact-dir-path: "${{ needs.get_artifact_dir_path.outputs.artifact-dir-path }}"
+      release-version: "${{ needs.update_and_get_website_version.outputs.version }}"
+      git-config-email: "${{ vars.GIT_CONFIG_EMAIL }}"
+      git-config-name: 'Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)'
+      runs-on: "ubuntu-latest"
+      environment-name: "github-pages"
+      tag-message: "API Doc Release"

@@ -1,8 +1,8 @@
-import { Directory } from "../doc-process-scripts/Directory.ts";
-import { Path } from "../doc-process-scripts/Path.ts";
-import { Select } from "https://deno.land/x/cliffy@v1.0.0-rc.2/prompt/select.ts";
-import { ChalkColor } from "../helpers/ChalkColor.ts";
-import { DeleteAPIVersionService } from "../doc-process-scripts/DeleteAPIVersionService.ts";
+import { Directory } from "../core/Directory.ts";
+import { Path } from "../core/Path.ts";
+import { Select } from "cliffy/prompt/select.ts";
+import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
+import { chalk } from "../core/chalk.ts";
 
 /**
  * DESCRIPTION: This script is used locally by VSCode to make it easy to delete
@@ -17,15 +17,15 @@ const apiDocVersions: string[] = Path.getLastDirNames(versionDirPaths)
 //"This will delete the API docs for the chosen version locally."
 
 const chosenVersion: string = await Select.prompt({
-	message: ChalkColor.prompt("Choose a version to delete:"),
+	message: chalk.yellow("Choose a version to delete:"),
 	options: apiDocVersions,
 	hint: "Use arrow keys to navigate, and enter to select.",
 	info: true,
 });
 
-console.log(ChalkColor.header(`Deleting '${chosenVersion}' API docs. . .`));
+console.log(chalk.cyan(`Deleting '${chosenVersion}' API docs. . .`));
 
 const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionService();
 delAPIVersionService.deleteDocs(chosenVersion);
 
-console.log(ChalkColor.header(`API docs for version '${chosenVersion}' fully removed.`));
+console.log(chalk.cyan(`API docs for version '${chosenVersion}' fully removed.`));

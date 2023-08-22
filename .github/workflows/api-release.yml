@@ -1,0 +1,196 @@
+name: 🚀Production API Release
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  # NOTE: Do not delete this trigger.  This is used by the Velaptor release system 
+  workflow_dispatch:
+    inputs:
+      api-version:
+        description: 'The version of API docs to release.'
+        required: true
+        type: string
+
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
+jobs:
+  validate_branch:
+    name: Validate Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Validation
+        run: |
+          $branch = "${{ github.ref }}";
+
+          if ($branch -ne "refs/heads/${{ vars.RELEASE_BRANCH }}") {
+            Write-Host "::error::This workflow can only be run on the '${{ vars.RELEASE_BRANCH }}' branch.";
+            exit 1;
+          }
+
+
+  validate_api_version:
+    name: Validate API Version (${{ inputs.api-version }})
+    needs: validate_branch
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Validate Syntax
+        run: |
+          if ("${{ inputs.api-version }}" -notmatch "^v[0-9]+\.[0-9]+\.[0-9]+(|-preview\.[0-9]+)$") {
+            Write-Host "::error::The API version '${{ inputs.api-version }}' is not valid.";
+            exit 1;
+          }
+
+      - name: Set Up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+
+      - name: Validate Version Exists
+        run: |
+          deno run `
+            --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts" `
+            "${{ inputs.api-version }}";
+
+
+  update_and_get_website_version:
+    name: Update And Get Website Version
+    needs: [validate_branch, validate_api_version]
+    uses: ./.github/workflows/update-get-version.yml
+
+
+  prepare_versioning:
+    name: Prepare For Versioning
+    needs: [validate_branch, validate_api_version, update_and_get_website_version]
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+      
+      # Move the 'next-versioning.ts' to scripts folder
+      - name: Disable Next Version Feature
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+            "${{ github.workspace }}/docusaurus.config.js" `
+            "next-version" `
+            "enable";
+
+      - name: Remove Oldest API Version
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
+
+
+  generate_api_docs:
+    name: Generate API Docs
+    needs: [
+      validate_branch,
+      validate_api_version,
+      update_and_get_website_version,
+      prepare_versioning]
+    runs-on: ubuntu-latest
+    steps:
+      - name:  Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set Up Deno (${{ vars.DENO_VERSION }})
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+
+        # This sdk version SHOULD be the same as the version set in the Velaptor project
+      - name: Setup dotnet (${{ vars.VELAPTOR_DOTNET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
+
+      - name: Setup Node (${{ vars.NODE_VERSION }})
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+
+      - name: Install Dependencies (YARN)
+        run: yarn install;
+
+      - name: Generate API Docs (${{ inputs.api-version }})
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            --allow-run `
+            --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
+            "${{ github.workspace }}/docs/api" `
+            "${{ inputs.api-version }}";
+     
+      - name: Create Docusaurus Version (${{ inputs.api-version }})
+        run: |
+          $version = "${{ inputs.api-version }}";
+          $version = $version.StartsWith("v") ? $version.Substring(1) : $version;
+          yarn docusaurus docs:version $version;
+
+      - name: Commit API Docs (${{ inputs.api-version }})
+        run: |
+          $version = "${{ inputs.api-version }}";
+          $version = $version.StartsWith("v") ? $version : "v" + $version;
+          
+          git config --global user.email "${{ vars.GIT_CONFIG_EMAIL }}";
+          git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)";
+
+          git add *.*;
+          git commit -m "🚀API Doc Release for Velaptor version $version";
+          git push;
+
+
+  get_artifact_dir_path:
+    name: Get Artifact Dir Path
+    needs: [validate_branch, update_and_get_website_version, prepare_versioning]
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-dir-path: ${{ steps.get-artifact-dir-path.outputs.artifact-dir-path }}
+    steps:
+      - name: Get Dir Path
+        id: get-artifact-dir-path
+        run: |
+          "artifact-dir-path=${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}" >> $env:GITHUB_OUTPUT;
+
+
+  release_website:
+    name: Release Website (${{ inputs.api-version }})
+    needs: [
+      validate_branch,
+      update_and_get_website_version,
+      prepare_versioning,
+      get_artifact_dir_path]
+    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
+    with:
+      node-version: "${{ vars.NODE_VERSION }}"
+      artifact-dir-path: "${{ needs.get_artifact_dir_path.outputs.artifact-dir-path }}"
+      release-version: "${{ needs.update_and_get_website_version.outputs.version }}"
+      git-config-email: "${{ vars.GIT_CONFIG_EMAIL }}"
+      git-config-name: 'Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)'
+      runs-on: "ubuntu-latest"
+      environment-name: "github-pages"
+      tag-message: "API Doc Release"

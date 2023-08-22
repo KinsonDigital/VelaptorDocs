@@ -2,6 +2,7 @@ name: 🛡️ API Documentation Change
 description: Create an issue to add or update the API documentation.
 title: "🛡️API Doc Change - "
 labels: ['🛡️api doc changes', 'high priority']
+projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes
   attributes:
@@ -27,9 +28,7 @@ body:
     options:
     - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
     - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-    - label: Issue linked to the correct project _(if applicable)_.
     - label: If more than 5 versions exist after adding the new version, the oldest version is removed.
-    - label: Draft pull request created and linked to this issue _(only required with code changes)_.
 
 - type: textarea
   attributes:

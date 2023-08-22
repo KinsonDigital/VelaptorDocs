@@ -12,11 +12,12 @@ export class DotNetToolService {
 		const isInstalled = await this.isToolInstalled(toolName, toolVersion);
 
 		if (isInstalled) {
+			console.log(`The dotnet tool '${toolName}' version '${toolVersion}' is already installed.`);
 			return;
 		}
 
 		// Install the default documentation dotnet tool
-		this.installTool(toolName, toolVersion);
+		await this.installTool(toolName, toolVersion);
 	}
 
 	/**
@@ -52,7 +53,7 @@ export class DotNetToolService {
 		const tools: IDotNetTool[] = [];
 
 		list.forEach((line: string) => {
-			const parts = line.split(" ").filter((part) => part !== "");
+			const parts = line.split(" ").filter((part) => part != "");
 			const tool: IDotNetTool = {
 				packageId: parts[0],
 				version: parts[1],
@@ -71,6 +72,8 @@ export class DotNetToolService {
 	 * @param version The version of the dotnet tool to install.
 	 */
 	private async installTool(toolName: string, version: string): Promise<void> {
+		console.log(`Installing tool ${toolName} version ${version} . . .`);
+
 		const command = new Deno.Command("dotnet", {
 			args: ["tool", "install", toolName, "-g", "--version", version],
 		});
@@ -78,10 +81,13 @@ export class DotNetToolService {
 		const { code, stdout, stderr } = await command.output();
 		console.log(new TextDecoder().decode(stdout));
 
-		if (code !== 0) {
+		if (code != 0) {
+			console.log(`::error::There was a problem installing the dotnet tool '${toolName}' version '${version}'.`);
 			console.log(new TextDecoder().decode(stderr));
 			Deno.exit(code);
 		}
+
+		console.log(`The dotnet tool '${toolName}' version '${version}' was successfully installed.`);
 	}
 
 	/**

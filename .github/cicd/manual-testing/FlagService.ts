@@ -1,4 +1,4 @@
-import { Utils } from "../doc-process-scripts/Utils.ts";
+import { Utils } from "../core/Utils.ts";
 
 export class FlagService {
 	private readonly newLine: string;
@@ -222,7 +222,7 @@ export class FlagService {
 			return true;
 		}
 
-		if (typeof (value) === "string") {
+		if (typeof value === "string") {
 			return value === "";
 		}
 

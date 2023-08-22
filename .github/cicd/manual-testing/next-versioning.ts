@@ -1,4 +1,4 @@
-import { File } from "../doc-process-scripts/File.ts";
+import { File } from "../core/File.ts";
 import { FlagService } from "./FlagService.ts";
 
 // Check the arguments
@@ -15,7 +15,7 @@ if (File.doesNotExist(Deno.args[0])) {
 }
 
 // Validate the enable disable argument
-if (Deno.args[2] !== "enable" && Deno.args[2] !== "disable") {
+if (Deno.args[2] != "enable" && Deno.args[2] != "disable") {
 	throw Error(`The third argument must be either 'enable' or 'disable'.`);
 }
 

@@ -1,4 +1,4 @@
-import { Guard } from "./Gaurd.ts";
+import { Guard } from "./Guard.ts";
 import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 
@@ -52,7 +52,7 @@ export class Directory {
 		// Default value if undefined or empty
 		extension = Utils.isNullOrEmpty(extension) ? "*.*" : extension;
 
-		extension = extension !== "*.*" && extension.startsWith("*") ? extension.replace("*", "") : extension;
+		extension = extension != "*.*" && extension.startsWith("*") ? extension.replace("*", "") : extension;
 
 		dirPath = Path.normalizeSeparators(dirPath);
 
@@ -118,7 +118,7 @@ export class Directory {
 		const oldDirLocation: string = Path.removeLastDir(oldDirPath);
 		const newDirLocation: string = Path.removeLastDir(newDirPath);
 
-		if (oldDirLocation !== newDirLocation) {
+		if (oldDirLocation != newDirLocation) {
 			throw new Error(`The 'oldDirPath' and 'newDirPath' must be in the same directory.`);
 		}
 

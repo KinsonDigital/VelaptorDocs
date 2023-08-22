@@ -26,7 +26,7 @@ export class CodeBlockService {
 	}
 
 	private inCodeBlock(block: [number, number], lineIndex: number): boolean {
-		if (block[0] == block[1]) {
+		if (block[0] === block[1]) {
 			return false;
 		}
 

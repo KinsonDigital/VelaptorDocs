@@ -24,7 +24,7 @@ export class Utils {
 	 * Sorts the given {@link versions} in descending order.
 	 * @param versions The versions to sort.
 	 * @returns The sorted versions.
-	 * @remarks This method will
+	 * @remarks This method will sort the given {@link versions} in descending order.
 	 */
 	public static sortVersions(versions: string[]): string[] {
 		return versions.sort(Utils.semverSort);

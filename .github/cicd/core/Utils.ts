@@ -24,7 +24,7 @@ export class Utils {
 	 * Sorts the given {@link versions} in descending order.
 	 * @param versions The versions to sort.
 	 * @returns The sorted versions.
-	 * @remarks This method will 
+	 * @remarks This method will
 	 */
 	public static sortVersions(versions: string[]): string[] {
 		return versions.sort(Utils.semverSort);
@@ -40,7 +40,7 @@ export class Utils {
 		}
 
 		const sortedVersions = Utils.sortVersions(versions);
-		let oldestVersion =  sortedVersions[sortedVersions.length - 1];
+		let oldestVersion = sortedVersions[sortedVersions.length - 1];
 		oldestVersion = Utils.isNullOrEmpty(oldestVersion) ? "" : oldestVersion;
 		oldestVersion = oldestVersion.startsWith("v") ? oldestVersion : `v${oldestVersion}`;
 

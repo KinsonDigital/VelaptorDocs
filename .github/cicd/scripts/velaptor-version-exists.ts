@@ -1,8 +1,7 @@
 import { TagClient } from "clients/TagClient.ts";
 
-
 if (Deno.args.length < 1) {
-	const errorMsg = "No arguments exist.  Please provide a velaptor version to check."
+	const errorMsg = "No arguments exist.  Please provide a velaptor version to check.";
 	console.log(`::error::${errorMsg}`);
 	Deno.exit(1);
 }

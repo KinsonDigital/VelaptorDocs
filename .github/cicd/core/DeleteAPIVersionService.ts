@@ -52,7 +52,9 @@ export class DeleteAPIVersionService {
 		const versions: string[] = this.versionFileService.getVersions();
 
 		if (versions.length <= 1) {
-			throw new Error("There is only one version of the API docs. There must be at least two versions to delete the oldest one.");
+			throw new Error(
+				"There is only one version of the API docs. There must be at least two versions to delete the oldest one.",
+			);
 		}
 
 		const oldestVersion: string = versions[versions.length - 1];

@@ -222,7 +222,7 @@ export class FlagService {
 			return true;
 		}
 
-		if (typeof (value) === "string") {
+		if (typeof value === "string") {
 			return value === "";
 		}
 

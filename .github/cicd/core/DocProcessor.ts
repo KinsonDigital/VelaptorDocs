@@ -61,7 +61,8 @@ export class DocProcessor {
 			await this.runProcess(
 				"Cleaning up previous clone and build. . .",
 				() => Deno.removeSync(repoSrcDirPath, { recursive: true }),
-				"Cleaning Complete.");
+				"Cleaning Complete.",
+			);
 		}
 
 		// Clone the Velaptor repository into the RepoSrc directory
@@ -69,29 +70,34 @@ export class DocProcessor {
 		await this.runProcess(
 			"Cloning Velaptor. . .",
 			() => this.cloneService.cloneRepo(releaseTag),
-			"Cloning Complete.");
+			"Cloning Complete.",
+		);
 
 		// Build the project so the assembly can be used for generating documentation.
 		await this.runProcess(
 			"Building Velaptor. . .",
 			() => this.buildVelaptor(),
-			"Building Complete.");
+			"Building Complete.",
+		);
 
 		// Generate the documentation.
 		await this.runProcess(
 			"Generating Documentation. . .",
-			() => this.defaultDocTool.generateDocumentation(
-				`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
-				`${Deno.cwd()}/docs/api`,
-				`${Deno.cwd()}/default-doc-config.json`,
+			() =>
+				this.defaultDocTool.generateDocumentation(
+					`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
+					`${Deno.cwd()}/docs/api`,
+					`${Deno.cwd()}/default-doc-config.json`,
 				),
-			"Documentation Generation Complete.");
+			"Documentation Generation Complete.",
+		);
 
 		// Perform post-processing on the documentation.
 		await this.runProcess(
 			"Performing Documentation Post-Processing. . .",
 			() => this.runPostProcessing(apiDocDirPath),
-			"Documentation Post-Processing Complete.")
+			"Documentation Post-Processing Complete.",
+		);
 	}
 
 	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {

@@ -12,6 +12,7 @@ export class DotNetToolService {
 		const isInstalled = await this.isToolInstalled(toolName, toolVersion);
 
 		if (isInstalled) {
+			console.log(`The dotnet tool '${toolName}' version '${toolVersion}' is already installed.`);
 			return;
 		}
 
@@ -71,6 +72,8 @@ export class DotNetToolService {
 	 * @param version The version of the dotnet tool to install.
 	 */
 	private async installTool(toolName: string, version: string): Promise<void> {
+		console.log(`Installing tool ${toolName} version ${version} . . .`);
+
 		const command = new Deno.Command("dotnet", {
 			args: ["tool", "install", toolName, "-g", "--version", version],
 		});
@@ -79,9 +82,12 @@ export class DotNetToolService {
 		console.log(new TextDecoder().decode(stdout));
 
 		if (code !== 0) {
+			console.log(`::error::There was a problem installing the dotnet tool '${toolName}' version '${version}'.`);
 			console.log(new TextDecoder().decode(stderr));
 			Deno.exit(code);
 		}
+
+		console.log(`The dotnet tool '${toolName}' version '${version}' was successfully installed.`);
 	}
 
 	/**

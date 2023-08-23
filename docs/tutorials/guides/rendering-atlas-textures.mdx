@@ -50,7 +50,7 @@ and [Spine](https://esotericsoftware.com/).
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
-Plans are in the works to add _**Texture Packer**_ integration. One option is you could create a tool to
+Plans are in the works to add _**Texture Packer**_ integration. One option you have is to create a tool to
 load the _**Texture Packer**_ JSON data for use.
 :::
 
@@ -139,6 +139,7 @@ In the `Game` class, add the code below to set up the window and create a textur
 public class Game : Window
 {
 	private readonly ITextureRenderer textureRenderer; // class field
+    private readonly IBatcher batcher;
 
 	public Game()
 	{
@@ -148,6 +149,8 @@ public class Game : Window
 
 		var rendererFactory = new RendererFactory();
 		this.textureRenderer = rendererFactory.CreateTextureRenderer();
+
+        this.batcher = rendererFactory.CreateBatcher();
 	}
 }
 ```
@@ -160,9 +163,8 @@ public class Game : Window
 ```csharp
 public class Game: Window
 {
-	private ITexture? atlasTexture;
-	private AtlasSubTextureData[]? subTextureData;
 	...
+	private AtlasSubTextureData[]? subTextureData;
 }
 ```
 
@@ -352,7 +354,7 @@ Now we can finally render the animation to the screen. Add the following code to
 protected override void OnDraw(FrameTime frameTime)
 {
 	// Start the batch
-	IRenderer.Begin();
+	IBatcher.Begin();
 
 	var x = (int)(Width / 2); // Center of the window horizontally
 	var y = (int)(Height / 2); // Center of the window vertically
@@ -378,7 +380,7 @@ protected override void OnDraw(FrameTime frameTime)
 		1); // Render layer
 
 	// End the batch to render the entire batch
-	IRenderer.End();
+	IBatcher.End();
 
 	base.OnDraw(frameTime);
 }

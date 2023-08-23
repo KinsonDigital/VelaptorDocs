@@ -162,6 +162,11 @@ the other 3 quadrants would be rendered off-screen!!  Make sure to take this int
 </details>
 :::
 
+:::caution NOT USING BEGIN AND END
+If you call a render method with any renderer before the `Begin()` method or after the `End()` method,
+you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
+:::
+
 ### <span class="color-sub-step">Step 3.5: See the result</span>
 
 Now for the best part!! Let's see the fruits of your labor and run the application.

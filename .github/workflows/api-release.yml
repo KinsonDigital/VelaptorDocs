@@ -184,7 +184,7 @@ jobs:
       update_and_get_website_version,
       prepare_versioning,
       get_artifact_dir_path]
-    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
+    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.1
     with:
       node-version: "${{ vars.NODE_VERSION }}"
       artifact-dir-path: "${{ needs.get_artifact_dir_path.outputs.artifact-dir-path }}"

@@ -26,10 +26,8 @@ Below are simple steps you will need when contributing.
 1. Fork the repository
 2. Create a feature branch with the syntax `feature/<issue-number>-<branch-description>`.
    > **Note**
-   > Example: feature/123-my-branch
-
-   > **Note**
-   > Feature branches are created from `main` and are merged back into `main`.
+   > - Example: feature/123-my-branch
+   > - Feature branches are created from `main` and are merged back into `main`.
 3. Every issue has a pull request.  Make sure that it is ok to work on the issue by contacting a maintainer.
    > **Note**
    > You can contact a maintainer in the comments of the issue and in [Discord](https://discord.gg/qewu6fNgv7).  Leaving a comment in the issue is a must so the maintainer can assign the issue to you.

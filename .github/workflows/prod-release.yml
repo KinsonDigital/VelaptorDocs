@@ -76,7 +76,7 @@ jobs:
   release_website:
     name: Release Website (${{ needs.update_and_get_website_version.outputs.version }})
     needs: [validate_branch, update_and_get_website_version, disable_next_version_feature, get_artifact_dir_path]
-    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
+    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.1
     with:
       node-version: "${{ vars.NODE_VERSION }}"
       artifact-dir-path: "${{ needs.get_artifact_dir_path.outputs.artifact-dir-path }}"

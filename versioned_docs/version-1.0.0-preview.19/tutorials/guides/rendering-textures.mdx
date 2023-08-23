@@ -44,8 +44,8 @@ In the constructor, create a render factory and then use the factory to create a
 ```csharp
 public Game()
 {
-    var renderFactory = new RendererFactory(); // Creates renderers
-    this.textureRenderer = renderFactory.CreateTextureRenderer(); // Renders textures
+    var rendererFactory = new RendererFactory(); // Creates renderers
+    this.textureRenderer = rendererFactory.CreateTextureRenderer(); // Renders textures
 }
 ```
 

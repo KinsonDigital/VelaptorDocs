@@ -146,8 +146,8 @@ public class Game : Window
 		Width = 530;
 		Height = 530;
 
-		var renderFactory = new RendererFactory();
-		this.textureRenderer = renderFactory.CreateTextureRenderer();
+		var rendererFactory = new RendererFactory();
+		this.textureRenderer = rendererFactory.CreateTextureRenderer();
 	}
 }
 ```

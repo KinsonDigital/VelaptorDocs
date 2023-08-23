@@ -11,7 +11,7 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 This guide will show you the basics of creating a simple **Hello World** application using Velaptor.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="HelloVelaptor"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="HelloVelaptor" version="v1.0.0-preview.24"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -60,8 +60,8 @@ Since the name of the content to load is based on the name of the file, renaming
 ### <span class="color-sub-step">Step 3.1: Create renderer field</span>
 
 After setting up a text renderer and selecting a font for rendering text, we can now render text on the screen using the
-font renderer. To achieve this, you can add the following code to the `OnDraw()` method. Remember to call `IRenderer.Begin()`
-before using any `Render()` methods for any renderers, and then call `IRenderer.End()` when you're done with all the renderings.
+font renderer. To achieve this, you can add the following code to the `OnDraw()` method. Remember to call `IBatcher.Begin()`
+before using any `Render()` methods for any renderers, and then call `IBatcher.End()` when you're done with all the renderings.
 
 ```csharp
 public class Game : Window
@@ -83,7 +83,23 @@ public Game()
 }
 ```
 
-### <span class="color-sub-step">Step 3.3: Load the font</span>
+### <span class="color-sub-step">Step 3.3: Create batcher</span>
+
+Create a batcher in the constructor. We can create a batcher using the `rendererFactory`.
+We will go over what this is used for later in the guide.
+
+```csharp
+public Game()
+{
+    var rendererFactory = new RendererFactory(); // Create a renderer factory
+    this.fontRenderer = rendererFactory.CreateFontRenderer(); // Create a font renderer
+
+    this.batcher = rendererFactory.CreateBatcher(); // Create a batcher
+}
+```
+
+
+### <span class="color-sub-step">Step 3.4: Load the font</span>
 
 Go into the `OnLoad()` method and add the code that loads the font.
 
@@ -109,28 +125,13 @@ Refer to the [Fonts](./coming-soon/fonts.mdx) guide for more details.
 </details>
 :::
 
-### <span class="color-sub-step">Step 3.4: Render the text</span>
+### <span class="color-sub-step">Step 3.5: Render the text</span>
+
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
-this. Note that we need to invoke `IRenderer.Begin()` before we invoke any `Render()` methods for
-any renderers and then invoke the `IRenderer.End()` when we are finished with all of our renderings.
-
-:::info What is this render `Begin()` and `End()`?
-<details><summary>Expand me to learn more!</summary>
-
-These have to do with batching. When we call `Begin()`, we are telling Velaptor that we are ready to start _**'batching'**_
-all of our textures together. When we call any `Render()` method for any renderer type, we are adding textures to the
-_**'batch'**_. Once we invoke the `End()` method, it tells Velaptor that we are done batching all of our textures and it renders them. 
-
-Just remember the steps:
-1. Invoke `IRenderer.Begin()` method
-2. Invoke all `Render()` methods for the current frame
-3. Invoke the `IRenderer.End()` method
-
-That's it!!
-</details>
-:::
+this. Note that we need to invoke `IBatcher.Begin()` before we invoke any `Render()` methods for
+any renderers and then invoke the `IBatcher.End()` when we are finished with all of our renderings.
 
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
@@ -138,16 +139,44 @@ protected override void OnDraw(FrameTime frameTime)
     var x = (int)(Width / 2); // Get the center of the window horizontally
     var y = (int)(Height / 2); // Get the center of the window vertically
 
-    IRenderer.Begin(); // This must be called before we invoke render
+    IBatcher.Begin(); // This must be called before we invoke render
 
     // Render the text to the center of the screen with the color orange
     this.fontRenderer.Render(this.font, "Hello Velaptor!!", x, y, Color.Orange);
 
-    IRenderer.End(); // This must be called to end the batching process and render to the screen
+    IBatcher.End(); // This must be called to end the batching process and render to the screen
 
     base.OnDraw(frameTime);
 }
 ```
+
+:::info What is this `IBatcher` thing?
+<details><summary>Expand me to learn more!</summary>
+
+As you might have guessed, this is used for batching.  But that does not mean you know what "batching" is right?
+
+Let's fill you in.
+
+Think of a batch as a group of something.  Just like a batch of cookies is a group of cookies, a batch of textures is a group of textures.
+What we are doing is making **Velaptor** aware that we will be rendering a bunch of textures.  By rendering textures **together**, we mean
+that all of the textures will be sent to the GPU and rendered all together as a group.  Once we are done **rendering**, we then
+tell **Velaptor** that we are finished creating our batch and it can now be rendered to the screen.
+
+This is what the `IBatcher` object is used for!!
+
+We tell **Velaptor** that we are ready to start batching by invoking the `IBatcher.Begin()` method.  We then tell **Velaptor** that
+we are done batching by invoking the `IBatcher.End()` method.
+
+All of the rendering calls using any of the renderers should go between the `Begin()` and `End()` method calls.
+
+Just remember the steps:
+1. Invoke `IBatcher.Begin()` method
+2. Invoke all `Render()` methods for the current frame
+3. Invoke the `IBatcher.End()` method
+
+That's it!!
+</details>
+:::
 
 :::info Texture And Text Origin
 <details><summary>Expand me to learn more!</summary>
@@ -162,7 +191,12 @@ the other 3 quadrants would be rendered off-screen!!  Make sure to take this int
 </details>
 :::
 
-### <span class="color-sub-step">Step 3.5: See the result</span>
+:::caution NOT USING THE BATCHER
+If you call a render method with any renderer before the `Begin()` method or after the `End()` method,
+you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
+:::
+
+### <span class="color-sub-step">Step 3.6: See the result</span>
 
 Now for the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳

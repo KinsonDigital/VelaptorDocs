@@ -181,8 +181,10 @@ jobs:
     name: Release Website (${{ inputs.api-version }})
     needs: [
       validate_branch,
+      validate_api_version,
       update_and_get_website_version,
       prepare_versioning,
+      generate_api_docs,
       get_artifact_dir_path]
     uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.0
     with:

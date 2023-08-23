@@ -50,7 +50,7 @@ and [Spine](https://esotericsoftware.com/).
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
-Plans are in the works to add _**Texture Packer**_ integration. One option is you could create a tool to
+Plans are in the works to add _**Texture Packer**_ integration. One option you have is to create a tool to
 load the _**Texture Packer**_ JSON data for use.
 :::
 
@@ -146,8 +146,8 @@ public class Game : Window
 		Width = 530;
 		Height = 530;
 
-		var renderFactory = new RendererFactory();
-		this.textureRenderer = renderFactory.CreateTextureRenderer();
+		var rendererFactory = new RendererFactory();
+		this.textureRenderer = rendererFactory.CreateTextureRenderer();
 	}
 }
 ```

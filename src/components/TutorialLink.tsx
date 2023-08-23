@@ -6,8 +6,8 @@ import OpenNewTab from '@site/static/img/new-tab.svg';
  * @param params The name of the KinsonDigital project.
  * @returns The component.
  */
-export function TutorialLink ({projectName}) {
-	const url = `https://github.com/KinsonDigital/VelaptorTutorials/tree/master/${projectName}`;
+export function TutorialLink ({projectName, version}) {
+	const url = `https://github.com/KinsonDigital/VelaptorTutorials/tree/${version}/${projectName}`;
 
 	return (
 		<a href={url}

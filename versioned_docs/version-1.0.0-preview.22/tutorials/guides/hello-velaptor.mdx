@@ -11,7 +11,7 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 This guide will show you the basics of creating a simple **Hello World** application using Velaptor.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="HelloVelaptor"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="HelloVelaptor" version="v1.0.0-preview.23"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -160,6 +160,11 @@ What this means is if you render the text at position _**(0,0)**_, you would onl
 the other 3 quadrants would be rendered off-screen!!  Make sure to take this into account when it comes to text and object render positioning.
 <img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/hello-velaptor/text-origin.png').default} alt="Example banner"/>
 </details>
+:::
+
+:::caution NOT USING BEGIN AND END
+If you call a render method with any renderer before the `Begin()` method or after the `End()` method,
+you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
 :::
 
 ### <span class="color-sub-step">Step 3.5: See the result</span>

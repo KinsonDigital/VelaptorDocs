@@ -26,26 +26,29 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 
 ### <span class="color-sub-step">Step 2.1: Create class fields</span>
 
-Create the `ITexture` and `ITextureRenderer` class fields. This will be used to render the Velaptor mascot texture to the screen.
+Create the `ITexture`, `ITextureRenderer`, and `IBatcher` class fields. This will be used to render the Velaptor mascot texture to the screen.
 
 ```csharp
 public class Game : Window
 {
     private ITextureRenderer textureRenderer; // Renders textures
     private ITexture? mascotTexture; // The texture to render
+    private IBatcher batcher; // Used to control batching
     ...
 }
 ```
 
-### <span class="color-sub-step">Step 2.2: Create renderer</span>
+### <span class="color-sub-step">Step 2.2: Create renderer & batcher</span>
 
-In the constructor, create a render factory and then use the factory to create an instance of a texture renderer.
+In the constructor, create a render factory to create a renderer and batcher.
 
 ```csharp
 public Game()
 {
     var rendererFactory = new RendererFactory(); // Creates renderers
     this.textureRenderer = rendererFactory.CreateTextureRenderer(); // Renders textures
+
+    this.batcher = rendererFactory.CreateBatcher(); // Create a batcher
 }
 ```
 
@@ -57,7 +60,7 @@ Download or create any _**.png**_ file you want.
 You can download the Velaptor mascot <a target="\_blank" href={require('@site/static/img/downloads/velaptor-mascot.png').default}>here</a>
 :::
 
-### <span class="color-sub-step">Step 2.4: Add as content</span>
+### <span class="color-sub-step">Step 2.4: Add content</span>
 
 Add the image to the project and set it as content by following the steps in the [Adding Content](./adding-content) tutorial.
 Make sure to add the image to the `Content/Graphics` folder in the project.
@@ -81,7 +84,7 @@ Finally, we can get to rendering our image. Add the code below to the `OnDraw()`
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
 {
-    IRenderer.Begin();
+    IBatcher.Begin();
 
     var x = (int)(Width / 2); // Center of the window horizontally
     var y = (int)(Height / 2); // Center of the window vertically
@@ -89,7 +92,7 @@ protected override void OnDraw(FrameTime frameTime)
     // Render the mascot image in the center of the window
     this.textureRenderer.Render(this.mascotTexture, x, y);
 
-    IRenderer.End();
+    IBatcher.End();
 
     base.OnDraw(frameTime);
 }

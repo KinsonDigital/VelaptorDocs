@@ -149,7 +149,7 @@
             ],
 			"args": [
 				"${workspaceFolder}/docs/api",
-				"v1.0.0-preview.23",
+				"v1.0.0-preview.24",
 				"false" // Is Interactive
 			],
 			"console": "integratedTerminal",
@@ -169,6 +169,7 @@
             ],
 			"args": [
 				"v1.0.0-preview.12",
+				"${env:CICD_TOKEN}",
 			],
             "attachSimplePort": 9229
         }

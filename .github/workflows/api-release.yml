@@ -16,12 +16,6 @@ on:
         type: string
 
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-
 jobs:
   validate_branch:
     name: Validate Branch
@@ -62,58 +56,29 @@ jobs:
           deno run `
             --allow-net `
             "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts" `
-            "${{ inputs.api-version }}";
+            "${{ inputs.api-version }}" `
+            "${{ secrets.CICD_TOKEN }}";
 
 
   update_and_get_website_version:
     name: Update And Get Website Version
-    needs: [validate_branch, validate_api_version]
+    needs: [validate_branch,
+      validate_api_version]
     uses: ./.github/workflows/update-get-version.yml
-
-
-  prepare_versioning:
-    name: Prepare For Versioning
-    needs: [validate_branch, validate_api_version, update_and_get_website_version]
-    runs-on: ubuntu-latest
-    steps:
-      - name:  Checkout Repo
-        uses: actions/checkout@v3
-
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: ${{ vars.DENO_VERSION }}
-      
-      # Move the 'next-versioning.ts' to scripts folder
-      - name: Disable Next Version Feature
-        run: |
-          deno run `
-            --allow-read `
-            --allow-write `
-            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
-            "${{ github.workspace }}/docusaurus.config.js" `
-            "next-version" `
-            "enable";
-
-      - name: Remove Oldest API Version
-        run: |
-          deno run `
-            --allow-read `
-            --allow-write `
-            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
 
   generate_api_docs:
     name: Generate API Docs
-    needs: [
-      validate_branch,
+    needs: [validate_branch,
       validate_api_version,
-      update_and_get_website_version,
-      prepare_versioning]
+      update_and_get_website_version]
     runs-on: ubuntu-latest
     steps:
       - name:  Checkout Repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CICD_TOKEN }}
+          persist-credentials: true
 
       - name: Set Up Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v1
@@ -130,6 +95,24 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ vars.NODE_VERSION }}
+
+        # Move the 'next-versioning.ts' to scripts folder
+      - name: Disable Next Version Feature
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+            "${{ github.workspace }}/docusaurus.config.js" `
+            "next-version" `
+            "enable";
+
+      - name: Remove Oldest API Version
+        run: |
+          deno run `
+            --allow-read `
+            --allow-write `
+            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Install Dependencies (YARN)
         run: yarn install;
@@ -166,7 +149,7 @@ jobs:
 
   get_artifact_dir_path:
     name: Get Artifact Dir Path
-    needs: [validate_branch, update_and_get_website_version, prepare_versioning]
+    needs: [validate_branch, update_and_get_website_version]
     runs-on: ubuntu-latest
     outputs:
       artifact-dir-path: ${{ steps.get-artifact-dir-path.outputs.artifact-dir-path }}
@@ -179,11 +162,9 @@ jobs:
 
   release_website:
     name: Release Website (${{ inputs.api-version }})
-    needs: [
-      validate_branch,
+    needs: [validate_branch,
       validate_api_version,
       update_and_get_website_version,
-      prepare_versioning,
       generate_api_docs,
       get_artifact_dir_path]
     uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.1

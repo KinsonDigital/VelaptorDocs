@@ -182,7 +182,7 @@ jobs:
           git config --global user.email "${{ vars.GIT_CONFIG_EMAIL }}";
           git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)"; 
           
-          git commit --allow-empty -m "🚀API Doc Release for Velaptor version $apiVersion";
+          git commit --allow-empty -m "🚀API Doc Release (Velaptor Version $apiVersion)";
           git push;
 
           git tag -a $tag -m "API Doc Release Version $apiVersion";

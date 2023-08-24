@@ -6,16 +6,15 @@ if (Deno.args.length < 2) {
 	console.error(`::error::${errorMsg}`);
 }
 
-const apiDirPath: string = Deno.args[0];
+const generateOutputDirPath: string = Deno.args[0];
 let apiVersion = Deno.args[1].trim().toLowerCase();
 
 const isInteractive = Deno.args.length >= 3 &&
 	Deno.args.length === 3 &&
 	Deno.args[2].trim().toLowerCase() === "true";
 
-console.log(apiDirPath);
-
-console.clear();
+console.log(`Generate Output Dir Path: ${generateOutputDirPath}`);
+console.log(`Version To Generate: ${apiVersion}`);
 
 if (isInteractive) {
 	apiVersion = await Input.prompt({
@@ -28,4 +27,4 @@ if (isInteractive) {
 }
 
 const docProcessor = new DocProcessor();
-await docProcessor.run(apiDirPath, apiVersion);
+await docProcessor.run(generateOutputDirPath, apiVersion);

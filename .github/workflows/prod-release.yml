@@ -7,14 +7,8 @@ defaults:
 
 
 on:
+  # NOTE: Do not delete this trigger.  This is used by the Velaptor release system 
   workflow_dispatch:
-
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 
 jobs:
   validate_branch:
@@ -31,24 +25,41 @@ jobs:
           }
 
 
-  update_and_get_website_version:
-    name: Update And Get Website Version
-    uses: ./.github/workflows/update-get-version.yml
-
-
-  disable_next_version_feature:
-    name: Disable Next Version Feature
-    needs: [validate_branch, update_and_get_website_version]
+  perform_api_release:
+    name: Perform API Release
+    needs: validate_branch
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    concurrency: 
+      group: "pages"
+      cancel-in-progress: true
     steps:
-      - name:  Checkout Repository
+      - name:  Checkout Repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CICD_TOKEN }}
+          persist-credentials: true
 
-      - name: Setup Deno (${{ vars.DENO_VERSION }})
+      - name: Set Up Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ vars.DENO_VERSION }}
-      
+
+      # This sdk version SHOULD be the same as the version set in the Velaptor project
+      - name: Setup dotnet (${{ vars.VELAPTOR_DOTNET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
+
+      - name: Setup Node (${{ vars.NODE_VERSION }})
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+
+      # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
           deno run `
@@ -59,30 +70,55 @@ jobs:
             "next-version" `
             "enable";
 
+      - name: Install Dependencies (YARN)
+        run: yarn install;
 
-  get_artifact_dir_path:
-    name: Get Artifact Dir Path
-    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature]
-    runs-on: ubuntu-latest
-    outputs:
-      artifact-dir-path: ${{ steps.get-artifact-dir-path.outputs.artifact-dir-path }}
-    steps:
-      - name: Get Dir Path
-        id: get-artifact-dir-path
+      - name: Update Website Version
+        id: apply_version_to_site
         run: |
-          "artifact-dir-path=${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}" >> $env:GITHUB_OUTPUT;
+          # Get the path to the output file created by the GitHub hosted runner
+          $outputFilePath = $env:GITHUB_OUTPUT;
 
+          if ($outputFilePath -eq "") {
+            Write-Host "::error::Failed to get output file path from the 'GITHUB_OUTPUT' environment variable.";
+            exit 1;
+          }
 
-  release_website:
-    name: Release Website (${{ needs.update_and_get_website_version.outputs.version }})
-    needs: [validate_branch, update_and_get_website_version, disable_next_version_feature, get_artifact_dir_path]
-    uses: KinsonDigital/Infrastructure/.github/workflows/docusaurus-release.yml@v12.1.1
-    with:
-      node-version: "${{ vars.NODE_VERSION }}"
-      artifact-dir-path: "${{ needs.get_artifact_dir_path.outputs.artifact-dir-path }}"
-      release-version: "${{ needs.update_and_get_website_version.outputs.version }}"
-      git-config-email: "${{ vars.GIT_CONFIG_EMAIL }}"
-      git-config-name: 'Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)'
-      runs-on: "ubuntu-latest"
-      environment-name: "github-pages"
-      tag-message: "API Doc Release"
+          Write-Host "::notice::Output File Path: $outputFilePath";
+
+          # NOTE: The script executed below sets the step output.  This is why the output file
+          # path is passed in as an argument using the '$outputFilePath' variable.
+          deno run `
+            --allow-read `
+            --allow-write `
+            --allow-env `
+            "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
+            "$outputFilePath";
+  
+      - name: Build Site
+        run: yarn build
+  
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+  
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2.0.0
+        with:
+          path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
+  
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+  
+      - name: Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
+        run: |
+          $tag = "${{ steps.apply_version_to_site.outputs.version }}";
+          
+          git config --global user.email "${{ vars.GIT_CONFIG_EMAIL }}";
+          git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)"; 
+          
+          git commit --allow-empty -m "🚀Production Release";
+          git push;
+
+          git tag -a $tag -m "Production Release";
+          git push origin $tag;

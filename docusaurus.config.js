@@ -215,8 +215,8 @@ const config = {
                 href: 'https://discord.gg/qewu6fNgv7',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/KDCoder',
+                label: 'X',
+                href: 'https://x.com/KDCoder',
               },
             ],
           },

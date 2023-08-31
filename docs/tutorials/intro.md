@@ -70,12 +70,12 @@ you every step of the way. So why wait? Come join us and be part of the communit
 fosters growth, collaboration, and innovation!
 
 - [Discord](https://discord.gg/qewu6fNgv7): For getting help, asking questions, conversation, and where we post updates and releases.
-- [Twitter](https://twitter.com/KDCoder): Where we post updates on releases as well as other software related topics.
+- [X](https://x.com/KDCoder): Where we post updates on releases as well as other software related topics.
 - [KinsonDigital](https://github.com/kinsondigital): The KinsonDigital organization where you can find Velaptor and many other projects.
 
 ## Learn how to contribute
 
-The Velaptor project is run and maintained by [Calvin Wilkinson](https://twitter.com/KDCoder) and [Kristen Wilkinson](https://twitter.com/kswilky).
+The Velaptor project is run and maintained by [Calvin Wilkinson](https://x.com/KDCoder) and [Kristen Wilkinson](https://x.com/kswilky).
 We work on this full-time and work hard to make Velaptor and all of the [KinsonDigital](https://github.com/KinsonDigital)
 projects as high quality, user-friendly and helpful as possible. Any open-source developer will tell you that maintaining
 open-source projects are a ton of work.🥱

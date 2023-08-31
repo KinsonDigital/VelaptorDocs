@@ -7,7 +7,6 @@
 		"Deno",
 		"denoland",
 		"endgroup",
-		"Gaurd",
 		"Kinson",
 		"pwsh",
 		"Structs",
@@ -22,6 +21,8 @@
 		".github/cicd/": true,
 		".config": false,
 		"RepoSrc/": true,
+		"*lock*.json": true,
+		"*.lock": true,
 	},
 	"search.exclude": {
 		"**/node_modules": true,

@@ -8,7 +8,7 @@ defaults:
 
 
 on:
-  pull_request:
+  pull_request_target:
     branches: main
 
 
@@ -22,7 +22,7 @@ jobs:
     - name: Setup Deno
       uses: denoland/setup-deno@v1
       with:
-        deno-version: v1.35.x
+        deno-version: ${{ vars.DENO_VERSION }}
 
     - name: Setup Docusaurus
       run: yarn install

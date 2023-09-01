@@ -227,7 +227,7 @@ const config = {
           src: 'img/kinson-digital-logo.png',
           href: 'https://github.com/KinsonDigital',
         },
-        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2023.09.01.082739) - Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2023.09.01.083628) - Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

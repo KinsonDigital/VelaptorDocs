@@ -14,7 +14,6 @@ const isInteractive = Deno.args.length >= 3 &&
 	Deno.args[2].trim().toLowerCase() === "true";
 
 console.log(`Generate Output Dir Path: ${generateOutputDirPath}`);
-console.log(`Version To Generate: ${apiVersion}`);
 
 if (isInteractive) {
 	apiVersion = await Input.prompt({
@@ -23,6 +22,7 @@ if (isInteractive) {
 		transform: (v) => v.startsWith("v") ? v : `v${v}`,
 	});
 } else {
+	console.log(`Version To Generate: ${apiVersion}`);
 	apiVersion = apiVersion.startsWith("v") ? apiVersion : `v${apiVersion}`;
 }
 

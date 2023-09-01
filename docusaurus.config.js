@@ -98,11 +98,23 @@ const config = {
       metadata: [
         {
           name: 'twitter:card',
-          content: 'summary_large_image'
+          content: 'summary'
+        },
+        {
+          name: 'twitter:title',
+          content: 'Velaptor'
+        },
+        {
+          name: 'twitter:description',
+          content: 'Game development with C# made easy and fun!'
         },
         {
           name: 'twitter:image',
           content: 'https://docs.velaptor.io/img/meta-image.jpg'
+        },
+        {
+          name: 'twitter:image:alt',
+          content: 'Combining the power of KinsonDigital, SILK, and dotnet to create 2D games.'
         },
         {
           name: 'twitter:site',

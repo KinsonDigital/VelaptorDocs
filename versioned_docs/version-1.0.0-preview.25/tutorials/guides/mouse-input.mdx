@@ -51,12 +51,12 @@ public class Game : Window
 
 To enable mouse input in your Velaptor game, you'll need to create a new instance of `IAppInput<MouseState>`,
 which will be set to the class field `mouse`. This will provide access to the current state of the mouse.
-You can create a new mouse object quickly and easily using Velaptor's `InputFactory` class.
+You can create a new mouse object quickly and easily using Velaptor's `HardwareFactory` class.
 
 Use the factory to create the mouse object in the `Game` constructor.
 
 ```csharp
-public Game() => this.mouse = InputFactory.CreateMouse();
+public Game() => this.mouse = HardwareFactory.GetMouse();
 ```
 
 

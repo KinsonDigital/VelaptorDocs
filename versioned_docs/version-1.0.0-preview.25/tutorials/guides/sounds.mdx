@@ -108,7 +108,7 @@ following code to the `OnLoad()` method to load the sound and create our keyboar
 ```csharp
     protected override void OnLoad()
     {
-        this.keyboard = InputFactory.CreateKeyboard();
+        this.keyboard = HardwareFactory.GetKeyboard();
         this.music = ContentLoader.LoadSound("deep-consistency");
 
         base.OnLoad();

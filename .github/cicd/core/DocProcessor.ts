@@ -30,11 +30,11 @@ export class DocProcessor {
 	}
 
 	/**
-	 * Runs the documentation generation and post-processing process.
+	 * Generates the API documentation from the given release tag.
 	 * @param apiDocDirPath The directory path to the API documentation output.
 	 * @param releaseTag The Velaptor release tag.
 	 */
-	public async run(apiDocDirPath: string, releaseTag: string): Promise<void> {
+	public async generateFromTag(apiDocDirPath: string, releaseTag: string): Promise<void> {
 		if (Utils.isNullOrEmpty(apiDocDirPath)) {
 			console.log(chalk.red("The API doc dir path is required."));
 			Deno.exit();
@@ -55,6 +55,36 @@ export class DocProcessor {
 
 		console.log(chalk.cyan(`Release '${releaseTag}' Valid.`));
 
+		await this.run(apiDocDirPath, releaseTag);
+	}
+
+	/**
+	 * Generates the API documentation from the given branch name.
+	 * @param apiDocDirPath The directory path to the API documentation output.
+	 * @param branchName The name of the branch to generate the API documentation from.
+	 */
+	public async generateFromBranch(apiDocDirPath: string, branchName: string): Promise<void> {
+		if (Utils.isNullOrEmpty(apiDocDirPath)) {
+			console.log(chalk.red("The API doc dir path is required."));
+			Deno.exit();
+		}
+
+		if (Utils.isNullOrEmpty(branchName)) {
+			console.log(chalk.red("The branch name is required."));
+			Deno.exit();
+		}
+
+		console.log(chalk.cyan(`Branch Name '${branchName}' Valid.`));
+
+		await this.run(apiDocDirPath, branchName);
+	}
+
+	/**
+	 * Runs the documentation generation and post-processing process.
+	 * @param apiDocDirPath The directory path to the API documentation output.
+	 * @param tagOrBranch The Velaptor release tag or branch name.
+	 */
+	private async run(apiDocDirPath: string, tagOrBranch: string): Promise<void> {
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 		if (Directory.exists(repoSrcDirPath)) {
@@ -69,7 +99,7 @@ export class DocProcessor {
 		// so documentation can be generated from it.
 		await this.runProcess(
 			"Cloning Velaptor. . .",
-			() => this.cloneService.cloneRepo(releaseTag),
+			() => this.cloneService.cloneRepo(tagOrBranch),
 			"Cloning Complete.",
 		);
 
@@ -100,6 +130,12 @@ export class DocProcessor {
 		);
 	}
 
+	/**
+	 * Runs the process represented by the {@link process} function.
+	 * @param startMsg The message to display before the process runs.
+	 * @param process The process function to execute.
+	 * @param endMsg The message to display after the process runs.
+	 */
 	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {
 		console.log("\n-----------------------------------------------------------------\n");
 		console.log(chalk.cyan(startMsg));

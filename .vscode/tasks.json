@@ -10,7 +10,7 @@
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
 				"${workspaceFolder}/docs/api",
-				"v1.0.0-preview.4",
+				"no-value",
 				"true", // Is Interactive
 			]
         },

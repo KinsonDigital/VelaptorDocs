@@ -10,17 +10,17 @@ export class CloneRepoService {
 
 	/**
 	 * Clones the Velaptor repository.
-	 * @param tag The tag of the repository to clone.
+	 * @param tagOrBranch The tag or branch name of the repository to clone.
 	 */
-	public cloneRepo(tag: string): void {
-		if (Utils.isNullOrEmpty(tag)) {
-			throw Error("The tag must not be null, undefined, or empty.");
+	public cloneRepo(tagOrBranch: string): void {
+		if (Utils.isNullOrEmpty(tagOrBranch)) {
+			throw Error("The tag or branch name must not be null, undefined, or empty.");
 		}
 
 		const fullCloneDir = resolve(Deno.cwd(), this.repoSrcDirName);
 
 		const command = new Deno.Command("git", {
-			args: ["clone", "-b", tag, this.repoUrl, fullCloneDir],
+			args: ["clone", "-b", tagOrBranch, this.repoUrl, fullCloneDir],
 		});
 
 		const { code, stdout, stderr } = command.outputSync();

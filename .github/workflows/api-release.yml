@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name:  Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Validate Syntax
         run: |
@@ -74,7 +74,7 @@ jobs:
       cancel-in-progress: true
     steps:
       - name:  Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.CICD_TOKEN }}
           persist-credentials: true

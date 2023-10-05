@@ -149,7 +149,7 @@ const config = {
             type: 'doc',
             docId: 'tutorials/intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Guides',
           },
           // ⚠️DO NOT CHANGE THIS⚠️
           // This is used as part of the manual testing process for the CICD side of the project.
@@ -197,7 +197,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Guides',
                 to: '/docs/tutorials/intro',
               },
             ],

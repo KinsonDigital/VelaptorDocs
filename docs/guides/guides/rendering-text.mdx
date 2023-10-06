@@ -356,7 +356,42 @@ private void RandomizeColor()
 }
 ```
 
-### <span class="color-sub-step">Step 5.5: Finishing up</span>
+### <span class="color-sub-step">Step 5.5: Update the color</span>
+
+Now that we have our little helper method, we can use it in the `ProcessCollisionAndColor()` method.
+Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
+
+```csharp
+private void ProcessCollision()
+{
+    ...
+    if (leftSide <= 0)
+    {
+        this.velocity.X *= -1;
+        RandomizeColor(); // Add this line
+    }
+
+    if (top <= 0)
+    {
+        this.velocity.Y *= -1;
+        RandomizeColor(); // Add this line
+    }
+
+    if (rightSide >= Width)
+    {
+        this.velocity.X *= -1;
+        RandomizeColor(); // Add this line
+    }
+
+    if (bottom >= Height)
+    {
+        this.velocity.Y *= -1;
+        RandomizeColor(); // Add this line
+    }
+}
+```
+
+### <span class="color-sub-step">Step 5.6: Finishing up</span>
 
 Now the exciting part!!  Let's update the `OnDraw()` method to use our `position` and `textColor` class fields.
 No point in doing all of this hard work if we can see it.

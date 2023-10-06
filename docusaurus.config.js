@@ -44,8 +44,8 @@ const config = {
           // This is used as part of the manual testing process for the CICD side of the project.
           // This will always be disabled during the build process before a release.
           // When disabled, the 'Next' version is enabled by default.
-          // <flag id=next-version enabled=true>
-          includeCurrentVersion: false,
+          // <flag id=next-version enabled=false>
+          // includeCurrentVersion: false,
           // </flag>
         },
 		
@@ -147,9 +147,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'tutorials/intro',
+            docId: 'guides/intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Guides',
           },
           // ⚠️DO NOT CHANGE THIS⚠️
           // This is used as part of the manual testing process for the CICD side of the project.
@@ -197,8 +197,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/tutorials/intro',
+                label: 'Guides',
+                to: '/docs/guides/intro',
               },
             ],
           },

@@ -25,8 +25,8 @@ jobs:
           }
 
 
-  perform_api_release:
-    name: Perform API Release
+  perform_prod_release:
+    name: Perform Production Release
     needs: validate_branch
     runs-on: ubuntu-latest
     permissions:

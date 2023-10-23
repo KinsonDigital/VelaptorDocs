@@ -62,10 +62,10 @@ public class Game : Window
 
 To enable keyboard input in your Velaptor game, you'll need to create a new instance of `IAppInput<KeyboardState>`,
 which will be set to the class field `keyboard`. This will provide access to the current state of the keyboard.
-You can create a new keyboard object quickly and easily using Velaptor's `InputFactory` class.
+You can create a new keyboard object quickly and easily using Velaptor's `HardwareFactory` class.
 
 ```csharp
-public Game() => this.keyboard = InputFactory.CreateKeyboard();
+public Game() => this.keyboard = HardwareFactory.GetKeyboard();
 ```
 
 :::info What is this _**Factory**_ thing?

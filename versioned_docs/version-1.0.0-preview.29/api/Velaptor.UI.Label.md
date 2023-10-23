@@ -89,18 +89,31 @@ public System.Drawing.Color Color { get; set; }
 #### Property Value
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')
 
-<a name='Velaptor.UI.Label.Font'></a>
+<a name='Velaptor.UI.Label.FontFamilyName'></a>
 
-### Font 
+### FontFamilyName 
 
-Gets the font for the label.
+Gets the font family name.
 
 ```csharp
-public Velaptor.Content.Fonts.IFont Font { get; }
+public string FontFamilyName { get; }
 ```
 
 #### Property Value
-[IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='Velaptor.UI.Label.FontSize'></a>
+
+### FontSize 
+
+Gets or sets the font size.
+
+```csharp
+public uint FontSize { get; set; }
+```
+
+#### Property Value
+[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
 <a name='Velaptor.UI.Label.Height'></a>
 

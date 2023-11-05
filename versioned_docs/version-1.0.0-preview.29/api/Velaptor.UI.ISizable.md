@@ -18,6 +18,32 @@ Derived
 &#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
 ## Properties
 
+<a name='Velaptor.UI.ISizable.HalfHeight'></a>
+
+### HalfHeight 
+
+Gets the half height of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl').
+
+```csharp
+uint HalfHeight { get; }
+```
+
+#### Property Value
+[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+
+<a name='Velaptor.UI.ISizable.HalfWidth'></a>
+
+### HalfWidth 
+
+Gets the half width of the [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl').
+
+```csharp
+uint HalfWidth { get; }
+```
+
+#### Property Value
+[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+
 <a name='Velaptor.UI.ISizable.Height'></a>
 
 ### Height 

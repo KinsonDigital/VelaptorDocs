@@ -8,6 +8,7 @@ title: Velaptor
 
 | Classes | |
 | :--- | :--- |
+| [App](Velaptor.App.md 'Velaptor.App') | Represents a Velaptor application. |
 | [AppStats](Velaptor.AppStats.md 'Velaptor.AppStats') | Records and retrieves information about the running application. |
 | [GameHelpers](Velaptor.GameHelpers.md 'Velaptor.GameHelpers') | Provides extension helper methods for common game related operations. |
 | [Platform](Velaptor.Platform.md 'Velaptor.Platform') | Represents the current platform. |

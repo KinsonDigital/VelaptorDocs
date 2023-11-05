@@ -58,6 +58,36 @@ Implements [Enabled](Velaptor.UI.IControl.md#Velaptor.UI.IControl.Enabled 'Velap
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='Velaptor.UI.ControlBase.HalfHeight'></a>
+
+### HalfHeight 
+
+Gets the half height of the [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase').
+
+```csharp
+public virtual uint HalfHeight { get; }
+```
+
+Implements [HalfHeight](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.HalfHeight 'Velaptor.UI.ISizable.HalfHeight')
+
+#### Property Value
+[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+
+<a name='Velaptor.UI.ControlBase.HalfWidth'></a>
+
+### HalfWidth 
+
+Gets the half width of the [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase').
+
+```csharp
+public virtual uint HalfWidth { get; }
+```
+
+Implements [HalfWidth](Velaptor.UI.ISizable.md#Velaptor.UI.ISizable.HalfWidth 'Velaptor.UI.ISizable.HalfWidth')
+
+#### Property Value
+[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+
 <a name='Velaptor.UI.ControlBase.Height'></a>
 
 ### Height 

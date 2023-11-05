@@ -37,13 +37,13 @@ public FontLoader();
 Loads font content from the application's content directory or directly using a full file path.
 
 ```csharp
-public Velaptor.Content.Fonts.IFont Load(string contentWithMetaData);
+public Velaptor.Content.Fonts.IFont Load(string contentPathOrName);
 ```
 #### Parameters
 
-<a name='Velaptor.Content.Fonts.FontLoader.Load(string).contentWithMetaData'></a>
+<a name='Velaptor.Content.Fonts.FontLoader.Load(string).contentPathOrName'></a>
 
-`contentWithMetaData` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`contentPathOrName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The name or full file path to the font with metadata.
 
@@ -56,7 +56,7 @@ The loaded font.
 #### Exceptions
 
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Occurs when the [contentWithMetaData](Velaptor.Content.Fonts.FontLoader.md#Velaptor.Content.Fonts.FontLoader.Load(string).contentWithMetaData 'Velaptor.Content.Fonts.FontLoader.Load(string).contentWithMetaData') argument is null or empty.
+Occurs when the [contentPathOrName](Velaptor.Content.Fonts.FontLoader.md#Velaptor.Content.Fonts.FontLoader.Load(string).contentPathOrName 'Velaptor.Content.Fonts.FontLoader.Load(string).contentPathOrName') argument is null or empty.
 
 [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor.Content.Exceptions.CachingMetaDataException')  
 Occurs if the metadata is missing or invalid.
@@ -88,15 +88,17 @@ Directory paths are not valid.
 
 ### Unload(string) 
 
-Unloads the data with the given contentPathOrName.
+Unloads the data with the given [contentPathOrName](Velaptor.Content.Fonts.FontLoader.md#Velaptor.Content.Fonts.FontLoader.Unload(string).contentPathOrName 'Velaptor.Content.Fonts.FontLoader.Unload(string).contentPathOrName').
 
 ```csharp
-public void Unload(string contentWithMetaData);
+public void Unload(string contentPathOrName);
 ```
 #### Parameters
 
-<a name='Velaptor.Content.Fonts.FontLoader.Unload(string).contentWithMetaData'></a>
+<a name='Velaptor.Content.Fonts.FontLoader.Unload(string).contentPathOrName'></a>
 
-`contentWithMetaData` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`contentPathOrName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The name of the content item to unload.
 
 Implements [Unload(string)](Velaptor.Content.ILoader_T_.md#Velaptor.Content.ILoader_T_.Unload(string) 'Velaptor.Content.ILoader<T>.Unload(string)')

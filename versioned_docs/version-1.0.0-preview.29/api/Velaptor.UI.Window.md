@@ -138,6 +138,21 @@ Implements [Draw](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Draw 'Velaptor.UI.I
 #### Property Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
+<a name='Velaptor.UI.Window.Fps'></a>
+
+### Fps 
+
+Gets the frames per second that the main loop is running at.
+
+```csharp
+public float Fps { get; }
+```
+
+Implements [Fps](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Fps 'Velaptor.UI.IWindow.Fps')
+
+#### Property Value
+[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
 <a name='Velaptor.UI.Window.Height'></a>
 
 ### Height 

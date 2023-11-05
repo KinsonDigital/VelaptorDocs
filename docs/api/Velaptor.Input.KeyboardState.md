@@ -128,6 +128,8 @@ public bool AnyStandardNumberKeysDown();
 
 ### Equals(object) 
 
+Indicates whether this instance and a specified object are equal.
+
 ```csharp
 public override bool Equals(object? obj);
 ```
@@ -137,8 +139,11 @@ public override bool Equals(object? obj);
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
+The object to compare with the current instance.
+
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') if [obj](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.Equals(object).obj 'Velaptor.Input.KeyboardState.Equals(object).obj') and this instance are the same type and represent the same value; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool').
 
 <a name='Velaptor.Input.KeyboardState.Equals(Velaptor.Input.KeyboardState)'></a>
 
@@ -174,12 +179,15 @@ A list of the keys that are currently in the down position.
 
 ### GetHashCode() 
 
+Returns the hash code for this instance.
+
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Input.KeyboardState.GetKeyStates()'></a>
 

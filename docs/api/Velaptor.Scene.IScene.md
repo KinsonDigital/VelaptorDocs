@@ -22,19 +22,6 @@ Derived
 Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
 ## Properties
 
-<a name='Velaptor.Scene.IScene.ContentLoader'></a>
-
-### ContentLoader 
-
-Gets the content loader.
-
-```csharp
-Velaptor.Content.IContentLoader ContentLoader { get; }
-```
-
-#### Property Value
-[IContentLoader](Velaptor.Content.IContentLoader.md 'Velaptor.Content.IContentLoader')
-
 <a name='Velaptor.Scene.IScene.Id'></a>
 
 ### Id 

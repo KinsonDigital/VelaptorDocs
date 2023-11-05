@@ -22,21 +22,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Implements [IScene](Velaptor.Scene.IScene.md 'Velaptor.Scene.IScene'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
 ## Properties
 
-<a name='Velaptor.Scene.SceneBase.ContentLoader'></a>
-
-### ContentLoader 
-
-Gets the content loader.
-
-```csharp
-public Velaptor.Content.IContentLoader ContentLoader { get; }
-```
-
-Implements [ContentLoader](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.ContentLoader 'Velaptor.Scene.IScene.ContentLoader')
-
-#### Property Value
-[IContentLoader](Velaptor.Content.IContentLoader.md 'Velaptor.Content.IContentLoader')
-
 <a name='Velaptor.Scene.SceneBase.Controls'></a>
 
 ### Controls 
@@ -148,6 +133,8 @@ Implements [AddControl(IControl)](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene
 <a name='Velaptor.Scene.SceneBase.Dispose()'></a>
 
 ### Dispose() 
+
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 
 ```csharp
 public void Dispose();

@@ -59,7 +59,7 @@ The loaded font.
 Occurs when the [contentPathOrName](Velaptor.Content.Fonts.FontLoader.md#Velaptor.Content.Fonts.FontLoader.Load(string).contentPathOrName 'Velaptor.Content.Fonts.FontLoader.Load(string).contentPathOrName') argument is null or empty.
 
 [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor.Content.Exceptions.CachingMetaDataException')  
-Occurs if the metadata is missing or invalid.
+Occurs if the metadata is invalid.
 
 [System.IO.FileNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.FileNotFoundException 'System.IO.FileNotFoundException')  
 Occurs if the font file does not exist.
@@ -67,22 +67,34 @@ Occurs if the font file does not exist.
 ### Example
   
 ```csharp  
-// Valid Value  
+// Valid Example 1  
 ContentLoader.Load("my-font|size:12");  
-  
-// Valid Value  
+<br/>  
+// Valid Example 2  
+ContentLoader.Load("my-font");  
+<br/>  
+// Valid Example 3  
+ContentLoader.Load("my-font.ttf");  
+<br/>  
+// Valid Example 4  
 ContentLoader.Load(@"C:\fonts\my-font.ttf|size:12");  
-  
-// Invalid Value  
+<br/>  
+// Invalid Example 1  
 ContentLoader.Load("my-font|size:12");  
-  
+<br/>  
+// Invalid Example 2  
 ContentLoader.Load("my-font|size:12");  
+<br/>  
+// Invalid Example 3  
+ContentLoader.Load("my-font|size12");  
 ```
 
 #### Remarks
 If a path is used, it must be a fully qualified file path.  
   
-Directory paths are not valid.
+Directory paths are not valid.  
+  
+If no metadata is provided, then a default font size of 12 will be used.
 
 <a name='Velaptor.Content.Fonts.FontLoader.Unload(string)'></a>
 

@@ -222,12 +222,15 @@ public void FlipVertically();
 
 ### GetHashCode() 
 
+Returns the hash code for this instance.
+
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Graphics.ImageData.IsEmpty()'></a>
 
@@ -247,9 +250,12 @@ public bool IsEmpty();
 
 ### ToString() 
 
+Returns the fully qualified type name of this instance.
+
 ```csharp
 public override string ToString();
 ```
 
 #### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The fully qualified type name.

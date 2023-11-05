@@ -108,21 +108,6 @@ Implements [AutoSceneUpdating](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoSc
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='Velaptor.UI.Window.ContentLoader'></a>
-
-### ContentLoader 
-
-Gets or sets the content loader for loading content.
-
-```csharp
-public Velaptor.Content.IContentLoader ContentLoader { get; set; }
-```
-
-Implements [ContentLoader](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.ContentLoader 'Velaptor.UI.IWindow.ContentLoader')
-
-#### Property Value
-[IContentLoader](Velaptor.Content.IContentLoader.md 'Velaptor.Content.IContentLoader')
-
 <a name='Velaptor.UI.Window.Draw'></a>
 
 ### Draw 

@@ -105,10 +105,11 @@ export class Path {
 		if (Utils.isNothing(path)) {
 			return false;
 		}
-		const containsBackslashes: boolean = value.indexOf("\\") != -1;
-		const containsForwardSlashes: boolean = value.indexOf("/") != -1;
 
-		return containsBackslashes || containsForwardSlashes;
+		path = this.normalizeSeparators(path);
+		const containsForwardSlashes: boolean = path.indexOf("/") != -1;
+
+		return containsForwardSlashes;
 	}
 
 	public static isDirPath(dirPath: string): boolean {

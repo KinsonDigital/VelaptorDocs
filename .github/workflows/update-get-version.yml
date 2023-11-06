@@ -21,7 +21,7 @@ jobs:
     outputs:
       version: ${{ steps.apply_version_to_site.outputs.version }}
     steps:
-      - name:  Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Deno

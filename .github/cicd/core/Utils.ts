@@ -19,7 +19,7 @@ export class Utils {
 	 */
 	public static isNothing<T>(
 		value: undefined | null | string | number | boolean | T[] | (() => T) | object,
-	): value is undefined | null | "" | number | T[] | (() => T) {
+	): value is undefined | null | "" | number | T[] | (() => T) | object {
 		if (value === undefined || value === null) {
 			return true;
 		}

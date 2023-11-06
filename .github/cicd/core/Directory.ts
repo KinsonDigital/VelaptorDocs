@@ -33,42 +33,43 @@ export class Directory {
 	}
 
 	/**
-	 * Returns a list of all of the files in the given directory.
-	 * @param {string} dirPath The path to the directory to the files of.
-	 * @param {string} extension The extension filter of all of the files to get. If undefined or empty, all files will be returned. If not undefined or empty, the extension must start with a period. If the extension does not start with a period, it will be added automatically.
-	 * @returns {string[]} The files in the given directory,
+	 * Gets a list of files in the given {@link dirPath}.  This will search recursively
+	 * if {@link recursive} is true.
+	 * @param dirPath The path of the directory start searching.
+	 * @param extension The file extension to search for.
+	 * @param recursive True to search recursively, otherwise false.
+	 * @returns {string[]} A list of files in the given {@link dirPath}.
 	 */
-	public static getFiles(dirPath: string, extension = "*.*"): string[] {
-		Guard.isNotUndefinedOrEmpty(dirPath);
+	public static getFiles(dirPath: string, extension:string, recursive = false): string[] {
+		let files: string[] = [];
 
-		if (Path.isNotDirPath(dirPath)) {
-			throw new Error(`The path '${dirPath}' is not a directory path.`);
+		extension = Utils.isNothing(extension) ? "*.*" : extension;
+		extension = extension.startsWith(".") ? extension : `.${extension}`;
+
+		if (dirPath === undefined || dirPath === null || dirPath === "") {
+			const errorMsg = "The dirPath parameter cannot be null or empty.";
+			Deno.exit(1);
 		}
 
-		if (this.doesNotExist(dirPath)) {
-			throw new Error(`The path '${dirPath}' does not exist.`);
-		}
-
-		// Default value if undefined or empty
-		extension = Utils.isNullOrEmpty(extension) ? "*.*" : extension;
-
-		extension = extension != "*.*" && extension.startsWith("*") ? extension.replace("*", "") : extension;
-
-		dirPath = Path.normalizeSeparators(dirPath);
-
-		const filePaths: string[] = [];
+		dirPath = dirPath === "." || dirPath === "/" ? "." : dirPath;
 
 		for (const dirEntry of Deno.readDirSync(dirPath)) {
-			if (dirEntry.isFile) {
-				const fileExtension: string = Path.getExtension(dirEntry.name);
+			const entry = dirPath + "/" + dirEntry.name;
 
-				if (extension === "*.*" || extension === fileExtension) {
-					filePaths.push(`${dirPath}${dirEntry.name}`);
+			if (recursive && dirEntry.isDirectory) {
+				files = [...files, ...(Directory.getFiles(entry, extension, recursive))];
+			} else if (dirEntry.isFile) {
+				if (extension === "*.*") {
+					files.push(entry);
+				} else {
+					if (entry.endsWith(extension)) {
+						files.push(entry);
+					}
 				}
 			}
 		}
 
-		return filePaths;
+		return files;
 	}
 
 	/**
@@ -130,7 +131,7 @@ export class Directory {
 	 * @param {string} dirPath The path to the directory to delete.
 	 */
 	public static delete(dirPath: string): void {
-		if (Utils.isNullOrEmpty(dirPath)) {
+		if (Utils.isNothing(dirPath)) {
 			return;
 		}
 

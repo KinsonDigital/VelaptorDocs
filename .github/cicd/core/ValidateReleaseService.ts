@@ -28,7 +28,7 @@ export class ValidateReleaseService {
 	 * @returns True if the tag exists; Otherwise, false.
 	 */
 	private async releaseTagExists(tagToCheck: string): Promise<boolean> {
-		if (Utils.isNullOrEmpty(tagToCheck)) {
+		if (Utils.isNothing(tagToCheck)) {
 			throw Error("The tag to check is required.");
 		}
 
@@ -43,7 +43,7 @@ export class ValidateReleaseService {
 	 * @returns True if the NuGet package exists; Otherwise, false.
 	 */
 	private async nugetPackageExists(versionToCheck: string): Promise<boolean> {
-		if (Utils.isNullOrEmpty(versionToCheck)) {
+		if (Utils.isNothing(versionToCheck)) {
 			throw Error("The version to check is required.");
 		}
 

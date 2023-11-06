@@ -8,7 +8,7 @@ export class HTMLService {
 	}
 
 	public isHTMLLink(value: string): boolean {
-		if (Utils.isNullOrEmpty(value)) {
+		if (Utils.isNothing(value)) {
 			return false;
 		}
 

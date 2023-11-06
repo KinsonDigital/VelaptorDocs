@@ -1,9 +1,17 @@
 import { Utils } from "./Utils.ts";
 import { dirname, extname } from "std/path/mod.ts";
 
+/**
+ * Provides path related operations.
+ */
 export class Path {
+	/**
+	 * Gets the file name from the given file path.
+	 * @param filePath The file path to get the file name from.
+	 * @returns The file name.
+	 */
 	public static getFileName(filePath: string): string {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			return "";
 		}
 
@@ -24,6 +32,11 @@ export class Path {
 		}
 	}
 
+	/**
+	 * Gets the file name without the extension from the given file path.
+	 * @param filePath The file path to get the file name from.
+	 * @returns The file name without the extension.
+	 */
 	public static getFileNameWithoutExtension(filePath: string): string {
 		let fileName: string = this.getFileName(filePath);
 
@@ -51,8 +64,13 @@ export class Path {
 		}
 	}
 
+	/**
+	 * Gets the directory path from the given file path.
+	 * @param filePath The file path to get the directory from.
+	 * @returns The directory path.
+	 */
 	public static getDirectory(filePath: string): string {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			return "";
 		}
 
@@ -65,14 +83,26 @@ export class Path {
 		return this.normalizeSeparators(filePath);
 	}
 
+	/**
+	 * Returns a value indicating whether or not the given {@link path} is a file path.
+	 * @param path The path to check.
+	 * @returns True if the path is a file path, otherwise false.
+	 */
 	public static isFilePath(path: string): boolean {
-		if (Utils.isNullOrEmpty(path)) {
+		if (Utils.isNothing(path)) {
 			return false;
 		}
 
 		return this.containsPathSeparator(path) && this.hasExtension(path);
 	}
 
+	/**
+	 * Returns a value indicating whether or not the given {@link path} has the given {@link extension}.
+	 * @param path The path to check.
+	 * @param extension The extension to check for.
+	 * @returns True if the path has the given extension, otherwise false.
+	 * @remarks If no extension is provided, then this will return true if the path any extension.
+	 */
 	public static hasExtension(path: string, extension = ""): boolean {
 		extension = extension === undefined ? "" : extension;
 
@@ -87,8 +117,13 @@ export class Path {
 		}
 	}
 
+	/**
+	 * Gets the extension of the given file path.
+	 * @param filePath The file path to get the extension from.
+	 * @returns The extension of the file path.
+	 */
 	public static getExtension(filePath: string): string {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			return "";
 		}
 
@@ -99,18 +134,29 @@ export class Path {
 		return `.${filePath.split(".").pop()}`;
 	}
 
-	public static containsPathSeparator(value: string): boolean {
-		if (Utils.isNullOrEmpty(value)) {
+	/**
+	 * Returns a value indicating whether or not the given {@link path} contains a path separator.
+	 * @param path The path to check.
+	 * @returns True if the path contains a path separator, otherwise false.
+	 */
+	public static containsPathSeparator(path: string): boolean {
+		if (Utils.isNothing(path)) {
 			return false;
 		}
-		const containsBackslashes: boolean = value.indexOf("\\") != -1;
-		const containsForwardSlashes: boolean = value.indexOf("/") != -1;
 
-		return containsBackslashes || containsForwardSlashes;
+		path = this.normalizeSeparators(path);
+		const containsForwardSlashes: boolean = path.indexOf("/") != -1;
+
+		return containsForwardSlashes;
 	}
 
+	/**
+	 * Returns a value indicating whether or not the given {@link dirPath} is a directory path.
+	 * @param dirPath The directory path to check.
+	 * @returns True if the directory path is a directory path, otherwise false.
+	 */
 	public static isDirPath(dirPath: string): boolean {
-		if (Utils.isNullOrEmpty(dirPath)) {
+		if (Utils.isNothing(dirPath)) {
 			return false;
 		}
 
@@ -122,12 +168,22 @@ export class Path {
 		return containsPathSeparator && doesNotContainExtension;
 	}
 
+	/**
+	 * Returns a value indicating whether or not the given {@link dirPath} is not a directory path.
+	 * @param dirPath The directory path to check.
+	 * @returns True if the directory path is not a directory path, otherwise false.
+	 */
 	public static isNotDirPath(dirPath: string): boolean {
 		return !this.isDirPath(dirPath);
 	}
 
+	/**
+	 * Normalizes the path separators to forward slashes.
+	 * @param path The path to normalize.
+	 * @returns The normalized path.
+	 */
 	public static normalizeSeparators(path: string): string {
-		if (Utils.isNullOrEmpty(path)) {
+		if (Utils.isNothing(path)) {
 			return "";
 		}
 
@@ -140,8 +196,13 @@ export class Path {
 		return path.endsWith("/") ? path : `${path}/`;
 	}
 
+	/**
+	 * Gets the the last directory name from the given directory path.
+	 * @param dirPath The directory path to get the last directory name from.
+	 * @returns The last directory name.
+	 */
 	public static getLastDirName(dirPath: string): string {
-		if (Utils.isNullOrEmpty(dirPath)) {
+		if (Utils.isNothing(dirPath)) {
 			return "";
 		}
 
@@ -158,21 +219,24 @@ export class Path {
 	 * @returns The list of directory names from the directory paths.
 	 */
 	public static getLastDirNames(dirPaths: string[]): string[] {
-		if (Utils.isNullOrEmpty(dirPaths)) {
-			return [];
-		}
+		dirPaths = Utils.isNothing(dirPaths) ? [] : dirPaths;
 
 		const result: string[] = [];
 
-		for (const path of dirPaths) {
+		dirPaths.forEach(path => {
 			result.push(this.getLastDirName(path));
-		}
+		});
 
 		return result;
 	}
 
+	/**
+	 * Removes the last directory from the given path.
+	 * @param path The path to remove the last directory from.
+	 * @returns The path with the last directory removed.
+	 */
 	public static removeLastDir(path: string): string {
-		if (Utils.isNullOrEmpty(path)) {
+		if (Utils.isNothing(path)) {
 			return "";
 		}
 

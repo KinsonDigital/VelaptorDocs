@@ -35,12 +35,12 @@ export class DocProcessor {
 	 * @param releaseTag The Velaptor release tag.
 	 */
 	public async generateFromTag(apiDocDirPath: string, releaseTag: string): Promise<void> {
-		if (Utils.isNullOrEmpty(apiDocDirPath)) {
+		if (Utils.isNothing(apiDocDirPath)) {
 			console.log(chalk.red("The API doc dir path is required."));
 			Deno.exit();
 		}
 
-		if (Utils.isNullOrEmpty(releaseTag)) {
+		if (Utils.isNothing(releaseTag)) {
 			console.log(chalk.red("The release tag is required."));
 			Deno.exit();
 		}
@@ -64,12 +64,12 @@ export class DocProcessor {
 	 * @param branchName The name of the branch to generate the API documentation from.
 	 */
 	public async generateFromBranch(apiDocDirPath: string, branchName: string): Promise<void> {
-		if (Utils.isNullOrEmpty(apiDocDirPath)) {
+		if (Utils.isNothing(apiDocDirPath)) {
 			console.log(chalk.red("The API doc dir path is required."));
 			Deno.exit();
 		}
 
-		if (Utils.isNullOrEmpty(branchName)) {
+		if (Utils.isNothing(branchName)) {
 			console.log(chalk.red("The branch name is required."));
 			Deno.exit();
 		}

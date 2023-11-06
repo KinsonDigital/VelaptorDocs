@@ -96,7 +96,7 @@ export class DotNetToolService {
 	 * @returns The lines with empty lines removed.
 	 */
 	private toLines(value: string): string[] {
-		if (Utils.isNullOrEmpty(value)) {
+		if (Utils.isNothing(value)) {
 			return [];
 		}
 

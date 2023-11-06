@@ -1,0 +1,61 @@
+name: 📜/🛡️ Guide & API Documentation Changes
+description: Create an issue to add or update the API documentation.
+title: "📜/🛡️Guide & API Doc Change - "
+labels: ['📜tutorial doc changes', '🛡️api doc changes', 'high priority']
+projects: ["KinsonDigital/11"]
+body:
+- type: checkboxes
+  attributes:
+    label: Complete The Item Below
+    options:
+    - label: I have added the version to the very end of the issue title.
+      required: true
+    - label: I have updated the title without removing the 🛡️ and 📜 emoji.
+      required: true
+
+- type: textarea
+  attributes:
+    label: Acceptance Criteria
+    placeholder: |
+      Example:
+        - [ ] If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
+        - [ ] If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
+        - [ ] Any documentation changes have been checked for proper spelling and grammar.
+    description: The items to complete in order to satisfy the Definition of Done.
+  validations:
+    required: true
+    render: markdown
+
+- type: checkboxes
+  attributes:
+    label: ToDo Items
+    description: Complete the following items before requesting a PR review.
+    options:
+    - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
+    - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
+    - label: If more than 5 versions exist after adding the new version, the oldest version is removed.
+
+- type: textarea
+  attributes:
+    label: "Additional Information:"
+    description: DO NOT CHANGE ANYTHING BELOW!!
+    value: |
+      **Priority Type Labels**
+      | Priority Type       | Label                                                                  |
+      |---------------------|------------------------------------------------------------------------|
+      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
+      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
+      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
+
+      > **Note**
+      > Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.
+      > Just follow the CLI instructions to remove the version.
+
+- type: checkboxes
+  id: terms
+  attributes:
+    label: Code of Conduct
+    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/KinsonDigital/.github/blob/master/docs/CODE_OF_CONDUCT.md).
+    options:
+      - label: I agree to follow this project's Code of Conduct.
+        required: true

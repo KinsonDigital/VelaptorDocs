@@ -78,6 +78,7 @@
 		{ // ENABLE NEXT VERSION
             "label": "Enable Next Version",
             "type": "shell",
+			"detail": "Enables the next version feature of docusaurus.",
             "windows": {
                 "command": "deno",
                 "args": [
@@ -90,6 +91,19 @@
                 ]
             }
         },
+		{ // CREATE DOCUSAURUS VERSION
+			"label": "Create Docusaurus Version",
+            "type": "shell",
+			"detail": "Creates a new docusaurus API version.",
+            "windows": {
+                "command": "deno",
+                "args": [
+                    "run",
+                    "-A",
+                    "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
+                ]
+            }
+		},
         { // BUILD
             "label": "build",
             "dependsOn": [ "Disable Testing Environment" ],
@@ -102,6 +116,7 @@
 		{ // DELETE API DOCS
 			"label": "Delete API Docs",
 			"dependsOn": [ "Disable Testing Environment" ],
+			"detail": "Deletes a version of the API docs.",
 			"type": "shell",
 			"windows": {
 				"command": "deno",

@@ -1,7 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Velaptor',
@@ -44,8 +46,8 @@ const config = {
           // This is used as part of the manual testing process for the CICD side of the project.
           // This will always be disabled during the build process before a release.
           // When disabled, the 'Next' version is enabled by default.
-          // <flag id=next-version enabled=true>
-          includeCurrentVersion: false,
+          // <flag id=next-version enabled=false>
+          // includeCurrentVersion: false,
           // </flag>
         },
 		

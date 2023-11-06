@@ -11,7 +11,7 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 This guide will show you the basics of rendering text to a window using **Velaptor**.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="RenderingText" version="v1.0.0-preview.24"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="RenderingText" version="v1.0.0-preview.28"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -37,36 +37,87 @@ public Game()
 ```
 
 
-## <span class="color-step">Step 3: Loading content</span>
+## <span class="color-step">Step 3: Loading and unload content</span>
 
-### <span class="color-sub-step">Step 3.1: Create font field</span>
+### <span class="color-sub-step">Step 3.1: Create class fields</span>
 
-Create a class field named `font` at the top of the class. This will be the loaded font to use for rendering text.
+Create a couple class fields at the top of the class. These will be used to load the font for rendering text.
 
 ```csharp
 private IFont? font;
+private ILoader<IFont> fontLoader;
 ```
 
 ### <span class="color-sub-step">Step 3.2: Load the font</span>
 
-Now let's load the font using the `ContentLoader` property that belongs to the `Window` class.
+We need to load the font and to do this we can use a loader.  There are various loaders available in **Velaptor**.
+The loader that we need is the `ILoader<IFont>` loader and this can be created using the `ContentLoaderFactory`.
+We want to keep the font loader around as a class field so we can unload the font later when shutting down the game.
+
+Add the following code to the `OnLoad()` method to create the font loader and load the font.
 
 ```csharp
 protected override void OnLoad()
 {
-    this.font = ContentLoader.LoadFont("TimesNewRoman-Regular", 24); // Loads the font into the class field
+    this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+    this.font = this.fontLoader.Load("TimesNewRoman-Regular", 24);
+
     base.OnLoad();
 }
 ```
-:::tip content name
-The name of the content to load is the same as the content file minus the file extension. You can use or
-omit the file extension when using the `ContentLoader.LoadFont()` method. Also, the name is not _**case-sensitive**_.  
-Example: The content names _**'my-texture'**_ and _**'My-Texture'**_ are equivalent.
-:::
-
 :::caution Warning
 Since the name of the content to load is based on the name of the file, renaming the file will break your application!!
 :::
+
+:::tip content name
+The name of the content to load is the same as the content file minus the file extension. You can use or
+omit the file extension when using the `this.fontLoader.Load()` method. Also, the name is not _**case-sensitive**_.  
+Example: The content names _**'my-texture'**_ and _**'My-Texture'**_ are equivalent.
+:::
+
+:::info Built In Fonts
+<details>
+	<summary>Expand me to learn more!</summary>
+
+Currently, four fonts come _**built-into**_ **Velaptor** and are _**Times New Roman**_.
+The 4 different font types are:
+- TimesNewRoman-Regular
+- TimesNewRoman-Bold
+- TimesNewRoman-Italic
+- TimesNewRoman-BoldItalic
+
+</details>
+:::
+
+### <span class="color-sub-step">Step 3.3: Unload the font</span>
+
+Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
+To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the font loader
+and send in the `IFont` class field we created earlier.  To do this, we need to add the `Velaptor.ExtensionMethods` namespace
+to the top of the file.
+
+
+Add the following using statement.
+
+```csharp
+...
+using Velaptor.ExtensionMethods; // Add this line here
+...
+public class Game : Window
+{
+    ...
+}
+```
+
+Now we can override the `OnUnload()` method and unload the font.
+
+```csharp
+protected override void OnUnload()
+{
+    this.fontLoader.Unload(this.font);
+    base.OnUnload();
+}
+```
 
 
 ## <span class="color-step">Step 4: Rendering text</span>
@@ -81,7 +132,7 @@ before using any `Render()` methods for any renderers, and then call `IBatcher.E
 public class Game : Window
 {
     ...
-    private readonly IFontRenderer fontRenderer; // Renders text
+    private readonly IFontRenderer fontRenderer;
     ...
 }
 ```
@@ -115,35 +166,7 @@ protected override void OnLoad()
 }
 ```
 
-
-### <span class="color-sub-step">Step 4.4: Load the font</span>
-
-Go into the `OnLoad()` method and add the code that loads the font.
-
-```csharp
-protected override void OnLoad()
-{
-    ...
-    this.font = ContentLoader.LoadFont("TimesNewRoman-Regular", 24);
-
-    base.OnLoad();
-}
-```
-:::info Built In Fonts
-<details><summary>Expand me to learn more!</summary>
-
-Currently, four fonts come _**built-into**_ **Velaptor** and are _**Times New Roman**_.
-The 4 different font types are:
-- TimesNewRoman-Regular
-- TimesNewRoman-Bold
-- TimesNewRoman-Italic
-- TimesNewRoman-BoldItalic
-
-</details>
-:::
-
-### <span class="color-sub-step">Step 4.5: Render the text</span>
-
+### <span class="color-sub-step">Step 4.4: Render the text</span>
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
@@ -164,7 +187,8 @@ protected override void OnDraw(FrameTime frameTime)
 ```
 
 :::info What is this `IBatcher` thing?
-<details><summary>Expand me to learn more!</summary>
+<details>
+	<summary>Expand me to learn more!</summary>
 
 As you might have guessed, this is used for batching.  But that does not mean you know what "batching" is right?
 
@@ -192,7 +216,8 @@ That's it!!
 :::
 
 :::info Texture And Text Origin
-<details><summary>Expand me to learn more!</summary>
+<details>
+	<summary>Expand me to learn more!</summary>
 
 Some game engines and frameworks use the top left corner of an object when rendering at a particular position.
 **Velaptor** does not work like that. When rendering text, the position of the text is relative to the center of
@@ -356,7 +381,42 @@ private void RandomizeColor()
 }
 ```
 
-### <span class="color-sub-step">Step 5.5: Finishing up</span>
+### <span class="color-sub-step">Step 5.5: Update the color</span>
+
+Now that we have our little helper method, we can use it in the `ProcessCollisionAndColor()` method.
+Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
+
+```csharp
+private void ProcessCollision()
+{
+    ...
+    if (leftSide <= 0)
+    {
+        this.velocity.X *= -1;
+        RandomizeColor(); // Add this line
+    }
+
+    if (top <= 0)
+    {
+        this.velocity.Y *= -1;
+        RandomizeColor(); // Add this line
+    }
+
+    if (rightSide >= Width)
+    {
+        this.velocity.X *= -1;
+        RandomizeColor(); // Add this line
+    }
+
+    if (bottom >= Height)
+    {
+        this.velocity.Y *= -1;
+        RandomizeColor(); // Add this line
+    }
+}
+```
+
+### <span class="color-sub-step">Step 5.6: Finishing up</span>
 
 Now the exciting part!!  Let's update the `OnDraw()` method to use our `position` and `textColor` class fields.
 No point in doing all of this hard work if we can see it.

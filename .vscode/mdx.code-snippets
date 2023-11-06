@@ -60,7 +60,7 @@
 		"scope": "mdx",
 		"prefix": "note-admonition",
 		"body": [
-			":::note ${1: Note Title}",
+			":::note ${1:Note Title}",
 			"${2: Note Content}",
 			":::\n"
 		],
@@ -70,7 +70,7 @@
 		"scope": "mdx",
 		"prefix": "tip-admonition",
 		"body": [
-			":::tip ${1: Note Title}",
+			":::tip ${1:Note Title}",
 			"${2: Note Content}",
 			":::\n"
 		],
@@ -80,7 +80,7 @@
 		"scope": "mdx",
 		"prefix": "info-admonition",
 		"body": [
-			":::info ${1: Note Title}",
+			":::info ${1:Note Title}",
 			"${2: Note Content}",
 			":::\n"
 		],
@@ -90,7 +90,7 @@
 		"scope": "mdx",
 		"prefix": "caution-admonition",
 		"body": [
-			":::caution ${1: Note Title}",
+			":::caution ${1:Note Title}",
 			"${2: Note Content}",
 			":::\n"
 		],
@@ -100,7 +100,7 @@
 		"scope": "mdx",
 		"prefix": "danger-admonition",
 		"body": [
-			":::danger ${1: Note Title}",
+			":::danger ${1:Note Title}",
 			"${2: Note Content}",
 			":::\n"
 		],

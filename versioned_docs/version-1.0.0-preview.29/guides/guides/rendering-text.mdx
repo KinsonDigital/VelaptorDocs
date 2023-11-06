@@ -37,7 +37,7 @@ public Game()
 ```
 
 
-## <span class="color-step">Step 3: Loading content</span>
+## <span class="color-step">Step 3: Loading and unloading the content</span>
 
 ### <span class="color-sub-step">Step 3.1: Create font field</span>
 
@@ -68,6 +68,32 @@ Example: The content names _**'my-texture'**_ and _**'My-Texture'**_ are equival
 Since the name of the content to load is based on the name of the file, renaming the file will break your application!!
 :::
 
+:::info Built In Fonts
+<details>
+	<summary>Expand me to learn more!</summary>
+
+Currently, four fonts come _**built-into**_ **Velaptor** and are _**Times New Roman**_.
+The 4 different font types are:
+- TimesNewRoman-Regular
+- TimesNewRoman-Bold
+- TimesNewRoman-Italic
+- TimesNewRoman-BoldItalic
+
+</details>
+:::
+
+### <span class="color-sub-step">Step 3.3: Unload the font</span>
+
+Unload the font to free resources when the application is closed.  This is done in the `OnUnload()` method.
+Create an override method and add the code to the method as shown below.
+
+```csharp
+protected override void OnUnload()
+{
+    ContentLoader.UnloadFont(this.font);
+    base.OnUnload();
+}
+```
 
 ## <span class="color-step">Step 4: Rendering text</span>
 
@@ -115,34 +141,7 @@ protected override void OnLoad()
 }
 ```
 
-
-### <span class="color-sub-step">Step 4.4: Load the font</span>
-
-Go into the `OnLoad()` method and add the code that loads the font.
-
-```csharp
-protected override void OnLoad()
-{
-    ...
-    this.font = ContentLoader.LoadFont("TimesNewRoman-Regular", 24);
-
-    base.OnLoad();
-}
-```
-:::info Built In Fonts
-<details><summary>Expand me to learn more!</summary>
-
-Currently, four fonts come _**built-into**_ **Velaptor** and are _**Times New Roman**_.
-The 4 different font types are:
-- TimesNewRoman-Regular
-- TimesNewRoman-Bold
-- TimesNewRoman-Italic
-- TimesNewRoman-BoldItalic
-
-</details>
-:::
-
-### <span class="color-sub-step">Step 4.5: Render the text</span>
+### <span class="color-sub-step">Step 4.4: Render the text</span>
 
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
@@ -164,7 +163,8 @@ protected override void OnDraw(FrameTime frameTime)
 ```
 
 :::info What is this `IBatcher` thing?
-<details><summary>Expand me to learn more!</summary>
+<details>
+	<summary>Expand me to learn more!</summary>
 
 As you might have guessed, this is used for batching.  But that does not mean you know what "batching" is right?
 
@@ -192,7 +192,8 @@ That's it!!
 :::
 
 :::info Texture And Text Origin
-<details><summary>Expand me to learn more!</summary>
+<details>
+	<summary>Expand me to learn more!</summary>
 
 Some game engines and frameworks use the top left corner of an object when rendering at a particular position.
 **Velaptor** does not work like that. When rendering text, the position of the text is relative to the center of
@@ -209,7 +210,7 @@ If you call a render method with any renderer before the `Begin()` method or aft
 you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
 :::
 
-### <span class="color-sub-step">Step 4.6: See the result</span>
+### <span class="color-sub-step">Step 4.5: See the result</span>
 
 Now for the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳

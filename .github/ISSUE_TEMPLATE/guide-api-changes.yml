@@ -1,7 +1,7 @@
-name: 🛡️ API Documentation Change
+name: 📜/🛡️ Guide & API Documentation Changes
 description: Create an issue to add or update the API documentation.
-title: "🛡️API Doc Change - "
-labels: ['🛡️api doc changes', 'high priority']
+title: "📜/🛡️Guide & API Doc Change - "
+labels: ['📜tutorial doc changes', '🛡️api doc changes', 'high priority']
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes
@@ -10,16 +10,21 @@ body:
     options:
     - label: I have added the version to the very end of the issue title.
       required: true
+    - label: I have updated the title without removing the 🛡️ and 📜 emoji.
+      required: true
 
-- type: checkboxes
+- type: textarea
   attributes:
     label: Acceptance Criteria
-    options:
-    - label: If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
-      required: false
-    - label: If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
-      required: false
-    - label: Any documentation changes have been checked for proper spelling and grammar.
+    placeholder: |
+      Example:
+        - [ ] If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
+        - [ ] If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
+        - [ ] Any documentation changes have been checked for proper spelling and grammar.
+    description: The items to complete in order to satisfy the Definition of Done.
+  validations:
+    required: true
+    render: markdown
 
 - type: checkboxes
   attributes:

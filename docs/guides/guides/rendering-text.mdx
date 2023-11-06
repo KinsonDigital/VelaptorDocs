@@ -322,11 +322,13 @@ private void ProcessCollisionAndColor()
 }
 ```
 
-Looking at the code, you can see how the positions of the sides of the text are calculated.  Since the position of the text is relative to the
-center of the text, we need to subtract or add the half or the width and height of the text from the position to get the left, top, right, and bottom.
+Looking at the code, you can see how the positions of the sides of the text are calculated. Since the position
+of the text is relative to the center of the text, we need to subtract or add half of the width and height of
+the text from the position to get the left, top, right, and bottom positions.
 
-With this information, we can then use it to compare against the sides of the window.  If a collision occurs, we just flip the sign of the `X` and/or `Y` velocity
-by negating it. Negating the velocity is what changes the direction of the text's movement.  This is just vector math.
+With this information, we can then compare it against the sides of the window. If a collision occurs, we just
+flip the sign of the X and/or Y velocity by negating it. Negating the velocity changes the direction of the
+text's movement. This is just vector math.
 
 ### <span class="color-sub-step">Step 5.3: Update position with collision</span>
 

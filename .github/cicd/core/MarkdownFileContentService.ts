@@ -84,7 +84,7 @@ export class MarkdownFileContentService {
 	}
 
 	private processHeaderAngleBrackets(fileContent: string): string {
-		if (Utils.isNullOrEmpty(fileContent)) {
+		if (Utils.isNothing(fileContent)) {
 			return "";
 		}
 

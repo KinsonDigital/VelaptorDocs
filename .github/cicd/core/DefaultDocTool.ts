@@ -28,9 +28,9 @@ export class DefaultDocTool {
 		outputDirPath: string,
 		configFilePath: string,
 	): Promise<void> {
-		Utils.isNullOrEmpty(assemblyPath);
-		Utils.isNullOrEmpty(outputDirPath);
-		Utils.isNullOrEmpty(configFilePath);
+		Utils.isNothing(assemblyPath);
+		Utils.isNothing(outputDirPath);
+		Utils.isNothing(configFilePath);
 
 		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, this.defaultDocToolVersion);
 

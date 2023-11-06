@@ -131,7 +131,7 @@ export class Directory {
 	 * @param {string} dirPath The path to the directory to delete.
 	 */
 	public static delete(dirPath: string): void {
-		if (Utils.isNullOrEmpty(dirPath)) {
+		if (Utils.isNothing(dirPath)) {
 			return;
 		}
 

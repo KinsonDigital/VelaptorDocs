@@ -58,13 +58,13 @@ export class Utils {
 	 * @param versions The list of versions to look through.
 	 */
 	public static getOldestVersion(versions: string[]): string {
-		if (Utils.isNullOrEmpty(versions)) {
+		if (Utils.isNothing(versions)) {
 			throw new Error("The 'versions' parameter must not be null or empty.");
 		}
 
 		const sortedVersions = Utils.sortVersions(versions);
 		let oldestVersion = sortedVersions[sortedVersions.length - 1];
-		oldestVersion = Utils.isNullOrEmpty(oldestVersion) ? "" : oldestVersion;
+		oldestVersion = Utils.isNothing(oldestVersion) ? "" : oldestVersion;
 		oldestVersion = oldestVersion.startsWith("v") ? oldestVersion : `v${oldestVersion}`;
 
 		return oldestVersion;
@@ -76,7 +76,7 @@ export class Utils {
 	 * @returns True if the version is a preview or production version; Otherwise, false.
 	 */
 	public static isProdVersion(version: string): boolean {
-		if (Utils.isNullOrEmpty(version)) {
+		if (Utils.isNothing(version)) {
 			return false;
 		}
 
@@ -89,7 +89,7 @@ export class Utils {
 	 * @returns True if the version is a preview or production version; Otherwise, false.
 	 */
 	public static isPrevVersion(version: string): boolean {
-		if (Utils.isNullOrEmpty(version)) {
+		if (Utils.isNothing(version)) {
 			return false;
 		}
 
@@ -102,7 +102,7 @@ export class Utils {
 	 * @returns True if the version is a preview or production version; Otherwise, false.
 	 */
 	public static isPrevOrProdVersion(version: string): boolean {
-		if (Utils.isNullOrEmpty(version)) {
+		if (Utils.isNothing(version)) {
 			return false;
 		}
 
@@ -126,7 +126,7 @@ export class Utils {
 	}
 
 	public static underscoresToAngles(value: string): string {
-		if (Utils.isNullOrEmpty(value)) {
+		if (Utils.isNothing(value)) {
 			return "";
 		}
 

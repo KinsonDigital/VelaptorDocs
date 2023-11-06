@@ -133,7 +133,7 @@ export class MarkdownService {
 	public headerExists(name: string, lines: string[]): boolean;
 	public headerExists(name: string, content: string): boolean;
 	public headerExists(name: string, linesOrContent: string[] | string): boolean {
-		if (Utils.isNullOrEmpty(name)) {
+		if (Utils.isNothing(name)) {
 			return false;
 		}
 
@@ -191,7 +191,7 @@ export class MarkdownService {
 	}
 
 	public isHeaderLine(line: string): boolean {
-		if (Utils.isNullOrEmpty(line)) {
+		if (Utils.isNothing(line)) {
 			return false;
 		}
 
@@ -200,7 +200,7 @@ export class MarkdownService {
 	}
 
 	public containsMarkdownLink(markDownLink: string): boolean {
-		if (Utils.isNullOrEmpty(markDownLink)) {
+		if (Utils.isNothing(markDownLink)) {
 			return false;
 		}
 
@@ -220,7 +220,7 @@ export class MarkdownService {
 	}
 
 	public createFrontMatter(title: string): string {
-		if (Utils.isNullOrEmpty(title)) {
+		if (Utils.isNothing(title)) {
 			throw new Error("The 'title' parameter must not be null or empty when creating front matter.");
 		}
 

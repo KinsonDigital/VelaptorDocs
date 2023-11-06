@@ -3,7 +3,7 @@ import { dirname, extname } from "std/path/mod.ts";
 
 export class Path {
 	public static getFileName(filePath: string): string {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			return "";
 		}
 
@@ -52,7 +52,7 @@ export class Path {
 	}
 
 	public static getDirectory(filePath: string): string {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			return "";
 		}
 
@@ -66,7 +66,7 @@ export class Path {
 	}
 
 	public static isFilePath(path: string): boolean {
-		if (Utils.isNullOrEmpty(path)) {
+		if (Utils.isNothing(path)) {
 			return false;
 		}
 
@@ -88,7 +88,7 @@ export class Path {
 	}
 
 	public static getExtension(filePath: string): string {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			return "";
 		}
 
@@ -101,6 +101,8 @@ export class Path {
 
 	public static containsPathSeparator(value: string): boolean {
 		if (Utils.isNullOrEmpty(value)) {
+	public static containsPathSeparator(path: string): boolean {
+		if (Utils.isNothing(path)) {
 			return false;
 		}
 		const containsBackslashes: boolean = value.indexOf("\\") != -1;
@@ -110,7 +112,7 @@ export class Path {
 	}
 
 	public static isDirPath(dirPath: string): boolean {
-		if (Utils.isNullOrEmpty(dirPath)) {
+		if (Utils.isNothing(dirPath)) {
 			return false;
 		}
 
@@ -127,7 +129,7 @@ export class Path {
 	}
 
 	public static normalizeSeparators(path: string): string {
-		if (Utils.isNullOrEmpty(path)) {
+		if (Utils.isNothing(path)) {
 			return "";
 		}
 
@@ -141,7 +143,7 @@ export class Path {
 	}
 
 	public static getLastDirName(dirPath: string): string {
-		if (Utils.isNullOrEmpty(dirPath)) {
+		if (Utils.isNothing(dirPath)) {
 			return "";
 		}
 
@@ -158,21 +160,19 @@ export class Path {
 	 * @returns The list of directory names from the directory paths.
 	 */
 	public static getLastDirNames(dirPaths: string[]): string[] {
-		if (Utils.isNullOrEmpty(dirPaths)) {
-			return [];
-		}
+		dirPaths = Utils.isNothing(dirPaths) ? [] : dirPaths;
 
 		const result: string[] = [];
 
-		for (const path of dirPaths) {
+		dirPaths.forEach(path => {
 			result.push(this.getLastDirName(path));
-		}
+		});
 
 		return result;
 	}
 
 	public static removeLastDir(path: string): string {
-		if (Utils.isNullOrEmpty(path)) {
+		if (Utils.isNothing(path)) {
 			return "";
 		}
 

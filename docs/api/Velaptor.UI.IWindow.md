@@ -100,19 +100,6 @@ bool AutoSceneUpdating { get; set; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='Velaptor.UI.IWindow.ContentLoader'></a>
-
-### ContentLoader 
-
-Gets or sets the content loader for loading content.
-
-```csharp
-Velaptor.Content.IContentLoader ContentLoader { get; set; }
-```
-
-#### Property Value
-[IContentLoader](Velaptor.Content.IContentLoader.md 'Velaptor.Content.IContentLoader')
-
 <a name='Velaptor.UI.IWindow.Draw'></a>
 
 ### Draw 

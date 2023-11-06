@@ -35,6 +35,8 @@ True if any buttons are in the down position.
 
 ### Equals(object) 
 
+Indicates whether this instance and a specified object are equal.
+
 ```csharp
 public override bool Equals(object? obj);
 ```
@@ -44,8 +46,11 @@ public override bool Equals(object? obj);
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
+The object to compare with the current instance.
+
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') if [obj](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.Equals(object).obj 'Velaptor.Input.MouseState.Equals(object).obj') and this instance are the same type and represent the same value; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool').
 
 <a name='Velaptor.Input.MouseState.Equals(Velaptor.Input.MouseState)'></a>
 
@@ -89,12 +94,15 @@ The button state to retrieve.
 
 ### GetHashCode() 
 
+Returns the hash code for this instance.
+
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Input.MouseState.GetPosition()'></a>
 
@@ -209,6 +217,11 @@ The mouse button to check.
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
 True if the mouse button is in the up position.
+
+#### Exceptions
+
+[System.ComponentModel.InvalidEnumArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.InvalidEnumArgumentException 'System.ComponentModel.InvalidEnumArgumentException')  
+Occurs if the [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseButton') is an invalid value.
 
 <a name='Velaptor.Input.MouseState.IsLeftButtonDown()'></a>
 

@@ -30,20 +30,6 @@ public static Velaptor.Content.ILoader<Velaptor.Content.IAtlasData> CreateAtlasL
 [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IAtlasData](Velaptor.Content.IAtlasData.md 'Velaptor.Content.IAtlasData')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')  
 A loader for loading texture atlas data.
 
-<a name='Velaptor.Factories.ContentLoaderFactory.CreateContentLoader()'></a>
-
-### CreateContentLoader() 
-
-Creates a single instance of a content loader.
-
-```csharp
-public static Velaptor.Content.IContentLoader CreateContentLoader();
-```
-
-#### Returns
-[IContentLoader](Velaptor.Content.IContentLoader.md 'Velaptor.Content.IContentLoader')  
-A framework content loader implementation.
-
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateFontLoader()'></a>
 
 ### CreateFontLoader() 

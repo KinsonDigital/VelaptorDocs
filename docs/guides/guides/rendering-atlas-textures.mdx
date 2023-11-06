@@ -24,7 +24,7 @@ An atlas texture is a large image with multiple sub-images packed into a single 
 of a particular format such as JSON or XML, that describes the location, size, and other kinds of metadata for each image in the atlas texture.
 
 :::info JSON
-Don't know what _**JSON**_ is? If new to JSOn, click [here](https://www.youtube.com/watch?v=iiADhChRriM) for a great 10-minute video.
+If you are new to **JSON**, click [here](https://www.youtube.com/watch?v=iiADhChRriM) for a great 10-minute video.
 :::
 
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
@@ -130,17 +130,29 @@ If you have an image file with no metadata file or vice versa, Velaptor will thr
 letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
 :::
 
+## <span class="color-step">Step 4: Create class fields</span>
 
-## <span class="color-step">Step 4: Basic setup</span>
-
-In the `Game` class, add the code below to set up the window and create a texture renderer.
+Create the following class fields which will be used for holding content data, loading content, and rendering content.
 
 ```csharp
 public class Game : Window
 {
-	private readonly ITextureRenderer textureRenderer; // class field
-    private readonly IBatcher batcher;
+	private readonly ITextureRenderer textureRenderer; // Renders textures
+    private readonly IBatcher batcher; // Batches the rendering of textures
+    private ILoader<IAtlasData>? atlasLoader; // Loads the atlas data
+    private AtlasSubTextureData[]? subTextureData; // Holds all of the atlas data
+    private ITexture? atlasTexture;  // The atlas texture
+}
+```
 
+## <span class="color-step">Step 5: Basic setup</span>
+
+In the `Game` class, add the following code to the constructor to set up the window, create a texture renderer, and the batcher.
+
+```csharp
+public class Game : Window
+{
+    ...
 	public Game()
 	{
 		Title = "Atlas Textures";
@@ -156,25 +168,18 @@ public class Game : Window
 ```
 
 
-## <span class="color-step">Step 5: Load the content</span>
+## <span class="color-step">Step 6: Load and unload the content</span>
 
-### <span class="color-sub-step">Step 5.1: Create atlas data fields</span>
+### <span class="color-sub-step">Step 6.1: Load texture atlas content</span>
 
-```csharp
-public class Game: Window
-{
-	...
-	private AtlasSubTextureData[]? subTextureData;
-}
-```
-
-### <span class="color-sub-step">Step 5.2: Load atlas data</span>
-
-Next, let's create an `OnLoad()` method override and add code to the method to load the atlas data.
+Next, let's create the `OnLoad()` override method and add code to the method to create an atlas
+loader and load the atlas data.
 
 ```csharp
 protected override void OnLoad()
 {
+    this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader(this.batcher);
+
 	// Loads the atlas.png and atlas.json file
 	var atlasData = ContentLoader.LoadAtlas("atlas");
 
@@ -184,6 +189,7 @@ protected override void OnLoad()
 	base.OnLoad();
 }
 ```
+
 The `atlasData` variable will contain the loaded texture and the metadata for the texture.
 We can use this data to make decisions on animation, positioning and more.
 
@@ -234,12 +240,42 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 </details>
 :::
 
+### <span class="color-sub-step">Step 6.2: Unload content</span>
 
-## <span class="color-step">Step 6: Let's animate</span>
+Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
+To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the atlas loader
+and send in the `IAtlasData` class field we created earlier.  To do this, we need to add the `Velaptor.ExtensionMethods` namespace
+to the top of the file.
+
+Add the following using statement.
+
+```csharp
+...
+using Velaptor.ExtensionMethods; // Add this line here
+...
+public class Game : Window
+{
+    ...
+}
+```
+
+Now we can override the `OnUnload()` method and unload the font.
+
+```csharp
+protected override void OnUnload()
+{
+    this.atlasLoader.Unload(this.atlasTexture);
+    base.OnUnload();
+}
+
+```
+
+
+## <span class="color-step">Step 7: Let's animate</span>
 
 Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` method to animate the sub-textures.
 
-### <span class="color-sub-step">Step 6.1: Tracking time</span>
+### <span class="color-sub-step">Step 7.1: Tracking time</span>
 
 For us to run an animation, we need to keep track of how much time has passed.
 Add the following fields to the `Game` class.
@@ -270,7 +306,7 @@ How fast you want to run your animation is up to you. You can make it run as fas
 </details>
 :::
 
-### <span class="color-sub-step">Step 6.2: Has enough time passed?</span>
+### <span class="color-sub-step">Step 7.2: Has enough time passed?</span>
 
 Add some code to the `OnUpdate()` method to check if enough time has passed to
 change the frame of the animation.
@@ -346,7 +382,7 @@ happen at a certain frequency. In this case, the speed at which we want our anim
 :::
 
 
-## <span class="color-step">Step 7: Render animation</span>
+## <span class="color-step">Step 8: Render animation</span>
 
 Now we can finally render the animation to the screen. Add the following code to the `OnDraw()` method.
 
@@ -391,9 +427,7 @@ the current frame or sub-texture is located. We then render only that sub-textur
 
 The `srcRect` and `destRect` variables are what tell Velaptor the _**section**_ of the atlas to render.
 
-The 
-
-## <span class="color-step">Step 8: Run it</span>
+## <span class="color-step">Step 9: Run it</span>
 
 Run the game and see the results!  You should see a small window with a blue flame
 animating in the center of the window as shown below.
@@ -405,12 +439,12 @@ The animation will be much smoother than what is shown here.
 ![Flame Animation](@site/static/img/tutorials/guides/rendering-atlas-textures/flame.gif)
 
 
-## <span class="color-step">Step 9: Bonus</span>
+## <span class="color-step">Step 10: Bonus</span>
 
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
 
-### <span class="color-sub-step">Step 9.1: Add more fields</span>
+### <span class="color-sub-step">Step 10.1: Add more fields</span>
 
 Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between horizontal
 or non-horizontal orientation. The `horizontalLayout` field will be the layout setting at the time of rendering.
@@ -425,7 +459,7 @@ public class Game: Window
 }
 ```
 
-### <span class="color-sub-step">Step 9.2: Add flip behavior</span>
+### <span class="color-sub-step">Step 10.2: Add flip behavior</span>
 
 Add the following code to randomly choose whether or not the flame should be flipped horizontally to the
 bottom of the `if` block. This will choose a number between the values 0 and 1. If 0 is chosen,
@@ -452,7 +486,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 9.3: Run it</span>
+### <span class="color-sub-step">Step 10.3: Run it</span>
 
 Now run your game again and the flame will be a little bit more realistic to the randomness of
 the orientation of the flame!!

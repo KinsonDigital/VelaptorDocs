@@ -224,6 +224,8 @@ public float YMin { get; set; }
 
 ### Equals(object) 
 
+Determines whether the specified object is equal to the current object.
+
 ```csharp
 public override bool Equals(object? obj);
 ```
@@ -233,12 +235,17 @@ public override bool Equals(object? obj);
 
 `obj` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
+The object to compare with the current object.
+
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') if the specified object  is equal to the current object; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool').
 
 <a name='Velaptor.Graphics.GlyphMetrics.Equals(Velaptor.Graphics.GlyphMetrics)'></a>
 
 ### Equals(GlyphMetrics) 
+
+Defines a generalized method that a value type or class implements to create a type-specific method for determining equality of instances.
 
 ```csharp
 public bool Equals(Velaptor.Graphics.GlyphMetrics other);
@@ -256,23 +263,29 @@ public bool Equals(Velaptor.Graphics.GlyphMetrics other);
 
 ### GetHashCode() 
 
+Returns the hash code for this instance.
+
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Graphics.GlyphMetrics.ToString()'></a>
 
 ### ToString() 
+
+Returns the fully qualified type name of this instance.
 
 ```csharp
 public override string ToString();
 ```
 
 #### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The fully qualified type name.
 ### Operators
 
 <a name='Velaptor.Graphics.GlyphMetrics.op<Equality(Velaptor.Graphics.GlyphMetrics,Velaptor.Graphics.GlyphMetrics)'></a>

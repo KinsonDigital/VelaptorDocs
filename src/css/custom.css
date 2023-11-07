@@ -6,16 +6,16 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --doc-sidebar-width: 455px !important;
+    --ifm-color-primary: #2e8555;
+    --ifm-color-primary-dark: #29784c;
+    --ifm-color-primary-darker: #277148;
+    --ifm-color-primary-darkest: #205d3b;
+    --ifm-color-primary-light: #33925d;
+    --ifm-color-primary-lighter: #359962;
+    --ifm-color-primary-lightest: #3cad6e;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --doc-sidebar-width: 455px !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -30,81 +30,84 @@
 }
 
 .link {
-	color: #c29f8a;
+    color: #c29f8a;
 }
 
 .color-step {
-  color: #a3836b;
+    color: #a3836b;
 }
 
 .color-sub-step {
-  color: #a69384;
+    color: #a69384;
 }
 
 /* Discord Logo for navbar link */
 .header-discord-link:hover:after {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .header-discord-link:after {
-  /* transition: opacity 0.2s; */
-  content: "";
-  width: 48px;
-  height: 48px;
-  display: flex;
-  background-image: url("../../static/img/discord.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 12px;
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 48px;
+    height: 48px;
+    display: flex;
+    background-image: url("../../static/img/discord.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
 }
 
-.header-discord-link:after, .header-discord-link:after {
-  border-style: none !important;
-  margin-left: -5px !important;
+.header-discord-link:after,
+.header-discord-link:after {
+    border-style: none !important;
+    margin-left: -5px !important;
 }
 
 
 /* Github Logo (dark mode) for navbar link */
 [data-theme='dark'] .header-github-link:hover:after {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 [data-theme='dark'] .header-github-link:after {
-  /* transition: opacity 0.2s; */
-  content: "";
-  width: 40px;
-  height: 40px;
-  display: flex;
-  background-image: url("../../static/img/github-dark-mode.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 12px;
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 40px;
+    height: 40px;
+    display: flex;
+    background-image: url("../../static/img/github-dark-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
 }
 
-[data-theme='dark'] .header-github-link:after, .header-github-link:after {
-  border-style: none !important;
-  margin-left: -5px !important;
+[data-theme='dark'] .header-github-link:after,
+.header-github-link:after {
+    border-style: none !important;
+    margin-left: -5px !important;
 }
 
 
 /* Github Logo (light mode) for navbar link */
 [data-theme='light'] .header-github-link:hover:after {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 [data-theme='light'] .header-github-link:after {
-  /* transition: opacity 0.2s; */
-  content: "";
-  width: 40px;
-  height: 40px;
-  display: flex;
-  background-image: url("../../static/img/github-light-mode.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 12px;
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 40px;
+    height: 40px;
+    display: flex;
+    background-image: url("../../static/img/github-light-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
 }
 
-[data-theme='light'] .header-github-link:after, .header-github-link:after {
-  border-style: none !important;
-  margin-left: -5px !important;
+[data-theme='light'] .header-github-link:after,
+.header-github-link:after {
+    border-style: none !important;
+    margin-left: -5px !important;
 }

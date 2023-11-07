@@ -7,10 +7,15 @@
             "command": "deno",
 			"args": [
 				"run",
-				"-A",
+				"--allow-read",
+				"--allow-write",
+				"--allow-sys",
+				"--allow-net",
+				"--allow-run",
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
 				"${workspaceFolder}/docs/api",
 				"no-value",
+				"${env:CICD_TOKEN}",
 				"true", // Is Interactive
 			]
         },
@@ -140,6 +145,7 @@
 				"run",
 				"--allow-read",
 				"--allow-run",
+				"--allow-sys",
 				"${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
 			]
 		}

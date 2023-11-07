@@ -122,7 +122,8 @@ jobs:
             --allow-net `
             "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
             "${{ github.workspace }}/docs/api" `
-            "${{ inputs.api-version }}";
+            "${{ inputs.api-version }}" `
+            "${{ secrets.CICD_TOKEN }}";
 
       - name: Install Dependencies (YARN)
         run: yarn install;

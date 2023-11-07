@@ -1,7 +1,7 @@
 import { Input, Select } from "../deps.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
 
-if (Deno.args.length < 2) {
+if (Deno.args.length < 3) {
 	const errorMsg = `The required number of arguments is 2 but only '${Deno.args.length}' were given.`;
 	console.error(`::error::${errorMsg}`);
 }
@@ -9,9 +9,10 @@ if (Deno.args.length < 2) {
 const generateOutputDirPath: string = Deno.args[0];
 let tagOrBranch = Deno.args[1].trim().toLowerCase();
 
-const isInteractive = Deno.args.length >= 3 &&
-	Deno.args.length === 3 &&
-	Deno.args[2].trim().toLowerCase() === "true";
+const token = Deno.args[2].trim();
+
+// Optional argument
+const isInteractive = Deno.args.length >= 4 && Deno.args[3].trim().toLowerCase() === "true";
 
 console.log(`Generate Output Dir Path: ${generateOutputDirPath}`);
 
@@ -53,7 +54,7 @@ if (isInteractive) {
 	tagOrBranch = tagOrBranch.startsWith("v") ? tagOrBranch : `v${tagOrBranch}`;
 }
 
-const docProcessor = new DocProcessor();
+const docProcessor = new DocProcessor(token);
 
 if (generateSrcType === "branch") {
 	await docProcessor.generateFromBranch(generateOutputDirPath, tagOrBranch);

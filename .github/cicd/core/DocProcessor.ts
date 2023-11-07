@@ -21,11 +21,12 @@ export class DocProcessor {
 
 	/**
 	 * Initializes a new instance of the DocProcessor class.
+	 * @param token The GitHub token to use for accessing the GitHub API.
 	 */
-	constructor() {
+	constructor(token: string) {
 		this.cloneService = new CloneRepoService();
 		this.validateReleaseService = new ValidateReleaseService();
-		this.defaultDocTool = new DefaultDocTool();
+		this.defaultDocTool = new DefaultDocTool(token);
 		this.yarn = new Yarn();
 	}
 

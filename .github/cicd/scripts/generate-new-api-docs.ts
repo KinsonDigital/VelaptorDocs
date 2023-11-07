@@ -2,8 +2,14 @@ import { Input, Select } from "../deps.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
 
 if (Deno.args.length < 3) {
-	const errorMsg = `The required number of arguments is 2 but only '${Deno.args.length}' were given.`;
+	let errorMsg = `The required number of arguments is 3 but only '${Deno.args.length}' were given.`;
+	errorMsg += "\nThe required arguments are:";
+	errorMsg += "\n\t1. The path to the directory to generate the API documentation.";
+	errorMsg += "\n\t2. The tag or branch name to generate the API documentation from.";
+	errorMsg += "\n\t3. The GitHub token to use for accessing the GitHub API.";
+
 	console.error(`::error::${errorMsg}`);
+	Deno.exit(1);
 }
 
 const generateOutputDirPath: string = Deno.args[0];

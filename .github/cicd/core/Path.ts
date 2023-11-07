@@ -1,5 +1,5 @@
 import { Utils } from "./Utils.ts";
-import { dirname, extname } from "std/path/mod.ts";
+import { dirname, extname } from "../deps.ts";
 
 /**
  * Provides path related operations.

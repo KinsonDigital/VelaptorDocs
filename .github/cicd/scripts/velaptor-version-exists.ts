@@ -1,4 +1,4 @@
-import { TagClient } from "clients/TagClient.ts";
+import { TagClient } from "../deps.ts";
 
 if (Deno.args.length < 2) {
 	const errorMsg = `The required number of arguments is 2 but received ${Deno.args.length}.`;

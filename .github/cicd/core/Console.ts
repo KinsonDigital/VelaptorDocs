@@ -1,4 +1,4 @@
-import { writeAllSync } from "std/streams/write_all.ts";
+import { writeAllSync } from "../deps.ts";
 
 /**
  * Provides the ability read from and write to the console.

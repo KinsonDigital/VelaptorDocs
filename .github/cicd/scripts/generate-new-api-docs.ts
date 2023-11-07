@@ -1,4 +1,4 @@
-import { Input, Select } from "cliffy/prompt/mod.ts";
+import { Input, Select } from "../deps.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
 
 if (Deno.args.length < 2) {

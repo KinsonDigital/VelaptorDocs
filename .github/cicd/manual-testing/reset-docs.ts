@@ -1,6 +1,6 @@
-import { emptyDirSync } from "std/fs/empty_dir.ts";
-import { copySync } from "std/fs/copy.ts";
-import { ensureDirSync } from "std/fs/ensure_dir.ts";
+import { emptyDirSync } from "../deps.ts";
+import { copySync } from "../deps.ts";
+import { ensureDirSync } from "../deps.ts";
 
 const blueText = "\u001b[1;34m";
 const white = "\u001b[0m";

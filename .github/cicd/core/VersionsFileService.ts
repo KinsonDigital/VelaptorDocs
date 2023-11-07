@@ -1,4 +1,4 @@
-import { extname } from "std/path/mod.ts";
+import { extname } from "../deps.ts";
 import { Guard } from "./Guard.ts";
 import { Utils } from "./Utils.ts";
 

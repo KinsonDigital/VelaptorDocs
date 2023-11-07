@@ -189,10 +189,6 @@ export class Path {
 
 		path = path.replaceAll("\\", "/");
 
-		if (this.isFilePath(path)) {
-			return path;
-		}
-
 		return path.endsWith("/") ? path : `${path}/`;
 	}
 

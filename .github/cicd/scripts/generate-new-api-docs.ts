@@ -1,6 +1,8 @@
 import { Input, Select } from "../deps.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
 
+console.clear();
+
 if (Deno.args.length < 3) {
 	let errorMsg = `The required number of arguments is 3 but only '${Deno.args.length}' were given.`;
 	errorMsg += "\nThe required arguments are:";
@@ -23,10 +25,10 @@ const isInteractive = Deno.args.length >= 4 && Deno.args[3].trim().toLowerCase()
 console.log(`Generate Output Dir Path: ${generateOutputDirPath}`);
 
 /*NOTE:
-  This script is executed by the 'api-release.yml' workflow.  The workflow
-  will always execute this script as being non-interactive, and will also
-  always pass in a tag/version value.
- */
+	This script is executed by the 'api-release.yml' workflow.  The workflow
+	will always execute this script as being non-interactive, and will also
+	always pass in a tag/version value.
+*/
 
 // Set to a default value of 'api version' for non-interactive mode
 let generateSrcType = "api version";
@@ -41,7 +43,7 @@ if (isInteractive) {
 	const message = generateSrcType === "api version"
 		? "Enter the release version"
 		: "Enter the branch name";
-	
+
 	const minLength = generateSrcType === "api version" ? 5 : 0;
 
 	tagOrBranch = await Input.prompt({

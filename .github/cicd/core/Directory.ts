@@ -48,6 +48,7 @@ export class Directory {
 
 		if (dirPath === undefined || dirPath === null || dirPath === "") {
 			const errorMsg = "The dirPath parameter cannot be null or empty.";
+			console.log(errorMsg);
 			Deno.exit(1);
 		}
 

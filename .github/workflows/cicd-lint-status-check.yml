@@ -28,4 +28,4 @@ jobs:
         deno-version: ${{ vars.DENO_VERSION }}
 
     - name: Run Lint
-      run: deno lint
+      run: deno lint ./.github/cicd

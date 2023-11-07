@@ -26,7 +26,7 @@ let totalPassed = 0;
 let totalFailed = 0;
 
 // Perform a deno check on all of the files
-for await (let file of files) {
+for await (const file of files) {
 	const logStart = new TextEncoder().encode(`Checking ${file}`);
 	Deno.stdout.writeSync(logStart);
 	

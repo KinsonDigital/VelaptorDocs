@@ -10,11 +10,13 @@ export class CLI {
 	public async runAsync(command: string): Promise<string | Error> {
 		if (command === undefined || command === null || command === "") {
 			const errorMsg = "The command parameter cannot be null or empty.";
+			console.log(errorMsg);
 			Deno.exit(1);
 		}
 
 		if (!command.includes(" ")) {
 			const errorMsg = "The command parameter must include a space.";
+			console.log(errorMsg);
 			Deno.exit(1);
 		}
 

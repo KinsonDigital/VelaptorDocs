@@ -13,7 +13,7 @@ export class CloneRepoService {
 	 * @param tagOrBranch The tag or branch name of the repository to clone.
 	 */
 	public cloneRepo(tagOrBranch: string): void {
-		if (Utils.isNullOrEmpty(tagOrBranch)) {
+		if (Utils.isNothing(tagOrBranch)) {
 			throw Error("The tag or branch name must not be null, undefined, or empty.");
 		}
 

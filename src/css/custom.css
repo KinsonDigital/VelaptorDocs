@@ -6,106 +6,108 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --doc-sidebar-width: 455px !important;
+    --ifm-color-primary: #2e8555;
+    --ifm-color-primary-dark: #29784c;
+    --ifm-color-primary-darker: #277148;
+    --ifm-color-primary-darkest: #205d3b;
+    --ifm-color-primary-light: #33925d;
+    --ifm-color-primary-lighter: #359962;
+    --ifm-color-primary-lightest: #3cad6e;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --doc-sidebar-width: 455px !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #c29f8a;
-  --ifm-color-primary-dark: #dcc8bc;
-  --ifm-color-primary-darker: #cdb1a0;
-  --ifm-color-primary-darkest: #bc967f;
-  --ifm-color-primary-light: #c9aa96;
-  --ifm-color-primary-lighter: #bb947c;
-  --ifm-color-primary-lightest: #b68d73;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    --ifm-color-primary: #a3836b;
+    --ifm-color-primary-dark: #96755d;
+    --ifm-color-primary-darker: #8e6f58;
+    --ifm-color-primary-darkest: #755b48;
+    --ifm-color-primary-light: #ad917c;
+    --ifm-color-primary-lighter: #b39884;
+    --ifm-color-primary-lightest: #c2ad9d;
 }
 
 .link {
-	color: #c29f8a;
+    color: #c29f8a;
 }
 
 .color-step {
-  color: #c29f8a;
+    color: #a3836b;
 }
 
 .color-sub-step {
-  color: #b3a398;
+    color: #a69384;
 }
 
 /* Discord Logo for navbar link */
 .header-discord-link:hover:after {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .header-discord-link:after {
-  /* transition: opacity 0.2s; */
-  content: "";
-  width: 48px;
-  height: 48px;
-  display: flex;
-  background-image: url("../../static/img/discord.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 12px;
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 48px;
+    height: 48px;
+    display: flex;
+    background-image: url("../../static/img/discord.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
 }
 
-.header-discord-link:after, .header-discord-link:after {
-  border-style: none !important;
-  margin-left: -5px !important;
+.header-discord-link:after,
+.header-discord-link:after {
+    border-style: none !important;
+    margin-left: -5px !important;
 }
 
 
 /* Github Logo (dark mode) for navbar link */
 [data-theme='dark'] .header-github-link:hover:after {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 [data-theme='dark'] .header-github-link:after {
-  /* transition: opacity 0.2s; */
-  content: "";
-  width: 40px;
-  height: 40px;
-  display: flex;
-  background-image: url("../../static/img/github-dark-mode.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 12px;
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 40px;
+    height: 40px;
+    display: flex;
+    background-image: url("../../static/img/github-dark-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
 }
 
-[data-theme='dark'] .header-github-link:after, .header-github-link:after {
-  border-style: none !important;
-  margin-left: -5px !important;
+[data-theme='dark'] .header-github-link:after,
+.header-github-link:after {
+    border-style: none !important;
+    margin-left: -5px !important;
 }
 
 
 /* Github Logo (light mode) for navbar link */
 [data-theme='light'] .header-github-link:hover:after {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 [data-theme='light'] .header-github-link:after {
-  /* transition: opacity 0.2s; */
-  content: "";
-  width: 40px;
-  height: 40px;
-  display: flex;
-  background-image: url("../../static/img/github-light-mode.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 12px;
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 40px;
+    height: 40px;
+    display: flex;
+    background-image: url("../../static/img/github-light-mode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
 }
 
-[data-theme='light'] .header-github-link:after, .header-github-link:after {
-  border-style: none !important;
-  margin-left: -5px !important;
+[data-theme='light'] .header-github-link:after,
+.header-github-link:after {
+    border-style: none !important;
+    margin-left: -5px !important;
 }

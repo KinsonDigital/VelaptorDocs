@@ -126,6 +126,22 @@
 					"${workspaceFolder}/.github/cicd/scripts/delete-api-docs.ts",
 				]
 			}
+		},
+		{ // DENO CHECK ALL FILES
+			"label": "Deno Check All Files",
+			"dependsOn": [ "Disable Testing Environment" ],
+			"detail": "Runs deno check on all files in the project.",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"command": "deno",
+			"args": [
+				"run",
+				"--allow-read",
+				"--allow-run",
+				"${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
+			]
 		}
     ]
 }

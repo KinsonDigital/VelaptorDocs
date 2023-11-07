@@ -37,7 +37,7 @@ jobs:
     needs: validate_branch
     runs-on: ubuntu-latest
     steps:
-      - name:  Checkout Repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
       - name: Validate Syntax
@@ -73,7 +73,7 @@ jobs:
       group: "pages"
       cancel-in-progress: true
     steps:
-      - name:  Checkout Repo
+      - name: Checkout Repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.CICD_TOKEN }}

@@ -35,11 +35,11 @@ export class File {
 	public static writeTextFileSync(filePath: string, fileContent: string): void {
 		Guard.isNotUndefinedOrEmpty(filePath, "filePath");
 
-		if (Utils.isNullOrEmpty(fileContent)) {
+		if (Utils.isNothing(fileContent)) {
 			return;
 		}
 
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			throw new Error(`The parameter '${filePath}' must not be null or empty.`);
 		}
 
@@ -87,7 +87,7 @@ export class File {
 	 * @param {string} filePath The file to delete.
 	 */
 	public static deleteFile(filePath: string): void {
-		if (Utils.isNullOrEmpty(filePath)) {
+		if (Utils.isNothing(filePath)) {
 			throw new Error(`The 'filePath' parameter must not be null or empty.`);
 		}
 

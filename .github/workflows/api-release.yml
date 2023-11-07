@@ -98,9 +98,7 @@ jobs:
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
-          deno run `
-            --allow-read `
-            --allow-write `
+          deno run --allow-read --allow-write `
             "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `
@@ -108,18 +106,13 @@ jobs:
 
       - name: Remove Oldest API Version
         run: |
-          deno run `
-            --allow-read `
-            --allow-write `
+          deno run --allow-read --allow-write `
             "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
         run: |
           deno run `
-            --allow-read `
-            --allow-write `
-            --allow-run `
-            --allow-net `
+            --allow-read --allow-write --allow-run --allow-net `
             "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
             "${{ github.workspace }}/docs/api" `
             "${{ inputs.api-version }}" `
@@ -149,10 +142,7 @@ jobs:
 
           # NOTE: The script executed below sets the step output.  This is why the output file
           # path is passed in as an argument using the '$outputFilePath' variable.
-          deno run `
-            --allow-read `
-            --allow-write `
-            --allow-env `
+          deno run --allow-read --allow-write --allow-env `
             "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
             "$outputFilePath";
   

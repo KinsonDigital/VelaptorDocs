@@ -1,11 +1,13 @@
-import { TagClient } from "clients/TagClient.ts";
-import { NuGetClient } from "clients/NuGetClient.ts";
+import { TagClient, NuGetClient } from "../deps.ts";
 import { Utils } from "./Utils.ts";
 
 /**
  * Validates that a Velaptor release exists.
  */
 export class ValidateReleaseService {
+	private readonly ownerName = "KinsonDigital";
+	private readonly repoName = "Velaptor";
+
 	/**
 	 * Returns a value indicating whether or not the release exists.
 	 * @param version The release version to check.
@@ -32,9 +34,9 @@ export class ValidateReleaseService {
 			throw Error("The tag to check is required.");
 		}
 
-		const tagClient: TagClient = new TagClient();
+		const tagClient: TagClient = new TagClient(this.ownerName, this.repoName);
 
-		return await tagClient.tagExists("Velaptor", tagToCheck);
+		return await tagClient.tagExists(tagToCheck);
 	}
 
 	/**

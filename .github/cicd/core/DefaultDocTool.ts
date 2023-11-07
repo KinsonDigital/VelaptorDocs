@@ -1,3 +1,4 @@
+import { RepoClient } from "../deps.ts";
 import { Directory } from "./Directory.ts";
 import { DotNetToolService } from "./DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
@@ -7,14 +8,20 @@ import { Utils } from "./Utils.ts";
  */
 export class DefaultDocTool {
 	private readonly dotNetToolService: DotNetToolService;
-	private readonly defaultDocToolVersion = "0.8.2";
+	private readonly repoClient: RepoClient;
 	private readonly defaultDocToolName = "defaultdocumentation.console";
+	private readonly DEFAULT_DOC_DOTNET_TOOL_VERSION = "DEFAULT_DOC_DOTNET_TOOL_VERSION";
 
 	/**
 	 * Initializes a new instance of the DefaultDocTool class.
+	 * @param token The GitHub token to use for accessing the GitHub API.
 	 */
-	constructor() {
+	constructor(token: string) {
+		const ownerName = "KinsonDigital";
+		const repoName = "VelaptorDocs";
+
 		this.dotNetToolService = new DotNetToolService();
+		this.repoClient = new RepoClient(ownerName, repoName, token);
 	}
 
 	/**
@@ -32,7 +39,23 @@ export class DefaultDocTool {
 		Utils.isNothing(outputDirPath);
 		Utils.isNothing(configFilePath);
 
-		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, this.defaultDocToolVersion);
+		const defaultDocToolRepoVar = (await this.repoClient.getVariables()).find((repoVar) => {
+			return repoVar.name === this.DEFAULT_DOC_DOTNET_TOOL_VERSION;
+		});
+
+		if (defaultDocToolRepoVar === undefined) {
+			let errorMsg = `The required repo variable '${this.DEFAULT_DOC_DOTNET_TOOL_VERSION}' was not found.`;
+			errorMsg += "\nPlease create the variable in the repo settings and try again.";
+			errorMsg += "\nThe required variable is used to specify the version of the ";
+			errorMsg += `dotnet tool '${this.defaultDocToolName}' to use.`;
+			Deno.exit(1);
+		}
+
+		const defaultDocToolVersion = defaultDocToolRepoVar.value.toLowerCase().startsWith("v")
+			? defaultDocToolRepoVar.value.substring(1)
+			: defaultDocToolRepoVar.value;
+
+		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, defaultDocToolVersion);
 
 		if (Directory.exists(outputDirPath)) {
 			Deno.removeSync(outputDirPath, { recursive: true });

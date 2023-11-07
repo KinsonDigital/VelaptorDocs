@@ -1,5 +1,3 @@
-import { writeAllSync } from "std/streams/write_all.ts";
-
 /**
  * Provides the ability read from and write to the console.
  */
@@ -10,7 +8,8 @@ export class Console {
 	 */
 	public writeLine(text: string): void {
 		const encodedText = new TextEncoder().encode(text);
-		writeAllSync(Deno.stdout, encodedText);
+
+		Deno.stdout.writeSync(encodedText);
 	}
 
 	/**

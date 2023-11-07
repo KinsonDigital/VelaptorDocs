@@ -1,4 +1,4 @@
-import { Input } from "cliffy/prompt/input.ts";
+import { Input } from "../deps.ts";
 
 console.clear();
 

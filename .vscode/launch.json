@@ -15,7 +15,10 @@
                 "--inspect-wait",
                 "--allow-all"
             ],
-			"args": ["${workspaceFolder}"],
+			"args": [
+				"${workspaceFolder}",
+				"${env:CICD_TOKEN}",
+			],
             "attachSimplePort": 9229,
             "windows": {
                 "runtimeExecutable": "${userHome}/.deno/bin/deno.exe"
@@ -110,12 +113,17 @@
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
-                "--allow-all",
+                "--allow-read",
+				"--allow-write",
+				"--allow-sys",
+				"--allow-net",
+				"--allow-run",
             ],
 			"args": [
 				"${workspaceFolder}/docs/api",
 				"v1.0.0-preview.24",
-				"false" // Is Interactive
+				"${env:CICD_TOKEN}",
+				"true" // Is Interactive
 			],
 			"console": "integratedTerminal",
             "attachSimplePort": 9229
@@ -165,6 +173,7 @@
 				"--inspect-wait",
 				"--allow-read",
 				"--allow-run",
+				"--allow-sys",
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"

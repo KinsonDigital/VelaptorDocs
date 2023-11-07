@@ -1,25 +1,34 @@
-import { Input, Select } from "cliffy/prompt/mod.ts";
+import { Input, Select } from "../deps.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
 
-if (Deno.args.length < 2) {
-	const errorMsg = `The required number of arguments is 2 but only '${Deno.args.length}' were given.`;
+console.clear();
+
+if (Deno.args.length < 3) {
+	let errorMsg = `The required number of arguments is 3 but only '${Deno.args.length}' were given.`;
+	errorMsg += "\nThe required arguments are:";
+	errorMsg += "\n\t1. The path to the directory to generate the API documentation.";
+	errorMsg += "\n\t2. The tag or branch name to generate the API documentation from.";
+	errorMsg += "\n\t3. The GitHub token to use for accessing the GitHub API.";
+
 	console.error(`::error::${errorMsg}`);
+	Deno.exit(1);
 }
 
 const generateOutputDirPath: string = Deno.args[0];
 let tagOrBranch = Deno.args[1].trim().toLowerCase();
 
-const isInteractive = Deno.args.length >= 3 &&
-	Deno.args.length === 3 &&
-	Deno.args[2].trim().toLowerCase() === "true";
+const token = Deno.args[2].trim();
+
+// Optional argument
+const isInteractive = Deno.args.length >= 4 && Deno.args[3].trim().toLowerCase() === "true";
 
 console.log(`Generate Output Dir Path: ${generateOutputDirPath}`);
 
 /*NOTE:
-  This script is executed by the 'api-release.yml' workflow.  The workflow
-  will always execute this script as being non-interactive, and will also
-  always pass in a tag/version value.
- */
+	This script is executed by the 'api-release.yml' workflow.  The workflow
+	will always execute this script as being non-interactive, and will also
+	always pass in a tag/version value.
+*/
 
 // Set to a default value of 'api version' for non-interactive mode
 let generateSrcType = "api version";
@@ -34,7 +43,7 @@ if (isInteractive) {
 	const message = generateSrcType === "api version"
 		? "Enter the release version"
 		: "Enter the branch name";
-	
+
 	const minLength = generateSrcType === "api version" ? 5 : 0;
 
 	tagOrBranch = await Input.prompt({
@@ -53,7 +62,7 @@ if (isInteractive) {
 	tagOrBranch = tagOrBranch.startsWith("v") ? tagOrBranch : `v${tagOrBranch}`;
 }
 
-const docProcessor = new DocProcessor();
+const docProcessor = new DocProcessor(token);
 
 if (generateSrcType === "branch") {
 	await docProcessor.generateFromBranch(generateOutputDirPath, tagOrBranch);

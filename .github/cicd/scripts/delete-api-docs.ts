@@ -1,6 +1,6 @@
 import { Directory } from "../core/Directory.ts";
 import { Path } from "../core/Path.ts";
-import { Select } from "cliffy/prompt/select.ts";
+import { Select } from "../deps.ts";
 import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
 import { chalk } from "../core/chalk.ts";
 

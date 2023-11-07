@@ -1,4 +1,4 @@
-import { TagClient } from "clients/TagClient.ts";
+import { TagClient } from "../deps.ts";
 
 if (Deno.args.length < 2) {
 	const errorMsg = `The required number of arguments is 2 but received ${Deno.args.length}.`;
@@ -35,9 +35,12 @@ if (!versionRegex.test(version)) {
 	Deno.exit(1);
 }
 
-const tagClient: TagClient = new TagClient(token);
+const ownerName = "KinsonDigital";
+const repoName = "Velaptor";
 
-const versionDoesNotExist = !(await tagClient.tagExists("Velaptor", version));
+const tagClient: TagClient = new TagClient(ownerName, repoName, token);
+
+const versionDoesNotExist = !(await tagClient.tagExists(version));
 
 if (versionDoesNotExist) {
 	const errorMsg = `The Velaptor version '${version}' does not exist.`;

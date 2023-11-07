@@ -1,4 +1,4 @@
-import { resolve } from "std/path/mod.ts";
+import { resolve } from "../deps.ts";
 import { Utils } from "./Utils.ts";
 
 /**

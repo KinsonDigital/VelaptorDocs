@@ -1,50 +1,52 @@
 {
-  "name": "velaptor-docs",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "yarn install && docusaurus start",
-    "build": "yarn install && docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc",
-    "clean": "@powershell Remove-Item .\\node_modules -Force -Recurse"
-  },
-  "dependencies": {
-    "@docusaurus/core": "^3.0.0",
-    "@docusaurus/preset-classic": "^3.0.0",
-    "@docusaurus/theme-mermaid": "^3.0.0",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^1.2.1",
-    "prism-react-renderer": "^2.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.0.0",
-    "@docusaurus/types": "3.0.0",
-    "@docusaurus/tsconfig": "^3.0.0",
-    "@types/react": "^18.2.29",
-    "typescript": "~5.2.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "engines": {
-    "node": ">=18.0"
-  }
+    "name": "velaptor-docs",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "docusaurus": "docusaurus",
+        "start": "pnpm i && docusaurus start",
+        "build": "pnpm i && docusaurus build",
+        "swizzle": "docusaurus swizzle",
+        "deploy": "docusaurus deploy",
+        "clear": "docusaurus clear",
+        "serve": "docusaurus serve",
+        "write-translations": "docusaurus write-translations",
+        "write-heading-ids": "docusaurus write-heading-ids",
+        "typecheck": "tsc",
+        "clean": "node -e \"var fs = require('fs'); fs.rmdirSync('./node_modules', { recursive: true });\"",
+        "reinstall-deps": "pnpm run clean && pnpm install",
+        "preinstall": "npx only-allow pnpm"
+    },
+    "dependencies": {
+        "@docusaurus/core": "^3.0.0",
+        "@docusaurus/preset-classic": "^3.0.0",
+        "@docusaurus/theme-mermaid": "^3.0.0",
+        "@mdx-js/react": "^3.0.0",
+        "clsx": "^1.2.1",
+        "prism-react-renderer": "^2.1.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@docusaurus/module-type-aliases": "^3.0.0",
+        "@docusaurus/tsconfig": "^3.0.0",
+        "@docusaurus/types": "3.0.0",
+        "@types/react": "^18.2.29",
+        "typescript": "~5.2.2"
+    },
+    "browserslist": {
+        "production": [
+            ">0.5%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "engines": {
+        "node": ">=18.0"
+    }
 }

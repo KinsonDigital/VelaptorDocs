@@ -59,6 +59,9 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
+      - name: Setup PNPM
+        run: iwr https://get.pnpm.io/install.ps1 -useb | iex
+
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
@@ -70,8 +73,8 @@ jobs:
             "next-version" `
             "enable";
 
-      - name: Install Dependencies (YARN)
-        run: yarn install;
+      - name: Install Dependencies (pnpm)
+        run: pnpm install;
 
       - name: Update Website Version
         id: apply_version_to_site
@@ -96,7 +99,7 @@ jobs:
             "$outputFilePath";
   
       - name: Build Site
-        run: yarn build
+        run: pnpm build
   
       - name: Setup Pages
         uses: actions/configure-pages@v3

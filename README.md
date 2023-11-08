@@ -18,7 +18,7 @@ Hello!!  This repository is for the documentation website for [Velaptor](https:/
 ## **How to Contribute**
 </span>
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 Please refer to the original [Docusaurus Documentation](https://docusaurus.io/docs) to learn about how it works and how to get started.
 
 Below are simple steps you will need when contributing.
@@ -48,28 +48,16 @@ Below are simple steps you will need when contributing.
 
 ### **Install npm packages**
 
-```bash
-yarn
-```
+Use the command `pnpm i` or `pnpm install` to install all of the project's dependencies.
 
 ### **Local Development Server**
 
-```bash
-yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Use the command `pnpm start` to starts a local development server. Most changes are reflected HMR(Hot Module Replacement) without having to restart the server.
 
 ### **Build**
 
-```bash
-yarn build
-```
-
-This command performs a production build into the `build` directory and can be served using any static content hosting service.
+Use the command `pnpm build` to produce a production build of the site. This command puts the production build into the `build` directory and can be served using any static content hosting service.
 
 ### **Serve Build Locally**
 
-```bash
-yarn serve
-```
+Use the command `pnpm serve` to run a local server of the production version of the website.

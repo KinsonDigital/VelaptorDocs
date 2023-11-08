@@ -1,10 +1,10 @@
 {
-    "version": "2.0.0",
-    "tasks": [
+	"version": "2.0.0",
+	"tasks": [
 		{ // GENERATE API DOCS
-            "label": "Generate API Docs",
-            "type": "shell",
-            "command": "deno",
+			"label": "Generate API Docs",
+			"type": "shell",
+			"command": "deno",
 			"args": [
 				"run",
 				"--allow-read",
@@ -18,123 +18,131 @@
 				"${env:CICD_TOKEN}",
 				"true", // Is Interactive
 			]
-        },
-        { // RESET DOCS
-            "label": "Reset Docs",
-            "type": "shell",
-            "windows": {
-                "command": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'",
-            }
-        },
-        { // DISABLE TESTING ENVIRONMENT
-            "label": "Disable Testing Environment",
-            "type": "shell",
-            "windows": {
-                "command": "deno",
-                "args": [
-                    "run",
-                    "-A",
-                    "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-                    "disable"
-                ]
-            }
-        },
-        { // ENABLE TESTING ENVIRONMENT
-            "label": "Enable Testing Environment",
-            "type": "shell",
-            "windows": {
-                "command": "deno",
-                "args": [
-                    "run",
-                    "-A",
-                    "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-                    "enable"
-                ]
-            }
-        },
+		},
+		{ // RESET DOCS
+			"label": "Reset Docs",
+			"type": "shell",
+			"windows": {
+				"command": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'",
+			}
+		},
+		{ // DISABLE TESTING ENVIRONMENT
+			"label": "Disable Testing Environment",
+			"type": "shell",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"-A",
+					"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+					"disable"
+				]
+			}
+		},
+		{ // ENABLE TESTING ENVIRONMENT
+			"label": "Enable Testing Environment",
+			"type": "shell",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"-A",
+					"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+					"enable"
+				]
+			}
+		},
 		{ // TOGGLE TESTING ENVIRONMENT
-            "label": "Toggle Testing Environment",
-            "type": "shell",
-            "windows": {
-                "command": "deno",
-                "args": [
-                    "run",
-                    "-A",
-                    "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-                    "toggle"
-                ]
-            }
-        },
+			"label": "Toggle Testing Environment",
+			"type": "shell",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"-A",
+					"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+					"toggle"
+				]
+			}
+		},
 		{ // DISABLE NEXT VERSION
-            "label": "Disable Next Version",
-            "type": "shell",
-            "windows": {
-                "command": "deno",
-                "args": [
-                    "run",
-                    "-A",
-                    "${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+			"label": "Disable Next Version",
+			"type": "shell",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"-A",
+					"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
 					"${workspaceFolder}/docusaurus.config.js",
 					"next-version",
-                    "enable"
-                ]
-            }
-        },
+					"enable"
+				]
+			}
+		},
 		{ // ENABLE NEXT VERSION
-            "label": "Enable Next Version",
-            "type": "shell",
+			"label": "Enable Next Version",
+			"type": "shell",
 			"detail": "Enables the next version feature of docusaurus.",
-            "windows": {
-                "command": "deno",
-                "args": [
-                    "run",
-                    "-A",
-                    "${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"-A",
+					"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
 					"${workspaceFolder}/docusaurus.config.js",
 					"next-version",
-                    "disable"
-                ]
-            }
-        },
+					"disable"
+				]
+			}
+		},
 		{ // CREATE DOCUSAURUS VERSION
 			"label": "Create Docusaurus Version",
-            "type": "shell",
+			"type": "shell",
 			"detail": "Creates a new docusaurus API version.",
-            "windows": {
-                "command": "deno",
-                "args": [
-                    "run",
-                    "-A",
-                    "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
-                ]
-            }
+			"windows": {
+				"command": "deno",
+				"args": [
+					"run",
+					"-A",
+					"${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
+				]
+			}
 		},
-        { // BUILD
-            "label": "build",
-            "dependsOn": [ "Disable Testing Environment" ],
-            "type": "shell",
-            "windows": {
-                "command": "yarn",
-                "args": ["build"]
-            }
-        },
+		{ // BUILD
+			"label": "build",
+			"dependsOn": [
+				"Disable Testing Environment"
+			],
+			"type": "shell",
+			"windows": {
+				"command": "pnpm",
+				"args": [
+					"build"
+				]
+			}
+		},
 		{ // DELETE API DOCS
 			"label": "Delete API Docs",
-			"dependsOn": [ "Disable Testing Environment" ],
+			"dependsOn": [
+				"Disable Testing Environment"
+			],
 			"detail": "Deletes a version of the API docs.",
 			"type": "shell",
 			"windows": {
 				"command": "deno",
 				"args": [
 					"run",
-                    "-A",
+					"-A",
 					"${workspaceFolder}/.github/cicd/scripts/delete-api-docs.ts",
 				]
 			}
 		},
 		{ // DENO CHECK ALL FILES
 			"label": "Deno Check All Files",
-			"dependsOn": [ "Disable Testing Environment" ],
+			"dependsOn": [
+				"Disable Testing Environment"
+			],
 			"detail": "Runs deno check on all files in the project.",
 			"type": "shell",
 			"options": {
@@ -149,5 +157,5 @@
 				"${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
 			]
 		}
-    ]
+	]
 }

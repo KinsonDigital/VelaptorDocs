@@ -95,6 +95,9 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
+      - name: Setup PNPM
+        run: iwr https://get.pnpm.io/install.ps1 -useb | iex
+
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
@@ -118,14 +121,14 @@ jobs:
             "${{ inputs.api-version }}" `
             "${{ secrets.CICD_TOKEN }}";
 
-      - name: Install Dependencies (YARN)
-        run: yarn install;
+      - name: Install Dependencies (pnpm)
+        run: pnpm install;
 
       - name: Create Docusaurus Version (${{ inputs.api-version }})
         run: |
           $version = "${{ inputs.api-version }}";
           $version = $version.StartsWith("v") ? $version.Substring(1) : $version;
-          yarn docusaurus docs:version $version;
+          pnpm docusaurus docs:version $version;
 
       - name: Update Website Version
         id: apply_version_to_site
@@ -147,7 +150,7 @@ jobs:
             "$outputFilePath";
   
       - name: Build Site
-        run: yarn build
+        run: pnpm build
   
       - name: Setup Pages
         uses: actions/configure-pages@v3

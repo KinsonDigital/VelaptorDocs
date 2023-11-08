@@ -109,15 +109,19 @@
                 ]
             }
 		},
-        { // BUILD
-            "label": "build",
-            "dependsOn": [ "Disable Testing Environment" ],
-            "type": "shell",
-            "windows": {
-                "command": "yarn",
-                "args": ["build"]
-            }
-        },
+		{ // BUILD
+			"label": "build",
+			"dependsOn": [
+				"Disable Testing Environment"
+			],
+			"type": "shell",
+			"windows": {
+				"command": "pnpm",
+				"args": [
+					"build"
+				]
+			}
+		},
 		{ // DELETE API DOCS
 			"label": "Delete API Docs",
 			"dependsOn": [ "Disable Testing Environment" ],

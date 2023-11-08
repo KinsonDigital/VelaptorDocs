@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "yarn install && docusaurus start",
-    "build": "yarn install && docusaurus build",
+    "start": "pnpm i && docusaurus start",
+    "build": "pnpm i && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "clean": "@powershell Remove-Item .\\node_modules -Force -Recurse"
+    "clean": "@powershell Remove-Item .\\node_modules -Force -Recurse",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@docusaurus/core": "^3.0.0",

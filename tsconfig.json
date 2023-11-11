@@ -4,6 +4,7 @@
   "compilerOptions": {
     "baseUrl": ".",
 	"jsx": "preserve",
+	"esModuleInterop": true,
 	"paths": {
 		"@site/*": ["./*"]
 	  }

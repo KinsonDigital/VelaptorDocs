@@ -11,7 +11,7 @@ import { TutorialLink } from "@site/src/components/TutorialLink";
 This guide will show you the basics of rendering text to a window using **Velaptor**.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="RenderingText" version="v1.0.0-preview.28"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="RenderingText" version="v1.0.0-preview.30"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -23,9 +23,26 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 :::
 
 
-## <span class="color-step">Step 2: Setup window</span>
+## <span class="color-step">Step 2: Setup</span>
 
-Let's start simple and set the window size and title in the `Game` constructor.
+Let's setup the game window and create the necessary objects that will be used for rendering,
+loading content, and perform batching during rendering.
+
+### <span class="color-sub-step">Step 2.1: Create class fields</span>
+
+Create some class fields at the top of the class. These will be used for loading the font,
+rendering text, and rendering in a batch.
+
+```csharp
+private ILoader<IFont>? fontLoader; // Loads the font content
+private IFont? font; // Holds the font
+private IFontRenderer? fontRenderer; // Renders text using the font
+private IBatcher? batcher; // Renders the text in a batch
+```
+
+### <span class="color-sub-step">Step 2.2: Setup window</span>
+
+Set the window title and size in the `Game` constructor.  This is self explantory.
 
 ```csharp
 public Game()
@@ -36,30 +53,68 @@ public Game()
 }
 ```
 
+### <span class="color-sub-step">Step 2.3: Content & rendering objects</span>
+
+Now we can create the font loader, font renderer, and a batcher.  These will be used to
+load the font, render the text, and render the content in a single batch.
+
+Add the following code to the constructor create the class field instances.
+
+```csharp
+public Game()
+{
+    ...
+    this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+    this.fontRenderer = RendererFactory.CreateFontRenderer();
+    this.batcher = RendererFactory.CreateBatcher();
+}
+```
+
+:::info What is this `IBatcher` thing?
+<details>
+	<summary>Expand me to learn more!</summary>
+
+As you might have guessed, this is used for batching.  But that does not mean you know what "batching" is right?
+
+Let's fill you in.
+
+Think of a batch as a group of something.  Just like a batch of cookies is a group of cookies, a batch of textures is a group of textures.
+What we are doing is making **Velaptor** aware that we will be rendering a bunch of textures.  By rendering textures **together**, we mean
+that all of the textures will be sent to the GPU and rendered all together as a group.  Once we are done **rendering**, we then
+tell **Velaptor** that we are finished creating our batch and it can now be rendered to the screen.
+
+This is what the `IBatcher` object is used for!!
+
+We tell **Velaptor** that we are ready to start batching by invoking the `IBatcher.Begin()` method.  We then tell **Velaptor** that
+we are done batching by invoking the `IBatcher.End()` method.
+
+All of the rendering calls using any of the renderers should go between the `Begin()` and `End()` method calls.
+
+Just remember the steps:
+1. Invoke `IBatcher.Begin()` method
+2. Invoke all `Render()` methods for the current frame
+3. Invoke the `IBatcher.End()` method
+
+That's it!!
+</details>
+:::
+
 
 ## <span class="color-step">Step 3: Loading and unload content</span>
 
-### <span class="color-sub-step">Step 3.1: Create class fields</span>
+Loading and unloading of content is very important!!  The content is what will be rendered
+to the screen, played as sound, or event contain data that will be used by the game.
 
-Create a couple class fields at the top of the class. These will be used to load the font for rendering text.
-
-```csharp
-private ILoader<IFont> fontLoader; // Loads the font content
-private IFont? font; // Holds the font
-```
-
-### <span class="color-sub-step">Step 3.2: Load the font</span>
+### <span class="color-sub-step">Step 3.1: Load the font</span>
 
 We need to load the font and to do this we can use a loader.  There are various loaders available in **Velaptor**.
 The loader that we need is the `ILoader<IFont>` loader and this can be created using the `ContentLoaderFactory`.
-We want to keep the font loader around as a class field so we can unload the font later when shutting down the game.
 
 Add the following code to the `OnLoad()` method to create the font loader and load the font.
 
 ```csharp
 protected override void OnLoad()
 {
-    this.fontLoader = ContentLoaderFactory.CreateFontLoader();
     this.font = this.fontLoader.Load("TimesNewRoman-Regular", 24);
 
     base.OnLoad();
@@ -89,7 +144,7 @@ The 4 different font types are:
 </details>
 :::
 
-### <span class="color-sub-step">Step 3.3: Unload the font</span>
+### <span class="color-sub-step">Step 3.2: Unload the font</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the font loader
@@ -123,50 +178,7 @@ protected override void OnUnload()
 
 ## <span class="color-step">Step 4: Rendering text</span>
 
-### <span class="color-sub-step">Step 4.1: Create renderer field</span>
-
-After setting up a text renderer and selecting a font for rendering text, we can now render text on the screen using the
-font renderer. To achieve this, you can add the following code to the `OnDraw()` method.
-
-```csharp
-public class Game : Window
-{
-    ...
-    private readonly IFontRenderer fontRenderer;
-    ...
-}
-```
-
-### <span class="color-sub-step">Step 4.2: Create renderer</span>
-
-Go into the `OnLoad()` method and create the font renderer. First, we create a renderer factory and then use the factory to create the renderer.
-
-```csharp
-protected override void OnLoad()
-{
-    var rendererFactory = new RendererFactory();
-    this.fontRenderer = rendererFactory.CreateFontRenderer();
-
-    base.OnLoad();
-}
-```
-
-### <span class="color-sub-step">Step 4.3: Create batcher</span>
-
-Create a batcher in the `OnLoad()` method. We can create a batcher using the `rendererFactory`.
-We will go over what this is used in the next step.
-
-```csharp
-protected override void OnLoad()
-{
-    ...
-    this.batcher = rendererFactory.CreateBatcher();
-
-    base.OnLoad();
-}
-```
-
-### <span class="color-sub-step">Step 4.4: Render the text</span>
+### <span class="color-sub-step">Step 4.1: Setup batcher and renderer</span>
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
@@ -190,35 +202,6 @@ protected override void OnDraw(FrameTime frameTime)
 }
 ```
 
-:::info What is this `IBatcher` thing?
-<details>
-	<summary>Expand me to learn more!</summary>
-
-As you might have guessed, this is used for batching.  But that does not mean you know what "batching" is right?
-
-Let's fill you in.
-
-Think of a batch as a group of something.  Just like a batch of cookies is a group of cookies, a batch of textures is a group of textures.
-What we are doing is making **Velaptor** aware that we will be rendering a bunch of textures.  By rendering textures **together**, we mean
-that all of the textures will be sent to the GPU and rendered all together as a group.  Once we are done **rendering**, we then
-tell **Velaptor** that we are finished creating our batch and it can now be rendered to the screen.
-
-This is what the `IBatcher` object is used for!!
-
-We tell **Velaptor** that we are ready to start batching by invoking the `IBatcher.Begin()` method.  We then tell **Velaptor** that
-we are done batching by invoking the `IBatcher.End()` method.
-
-All of the rendering calls using any of the renderers should go between the `Begin()` and `End()` method calls.
-
-Just remember the steps:
-1. Invoke `IBatcher.Begin()` method
-2. Invoke all `Render()` methods for the current frame
-3. Invoke the `IBatcher.End()` method
-
-That's it!!
-</details>
-:::
-
 :::info Texture And Text Origin
 <details>
 	<summary>Expand me to learn more!</summary>
@@ -238,7 +221,7 @@ If you call a render method with any renderer before the `Begin()` method or aft
 you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
 :::
 
-### <span class="color-sub-step">Step 4.6: See the result</span>
+### <span class="color-sub-step">Step 4.2: Run it!</span>
 
 Now for the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳

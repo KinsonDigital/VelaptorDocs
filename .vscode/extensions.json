@@ -2,6 +2,7 @@
 	"recommendations": [
 		"simonsiefke.svg-preview",
 		"yzhang.markdown-all-in-one",
-		"unifiedjs.vscode-mdx"
+		"unifiedjs.vscode-mdx",
+		"mistermunchkin.simple-markdown-snippets"
 	]
 }

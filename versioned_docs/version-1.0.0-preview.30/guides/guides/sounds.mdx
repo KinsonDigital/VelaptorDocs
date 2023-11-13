@@ -51,17 +51,20 @@ each loop iteration, load the sound content, and hold the loaded sound.
 ```csharp
 public class Game : Window
 {
-    private IAppInput<KeyboardState>? keyboard;
-    private KeyboardState prevKeyState;
-    private ILoader<ISound>? soundLoader;
+    private ILoader<ISound> soundLoader;
+    private IAppInput<KeyboardState> keyboard;
     private ISound? music;
+    private KeyboardState prevKeyState;
     ...
 }
 ```
 
 ## <span class="color-step">Step 3: Setup window</span>
 
-Let's set up our window to not be so large.  Create a `Game()` constructor and add the following code:
+Let's set up our window to not be so large, create an object to detect keyboard input, and create
+create the sound loader to load sound content.
+
+Create a `Game()` constructor and add the following code:
 
 ```csharp
 public Game()
@@ -107,15 +110,12 @@ For more info, refer to the [Adding Content](./adding-content) guide.
 
 ### <span class="color-sub-step">Step 4.3: Load the content</span>
 
-Now that we have the audio file added to the project, we can write some code to load the audio content.  Add the
-following code to the `OnLoad()` method to load the sound and create our keyboard input object.
+Now that we have the audio file added to the project, we can write some code to load the audio content.
+Add the following code to the `OnLoad()` method to load the sound.
 
 ```csharp
 protected override void OnLoad()
 {
-    this.keyboard = HardwareFactory.GetMouse();
-
-    this.soundLoader = ContentLoaderFactory.CreateSoundLoader();    
     this.music = this.soundLoader.Load("deep-consistency");
 
     base.OnLoad();
@@ -131,7 +131,7 @@ Example: 'deep-consistency.ogg' will become 'deep-consistency'.
 
 We also need to unload the audio content when the window is closed.  Add the following code to the `OnUnload()` method.
 
-**1.** Add a using statement at the top of the file to get access to some content extension methods.  Though these are not required,
+**1.** Add a using statement at the top of the file to get access to some content related extension methods.  Though these are not required,
 they make unloading content a bit easier.
 
 ```csharp
@@ -158,8 +158,8 @@ protected override void OnUnload()
 
 So we have an audio file to play, but we need to know some information like the current duration of the audio,
 if it's playing or paused, and some basic instructions for the user on how to control the audio playback.  Since we are going
-to be using the keyboard to control the sound, it makes sense to tell the user which keyboard keys to use to stop, play, and
-other sound-related operations.
+to be using the keyboard to control the sound, it makes sense to tell the user which keyboard keys are used to stop, play, and
+perform other sound-related operations.
 
 :::info Note Title
 In the spirit of keeping things simple, we'll display the information in the title bar of the window.
@@ -313,7 +313,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 Run the game and let's play some music!  You should see the following window:
 
-<img style={{width: '75%'}} src={require('@site/static/img/tutorials/guides/sounds/sounds-window.png').default} alt="Example banner"/>
+        <img style={{ width: '75%' }} src={require('@site/static/img/tutorials/guides/sounds/sounds-window.png').default} alt="Example banner" />
 
 As the instructions in the title bar state, press the space bar to play and pause the audio, escape to stop or restart the
 audio, the left arrow key to rewind 5 seconds, and the right arrow key to fast forward 5 seconds.

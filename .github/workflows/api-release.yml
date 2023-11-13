@@ -95,9 +95,11 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - name: Setup PNPM
-        run: iwr https://get.pnpm.io/install.ps1 -useb | iex
-
+      - name: Setup PNPM (${{ vars.PNPM_VERSION }})
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ vars.PNPM_VERSION }}
+    
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |

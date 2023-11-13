@@ -59,8 +59,10 @@ jobs:
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
-      - name: Setup PNPM
-        run: iwr https://get.pnpm.io/install.ps1 -useb | iex
+      - name: Setup PNPM (${{ vars.PNPM_VERSION }})
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ vars.PNPM_VERSION }}
 
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
@@ -97,22 +99,22 @@ jobs:
             --allow-env `
             "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
             "$outputFilePath";
-  
+
       - name: Build Site
         run: pnpm build
-  
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-  
+
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v2.0.0
         with:
           path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
-  
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-  
+
       - name: Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
         run: |
           $tag = "${{ steps.apply_version_to_site.outputs.version }}";

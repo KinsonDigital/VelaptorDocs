@@ -10,8 +10,9 @@
 		"Kinson",
 		"pwsh",
 		"Structs",
-		"Velaptor",
-		"typecheck"
+		"tasklist",
+		"typecheck",
+		"Velaptor"
 	],
 	"files.exclude": {
 		".docusaurus/": true,

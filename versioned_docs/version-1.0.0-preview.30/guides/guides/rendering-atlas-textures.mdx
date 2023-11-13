@@ -2,12 +2,13 @@
 sidebar_position: 5
 ---
 
-import { TutorialLink } from "@site/src/components/TutorialLink";
+import TutorialLink from "@site/src/components/TutorialLink";
+import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
 
 # Rendering With An Atlas Texture
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="AtlasTextures" version="v1.0.0-preview.24"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="AtlasTextures" version="v1.0.0-preview.30"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 Another way to render textures is by using an atlas texture. This guide is a little more
@@ -15,24 +16,24 @@ in-depth and longer than the previous guides. Stick with it though, it will be w
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
-1. [Wikipedia](https://en.wikipedia.org/wiki/Texture_atlas)
-2. [Game Dev Tuts Plus](https://gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783)
-3. [Examples](https://www.pinterest.com/pin/676877018967605282/)
+1. <OpenLinkNewTab url="https://en.wikipedia.org/wiki/Texture_atlas" linkName="Wikipedia"/>
+2. <OpenLinkNewTab url="https://gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" linkName="Game Dev Tuts Plus"/>
+3. <OpenLinkNewTab url="https://www.pinterest.com/pin/676877018967605282/" linkName="Examples"/>
 :::
 
 An atlas texture is a large image with multiple sub-images packed into a single image. With this single image, you use another file
-of a particular format such as JSON or XML, that describes the location, size, and other kinds of metadata for each image in the atlas texture.
+of a particular format such as JSON or XML, that describes the location, size, and other kinds of attributes for each image in the atlas texture.
 
 :::info JSON
-If you are new to **JSON**, click [here](https://www.youtube.com/watch?v=iiADhChRriM) for a great 10-minute video.
+If you are new to **JSON**, click <OpenLinkNewTab url="https://www.youtube.com/watch?v=iiADhChRriM" linkName="here"/> for a great 10-minute video.
 :::
 
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
 Though there is nothing wrong with rendering whole textures one at a time, there are pros and cons. In the end, it all depends on what you are trying to accomplish.
 
 With an atlas texture, you can pack all of the sequences of animation into the atlas. This is usually loaded by a library that loads the atlas texture
-and the associated metadata. At this point, it is very easy to automate the process of switching between textures to run an animation. Velaptor comes with loading
-atlas textures and their associated metadata built in.
+and the associated metadata. At this point, it is very easy to automate the process of switching between textures to run an animation. Velaptor comes built-in with loading
+atlas textures and their associated metadata.
 
 **Benefits:**
 
@@ -45,13 +46,14 @@ atlas textures and their associated metadata built in.
 It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
 
 Various tools out there give you the ability to easily create atlas textures and metadata.  
-A couple of examples are: [Texture Packer](https://www.codeandweb.com/texturepacker)
-and [Spine](https://esotericsoftware.com/).
+A couple of examples are: <OpenLinkNewTab url="https://www.codeandweb.com/texturepacker" linkName="Texture Packer"/>
+and <OpenLinkNewTab url="https://esotericsoftware.com/" linkName="Spine"/>.
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
-Plans are in the works to add _**Texture Packer**_ integration. One option you have is to create a tool to
-load the _**Texture Packer**_ JSON data for use.
+Plans are in the works to add _**Texture Packer**_ integration. One option you have is to create your own
+tool to load the _**Texture Packer**_ JSON data for use.  This is not complicated and can get you by
+until the _**Texture Packer**_ integration is complete.
 :::
 
 :::tip
@@ -103,8 +105,8 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 ## <span class="color-step">Step 2: Get atlas content</span>
 
 Download the atlas texture files below:
-- Go <a target="\_blank" href="https://github.com/KinsonDigital/VelaptorTutorials/blob/master/AtlasTextures/Content/Atlas/atlas.png">here</a> to download the <b><i>atlas.png</i></b> file.
-- Go <a target="\_blank" href="https://github.com/KinsonDigital/VelaptorTutorials/blob/master/AtlasTextures/Content/Atlas/atlas.json">here</a> to download the <b><i>atlas.json</i></b> file.
+- Go <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorTutorials/blob/master/AtlasTextures/Content/Atlas/atlas.png" linkName="here"/> to download the <b><i>atlas.png</i></b> file.
+- Go <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorTutorials/blob/master/AtlasTextures/Content/Atlas/atlas.json" linkName="here"/> to download the <b><i>atlas.json</i></b> file.
 
 Click the GitHub download button shown below to download the file
 <img style={{width: '20%'}} src={require('@site/static/img/tutorials/guides/rendering-atlas-textures/github-download-btn.jpg').default}/>
@@ -133,65 +135,59 @@ letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
 
 ## <span class="color-step">Step 4: Create class fields</span>
 
-Create the following class fields which will be used for holding content data, loading content, and rendering content.
+Create the following class fields which will be used for holding content data, loading content, manage batching, and rendering content.
 
 ```csharp
 public class Game : Window
 {
-	private readonly ITextureRenderer textureRenderer; // Renders textures
+    private readonly ITextureRenderer textureRenderer; // Renders textures
     private readonly IBatcher batcher; // Batches the rendering of textures
     private ILoader<IAtlasData>? atlasLoader; // Loads the atlas data
     private AtlasSubTextureData[]? subTextureData; // Holds all of the atlas data
-    private ITexture? atlasTexture;  // The atlas texture
+    private IAtlasdata? atlasData;  // The atlas data
 }
 ```
 
 ## <span class="color-step">Step 5: Basic setup</span>
 
-In the `Game` class, add the following code to the constructor to set up the window, create a texture renderer, and the batcher.
+In the `Game` class, add the following code to the constructor to set up the window and instantiate the objects mentioned before.
 
 ```csharp
 public class Game : Window
 {
     ...
-	public Game()
-	{
-		Title = "Atlas Textures";
-		Width = 530;
-		Height = 530;
+    public Game()
+    {
+        Title = "Atlas Textures";
+        Width = 500;
+        Height = 500;
 
-		var rendererFactory = new RendererFactory();
-		this.textureRenderer = rendererFactory.CreateTextureRenderer();
-
+        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader(this.batcher);
+        this.textureRenderer = RendererFactory.CreateTextureRenderer();
         this.batcher = rendererFactory.CreateBatcher();
-	}
+    }
 }
 ```
 
 
 ## <span class="color-step">Step 6: Load and unload the content</span>
 
-### <span class="color-sub-step">Step 6.1: Load texture atlas content</span>
+### <span class="color-sub-step">Step 6.1: Load content</span>
 
-Next, let's create the `OnLoad()` override method and add code to the method to create an atlas
-loader and load the atlas data.
+Next, let's create the `OnLoad()` override method and add code to the method to load the atlas data.
 
 ```csharp
 protected override void OnLoad()
 {
-    this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader(this.batcher);
+    // Loads the atlas.png and atlas.json file
+    this.atlasData = this.atlasLoader.Load("atlas");
+    this.subTextureData = this.atlasData.GetFrames("flame");
 
-	// Loads the atlas.png and atlas.json file
-	var atlasData = ContentLoader.LoadAtlas("atlas");
-
-	this.atlasTexture = atlasData.Texture;
-	this.subTextureData = atlasData.GetFrames("flame");
-
-	base.OnLoad();
+    base.OnLoad();
 }
 ```
 
-The `atlasData` variable will contain the loaded texture and the metadata for the texture.
+The `this.atlasData` class field variable will contain the loaded texture and the metadata for the texture.
 We can use this data to make decisions on animation, positioning and more.
 
 :::tip
@@ -285,11 +281,11 @@ Add the following fields to the `Game` class.
 ```csharp
 public class Game : Window
 {
-	...
-	private float elapsedMs; // The total milliseconds that have passed
-	private int currentFrame; // The current frame of the animation
-	private bool isFullSize; // Whether or not the flame has grown to full size
-	...
+    ...
+    private float elapsedMs; // The total milliseconds that have passed
+    private int currentFrame; // The current frame of the animation
+    private bool isFullSize; // Whether or not the flame has grown to full size
+    ...
 }
 ```
 
@@ -297,7 +293,8 @@ public class Game : Window
 <details>
 	<summary>Expand me for more info!!</summary>
 
-Think of a [flip book](https://www.youtube.com/watch?v=Un-BdBSOGKY). If you were to flip through the pages of a flip book, you would see the animation.
+Think of a <OpenLinkNewTab url="https://www.youtube.com/watch?v=Un-BdBSOGKY" linkName="flip book"/>.
+If you were to flip through the pages of a flip book, you would see the animation.
 The faster you flip through the pages, the faster the animation will appear. The slower you flip
 through the pages, the slower the animation will appear. The same concept applies to animations in games.
 
@@ -317,33 +314,33 @@ change the frame of the animation.
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
+    this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
 
-	// Move to the next frame every 124ms
-	if (this.elapsedMs >= 124)
-	{
-		// If the current frame is one of the frames after
-		// the flame has grown to full size.
-		if (this.currentFrame >= 8)
-		{
-			this.isFullSize = true;
-		}
+    // Move to the next frame every 124ms
+    if (this.elapsedMs >= 124)
+    {
+        // If the current frame is one of the frames after
+        // the flame has grown to full size.
+        if (this.currentFrame >= 8)
+        {
+            this.isFullSize = true;
+        }
 
-		// Get the starting frame index based on if the flame has
-		// grown to full size or not.
-		var startFrame = this.isFullSize ? 8 : 0;
+        // Get the starting frame index based on if the flame has
+        // grown to full size or not.
+        var startFrame = this.isFullSize ? 8 : 0;
 
-		// If the last frame has been reached, reset to the starting frame
-		this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
-			? startFrame
-			: this.currentFrame + 1;
+        // If the last frame has been reached, reset to the starting frame
+        this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
+            ? startFrame
+            : this.currentFrame + 1;
 
-		// Reset the elapsed time so we can wait for another
-		// 124ms before moving to the next frame
-		this.elapsedMs = 0;
-	}
+        // Reset the elapsed time so we can wait for another
+        // 124ms before moving to the next frame
+        this.elapsedMs = 0;
+    }
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -393,36 +390,36 @@ Now we can finally render the animation to the screen. Add the following code to
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
 {
-	// Start the batch
-	IBatcher.Begin();
+    // Start the batch
+    IBatcher.Begin();
 
-	var x = (int)(Width / 2); // Center of the window horizontally
-	var y = (int)(Height / 2); // Center of the window vertically
+    var x = (int)(Width / 2); // Center of the window horizontally
+    var y = (int)(Height / 2); // Center of the window vertically
 
-	// Get the bounds of the sub-texture in the entire atlas at the current frame
-	var subBounds = this.subTextureData[this.currentFrame].Bounds;
+    // Get the bounds of the sub-texture in the entire atlas at the current frame
+    var subBounds = this.subTextureData[this.currentFrame].Bounds;
 
-	// Create the rectangle of where the frame is located in the atlas
-	var srcRect = new Rectangle(subBounds.X, subBounds.Y, subBounds.Width, subBounds.Height);
+    // Create the rectangle of where the frame is located in the atlas
+    var srcRect = new Rectangle(subBounds.X, subBounds.Y, subBounds.Width, subBounds.Height);
 
-	// Create the rectangle of the entire atlas.
-	var destRect = new Rectangle(x, y, (int)this.atlasTexture.Width, (int)this.atlasTexture.Height);
+    // Create the rectangle of the entire atlas.
+    var destRect = new Rectangle(x, y, (int)this.atlasTexture.Width, (int)this.atlasTexture.Height);
 
-	// Render only the sub-texture in the atlas at the center of the window
-	this.textureRenderer.Render(
-		this.atlasTexture,
-		srcRect,
-		destRect,
-		0.25f, // Size of the sub-texture
-		0f, // Angle of rotation
-		Color.White, // Color to tint the sub-texture
-		RenderEffects.None,
-		1); // Render layer
+    // Render only the sub-texture in the atlas at the center of the window
+    this.textureRenderer.Render(
+        this.atlasTexture,
+        srcRect,
+        destRect,
+        0.25f, // Size of the sub-texture
+        0f, // Angle of rotation
+        Color.White, // Color to tint the sub-texture
+        RenderEffects.None,
+        1); // Render layer
 
-	// End the batch to render the entire batch
-	IBatcher.End();
+    // End the batch to render the entire batch
+    IBatcher.End();
 
-	base.OnDraw(frameTime);
+    base.OnDraw(frameTime);
 }
 ```
 
@@ -443,7 +440,7 @@ The animation will be much smoother than what is shown here.
 ![Flame Animation](@site/static/img/tutorials/guides/rendering-atlas-textures/flame.gif)
 
 
-## <span class="color-step">Step 10: Bonus</span>
+## <span class="color-step">Step 10: Bonus!!</span>
 
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
@@ -456,10 +453,10 @@ or non-horizontal orientation. The `horizontalLayout` field will be the layout s
 ```csharp
 public class Game: Window
 {
-	...
-	private readonly Random random = new (); // Chooses random numbers
+    ...
+    private readonly Random random = new (); // Chooses random numbers
     private RenderEffects horizontalLayout; // The horizontal orientation to render flame
-	...
+    ...
 }
 ```
 
@@ -474,19 +471,19 @@ This is synonymous with flipping a coin.
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
+    this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
 
-	// Move to the next frame every 124ms
-	if (this.elapsedMs >= 124)
-	{
-		...
-		// Randomly choose to have the flame flipped horizontally or not flipped at all
-		this.horizontalLayout = this.random.Next(0, 2) == 0
-			? RenderEffects.FlipHorizontally
-			: RenderEffects.None;
-	}
+    // Move to the next frame every 124ms
+    if (this.elapsedMs >= 124)
+    {
+        ...
+        // Randomly choose to have the flame flipped horizontally or not flipped at all
+        this.horizontalLayout = this.random.Next(0, 2) == 0
+            ? RenderEffects.FlipHorizontally
+            : RenderEffects.None;
+    }
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 

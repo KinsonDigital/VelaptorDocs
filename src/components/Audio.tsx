@@ -1,12 +1,26 @@
-import { translate } from "@docusaurus/Translate";
 import React from "react";
 
 /**
+ * The properties for the {@link Audio} component.
+ */
+interface AudioProps {
+    /**
+     * The URL of the sound to play.
+     */
+    soundUrl: string;
+
+    /**
+     * The name of the sound.
+     */
+    soundName: string;
+}
+
+/**
  * Creates a simple audio playback component to play a sound located at the given {@link soundUrl}.
- * @param params The URL to the sound.
+ * @param params The component properties.
  * @returns The component.
  */
-export function Audio ({soundUrl, soundName}) {
+const Audio: React.FC<AudioProps> = ({soundUrl, soundName}: AudioProps) => {
 	const invalidUrl = soundUrl === undefined || soundUrl === null || soundUrl === '';
 
 	if (invalidUrl) {
@@ -22,3 +36,5 @@ export function Audio ({soundUrl, soundName}) {
 		</div>
 	);
 }
+
+export default Audio;

@@ -2,7 +2,8 @@
 sidebar_position: 6
 ---
 
-import { TutorialLink } from "@site/src/components/TutorialLink";
+import TutorialLink from "@site/src/components/TutorialLink";
+import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
 
 # Keyboard Input
 
@@ -19,7 +20,7 @@ to keyboard input are endless. Examples of what you can do with the keyboard are
 and exiting the game when necessary.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="KeyboardInput" version="v1.0.0-preview.24"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="KeyboardInput" version="v1.0.0-preview.30"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -70,7 +71,7 @@ public Game() => this.keyboard = HardwareFactory.GetKeyboard();
 
 :::info What is this _**Factory**_ thing?
 The Factory pattern is a creational design pattern that provides an interface for creating objects.
-Click [here](https://refactoring.guru/design-patterns/factory-method) for a great site about creational patterns.
+Click <OpenLinkNewTab url="https://refactoring.guru/design-patterns/factory-method" linkName="here"/> for a great site about creational patterns.
 :::
 
 
@@ -84,8 +85,7 @@ easier to understand. This is good practice no matter what kind of software you 
 Create a private method in the `Game` class with the name `IsPressed()` which will check if a keyboard key has been pressed.
 
 ```csharp
-private bool IsPressed(KeyCode key) => this.currKeyState.IsKeyUp(key) &&
-										this.prevKeyState.IsKeyDown(key);
+private bool IsPressed(KeyCode key) => this.currKeyState.IsKeyUp(key) && this.prevKeyState.IsKeyDown(key);
 ```
 
 This method will check if the _**current**_ state of the key is in the up position, and if the state of the same key was in the down

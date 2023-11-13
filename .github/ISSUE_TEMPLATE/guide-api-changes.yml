@@ -16,12 +16,15 @@ body:
 - type: textarea
   attributes:
     label: Acceptance Criteria
-    placeholder: |
-      Example:
-        - [ ] If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
-        - [ ] If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
-        - [ ] Any documentation changes have been checked for proper spelling and grammar.
     description: The items to complete in order to satisfy the Definition of Done.
+    placeholder: |
+      ```[tasklist]
+      - [ ] Item 1
+      - [ ] Item 2
+      ```
+    value: |
+      ```[tasklist]
+      ```
   validations:
     required: true
     render: markdown

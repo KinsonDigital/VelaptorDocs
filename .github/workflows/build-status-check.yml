@@ -19,15 +19,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Setup Node (${{ vars.NODE_VERSION }})
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.NODE_VERSION }}
+
     - name: Setup Deno
       uses: denoland/setup-deno@v1
       with:
         deno-version: ${{ vars.DENO_VERSION }}
 
-    - name: Setup PNPM
-      run: iwr https://get.pnpm.io/install.ps1 -useb | iex
+    - name: Setup PNPM (${{ vars.PNPM_VERSION }})
+      uses: pnpm/action-setup@v2
+      with:
+        version: ${{ vars.PNPM_VERSION }}
 
-    - name: Setup Docusaurus
+    - name: Install Dependencies (pnpm)
       run: pnpm install
 
     - name: Disable Testing Env

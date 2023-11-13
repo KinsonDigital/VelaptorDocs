@@ -10,8 +10,9 @@
 		"Kinson",
 		"pwsh",
 		"Structs",
-		"Velaptor",
-		"typecheck"
+		"tasklist",
+		"typecheck",
+		"Velaptor"
 	],
 	"files.exclude": {
 		".docusaurus/": true,
@@ -40,6 +41,10 @@
 	},
 	"[jsonc]": {
 		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[mdx]": {
+		"editor.insertSpaces": true,
 		"editor.tabSize": 4,
 	},
 	"editor.detectIndentation": false,

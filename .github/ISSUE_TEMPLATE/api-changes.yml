@@ -11,15 +11,24 @@ body:
     - label: I have added the version to the very end of the issue title.
       required: true
 
-- type: checkboxes
+- type: textarea
   attributes:
     label: Acceptance Criteria
-    options:
-    - label: If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
-      required: false
-    - label: If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
-      required: false
-    - label: Any documentation changes have been checked for proper spelling and grammar.
+    description: The items to complete in order to satisfy the Definition of Done.
+    placeholder: |
+      ```[tasklist]
+      - [ ] Item 1
+      - [ ] Item 2
+      ```
+    value: |
+      ```[tasklist]
+      - [ ] If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
+      - [ ] If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
+      - [ ] Any documentation changes have been checked for proper spelling and grammar.
+      ```
+  validations:
+    required: true
+    render: markdown
 
 - type: checkboxes
   attributes:

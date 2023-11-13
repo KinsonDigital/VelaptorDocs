@@ -8,7 +8,7 @@ import TutorialLink from "@site/src/components/TutorialLink";
 # Sounds
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="Sounds" version="v1.0.0-preview.24"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="Sounds" version="v1.0.0-preview.24" /> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 Can you imagine playing Mario Brothers games without the **jump** sound effect? How about playing Metroid with no amazing music
@@ -20,15 +20,15 @@ Check out some of these sounds!! They might bring back memories. 😉
   <tr style={{ border: 'none' }}>
     <td style={{ border: 'none' }}>
 		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/mario-jump.mp3"
-			   soundName="Mario Jump"/>
+        soundName="Mario Jump"/>
 	</td>
     <td style={{ border: 'none' }}>
-		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/metroid-ice-beam.mp3"
-			   soundName="Metroid Ice Beam"/>
+        <Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/metroid-ice-beam.mp3"
+        soundName="Metroid Ice Beam"/>
 	</td>
     <td style={{ border: 'none' }}>
 		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/brinstar-music.mp3"
-			   soundName="Metroid Brinstar Music"/>
+        soundName="Metroid Brinstar Music"/>
 	</td>
   </tr>
 </table>
@@ -66,8 +66,12 @@ Let's set up our window to not be so large.  Create a `Game()` constructor and a
 ```csharp
 public Game()
 {
-	Width = 900;
-	Height = 600;
+    Title = "Sounds";
+    Width = 900;
+    Height = 600;
+
+    this.keyboard = HardwareFactory.GetKeyboard();
+    this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
 }
 ```
 
@@ -90,7 +94,7 @@ You can provide whatever audio file you want, but if you don't have one, you can
 sound [here](https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/deep-consistency.ogg).
 
 Play it to see if you like it.  😀
-<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/deep-consistency.ogg"/>
+<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/deep-consistency.ogg" />
 
 ### <span class="color-sub-step">Step 4.2: Setup file as content</span>
 
@@ -170,16 +174,16 @@ method and add some code to get a string representing the current state of the a
 ```csharp
 private void UpdateTitle()
 {
-	string state;
+    string state;
 
-	if (this.music.State == SoundState.Stopped)
-	{
-		state = "Stopped";
-	}
-	else
-	{
-		state = this.music.State == SoundState.Playing ? "Playing" : "Paused";
-	}
+    if (this.music.State == SoundState.Stopped)
+    {
+        state = "Stopped";
+    }
+    else
+    {
+        state = this.music.State == SoundState.Playing ? "Playing" : "Paused";
+    }
 }
 ```
 
@@ -192,17 +196,17 @@ and rewind the audio.
 ```csharp
 private void UpdateTitle()
 {
-	...
-	var minutes = (int)this.music.Position.Minutes;
-	var seconds = (int)this.music.Position.Seconds;
+    ...
+    var minutes = (int)this.music.Position.Minutes;
+    var seconds = (int)this.music.Position.Seconds;
 
-	var minStr = minutes <= 9 ? $"0{minutes}" : minutes.ToString();
-	var secStr = seconds <= 9 ? $"0{seconds}" : seconds.ToString();
+    var minStr = minutes <= 9 ? $"0{minutes}" : minutes.ToString();
+    var secStr = seconds <= 9 ? $"0{seconds}" : seconds.ToString();
 
-	var playTime = $"{minStr}:{secStr}";
-	const string instructions = "Instructions: Space(play/pause) Esc(restart) Left(-5s) - Right(+5s)";
+    var playTime = $"{minStr}:{secStr}";
+    const string instructions = "Instructions: Space(play/pause) Esc(restart) Left(-5s) - Right(+5s)";
 
-	Title = $"{state} - {playTime} | {instructions}";
+    Title = $"{state} - {playTime} | {instructions}";
 }
 ```
 
@@ -226,12 +230,12 @@ To get the current state of the keyboard and to check if any key has been fully 
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	var currKeyState = this.keyboard.GetState();
+    var currKeyState = this.keyboard.GetState();
 
-	bool IsPressed(KeyCode key)
-	{
-		return this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
-	}
+    bool IsPressed(KeyCode key)
+    {
+        return this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
+    }
 }
 ```
 
@@ -242,7 +246,7 @@ familiar with local functions, you can read more about them [here](https://docs.
 // This is a local function
 bool IsPressed(KeyCode key) 
 {
-	return this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
+    return this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
 }
 ```
 :::
@@ -255,30 +259,30 @@ You can make that happen by adding the following code after the local function i
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	...
-	if (IsPressed(KeyCode.Space))
-	{
-		if (this.music.State is SoundState.Paused or SoundState.Stopped)
-		{
-			this.music.Play();
-		}
-		else
-		{
-			this.music.Pause();
-		}
-	}
-	else if (IsPressed(KeyCode.Escape))
-	{
-		this.music.Reset();
-	}
-	else if (IsPressed(KeyCode.Left))
-	{
-		this.music.Rewind(5);
-	}
-	else if (IsPressed(KeyCode.Right))
-	{
-		this.music.FastForward(5);
-	}
+    ...
+    if (IsPressed(KeyCode.Space))
+    {
+        if (this.music.State is SoundState.Paused or SoundState.Stopped)
+        {
+            this.music.Play();
+        }
+        else
+        {
+            this.music.Pause();
+        }
+    }
+    else if (IsPressed(KeyCode.Escape))
+    {
+        this.music.Reset();
+    }
+    else if (IsPressed(KeyCode.Left))
+    {
+        this.music.Rewind(5);
+    }
+    else if (IsPressed(KeyCode.Right))
+    {
+        this.music.FastForward(5);
+    }
 }
 ```
 
@@ -295,13 +299,13 @@ To implement this, simply insert the following code snippet after the `OnUpdate(
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	...
+    ...
 
-	this.prevKeyState = currKeyState;
+    this.prevKeyState = currKeyState;
 
-	UpdateTitle();
+    UpdateTitle();
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 

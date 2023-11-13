@@ -42,6 +42,10 @@
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
 	},
+	"[mdx]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
+	},
 	"editor.detectIndentation": false,
 	"[github-actions-workflow]": {
 		"editor.tabSize": 2,

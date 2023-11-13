@@ -111,7 +111,7 @@
 		"prefix": "guide-ref",
 		"body": [
 			":::note Refer To Guide",
-			"For more info, refer to the [${1: guide name}](./${2: guide file name}) guide.",
+			"For more info, refer to the [${1:guide name}](./${2:guide file name}) guide.",
 			":::\n"
 		],
 		"description": "Reference link to another guide."
@@ -121,9 +121,17 @@
 		"prefix": "tutorial-proj-ref",
 		"body": [
 			":::note Guide Source Code",
-			"Go to the <TutorialLink projectName=\"${1: project name}\"/> tutorial project to see the source code for a fully working example of this guide.",
+			"Go to the <TutorialLink projectName=\"${1:project name}\"/> tutorial project to see the source code for a fully working example of this guide.",
 			":::\n"
 		],
 		"description": "Reference to the open source guide tutorial project."
+	},
+    "Open URL New Tab": {
+		"scope": "mdx",
+		"prefix": "url-new-tab",
+		"body": [
+            "<OpenLinkNewTab url=\"${1:url}\" linkName=\"${2:link name}\"/>",
+		],
+		"description": "URL/Link that opens in a new tab."
 	},
 }

@@ -25,9 +25,17 @@ jobs:
           }
 
 
+  build_tutorial_solution:
+    name: Build Tutorial Solution
+    needs: validate_branch
+    uses: ./.github/workflows/build-csharp-solution.yml
+    with:
+      build-config: Release
+
+
   perform_prod_release:
     name: Perform Production Release
-    needs: validate_branch
+    needs: [validate_branch, build_tutorial_solution]
     runs-on: ubuntu-latest
     permissions:
       contents: write

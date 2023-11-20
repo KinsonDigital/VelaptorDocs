@@ -44,6 +44,7 @@ export class Directory {
 		let files: string[] = [];
 
 		extension = Utils.isNothing(extension) ? "*.*" : extension;
+		extension = extension.startsWith("*") ? extension.substring(1) : extension;
 		extension = extension.startsWith(".") ? extension : `.${extension}`;
 
 		if (dirPath === undefined || dirPath === null || dirPath === "") {

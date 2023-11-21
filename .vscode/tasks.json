@@ -4,6 +4,9 @@
 		{ // GENERATE API DOCS
 			"label": "Generate API Docs",
 			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
 			"command": "deno",
 			"args": [
 				"run",
@@ -22,92 +25,105 @@
 		{ // RESET DOCS
 			"label": "Reset Docs",
 			"type": "shell",
-			"windows": {
-				"command": "deno run --allow-read --allow-write './.github/cicd/manual-testing/reset-docs.ts'",
-			}
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"command": "deno",
+			"args": [
+				"run",
+				"--allow-read",
+				"--allow-write",
+				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
+			]
 		},
 		{ // DISABLE TESTING ENVIRONMENT
 			"label": "Disable Testing Environment",
 			"type": "shell",
-			"windows": {
-				"command": "deno",
-				"args": [
-					"run",
-					"-A",
-					"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-					"disable"
-				]
-			}
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"command": "deno",
+			"args": [
+				"run",
+				"-A",
+				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"disable"
+			]
 		},
 		{ // ENABLE TESTING ENVIRONMENT
 			"label": "Enable Testing Environment",
 			"type": "shell",
-			"windows": {
-				"command": "deno",
-				"args": [
-					"run",
-					"-A",
-					"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-					"enable"
-				]
-			}
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"command": "deno",
+			"args": [
+				"run",
+				"-A",
+				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"enable"
+			]
 		},
 		{ // TOGGLE TESTING ENVIRONMENT
 			"label": "Toggle Testing Environment",
 			"type": "shell",
-			"windows": {
-				"command": "deno",
-				"args": [
-					"run",
-					"-A",
-					"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-					"toggle"
-				]
-			}
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"command": "deno",
+			"args": [
+				"run",
+				"-A",
+				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"toggle"
+			]
 		},
 		{ // DISABLE NEXT VERSION
 			"label": "Disable Next Version",
 			"type": "shell",
-			"windows": {
-				"command": "deno",
-				"args": [
-					"run",
-					"-A",
-					"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
-					"${workspaceFolder}/docusaurus.config.js",
-					"next-version",
-					"enable"
-				]
-			}
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"command": "deno",
+			"args": [
+				"run",
+				"-A",
+				"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+				"${workspaceFolder}/docusaurus.config.js",
+				"next-version",
+				"enable"
+			]
 		},
 		{ // ENABLE NEXT VERSION
 			"label": "Enable Next Version",
 			"type": "shell",
 			"detail": "Enables the next version feature of docusaurus.",
-			"windows": {
-				"command": "deno",
-				"args": [
-					"run",
-					"-A",
-					"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
-					"${workspaceFolder}/docusaurus.config.js",
-					"next-version",
-					"disable"
-				]
-			}
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},	
+			"command": "deno",
+			"args": [
+				"run",
+				"-A",
+				"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+				"${workspaceFolder}/docusaurus.config.js",
+				"next-version",
+				"disable"
+			]
 		},
 		{ // CREATE DOCUSAURUS VERSION
 			"label": "Create Docusaurus Version",
-			"type": "shell",
 			"detail": "Creates a new docusaurus API version.",
-			"windows": {
-				"command": "deno",
-				"args": [
-					"run",
-					"-A",
-					"${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
-				]
-			}
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},			
+			"command": "deno",
+			"args": [
+				"run",
+				"-A",
+				"${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
+			]
 		},
 		{ // BUILD
 			"label": "Build (Docusaurus)",
@@ -130,6 +146,9 @@
 			],
 			"detail": "Deletes a version of the API docs.",
 			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
 			"windows": {
 				"command": "deno",
 				"args": [
@@ -144,7 +163,7 @@
 			"detail": "Builds the project by running deno check on all files in the project.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}"
+				"cwd": "${workspaceFolder}/.github/cicd"
 			},
 			"command": "deno",
 			"args": [
@@ -159,6 +178,9 @@
 			"label": "Update Velaptor NuGet Packages",
 			"detail": "Updates all of the Velaptor NuGet packages for all tutorial projects.",
 			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
 			"command": "deno",
 			"args": [
 				"run",
@@ -176,6 +198,9 @@
 			"label": "Update Tutorial Link Component Versions",
 			"detail": "Updates all of the tutorial component versions for all mdx files.",
 			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
 			"command": "deno",
 			"args": [
 				"run",

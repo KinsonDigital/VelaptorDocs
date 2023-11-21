@@ -110,7 +110,8 @@
 			}
 		},
 		{ // BUILD
-			"label": "build",
+			"label": "Build (Docusaurus)",
+			"detail": "Performs a build of the docusaurus site.",
 			"dependsOn": [
 				"Disable Testing Environment"
 			],

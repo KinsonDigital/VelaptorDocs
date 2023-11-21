@@ -28,5 +28,6 @@ jobs:
         deno-version: ${{ vars.DENO_VERSION }}
 
     - name: Run Build
+      working-directory: ${{ github.workspace }}/.github/cicd
       run: |
         deno run --allow-read --allow-run "./.github/cicd/scripts/deno-check.ts";

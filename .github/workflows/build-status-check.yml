@@ -38,6 +38,7 @@ jobs:
       run: pnpm install
 
     - name: Disable Testing Env
+      working-directory: ${{ github.workspace }}/.github/cicd
       run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
     
     - name: Build

@@ -1,0 +1,66 @@
+name: ⚙️Build C# Solution
+run-name: Build Velaptor Tutorials Solution
+
+
+defaults:
+  run:
+    shell: pwsh
+  
+  
+on:
+  workflow_call:
+    inputs:
+      build-config:
+        required: true
+        description: The build configuration to use (e.g. 'Debug', 'Release').
+        type: string
+
+
+jobs:
+  print_validate_workflow:
+    name: Print & Validate Build DotNet Proj Workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environment Variables
+        run: Get-ChildItem -Path Env:* | Sort-Object Name
+
+      - name: Validate Workflow Inputs
+        run: |
+          $sdkVersion = "${{ vars.NET_SDK_VERSION }}";
+          $sdkVersion = $sdkVersion.StartsWith("v") ? $sdkVersion.Substring(1) : $sdkVersion;
+
+          if ("${{ inputs.build-config }}".Trim().ToLower() -eq "") {
+            Write-Host "::error::The 'build-config' workflow input cannot be empty.";
+            exit 1;
+          }
+
+
+          if ("${{ inputs.build-config }}" -ne "Debug" -and "${{ inputs.build-config }}" -ne "Release") {
+            Write-Host "::error::The 'build-config' workflow input is invalid.  Expected values: 'Debug' or 'Release'";
+            exit 1;
+          }
+
+
+          # Verify that the dotnet sdk version has valid syntax
+          if ($sdkVersion -match "[0-9]+\.[0-9]+\.[0-9]+") {
+            Write-Host "::notice::The 'net-sdk-version' workflow input is valid.";
+          } else {
+            Write-Host "::error::The 'net-sdk-version' workflow input is invalid.  Expected version format: '#.#.#'";
+            exit 1;
+          }
+
+
+  build_solution:
+    name: Build Velaptor Tutorials Solution
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ vars.NET_SDK_VERSION }}
+
+      - name: Build Solution
+        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c ${{ inputs.build-config }};

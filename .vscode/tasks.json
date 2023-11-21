@@ -139,11 +139,8 @@
 			}
 		},
 		{ // DENO CHECK ALL FILES
-			"label": "Deno Check All Files",
-			"dependsOn": [
-				"Disable Testing Environment"
-			],
-			"detail": "Runs deno check on all files in the project.",
+			"label": "Build (Deno Check)",
+			"detail": "Builds the project by running deno check on all files in the project.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}"

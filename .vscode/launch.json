@@ -9,7 +9,7 @@
             "request": "launch",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/playground.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -32,7 +32,7 @@
             "name": "Reset Docs",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -46,7 +46,7 @@
             "name": "Delete API Docs (DEBUG)",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/delete-api-docs.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -61,7 +61,7 @@
             "name": "Delete Oldest API Docs (DEBUG)",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/delete-oldest-api-docs.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -77,7 +77,7 @@
             "name": "Enable Testing Env",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -94,7 +94,7 @@
             "name": "Update Website Version",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/update-website-version.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -108,7 +108,7 @@
             "name": "Generate New API Docs",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -133,7 +133,7 @@
             "name": "Velaptor Tag Exists",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/velaptor-version-exists.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/.github/cicd",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -151,7 +151,7 @@
 			"name": "Genererate Docusaurus API Version",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
-			"cwd": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}/.github/cicd",
 			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
 			"runtimeArgs": [
 				"run",
@@ -166,7 +166,7 @@
 			"name": "Deno Check All Files",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
-			"cwd": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}/.github/cicd",
 			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
 			"runtimeArgs": [
 				"run",
@@ -183,7 +183,7 @@
 			"name": "Update Velaptor NuGet Packages",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts",
-			"cwd": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}/.github/cicd",
 			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
 			"runtimeArgs": [
 				"run",
@@ -206,7 +206,7 @@
 			"name": "Update Tutorial Link Component Versions",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/update-tut-links.ts",
-			"cwd": "${workspaceFolder}",
+			"cwd": "${workspaceFolder}/.github/cicd",
 			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
 			"runtimeArgs": [
 				"run",

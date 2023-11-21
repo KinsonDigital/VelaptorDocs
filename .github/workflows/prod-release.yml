@@ -84,7 +84,6 @@ jobs:
 
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           deno run `
             --allow-read `

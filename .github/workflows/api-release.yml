@@ -82,7 +82,6 @@ jobs:
           deno-version: ${{ vars.DENO_VERSION }}
 
       - name: Update CSharp Project Files
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           deno run `
             --allow-read --allow-write --allow-sys --allow-net `
@@ -172,7 +171,6 @@ jobs:
 
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           deno run --allow-read --allow-write `
             "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
@@ -181,13 +179,11 @@ jobs:
             "enable";
 
       - name: Remove Oldest API Version
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           deno run --allow-read --allow-write `
             "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           deno run `
             --allow-read --allow-write --allow-run --allow-net `
@@ -200,7 +196,6 @@ jobs:
         run: pnpm install;
 
       - name: Update Tutorial Link Component Versions
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           deno run `
             --allow-read --allow-write --allow-sys --allow-net `
@@ -217,7 +212,6 @@ jobs:
 
       - name: Update Website Version
         id: apply_version_to_site
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           # Get the path to the output file created by the GitHub hosted runner
           $outputFilePath = $env:GITHUB_OUTPUT;

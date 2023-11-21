@@ -28,5 +28,4 @@ jobs:
         deno-version: ${{ vars.DENO_VERSION }}
 
     - name: Run Lint
-      working-directory: ${{ github.workspace }}/.github/cicd
       run: deno lint ./.github/cicd;

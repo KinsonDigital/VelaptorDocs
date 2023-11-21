@@ -1,5 +1,5 @@
 name: 🚀Production API Release
-run-name: 🚀Production API Release (Velaptor ${{ inputs.api-version }})
+run-name: 🚀Production API Release (Velaptor ${{ inputs.api-version }}) ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
 
 
 defaults:
@@ -15,6 +15,11 @@ on:
         description: 'The version of API docs to release.'
         required: true
         type: string
+      dry-run:
+        description: Dry Run - Check to run the workflow without creating a release.
+        required: false
+        default: false
+        type: boolean
 
 
 jobs:
@@ -25,8 +30,10 @@ jobs:
       - name: Run Validation
         run: |
           $branch = "${{ github.ref }}";
+          $isNotDryRun = "${{ inputs.dry-run }}" -ne "true";
 
-          if ($branch -ne "refs/heads/${{ vars.RELEASE_BRANCH }}") {
+          # If the branch is a dry run, allow the workflow on any branch
+          if ($isNotDryRun -and $branch -ne "refs/heads/${{ vars.RELEASE_BRANCH }}") {
             Write-Host "::error::This workflow can only be run on the '${{ vars.RELEASE_BRANCH }}' branch.";
             exit 1;
           }
@@ -237,18 +244,22 @@ jobs:
         run: pnpm build
 
       - name: Setup Pages
+        if: ${{ inputs.dry-run == false }}
         uses: actions/configure-pages@v3
 
       - name: Upload Artifact
+        if: ${{ inputs.dry-run == false }}
         uses: actions/upload-pages-artifact@v2.0.0
         with:
           path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
 
       - name: Deploy to GitHub Pages
         id: deployment
+        if: ${{ inputs.dry-run == false }}
         uses: actions/deploy-pages@v2
 
       - name: Commit New Docs & Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
+        if: ${{ inputs.dry-run == false }}
         run: |
           $apiVersion = "${{ inputs.api-version }}";
 

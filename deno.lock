@@ -2,6 +2,7 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "npm:chalk@4.1.0": "npm:chalk@4.1.0",
       "npm:chalk@4.1.1": "npm:chalk@4.1.1",
       "npm:twitter-api-v2@1.15.0": "npm:twitter-api-v2@1.15.0"
     },
@@ -10,6 +11,13 @@
         "integrity": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==",
         "dependencies": {
           "color-convert": "color-convert@2.0.1"
+        }
+      },
+      "chalk@4.1.0": {
+        "integrity": "sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==",
+        "dependencies": {
+          "ansi-styles": "ansi-styles@4.3.0",
+          "supports-color": "supports-color@7.2.0"
         }
       },
       "chalk@4.1.1": {

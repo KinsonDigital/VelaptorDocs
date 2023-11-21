@@ -8,7 +8,7 @@ import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 import { ValidateReleaseService } from "./ValidateReleaseService.ts";
 import { Yarn } from "./Yarn.ts";
-import { chalk } from "./chalk.ts";
+import chalk from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.

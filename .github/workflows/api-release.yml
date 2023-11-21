@@ -187,6 +187,15 @@ jobs:
       - name: Install Dependencies (pnpm)
         run: pnpm install;
 
+      - name: Update Tutorial Link Component Versions
+        run: |
+          deno run `
+            --allow-read --allow-write --allow-sys --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/update-tut-links.ts" `
+            "${{ github.workspace }}/docs/guides" `
+            "${{ inputs.api-version }}" `
+            "${{ secrets.CICD_TOKEN }}";
+
       - name: Create Docusaurus Version (${{ inputs.api-version }})
         run: |
           $version = "${{ inputs.api-version }}";

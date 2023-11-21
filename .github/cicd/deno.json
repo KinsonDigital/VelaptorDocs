@@ -56,7 +56,28 @@
 			]
 		}
 	},
+    "exclude": [
+        "**/playground.ts",
+        "**/*.md",
+        "**/*.mdx",
+        "**/*.json",
+        "**/*.js",
+        ".git/",
+        ".docusaurus/",
+        "code_coverage/",
+        "build/",
+        "docs/",
+        "src/",
+        "static/",
+        "TutorialProjects/",
+        "versioned_docs/",
+        "versioned_sidebars/",
+        "blog/",
+        "build/",
+        "RepoSrc/"
+    ],
     "imports": {
-        "io/": "./.github/cicd/core/io/"
+        "io/": "./core/io/",
+        "services/": "./core/services/"
     }
 }

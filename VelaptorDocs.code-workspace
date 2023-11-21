@@ -5,6 +5,10 @@
 			"path": ".",
 		},
 		{
+			"name": "TutorialProjects",
+			"path": "./TutorialProjects",
+		},
+		{
 			"name": "CICD",
 			"path": ".github/cicd",
 		}

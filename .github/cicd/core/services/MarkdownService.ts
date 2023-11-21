@@ -1,5 +1,5 @@
-import { Guard } from "./Guard.ts";
-import { Utils } from "./Utils.ts";
+import { Guard } from "../Guard.ts";
+import { Utils } from "../Utils.ts";
 
 export class MarkdownService {
 	private readonly textSectionRegEx: RegExp;

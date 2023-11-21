@@ -1,7 +1,7 @@
 import { Directory } from "io/Directory.ts";
 import { Path } from "io/Path.ts";
 import { Select } from "../deps.ts";
-import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
+import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
 import chalk from "../deps.ts";
 
 /**

@@ -1,4 +1,4 @@
-import { Utils } from "./Utils.ts";
+import { Utils } from "../Utils.ts";
 
 export class HTMLService {
 	private readonly linkTagRegEx: RegExp;

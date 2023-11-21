@@ -1,5 +1,5 @@
-import { IDotNetTool } from "./IDotNetTool.ts";
-import { Utils } from "./Utils.ts";
+import { IDotNetTool } from "../IDotNetTool.ts";
+import { Utils } from "../Utils.ts";
 
 /**
  * Provides functionality for setting up dotnet tools.

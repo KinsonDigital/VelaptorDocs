@@ -1,5 +1,5 @@
-import { TagClient, NuGetClient } from "../deps.ts";
-import { Utils } from "./Utils.ts";
+import { TagClient, NuGetClient } from "../../deps.ts";
+import { Utils } from "../Utils.ts";
 
 /**
  * Validates that a Velaptor release exists.

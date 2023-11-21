@@ -1,6 +1,6 @@
-import { extname } from "../deps.ts";
-import { Guard } from "./Guard.ts";
-import { Utils } from "./Utils.ts";
+import { extname } from "../../deps.ts";
+import { Guard } from "../Guard.ts";
+import { Utils } from "../Utils.ts";
 
 /**
  * Manages the versions file.

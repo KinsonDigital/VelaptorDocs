@@ -1,5 +1,5 @@
-import { resolve } from "../deps.ts";
-import { Utils } from "./Utils.ts";
+import { resolve } from "../../deps.ts";
+import { Utils } from "../Utils.ts";
 
 /**
  * Closes the Velaptor repository.

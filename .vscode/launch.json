@@ -177,6 +177,29 @@
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"
+		},
+		{ // UPDATE VELAPTOR NUGET PACKAGES
+			"request": "launch",
+			"name": "Update Velaptor NuGet Packages",
+			"type": "node",
+			"program": "${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts",
+			"cwd": "${workspaceFolder}",
+			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"runtimeArgs": [
+				"run",
+				"--inspect-wait",
+				"--allow-read",
+				"--allow-write",
+				"--allow-sys",
+				"--allow-net"
+			],
+			"args": [
+				"${workspaceFolder}/TutorialProjects",
+				"1.0.0-preview.300",
+				"${env:CICD_TOKEN}"
+			],
+			"attachSimplePort": 9229,
+			"console": "integratedTerminal"
 		}
     ]
 }

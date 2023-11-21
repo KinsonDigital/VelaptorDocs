@@ -156,6 +156,23 @@
 				"--allow-sys",
 				"${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
 			]
+		},
+		{ // UPDATE VELAPTOR NUGET PACKAGES
+			"label": "Update Velaptor NuGet Packages",
+			"detail": "Updates all of the Velaptor NuGet packages for all tutorial projects.",
+			"type": "shell",
+			"command": "deno",
+			"args": [
+				"run",
+				"--allow-read",
+				"--allow-write",
+				"--allow-sys",
+				"--allow-net",
+				"${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts",
+				"${workspaceFolder}/TutorialProjects",
+				"interactive",
+				"${env:CICD_TOKEN}"
+			],
 		}
 	]
 }

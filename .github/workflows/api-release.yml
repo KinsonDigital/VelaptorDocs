@@ -61,9 +61,70 @@ jobs:
             "${{ secrets.CICD_TOKEN }}";
 
 
+  update_csharp_project_files:
+    name: Update CSharp Project Files
+    needs: validate_branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Set Up Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
+
+      - name: Update CSharp Project Files
+        run: |
+          deno run `
+            --allow-read --allow-write --allow-sys --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
+            "${{ github.workspace }}/TutorialProjects" `
+            "${{ inputs.api-version }}" `
+            "${{ secrets.CICD_TOKEN }}";
+
+      - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ vars.NET_SDK_VERSION }}
+
+      - name: Build Solution
+        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c Debug;
+
+      - name: Upload CSharp Project Files
+        uses: actions/upload-artifact@v2
+        with:
+          name: csharp-proj-files
+          path: ${{ github.workspace }}/TutorialProjects/**/*.csproj
+          if-no-files-found: warn
+
+
+  build_csharp_solution:
+    name: Build CSharp Solution
+    needs: validate_branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ vars.NET_SDK_VERSION }}
+
+      - name: Build Solution
+        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c Debug;
+
+      - name: Download Updated CSharp Project Files
+        uses: actions/download-artifact@v2
+        with:
+          name: csharp-proj-files
+          path: ${{ github.workspace }}/TutorialProjects
+
+
   perform_api_release:
     name: Perform API Release
-    needs: [validate_branch, validate_api_version]
+    needs: [validate_branch, validate_api_version, update_csharp_project_files]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -84,7 +145,7 @@ jobs:
         with:
           deno-version: ${{ vars.DENO_VERSION }}
 
-      # This sdk version SHOULD be the same as the version set in the Velaptor project
+      # This is needed for the step below that generates the API docs
       - name: Setup dotnet (${{ vars.VELAPTOR_DOTNET_SDK_VERSION }})
         uses: actions/setup-dotnet@v3
         with:
@@ -99,7 +160,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: ${{ vars.PNPM_VERSION }}
-    
+
       # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
@@ -150,22 +211,28 @@ jobs:
           deno run --allow-read --allow-write --allow-env `
             "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
             "$outputFilePath";
-  
+
+      - name: Download Updated CSharp Project Files
+        uses: actions/download-artifact@v2
+        with:
+          name: csharp-proj-files
+          path: ${{ github.workspace }}/TutorialProjects
+
       - name: Build Site
         run: pnpm build
-  
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-  
+
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v2.0.0
         with:
           path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
-  
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-  
+
       - name: Commit New Docs & Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
         run: |
           $apiVersion = "${{ inputs.api-version }}";

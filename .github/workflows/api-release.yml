@@ -62,7 +62,7 @@ jobs:
       - name: Validate Version Exists
         run: |
           deno run `
-            --allow-net `
+            --allow-read --allow-net `
             "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts" `
             "${{ inputs.api-version }}" `
             "${{ secrets.CICD_TOKEN }}";
@@ -132,7 +132,8 @@ jobs:
 
   perform_api_release:
     name: Perform API Release
-    needs: [validate_branch, validate_api_version, update_csharp_project_files]
+    needs: [validate_branch, validate_api_version,
+      update_csharp_project_files, build_csharp_solution]
     runs-on: ubuntu-latest
     permissions:
       contents: write

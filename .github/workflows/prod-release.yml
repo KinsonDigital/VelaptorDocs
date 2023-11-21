@@ -99,7 +99,6 @@ jobs:
 
       - name: Update Website Version
         id: apply_version_to_site
-        working-directory: ${{ github.workspace }}/.github/cicd
         run: |
           # Get the path to the output file created by the GitHub hosted runner
           $outputFilePath = $env:GITHUB_OUTPUT;

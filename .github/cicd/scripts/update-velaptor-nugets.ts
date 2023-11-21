@@ -39,13 +39,14 @@ if (isInteractive) {
 		message: "Select a Velaptor version",
 		options: tags,
 		validate: (value: string) => tagRegex.test(value),
-		transform: (value: string) => value.startsWith("v") ? value.substring(1) : value,
 	});
 
 	console.log(`The tag selected was: ${newVersion}`);
 } else {
 	newVersion = possibleVersion;
 }
+
+newVersion = newVersion.startsWith("v") ? newVersion.substring(1) : newVersion;
 
 const newNugetPackage = `<PackageReference Include="KinsonDigital.Velaptor" Version="${newVersion}" />`;
 

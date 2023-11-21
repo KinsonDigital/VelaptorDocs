@@ -130,7 +130,7 @@
         },
 		{ // VELAPTOR VERSION EXISTS
             "request": "launch",
-            "name": "Velaptor Tag Exists",
+            "name": "Velaptor Version Exists",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/velaptor-version-exists.ts",
             "cwd": "${workspaceFolder}/.github/cicd",
@@ -138,7 +138,8 @@
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
-                "--allow-all",
+				"--allow-read",
+				"--allow-net"
             ],
 			"args": [
 				"v1.0.0-preview.12",

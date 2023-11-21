@@ -18,7 +18,7 @@ on:
 
 jobs:
   print_validate_workflow:
-    name: Print & Validate Build DotNet Proj Workflow
+    name: Print & Validate Build Solution Workflow
     runs-on: ubuntu-latest
     steps:
       - name: Print Environment Variables

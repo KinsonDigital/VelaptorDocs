@@ -1,4 +1,4 @@
-import { UpdateWebsiteVersionService } from "../core/services/UpdateWebsiteVersionService.ts";
+import { UpdateWebsiteVersionService } from "services/UpdateWebsiteVersionService.ts";
 
 const service = new UpdateWebsiteVersionService();
 service.updateVersion();

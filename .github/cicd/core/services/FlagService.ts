@@ -1,4 +1,4 @@
-import { Utils } from "../core/Utils.ts";
+import { Utils } from "../Utils.ts";
 
 export class FlagService {
 	private readonly newLine: string;

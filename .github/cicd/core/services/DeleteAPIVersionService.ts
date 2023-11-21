@@ -1,7 +1,7 @@
 import { Directory } from "io/Directory.ts";
 import { Guard } from "../Guard.ts";
-import { VersionSideBarService } from "./VersionSidebarService.ts";
-import { VersionsFileService } from "./VersionsFileService.ts";
+import { VersionSideBarService } from "services/VersionSidebarService.ts";
+import { VersionsFileService } from "services/VersionsFileService.ts";
 
 /**
  * Deletes API docs for a specific version and updates the config files.

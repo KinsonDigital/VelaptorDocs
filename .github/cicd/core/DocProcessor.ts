@@ -1,7 +1,7 @@
-import { CloneRepoService } from "./services/CloneRepoService.ts";
-import { MarkdownFileContentService } from "./services/MarkdownFileContentService.ts";
-import { ValidateReleaseService } from "./services/ValidateReleaseService.ts";
-import { MarkdownService } from "./services/MarkdownService.ts";
+import { CloneRepoService } from "services/CloneRepoService.ts";
+import { MarkdownFileContentService } from "services/MarkdownFileContentService.ts";
+import { ValidateReleaseService } from "services/ValidateReleaseService.ts";
+import { MarkdownService } from "services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Directory } from "io/Directory.ts";
 import { File } from "io/File.ts";

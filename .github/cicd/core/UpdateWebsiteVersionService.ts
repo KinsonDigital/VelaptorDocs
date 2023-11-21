@@ -1,4 +1,4 @@
-import { File } from "./File.ts";
+import { File } from "io/File.ts";
 
 /**
  * Updates the version in the docusaurus.config.js file.

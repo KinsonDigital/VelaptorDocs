@@ -1,6 +1,7 @@
-import { Directory } from "../core/Directory.ts";
 import { Utils } from "../core/Utils.ts";
-import { File, Select, TagClient } from "../deps.ts";
+import { Select, TagClient } from "../deps.ts";
+import { Directory } from "io/Directory.ts";
+import { File } from "io/File.ts";
 
 // If no args were passed
 if (Deno.args.length < 3) {

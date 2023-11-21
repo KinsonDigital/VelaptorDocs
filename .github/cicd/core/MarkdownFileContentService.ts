@@ -1,9 +1,9 @@
 import { CodeBlockService } from "./CodeBlockService.ts";
-import { File } from "./File.ts";
+import { File } from "io/File.ts";
+import { Path } from "io/Path.ts";
 import { HTMLService } from "./HTMLService.ts";
 import { MarkdownHeaderService } from "./MarkdownHeaderService.ts";
 import { MarkdownService } from "./MarkdownService.ts";
-import { Path } from "./Path.ts";
 import { Utils } from "./Utils.ts";
 
 export class MarkdownFileContentService {

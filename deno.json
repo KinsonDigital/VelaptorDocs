@@ -55,5 +55,8 @@
 				"explicit-function-return-type"
 			]
 		}
-	}
+	},
+    "imports": {
+        "io/": "./.github/cicd/core/io/"
+    }
 }

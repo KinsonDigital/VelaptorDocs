@@ -1,5 +1,5 @@
 import { RepoClient } from "../deps.ts";
-import { Directory } from "./Directory.ts";
+import { Directory } from "io/Directory.ts";
 import { DotNetToolService } from "./DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
 

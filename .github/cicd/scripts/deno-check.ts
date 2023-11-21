@@ -1,5 +1,5 @@
 import { CLI } from "../core/CLI.ts";
-import { Directory } from "../core/Directory.ts";
+import { Directory } from "io/Directory.ts";
 
 const ignoreDirectories = [
 	"./vendor/",

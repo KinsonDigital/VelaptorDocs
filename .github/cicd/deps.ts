@@ -5,12 +5,9 @@ import { TagClient, RepoClient } from "https://deno.land/x/kd_clients@v1.0.0-pre
 import { NuGetClient } from "https://deno.land/x/kd_clients@v1.0.0-preview.5/PackageClients/NuGetClient.ts";
 import chalk from "npm:chalk@4.1.0";
 
-import { File } from "./core/File.ts";
-
 export { emptyDirSync, copySync, ensureDirSync };
 export { resolve, dirname, extname };
 export { Input, Select };
 export { TagClient, RepoClient, NuGetClient };
 
-export { File };
 export default chalk;

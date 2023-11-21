@@ -1,4 +1,4 @@
-import { File } from "./File.ts";
+import { File } from "io/File.ts";
 import { Guard } from "./Guard.ts";
 
 /**

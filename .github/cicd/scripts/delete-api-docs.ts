@@ -1,5 +1,5 @@
-import { Directory } from "../core/Directory.ts";
-import { Path } from "../core/Path.ts";
+import { Directory } from "io/Directory.ts";
+import { Path } from "io/Path.ts";
 import { Select } from "../deps.ts";
 import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
 import chalk from "../deps.ts";

@@ -1,4 +1,4 @@
-import { Directory } from "./Directory.ts";
+import { Directory } from "io/Directory.ts";
 import { Guard } from "./Guard.ts";
 import { VersionSideBarService } from "./VersionSidebarService.ts";
 import { VersionsFileService } from "./VersionsFileService.ts";

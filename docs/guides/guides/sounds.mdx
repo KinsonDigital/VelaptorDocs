@@ -46,8 +46,8 @@ You only need the `OnLoad()` and `OnUpdate()` methods.
 
 ## <span class="color-step">Step 2: Create class fields</span>
 
-Create the required class fields that will be used to get the keyboard input, hold the previous keyboard state for
-each loop iteration, load the sound content, and hold the loaded sound.
+Create the required class fields that will be used to get the keyboard input, and hold the previous keyboard state for
+each loop iteration, load the sound content and hold the loaded sound.
 
 ```csharp
 public class Game : Window
@@ -132,7 +132,7 @@ Example: 'deep-consistency.ogg' will become 'deep-consistency'.
 
 We also need to unload the audio content when the window is closed.  Add the following code to the `OnUnload()` method.
 
-**1.** Add a using statement at the top of the file to get access to some content related extension methods.  Though these are not required,
+**1.** Add a `using` statement at the top of the file to get access to some content-related extension methods.  Though these are not required,
 they make unloading content a bit easier.
 
 ```csharp

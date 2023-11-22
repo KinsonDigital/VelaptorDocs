@@ -11,7 +11,6 @@ const files: string[] = Directory
 	.filter(f => ignoreDirectories.every(ignoreDir => !f.startsWith(ignoreDir)));
 
 const cli: CLI = new CLI();
-let failed = false;
 
 console.clear();
 console.log(`Checking ${files.length} files . . .`);
@@ -31,7 +30,7 @@ interface CheckResult {
  * @returns A promise that resolves to a CheckResult.
  */
 const checkFile = async (file: string): Promise<CheckResult> => {
-	let checkResult: CheckResult = {
+	const checkResult: CheckResult = {
 		file: file,
 		result: "",
 		hasPassed: true // Default to passed
@@ -67,7 +66,7 @@ const checkFile = async (file: string): Promise<CheckResult> => {
 const filesToCheck: Promise<CheckResult>[] = [];
 
 // Perform a deno check on all of the files
-for await (let file of files) {
+for await (const file of files) {
 	filesToCheck.push(checkFile(file));	
 };
 

@@ -99,7 +99,7 @@ jobs:
         run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c Debug;
 
       - name: Upload CSharp Project Files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: csharp-proj-files
           path: ${{ github.workspace }}/TutorialProjects/**/*.csproj

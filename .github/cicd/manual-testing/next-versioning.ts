@@ -1,5 +1,5 @@
-import { File } from "../core/File.ts";
-import { FlagService } from "./FlagService.ts";
+import { File } from "io/File.ts";
+import { FlagService } from "services/FlagService.ts";
 
 // Check the arguments
 if (Deno.args.length < 3) {

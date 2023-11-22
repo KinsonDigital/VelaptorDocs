@@ -1,0 +1,98 @@
+﻿[
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1, 1, 174, 275",
+        "FrameIndex": 0,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "176, 1, 254, 389",
+        "FrameIndex": 1,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "431, 1, 283, 497",
+        "FrameIndex": 2,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "715, 1, 315, 575",
+        "FrameIndex": 3,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1031, 1, 342, 666",
+        "FrameIndex": 4,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1374, 1, 347, 744",
+        "FrameIndex": 5,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1723, 1, 364, 806",
+        "FrameIndex": 6,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "2088, 1, 426, 840",
+        "FrameIndex": 7,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1, 846, 403, 948",
+        "FrameIndex": 8,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "428, 850, 361, 948",
+        "FrameIndex": 9,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "799, 848, 357, 948",
+        "FrameIndex": 10,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1172, 845, 407, 948",
+        "FrameIndex": 11,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1596, 842, 399, 948",
+        "FrameIndex": 12,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "2018, 849, 415, 948",
+        "FrameIndex": 13,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "2464, 848, 385, 948",
+        "FrameIndex": 14,
+        "Name": "flame"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "2884, 848, 399, 948",
+        "FrameIndex": 15,
+        "Name": "flame"
+    }
+]

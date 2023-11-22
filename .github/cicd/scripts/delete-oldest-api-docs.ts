@@ -1,7 +1,7 @@
-import { DeleteAPIVersionService } from "../core/DeleteAPIVersionService.ts";
-import { chalk } from "../core/chalk.ts";
-import { VersionsFileService } from "../core/VersionsFileService.ts";
+import chalk from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
+import { DeleteAPIVersionService } from "services/DeleteAPIVersionService.ts";
+import { VersionsFileService } from "services/VersionsFileService.ts";
 
 /**
  * DESCRIPTION: This script is used as part of the api docs release cicd process and is used

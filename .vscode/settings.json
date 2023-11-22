@@ -24,6 +24,7 @@
 		"RepoSrc/": true,
 		"*lock*.json": true,
 		"*.lock": true,
+		"TutorialProjects": true,
 	},
 	"search.exclude": {
 		"**/node_modules": true,

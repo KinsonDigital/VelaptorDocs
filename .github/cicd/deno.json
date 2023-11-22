@@ -1,0 +1,83 @@
+{
+	"fmt": {
+        "include": ["**/.github/cicd/*\\.ts$"],
+        "exclude": [
+            "**/.config/",
+            "**/.docusaurus/",
+            "**/.vscode/",
+            "**/node_modules/",
+            "**/build/",
+            "**/src/",
+            "**/static/",
+            "**/code_coverage/",
+            "**/*.md",
+            "**/*.json",
+            "**/*.js",
+            "**/blog/",
+            "**/RepoSrc/",
+            "**/versioned_docs/",
+            "**/unprocessed-docs/"
+        ],
+        "useTabs": true,
+        "lineWidth": 130,
+        "indentWidth": 4,
+        "semiColons": true,
+        "singleQuote": false
+	},
+	"lint": {
+        "include": [".github/cicd/.*\\.ts$"],
+        "exclude": [
+            "**/playground.ts",
+            "README.md",
+            "versions.json",
+            "tsconfig.json",
+            "package.json",
+            "package-lock.json",
+            "deno.json",
+            "settings.json",
+            "default-doc-config.json",
+            "sidebars.js",
+            "docusaurus.config.js",
+            "babel.config.js",
+            ".docusaurus/",
+            "code_coverage/",
+            "build/",
+            "src/",
+            "static/",
+            "versioned_docs/",
+            "versioned_sidebars/",
+            "docs/",
+            "blog/",
+            "RepoSrc/"
+        ],
+		"rules": {
+			"include": [
+				"explicit-function-return-type"
+			]
+		}
+	},
+    "exclude": [
+        "**/playground.ts",
+        "**/*.md",
+        "**/*.mdx",
+        "**/*.json",
+        "**/*.js",
+        ".git/",
+        ".docusaurus/",
+        "code_coverage/",
+        "build/",
+        "docs/",
+        "src/",
+        "static/",
+        "TutorialProjects/",
+        "versioned_docs/",
+        "versioned_sidebars/",
+        "blog/",
+        "build/",
+        "RepoSrc/"
+    ],
+    "imports": {
+        "io/": "./core/io/",
+        "services/": "./core/services/"
+    }
+}

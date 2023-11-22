@@ -19,8 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.ref }}
         repository: ${{ github.repository }}
+        ref: ${{ github.ref }}
 
     - name: Setup Deno
       uses: denoland/setup-deno@v1
@@ -28,4 +28,4 @@ jobs:
         deno-version: ${{ vars.DENO_VERSION }}
 
     - name: Run Lint
-      run: deno lint ./.github/cicd
+      run: deno lint ./.github/cicd;

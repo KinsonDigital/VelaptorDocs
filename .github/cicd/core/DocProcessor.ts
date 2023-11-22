@@ -1,14 +1,14 @@
-import { CloneRepoService } from "./CloneRepoService.ts";
+import { CloneRepoService } from "services/CloneRepoService.ts";
+import { MarkdownFileContentService } from "services/MarkdownFileContentService.ts";
+import { ValidateReleaseService } from "services/ValidateReleaseService.ts";
+import { MarkdownService } from "services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
-import { Directory } from "./Directory.ts";
-import { File } from "./File.ts";
-import { MarkdownFileContentService } from "./MarkdownFileContentService.ts";
-import { MarkdownService } from "./MarkdownService.ts";
-import { Path } from "./Path.ts";
+import { Directory } from "io/Directory.ts";
+import { File } from "io/File.ts";
+import { Path } from "io/Path.ts";
 import { Utils } from "./Utils.ts";
-import { ValidateReleaseService } from "./ValidateReleaseService.ts";
 import { Yarn } from "./Yarn.ts";
-import { chalk } from "./chalk.ts";
+import chalk from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.

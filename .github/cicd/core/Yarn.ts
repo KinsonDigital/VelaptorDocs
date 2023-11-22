@@ -1,4 +1,4 @@
-import { chalk } from "./chalk.ts";
+import chalk from "../deps.ts";
 
 /**
  * Executes yarn commands.

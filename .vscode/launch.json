@@ -195,7 +195,7 @@
 				"--allow-net"
 			],
 			"args": [
-				"${workspaceFolder}/TutorialProjects",
+				"${workspaceFolder}/SampleProjects",
 				"1.0.0-preview.300",
 				"${env:CICD_TOKEN}"
 			],

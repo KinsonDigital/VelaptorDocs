@@ -86,7 +86,7 @@ jobs:
           deno run `
             --allow-read --allow-write --allow-sys --allow-net `
             "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
-            "${{ github.workspace }}/TutorialProjects" `
+            "${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}" `
             "${{ inputs.api-version }}" `
             "${{ secrets.CICD_TOKEN }}";
 
@@ -96,13 +96,13 @@ jobs:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
       - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c Debug;
+        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/VelaptorTutorials.sln -c Debug;
 
       - name: Upload CSharp Project Files
         uses: actions/upload-artifact@v2
         with:
           name: csharp-proj-files
-          path: ${{ github.workspace }}/TutorialProjects/**/*.csproj
+          path: ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/**/*.csproj
           if-no-files-found: warn
 
 
@@ -120,13 +120,13 @@ jobs:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
       - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c Debug;
+        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/VelaptorTutorials.sln -c Debug;
 
       - name: Download Updated CSharp Project Files
         uses: actions/download-artifact@v2
         with:
           name: csharp-proj-files
-          path: ${{ github.workspace }}/TutorialProjects
+          path: ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}
 
 
   perform_api_release:
@@ -233,7 +233,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: csharp-proj-files
-          path: ${{ github.workspace }}/TutorialProjects
+          path: ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}
 
       - name: Build Site
         run: pnpm build

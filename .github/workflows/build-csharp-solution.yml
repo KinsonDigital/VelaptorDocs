@@ -63,4 +63,4 @@ jobs:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
       - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c ${{ inputs.build-config }};
+        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/VelaptorTutorials.sln -c ${{ inputs.build-config }};

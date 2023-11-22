@@ -17,14 +17,14 @@
 	"files.exclude": {
 		".docusaurus/": true,
 		"node_modules": true,
-		"VelaptorDocs.code-workspace": true,
+		"VelaptorDocs.code-workspace": false,
 		"build/": true,
 		".github/cicd/": true,
 		".config": false,
 		"RepoSrc/": true,
 		"*lock*.json": true,
 		"*.lock": true,
-		"TutorialProjects": true,
+		"SampleProjects": true,
 	},
 	"search.exclude": {
 		"**/node_modules": true,

@@ -96,7 +96,7 @@ jobs:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
       - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/VelaptorTutorials.sln -c Debug;
+        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/${{ vars.SAMPLES_SOLUTION_NAME }}.sln -c Debug;
 
       - name: Upload CSharp Project Files
         uses: actions/upload-artifact@v2
@@ -120,7 +120,7 @@ jobs:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
       - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/VelaptorTutorials.sln -c Debug;
+        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/${{ vars.SAMPLES_SOLUTION_NAME }}.sln -c Debug;
 
       - name: Download Updated CSharp Project Files
         uses: actions/download-artifact@v2

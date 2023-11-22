@@ -1,5 +1,5 @@
-name: ✅Build Status Check
-run-name: ✅Build Status Check (${{ github.base_ref }} branch)
+name: ✅Build Docs Status Check
+run-name: ✅Build Docs Status Check (${{ github.base_ref }} branch)
 
 
 defaults:
@@ -43,6 +43,6 @@ jobs:
     - name: Disable Testing Env
       working-directory: ${{ github.workspace }}/.github/cicd
       run: deno run --allow-read --allow-write "${{ github.workspace }}\.github\cicd\manual-testing\testing-env.ts" "disable";
-    
+
     - name: Build
       run: pnpm build

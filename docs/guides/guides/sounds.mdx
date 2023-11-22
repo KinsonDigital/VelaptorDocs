@@ -20,15 +20,15 @@ Check out some of these sounds!! They might bring back memories. 😉
 <table>
   <tr style={{ border: 'none' }}>
     <td style={{ border: 'none' }}>
-		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/mario-jump.mp3"
+		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/mario-jump.mp3"
         soundName="Mario Jump"/>
 	</td>
     <td style={{ border: 'none' }}>
-        <Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/metroid-ice-beam.mp3"
+        <Audio soundUrl="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/metroid-ice-beam.mp3"
         soundName="Metroid Ice Beam"/>
 	</td>
     <td style={{ border: 'none' }}>
-		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/brinstar-music.mp3"
+		<Audio soundUrl="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/brinstar-music.mp3"
         soundName="Metroid Brinstar Music"/>
 	</td>
   </tr>
@@ -46,8 +46,8 @@ You only need the `OnLoad()` and `OnUpdate()` methods.
 
 ## <span class="color-step">Step 2: Create class fields</span>
 
-Create the required class fields that will be used to get the keyboard input, hold the previous keyboard state for
-each loop iteration, load the sound content, and hold the loaded sound.
+Create the required class fields that will be used to get the keyboard input, and hold the previous keyboard state for
+each loop iteration, load the sound content and hold the loaded sound.
 
 ```csharp
 public class Game : Window
@@ -95,10 +95,10 @@ Currently, the supported audio formats are _**.mp3**_ and _**.ogg**_.
 ### <span class="color-sub-step">Step 4.1: Get audio content</span>
 
 You can provide whatever audio file you want, but if you don't have one, you can download the original tutorial project
-sound <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/deep-consistency.ogg" linkName="here"/>.
+sound <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/deep-consistency.ogg" linkName="here"/>.
 
 Play it to see if you like it.  😀
-<Audio soundUrl="https://github.com/KinsonDigital/VelaptorTutorials/raw/master/Sounds/Content/Sounds/deep-consistency.ogg" />
+<Audio soundUrl="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/deep-consistency.ogg" />
 
 ### <span class="color-sub-step">Step 4.2: Setup file as content</span>
 
@@ -132,7 +132,7 @@ Example: 'deep-consistency.ogg' will become 'deep-consistency'.
 
 We also need to unload the audio content when the window is closed.  Add the following code to the `OnUnload()` method.
 
-**1.** Add a using statement at the top of the file to get access to some content related extension methods.  Though these are not required,
+**1.** Add a `using` statement at the top of the file to get access to some content-related extension methods.  Though these are not required,
 they make unloading content a bit easier.
 
 ```csharp

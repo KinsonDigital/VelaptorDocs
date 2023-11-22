@@ -189,7 +189,7 @@
 				"--allow-sys",
 				"--allow-net",
 				"${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts",
-				"${workspaceFolder}/TutorialProjects",
+				"${workspaceFolder}/SampleProjects",
 				"interactive",
 				"${env:CICD_TOKEN}"
 			],
@@ -209,7 +209,7 @@
 				"--allow-sys",
 				"--allow-net",
 				"${workspaceFolder}/.github/cicd/scripts/update-tut-links.ts",
-				"${workspaceFolder}/TutorialProjects",
+				"${workspaceFolder}/SampleProjects",
 				"interactive",
 				"${env:CICD_TOKEN}"
 			],

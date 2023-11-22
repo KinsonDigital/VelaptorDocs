@@ -5,8 +5,8 @@
 			"path": ".",
 		},
 		{
-			"name": "TutorialProjects",
-			"path": "./TutorialProjects",
+			"name": "SampleProjects",
+			"path": "./SampleProjects",
 		},
 		{
 			"name": "CICD",
@@ -24,7 +24,6 @@
         "testing.followRunningTest": true,
         "testing.gutterEnabled": false,
         "testing.openTesting": "neverOpen",
-        "deno.testing.enable": false,
         "typescript.referencesCodeLens.enabled": true,
 	}
 }

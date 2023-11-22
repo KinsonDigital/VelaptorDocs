@@ -14,6 +14,16 @@ on:
         required: true
         description: The build configuration to use (e.g. 'Debug', 'Release').
         type: string
+      checkout-repository:
+        required: false
+        description: The git repository to checkout the code from.
+        type: string
+        default: ${{ github.repository }}
+      checkout-ref:
+        required: false
+        description: The git reference to checkout the code at.
+        type: string
+        default: ${{ github.ref }}
 
 
 jobs:
@@ -56,6 +66,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.checkout-repository }}
+          ref: ${{ inputs.checkout-ref }}
 
       - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
         uses: actions/setup-dotnet@v3
@@ -63,4 +76,4 @@ jobs:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
       - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/TutorialProjects/VelaptorTutorials.sln -c ${{ inputs.build-config }};
+        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/${{ vars.SAMPLES_SOLUTION_NAME }}.sln -c ${{ inputs.build-config }};

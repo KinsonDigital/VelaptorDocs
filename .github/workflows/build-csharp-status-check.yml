@@ -1,0 +1,22 @@
+name: ✅Build CSharp Status Check
+run-name: ✅Build CSharp Status Check (${{ github.base_ref }} branch)
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  pull_request_target:
+    branches: main
+
+
+jobs:
+  csharp_projects_build_status_check:
+    name: CSharp Projects Build Status Check
+    uses: ./.github/workflows/build-csharp-solution.yml
+    with:
+      build-config: Release
+      checkout-repository: ${{ github.event.pull_request.head.repo.full_name }}
+      checkout-ref: ${{ github.event.pull_request.head.ref }}

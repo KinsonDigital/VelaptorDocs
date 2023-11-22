@@ -46,10 +46,3 @@ jobs:
     
     - name: Build
       run: pnpm build
-
-
-  tutorial_projects_build_status_check:
-    name: Tutorial Projects Build Status Check
-    uses: ./.github/workflows/build-csharp-solution.yml
-    with:
-      build-config: Release

@@ -33,11 +33,11 @@
     <ItemGroup>
       <PackageReference Include="KinsonDigital.Carbonate" Version="1.0.0-preview.16" />
       <PackageReference Include="KinsonDigital.Velaptor" Version="1.0.0-preview.30" />
-      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
+      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="SimpleInjector" Version="5.4.1" />
+      <PackageReference Include="SimpleInjector" Version="5.4.2" />
       <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -22,13 +22,15 @@ using Velaptor.Graphics.Renderers;
 /// </summary>
 public class Weapon : IUpdatable, IDrawable, IContentLoadable
 {
-    private readonly IPushReactable<WeaponType> swapWeaponReactable;
+    private readonly IPushReactable<WeaponType> swapWeaponSignal;
     private readonly ITextureRenderer renderer;
     private readonly ILoader<ITexture> textureLoader;
+    private readonly ILoader<ISound> soundLoader;
     private readonly IDisposable unsubscriber;
     private readonly List<Bullet> bullets = new ();
     private readonly int[] weaponTypeValues;
     private ITexture? texture;
+    private ISound? lazerSound;
     private Rectangle worldBounds;
     private SizeF shipSize;
     private Vector2 shipPos;
@@ -38,26 +40,27 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// Initializes a new instance of the <see cref="Weapon"/> class.
     /// </summary>
     /// <param name="shipSignal">Provides notifications of the ships position.</param>
-    /// <param name="swapWeaponReactable">Sends a signal that a weapon has been swapped.</param>
-    /// <param name="worldDataReactable">Receives updates about the world.</param>
+    /// <param name="swapWeaponSignal">Sends a signal that a weapon has been swapped.</param>
+    /// <param name="worldDataSignal">Receives updates about the world.</param>
     public Weapon(
         IShipSignal shipSignal,
-        ISwapWeaponSignal swapWeaponReactable,
-        IWorldSignal worldDataReactable)
+        ISwapWeaponSignal swapWeaponSignal,
+        IWorldSignal worldDataSignal)
     {
-        this.swapWeaponReactable = swapWeaponReactable;
+        this.swapWeaponSignal = swapWeaponSignal;
 
         var worldUpdateSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.WorldDataUpdate)
             .BuildOneWayReceive<WorldData>(worldData => this.worldBounds = worldData.WorldBounds);
 
-        worldDataReactable.Subscribe(worldUpdateSubscription);
+        worldDataSignal.Subscribe(worldUpdateSubscription);
 
         this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
 
         this.renderer = RendererFactory.CreateTextureRenderer();
 
         this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+        this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
 
         var shipSignalSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.ShipUpdate)
@@ -84,6 +87,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         this.texture = this.textureLoader.Load("laser");
         this.textureHeight = this.texture.Height;
 
+        this.lazerSound = this.soundLoader.Load("space-lazer-5");
+
         IsLoaded = true;
     }
 
@@ -95,6 +100,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         }
 
         this.textureLoader.Unload(this.texture);
+        this.soundLoader.Unload(this.lazerSound);
     }
 
     /// <summary>
@@ -140,6 +146,9 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     {
         var noBulletExists = true;
 
+        this.lazerSound?.Stop();
+        this.lazerSound?.Play();
+
         for (var i = 0; i < this.bullets.Count; i++)
         {
             if (this.bullets[i].IsVisible)
@@ -180,7 +189,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         }
 
         // Send a notification to the UI that the weapon has been swapped
-        this.swapWeaponReactable.Push(TypeOfWeapon, SignalIds.SwapWeapon);
+        this.swapWeaponSignal.Push(TypeOfWeapon, SignalIds.SwapWeapon);
     }
 
     /// <summary>

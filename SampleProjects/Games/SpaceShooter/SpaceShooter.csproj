@@ -28,6 +28,9 @@
       <None Update="Content\Graphics\weapon-selection.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Content\Sounds\space-lazer-5.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
@@ -44,9 +47,5 @@
       </PackageReference>
 
     </ItemGroup>
-
-
-
-
 
 </Project>

@@ -26,7 +26,6 @@ public static class App
         }
     }
 
-
     private static void SetupContainer()
     {
         SetupSignaling();

@@ -31,6 +31,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     private readonly int[] weaponTypeValues;
     private ITexture? texture;
     private ISound? lazerSound;
+    private ISound? changeWeaponSound;
     private Rectangle worldBounds;
     private SizeF shipSize;
     private Vector2 shipPos;
@@ -53,7 +54,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
             .WithId(SignalIds.WorldDataUpdate)
             .BuildOneWayReceive<WorldData>(worldData => this.worldBounds = worldData.WorldBounds);
 
-        worldDataSignal.Subscribe(worldUpdateSubscription);
+        this.unsubscriber = worldDataSignal.Subscribe(worldUpdateSubscription);
 
         this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
 
@@ -88,6 +89,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         this.textureHeight = this.texture.Height;
 
         this.lazerSound = this.soundLoader.Load("space-lazer-5");
+        this.changeWeaponSound = this.soundLoader.Load("change-weapon");
 
         IsLoaded = true;
     }
@@ -99,8 +101,10 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
+        this.unsubscriber.Dispose();
         this.textureLoader.Unload(this.texture);
         this.soundLoader.Unload(this.lazerSound);
+        this.soundLoader.Unload(this.changeWeaponSound);
     }
 
     /// <summary>
@@ -190,6 +194,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
 
         // Send a notification to the UI that the weapon has been swapped
         this.swapWeaponSignal.Push(TypeOfWeapon, SignalIds.SwapWeapon);
+        this.changeWeaponSound?.Stop();
+        this.changeWeaponSound?.Play();
     }
 
     /// <summary>

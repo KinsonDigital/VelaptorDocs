@@ -6,13 +6,17 @@ namespace SpaceShooter;
 
 using System.Drawing;
 using System.Numerics;
+using CASL;
 using Signals;
 using Signals.Data;
 using UI;
 using Velaptor;
 using Velaptor.Batching;
+using Velaptor.Content;
+using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.UI;
+using ISound = Velaptor.Content.ISound;
 
 /// <summary>
 /// The main game class.
@@ -20,9 +24,12 @@ using Velaptor.UI;
 public class Game : Window
 {
     private readonly IBatcher batcher;
+    private readonly ILoader<ISound> soundLoader;
     private readonly IWorldSignal worldSignal;
     private readonly Ship ship;
     private readonly WeaponSelectionUI weaponSelectionUi;
+    private ISound music;
+    private Background background;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
@@ -34,9 +41,12 @@ public class Game : Window
         UpdateFrequency = 120;
 
         this.batcher = RendererFactory.CreateBatcher();
+        this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
         this.ship = App.Factory.GetInstance<Ship>();
         this.worldSignal = App.Factory.GetInstance<IWorldSignal>();
         this.weaponSelectionUi = App.Factory.GetInstance<WeaponSelectionUI>();
+
+        this.background = new Background(this.worldSignal);
     }
 
     /// <summary>
@@ -49,16 +59,26 @@ public class Game : Window
         var worldBounds = new Rectangle(0, 0, (int)Width, (int)Height);
         this.worldSignal.Push(new WorldData { WorldBounds = worldBounds }, SignalIds.WorldDataUpdate);
 
+        this.background.LoadContent();
         this.ship.LoadContent();
         this.weaponSelectionUi.LoadContent();
+        this.music = this.soundLoader.Load("music");
+
+        this.music.IsLooping = true;
 
         base.OnLoad();
     }
 
+    /// <summary>
+    /// Unloads the content.
+    /// </summary>
     protected override void OnUnload()
     {
+        this.background.UnloadContent();
         this.ship.UnloadContent();
         this.weaponSelectionUi.UnloadContent();
+        this.soundLoader.Unload(this.music);
+
         base.OnUnload();
     }
 
@@ -69,8 +89,14 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
+        this.background.Update(frameTime);
         this.ship.Update(frameTime);
         this.weaponSelectionUi.Update(frameTime);
+
+        if (this.music.State != SoundState.Playing)
+        {
+            this.music.Play();
+        }
 
         base.OnUpdate(frameTime);
     }
@@ -84,6 +110,7 @@ public class Game : Window
     {
         this.batcher.Begin();
 
+        this.background.Render();
         this.ship.Render();
         this.weaponSelectionUi.Render();
 

@@ -69,9 +69,6 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
         this.keyboard = HardwareFactory.GetKeyboard();
 
         this.weapon = weapon;
-
-        // Set the starting position of the ship to the center of the world
-        this.shipPos = new Vector2(this.worldBounds.Width / 2f, this.worldBounds.Height - (this.worldBounds.Height / 4f));
     }
 
     public bool IsLoaded { get; }
@@ -90,6 +87,9 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
         this.weapon.LoadContent();
 
         var shipSize = new SizeF(this.texture.Width, this.texture.Height);
+
+        // Set the starting position of the ship to the center of the world
+        this.shipPos = new Vector2(this.worldBounds.Width / 2f, this.worldBounds.Height - (this.worldBounds.Height / 4f));
 
         // Send a signal of the ship data
         this.shipSignal.Push(new ShipData { ShipPos = this.shipPos, ShipSize = shipSize }, SignalIds.ShipUpdate);
@@ -143,6 +143,8 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// </summary>
     public void Render()
     {
+        ArgumentNullException.ThrowIfNull(this.texture);
+
         this.weapon.Render();
 
         // Render the ship image in the center of the window

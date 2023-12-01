@@ -5,6 +5,8 @@
 namespace SpaceShooter;
 
 using System.Drawing;
+using System.Numerics;
+using Velaptor;
 
 public static class ExtensionMethods
 {
@@ -31,5 +33,26 @@ public static class ExtensionMethods
         }
 
         throw new InvalidOperationException("The probabilities in the item list do not sum up to 1.");
+    }
+
+    public static Vector2 GetBezierPoint(this Vector2 point1, Vector2 point2, float t)
+    {
+        const bool cw = true;
+        const bool ccw = false;
+
+        var midPoint = Vector2.Lerp(point1, point2, 0.5f);
+
+        var p0 = point1;
+        var p1 = midPoint.RotateAround(p0, 90, ccw);
+        var p3 = point2;
+        var p2 = midPoint.RotateAround(p3, 90, cw);
+
+        var a = Vector2.Lerp(p0, p1, t);
+        var b = Vector2.Lerp(p1, p2, t);
+        var c = Vector2.Lerp(p2, p3, t);
+        var d = Vector2.Lerp(a, b, t);
+        var e = Vector2.Lerp(b, c, t);
+
+        return Vector2.Lerp(d, e, t);
     }
 }

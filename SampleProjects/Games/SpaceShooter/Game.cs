@@ -27,6 +27,7 @@ public class Game : Window
     private readonly ILoader<ISound> soundLoader;
     private readonly IWorldSignal worldSignal;
     private readonly Ship ship;
+    private readonly Enemy enemy;
     private readonly WeaponSelectionUI weaponSelectionUi;
     private ISound music;
     private Background background;
@@ -43,6 +44,8 @@ public class Game : Window
         this.batcher = RendererFactory.CreateBatcher();
         this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
         this.ship = App.Factory.GetInstance<Ship>();
+        this.enemy = App.Factory.GetInstance<Enemy>();
+
         this.worldSignal = App.Factory.GetInstance<IWorldSignal>();
         this.weaponSelectionUi = App.Factory.GetInstance<WeaponSelectionUI>();
 
@@ -60,8 +63,12 @@ public class Game : Window
         this.worldSignal.Push(new WorldData { WorldBounds = worldBounds }, SignalIds.WorldDataUpdate);
 
         this.background.LoadContent();
+
         this.ship.LoadContent();
         this.weaponSelectionUi.LoadContent();
+
+        this.enemy.LoadContent();
+
         this.music = this.soundLoader.Load("music");
 
         this.music.IsLooping = true;
@@ -75,8 +82,12 @@ public class Game : Window
     protected override void OnUnload()
     {
         this.background.UnloadContent();
+
         this.ship.UnloadContent();
         this.weaponSelectionUi.UnloadContent();
+
+        this.enemy.UnloadContent();
+
         this.soundLoader.Unload(this.music);
 
         base.OnUnload();
@@ -91,6 +102,7 @@ public class Game : Window
     {
         this.background.Update(frameTime);
         this.ship.Update(frameTime);
+        this.enemy.Update(frameTime);
         this.weaponSelectionUi.Update(frameTime);
 
         if (this.music.State != SoundState.Playing)
@@ -112,6 +124,8 @@ public class Game : Window
 
         this.background.Render();
         this.ship.Render();
+        this.enemy.Render();
+
         this.weaponSelectionUi.Render();
 
         this.batcher.End();

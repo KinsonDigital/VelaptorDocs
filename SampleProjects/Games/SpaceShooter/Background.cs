@@ -27,7 +27,7 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<ITexture> textureLoader;
-    private readonly RandomNumGenerator randomNEW = new ();
+    private readonly RandomNumGenerator random = new ();
     private readonly List<Star> stars = new ();
     private readonly IDisposable worldSignalUnsubscriber;
     private ITexture? starTexture;
@@ -165,19 +165,17 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
     private Star CreateStar(int x = -1, int y = -1)
     {
         var newClr = this.starColors.GetRandomItem();
-        var alpha = this.randomNEW.Next(125, 255);
+        var alpha = this.random.Next(125, 255);
         newClr.SetAlpha(alpha);
 
-        var newSize = this.randomNEW.Next(50, 100);
+        var newSize = this.random.Next(50, 100);
 
-        var newX = this.randomNEW.Next(0, this.worldBounds.Width);
-        var newY = this.randomNEW.Next(0, this.worldBounds.Height);
+        var newX = this.random.Next(0, this.worldBounds.Width);
+        var newY = this.random.Next(0, this.worldBounds.Height);
 
         return new Star
         {
             Color = newClr,
-            // X = x >= 0 ? x : this.random.Next(0, this.worldBounds.Width),
-            // Y = y >= 0 ? y : this.random.Next(0, this.worldBounds.Height),
             X = x >= 0 ? x : newX,
             Y = y >= 0 ? y : newY,
             Size = newSize / 100f,

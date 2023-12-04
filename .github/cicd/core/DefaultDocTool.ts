@@ -1,6 +1,7 @@
 import { RepoClient, existsSync } from "../deps.ts";
 import { DotNetToolService } from "services/DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
+import { CLI } from "./CLI.ts";
 
 /**
  * Provides ability to generate documentation.
@@ -56,30 +57,31 @@ export class DefaultDocTool {
 
 		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, defaultDocToolVersion);
 
-		if (!existsSync(outputDirPath)) {
+		if (existsSync(outputDirPath)) {
 			Deno.removeSync(outputDirPath, { recursive: true });
 		}
 
 		Deno.mkdirSync(outputDirPath, { recursive: true });
 
-		const command = new Deno.Command("defaultdocumentation", {
-			args: [
-				"--AssemblyFilePath",
-				`${assemblyPath}`,
-				"--OutputDirectoryPath",
-				`${outputDirPath}`,
-				"--ConfigurationFilePath",
-				`${configFilePath}`,
-			],
-		});
+		const cli = new CLI();
 
-		const { code, stdout, stderr } = await command.output();
+		const args = [
+			"--AssemblyFilePath",
+			`${assemblyPath}`,
+			"--OutputDirectoryPath",
+			`${outputDirPath}`,
+			"--ConfigurationFilePath",
+			`${configFilePath}`,
+		];
 
-		if (code === 0) {
-			console.log(new TextDecoder().decode(stdout));
-		} else {
-			console.log(new TextDecoder().decode(stderr));
-			Deno.exit(code);
+		const command = `defaultdocumentation ${args.join(" " )}`;
+		const commandResult = await cli.runAsync(command);
+
+		if (commandResult instanceof Error) {
+			Utils.printGitHubError(commandResult.message);
+			Deno.exit(1);
 		}
+
+		console.log(commandResult);
 	}
 }

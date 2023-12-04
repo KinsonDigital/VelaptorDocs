@@ -83,6 +83,7 @@ export class DocProcessor {
 	 * @param tagOrBranch The Velaptor release tag or branch name.
 	 */
 	private async run(apiDocDirPath: string, tagOrBranch: string): Promise<void> {
+		const cwd = Deno.cwd();
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 		
@@ -112,12 +113,18 @@ export class DocProcessor {
 		// Generate the documentation.
 		await this.runProcess(
 			"Generating Documentation. . .",
-			() =>
-				this.defaultDocTool.generateDocumentation(
-					`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
-					`${Deno.cwd()}/docs/api`,
-					`${Deno.cwd()}/default-doc-config.json`,
-				),
+			() => {
+				const velaptorFilePath = this.findFilePaths(repoSrcDirPath, ["RepoSrc/BuildOutput/Velaptor.dll"])
+					.filter((filePath) => filePath.endsWith("RepoSrc/BuildOutput/Velaptor.dll"))[0];
+
+				const docsApiDirPath = this.findDirPaths(cwd, ["docs/api"])
+					.filter((dirPath) => dirPath.endsWith("docs/api"))[0];
+
+				const defaultDocConfigFilePath = this.findFilePaths(cwd, ["default-doc-config.json"])
+					.filter((filePath) => filePath.endsWith("default-doc-config.json"))[0];
+				
+				return this.defaultDocTool.generateDocumentation(docsApiDirPath, velaptorFilePath, defaultDocConfigFilePath);
+			},
 			"Documentation Generation Complete.",
 		);
 
@@ -221,5 +228,49 @@ export class DocProcessor {
 			console.error(error);
 			throw error;
 		}
+	}
+
+	private findDirPaths(dirStartPath: string, inclusions: string[]): string[] {
+		inclusions = inclusions.map((inclusion) => inclusion.trim().replaceAll("\\", "/").replaceAll("/", "(/|\\\\)"));
+		const matches = inclusions.map((inclusion) => new RegExp(`.*${inclusion}.*`));
+
+		const entries = walkSync(dirStartPath, {
+			includeDirs: true,
+			includeFiles: false,
+			match: matches,
+		});
+
+		const result = [...entries].map((entry) => entry.path.replaceAll("\\", "/"));
+
+		if (Utils.isNothing(result)) {
+			const errorMsg = `Could not find the directories relative to the directory '${dirStartPath}'.` +
+							 `\nInclusions: ${inclusions.join(", ")}`;
+			Utils.printGitHubError(errorMsg);
+			Deno.exit(1);
+		}
+
+		return result;
+	}
+
+	private findFilePaths(dirStartPath: string, inclusions: string[]): string[] {
+		inclusions = inclusions.map((inclusion) => inclusion.trim().replaceAll("\\", "/").replaceAll("/", "(/|\\\\)"));
+		const matches = inclusions.map((inclusion) => new RegExp(`.*${inclusion}.*`));
+
+		const entries = walkSync(dirStartPath, {
+			includeDirs: false,
+			includeFiles: true,
+			match: matches,
+		});
+
+		const result = [...entries].map((entry) => entry.path.replaceAll("\\", "/"));
+
+		if (Utils.isNothing(result)) {
+			const errorMsg = `Could not find the files relative to the directory '${dirStartPath}'.` +
+							 `\nInclusions: ${inclusions.join(", ")}`;
+			Utils.printGitHubError(errorMsg);
+			Deno.exit(1);
+		}
+
+		return result;
 	}
 }

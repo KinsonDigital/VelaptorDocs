@@ -1,14 +1,17 @@
-import { Directory } from "io/Directory.ts";
 import { CLI } from "../core/CLI.ts";
+import { walkSync } from "../deps.ts";
 
-const ignoreDirectories = [
-	"./vendor/",
-	"./node_modules/"
-];
+const cwd = Deno.cwd().trim();
 
-const files: string[] = Directory
-	.getFiles("/", ".ts", true)
-	.filter(f => ignoreDirectories.every(ignoreDir => !f.startsWith(ignoreDir)));
+const fileEntries = walkSync(cwd, {
+	includeDirs: false,
+	includeFiles: true,
+	exts: [".ts"],
+	match: [new RegExp(".*cicd.*")],
+	skip: [new RegExp(".*node_modules.*"), new RegExp(".*vendor.*")]
+});
+
+const files = [...fileEntries].map((entry) => entry.path);
 
 const cli: CLI = new CLI();
 
@@ -85,6 +88,6 @@ const totalFailed = allCheckResults.filter(r => !r.hasPassed).length;
 const resultsMsg = new TextEncoder().encode(`\nTotal Checks Passed✅: ${totalPassed}\nTotal Checks Failed❌: ${totalFailed}\n`);
 Deno.stdout.writeSync(resultsMsg);
 
-if (failed) {
+if (totalFailed > 0) {
 	Deno.exit(1);
 }

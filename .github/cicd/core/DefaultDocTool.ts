@@ -1,5 +1,4 @@
-import { RepoClient } from "../deps.ts";
-import { Directory } from "io/Directory.ts";
+import { RepoClient, existsSync } from "../deps.ts";
 import { DotNetToolService } from "services/DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
 
@@ -57,7 +56,7 @@ export class DefaultDocTool {
 
 		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, defaultDocToolVersion);
 
-		if (Directory.exists(outputDirPath)) {
+		if (!existsSync(outputDirPath)) {
 			Deno.removeSync(outputDirPath, { recursive: true });
 		}
 

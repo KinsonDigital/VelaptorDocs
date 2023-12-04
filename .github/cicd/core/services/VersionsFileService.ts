@@ -1,4 +1,4 @@
-import { extname } from "../../deps.ts";
+import { basename, extname, walkSync } from "../../deps.ts";
 import { Guard } from "../Guard.ts";
 import { Utils } from "../Utils.ts";
 
@@ -9,9 +9,31 @@ export class VersionsFileService {
 	private readonly newLine: string;
 	private readonly filePath: string;
 
-	constructor() {
+	/**
+	 * Creates a new instance of the ${@link VersionsFileService} class.
+	 * @param {string} dirPath The directory path to start searching for the versions file.
+	 */
+	constructor(dirPath: string) {
 		this.newLine = Deno.build.os === "windows" ? "\r\n" : "\n";
-		this.filePath = `${Deno.cwd()}/versions.json`;
+
+		const filePathEntries = walkSync(dirPath, {
+			includeDirs: false,
+			includeFiles: true,
+			exts: [".json"],
+			match: [new RegExp("versions")],
+			skip: [new RegExp("node_modules")]
+		});
+
+		const foundFilePath = [...filePathEntries]
+			.map((entry) => entry.path)
+			.find((path) => basename(path) === "versions.json");
+
+
+		if (Utils.isNothing(foundFilePath)) {
+			throw new Error(`The versions file 'version.json' could not be found in the directory '${dirPath}'.`);
+		}
+
+		this.filePath = foundFilePath;
 	}
 
 	/**
@@ -36,6 +58,9 @@ export class VersionsFileService {
 		console.log(`\tDeleted version '${version}' from '${this.filePath}'`);
 	}
 
+	/**
+	 * Enables the testing version of the api docs.
+	 */
 	public enableTestVersion(): void {
 		if (this.filePath === undefined || this.filePath === "") {
 			throw new Error("The 'this.filePath' parameter must not be null or empty.");

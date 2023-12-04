@@ -1,23 +1,21 @@
 import { Utils } from "../core/Utils.ts";
-import { Select, TagClient } from "../deps.ts";
-import { Directory } from "io/Directory.ts";
-import { File } from "io/File.ts";
+import { Select, TagClient, existsSync, walkSync } from "../deps.ts";
 
 // If no args were passed
 if (Deno.args.length < 3) {
-	const errorMsg = "::error::Please provide 3 arguments to update the tutorial projects." +
+	const errorMsg = "Please provide 3 arguments to update the tutorial projects." +
 		"\n1. The root directory path to start searching for tutorial projects." +
 		"\n2. The version number to update the Velaptor NuGet packages to." +
 		"\n3. The GitHub token.";
 
-	console.log(errorMsg);
+	Utils.printGitHubError(errorMsg);
 	Deno.exit(100);
 }
 
 const rootDirPath = Deno.args[0].trim().replaceAll("\\", "/");
 
 // If the directory does not exist, throw and error
-if (Directory.doesNotExist(rootDirPath)) {
+if (!existsSync(rootDirPath, { isDirectory: true, isReadable: true })) {
 	console.log(`::error::The given directory path '${rootDirPath}' does not exist.`);
 	Deno.exit(200);
 }
@@ -54,11 +52,18 @@ const velaptorNuGetRegex =
 	/<PackageReference\s+Include\s*=\s*\"KinsonDigital.Velaptor\"\s+Version\s*=\s*\"[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+\"\s*\/>/;
 
 // Get all the csproj files
-const csprojFiles = Directory.getFiles(rootDirPath, ".csproj", true);
+const projEntries = walkSync(rootDirPath, {
+	includeDirs: false,
+	includeFiles: true,
+	exts: [".csproj"],
+});
+
+const csprojFiles = [...projEntries].map((entry) => entry.path);
+
 
 // Replace the nuget package reference with the new version
 csprojFiles.forEach(file => {
-	const fileData = File.readTextFileSync(file);
+	const fileData = Deno.readTextFileSync(file);
 
 	const nugetRefs = velaptorNuGetRegex.exec(fileData)?.map(match => match.toString()) ?? [];
 
@@ -72,10 +77,10 @@ csprojFiles.forEach(file => {
 
 		const newFileData = fileData.replace(velaptorNuGetRegex, newNugetPackage);
 
-		File.writeTextFileSync(file, newFileData);
+		Deno.writeTextFileSync(file, newFileData);
 
-		const updateFileMsg = `::notice::The NuGet package 'KinsonDigital.Velaptor' was updated from version` +
+		const updateFileMsg = `The NuGet package 'KinsonDigital.Velaptor' was updated from version` +
 			`'${oldVersion}' to version '${newVersion}' in the csproj file '${file}`;
-		console.log(updateFileMsg);
+		Utils.printGitHubNotice(updateFileMsg);
 	}
 });

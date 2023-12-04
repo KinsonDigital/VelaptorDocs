@@ -1,23 +1,22 @@
 import { Utils } from "../core/Utils.ts";
-import { Select, TagClient } from "../deps.ts";
-import { Directory } from "io/Directory.ts";
-import { File } from "io/File.ts";
+import { Select, TagClient, existsSync, walkSync } from "../deps.ts";
 
 // If no args were passed
 if (Deno.args.length < 3) {
-	const errorMsg = "::error::Please provide 3 arguments to update the tutorial projects." +
+	const errorMsg = "Please provide 3 arguments to update the tutorial projects." +
 		"\n1. The root directory path to start searching for tutorial projects." +
 		"\n2. The version number to update the Velaptor NuGet packages to." +
 		"\n3. The GitHub token.";
 
-	console.log(errorMsg);
+	Utils.printGitHubError(errorMsg);
 	Deno.exit(100);
 }
 
 const rootDirPath = Deno.args[0].trim().replaceAll("\\", "/");
 
 // If the directory does not exist, throw and error
-if (Directory.doesNotExist(rootDirPath)) {
+
+if (existsSync(rootDirPath, { isReadable: true })) {
 	console.log(`::error::The given directory path '${rootDirPath}' does not exist.`);
 	Deno.exit(200);
 }
@@ -52,16 +51,22 @@ const tutCompRegex =
 	/<TutorialLink\s+projectName\s*=\s*\".+\"\s+version\s*=\s*\"v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+\"\s*\/>/;
 
 // Get all the mdx files
-const csprojFiles = Directory.getFiles(rootDirPath, ".mdx", true);
+const projFileEntries = walkSync(rootDirPath, {
+	includeDirs: false,
+	includeFiles: true,
+	exts: [".mdx"],
+});
+
+const mdxFiles = [...projFileEntries].map((entry) => entry.path);
 
 // Replace the tutorial link component with the new one
-csprojFiles.forEach(file => {
-	const fileData = File.readTextFileSync(file);
+mdxFiles.forEach(file => {
+	const fileData = Deno.readTextFileSync(file);
 
 	const tutCompRefs = tutCompRegex.exec(fileData)?.map(match => match.toString()) ?? [];
 
 	if (tutCompRefs.length === 0) {
-		console.log(`::notice::The file '${file}' does not contain any tutorial components.`);
+		Utils.printGitHubNotice(`The file '${file}' does not contain any tutorial components.`);
 		return;
 	}
 
@@ -78,10 +83,11 @@ csprojFiles.forEach(file => {
 
 		const newFileData = fileData.replace(tutCompRegex, newTutComp);
 
-		File.writeTextFileSync(file, newFileData);
+		Deno.writeTextFileSync(file, newFileData);
 
-		const updateFileMsg = `::notice::The tutorial component was updated from version` +
+		const updateFileMsg = `The tutorial component was updated from version` +
 		`'${oldVersion}' to version '${newVersion}' in the mdx file '${file}`;
-		console.log(updateFileMsg);
+
+		Utils.printGitHubNotice(updateFileMsg);
 	}
 });

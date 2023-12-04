@@ -1,10 +1,9 @@
-import { File } from "io/File.ts";
-import { Path } from "io/Path.ts";
 import { CodeBlockService } from "services/CodeBlockService.ts";
 import { HTMLService } from "services/HTMLService.ts";
 import { MarkdownHeaderService } from "services/MarkdownHeaderService.ts";
 import { MarkdownService } from "services/MarkdownService.ts";
 import { Utils } from "../Utils.ts";
+import { extname } from "../../deps.ts";
 
 export class MarkdownFileContentService {
 	private readonly markDownService: MarkdownService;
@@ -25,7 +24,7 @@ export class MarkdownFileContentService {
 	}
 
 	public processMarkdownFile(filePath: string): void {
-		let fileContent: string = File.readTextFileSync(filePath);
+		let fileContent: string = Deno.readTextFileSync(filePath);
 		fileContent = fileContent.replaceAll(this.htmlArrow, "→");
 
 		// Replace all links to the 'index.md' file with the 'namespaces.md' file
@@ -55,12 +54,12 @@ export class MarkdownFileContentService {
 		// Process all headers to change them to the appropriate size
 		fileContent = this.markdownHeaderService.processHeaders(fileContent);
 
-		const title: string = Utils.underscoresToAngles(Path.getFileNameWithoutExtension(filePath));
+		const title: string = Utils.underscoresToAngles(extname(filePath));
 		const frontMatter: string = this.markDownService.createFrontMatter(title);
 
 		fileContent = `${frontMatter}${fileContent}`;
 
-		File.writeTextFileSync(filePath, fileContent);
+		Deno.writeTextFileSync(filePath, fileContent);
 	}
 
 	private processLinkTags(fileContent: string): string {

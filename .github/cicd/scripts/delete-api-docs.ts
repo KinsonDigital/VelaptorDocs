@@ -1,8 +1,7 @@
-import { Directory } from "io/Directory.ts";
-import { Path } from "io/Path.ts";
-import { Select } from "../deps.ts";
+import { Select, existsSync, walkSync } from "../deps.ts";
 import { DeleteAPIVersionService } from "services/DeleteAPIVersionService.ts";
 import chalk from "../deps.ts";
+import { Utils } from "../core/Utils.ts";
 
 /**
  * DESCRIPTION: This script is used locally by VSCode to make it easy to delete
@@ -10,12 +9,32 @@ import chalk from "../deps.ts";
  * eventually will be as time goes on.
  */
 
-const versionDirPaths: string[] = Directory.getDirs("./versioned_docs");
-const apiDocVersions: string[] = Path.getLastDirNames(versionDirPaths)
-	.map((d) => `v${d.replace("version-", "")}`);
+if (Deno.args.length <= 0) {
+	throw new Error("The script must have at least one argument.");
+}
+
+const baseDirPath = Deno.args[0].trim();
+
+if (!existsSync(baseDirPath)) {
+	throw new Error(`The current working directory '${baseDirPath}' does not exist.`);
+}
+
+const dirEntries = walkSync(baseDirPath, {
+	includeDirs: true, includeFiles: false,
+	match: [new RegExp(`version-.+`, "gm")]
+});
+
+const apiDocVersions = [...dirEntries].filter((entry) => {
+	const dirName = `v${entry.name.trim().replace("version-", "")}`;
+
+	return Utils.isPrevOrProdVersion(dirName);
+}).map((entry) => {
+	const result = entry.name.replace("version-", "v");
+
+	return result;
+});
 
 //"This will delete the API docs for the chosen version locally."
-
 const chosenVersion: string = await Select.prompt({
 	message: chalk.yellow("Choose a version to delete:"),
 	options: apiDocVersions,
@@ -23,9 +42,10 @@ const chosenVersion: string = await Select.prompt({
 	info: true,
 });
 
+
 console.log(chalk.cyan(`Deleting '${chosenVersion}' API docs. . .`));
 
-const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionService();
+const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionService(baseDirPath);
 delAPIVersionService.deleteDocs(chosenVersion);
 
 console.log(chalk.cyan(`API docs for version '${chosenVersion}' fully removed.`));

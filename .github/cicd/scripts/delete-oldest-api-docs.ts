@@ -8,10 +8,18 @@ import { VersionsFileService } from "services/VersionsFileService.ts";
  * to delete the oldest api docs version from the repo.
  */
 
-const allVersions = new VersionsFileService().getVersions();
+if (Deno.args.length <= 0) {
+    const errorMsg = "The script requires a single argument of where to start searching for the versions file.";
+    Utils.printGitHubError(errorMsg);
+    Deno.exit(1);
+}
+
+const versionsFileSearchDirPath = Deno.args[0].trim();
+
+const allVersions = new VersionsFileService(versionsFileSearchDirPath).getVersions();
 const oldestVersion = Utils.getOldestVersion(allVersions);
 
-const versionsFileService: DeleteAPIVersionService = new DeleteAPIVersionService();
+const versionsFileService: DeleteAPIVersionService = new DeleteAPIVersionService(versionsFileSearchDirPath);
 
 console.log(chalk.cyan(`Deleting '${oldestVersion}' API docs. . .`));
 

@@ -1,5 +1,5 @@
-import { File } from "io/File.ts";
 import { Guard } from "../Guard.ts";
+import { existsSync } from "../../deps.ts";
 
 /**
  * Provides management of versioned sidebars.
@@ -26,10 +26,10 @@ export class VersionSideBarService {
 
 		const sidebarFilePath = `${this.sidebarDirPath}/version-${version}-sidebars.json`;
 
-		if (File.doesNotExist(sidebarFilePath)) {
+		if (!existsSync(sidebarFilePath)) {
 			throw new Error(`Could not find the sidebar file for version '${version}'.`);
 		}
 
-		File.deleteFile(sidebarFilePath);
+		Deno.removeSync(sidebarFilePath);
 	}
 }

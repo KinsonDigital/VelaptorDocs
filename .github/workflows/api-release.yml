@@ -169,11 +169,10 @@ jobs:
         with:
           version: ${{ vars.PNPM_VERSION }}
 
-      # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
           deno run --allow-read --allow-write --allow-sys `
-            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+            "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `
             "enable";

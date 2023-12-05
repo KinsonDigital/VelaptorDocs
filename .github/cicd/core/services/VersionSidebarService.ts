@@ -36,6 +36,7 @@ export class VersionSideBarService {
 		// If the version begins with a 'v', remove it
 		version = version.startsWith("v") ? version.replace("v", "") : version;
 
+		const sidebarDirPath = foundDirs[0]
 		const sidebarFilePath = `${sidebarDirPath}/version-${version}-sidebars.json`;
 
 		if (existsSync(sidebarFilePath, { isDirectory: true, isReadable: true })) {

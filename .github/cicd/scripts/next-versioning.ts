@@ -10,7 +10,7 @@ if (Deno.args.length < 3) {
 }
 
 // Validate the file path argument
-if (!existsSync(Deno.args[0], { isFile: true, isReadable: true })) {
+if (!existsSync(Deno.args[0], { isFile: true })) {
 	throw Error(`The file path '${Deno.args[0]}' does not exist.`);
 }
 

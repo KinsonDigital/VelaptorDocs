@@ -40,9 +40,7 @@ if (isInteractive) {
 		options: ["branch", "api version"],
 	});
 
-	const message = generateSrcType === "api version"
-		? "Enter the release version"
-		: "Enter the branch name";
+	const message = generateSrcType === "api version" ? "Enter the release version" : "Enter the branch name";
 
 	const minLength = generateSrcType === "api version" ? 5 : 0;
 

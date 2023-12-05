@@ -68,7 +68,7 @@ jobs:
 
       # This sdk version SHOULD be the same as the version set in the Velaptor project
       - name: Setup dotnet (${{ vars.VELAPTOR_DOTNET_SDK_VERSION }})
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
 

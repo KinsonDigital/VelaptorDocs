@@ -91,7 +91,7 @@ jobs:
             "${{ secrets.CICD_TOKEN }}";
 
       - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
@@ -115,7 +115,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
@@ -155,7 +155,7 @@ jobs:
 
       # This is needed for the step below that generates the API docs
       - name: Setup dotnet (${{ vars.VELAPTOR_DOTNET_SDK_VERSION }})
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
 

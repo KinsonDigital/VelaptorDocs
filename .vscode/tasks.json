@@ -77,7 +77,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"disable"
 			]
 		},
@@ -92,7 +92,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"enable"
 			]
 		},
@@ -107,7 +107,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"toggle"
 			]
 		},

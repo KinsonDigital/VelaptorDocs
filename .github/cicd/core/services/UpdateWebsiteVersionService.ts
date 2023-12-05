@@ -114,7 +114,7 @@ export class UpdateWebsiteVersionService {
 	private saveToOutputFile(name: string, value: string): void {
 		const output = `${name}=${value}`;
 
-		if (existsSync(this.outputFilePath, { isFile: true })) {
+		if (!existsSync(this.outputFilePath, { isFile: true })) {
 			throw new Error(`The GitHub outputs file '${this.outputFilePath}' does not exist.`);
 		}
 

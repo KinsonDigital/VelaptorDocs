@@ -1,4 +1,4 @@
-import { RepoClient, existsSync } from "../deps.ts";
+import { existsSync, RepoClient } from "../deps.ts";
 import { DotNetToolService } from "./services/DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
 import { CLI } from "./CLI.ts";
@@ -74,7 +74,7 @@ export class DefaultDocTool {
 			`${configFilePath}`,
 		];
 
-		const command = `defaultdocumentation ${args.join(" " )}`;
+		const command = `defaultdocumentation ${args.join(" ")}`;
 		const commandResult = await cli.runAsync(command);
 
 		if (commandResult instanceof Error) {

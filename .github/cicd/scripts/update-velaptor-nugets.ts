@@ -1,5 +1,5 @@
 import { Utils } from "../core/Utils.ts";
-import { Select, TagClient, existsSync, walkSync } from "../deps.ts";
+import { existsSync, Select, TagClient, walkSync } from "../deps.ts";
 
 // If no args were passed
 if (Deno.args.length < 3) {
@@ -31,7 +31,7 @@ if (isInteractive) {
 	const token = Deno.args[2].trim();
 	const tagClient = new TagClient("KinsonDigital", "Velaptor", token);
 
-	const tags = (await tagClient.getAllTags()).map(tag => tag.name);
+	const tags = (await tagClient.getAllTags()).map((tag) => tag.name);
 
 	newVersion = await Select.prompt({
 		message: "Select a Velaptor version",
@@ -60,12 +60,11 @@ const projEntries = walkSync(rootDirPath, {
 
 const csprojFiles = [...projEntries].map((entry) => entry.path);
 
-
 // Replace the nuget package reference with the new version
-csprojFiles.forEach(file => {
+csprojFiles.forEach((file) => {
 	const fileData = Deno.readTextFileSync(file);
 
-	const nugetRefs = velaptorNuGetRegex.exec(fileData)?.map(match => match.toString()) ?? [];
+	const nugetRefs = velaptorNuGetRegex.exec(fileData)?.map((match) => match.toString()) ?? [];
 
 	const velaptorNuGetRef = nugetRefs.length >= 0 ? nugetRefs[0] : "";
 	const containsVelaptorNuGetRef = !Utils.isNothing(velaptorNuGetRef);
@@ -73,7 +72,7 @@ csprojFiles.forEach(file => {
 	// If the file contains the nuget package
 	if (containsVelaptorNuGetRef) {
 		const versionRegex = /[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+/;
-		const oldVersion = versionRegex.exec(velaptorNuGetRef)?.map(match => match.toString())[0] ?? "";
+		const oldVersion = versionRegex.exec(velaptorNuGetRef)?.map((match) => match.toString())[0] ?? "";
 
 		const newFileData = fileData.replace(velaptorNuGetRegex, newNugetPackage);
 

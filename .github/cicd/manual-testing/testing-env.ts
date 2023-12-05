@@ -5,7 +5,7 @@ import { existsSync, walkSync } from "../deps.ts";
 
 if (Deno.args.length <= 0) {
 	const errorMsg = "The testing environment script must provide a single argument" +
-					 "with the values of 'enable', 'disable', or 'toggle'.";
+		"with the values of 'enable', 'disable', or 'toggle'.";
 	Utils.printGitHubError(errorMsg);
 	Deno.exit(1);
 }
@@ -14,8 +14,8 @@ const arg: string = Deno.args[0].toLowerCase().trim();
 const isNotCorrectValue: boolean = arg != "enable" && arg != "disable" && arg != "toggle";
 
 if (isNotCorrectValue) {
-	const errorMsg = `The argument value of '${arg}' sent to the 'testing-env.ts' script ` + 
-				   "must be the value 'enable', 'disable', or 'toggle'.";
+	const errorMsg = `The argument value of '${arg}' sent to the 'testing-env.ts' script ` +
+		"must be the value 'enable', 'disable', or 'toggle'.";
 	Utils.printGitHubError(errorMsg);
 	Deno.exit(1);
 }
@@ -35,7 +35,7 @@ const docusaurusConfigFilePathEntries = walkSync(baseDirPath, {
 	includeFiles: true,
 	exts: [".js"],
 	match: [new RegExp(`.*docusaurus.config.js$`, "gm")],
-	skip: [new RegExp(".*node_modules.*")]
+	skip: [new RegExp(".*node_modules.*")],
 });
 
 const docusaurusConfigFilePath = [...docusaurusConfigFilePathEntries].map((entry) => entry.path)[0];
@@ -51,7 +51,7 @@ const sidebarsConfigFilePathEntries = walkSync(baseDirPath, {
 	includeFiles: true,
 	exts: [".js"],
 	match: [new RegExp(`.*sidebars.js$`, "gm")],
-	skip: [new RegExp(".*node_modules.*")]
+	skip: [new RegExp(".*node_modules.*")],
 });
 
 const sidebarsConfigFilePath = [...sidebarsConfigFilePathEntries].map((entry) => entry.path)[0];

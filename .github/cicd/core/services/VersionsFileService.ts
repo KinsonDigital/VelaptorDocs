@@ -21,13 +21,12 @@ export class VersionsFileService {
 			includeFiles: true,
 			exts: [".json"],
 			match: [new RegExp("versions")],
-			skip: [new RegExp("node_modules")]
+			skip: [new RegExp("node_modules")],
 		});
 
 		const foundFilePath = [...filePathEntries]
 			.map((entry) => entry.path)
 			.find((path) => basename(path) === "versions.json");
-
 
 		if (Utils.isNothing(foundFilePath)) {
 			throw new Error(`The versions file 'version.json' could not be found in the directory '${dirPath}'.`);

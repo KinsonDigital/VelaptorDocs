@@ -17,7 +17,7 @@ const version = await Input.prompt({
 		input = input.trim();
 
 		return input.startsWith("v") ? input.substring(1) : input;
-	}
+	},
 });
 
 console.log(`Chosen Version: ${version}`);

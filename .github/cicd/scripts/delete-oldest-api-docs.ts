@@ -9,9 +9,9 @@ import { VersionsFileService } from "../core/services/VersionsFileService.ts";
  */
 
 if (Deno.args.length <= 0) {
-    const errorMsg = "The script requires a single argument of where to start searching for the versions file.";
-    Utils.printGitHubError(errorMsg);
-    Deno.exit(1);
+	const errorMsg = "The script requires a single argument of where to start searching for the versions file.";
+	Utils.printGitHubError(errorMsg);
+	Deno.exit(1);
 }
 
 const versionsFileSearchDirPath = Deno.args[0].trim();

@@ -1,4 +1,4 @@
-import { Select, existsSync, walkSync } from "../deps.ts";
+import { existsSync, Select, walkSync } from "../deps.ts";
 import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
 import chalk from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
@@ -20,8 +20,9 @@ if (!existsSync(baseDirPath)) {
 }
 
 const dirEntries = walkSync(baseDirPath, {
-	includeDirs: true, includeFiles: false,
-	match: [new RegExp(`version-.+`, "gm")]
+	includeDirs: true,
+	includeFiles: false,
+	match: [new RegExp(`version-.+`, "gm")],
 });
 
 const apiDocVersions = [...dirEntries].filter((entry) => {

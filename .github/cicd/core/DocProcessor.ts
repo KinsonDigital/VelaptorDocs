@@ -86,7 +86,7 @@ export class DocProcessor {
 		const cwd = Deno.cwd();
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
-		
+
 		if (existsSync(repoSrcDirPath)) {
 			await this.runProcess(
 				"Cleaning up previous clone and build. . .",
@@ -122,7 +122,7 @@ export class DocProcessor {
 
 				const defaultDocConfigFilePath = this.findFilePaths(cwd, ["default-doc-config.json"])
 					.filter((filePath) => filePath.endsWith("default-doc-config.json"))[0];
-				
+
 				return this.defaultDocTool.generateDocumentation(docsApiDirPath, velaptorFilePath, defaultDocConfigFilePath);
 			},
 			"Documentation Generation Complete.",
@@ -244,7 +244,7 @@ export class DocProcessor {
 
 		if (Utils.isNothing(result)) {
 			const errorMsg = `Could not find the directories relative to the directory '${dirStartPath}'.` +
-							 `\nInclusions: ${inclusions.join(", ")}`;
+				`\nInclusions: ${inclusions.join(", ")}`;
 			Utils.printGitHubError(errorMsg);
 			Deno.exit(1);
 		}
@@ -266,7 +266,7 @@ export class DocProcessor {
 
 		if (Utils.isNothing(result)) {
 			const errorMsg = `Could not find the files relative to the directory '${dirStartPath}'.` +
-							 `\nInclusions: ${inclusions.join(", ")}`;
+				`\nInclusions: ${inclusions.join(", ")}`;
 			Utils.printGitHubError(errorMsg);
 			Deno.exit(1);
 		}

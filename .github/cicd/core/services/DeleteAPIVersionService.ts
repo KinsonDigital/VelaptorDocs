@@ -27,16 +27,17 @@ export class DeleteAPIVersionService {
 	 * Deletes a particular version of the API docs.
 	 * @param {string} version The version of the API docs to delete.
 	 */
-	public async deleteDocs(version: string): Promise<void> {
+	public deleteDocs(version: string): void {
 		Guard.isNotUndefinedOrEmpty(version, "version");
 
 		version = version.startsWith("v") ? version.replace("v", "") : version;
 
 		const dirEntries = walkSync(this.baseDirPath, {
-			includeDirs: true, includeFiles: false,
-			match: [new RegExp(`version-.+`, "gm")]
+			includeDirs: true,
+			includeFiles: false,
+			match: [new RegExp(`version-.+`, "gm")],
 		});
-		
+
 		const apiDocDirPath = [...dirEntries].filter((entry) => entry.name === `version-${version}`)
 			.map((entry) => entry.path)[0];
 

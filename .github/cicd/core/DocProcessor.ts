@@ -87,7 +87,7 @@ export class DocProcessor {
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
 
-		if (existsSync(repoSrcDirPath)) {
+		if (existsSync(repoSrcDirPath, { isDirectory: true })) {
 			await this.runProcess(
 				"Cleaning up previous clone and build. . .",
 				() => Deno.removeSync(repoSrcDirPath, { recursive: true }),

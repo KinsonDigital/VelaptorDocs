@@ -15,7 +15,7 @@ if (Deno.args.length <= 0) {
 
 const baseDirPath = Deno.args[0].trim();
 
-if (!existsSync(baseDirPath)) {
+if (!existsSync(baseDirPath, { isDirectory: true })) {
 	throw new Error(`The current working directory '${baseDirPath}' does not exist.`);
 }
 

@@ -15,7 +15,7 @@ if (Deno.args.length < 3) {
 const rootDirPath = Deno.args[0].trim().replaceAll("\\", "/");
 
 // If the directory does not exist, throw and error
-if (!existsSync(rootDirPath, { isDirectory: true, isReadable: true })) {
+if (!existsSync(rootDirPath, { isDirectory: true })) {
 	console.log(`::error::The given directory path '${rootDirPath}' does not exist.`);
 	Deno.exit(200);
 }

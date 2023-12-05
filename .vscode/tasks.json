@@ -77,7 +77,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"disable"
 			]
 		},
@@ -92,7 +92,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"enable"
 			]
 		},
@@ -107,7 +107,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"toggle"
 			]
 		},
@@ -122,7 +122,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
 				"next-version",
 				"enable"
@@ -139,7 +139,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
 				"next-version",
 				"disable"

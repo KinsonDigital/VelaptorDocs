@@ -169,11 +169,10 @@ jobs:
         with:
           version: ${{ vars.PNPM_VERSION }}
 
-      # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
-          deno run --allow-read --allow-write `
-            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+          deno run --allow-read --allow-write --allow-sys `
+            "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `
             "enable";
@@ -220,8 +219,6 @@ jobs:
             Write-Host "::error::Failed to get output file path from the 'GITHUB_OUTPUT' environment variable.";
             exit 1;
           }
-
-          Write-Host "::notice::Output File Path: $outputFilePath";
 
           # NOTE: The script executed below sets the step output.  This is why the output file
           # path is passed in as an argument using the '$outputFilePath' variable.

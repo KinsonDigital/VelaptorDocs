@@ -39,7 +39,7 @@ export class VersionSideBarService {
 		const sidebarDirPath = foundDirs[0]
 		const sidebarFilePath = `${sidebarDirPath}/version-${version}-sidebars.json`;
 
-		if (existsSync(sidebarFilePath, { isDirectory: true, isReadable: true })) {
+		if (existsSync(sidebarFilePath, { isFile: true, isReadable: true })) {
 			Deno.removeSync(sidebarFilePath);
 		}
 	}

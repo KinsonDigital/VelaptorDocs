@@ -57,7 +57,7 @@ export class DefaultDocTool {
 
 		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, defaultDocToolVersion);
 
-		if (existsSync(outputDirPath)) {
+		if (existsSync(outputDirPath, { isDirectory: true, isReadable: true})) {
 			Deno.removeSync(outputDirPath, { recursive: true });
 		}
 

@@ -24,7 +24,7 @@ const baseDirPath: string = Deno.cwd().trim();
 
 Utils.printGitHubNotice(`Script executed in the working directory '${baseDirPath}'.`);
 
-if (!existsSync(baseDirPath)) {
+if (!existsSync(baseDirPath, { isDirectory: true, isReadable: true})) {
 	const errorMsg = `The current working directory '${baseDirPath}' does not exist.`;
 	Utils.printGitHubError(errorMsg);
 	Deno.exit(1);

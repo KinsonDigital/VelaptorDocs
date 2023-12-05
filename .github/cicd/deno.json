@@ -17,7 +17,8 @@
             "**/RepoSrc/",
             "**/versioned_docs/",
             "**/SampleProjects/",
-            "**/unprocessed-docs/"
+            "**/unprocessed-docs/",
+            "playground.ts"
         ],
         "useTabs": true,
         "lineWidth": 130,

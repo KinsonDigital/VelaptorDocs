@@ -191,4 +191,20 @@ export class Utils {
 
 		return 0;
 	}
+
+	/**
+	 * Prints the given {@link errorMsg} to the console as a GitHub error.
+	 * @param errorMsg The error message to print.
+	 */
+	public static printGitHubError(errorMsg: string): void {
+		console.log(`::error::${errorMsg}`);
+	}
+
+	/**
+	 * Prints the given {@link errorMsg} to the console as a GitHub notice.
+	 * @param errorMsg The error message to print.
+	 */
+	public static printGitHubNotice(errorMsg: string): void {
+		console.log(`::notice::${errorMsg}`);
+	}
 }

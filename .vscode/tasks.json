@@ -1,8 +1,37 @@
 {
 	"version": "2.0.0",
 	"tasks": [
+		{ // CLEAR TERMINAL
+			"label": "clear-terminal",
+			"detail": "Clears the terminal.",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"windows": {
+				"command": "cls"
+			},
+			"linux": {
+				"command": "clear"
+			}
+		},
+		{ // FORMAT CODE
+			"label": "Format Code",
+			"detail": "Formats the code using deno fmt.",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/.github/cicd"
+			},
+			"dependsOn": ["clear-terminal"],
+			"command": "deno",
+			"args": [
+				"fmt",
+				"${workspaceFolder}/.github/cicd",
+			]
+		},
 		{ // GENERATE API DOCS
 			"label": "Generate API Docs",
+			"detail": "Generates the API docs for the website.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
@@ -24,6 +53,7 @@
 		},
 		{ // RESET DOCS
 			"label": "Reset Docs",
+			"detail": "Resets the docs to the default state.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
@@ -38,6 +68,7 @@
 		},
 		{ // DISABLE TESTING ENVIRONMENT
 			"label": "Disable Testing Environment",
+			"detail": "Disables the testing environment for the project.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
@@ -46,12 +77,13 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"disable"
 			]
 		},
 		{ // ENABLE TESTING ENVIRONMENT
 			"label": "Enable Testing Environment",
+			"detail": "Enables the testing environment for the project.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
@@ -60,12 +92,13 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"enable"
 			]
 		},
 		{ // TOGGLE TESTING ENVIRONMENT
 			"label": "Toggle Testing Environment",
+			"detail": "Toggles the testing environment for the project.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
@@ -74,12 +107,13 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
+				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
 				"toggle"
 			]
 		},
 		{ // DISABLE NEXT VERSION
 			"label": "Disable Next Version",
+			"detail": "Disables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
@@ -88,7 +122,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
 				"next-version",
 				"enable"
@@ -96,8 +130,8 @@
 		},
 		{ // ENABLE NEXT VERSION
 			"label": "Enable Next Version",
-			"type": "shell",
 			"detail": "Enables the next version feature of docusaurus.",
+			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
 			},	
@@ -105,7 +139,7 @@
 			"args": [
 				"run",
 				"-A",
-				"${workspaceFolder}/.github/cicd/manual-testing/next-versioning.ts",
+				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
 				"next-version",
 				"disable"
@@ -141,10 +175,10 @@
 		},
 		{ // DELETE API DOCS
 			"label": "Delete API Docs",
+			"detail": "Deletes a version of the API docs.",
 			"dependsOn": [
 				"Disable Testing Environment"
 			],
-			"detail": "Deletes a version of the API docs.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"

@@ -1,14 +1,11 @@
-import { CloneRepoService } from "services/CloneRepoService.ts";
-import { MarkdownFileContentService } from "services/MarkdownFileContentService.ts";
-import { ValidateReleaseService } from "services/ValidateReleaseService.ts";
-import { MarkdownService } from "services/MarkdownService.ts";
+import { CloneRepoService } from "./services/CloneRepoService.ts";
+import { MarkdownFileContentService } from "./services/MarkdownFileContentService.ts";
+import { ValidateReleaseService } from "./services/ValidateReleaseService.ts";
+import { MarkdownService } from "./services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
-import { Directory } from "io/Directory.ts";
-import { File } from "io/File.ts";
-import { Path } from "io/Path.ts";
 import { Utils } from "./Utils.ts";
 import { Yarn } from "./Yarn.ts";
-import chalk from "../deps.ts";
+import chalk, { existsSync, walkSync } from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -86,9 +83,11 @@ export class DocProcessor {
 	 * @param tagOrBranch The Velaptor release tag or branch name.
 	 */
 	private async run(apiDocDirPath: string, tagOrBranch: string): Promise<void> {
+		const cwd = Deno.cwd();
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
-		if (Directory.exists(repoSrcDirPath)) {
+
+		if (existsSync(repoSrcDirPath, { isDirectory: true })) {
 			await this.runProcess(
 				"Cleaning up previous clone and build. . .",
 				() => Deno.removeSync(repoSrcDirPath, { recursive: true }),
@@ -114,12 +113,18 @@ export class DocProcessor {
 		// Generate the documentation.
 		await this.runProcess(
 			"Generating Documentation. . .",
-			() =>
-				this.defaultDocTool.generateDocumentation(
-					`${Deno.cwd()}/RepoSrc/BuildOutput/Velaptor.dll`,
-					`${Deno.cwd()}/docs/api`,
-					`${Deno.cwd()}/default-doc-config.json`,
-				),
+			() => {
+				const velaptorFilePath = this.findFilePaths(repoSrcDirPath, ["RepoSrc/BuildOutput/Velaptor.dll"])
+					.filter((filePath) => filePath.endsWith("RepoSrc/BuildOutput/Velaptor.dll"))[0];
+
+				const docsApiDirPath = this.findDirPaths(cwd, ["docs/api"])
+					.filter((dirPath) => dirPath.endsWith("docs/api"))[0];
+
+				const defaultDocConfigFilePath = this.findFilePaths(cwd, ["default-doc-config.json"])
+					.filter((filePath) => filePath.endsWith("default-doc-config.json"))[0];
+
+				return this.defaultDocTool.generateDocumentation(docsApiDirPath, velaptorFilePath, defaultDocConfigFilePath);
+			},
 			"Documentation Generation Complete.",
 		);
 
@@ -172,20 +177,20 @@ export class DocProcessor {
 	 * @param apiDocDirPath The directory path to the generated API documentation.
 	 */
 	private runPostProcessing(apiDocDirPath: string): void {
-		const baseAPIDirPath: string = Path.normalizeSeparators(apiDocDirPath);
 		const fileContentService: MarkdownFileContentService = new MarkdownFileContentService();
 		const markDownService: MarkdownService = new MarkdownService();
 
 		try {
-			const oldNamespaceFilePath = `${baseAPIDirPath}index.md`;
-			const newNamespaceFilePath = `${baseAPIDirPath}Namespaces.md`;
-			File.renameFileSync(oldNamespaceFilePath, newNamespaceFilePath);
+			const oldNamespaceFilePath = `${apiDocDirPath}index.md`;
+			const newNamespaceFilePath = `${apiDocDirPath}Namespaces.md`;
+
+			Deno.renameSync(oldNamespaceFilePath, newNamespaceFilePath);
 			console.log(`File renamed from '${oldNamespaceFilePath}' to '${newNamespaceFilePath}'.`);
 
 			console.log("Performing post-processing on the API documentation. . .");
 
 			// Replace the extra table column in the Namespaces.md file
-			let namespaceFileContent: string = File.readTextFileSync(newNamespaceFilePath);
+			let namespaceFileContent: string = Deno.readTextFileSync(newNamespaceFilePath);
 
 			// Remove the extra column from the header and divider
 			namespaceFileContent = namespaceFileContent.replace("| Namespaces | |", "| Namespaces |");
@@ -193,9 +198,15 @@ export class DocProcessor {
 
 			// Remove the extra column from each row
 			namespaceFileContent = namespaceFileContent.replaceAll(") | |", ") |");
-			File.writeTextFileSync(newNamespaceFilePath, namespaceFileContent);
+			Deno.writeTextFileSync(newNamespaceFilePath, namespaceFileContent);
 
-			const filePaths: string[] = Directory.getFiles(baseAPIDirPath, ".md");
+			const filePathEntries = walkSync(apiDocDirPath, {
+				includeDirs: false,
+				includeFiles: true,
+				exts: [".md"],
+			});
+
+			const filePaths: string[] = [...filePathEntries].map((entry) => entry.path);
 
 			// Go through each file and perform content processing
 			filePaths.forEach((filePath: string) => {
@@ -203,19 +214,63 @@ export class DocProcessor {
 				fileContentService.processMarkdownFile(filePath);
 			});
 
-			let namespaceContent: string = File.readTextFileSync(newNamespaceFilePath);
+			let namespaceContent: string = Deno.readTextFileSync(newNamespaceFilePath);
 			namespaceContent = markDownService.renameHeader(
 				namespaceContent,
 				"Velaptor Assembly",
 				"Velaptor API Namespaces",
 			);
 
-			File.writeTextFileSync(newNamespaceFilePath, namespaceContent);
+			Deno.writeTextFileSync(newNamespaceFilePath, namespaceContent);
 
 			console.log("API documentation post-processing complete.");
 		} catch (error) {
 			console.error(error);
 			throw error;
 		}
+	}
+
+	private findDirPaths(dirStartPath: string, inclusions: string[]): string[] {
+		inclusions = inclusions.map((inclusion) => inclusion.trim().replaceAll("\\", "/").replaceAll("/", "(/|\\\\)"));
+		const matches = inclusions.map((inclusion) => new RegExp(`.*${inclusion}.*`));
+
+		const entries = walkSync(dirStartPath, {
+			includeDirs: true,
+			includeFiles: false,
+			match: matches,
+		});
+
+		const result = [...entries].map((entry) => entry.path.replaceAll("\\", "/"));
+
+		if (Utils.isNothing(result)) {
+			const errorMsg = `Could not find the directories relative to the directory '${dirStartPath}'.` +
+				`\nInclusions: ${inclusions.join(", ")}`;
+			Utils.printGitHubError(errorMsg);
+			Deno.exit(1);
+		}
+
+		return result;
+	}
+
+	private findFilePaths(dirStartPath: string, inclusions: string[]): string[] {
+		inclusions = inclusions.map((inclusion) => inclusion.trim().replaceAll("\\", "/").replaceAll("/", "(/|\\\\)"));
+		const matches = inclusions.map((inclusion) => new RegExp(`.*${inclusion}.*`));
+
+		const entries = walkSync(dirStartPath, {
+			includeDirs: false,
+			includeFiles: true,
+			match: matches,
+		});
+
+		const result = [...entries].map((entry) => entry.path.replaceAll("\\", "/"));
+
+		if (Utils.isNothing(result)) {
+			const errorMsg = `Could not find the files relative to the directory '${dirStartPath}'.` +
+				`\nInclusions: ${inclusions.join(", ")}`;
+			Utils.printGitHubError(errorMsg);
+			Deno.exit(1);
+		}
+
+		return result;
 	}
 }

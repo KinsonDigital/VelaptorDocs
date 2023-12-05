@@ -91,7 +91,7 @@ jobs:
             "${{ secrets.CICD_TOKEN }}";
 
       - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
@@ -115,7 +115,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 
@@ -155,7 +155,7 @@ jobs:
 
       # This is needed for the step below that generates the API docs
       - name: Setup dotnet (${{ vars.VELAPTOR_DOTNET_SDK_VERSION }})
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
 
@@ -169,11 +169,10 @@ jobs:
         with:
           version: ${{ vars.PNPM_VERSION }}
 
-      # Move the 'next-versioning.ts' to scripts folder
       - name: Disable Next Version Feature
         run: |
-          deno run --allow-read --allow-write `
-            "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
+          deno run --allow-read --allow-write --allow-sys `
+            "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `
             "enable";
@@ -240,7 +239,7 @@ jobs:
 
       - name: Setup Pages
         if: ${{ inputs.dry-run == false }}
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: Upload Artifact
         if: ${{ inputs.dry-run == false }}
@@ -251,7 +250,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         if: ${{ inputs.dry-run == false }}
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
 
       - name: Commit New Docs & Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
         if: ${{ inputs.dry-run == false }}

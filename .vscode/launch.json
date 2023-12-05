@@ -9,7 +9,7 @@
             "request": "launch",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/playground.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
+            "cwd": "${workspaceFolder}",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -46,13 +46,14 @@
             "name": "Delete API Docs (DEBUG)",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/delete-api-docs.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
                 "--allow-all",
             ],
+			"args": ["${workspaceFolder}"],
             "attachSimplePort": 9229,
 			"console": "integratedTerminal"
         },
@@ -61,23 +62,26 @@
             "name": "Delete Oldest API Docs (DEBUG)",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/delete-oldest-api-docs.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
                 "--allow-read",
 				"--allow-write",
+				"--allow-sys",
             ],
+			"args": [
+				"${workspaceFolder}",
+			],
             "attachSimplePort": 9229,
-			"console": "integratedTerminal"
         },
         { // ENABLE TESTING ENVIRONMENT
             "request": "launch",
             "name": "Enable Testing Env",
             "type": "node",
-            "program": "${workspaceFolder}/.github/cicd/manual-testing/testing-env.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
+            "program": "${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -108,7 +112,7 @@
             "name": "Generate New API Docs",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -126,6 +130,27 @@
 				"true" // Is Interactive
 			],
 			"console": "integratedTerminal",
+            "attachSimplePort": 9229
+        },
+		{ // ENABLE/DISABLE NEXT VERSION
+            "request": "launch",
+            "name": "Enable/Disable Next Version",
+            "type": "node",
+            "program": "${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+            "runtimeArgs": [
+                "run",
+                "--inspect-wait",
+				"--allow-read",
+				"--allow-write",
+				"--allow-sys",
+            ],
+			"args": [
+				"${workspaceFolder}/docusaurus.config.js",
+				"next-version",
+				"enable"
+			],
             "attachSimplePort": 9229
         },
 		{ // VELAPTOR VERSION EXISTS
@@ -149,7 +174,7 @@
         },
 		{ // GENERATE DOCUSAURUS API DOCS VERSION
 			"request": "launch",
-			"name": "Genererate Docusaurus API Version",
+			"name": "Generate Docusaurus API Version",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			"cwd": "${workspaceFolder}/.github/cicd",
@@ -167,7 +192,7 @@
 			"name": "Deno Check All Files",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
-			"cwd": "${workspaceFolder}/.github/cicd",
+			"cwd": "${workspaceFolder}",
 			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
 			"runtimeArgs": [
 				"run",

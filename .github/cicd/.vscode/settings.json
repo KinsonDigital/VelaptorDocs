@@ -1,15 +1,7 @@
 {
-    "deno.enable": true,
-    "deno.enablePaths": ["${workspaceFolder}/../"],
-	"[typescript]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-    "editor.detectIndentation": false,
-    "cSpell.words": [
-        "cicd",
-        "defaultdocumentation",
-        "kinsondigital",
-        "velaptor"
-    ],
+	"deno.enable": true,
+	"deno.config": "../deno.json",
+	"cSpell.words": [
+		"cicd"
+	],
 }

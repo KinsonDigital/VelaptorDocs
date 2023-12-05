@@ -16,7 +16,9 @@
             "**/blog/",
             "**/RepoSrc/",
             "**/versioned_docs/",
-            "**/unprocessed-docs/"
+            "**/SampleProjects/",
+            "**/unprocessed-docs/",
+            "playground.ts"
         ],
         "useTabs": true,
         "lineWidth": 130,
@@ -24,31 +26,26 @@
         "semiColons": true,
         "singleQuote": false
 	},
+    "nodeModulesDir": false,
 	"lint": {
-        "include": [".github/cicd/.*\\.ts$"],
+        "include": ["./.github/cicd/.*\\.ts$"],
         "exclude": [
-            "**/playground.ts",
-            "README.md",
-            "versions.json",
-            "tsconfig.json",
-            "package.json",
-            "package-lock.json",
-            "deno.json",
-            "settings.json",
-            "default-doc-config.json",
-            "sidebars.js",
-            "docusaurus.config.js",
-            "babel.config.js",
+            "**/*.json",
+            "**/*.md",
+            "**/*.mdx",
+            "**/*.js",
             ".docusaurus/",
-            "code_coverage/",
-            "build/",
-            "src/",
-            "static/",
-            "versioned_docs/",
-            "versioned_sidebars/",
-            "docs/",
-            "blog/",
-            "RepoSrc/"
+            "**/code_coverage/",
+            "**/build/",
+            "**/src/",
+            "**/static/",
+            "**/versioned_docs/",
+            "**/versioned_sidebars/",
+            "**/SampleProjects/",
+            "**/node_modules/",
+            "**/docs/",
+            "**/blog/",
+            "**/RepoSrc/"
         ],
 		"rules": {
 			"include": [
@@ -57,7 +54,6 @@
 		}
 	},
     "exclude": [
-        "**/playground.ts",
         "**/*.md",
         "**/*.mdx",
         "**/*.json",
@@ -69,15 +65,13 @@
         "docs/",
         "src/",
         "static/",
-        "SampleProjects/",
-        "versioned_docs/",
-        "versioned_sidebars/",
-        "blog/",
-        "build/",
-        "RepoSrc/"
-    ],
-    "imports": {
-        "io/": "./core/io/",
-        "services/": "./core/services/"
-    }
+        "**/SampleProjects/",
+        "**/versioned_docs/",
+        "**/versioned_sidebars/",
+        "**/node_modules/",
+        "**/package.json",
+        "**/blog/",
+        "**/build/",
+        "**/RepoSrc/"
+    ]
 }

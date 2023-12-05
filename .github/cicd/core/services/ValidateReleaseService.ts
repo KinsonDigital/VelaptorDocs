@@ -1,4 +1,4 @@
-import { TagClient, NuGetClient } from "../../deps.ts";
+import { NuGetClient, TagClient } from "../../deps.ts";
 import { Utils } from "../Utils.ts";
 
 /**

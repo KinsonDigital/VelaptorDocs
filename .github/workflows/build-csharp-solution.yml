@@ -71,7 +71,7 @@ jobs:
           ref: ${{ inputs.checkout-ref }}
 
       - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ vars.NET_SDK_VERSION }}
 

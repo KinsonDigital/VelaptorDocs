@@ -1,4 +1,4 @@
-import { File } from "io/File.ts";
+import { existsSync } from "../../deps.ts";
 
 /**
  * Updates the version in the docusaurus.config.js file.
@@ -114,7 +114,7 @@ export class UpdateWebsiteVersionService {
 	private saveToOutputFile(name: string, value: string): void {
 		const output = `${name}=${value}`;
 
-		if (File.doesNotExist(this.outputFilePath)) {
+		if (existsSync(this.outputFilePath, { isFile: true })) {
 			throw new Error(`The GitHub outputs file '${this.outputFilePath}' does not exist.`);
 		}
 

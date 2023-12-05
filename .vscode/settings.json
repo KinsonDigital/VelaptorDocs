@@ -20,7 +20,6 @@
 		".github/cicd/": true,
 		".config": false,
 		"RepoSrc/": true,
-		"*lock*.json": true,
 		"*.lock": true,
 		"SampleProjects": true,
 	},

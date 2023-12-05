@@ -1,5 +1,5 @@
 import { RepoClient, existsSync } from "../deps.ts";
-import { DotNetToolService } from "services/DotNetToolService.ts";
+import { DotNetToolService } from "./services/DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
 import { CLI } from "./CLI.ts";
 

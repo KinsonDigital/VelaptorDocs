@@ -1,5 +1,5 @@
-import { FlagService } from "services/FlagService.ts";
-import { VersionsFileService } from "services/VersionsFileService.ts";
+import { FlagService } from "../core/services/FlagService.ts";
+import { VersionsFileService } from "../core/services/VersionsFileService.ts";
 import { Utils } from "../core/Utils.ts";
 import { existsSync, walkSync } from "../deps.ts";
 

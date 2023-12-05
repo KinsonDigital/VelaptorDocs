@@ -1,4 +1,4 @@
-import { FlagService } from "services/FlagService.ts";
+import { FlagService } from "../core/services/FlagService.ts";
 import { existsSync } from "../deps.ts";
 
 // Check the arguments

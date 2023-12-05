@@ -1,7 +1,7 @@
-import { CodeBlockService } from "services/CodeBlockService.ts";
-import { HTMLService } from "services/HTMLService.ts";
-import { MarkdownHeaderService } from "services/MarkdownHeaderService.ts";
-import { MarkdownService } from "services/MarkdownService.ts";
+import { CodeBlockService } from "./CodeBlockService.ts";
+import { HTMLService } from "./HTMLService.ts";
+import { MarkdownHeaderService } from "./MarkdownHeaderService.ts";
+import { MarkdownService } from "./MarkdownService.ts";
 import { Utils } from "../Utils.ts";
 import { extname } from "../../deps.ts";
 

@@ -1,5 +1,5 @@
 import { Select, existsSync, walkSync } from "../deps.ts";
-import { DeleteAPIVersionService } from "services/DeleteAPIVersionService.ts";
+import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
 import chalk from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
 
@@ -41,7 +41,6 @@ const chosenVersion: string = await Select.prompt({
 	hint: "Use arrow keys to navigate, and enter to select.",
 	info: true,
 });
-
 
 console.log(chalk.cyan(`Deleting '${chosenVersion}' API docs. . .`));
 

@@ -1,7 +1,8 @@
-import { Directory } from "io/Directory.ts";
 import { Guard } from "../Guard.ts";
-import { VersionSideBarService } from "services/VersionSidebarService.ts";
-import { VersionsFileService } from "services/VersionsFileService.ts";
+import { VersionSideBarService } from "./VersionSidebarService.ts";
+import { VersionsFileService } from "./VersionsFileService.ts";
+import { walkSync } from "../../deps.ts";
+import { Utils } from "../Utils.ts";
 
 /**
  * Deletes API docs for a specific version and updates the config files.
@@ -9,13 +10,17 @@ import { VersionsFileService } from "services/VersionsFileService.ts";
 export class DeleteAPIVersionService {
 	private readonly versionFileService: VersionsFileService;
 	private readonly sideBarService: VersionSideBarService;
+	private readonly baseDirPath: string;
 
 	/**
 	 * Creates a new instance of the DeleteAPIVersionService class.
+	 * @param {string} baseDirPath The directory path to start the deletion process.
 	 */
-	constructor() {
-		this.versionFileService = new VersionsFileService();
+	constructor(baseDirPath: string) {
+		this.versionFileService = new VersionsFileService(baseDirPath);
 		this.sideBarService = new VersionSideBarService();
+
+		this.baseDirPath = baseDirPath;
 	}
 
 	/**
@@ -27,15 +32,21 @@ export class DeleteAPIVersionService {
 
 		version = version.startsWith("v") ? version.replace("v", "") : version;
 
-		const versionDirPaths: string[] = Directory.getDirs("./versioned_docs");
+		const dirEntries = walkSync(this.baseDirPath, {
+			includeDirs: true,
+			includeFiles: false,
+			match: [new RegExp(`version-.+`, "gm")],
+		});
 
-		const apiDocDirPath: string | undefined = versionDirPaths.find((p) => p.indexOf(version) != -1);
+		const apiDocDirPath = [...dirEntries].filter((entry) => entry.name === `version-${version}`)
+			.map((entry) => entry.path)[0];
 
-		if (apiDocDirPath === undefined) {
+		if (Utils.isNothing(apiDocDirPath)) {
 			throw new Error(`Could not find the API docs directory path for version '${version}'.`);
 		}
 
-		Directory.delete(apiDocDirPath);
+		Deno.removeSync(apiDocDirPath, { recursive: true });
+
 		console.log(`Deleted '${version}' API docs.`);
 
 		this.versionFileService.deleteVersion(version);

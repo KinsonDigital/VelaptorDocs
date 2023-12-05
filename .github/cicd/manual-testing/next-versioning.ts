@@ -1,5 +1,5 @@
-import { File } from "io/File.ts";
-import { FlagService } from "services/FlagService.ts";
+import { FlagService } from "../core/services/FlagService.ts";
+import { existsSync } from "../deps.ts";
 
 // Check the arguments
 if (Deno.args.length < 3) {
@@ -10,7 +10,7 @@ if (Deno.args.length < 3) {
 }
 
 // Validate the file path argument
-if (File.doesNotExist(Deno.args[0])) {
+if (!existsSync(Deno.args[0], { isDirectory: true, isReadable: true })) {
 	throw Error(`The file path '${Deno.args[0]}' does not exist.`);
 }
 

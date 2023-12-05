@@ -72,9 +72,5 @@
         "**/blog/",
         "**/build/",
         "**/RepoSrc/"
-    ],
-    "imports": {
-        "io/": "./.github/cicd/core/io/",
-        "services/": "./.github/cicd/core/services/"
-    }
+    ]
 }

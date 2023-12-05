@@ -86,8 +86,7 @@ jobs:
       - name: Disable Next Version Feature
         run: |
           deno run `
-            --allow-read `
-            --allow-write `
+            --allow-read --allow-write --allow-sys `
             "${{ github.workspace }}/.github/cicd/manual-testing/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `

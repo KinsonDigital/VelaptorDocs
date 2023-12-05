@@ -1,4 +1,5 @@
 {
+	"deno.enable": false,
 	"cSpell.words": [
 		"cicd",
 		"clsx",

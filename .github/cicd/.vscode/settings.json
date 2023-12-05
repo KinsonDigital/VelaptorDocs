@@ -1,14 +1,4 @@
 {
-    "deno.enable": true,
-	"[typescript]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-    "editor.detectIndentation": false,
-    "cSpell.words": [
-        "cicd",
-        "defaultdocumentation",
-        "Kinson",
-        "Velaptor"
-    ]
+	"deno.enable": true,
+	"deno.config": "../deno.json",
 }

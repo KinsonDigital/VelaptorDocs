@@ -153,7 +153,7 @@
         },
 		{ // GENERATE DOCUSAURUS API DOCS VERSION
 			"request": "launch",
-			"name": "Genererate Docusaurus API Version",
+			"name": "Generate Docusaurus API Version",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			"cwd": "${workspaceFolder}/.github/cicd",

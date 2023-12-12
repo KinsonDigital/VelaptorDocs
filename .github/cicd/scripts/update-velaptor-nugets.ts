@@ -20,7 +20,7 @@ if (!existsSync(rootDirPath, { isDirectory: true })) {
 	Deno.exit(200);
 }
 
-const tagRegex = /^v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+$/;
+const tagRegex = /^v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?$/;
 
 const possibleVersion = Deno.args[1].trim().toLowerCase();
 const isInteractive = possibleVersion === "interactive";
@@ -49,7 +49,7 @@ newVersion = newVersion.startsWith("v") ? newVersion.substring(1) : newVersion;
 const newNugetPackage = `<PackageReference Include="KinsonDigital.Velaptor" Version="${newVersion}" />`;
 
 const velaptorNuGetRegex =
-	/<PackageReference\s+Include\s*=\s*\"KinsonDigital.Velaptor\"\s+Version\s*=\s*\"[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+\"\s*\/>/;
+	/<PackageReference\s+Include\s*=\s*\"KinsonDigital.Velaptor\"\s+Version\s*=\s*\"([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\"\s*\/>/;
 
 // Get all the csproj files
 const projEntries = walkSync(rootDirPath, {
@@ -71,7 +71,7 @@ csprojFiles.forEach((file) => {
 
 	// If the file contains the nuget package
 	if (containsVelaptorNuGetRef) {
-		const versionRegex = /[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+/;
+		const versionRegex = /([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?/;
 		const oldVersion = versionRegex.exec(velaptorNuGetRef)?.map((match) => match.toString())[0] ?? "";
 
 		const newFileData = fileData.replace(velaptorNuGetRegex, newNugetPackage);

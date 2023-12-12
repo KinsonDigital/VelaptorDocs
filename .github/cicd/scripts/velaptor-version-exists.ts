@@ -13,7 +13,7 @@ const containsPAT = (value: string): boolean => {
 	return value.startsWith(fineGrainedTokenPrefix) || value.startsWith(classicTokenPrefix);
 };
 
-const versionRegex = /^v[0-9]+\.[0-9]+\.[0-9]+(|-preview\.[0-9]+)$/gm;
+const versionRegex = /^v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?$/gm;
 const version = Deno.args[0].trim().toLowerCase();
 const token = Deno.args[1].trim();
 

@@ -21,8 +21,6 @@ if (!existsSync(rootDirPath, { isDirectory: true })) {
 	Deno.exit(200);
 }
 
-const tagRegex = /^v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+$/;
-
 const possibleVersion = Deno.args[1].trim().toLowerCase();
 const isInteractive = possibleVersion === "interactive";
 
@@ -37,7 +35,7 @@ if (isInteractive) {
 	newVersion = await Select.prompt({
 		message: "Select a Velaptor version",
 		options: tags,
-		validate: (value: string) => tagRegex.test(value),
+		validate: (value: string) => Utils.isPrevOrProdVersion(value),
 	});
 
 	console.log(`The tag selected was: ${newVersion}`);
@@ -47,7 +45,7 @@ if (isInteractive) {
 
 newVersion = newVersion.startsWith("v") ? newVersion : `v${newVersion}`;
 
-const tutCompRegex = /<TutorialLink\s+projectName\s*=\s*\".+\"\s+version\s*=\s*\"v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+\"\s*\/>/;
+const tutCompRegex = /<TutorialLink\s+projectName\s*=\s*\".+\"\s+version\s*=\s*\"v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\"\s*\/>/;
 
 // Get all the mdx files
 const projFileEntries = walkSync(rootDirPath, {
@@ -72,12 +70,12 @@ mdxFiles.forEach((file) => {
 	const tutCompRef = tutCompRefs.length >= 0 ? tutCompRefs[0] : "";
 	const containsTutCompRef = !Utils.isNothing(tutCompRef);
 
-	// If the file contains the nuget package
+	// If the file contains the tutorial component
 	if (containsTutCompRef) {
 		const projName = tutCompRef.split("projectName=")[1].split(" ")[0].replaceAll('"', "");
 		const newTutComp = `<TutorialLink projectName="${projName}" version="${newVersion}"/>`;
 
-		const versionRegex = /v[0-9]+\.[0-9]+\.[0-9]+-preview\.[0-9]+/;
+		const versionRegex = /v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?/;
 		const oldVersion = versionRegex.exec(tutCompRef)?.map((match) => match.toString())[0] ?? "";
 
 		const newFileData = fileData.replace(tutCompRegex, newTutComp);

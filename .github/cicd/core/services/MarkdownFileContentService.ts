@@ -20,7 +20,7 @@ export class MarkdownFileContentService {
 		this.htmlService = new HTMLService();
 		this.codeBlockService = new CodeBlockService();
 		this.markDownLinkRegEx = /\[(.*?)\]\((.*?)\)/g;
-		this.linkTagRegEx = /<a name='(.+)'><\/a>/;
+		this.linkTagRegEx = /<a\s+name\s*=\s*'(.+)'><\/a\s*>/;
 	}
 
 	public processMarkdownFile(filePath: string): void {

@@ -10,11 +10,11 @@ export class FlagService {
 	constructor() {
 		this.newLine = Deno.build.os === "windows" ? "\r\n" : "\n";
 
-		this.flagEndRegEx = /<\/flag>/;
-		this.idRegEx = /id=[a-z-]+ /;
+		this.flagEndRegEx = /<\/flag\s*>/;
+		this.idRegEx = /id\s*=\s*[a-z-]+ /;
 
-		this.enabledFlagStartRegEx = /\/\/ <flag id=[a-z-]+ enabled=true>/;
-		this.disabledFlagStartRegEx = /\/\/ <flag id=[a-z-]+ enabled=false>/;
+		this.enabledFlagStartRegEx = /\/\/ <flag\s+id=[a-z-]+ enabled=true>/;
+		this.disabledFlagStartRegEx = /\/\/ <flag\s+id=[a-z-]+ enabled=false>/;
 	}
 
 	public enableFlag(filePath: string, id: string): void {

@@ -4,14 +4,11 @@
 
 namespace SpaceShooter;
 
-using System.Diagnostics;
 using System.Drawing;
 using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
 using Carbonate.Fluent;
 using Signals;
 using Signals.Data;
-using SixLabors.ImageSharp.Processing.Processors.Normalization;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.Factories;
@@ -25,13 +22,16 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
     private readonly ILoader<ITexture> textureLoader;
     private readonly ITextureRenderer textureRenderer;
     private readonly IDisposable unsubscriber;
+    private readonly IShapeRenderer shapeRenderer;
+    private readonly IAppInput<KeyboardState> keyboard;
+    private readonly RandomNumGenerator random = new ();
     private ITexture? enemyTexture;
     private Rectangle worldBounds;
     private float angle;
     private Vector2 position;
-    private readonly IShapeRenderer shapeRenderer;
-    private Pathing pathing;
-    private readonly IAppInput<KeyboardState> keyboard;
+    private BezierPath bezierPath;
+    private StraightPath straightPath;
+    private MultiPath multiPath;
     private KeyboardState curKeyState;
     private KeyboardState prevKeyState;
 
@@ -63,26 +63,33 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         var worldHalfWidth = this.worldBounds.Width / 2f;
         this.position = new Vector2(worldHalfWidth, 0);
 
-        const int totalPoints = 4;
+        const int totalPoints = 5;
 
-        var startPos = new Vector2(worldHalfWidth, 0);
-        var endPos = new Vector2(worldHalfWidth, this.worldBounds.Height);
-
-        var pDist = 1f / totalPoints;
-        var curDist = 0f;
+        // var startPos = new Vector2(worldHalfWidth, 0);
+        // var endPos = new Vector2(worldHalfWidth, this.worldBounds.Height);
+        var startPos = Vector2.Zero;
+        var endPos = new Vector2(this.worldBounds.Width, this.worldBounds.Height);
 
         var pathPoints = new List<Vector2>();
 
         for (var i = 0; i < totalPoints; i++)
         {
-            var newPoint = Vector2.Lerp(startPos, endPos, curDist);
+            var newX = this.random.Next(0, this.worldBounds.Width);
+            var newY = this.random.Next(0, this.worldBounds.Height);
+            var newPoint = new Vector2(newX, newY);
 
             pathPoints.Add(newPoint);
-            curDist += pDist;
         }
 
+        // pathPoints.Add(Vector2.Zero);
+        // pathPoints.Add(new Vector2(this.worldBounds.Width, 0));
+        // pathPoints.Add(new Vector2(0, this.worldBounds.Height));
+        // pathPoints.Add(new Vector2(this.worldBounds.Width, this.worldBounds.Height));
+
         this.position = startPos;
-        this.pathing = new Pathing(startPos, endPos);
+        this.bezierPath = new BezierPath(startPos, endPos) { IsLooping = true, };
+        this.straightPath = new StraightPath(startPos, endPos) { IsLooping = true, };
+        this.multiPath = new MultiPath(pathPoints.ToArray()) { IsLooping = true };
     }
 
     public void UnloadContent()
@@ -104,19 +111,28 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
 
         if (this.curKeyState.IsKeyDown(KeyCode.Right))
         {
-            this.pathing.Velocity += 10f;
+            this.bezierPath.Velocity += 10f;
+            this.straightPath.Velocity += 10f;
+            this.multiPath.Velocity += 10f;
         }
 
         if (this.curKeyState.IsKeyDown(KeyCode.Left))
         {
-            this.pathing.Velocity -= 10f;
+            this.bezierPath.Velocity -= 10f;
+            this.straightPath.Velocity -= 10f;
+            this.multiPath.Velocity -= 10f;
         }
 
-        this.position = this.pathing.UpdatePath(frameTime);
+        this.bezierPath.Update(frameTime);
+        this.straightPath.Update(frameTime);
+        this.multiPath.Update(frameTime);
+
+        this.position = this.multiPath.CurrentPosition;
 
         if (this.curKeyState.IsKeyUp(KeyCode.Space) && this.prevKeyState.IsKeyDown(KeyCode.Space))
         {
-            this.pathing.IsPaused = !this.pathing.IsPaused;
+            this.bezierPath.IsPaused = !this.bezierPath.IsPaused;
+            this.straightPath.IsPaused = !this.straightPath.IsPaused;
         }
 
         this.prevKeyState = this.curKeyState;

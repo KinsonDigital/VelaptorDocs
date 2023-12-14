@@ -6,7 +6,6 @@ namespace SpaceShooter;
 
 using System.Drawing;
 using System.Numerics;
-using System.Security.Cryptography;
 using Carbonate.Fluent;
 using Signals;
 using Signals.Data;

@@ -22,23 +22,24 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
     private const double StarSpawnInterval = 125;
     private const int MinStarSize = 50;
     private const int MaxStarSize = 100;
-    private double starSpawnIntervalElapsed = 0;
     private readonly IBatcher batcher;
+    private readonly ILoader<IAtlasData> atlasLoader;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<ITexture> textureLoader;
     private readonly RandomNumGenerator random = new ();
     private readonly List<Star> stars = new ();
     private readonly IDisposable worldSignalUnsubscriber;
-    private ITexture? starTexture;
+    private double starSpawnIntervalElapsed = 0;
+    private IAtlasData? atlasData;
     private Rectangle worldBounds;
     private (Color, float)[] starColors;
     private ShuffleBag<Vector2> screenPosBag = new ();
+    private Rectangle srcRect;
 
     public Background(IWorldSignal worldSignal)
     {
         this.batcher = RendererFactory.CreateBatcher();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
 
         var worldUpdateSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.WorldDataUpdate)
@@ -74,7 +75,8 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
             (Color.MediumPurple, 0.05f),
         };
 
-        this.starTexture = this.textureLoader.Load("star");
+        this.atlasData = this.atlasLoader.Load("atlas");
+        this.srcRect = this.atlasData.GetFrames("star")[0].Bounds;
 
         for (var i = 0; i < 300; i++)
         {
@@ -90,7 +92,7 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
             return;
         }
 
-        this.textureLoader.Unload(this.starTexture);
+        this.atlasLoader.Unload(this.atlasData);
         this.worldSignalUnsubscriber.Dispose();
     }
 
@@ -144,7 +146,8 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
 
     public void Render()
     {
-        ArgumentNullException.ThrowIfNull(this.starTexture);
+        ArgumentNullException.ThrowIfNull(this.atlasData);
+        ArgumentNullException.ThrowIfNull(this.atlasData.Texture);
 
         this.batcher.ClearColor = Color.FromArgb(255, 5, 5, 5);
 
@@ -155,9 +158,20 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
                 continue;
             }
 
-            var srcRect = new Rectangle(0, 0, (int)this.starTexture.Width, (int)this.starTexture.Height);
-            var destRect = new Rectangle((int)star.X, (int)star.Y, (int)this.starTexture.Width, (int)this.starTexture.Height);
-            this.textureRenderer.Render(this.starTexture, srcRect, destRect, star.Size, 0f, star.Color, RenderEffects.None);
+            var destRect = new Rectangle(
+                (int)star.X,
+                (int)star.Y,
+                (int)this.atlasData.Texture.Width,
+                (int)this.atlasData.Texture.Height);
+
+            this.textureRenderer.Render(
+                this.atlasData.Texture,
+                this.srcRect,
+                destRect,
+                star.Size,
+                0f,
+                star.Color,
+                RenderEffects.None);
         }
     }
 

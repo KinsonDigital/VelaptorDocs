@@ -15,6 +15,7 @@ using Velaptor;
 using Velaptor.Content;
 using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
+using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 
 /// <summary>
@@ -23,19 +24,19 @@ using Velaptor.Graphics.Renderers;
 public class Weapon : IUpdatable, IDrawable, IContentLoadable
 {
     private readonly IPushReactable<WeaponType> swapWeaponSignal;
-    private readonly ITextureRenderer renderer;
-    private readonly ILoader<ITexture> textureLoader;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly ILoader<IAtlasData> atlasLoader;
     private readonly ILoader<ISound> soundLoader;
     private readonly IDisposable unsubscriber;
     private readonly List<Bullet> bullets = new ();
     private readonly int[] weaponTypeValues;
-    private ITexture? texture;
     private ISound? lazerSound;
     private ISound? changeWeaponSound;
     private Rectangle worldBounds;
     private SizeF shipSize;
     private Vector2 shipPos;
-    private uint textureHeight;
+    private IAtlasData atlasData;
+    private Rectangle srcRect;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Weapon"/> class.
@@ -58,9 +59,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
 
         this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
 
-        this.renderer = RendererFactory.CreateTextureRenderer();
-
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+        this.textureRenderer = RendererFactory.CreateTextureRenderer();
+        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
         this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
 
         var shipSignalSubscription = ISubscriptionBuilder.Create()
@@ -85,8 +85,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.texture = this.textureLoader.Load("laser");
-        this.textureHeight = this.texture.Height;
+        this.atlasData = this.atlasLoader.Load("atlas");
+        this.srcRect = this.atlasData.GetFrames("laser")[0].Bounds;
 
         this.lazerSound = this.soundLoader.Load("space-lazer-5");
         this.changeWeaponSound = this.soundLoader.Load("change-weapon");
@@ -102,7 +102,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         }
 
         this.unsubscriber.Dispose();
-        this.textureLoader.Unload(this.texture);
+        this.atlasLoader.Unload(this.atlasData);
         this.soundLoader.Unload(this.lazerSound);
         this.soundLoader.Unload(this.changeWeaponSound);
     }
@@ -124,10 +124,13 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// </summary>
     public void Render()
     {
+        ArgumentNullException.ThrowIfNull(this.atlasData);
+        ArgumentNullException.ThrowIfNull(this.atlasData.Texture);
+
         // Render all of the bullets
         foreach (var bullet in this.bullets)
         {
-            if (bullet.IsVisible && this.texture is not null)
+            if (bullet.IsVisible)
             {
                 var bulletClr = bullet.FiredFromWeapon switch
                 {
@@ -138,7 +141,20 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
                     _ => throw new InvalidEnumArgumentException(nameof(TypeOfWeapon), (int)TypeOfWeapon, typeof(WeaponType)),
                 };
 
-                this.renderer.Render(this.texture, (int)bullet.Position.X, (int)bullet.Position.Y, bulletClr);
+                var destRect = new Rectangle(
+                    (int)bullet.Position.X,
+                    (int)bullet.Position.Y,
+                    (int)this.atlasData.Texture.Width,
+                    (int)this.atlasData.Texture.Height);
+
+                this.textureRenderer.Render(
+                    this.atlasData.Texture,
+                    this.srcRect,
+                    destRect,
+                    1,
+                    0,
+                    bulletClr,
+                    RenderEffects.None);
             }
         }
     }
@@ -219,7 +235,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         // Create a brand new bullet object to add to the pool and return it
         var newBullet = new Bullet(
             new Rectangle(0, 0, this.worldBounds.Width, this.worldBounds.Height),
-            new Vector2(this.texture.Width, this.texture.Height));
+            new Vector2(this.srcRect.Width, this.srcRect.Height));
 
         this.bullets.Add(newBullet);
 
@@ -238,7 +254,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         const int bulletVerticalOffset = 15;
         var shipHalfHeight = this.shipSize.Width / 2f;
         var shipTop = this.shipPos.Y - shipHalfHeight;
-        var bulletHalfHeight = this.textureHeight / 2f;
+        var bulletHalfHeight = this.srcRect.Height / 2f;
         var bulletPosY = shipTop - bulletHalfHeight + bulletVerticalOffset;
 
         bullet.Position = this.shipPos with { Y = bulletPosY };

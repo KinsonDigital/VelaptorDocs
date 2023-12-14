@@ -11,32 +11,35 @@ using Signals;
 using Signals.Data;
 using Velaptor;
 using Velaptor.Content;
+using Velaptor.Exceptions;
+using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 
+/// <summary>
+/// Represents an enemy in the game.
+/// </summary>
 public class Enemy : IUpdatable, IDrawable, IContentLoadable
 {
     private const double AngularVelocity = 100;
-    private readonly ILoader<ITexture> textureLoader;
     private readonly ITextureRenderer textureRenderer;
+    private readonly ILoader<IAtlasData> atlasLoader;
     private readonly IDisposable unsubscriber;
-    private readonly IShapeRenderer shapeRenderer;
-    private readonly IAppInput<KeyboardState> keyboard;
     private readonly RandomNumGenerator random = new ();
-    private ITexture? enemyTexture;
+    private readonly string[] enemyTypes = { "red-enemy", "orange-enemy" };
+    private IAtlasData? atlasData;
     private Rectangle worldBounds;
     private float angle;
     private Vector2 position;
-    private BezierPath bezierPath;
-    private StraightPath straightPath;
     private MultiPath multiPath;
-    private KeyboardState curKeyState;
-    private KeyboardState prevKeyState;
+    private Rectangle srcRect;
 
-    public bool IsLoaded { get; }
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Enemy"/> class.
+    /// </summary>
+    /// <param name="worldSignal">Receives notifications of changes to the world.</param>
     public Enemy(IWorldSignal worldSignal)
     {
         var worldUpdateSubscription = ISubscriptionBuilder.Create()
@@ -46,11 +49,17 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         this.unsubscriber = worldSignal.Subscribe(worldUpdateSubscription);
 
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.shapeRenderer = RendererFactory.CreateShapeRenderer();
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
-        this.keyboard = HardwareFactory.GetKeyboard();
+        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
     }
 
+    /// <summary>
+    /// Gets a value indicating whether or not the content is loaded.
+    /// </summary>
+    public bool IsLoaded { get; private set; }
+
+    /// <summary>
+    /// Loads the enemy content.
+    /// </summary>
     public void LoadContent()
     {
         if (IsLoaded)
@@ -58,15 +67,79 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.enemyTexture = this.textureLoader.Load("red-enemy");
+        this.atlasData = this.atlasLoader.Load("atlas");
 
-        var worldHalfWidth = this.worldBounds.Width / 2f;
-        this.position = new Vector2(worldHalfWidth, 0);
+        if (this.atlasData is null)
+        {
+            throw new AtlasException("Could not load the atlas.");
+        }
 
+        var chosenEnemyIndex = this.random.Next(0, this.enemyTypes.Length);
+        var chosenEnemy = this.enemyTypes[chosenEnemyIndex];
+
+        this.srcRect = this.atlasData.GetFrames(chosenEnemy)[0].Bounds;
+
+        Randomize();
+
+        IsLoaded = true;
+    }
+
+    /// <summary>
+    /// Unloads the enemy content.
+    /// </summary>
+    public void UnloadContent()
+    {
+        if (!IsLoaded)
+        {
+            return;
+        }
+
+        this.unsubscriber.Dispose();
+        this.atlasLoader.Unload(this.atlasData);
+    }
+
+    /// <summary>
+    /// Updates the enemy.
+    /// </summary>
+    /// <param name="frameTime">The amount of time that has passed for this frame.</param>
+    public void Update(FrameTime frameTime)
+    {
+        this.angle += (float)(AngularVelocity * frameTime.ElapsedTime.TotalSeconds);
+
+        this.multiPath.Update(frameTime);
+
+        this.position = this.multiPath.CurrentPosition;
+    }
+
+    /// <summary>
+    /// Renders the enemy.
+    /// </summary>
+    public void Render()
+    {
+        ArgumentNullException.ThrowIfNull(this.atlasData);
+        ArgumentNullException.ThrowIfNull(this.atlasData.Texture);
+
+        var destRect = new Rectangle(
+            (int)this.position.X,
+            (int)this.position.Y,
+            (int)this.atlasData.Texture.Width,
+            (int)this.atlasData.Texture.Height);
+
+        this.textureRenderer.Render(
+            this.atlasData.Texture,
+            this.srcRect,
+            destRect,
+            1,
+            this.angle,
+            Color.White,
+            RenderEffects.None);
+    }
+
+    private void Randomize()
+    {
         const int totalPoints = 6;
 
         var startPos = Vector2.Zero;
-        var endPos = new Vector2(this.worldBounds.Width, this.worldBounds.Height);
 
         var pathPoints = new List<Vector2>();
 
@@ -80,108 +153,7 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         }
 
         this.position = startPos;
-        this.bezierPath = new BezierPath(startPos, endPos) { IsLooping = true, };
-        this.straightPath = new StraightPath(startPos, endPos) { IsLooping = true, };
         this.multiPath = new MultiPath(pathPoints.ToArray()) { IsLooping = true };
-    }
-
-    public void UnloadContent()
-    {
-        if (!IsLoaded)
-        {
-            return;
-        }
-
-        this.unsubscriber.Dispose();
-        this.textureLoader.Unload("enemy");
-    }
-
-    public void Update(FrameTime frameTime)
-    {
-        this.angle += (float)(AngularVelocity * frameTime.ElapsedTime.TotalSeconds);
-
-        this.curKeyState = this.keyboard.GetState();
-
-        if (this.curKeyState.IsKeyDown(KeyCode.Right))
-        {
-            this.bezierPath.Velocity += 10f;
-            this.straightPath.Velocity += 10f;
-            this.multiPath.Velocity += 10f;
-        }
-
-        if (this.curKeyState.IsKeyDown(KeyCode.Left))
-        {
-            this.bezierPath.Velocity -= 10f;
-            this.straightPath.Velocity -= 10f;
-            this.multiPath.Velocity -= 10f;
-        }
-
-        this.bezierPath.Update(frameTime);
-        this.straightPath.Update(frameTime);
-        this.multiPath.Update(frameTime);
-
-        this.position = this.multiPath.CurrentPosition;
-
-        if (this.curKeyState.IsKeyUp(KeyCode.Space) && this.prevKeyState.IsKeyDown(KeyCode.Space))
-        {
-            this.bezierPath.IsPaused = !this.bezierPath.IsPaused;
-            this.straightPath.IsPaused = !this.straightPath.IsPaused;
-        }
-
-        this.prevKeyState = this.curKeyState;
-    }
-
-    public void Render()
-    {
-        ArgumentNullException.ThrowIfNull(this.enemyTexture);
-
-        var srcRect = new Rectangle(0, 0, (int)this.enemyTexture.Width, (int)this.enemyTexture.Height);
-        var destRect = new Rectangle((int)this.position.X, (int)this.position.Y, (int)this.enemyTexture.Width, (int)this.enemyTexture.Height);
-
-        this.textureRenderer.Render(
-            this.enemyTexture,
-            srcRect,
-            destRect,
-            1,
-            this.angle,
-            Color.White,
-            RenderEffects.None);
-    }
-
-    private void RenderPoints(List<Vector2> points, Color clr)
-    {
-        if (points is null)
-        {
-            return;
-        }
-
-        foreach (Vector2 point in points)
-        {
-            var circle = new CircleShape
-            {
-                Color = clr,
-                Position = point,
-                Radius = 5,
-            };
-
-            this.shapeRenderer.Render(circle);
-        }
-    }
-
-    private void RenderBPoints(Vector2[] points)
-    {
-        if (points is null)
-        {
-            return;
-        }
-
-        for (var i = 0; i < points.Length; i++)
-        {
-            Vector2 point = points[i];
-
-            var circle = new CircleShape { Color = Color.White, Position = point, Radius = 5, };
-
-            this.shapeRenderer.Render(circle);
-        }
+        this.multiPath.Velocity = this.random.Next(100, 500);
     }
 }

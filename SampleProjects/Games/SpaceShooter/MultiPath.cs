@@ -10,7 +10,7 @@ using Velaptor;
 
 public class MultiPath : IUpdatable
 {
-    private readonly List<(bool enabled, IPath path)> paths = new ();
+    private readonly List<IPath> paths = new ();
     private int activePathIndex;
     private float velocity = 0.1f;
     private Direction direction = Direction.Forward;
@@ -30,7 +30,7 @@ public class MultiPath : IUpdatable
             var newPath = new StraightPath(start, stop);
             newPath.IsPaused = i != 0;
             newPath.IsLooping = false;
-            this.paths.Add((i == 0, newPath));
+            this.paths.Add(newPath);
         }
     }
 
@@ -41,11 +41,9 @@ public class MultiPath : IUpdatable
         {
             this.velocity = value;
 
-            for (var i = 0; i < this.paths.Count; i++)
+            foreach (var t in this.paths)
             {
-                var (enabled, path) = this.paths[i];
-                path.Velocity = value;
-                this.paths[i] = (enabled, path);
+                t.Velocity = value;
             }
         }
     }
@@ -68,27 +66,23 @@ public class MultiPath : IUpdatable
     {
         NextPath();
 
-        for (var i = 0; i < this.paths.Count; i++)
+        foreach (var path in this.paths)
         {
-            (bool, IPath) pathData = this.paths[i];
-            var (enabled, path) = pathData;
-
-            if (enabled)
+            if (!path.IsPaused)
             {
                 path.Update(frameTime);
             }
         }
 
-        CurrentPosition = this.paths[this.activePathIndex].path.CurrentPosition;
+        CurrentPosition = this.paths[this.activePathIndex].CurrentPosition;
     }
 
     private void NextPath()
     {
         // Set the current path to paused & disabled
-        this.paths[this.activePathIndex].path.IsPaused = true;
-        this.paths[this.activePathIndex] = (false, this.paths[this.activePathIndex].path);
+        this.paths[this.activePathIndex].IsPaused = true;
 
-        var subPathComplete = this.paths[this.activePathIndex].path.IsComplete;
+        var subPathComplete = this.paths[this.activePathIndex].IsComplete;
 
         var fullPathComplete = IsPathComplete();
 
@@ -109,20 +103,16 @@ public class MultiPath : IUpdatable
 
 
         // Set the next path to un-paused & enabled
-        this.paths[this.activePathIndex].path.IsPaused = false;
-        this.paths[this.activePathIndex] = (true, this.paths[this.activePathIndex].path);
+        this.paths[this.activePathIndex].IsPaused = false;
     }
 
-    private bool IsPathComplete() => this.paths.All(p => p.path.IsComplete);
+    private bool IsPathComplete() => this.paths.All(p => p.IsComplete);
 
     private void SetPathDirections(Direction newDirection)
     {
-        for (var i = 0; i < this.paths.Count; i++)
+        foreach (var path in this.paths)
         {
-            var (enabled, path) = this.paths[i];
             path.Direction = newDirection;
-
-            this.paths[i] = (enabled, path);
         }
     }
 

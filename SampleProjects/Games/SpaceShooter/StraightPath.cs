@@ -14,7 +14,6 @@ public class StraightPath : IPath
     private readonly Vector2 stop;
     private float pathProgress;
     private float velocity = 0.1f;
-    private Vector2 prevInterpolatedPos;
 
     public StraightPath(Vector2 start, Vector2 stop)
     {
@@ -56,7 +55,6 @@ public class StraightPath : IPath
         }
 
         var interpolatedPos = Vector2.Lerp(this.start, this.stop, this.pathProgress);
-        this.prevInterpolatedPos = interpolatedPos;
 
         if (IsPathComplete() && IsLooping)
         {

@@ -63,10 +63,8 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         var worldHalfWidth = this.worldBounds.Width / 2f;
         this.position = new Vector2(worldHalfWidth, 0);
 
-        const int totalPoints = 5;
+        const int totalPoints = 6;
 
-        // var startPos = new Vector2(worldHalfWidth, 0);
-        // var endPos = new Vector2(worldHalfWidth, this.worldBounds.Height);
         var startPos = Vector2.Zero;
         var endPos = new Vector2(this.worldBounds.Width, this.worldBounds.Height);
 
@@ -80,11 +78,6 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
 
             pathPoints.Add(newPoint);
         }
-
-        // pathPoints.Add(Vector2.Zero);
-        // pathPoints.Add(new Vector2(this.worldBounds.Width, 0));
-        // pathPoints.Add(new Vector2(0, this.worldBounds.Height));
-        // pathPoints.Add(new Vector2(this.worldBounds.Width, this.worldBounds.Height));
 
         this.position = startPos;
         this.bezierPath = new BezierPath(startPos, endPos) { IsLooping = true, };

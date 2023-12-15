@@ -6,7 +6,9 @@ namespace SpaceShooter.Signals;
 
 using Carbonate.OneWay;
 using Data;
+using Interfaces;
 
-public class WorldSignal : PushReactable<WorldData>, IWorldSignal
+/// <inheritdoc cref="IWorldSignal"/>
+public sealed class WorldSignal : PushReactable<WorldData>, IWorldSignal
 {
 }

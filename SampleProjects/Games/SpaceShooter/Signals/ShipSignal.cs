@@ -6,11 +6,9 @@ namespace SpaceShooter.Signals;
 
 using Carbonate.OneWay;
 using Data;
+using Interfaces;
 
-public interface IShipSignal : IPushReactable<ShipData>
-{
-}
-
-public class ShipSignal : PushReactable<ShipData>, IShipSignal
+/// <inheritdoc cref="IShipSignal"/>
+public sealed class ShipSignal : PushReactable<ShipData>, IShipSignal
 {
 }

@@ -9,32 +9,38 @@ using System.Numerics;
 using Carbonate.Fluent;
 using Signals;
 using Signals.Data;
+using Signals.Interfaces;
 using Velaptor;
-using Velaptor.Batching;using Velaptor.Content;
+using Velaptor.Batching;
+using Velaptor.Content;
 using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 
+/// <summary>
+/// The background graphics.
+/// </summary>
 public class Background : IContentLoadable, IUpdatable, IDrawable
 {
     private const int StarSpawnXOffset = 10;
-    private const double StarSpawnInterval = 125;
-    private const int MinStarSize = 50;
-    private const int MaxStarSize = 100;
     private readonly IBatcher batcher;
     private readonly ILoader<IAtlasData> atlasLoader;
     private readonly ITextureRenderer textureRenderer;
     private readonly RandomNumGenerator random = new ();
     private readonly List<Star> stars = new ();
     private readonly IDisposable worldSignalUnsubscriber;
-    private double starSpawnIntervalElapsed = 0;
+    private readonly ShuffleBag<Vector2> screenPosBag = new ();
+    private double starSpawnIntervalElapsed;
     private IAtlasData? atlasData;
-    private Rectangle worldBounds;
+    private RectangleF worldBounds;
     private (Color, float)[] starColors;
-    private ShuffleBag<Vector2> screenPosBag = new ();
     private Rectangle srcRect;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Background"/> class.
+    /// </summary>
+    /// <param name="worldSignal">Receives updates about the world.</param>
     public Background(IWorldSignal worldSignal)
     {
         this.batcher = RendererFactory.CreateBatcher();
@@ -48,8 +54,14 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
         this.worldSignalUnsubscriber = worldSignal.Subscribe(worldUpdateSubscription);
     }
 
-    public bool IsLoaded { get; }
+    /// <summary>
+    /// Gets a value indicating whether or not the content is loaded.
+    /// </summary>
+    public bool IsLoaded { get; private set; }
 
+    /// <summary>
+    /// Loads the background content.
+    /// </summary>
     public void LoadContent()
     {
         if (IsLoaded)
@@ -83,8 +95,13 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
             var newStar = CreateStar();
             this.stars.Add(newStar);
         }
+
+        IsLoaded = true;
     }
 
+    /// <summary>
+    /// Unloads the background content.
+    /// </summary>
     public void UnloadContent()
     {
         if (!IsLoaded)
@@ -96,6 +113,10 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
         this.worldSignalUnsubscriber.Dispose();
     }
 
+    /// <summary>
+    /// Updates the background.
+    /// </summary>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         for (var i = 0; i < this.stars.Count; i++)
@@ -144,6 +165,9 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
         }
     }
 
+    /// <summary>
+    /// Renders the background.
+    /// </summary>
     public void Render()
     {
         ArgumentNullException.ThrowIfNull(this.atlasData);
@@ -175,6 +199,12 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
         }
     }
 
+    /// <summary>
+    /// Creates a start using the given x and y coordinates.
+    /// </summary>
+    /// <param name="x">The X coordinate.</param>
+    /// <param name="y">The Y coordinate.</param>
+    /// <returns>The star object.</returns>
     private Star CreateStar(int x = -1, int y = -1)
     {
         var newClr = this.starColors.GetRandomItem();
@@ -183,8 +213,8 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
 
         var newSize = this.random.Next(50, 100);
 
-        var newX = this.random.Next(0, this.worldBounds.Width);
-        var newY = this.random.Next(0, this.worldBounds.Height);
+        var newX = this.random.Next(0, (int)this.worldBounds.Width);
+        var newY = this.random.Next(0, (int)this.worldBounds.Height);
 
         return new Star
         {

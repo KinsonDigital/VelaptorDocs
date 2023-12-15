@@ -1,4 +1,4 @@
-// <copyright file="WeaponSelectionUI.cs" company="KinsonDigital">
+// <copyright file="WeaponSelectionUi.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -6,11 +6,11 @@ namespace SpaceShooter.UI;
 
 using System.ComponentModel;
 using System.Drawing;
-using System.Net.Mime;
 using System.Numerics;
 using Carbonate.Fluent;
 using Signals;
 using Signals.Data;
+using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.ExtensionMethods;
@@ -21,23 +21,28 @@ using Velaptor.Graphics.Renderers;
 /// <summary>
 /// Shows an indicator of the currently selected weapon.
 /// </summary>
-public sealed class WeaponSelectionUI : IContentLoadable
+public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
 {
     private const int SelectionItemMargin = 5;
-    private const int SelectionUIMargin = 10;
+    private const int SelectionUiMargin = 10;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<IAtlasData> atlasLoader;
+    private WeaponType typeOfWeapon;
     private Vector2 orangePos;
     private Vector2 redPos;
     private Vector2 greenPos;
     private Vector2 bluePos;
-    private Rectangle worldBounds;
-    private int weaponUiWidth;
+    private RectangleF worldBounds;
     private IAtlasData atlasData;
     private Rectangle selectionSrcRect;
     private Rectangle lazerSrcRect;
 
-    public WeaponSelectionUI(
+    /// <summary>
+    /// Initializes a new instance of the <see cref="WeaponSelectionUi"/> class.
+    /// </summary>
+    /// <param name="worldSignal">Receives updates about the world.</param>
+    /// <param name="swapWeaponSignal">Sends a signal that a weapon has been swapped.</param>
+    public WeaponSelectionUi(
         IWorldSignal worldSignal,
         ISwapWeaponSignal swapWeaponSignal)
     {
@@ -47,7 +52,7 @@ public sealed class WeaponSelectionUI : IContentLoadable
 
         var swapSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.SwapWeapon)
-            .BuildOneWayReceive<WeaponType>(weaponType => TypeOfWeapon = weaponType);
+            .BuildOneWayReceive<WeaponType>(weaponType => this.typeOfWeapon = weaponType);
 
         swapWeaponSignal.Subscribe(swapSubscription);
         worldSignal.Subscribe(worldSubscription);
@@ -56,31 +61,50 @@ public sealed class WeaponSelectionUI : IContentLoadable
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
     }
 
+    /// <summary>
+    /// Gets or sets the position of the UI element.
+    /// </summary>
     public Vector2 Position { get; set; }
 
-    public WeaponType TypeOfWeapon { get; private set; }
+    /// <summary>
+    /// Gets a value indicating whether or not the content is loaded.
+    /// </summary>
+    public bool IsLoaded { get; private set; }
 
-    public bool IsLoaded { get; }
-
+    /// <summary>
+    /// Loads the weapons selection UI content.
+    /// </summary>
     public void LoadContent()
     {
+        if (IsLoaded)
+        {
+            return;
+        }
+
         this.atlasData = this.atlasLoader.Load("atlas");
 
         this.selectionSrcRect = this.atlasData.GetFrames("weapon-selection")[0].Bounds;
         this.lazerSrcRect = this.atlasData.GetFrames("laser")[0].Bounds;
 
-        this.weaponUiWidth = (4 * this.selectionSrcRect.Width) + (3 * SelectionItemMargin);
+        var weaponUiWidth = (4 * this.selectionSrcRect.Width) + (3 * SelectionItemMargin);
         var selectionRectHalfHeight = this.selectionSrcRect.Height / 2;
+
         Position = new Vector2(
-            this.worldBounds.Width - (this.weaponUiWidth + SelectionUIMargin),
-            selectionRectHalfHeight + SelectionUIMargin);
+            this.worldBounds.Width - (weaponUiWidth + SelectionUiMargin),
+            selectionRectHalfHeight + SelectionUiMargin);
+
+        IsLoaded = true;
     }
 
-    public void UnloadContent()
-    {
-        this.atlasLoader.Unload(this.atlasData);
-    }
+    /// <summary>
+    /// Unloads the weapons selection UI content.
+    /// </summary>
+    public void UnloadContent() => this.atlasLoader.Unload(this.atlasData);
 
+    /// <summary>
+    /// Updates the weapon selection UI.
+    /// </summary>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         // Calculate the position for all of the lasers
@@ -95,39 +119,27 @@ public sealed class WeaponSelectionUI : IContentLoadable
         this.bluePos = Position with { X = blueX };
     }
 
-    private void RenderLazer(Vector2 lazerPos, Color color)
-    {
-        var destRect = new Rectangle(
-            (int)lazerPos.X,
-            (int)lazerPos.Y,
-            (int)this.atlasData.Texture.Width,
-            (int)this.atlasData.Texture.Height);
-
-        this.textureRenderer.Render(
-            this.atlasData.Texture,
-            this.lazerSrcRect,
-            destRect,
-            1,
-            0,
-            color,
-            RenderEffects.None);
-    }
-
+    /// <summary>
+    /// Renders the weapon selection UI.
+    /// </summary>
+    /// <exception cref="InvalidEnumArgumentException">
+    ///     Thrown if the <see cref="typeOfWeapon"/> is not a valid enum value.
+    /// </exception>
     public void Render()
     {
         // Render the colored lazer options
-        RenderLazer(this.orangePos, Color.Orange);
-        RenderLazer(this.redPos, Color.Red);
-        RenderLazer(this.greenPos, Color.Green);
-        RenderLazer(this.bluePos, Color.Blue);
+        RenderWeaponTypes(this.orangePos, Color.Orange);
+        RenderWeaponTypes(this.redPos, Color.Red);
+        RenderWeaponTypes(this.greenPos, Color.Green);
+        RenderWeaponTypes(this.bluePos, Color.Blue);
 
-        var selectionPos = TypeOfWeapon switch
+        var selectionPos = this.typeOfWeapon switch
         {
             WeaponType.Red => this.redPos,
             WeaponType.Orange => this.orangePos,
             WeaponType.Green => this.greenPos,
             WeaponType.Blue => this.bluePos,
-            _ => throw new InvalidEnumArgumentException(nameof(TypeOfWeapon), (int)TypeOfWeapon, typeof(WeaponType)),
+            _ => throw new InvalidEnumArgumentException(nameof(this.typeOfWeapon), (int)this.typeOfWeapon, typeof(WeaponType)),
         };
 
         var destRect = new Rectangle(
@@ -143,6 +155,29 @@ public sealed class WeaponSelectionUI : IContentLoadable
             1,
             0,
             Color.White,
+            RenderEffects.None);
+    }
+
+    /// <summary>
+    /// Renders the types of weapons to choose from.
+    /// </summary>
+    /// <param name="pos">The position of the weapon.</param>
+    /// <param name="color">The color of the weapon.</param>
+    private void RenderWeaponTypes(Vector2 pos, Color color)
+    {
+        var destRect = new Rectangle(
+            (int)pos.X,
+            (int)pos.Y,
+            (int)this.atlasData.Texture.Width,
+            (int)this.atlasData.Texture.Height);
+
+        this.textureRenderer.Render(
+            this.atlasData.Texture,
+            this.lazerSrcRect,
+            destRect,
+            1,
+            0,
+            color,
             RenderEffects.None);
     }
 }

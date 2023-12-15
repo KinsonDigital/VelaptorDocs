@@ -6,7 +6,13 @@ namespace SpaceShooter.Signals.Data;
 
 using System.Drawing;
 
+/// <summary>
+/// Holds data about the world.
+/// </summary>
 public readonly record struct WorldData
 {
-    public Rectangle WorldBounds { get; init; }
+    /// <summary>
+    /// Gets the bounds of the world.
+    /// </summary>
+    public RectangleF WorldBounds { get; init; }
 }

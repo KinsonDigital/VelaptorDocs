@@ -5,7 +5,9 @@
 namespace SpaceShooter.Signals;
 
 using Carbonate.NonDirectional;
+using Interfaces;
 
-public class FireWeaponSignal : PushReactable, IFireWeaponSignal
+/// <inheritdoc cref="IFireWeaponSignal"/>
+public sealed class FireWeaponSignal : PushReactable, IFireWeaponSignal
 {
 }

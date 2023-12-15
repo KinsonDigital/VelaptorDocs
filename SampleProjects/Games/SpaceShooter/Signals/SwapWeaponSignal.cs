@@ -5,11 +5,9 @@
 namespace SpaceShooter.Signals;
 
 using Carbonate.OneWay;
+using Interfaces;
 
-public interface ISwapWeaponSignal : IPushReactable<WeaponType>
-{
-}
-
-public class SwapWeaponSignal : PushReactable<WeaponType>, ISwapWeaponSignal
+/// <inheritdoc cref="ISwapWeaponSignal"/>
+public sealed class SwapWeaponSignal : PushReactable<WeaponType>, ISwapWeaponSignal
 {
 }

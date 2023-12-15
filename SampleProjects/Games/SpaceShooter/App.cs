@@ -5,12 +5,13 @@
 namespace SpaceShooter;
 
 using Signals;
+using Signals.Interfaces;
 using SimpleInjector;
 using UI;
 
 public static class App
 {
-    private static Container factory = new ();
+    private static readonly Container factory = new ();
     private static bool isInitialized;
 
     public static Container Factory
@@ -44,10 +45,12 @@ public static class App
         factory.Register<IWorldSignal, WorldSignal>(Lifestyle.Singleton);
         factory.Register<ISwapWeaponSignal, SwapWeaponSignal>(Lifestyle.Singleton);
         factory.Register<IShipSignal, ShipSignal>(Lifestyle.Singleton);
+        factory.Register<IScoreSignal, ScoreSignal>(Lifestyle.Singleton);
+        factory.Register<IEnemyUpdateSignal, EnemyUpdateSignal>(Lifestyle.Singleton);
     }
 
     private static void SetupUI()
     {
-        factory.Register<WeaponSelectionUI>(Lifestyle.Singleton);
+        factory.Register<WeaponSelectionUi>(Lifestyle.Singleton);
     }
 }

@@ -248,7 +248,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         if: ${{ inputs.dry-run == false }}
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
 
       - name: Commit New Docs & Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
         if: ${{ inputs.dry-run == false }}

@@ -5,7 +5,7 @@ import { MarkdownService } from "./services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Utils } from "./Utils.ts";
 import { Yarn } from "./Yarn.ts";
-import chalk, { copySync, existsSync, walkSync } from "../deps.ts";
+import chalk, { existsSync, walkSync } from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.

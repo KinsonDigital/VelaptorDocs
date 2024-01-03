@@ -24,7 +24,7 @@ interface TutorialLinkProps {
  * @returns The component.
  */
 const TutorialLink: React.FC<TutorialLinkProps> = ({ projectName, version }: TutorialLinkProps) => {
-    const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/${version}/SampleProjects/${projectName}`;
+    const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/api-${version}/SampleProjects/Guides/${projectName}`;
 
     return (
         <a href={url}

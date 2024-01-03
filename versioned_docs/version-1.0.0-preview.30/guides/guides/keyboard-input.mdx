@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-import TutorialLink from "@site/src/components/TutorialLink";
+import OpenNewTab from "@site/static/img/new-tab.svg";
 import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
 
 # Keyboard Input
@@ -20,7 +20,7 @@ to keyboard input are endless. Examples of what you can do with the keyboard are
 and exiting the game when necessary.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="KeyboardInput" version="v1.0.0-preview.30"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <a href="https://github.com/KinsonDigital/VelaptorTutorials/tree/api-v1.0.0-preview.30/KeyboardInput" target="_blank" className="link" rel="noopener noreferrer">KeyboardInput<OpenNewTab style={{paddingTop: '10', paddingLeft: '0.25%', width: '2%'}}/></a> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -51,11 +51,11 @@ and some variables for holding information for moving the window.
 ```csharp
 public class Game : Window
 {
-	private const float VelocityXAndY = 300f;
-	private readonly IAppInput<KeyboardState> keyboard;
-	private KeyboardState currKeyState;
-	private KeyboardState prevKeyState;
-	private Vector2 velocity = Vector2.Zero;
+    private const float VelocityXAndY = 300f;
+    private readonly IAppInput<KeyboardState> keyboard;
+    private KeyboardState currKeyState;
+    private KeyboardState prevKeyState;
+    private Vector2 velocity = Vector2.Zero;
 }
 ```
 
@@ -102,29 +102,29 @@ below with the following code.
 ```csharp
 private void MoveWindow(FrameTime frameTime)
 {
-	if (this.currKeyState.IsKeyDown(KeyCode.Right))
-	{
-		this.velocity.X = VelocityXAndY;
-	}
+    if (this.currKeyState.IsKeyDown(KeyCode.Right))
+    {
+        this.velocity.X = VelocityXAndY;
+    }
 
-	if (this.currKeyState.IsKeyDown(KeyCode.Left))
-	{
-		this.velocity.X = -VelocityXAndY; // Negate the velocity to move left
-	}
+    if (this.currKeyState.IsKeyDown(KeyCode.Left))
+    {
+        this.velocity.X = -VelocityXAndY; // Negate the velocity to move left
+    }
 
-	if (this.currKeyState.IsKeyDown(KeyCode.Up))
-	{
-		this.velocity.Y = -VelocityXAndY; // Negate the velocity to move up
-	}
+    if (this.currKeyState.IsKeyDown(KeyCode.Up))
+    {
+        this.velocity.Y = -VelocityXAndY; // Negate the velocity to move up
+    }
 
-	if (this.currKeyState.IsKeyDown(KeyCode.Down))
-	{
-		this.velocity.Y = VelocityXAndY;
-	}
+    if (this.currKeyState.IsKeyDown(KeyCode.Down))
+    {
+        this.velocity.Y = VelocityXAndY;
+    }
 
-	var displacement = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
+    var displacement = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
 
-	Position += displacement;
+    Position += displacement;
 }
 ```
 
@@ -154,25 +154,25 @@ to change the size of the window using the keyboard.
 ```csharp
 private void ChangeWinSize()
 {
-	if (IsPressed(KeyCode.Right))
-	{
-		Width += 50; // Increase the width of the window
-	}
+    if (IsPressed(KeyCode.Right))
+    {
+        Width += 50; // Increase the width of the window
+    }
 
-	if (IsPressed(KeyCode.Left))
-	{
-		Width -= 50; // Decrease the width of the window
-	}
+    if (IsPressed(KeyCode.Left))
+    {
+        Width -= 50; // Decrease the width of the window
+    }
 
-	if (IsPressed(KeyCode.Up))
-	{
-		Height -= 50; // Decrease the height of the window
-	}
+    if (IsPressed(KeyCode.Up))
+    {
+        Height -= 50; // Decrease the height of the window
+    }
 
-	if (IsPressed(KeyCode.Down))
-	{
-		Height += 50; // Increase the height of the window
-	}
+    if (IsPressed(KeyCode.Down))
+    {
+        Height += 50; // Increase the height of the window
+    }
 }
 ```
 
@@ -196,8 +196,8 @@ First, set the _**current**_ and _**previous**_ state of the keyboard.
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	this.currKeyState = this.keyboard.GetState();
-	this.prevKeyState = this.currKeyState;
+    this.currKeyState = this.keyboard.GetState();
+    this.prevKeyState = this.currKeyState;
 }
 ```
 
@@ -212,20 +212,20 @@ In between the _**current**_ and _**previous**_ keyboard state lines of code, ad
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	...
-	// If the left or right control key is pressed, move the window.
-	if (this.currKeyState.AnyCtrlKeysDown())
-	{
-		MoveWindow(frameTime);
-	}
-	else
-	{
-		// Change the window size.
-		ChangeWinSize();
-	}
+    ...
+    // If the left or right control key is pressed, move the window.
+    if (this.currKeyState.AnyCtrlKeysDown())
+    {
+        MoveWindow(frameTime);
+    }
+    else
+    {
+        // Change the window size.
+        ChangeWinSize();
+    }
 
-	this.velocity = Vector2.Zero;
-	...
+    this.velocity = Vector2.Zero;
+    ...
 }
 ```
 
@@ -252,8 +252,8 @@ Add the method below in the `Game` class.
 ```csharp
 protected override void OnResize(SizeU size)
 {
-	Title = $"Window Size: W: {Width} H: {Height} | Window Position: X: {Position.X} Y: {Position.Y}";
-	base.OnResize(size);
+    Title = $"Window Size: W: {Width} H: {Height} | Window Position: X: {Position.X} Y: {Position.Y}";
+    base.OnResize(size);
 }
 ```
 

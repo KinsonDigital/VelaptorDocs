@@ -230,6 +230,7 @@ jobs:
 
           # Add the letter 'v' if it is missing
           $apiVersion = $apiVersion.StartsWith("v") ? $apiVersion : "v" + $apiVersion;
+          $apiVersion = "api-$apiVersion";
           
           $tag = "${{ steps.apply_version_to_site.outputs.version }}";
 
@@ -240,5 +241,11 @@ jobs:
           git commit -m "🚀API Doc Release (Velaptor Version ${{ inputs.api-version }})";
           git push;
 
+          # Create a website date specific releease tag
           git tag -a $tag -m "API Doc Release Version $apiVersion";
           git push origin $tag;
+
+          # Create the Velaptor API version release tag
+          # NOTE: This is used by the sample project links in the guides.
+          git tag -a $apiVersion -m "Velaptor API Version $apiVersion";
+          git push origin $apiVersion;

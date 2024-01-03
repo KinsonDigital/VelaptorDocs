@@ -30,14 +30,19 @@ body:
     required: true
     render: markdown
 
-- type: checkboxes
+- type: textarea
   attributes:
     label: ToDo Items
     description: Complete the following items before requesting a PR review.
-    options:
-    - label: Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
-    - label: Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-    - label: If more than 5 versions exist after adding the new version, the oldest version is removed.
+    value: |
+      ```[tasklist]
+      - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
+      - [ ] Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
+      - [ ] If more than 5 versions exist after adding the new version, the oldest version is removed.
+      ```
+  validations:
+    required: true
+    render: markdown
 
 - type: textarea
   attributes:

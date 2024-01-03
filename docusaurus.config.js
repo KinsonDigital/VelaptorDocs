@@ -3,7 +3,6 @@
 const {themes} = require('prism-react-renderer');
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Velaptor',
@@ -46,8 +45,8 @@ const config = {
           // This is used as part of the manual testing process for the CICD side of the project.
           // This will always be disabled during the build process before a release.
           // When disabled, the 'Next' version is enabled by default.
-          // <flag id=next-version enabled=false>
-          // includeCurrentVersion: false,
+          // <flag id=next-version enabled=true>
+          includeCurrentVersion: false,
           // </flag>
         },
 		
@@ -241,7 +240,7 @@ const config = {
           src: 'img/kinson-digital-logo.png',
           href: 'https://github.com/KinsonDigital',
         },
-        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2023.10.23.163727) - Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.01.03.114800) - Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -41,7 +41,7 @@ window.
 ```csharp
 public class Game : Window
 {
-	private const int HeightChangeAmount = 50;
+    private const int HeightChangeAmount = 50;
     private readonly IAppInput<MouseState> mouse;
     private MouseState prevMouseState;
 }
@@ -74,11 +74,11 @@ if there are differences between the two states to detect if a button has been p
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	var currMouseState = this.mouse.GetState();
+    var currMouseState = this.mouse.GetState();
 
-	this.prevMouseState = currMouseState;
+    this.prevMouseState = currMouseState;
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -89,24 +89,24 @@ Next, between the two mouse states in the `OnUpdate()` method, change the width 
 ```csharp
 private void OnUpdate(FrameTime frameTime)
 {
-	... 
+    ... 
 
-	// If the left mouse button is currently being held in the down position
-	if (currMouseState.GetButtonState(MouseButton.LeftButton))
-	{
-		// The position of the mouse for the current frame
-		var currMousePos = currMouseState.GetPosition();
+    // If the left mouse button is currently being held in the down position
+    if (currMouseState.GetButtonState(MouseButton.LeftButton))
+    {
+        // The position of the mouse for the current frame
+        var currMousePos = currMouseState.GetPosition();
 
-		// The position of the mouse in the previous frame
-		var prevMousePos = this.prevMouseState.GetPosition();
+        // The position of the mouse in the previous frame
+        var prevMousePos = this.prevMouseState.GetPosition();
 
-		// Add the mouse movement amount to the current width of the window
-		Width += (uint)(currMousePos.X - prevMousePos.X);
-	}
+        // Add the mouse movement amount to the current width of the window
+        Width += (uint)(currMousePos.X - prevMousePos.X);
+    }
 
-	this.prevMouseState = currMouseState;
+    this.prevMouseState = currMouseState;
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -125,27 +125,27 @@ Below the `if` block we added in the previous step, add the following code:
 ```csharp
 private void OnUpdate(FrameTime frameTime)
 {
-	... 
+    ... 
 
-	// Get the current value of the mouse scroll wheel
-	var wheelValue = currMouseState.GetScrollWheelValue();
+    // Get the current value of the mouse scroll wheel
+    var wheelValue = currMouseState.GetScrollWheelValue();
 
-	// If the mouse wheel was not scrolled, exit the method
-	if (wheelValue != 0)
-	{
-		// Check if the mouse wheel was scrolled down or up.
-		// If the value is negative, the mouse wheel has been scrolled in the down direction.
-		var scrolledDown = wheelValue < 0;
+    // If the mouse wheel was not scrolled, exit the method
+    if (wheelValue != 0)
+    {
+        // Check if the mouse wheel was scrolled down or up.
+        // If the value is negative, the mouse wheel has been scrolled in the down direction.
+        var scrolledDown = wheelValue < 0;
 
-		// Change the height of the window based on the direction the mouse wheel was scrolled.
-		Height = scrolledDown
-			? Height - HeightChangeAmount
-			: Height + HeightChangeAmount;
-	}
+        // Change the height of the window based on the direction the mouse wheel was scrolled.
+        Height = scrolledDown
+            ? Height - HeightChangeAmount
+            : Height + HeightChangeAmount;
+    }
 
-	this.prevMouseState = currMouseState;
+    this.prevMouseState = currMouseState;
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -178,8 +178,8 @@ In the `Game` class, add the method shown below:
 ```csharp
 protected override void OnResize(SizeU size)
 {
-	Title = $"Window Size: W: {Width} H: {Height}";
-	base.OnResize(size);
+    Title = $"Window Size: W: {Width} H: {Height}";
+    base.OnResize(size);
 }
 ```
 

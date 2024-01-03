@@ -139,20 +139,20 @@ In the `Game` class, add the code below to set up the window and create a textur
 ```csharp
 public class Game : Window
 {
-	private readonly ITextureRenderer textureRenderer; // class field
+    private readonly ITextureRenderer textureRenderer; // class field
     private readonly IBatcher batcher;
 
-	public Game()
-	{
-		Title = "Atlas Textures";
-		Width = 530;
-		Height = 530;
+    public Game()
+    {
+        Title = "Atlas Textures";
+        Width = 530;
+        Height = 530;
 
-		var rendererFactory = new RendererFactory();
-		this.textureRenderer = rendererFactory.CreateTextureRenderer();
+        var rendererFactory = new RendererFactory();
+        this.textureRenderer = rendererFactory.CreateTextureRenderer();
 
         this.batcher = rendererFactory.CreateBatcher();
-	}
+    }
 }
 ```
 
@@ -164,8 +164,8 @@ public class Game : Window
 ```csharp
 public class Game: Window
 {
-	...
-	private AtlasSubTextureData[]? subTextureData;
+    ...
+    private AtlasSubTextureData[]? subTextureData;
 }
 ```
 
@@ -176,13 +176,13 @@ Next, let's create an `OnLoad()` method override and add code to the method to l
 ```csharp
 protected override void OnLoad()
 {
-	// Loads the atlas.png and atlas.json file
-	var atlasData = ContentLoader.LoadAtlas("atlas");
+    // Loads the atlas.png and atlas.json file
+    var atlasData = ContentLoader.LoadAtlas("atlas");
 
-	this.atlasTexture = atlasData.Texture;
-	this.subTextureData = atlasData.GetFrames("flame");
+    this.atlasTexture = atlasData.Texture;
+    this.subTextureData = atlasData.GetFrames("flame");
 
-	base.OnLoad();
+    base.OnLoad();
 }
 ```
 The `atlasData` variable will contain the loaded texture and the metadata for the texture.
@@ -215,22 +215,22 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 
 ```json
 {
-	"$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
-	"Bounds": "1, 846, 403, 948", // The x, y, width, and height of the sub-texture in the atlas
-	"FrameIndex": 8, // The frame number of an animation
-	"Name": "flame" // The name of the sub-texture
+    "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+    "Bounds": "1, 846, 403, 948", // The x, y, width, and height of the sub-texture in the atlas
+    "FrameIndex": 8, // The frame number of an animation
+    "Name": "flame" // The name of the sub-texture
 },
 {
-	"$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
-	"Bounds": "428, 850, 361, 948",
-	"FrameIndex": 9,
-	"Name": "flame"
+    "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+    "Bounds": "428, 850, 361, 948",
+    "FrameIndex": 9,
+    "Name": "flame"
 },
 {
-	"$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
-	"Bounds": "0, 76, 75, 75",
-	"FrameIndex": -1, // -1 means that this is not part of an animation
-	"Name": "ship"
+    "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+    "Bounds": "0, 76, 75, 75",
+    "FrameIndex": -1, // -1 means that this is not part of an animation
+    "Name": "ship"
 }
 ```
 </details>
@@ -249,11 +249,11 @@ Add the following fields to the `Game` class.
 ```csharp
 public class Game : Window
 {
-	...
-	private float elapsedMs; // The total milliseconds that have passed
-	private int currentFrame; // The current frame of the animation
-	private bool isFullSize; // Whether or not the flame has grown to full size
-	...
+    ...
+    private float elapsedMs; // The total milliseconds that have passed
+    private int currentFrame; // The current frame of the animation
+    private bool isFullSize; // Whether or not the flame has grown to full size
+    ...
 }
 ```
 
@@ -281,33 +281,33 @@ change the frame of the animation.
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
+    this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
 
-	// Move to the next frame every 124ms
-	if (this.elapsedMs >= 124)
-	{
-		// If the current frame is one of the frames after
-		// the flame has grown to full size.
-		if (this.currentFrame >= 8)
-		{
-			this.isFullSize = true;
-		}
+    // Move to the next frame every 124ms
+    if (this.elapsedMs >= 124)
+    {
+        // If the current frame is one of the frames after
+        // the flame has grown to full size.
+        if (this.currentFrame >= 8)
+        {
+            this.isFullSize = true;
+        }
 
-		// Get the starting frame index based on if the flame has
-		// grown to full size or not.
-		var startFrame = this.isFullSize ? 8 : 0;
+        // Get the starting frame index based on if the flame has
+        // grown to full size or not.
+        var startFrame = this.isFullSize ? 8 : 0;
 
-		// If the last frame has been reached, reset to the starting frame
-		this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
-			? startFrame
-			: this.currentFrame + 1;
+        // If the last frame has been reached, reset to the starting frame
+        this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
+            ? startFrame
+            : this.currentFrame + 1;
 
-		// Reset the elapsed time so we can wait for another
-		// 124ms before moving to the next frame
-		this.elapsedMs = 0;
-	}
+        // Reset the elapsed time so we can wait for another
+        // 124ms before moving to the next frame
+        this.elapsedMs = 0;
+    }
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -357,36 +357,36 @@ Now we can finally render the animation to the screen. Add the following code to
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
 {
-	// Start the batch
-	IBatcher.Begin();
+    // Start the batch
+    IBatcher.Begin();
 
-	var x = (int)(Width / 2); // Center of the window horizontally
-	var y = (int)(Height / 2); // Center of the window vertically
+    var x = (int)(Width / 2); // Center of the window horizontally
+    var y = (int)(Height / 2); // Center of the window vertically
 
-	// Get the bounds of the sub-texture in the entire atlas at the current frame
-	var subBounds = this.subTextureData[this.currentFrame].Bounds;
+    // Get the bounds of the sub-texture in the entire atlas at the current frame
+    var subBounds = this.subTextureData[this.currentFrame].Bounds;
 
-	// Create the rectangle of where the frame is located in the atlas
-	var srcRect = new Rectangle(subBounds.X, subBounds.Y, subBounds.Width, subBounds.Height);
+    // Create the rectangle of where the frame is located in the atlas
+    var srcRect = new Rectangle(subBounds.X, subBounds.Y, subBounds.Width, subBounds.Height);
 
-	// Create the rectangle of the entire atlas.
-	var destRect = new Rectangle(x, y, (int)this.atlasTexture.Width, (int)this.atlasTexture.Height);
+    // Create the rectangle of the entire atlas.
+    var destRect = new Rectangle(x, y, (int)this.atlasTexture.Width, (int)this.atlasTexture.Height);
 
-	// Render only the sub-texture in the atlas at the center of the window
-	this.textureRenderer.Render(
-		this.atlasTexture,
-		srcRect,
-		destRect,
-		0.25f, // Size of the sub-texture
-		0f, // Angle of rotation
-		Color.White, // Color to tint the sub-texture
-		RenderEffects.None,
-		1); // Render layer
+    // Render only the sub-texture in the atlas at the center of the window
+    this.textureRenderer.Render(
+        this.atlasTexture,
+        srcRect,
+        destRect,
+        0.25f, // Size of the sub-texture
+        0f, // Angle of rotation
+        Color.White, // Color to tint the sub-texture
+        RenderEffects.None,
+        1); // Render layer
 
-	// End the batch to render the entire batch
-	IBatcher.End();
+    // End the batch to render the entire batch
+    IBatcher.End();
 
-	base.OnDraw(frameTime);
+    base.OnDraw(frameTime);
 }
 ```
 
@@ -422,10 +422,10 @@ or non-horizontal orientation. The `horizontalLayout` field will be the layout s
 ```csharp
 public class Game: Window
 {
-	...
-	private readonly Random random = new (); // Chooses random numbers
+    ...
+    private readonly Random random = new (); // Chooses random numbers
     private RenderEffects horizontalLayout; // The horizontal orientation to render flame
-	...
+    ...
 }
 ```
 
@@ -440,19 +440,19 @@ This is synonymous with flipping a coin.
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-	this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
+    this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
 
-	// Move to the next frame every 124ms
-	if (this.elapsedMs >= 124)
-	{
-		...
-		// Randomly choose to have the flame flipped horizontally or not flipped at all
-		this.horizontalLayout = this.random.Next(0, 2) == 0
-			? RenderEffects.FlipHorizontally
-			: RenderEffects.None;
-	}
+    // Move to the next frame every 124ms
+    if (this.elapsedMs >= 124)
+    {
+        ...
+        // Randomly choose to have the flame flipped horizontally or not flipped at all
+        this.horizontalLayout = this.random.Next(0, 2) == 0
+            ? RenderEffects.FlipHorizontally
+            : RenderEffects.None;
+    }
 
-	base.OnUpdate(frameTime);
+    base.OnUpdate(frameTime);
 }
 ```
 

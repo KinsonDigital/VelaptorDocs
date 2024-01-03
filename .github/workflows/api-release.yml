@@ -76,7 +76,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Set Up Deno
+      - name: Set Up Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ vars.DENO_VERSION }}
@@ -98,41 +98,10 @@ jobs:
       - name: Build Solution
         run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/${{ vars.SAMPLES_SOLUTION_NAME }}.sln -c Debug;
 
-      - name: Upload CSharp Project Files
-        uses: actions/upload-artifact@v4
-        with:
-          name: csharp-proj-files
-          path: ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/**/*.csproj
-          if-no-files-found: warn
-
-
-  build_csharp_solution:
-    name: Build CSharp Solution
-    needs: validate_branch
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup dotnet SDK ${{ vars.NET_SDK_VERSION }}
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ vars.NET_SDK_VERSION }}
-
-      - name: Build Solution
-        run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/${{ vars.SAMPLES_SOLUTION_NAME }}.sln -c Debug;
-
-      - name: Download Updated CSharp Project Files
-        uses: actions/download-artifact@v4
-        with:
-          name: csharp-proj-files
-          path: ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}
-
 
   perform_api_release:
     name: Perform API Release
-    needs: [validate_branch, validate_api_version,
-      update_csharp_project_files, build_csharp_solution]
+    needs: [validate_branch, validate_api_version, update_csharp_project_files]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -169,6 +138,15 @@ jobs:
         with:
           version: ${{ vars.PNPM_VERSION }}
 
+      - name: Update CSharp Project Files
+        run: |
+          deno run `
+            --allow-read --allow-write --allow-sys --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
+            "${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}" `
+            "${{ inputs.api-version }}" `
+            "${{ secrets.CICD_TOKEN }}";
+  
       - name: Disable Next Version Feature
         run: |
           deno run --allow-read --allow-write --allow-sys `
@@ -180,7 +158,8 @@ jobs:
       - name: Remove Oldest API Version
         run: |
           deno run --allow-read --allow-write `
-            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
+            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts" `
+            "${{ github.workspace }}";
 
       - name: Generate API Docs (${{ inputs.api-version }})
         run: |
@@ -225,12 +204,6 @@ jobs:
           deno run --allow-read --allow-write --allow-env `
             "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
             "$outputFilePath";
-
-      - name: Download Updated CSharp Project Files
-        uses: actions/download-artifact@v4
-        with:
-          name: csharp-proj-files
-          path: ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}
 
       - name: Build Site
         run: pnpm build

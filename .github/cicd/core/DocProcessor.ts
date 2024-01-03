@@ -5,7 +5,7 @@ import { MarkdownService } from "./services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Utils } from "./Utils.ts";
 import { Yarn } from "./Yarn.ts";
-import chalk, { existsSync, walkSync } from "../deps.ts";
+import chalk, { copySync, existsSync, walkSync } from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -29,18 +29,18 @@ export class DocProcessor {
 
 	/**
 	 * Generates the API documentation from the given release tag.
-	 * @param apiDocDirPath The directory path to the API documentation output.
+	 * @param apiDocsDirPath The directory path to the API documentation output.
 	 * @param releaseTag The Velaptor release tag.
 	 */
-	public async generateFromTag(apiDocDirPath: string, releaseTag: string): Promise<void> {
-		if (Utils.isNothing(apiDocDirPath)) {
+	public async generateFromTag(apiDocsDirPath: string, releaseTag: string): Promise<void> {
+		if (Utils.isNothing(apiDocsDirPath)) {
 			console.log(chalk.red("The API doc dir path is required."));
-			Deno.exit();
+			Deno.exit(1);
 		}
 
 		if (Utils.isNothing(releaseTag)) {
 			console.log(chalk.red("The release tag is required."));
-			Deno.exit();
+			Deno.exit(1);
 		}
 
 		console.log(chalk.cyan(`Validating Release '${releaseTag}'. . .`));
@@ -48,12 +48,12 @@ export class DocProcessor {
 
 		if (!isValid) {
 			console.log(chalk.red(`The release '${releaseTag}' is not valid.`));
-			Deno.exit();
+			Deno.exit(1);
 		}
 
 		console.log(chalk.cyan(`Release '${releaseTag}' Valid.`));
 
-		await this.run(apiDocDirPath, releaseTag);
+		await this.run(apiDocsDirPath, releaseTag);
 	}
 
 	/**
@@ -64,12 +64,12 @@ export class DocProcessor {
 	public async generateFromBranch(apiDocDirPath: string, branchName: string): Promise<void> {
 		if (Utils.isNothing(apiDocDirPath)) {
 			console.log(chalk.red("The API doc dir path is required."));
-			Deno.exit();
+			Deno.exit(1);
 		}
 
 		if (Utils.isNothing(branchName)) {
 			console.log(chalk.red("The branch name is required."));
-			Deno.exit();
+			Deno.exit(1);
 		}
 
 		console.log(chalk.cyan(`Branch Name '${branchName}' Valid.`));
@@ -79,10 +79,10 @@ export class DocProcessor {
 
 	/**
 	 * Runs the documentation generation and post-processing process.
-	 * @param apiDocDirPath The directory path to the API documentation output.
+	 * @param apiDocsDirPath The directory path to the API documentation output.
 	 * @param tagOrBranch The Velaptor release tag or branch name.
 	 */
-	private async run(apiDocDirPath: string, tagOrBranch: string): Promise<void> {
+	private async run(apiDocsDirPath: string, tagOrBranch: string): Promise<void> {
 		const cwd = Deno.cwd();
 		// Remove the RepoSrc directory if it exists.
 		const repoSrcDirPath = `${Deno.cwd()}/RepoSrc`;
@@ -117,13 +117,10 @@ export class DocProcessor {
 				const velaptorFilePath = this.findFilePaths(repoSrcDirPath, ["RepoSrc/BuildOutput/Velaptor.dll"])
 					.filter((filePath) => filePath.endsWith("RepoSrc/BuildOutput/Velaptor.dll"))[0];
 
-				const docsApiDirPath = this.findDirPaths(cwd, ["docs/api"])
-					.filter((dirPath) => dirPath.endsWith("docs/api"))[0];
-
 				const defaultDocConfigFilePath = this.findFilePaths(cwd, ["default-doc-config.json"])
 					.filter((filePath) => filePath.endsWith("default-doc-config.json"))[0];
 
-				return this.defaultDocTool.generateDocumentation(docsApiDirPath, velaptorFilePath, defaultDocConfigFilePath);
+				return this.defaultDocTool.generateDocumentation(velaptorFilePath, apiDocsDirPath, defaultDocConfigFilePath);
 			},
 			"Documentation Generation Complete.",
 		);
@@ -131,7 +128,7 @@ export class DocProcessor {
 		// Perform post-processing on the documentation.
 		await this.runProcess(
 			"Performing Documentation Post-Processing. . .",
-			() => this.runPostProcessing(apiDocDirPath),
+			() => this.runPostProcessing(apiDocsDirPath),
 			"Documentation Post-Processing Complete.",
 		);
 	}
@@ -174,15 +171,19 @@ export class DocProcessor {
 
 	/**
 	 * Performs post-processing on the generated API documentation.
-	 * @param apiDocDirPath The directory path to the generated API documentation.
+	 * @param apiDocsDirPath The directory path to the generated API documentation.
 	 */
-	private runPostProcessing(apiDocDirPath: string): void {
+	private runPostProcessing(apiDocsDirPath: string): void {
 		const fileContentService: MarkdownFileContentService = new MarkdownFileContentService();
 		const markDownService: MarkdownService = new MarkdownService();
 
+		// Replace all '\' characters with '/' characters and remove all '/' characters from the end of the dir path
+		apiDocsDirPath = apiDocsDirPath.replace(/\\/, "/");
+		apiDocsDirPath = apiDocsDirPath.replace(/\/+$/, "");
+
 		try {
-			const oldNamespaceFilePath = `${apiDocDirPath}index.md`;
-			const newNamespaceFilePath = `${apiDocDirPath}Namespaces.md`;
+			const oldNamespaceFilePath = `${apiDocsDirPath}/index.md`;
+			const newNamespaceFilePath = `${apiDocsDirPath}/Namespaces.md`;
 
 			Deno.renameSync(oldNamespaceFilePath, newNamespaceFilePath);
 			console.log(`File renamed from '${oldNamespaceFilePath}' to '${newNamespaceFilePath}'.`);
@@ -200,7 +201,7 @@ export class DocProcessor {
 			namespaceFileContent = namespaceFileContent.replaceAll(") | |", ") |");
 			Deno.writeTextFileSync(newNamespaceFilePath, namespaceFileContent);
 
-			const filePathEntries = walkSync(apiDocDirPath, {
+			const filePathEntries = walkSync(apiDocsDirPath, {
 				includeDirs: false,
 				includeFiles: true,
 				exts: [".md"],

@@ -3,6 +3,7 @@
 	"deno.config": "../deno.json",
 	"cSpell.words": [
 		"cicd",
+		"defaultdocumentation",
 		"Kinson",
 		"Velaptor"
 	],

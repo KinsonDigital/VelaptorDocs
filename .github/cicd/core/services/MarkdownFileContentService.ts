@@ -3,7 +3,7 @@ import { HTMLService } from "./HTMLService.ts";
 import { MarkdownHeaderService } from "./MarkdownHeaderService.ts";
 import { MarkdownService } from "./MarkdownService.ts";
 import { Utils } from "../Utils.ts";
-import { extname } from "../../deps.ts";
+import { basename, extname } from "../../deps.ts";
 
 export class MarkdownFileContentService {
 	private readonly markDownService: MarkdownService;
@@ -24,6 +24,10 @@ export class MarkdownFileContentService {
 	}
 
 	public processMarkdownFile(filePath: string): void {
+		Utils.isNothing(filePath);
+
+		filePath = filePath.trim();
+
 		let fileContent: string = Deno.readTextFileSync(filePath);
 		fileContent = fileContent.replaceAll(this.htmlArrow, "→");
 
@@ -54,7 +58,12 @@ export class MarkdownFileContentService {
 		// Process all headers to change them to the appropriate size
 		fileContent = this.markdownHeaderService.processHeaders(fileContent);
 
-		const title: string = Utils.underscoresToAngles(extname(filePath));
+		// Extract the name of the file without its extension
+		const baseName = basename(filePath);
+		const extension = extname(filePath);
+		const fileNameWithoutExtension = baseName.slice(0, baseName.length - extension.length);
+
+		const title: string = Utils.underscoresToAngles(fileNameWithoutExtension);
 		const frontMatter: string = this.markDownService.createFrontMatter(title);
 
 		fileContent = `${frontMatter}${fileContent}`;

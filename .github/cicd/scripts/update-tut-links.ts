@@ -45,7 +45,8 @@ if (isInteractive) {
 
 newVersion = newVersion.startsWith("v") ? newVersion : `v${newVersion}`;
 
-const tutCompRegex = /<TutorialLink\s+projectName\s*=\s*\".+\"\s+version\s*=\s*\"v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\"\s*\/>/;
+const tutCompRegex =
+	/<TutorialLink\s+projectName\s*=\s*\".+\"\s+version\s*=\s*\"v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\"\s*\/>/;
 
 // Get all the mdx files
 const projFileEntries = walkSync(rootDirPath, {

@@ -27,7 +27,7 @@ jobs:
       with:
         node-version: ${{ vars.NODE_VERSION }}
 
-    - name: Setup Deno
+    - name: Setup Deno (${{ vars.DENO_VERSION }})
       uses: denoland/setup-deno@v1
       with:
         deno-version: ${{ vars.DENO_VERSION }}

@@ -123,7 +123,7 @@ jobs:
 
       - name: Upload Artifact
         if: ${{ inputs.dry-run == false }}
-        uses: actions/upload-pages-artifact@v3.0.0
+        uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
 

@@ -1,4 +1,4 @@
-﻿// <copyright file="Ship.cs" company="KinsonDigital">
+// <copyright file="Ship.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -92,7 +92,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
         var shipSize = new SizeF(this.texture.Width, this.texture.Height);
 
         // Send a signal of the ship data
-        this.shipSignal.Push(new ShipData { ShipPos = this.shipPos, ShipSize = shipSize }, SignalIds.ShipUpdate);
+        this.shipSignal.Push(SignalIds.ShipUpdate, new ShipData { ShipPos = this.shipPos, ShipSize = shipSize });
     }
 
     public void UnloadContent()
@@ -199,7 +199,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
         var shipSize = new SizeF(this.texture.Width, this.texture.Height);
 
         // Update the position of the ship to the weapon for bullet positioning
-        this.shipSignal.Push(new ShipData { ShipPos = this.shipPos, ShipSize = shipSize }, SignalIds.ShipUpdate);
+        this.shipSignal.Push(SignalIds.ShipUpdate, new ShipData { ShipPos = this.shipPos, ShipSize = shipSize });
     }
 
     /// <summary>

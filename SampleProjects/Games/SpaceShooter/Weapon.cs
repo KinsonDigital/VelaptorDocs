@@ -1,4 +1,4 @@
-﻿// <copyright file="Weapon.cs" company="KinsonDigital">
+// <copyright file="Weapon.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -180,7 +180,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         }
 
         // Send a notification to the UI that the weapon has been swapped
-        this.swapWeaponReactable.Push(TypeOfWeapon, SignalIds.SwapWeapon);
+        this.swapWeaponReactable.Push(SignalIds.SwapWeapon, TypeOfWeapon);
     }
 
     /// <summary>

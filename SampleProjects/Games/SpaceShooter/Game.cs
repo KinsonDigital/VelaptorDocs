@@ -47,7 +47,7 @@ public class Game : Window
         this.weaponSelectionUi.Position = new Vector2(Width - 300, 23);
 
         var worldBounds = new Rectangle(0, 0, (int)Width, (int)Height);
-        this.worldSignal.Push(new WorldData { WorldBounds = worldBounds }, SignalIds.WorldDataUpdate);
+        this.worldSignal.Push(SignalIds.WorldDataUpdate, new WorldData { WorldBounds = worldBounds });
 
         this.ship.LoadContent();
         this.weaponSelectionUi.LoadContent();

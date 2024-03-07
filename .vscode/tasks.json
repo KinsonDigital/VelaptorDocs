@@ -205,6 +205,7 @@
 				"--allow-read",
 				"--allow-run",
 				"--allow-sys",
+				"--allow-env",
 				"${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
 			]
 		},

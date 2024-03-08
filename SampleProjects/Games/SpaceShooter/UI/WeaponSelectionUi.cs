@@ -1,4 +1,4 @@
-// <copyright file="WeaponSelectionUI.cs" company="KinsonDigital">
+// <copyright file="WeaponSelectionUi.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -19,10 +19,10 @@ using Velaptor.Graphics.Renderers;
 /// <summary>
 /// Shows an indicator of the currently selected weapon.
 /// </summary>
-public sealed class WeaponSelectionUI : IContentLoadable
+public sealed class WeaponSelectionUi : IContentLoadable
 {
     private const int SelectionItemMargin = 5;
-    private const int SelectionUIMargin = 10;
+    private const int SelectionUiMargin = 10;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<ITexture> contentLoader;
     private ITexture selectionRect;
@@ -32,9 +32,13 @@ public sealed class WeaponSelectionUI : IContentLoadable
     private Vector2 greenPos;
     private Vector2 bluePos;
     private Rectangle worldBounds;
-    private uint weaponUiWidth;
 
-    public WeaponSelectionUI(
+    /// <summary>
+    /// Initializes a new instance of the <see cref="WeaponSelectionUi"/> class.
+    /// </summary>
+    /// <param name="worldSignal">Receives updates about the world.</param>
+    /// <param name="swapWeaponSignal">Sends a signal that a weapon has been swapped.</param>
+    public WeaponSelectionUi(
         IWorldSignal worldSignal,
         ISwapWeaponSignal swapWeaponSignal)
     {
@@ -53,30 +57,61 @@ public sealed class WeaponSelectionUI : IContentLoadable
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
     }
 
+    /// <summary>
+    /// Gets or sets the position of the weapon selection UI.
+    /// </summary>
     public Vector2 Position { get; set; }
 
+    /// <summary>
+    /// Gets the type of weapon.
+    /// </summary>
     public WeaponType TypeOfWeapon { get; private set; }
 
-    public bool IsLoaded { get; }
+    /// <summary>
+    /// Gets a value indicating whether or not the content is loaded.
+    /// </summary>
+    public bool IsLoaded { get; private set; }
 
+    /// <summary>
+    /// Loads the weapons selection UI content.
+    /// </summary>
     public void LoadContent()
     {
+        if (IsLoaded)
+        {
+            return;
+        }
+
         this.selectionRect = this.contentLoader.Load("weapon-selection");
         this.laser = this.contentLoader.Load("laser.png");
 
-        this.weaponUiWidth = (4 * this.selectionRect.Width) + (3 * SelectionItemMargin);
+        var weaponUiWidth = (4 * this.selectionRect.Width) + (3 * SelectionItemMargin);
         var selectionRectHalfHeight = this.selectionRect.Height / 2;
         Position = new Vector2(
-            this.worldBounds.Width - (this.weaponUiWidth + SelectionUIMargin),
-            selectionRectHalfHeight + SelectionUIMargin);
+            this.worldBounds.Width - (weaponUiWidth + SelectionUiMargin),
+            selectionRectHalfHeight + SelectionUiMargin);
+
+        IsLoaded = true;
     }
 
+    /// <summary>
+    /// Unloads the weapons selection UI content.
+    /// </summary>
     public void UnloadContent()
     {
+        if (!IsLoaded)
+        {
+            return;
+        }
+
         this.contentLoader.Unload(this.selectionRect);
         this.contentLoader.Unload(this.laser);
     }
 
+    /// <summary>
+    /// Updates the weapon selection UI.
+    /// </summary>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         // Calculate the position for all of the lasers
@@ -91,6 +126,12 @@ public sealed class WeaponSelectionUI : IContentLoadable
         this.bluePos = Position with { X = blueX };
     }
 
+    /// <summary>
+    /// Renders the weapon selection UI.
+    /// </summary>
+    /// <exception cref="InvalidEnumArgumentException">
+    ///     Trhown if the <see cref="TypeOfWeapon"/> has an invalid value.
+    /// </exception>
     public void Render()
     {
         // Render the white laser

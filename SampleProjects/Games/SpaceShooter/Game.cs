@@ -22,7 +22,7 @@ public class Game : Window
     private readonly IBatcher batcher;
     private readonly IWorldSignal worldSignal;
     private readonly Ship ship;
-    private readonly WeaponSelectionUI weaponSelectionUi;
+    private readonly WeaponSelectionUi weaponSelectionUi;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
@@ -36,11 +36,11 @@ public class Game : Window
         this.batcher = RendererFactory.CreateBatcher();
         this.ship = App.Factory.GetInstance<Ship>();
         this.worldSignal = App.Factory.GetInstance<IWorldSignal>();
-        this.weaponSelectionUi = App.Factory.GetInstance<WeaponSelectionUI>();
+        this.weaponSelectionUi = App.Factory.GetInstance<WeaponSelectionUi>();
     }
 
     /// <summary>
-    /// Loads game content.
+    /// Loads the game content.
     /// </summary>
     protected override void OnLoad()
     {
@@ -55,6 +55,9 @@ public class Game : Window
         base.OnLoad();
     }
 
+    /// <summary>
+    /// Unloads the game content.
+    /// </summary>
     protected override void OnUnload()
     {
         this.ship.UnloadContent();

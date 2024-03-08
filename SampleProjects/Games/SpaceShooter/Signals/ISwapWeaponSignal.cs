@@ -1,16 +1,15 @@
-﻿// <copyright file="IWorldSignal.cs" company="KinsonDigital">
+﻿// <copyright file="ISwapWeaponSignal.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
 namespace SpaceShooter.Signals;
 
 using Carbonate.OneWay;
-using Data;
 
 /// <summary>
-/// Represents a signal to send world related data.
+/// Represents a signal to swap a weapon.
 /// </summary>
-public interface IWorldSignal : IPushReactable<WorldData>
+public interface ISwapWeaponSignal : IPushReactable<WeaponType>
 {
     // Nothing required here
 }

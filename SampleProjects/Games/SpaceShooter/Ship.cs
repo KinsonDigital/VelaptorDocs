@@ -1,4 +1,4 @@
-// <copyright file="Ship.cs" company="KinsonDigital">
+﻿// <copyright file="Ship.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -50,6 +50,8 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// Initializes a new instance of the <see cref="Ship"/> class.
     /// </summary>
     /// <param name="worldSignal">Receives updates about the world.</param>
+    /// <param name="shipSignal">Receives notifications of the ship.</param>
+    /// <param name="weapon">The ships weapon system.</param>
     public Ship(
         IWorldSignal worldSignal,
         IShipSignal shipSignal,
@@ -74,8 +76,14 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
         this.shipPos = new Vector2(this.worldBounds.Width / 2f, this.worldBounds.Height - (this.worldBounds.Height / 4f));
     }
 
-    public bool IsLoaded { get; }
+    /// <summary>
+    /// Gets a value indicating whether or not the ship's content is loaded.
+    /// </summary>
+    public bool IsLoaded { get; private set; }
 
+    /// <summary>
+    /// Loads the ships content.
+    /// </summary>
     public void LoadContent()
     {
         if (IsLoaded)
@@ -93,8 +101,13 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
 
         // Send a signal of the ship data
         this.shipSignal.Push(SignalIds.ShipUpdate, new ShipData { ShipPos = this.shipPos, ShipSize = shipSize });
+
+        IsLoaded = true;
     }
 
+    /// <summary>
+    /// Unloads the ships content.
+    /// </summary>
     public void UnloadContent()
     {
         if (!IsLoaded)
@@ -109,7 +122,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// <summary>
     /// Updates the ship.
     /// </summary>
-    /// <param name="frameTime">The total amount of time for the current frame.</param>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         this.currentKeyState = this.keyboard.GetState();
@@ -143,6 +156,8 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// </summary>
     public void Render()
     {
+        ArgumentNullException.ThrowIfNull(this.texture);
+
         this.weapon.Render();
 
         // Render the ship image in the center of the window
@@ -152,9 +167,11 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// <summary>
     /// Moves the ship based on keyboard input.
     /// </summary>
-    /// <param name="frameTime">The total amount of time for the current frame.</param>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     private void MoveShip(FrameTime frameTime)
     {
+        ArgumentNullException.ThrowIfNull(this.texture);
+
         // Increase velocity in each direction of commanded
         this.velocity.X -= this.leftKeyDown ? VelocityX : 0;
         this.velocity.X += this.rightKeyDown ? VelocityX : 0;

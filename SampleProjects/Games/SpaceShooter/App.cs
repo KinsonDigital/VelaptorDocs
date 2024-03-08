@@ -1,4 +1,4 @@
-// <copyright file="IoC.cs" company="KinsonDigital">
+// <copyright file="App.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -8,11 +8,17 @@ using Signals;
 using SimpleInjector;
 using UI;
 
+/// <summary>
+/// The application.
+/// </summary>
 public static class App
 {
-    private static Container factory = new ();
+    private static readonly Container FactoryContainer = new ();
     private static bool isInitialized;
 
+    /// <summary>
+    /// Gets the factory container.
+    /// </summary>
     public static Container Factory
     {
         get
@@ -22,32 +28,36 @@ public static class App
                 SetupContainer();
             }
 
-            return factory;
+            return FactoryContainer;
         }
     }
 
-
+    /// <summary>
+    /// Sets up the IoC container.
+    /// </summary>
     private static void SetupContainer()
     {
         SetupSignaling();
-        SetupUI();
+        SetupUi();
 
-        factory.Register<Weapon>(Lifestyle.Singleton);
-        factory.Register<Ship>(Lifestyle.Singleton);
+        FactoryContainer.Register<Weapon>(Lifestyle.Singleton);
+        FactoryContainer.Register<Ship>(Lifestyle.Singleton);
 
         isInitialized = true;
-
     }
 
+    /// <summary>
+    /// Sets up dependency injection for signaling.
+    /// </summary>
     private static void SetupSignaling()
     {
-        factory.Register<IWorldSignal, WorldSignal>(Lifestyle.Singleton);
-        factory.Register<ISwapWeaponSignal, SwapWeaponSignal>(Lifestyle.Singleton);
-        factory.Register<IShipSignal, ShipSignal>(Lifestyle.Singleton);
+        FactoryContainer.Register<IWorldSignal, WorldSignal>(Lifestyle.Singleton);
+        FactoryContainer.Register<ISwapWeaponSignal, SwapWeaponSignal>(Lifestyle.Singleton);
+        FactoryContainer.Register<IShipSignal, ShipSignal>(Lifestyle.Singleton);
     }
 
-    private static void SetupUI()
-    {
-        factory.Register<WeaponSelectionUI>(Lifestyle.Singleton);
-    }
+    /// <summary>
+    /// Sets up dependency injection for UI.
+    /// </summary>
+    private static void SetupUi() => FactoryContainer.Register<WeaponSelectionUi>(Lifestyle.Singleton);
 }

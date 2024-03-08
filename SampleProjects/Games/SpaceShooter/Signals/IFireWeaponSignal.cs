@@ -6,6 +6,10 @@ namespace SpaceShooter.Signals;
 
 using Carbonate.NonDirectional;
 
+/// <summary>
+/// Represents a signal to send a fire weapon signal.
+/// </summary>
 public interface IFireWeaponSignal : IPushReactable
 {
+    // Nothing required here
 }

@@ -22,10 +22,9 @@ using Velaptor.Graphics.Renderers;
 /// </summary>
 public class Weapon : IUpdatable, IDrawable, IContentLoadable
 {
-    private readonly IPushReactable<WeaponType> swapWeaponReactable;
+    private readonly IPushReactable<WeaponType> swapWeaponSignal;
     private readonly ITextureRenderer renderer;
     private readonly ILoader<ITexture> textureLoader;
-    private readonly IDisposable unsubscriber;
     private readonly List<Bullet> bullets = new ();
     private readonly int[] weaponTypeValues;
     private ITexture? texture;
@@ -38,20 +37,20 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// Initializes a new instance of the <see cref="Weapon"/> class.
     /// </summary>
     /// <param name="shipSignal">Provides notifications of the ships position.</param>
-    /// <param name="swapWeaponReactable">Sends a signal that a weapon has been swapped.</param>
-    /// <param name="worldDataReactable">Receives updates about the world.</param>
+    /// <param name="swapWeaponSignal">Sends a signal that a weapon has been swapped.</param>
+    /// <param name="worldDataSignal">Receives updates about the world.</param>
     public Weapon(
         IShipSignal shipSignal,
-        ISwapWeaponSignal swapWeaponReactable,
-        IWorldSignal worldDataReactable)
+        ISwapWeaponSignal swapWeaponSignal,
+        IWorldSignal worldDataSignal)
     {
-        this.swapWeaponReactable = swapWeaponReactable;
+        this.swapWeaponSignal = swapWeaponSignal;
 
         var worldUpdateSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.WorldDataUpdate)
             .BuildOneWayReceive<WorldData>(worldData => this.worldBounds = worldData.WorldBounds);
 
-        worldDataReactable.Subscribe(worldUpdateSubscription);
+        worldDataSignal.Subscribe(worldUpdateSubscription);
 
         this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
 
@@ -70,10 +69,19 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         shipSignal.Subscribe(shipSignalSubscription);
     }
 
+    /// <summary>
+    /// Gets the type of weapon.
+    /// </summary>
     public WeaponType TypeOfWeapon { get; private set; } = WeaponType.Orange;
 
+    /// <summary>
+    /// Gets a value indicating whether or not the weapon is loaded.
+    /// </summary>
     public bool IsLoaded { get; private set; }
 
+    /// <summary>
+    /// Loads the weapons content.
+    /// </summary>
     public void LoadContent()
     {
         if (IsLoaded)
@@ -87,6 +95,9 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         IsLoaded = true;
     }
 
+    /// <summary>
+    /// Unloads the weapons content.
+    /// </summary>
     public void UnloadContent()
     {
         if (!IsLoaded)
@@ -100,7 +111,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// <summary>
     /// Updates the bullets of the weapon.
     /// </summary>
-    /// <param name="frameTime">The total amount of time for the current frame.</param>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         foreach (var bullet in this.bullets)
@@ -180,7 +191,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         }
 
         // Send a notification to the UI that the weapon has been swapped
-        this.swapWeaponReactable.Push(TypeOfWeapon, SignalIds.SwapWeapon);
+        this.swapWeaponSignal.Push(SignalIds.SwapWeapon, TypeOfWeapon);
     }
 
     /// <summary>
@@ -189,6 +200,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// <returns>The new bullet.</returns>
     private Bullet CreateBullet()
     {
+        ArgumentNullException.ThrowIfNull(this.texture);
+
         // Check the object pool to see if any bullets are available
         foreach (var bullet in this.bullets)
         {

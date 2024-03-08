@@ -1,4 +1,8 @@
-﻿namespace SpaceShooter;
+﻿// <copyright file="Bullet.cs" company="KinsonDigital">
+// Copyright (c) KinsonDigital. All rights reserved.
+// </copyright>
+
+namespace SpaceShooter;
 
 using System.Drawing;
 using System.Numerics;
@@ -35,14 +39,14 @@ public class Bullet
     public bool IsVisible { get; set; }
 
     /// <summary>
-    /// Gets or or sets the type of weapon that the bullet was fired from.
+    /// Gets or sets the type of weapon that the bullet was fired from.
     /// </summary>
     public WeaponType FiredFromWeapon { get; set; }
 
     /// <summary>
     /// Updates the bullet.
     /// </summary>
-    /// <param name="frameTime">The total amount of time for the current frame.</param>
+    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         // If the bullet is not visible, do not update it

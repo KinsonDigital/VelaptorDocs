@@ -44,6 +44,7 @@
 				"--allow-sys",
 				"--allow-net",
 				"--allow-run",
+				"--allow-env",
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
 				"${workspaceFolder}/docs/api",
 				"no-value",

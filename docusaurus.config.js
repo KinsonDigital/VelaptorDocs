@@ -46,7 +46,7 @@ const config = {
           // This will always be disabled during the build process before a release.
           // When disabled, the 'Next' version is enabled by default.
           // <flag id=next-version enabled=true>
-          includeCurrentVersion: false,
+          includeCurrentVersion: true,
           // </flag>
         },
 		

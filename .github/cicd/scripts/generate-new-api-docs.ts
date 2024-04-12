@@ -14,6 +14,8 @@ if (Deno.args.length < 3) {
 	Deno.exit(1);
 }
 
+type GenerateSrcType = "api version" | "branch";
+
 const generateOutputDirPath: string = Deno.args[0];
 let tagOrBranch = Deno.args[1].trim().toLowerCase();
 
@@ -31,17 +33,18 @@ console.log(`Generate Output Dir Path: ${generateOutputDirPath}`);
 */
 
 // Set to a default value of 'api version' for non-interactive mode
-let generateSrcType = "api version";
+let generateSrcType: GenerateSrcType = "api version";
+const branchType: GenerateSrcType = "branch";
+const apiVersionType: GenerateSrcType = "api version";
 
 if (isInteractive) {
 	// Ask for an API version or branch name
-	generateSrcType = await Select.prompt({
+	generateSrcType = <GenerateSrcType>(await Select.prompt({
 		message: "Enter the type of source you want to generate from.",
-		options: ["branch", "api version"],
-	});
+		options: [branchType, apiVersionType],
+	}));
 
 	const message = generateSrcType === "api version" ? "Enter the release version" : "Enter the branch name";
-
 	const minLength = generateSrcType === "api version" ? 5 : 0;
 
 	tagOrBranch = await Input.prompt({

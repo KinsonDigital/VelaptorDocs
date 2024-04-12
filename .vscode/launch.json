@@ -122,10 +122,11 @@
 				"--allow-sys",
 				"--allow-net",
 				"--allow-run",
+				"--allow-env",
             ],
 			"args": [
 				"${workspaceFolder}/docs/api",
-				"v1.0.0-preview.31",
+				"v1.0.0-preview.32",
 				"${env:CICD_TOKEN}",
 				"false" // Is Interactive
 			],

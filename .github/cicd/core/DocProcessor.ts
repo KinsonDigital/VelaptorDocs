@@ -107,7 +107,7 @@ export class DocProcessor {
 		await this.runProcess(
 			"Building Velaptor. . .",
 			() => this.buildVelaptor(),
-			"Building Complete.",
+			"Build Complete.",
 		);
 
 		// Generate the documentation.

@@ -126,7 +126,7 @@
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
 				"next-version",
-				"enable"
+				"disable"
 			]
 		},
 		{ // ENABLE NEXT VERSION
@@ -143,7 +143,7 @@
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
 				"next-version",
-				"disable"
+				"enable"
 			]
 		},
 		{ // CREATE DOCUSAURUS VERSION

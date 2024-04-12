@@ -89,7 +89,7 @@ jobs:
             "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `
-            "enable";
+            "disable";
 
       - name: Install Dependencies (pnpm)
         run: pnpm install;

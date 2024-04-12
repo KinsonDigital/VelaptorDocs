@@ -153,7 +153,7 @@ jobs:
             "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
             "next-version" `
-            "enable";
+            "disable";
 
       - name: Remove Oldest API Version
         run: |

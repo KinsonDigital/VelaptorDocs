@@ -24,6 +24,9 @@
       <None Update="Content\Audio\metroid-ice-beam.mp3">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="Content\Audio\brinstar-music.ogg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

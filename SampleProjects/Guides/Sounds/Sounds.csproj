@@ -12,19 +12,22 @@
     <ItemGroup>
       <None Remove="stylecop.json" />
       <AdditionalFiles Include="stylecop.json" />
-      <None Update="Content\Sounds\deep-consistency.ogg">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <None Update="Content\Audio\brinstar-music.mp3">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Content\Sounds\mario-jump.mp3">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <None Update="Content\Audio\deep-consistency.ogg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Content\Sounds\metroid-ice-beam.mp3">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <None Update="Content\Audio\mario-jump.mp3">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Audio\metroid-ice-beam.mp3">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="KinsonDigital.Velaptor" Version="1.0.0-preview.34" />
+        <PackageReference Include="KinsonDigital.Velaptor" Version="1.0.0-preview.35" />
         <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -6,29 +6,29 @@ import Audio from "@site/src/components/Audio";
 import TutorialLink from "@site/src/components/TutorialLink";
 import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
 
-# Sounds
+# Audio
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="Sounds" version="v1.0.0-preview.34"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="Audio" version="v1.0.0-preview.34"/> tutorial project to see the source code for a fully working example of this guide.
 :::
 
 Can you imagine playing Mario Brothers games without the **jump** sound effect? How about playing Metroid with no amazing music
-and no weapon sound effects?  Sounds are a great way to add some life to your game.  Whether it is background music or sound
+and no weapon sound effects?  Audio is a great way to add some life to your game.  Whether it is background music or sound
 effects, Velaptor has you covered.
 
-Check out some of these sounds!! They might bring back memories. 😉
+Check out some of this audio!! They might bring back memories. 😉
 <table>
   <tr style={{ border: 'none' }}>
     <td style={{ border: 'none' }}>
-		<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/mario-jump.mp3"
+		<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/mario-jump.mp3"
         soundName="Mario Jump"/>
 	</td>
     <td style={{ border: 'none' }}>
-        <Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/metroid-ice-beam.mp3"
+        <Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/metroid-ice-beam.mp3"
         soundName="Metroid Ice Beam"/>
 	</td>
     <td style={{ border: 'none' }}>
-		<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/brinstar-music.mp3"
+		<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/brinstar-music.mp3"
         soundName="Metroid Brinstar Music"/>
 	</td>
   </tr>
@@ -41,20 +41,20 @@ Create a basic Velaptor application.
 
 :::note Refer To Guide
 For more info, refer to the [Project Setup](./project-setup) guide.  
-You only need the `OnLoad()` and `OnUpdate()` methods.
+You only need the `OnLoad()`, `OnUnload()`, and `OnUpdate()` methods.
 :::
 
 ## <span class="color-step">Step 2: Create class fields</span>
 
-Create the required class fields that will be used to get the keyboard input, and hold the previous keyboard state for
-each loop iteration, load the sound content and hold the loaded sound.
+Create the required class fields that will be used to get the keyboard input, and hold the previous
+keyboard state for each loop iteration, load the music audio content.
 
 ```csharp
 public class Game : Window
 {
-    private ILoader<ISound> soundLoader;
+    private ILoader<IAudio> audioLoader;
     private IAppInput<KeyboardState> keyboard;
-    private ISound? music;
+    private IAudio? music;
     private KeyboardState prevKeyState;
     ...
 }
@@ -63,7 +63,7 @@ public class Game : Window
 ## <span class="color-step">Step 3: Setup window</span>
 
 Let's set up our window to not be so large, create an object to detect keyboard input, and create
-create the sound loader to load sound content.
+create the audio loader to load audio content.
 
 Create a `Game()` constructor and add the following code:
 
@@ -75,16 +75,16 @@ public Game()
     Height = 600;
 
     this.keyboard = HardwareFactory.GetKeyboard();
-    this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
+    this.audioLoader = ContentLoaderFactory.CreateAudioLoader();
 }
 ```
 
 
 ## <span class="color-step">Step 4: Load and unload the content</span>
 
-Now, let's proceed with loading the sound as audio content for playback. Before we delve into the code for loading the
-audio content, it's crucial to add the audio file to the project as content. This step ensures it can be loaded.
-Once that's finished, we can enhance the functionality by adding code into the `OnLoad()` method. This code will enable
+Now, let's proceed with loading the audio content for playback. Before we delve into the code for loading the
+audio content, it's crucial to add the audio file to the _**project**_ as content. This step ensures it can be loaded.
+Once that's finished, we can add code to the `OnLoad()` method. This code will enable
 us to load the audio content and create a keyboard input object. By utilizing the keyboard, we'll be able to easily
 control the audio playback.
 
@@ -94,11 +94,11 @@ Currently, the supported audio formats are _**.mp3**_ and _**.ogg**_.
 
 ### <span class="color-sub-step">Step 4.1: Get audio content</span>
 
-You can provide whatever audio file you want, but if you don't have one, you can download the original tutorial project
-sound <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/deep-consistency.ogg" linkName="here"/>.
-
-Play it to see if you like it.  😀
-<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Sounds/Content/Sounds/deep-consistency.ogg" />
+You can provide whatever audio file you want, but if you don't have one, you can download one of these from the audio guide project.
+1. <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/brinstar-music.ogg" linkName="Download Metroid Brinstar"/>.
+    <Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/brinstar-music.ogg" />
+2. <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/deep-consistency.ogg" linkName="Download Deep Consistency"/>.
+    <Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/main/SampleProjects/Guides/Audio/Content/Audio/deep-consistency.ogg" />
 
 ### <span class="color-sub-step">Step 4.2: Setup file as content</span>
 
@@ -112,21 +112,36 @@ For more info, refer to the [Adding Content](./adding-content) guide.
 ### <span class="color-sub-step">Step 4.3: Load the content</span>
 
 Now that we have the audio file added to the project, we can write some code to load the audio content.
-Add the following code to the `OnLoad()` method to load the sound.
+Add the following code to the `OnLoad()` method to load the sound.  All that is required is the name of the
+audio content and the type of audio buffer to use.
+
 
 ```csharp
 protected override void OnLoad()
 {
-    this.music = this.soundLoader.Load("deep-consistency");
+    this.music = this.audioLoader.Load("brinstar-music", AudioBuffer.Stream);
 
     base.OnLoad();
 }
 ```
 
 :::tip Content name
-Remember, the name of the audio file _**without its extension**_ will be the name of the content. 
-Example: 'deep-consistency.ogg' will become 'deep-consistency'.
+Remember, the name of the audio file _**without its extension**_ will be the name of the content.  
+**Example:** 'brinstar-music.ogg' will become 'brinstar-music'.
 :::
+
+What is an audio buffer?  An audio buffer is just a container that holds the audio data.  When you hear
+"audio buffer", think of "audio data".  There are two types of audio buffers, each with its use cases.
+
+The two types of audio buffers are:
+1. `AudioBuffer.Full` - This buffer type means that _**ALL**_ of the audio data will be loaded into memory.
+2. `AudioBuffer.Stream` - This buffer type means that _**ONLY**_ a small portion of the audio data will be loaded into memory at a time.
+
+Using `AudioBuffer.Full` is better for short audio clips such as sound effects, while `AudioBuffer.Stream` is better for longer audio clips such as music.
+You can use either buffer type you want for short and large audio content, but the buffer type you choose will affect your game's memory usage and performance.
+
+If you want to save memory, use `AudioBuffer.Stream`.  This will directly affect the performance of loading content.  If you want better performance when it comes
+to quick response time when changing audio playback such as pausing, playing, rewinding, and fast forwarding, use `AudioBuffer.Full`.
 
 ### <span class="color-sub-step">Step 4.4: Unload the content</span>
 
@@ -150,7 +165,7 @@ public class Game : Window
 ```csharp
 protected override void OnUnload()
 {
-    this.soundLoader.Unload(this.music);
+    this.audioLoader.Unload(this.music);
     base.OnUnload();
 }
 ```
@@ -162,9 +177,9 @@ if it's playing or paused, and some basic instructions for the user on how to co
 to be using the keyboard to control the sound, it makes sense to tell the user which keyboard keys are used to stop, play, and
 perform other sound-related operations.
 
-:::info Note Title
+:::info Note
 In the spirit of keeping things simple, we'll display the information in the title bar of the window.
-You could absolutely display the information in the window itself by rendering text.
+You could display the information in the window itself by rendering text.
 :::
 
 ### <span class="color-sub-step">Step 5.1: Displaying audo state</span>
@@ -177,20 +192,20 @@ private void UpdateTitle()
 {
     string state;
 
-    if (this.music.State == SoundState.Stopped)
+    if (this.music.IsStopped)
     {
         state = "Stopped";
     }
     else
     {
-        state = this.music.State == SoundState.Playing ? "Playing" : "Paused";
+        state = this.music.IsPlaying ? "Playing" : "Paused";
     }
 }
 ```
 
 ### <span class="color-sub-step">Step 5.2: Display time and instructions</span>
 
-Now, add the code below the code you added previously added.  This code will get the minutes and seconds of the audio
+Now, add the code below the code you previously added.  This code will get the minutes and seconds of the audio
 playback in the correct 2-digit format as well as the instructions for the user on how to play, pause, fast forward,
 and rewind the audio.
 
@@ -198,8 +213,8 @@ and rewind the audio.
 private void UpdateTitle()
 {
     ...
-    var minutes = (int)this.music.Position.Minutes;
-    var seconds = (int)this.music.Position.Seconds;
+    var minutes = this.music.Position.Minutes;
+    var seconds = this.music.Position.Seconds;
 
     var minStr = minutes <= 9 ? $"0{minutes}" : minutes.ToString();
     var secStr = seconds <= 9 ? $"0{seconds}" : seconds.ToString();
@@ -254,7 +269,7 @@ bool IsPressed(KeyCode key)
 
 ### <span class="color-sub-step">Step 6.2: Audio control with keyboard</span>
 
-This tutorial would be pretty useless if we didn't provide control over the audio for demo and learning purposes, right?😉
+This tutorial would be pretty useless if we didn't provide control over the audio for demo and learning purposes, right?😉  
 You can make that happen by adding the following code after the local function in the `OnUpdate()` method.
 
 ```csharp
@@ -263,7 +278,7 @@ protected override void OnUpdate(FrameTime frameTime)
     ...
     if (IsPressed(KeyCode.Space))
     {
-        if (this.music.State is SoundState.Paused or SoundState.Stopped)
+        if (this.music.IsPaused or this.music.IsStopped)
         {
             this.music.Play();
         }
@@ -274,7 +289,7 @@ protected override void OnUpdate(FrameTime frameTime)
     }
     else if (IsPressed(KeyCode.Escape))
     {
-        this.music.Reset();
+        this.music.Stop();
     }
     else if (IsPressed(KeyCode.Left))
     {
@@ -291,7 +306,9 @@ protected override void OnUpdate(FrameTime frameTime)
 
 Now, to finish things up, we can finalize our code by implementing keyboard state tracking for the previous frame, alongside
 updating the window title. The significance of the previous keyboard state is important. Without it, we cannot accurately
-determine if a key has been pressed. To accomplish this, we must diligently maintain a record of the keyboard's state in
+determine if a key has been pressed.
+
+To accomplish this, we must diligently maintain a record of the keyboard's state in
 the previous frame and subsequently compare it with the current state. This approach enables us to discern whether a key
 has moved from a pressed (down) position to a released (up) position. 
 

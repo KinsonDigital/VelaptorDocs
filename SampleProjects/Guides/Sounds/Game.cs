@@ -4,23 +4,21 @@
 
 namespace Sounds;
 
-using CASL;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Input;
 using Velaptor.UI;
-using ISound = Velaptor.Content.ISound;
 
 /// <summary>
 /// The main game class.
 /// </summary>
 public class Game : Window
 {
-    private readonly ILoader<ISound> soundLoader;
+    private readonly ILoader<IAudio> audioLoader;
     private readonly IAppInput<KeyboardState> keyboard;
-    private ISound? music;
+    private IAudio? music;
     private KeyboardState prevKeyState;
 
     /// <summary>
@@ -33,7 +31,7 @@ public class Game : Window
         Height = 600;
 
         this.keyboard = HardwareFactory.GetKeyboard();
-        this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
+        this.audioLoader = ContentLoaderFactory.CreateAudioLoader();
     }
 
     /// <summary>
@@ -41,7 +39,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.music = this.soundLoader.Load("deep-consistency");
+        this.music = this.audioLoader.Load("deep-consistency", AudioBuffer.Full);
 
         base.OnLoad();
     }
@@ -51,7 +49,7 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.soundLoader.Unload(this.music);
+        this.audioLoader.Unload(this.music);
         base.OnUnload();
     }
 
@@ -71,7 +69,7 @@ public class Game : Window
 
         if (IsPressed(KeyCode.Space))
         {
-            if (this.music.State is SoundState.Paused or SoundState.Stopped)
+            if (this.music.IsPaused || this.music.IsStopped)
             {
                 this.music.Play();
             }
@@ -82,7 +80,7 @@ public class Game : Window
         }
         else if (IsPressed(KeyCode.Escape))
         {
-            this.music.Reset();
+            this.music.Stop();
         }
         else if (IsPressed(KeyCode.Left))
         {
@@ -107,17 +105,17 @@ public class Game : Window
     {
         string state;
 
-        if (this.music.State == SoundState.Stopped)
+        if (this.music.IsStopped)
         {
             state = "Stopped";
         }
         else
         {
-            state = this.music.State == SoundState.Playing ? "Playing" : "Paused";
+            state = this.music.IsPlaying ? "Playing" : "Paused";
         }
 
-        var minutes = (int)this.music.Position.Minutes;
-        var seconds = (int)this.music.Position.Seconds;
+        var minutes = this.music.Position.Minutes;
+        var seconds = this.music.Position.Seconds;
 
         var minStr = minutes <= 9 ? $"0{minutes}" : minutes.ToString();
         var secStr = seconds <= 9 ? $"0{seconds}" : seconds.ToString();

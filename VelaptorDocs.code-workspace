@@ -17,6 +17,7 @@
         "testing.followRunningTest": true,
         "testing.gutterEnabled": false,
         "testing.openTesting": "neverOpen",
-        "typescript.referencesCodeLens.enabled": true,
+		"typescript.referencesCodeLens.enabled": true,
+		"powershell.cwd": "VelaptorDocs",
 	}
 }

@@ -2,7 +2,7 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-namespace Sounds;
+namespace Audio;
 
 using Velaptor;
 using Velaptor.Content;
@@ -26,8 +26,8 @@ public class Game : Window
     /// </summary>
     public Game()
     {
-        Title = "Sounds";
-        Width = 900;
+        Title = "Audio";
+        Width = 1210;
         Height = 600;
 
         this.keyboard = HardwareFactory.GetKeyboard();
@@ -90,6 +90,14 @@ public class Game : Window
         {
             this.music.FastForward(5);
         }
+        else if (IsPressed(KeyCode.Up))
+        {
+            this.music.Volume += 10;
+        }
+        else if (IsPressed(KeyCode.Down))
+        {
+            this.music.Volume -= 10;
+        }
 
         this.prevKeyState = currKeyState;
 
@@ -109,9 +117,13 @@ public class Game : Window
         {
             state = "Stopped";
         }
-        else
+        else if (this.music.IsPlaying)
         {
-            state = this.music.IsPlaying ? "Playing" : "Paused";
+            state = "Playing";
+        }
+        else if (this.music.IsPaused)
+        {
+            state = "Paused";
         }
 
         var minutes = this.music.Position.Minutes;
@@ -121,8 +133,9 @@ public class Game : Window
         var secStr = seconds <= 9 ? $"0{seconds}" : seconds.ToString();
 
         var playTime = $"{minStr}:{secStr}";
-        const string instructions = "Instructions: Space(play/pause) Esc(restart) Left(-5s) - Right(+5s)";
+        var volume = $"Volume: {this.music.Volume}";
+        const string instructions = "Instructions: Space(play/pause) Esc(restart) Left(-5s) - Right(+5s) - Up(+vol) - Down(-vol)";
 
-        Title = $"{state} - {playTime} | {instructions}";
+        Title = $"{state} - {playTime} - {volume} | {instructions}";
     }
 }

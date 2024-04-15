@@ -2,5 +2,5 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-var game = new Sounds.Game();
+var game = new Audio.Game();
 game.Show();

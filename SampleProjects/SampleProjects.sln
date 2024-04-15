@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderingTextures", "Guides
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotatingTextures", "Guides\RotatingTextures\RotatingTextures.csproj", "{5F76FCC2-5258-426A-A1D8-5346FA0B3EFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sounds", "Guides\Sounds\Sounds.csproj", "{A184D6C5-29CF-47A8-93DC-45161DB14100}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio", "Guides\Audio\Audio.csproj", "{A184D6C5-29CF-47A8-93DC-45161DB14100}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Guides", "Guides", "{02B09EF2-D131-4628-BAD5-602A3BD9188E}"
 EndProject

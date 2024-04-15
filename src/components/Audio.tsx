@@ -20,7 +20,7 @@ interface AudioProps {
  * @param params The component properties.
  * @returns The component.
  */
-const Audio: React.FC<AudioProps> = ({url, name}: AudioProps) => {
+const Audio: React.FC<AudioProps> = ({ url, name }: AudioProps) => {
 	const invalidUrl = url === undefined || url === null || url === '';
 
 	if (invalidUrl) {
@@ -32,7 +32,7 @@ const Audio: React.FC<AudioProps> = ({url, name}: AudioProps) => {
 			<div style={{ marginBottom: -13, display: 'flex', justifyContent: 'center' }}>
 				<h3>{name}</h3>
 			</div>
-			<audio style={{ width: '280px' }} id="audioPlayer" controls title={url} src={url}></audio>
+			<audio style={{ width: '270px' }} id="audioPlayer" controls title={url} src={url}></audio>
 		</div>
 	);
 }

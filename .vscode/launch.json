@@ -128,8 +128,11 @@
 				"${workspaceFolder}/docs/api",
 				"v1.0.0-preview.32",
 				"${env:CICD_TOKEN}",
-				"false" // Is Interactive
+				"true" // Is Interactive
 			],
+			"env": {
+				"CICD_TOKEN": "${env:CICD_TOKEN}"
+			},
 			"console": "integratedTerminal",
             "attachSimplePort": 9229
         },

@@ -30,6 +30,20 @@ public static Velaptor.Content.IContentPathResolver CreateAtlasPathResolver();
 [IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor.Content.IContentPathResolver')  
 The resolver to texture content.
 
+<a name='Velaptor.Factories.PathResolverFactory.CreateAudioPathResolver()'></a>
+
+### CreateAudioPathResolver() 
+
+Creates a path resolver that resolves paths to audio content.
+
+```csharp
+public static Velaptor.Content.IContentPathResolver CreateAudioPathResolver();
+```
+
+#### Returns
+[IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor.Content.IContentPathResolver')  
+The resolver to audio content.
+
 <a name='Velaptor.Factories.PathResolverFactory.CreateContentFontPathResolver()'></a>
 
 ### CreateContentFontPathResolver() 
@@ -57,20 +71,6 @@ public static Velaptor.Content.IContentPathResolver CreateFontPathResolver();
 #### Returns
 [IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor.Content.IContentPathResolver')  
 The resolver to atlas content.
-
-<a name='Velaptor.Factories.PathResolverFactory.CreateSoundPathResolver()'></a>
-
-### CreateSoundPathResolver() 
-
-Creates a path resolver that resolves paths to sound content.
-
-```csharp
-public static Velaptor.Content.IContentPathResolver CreateSoundPathResolver();
-```
-
-#### Returns
-[IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor.Content.IContentPathResolver')  
-The resolver to sound content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateSystemFontPathResolver()'></a>
 

@@ -159,7 +159,7 @@ render it to the bottom as the [GradientStop](Velaptor.Graphics.CircleShape.md#V
 
 ### IsSolid 
 
-Gets or sets a value indicating whether or not the circle is solid.
+Gets or sets a value indicating whether the circle is solid.
 
 ```csharp
 public bool IsSolid { get; set; }
@@ -265,7 +265,7 @@ public void Empty();
 
 ### IsEmpty() 
 
-Returns a value indicating whether or not the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor.Graphics.RectShape') struct is empty.
+Returns a value indicating whether the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor.Graphics.RectShape') struct is empty.
 
 ```csharp
 public bool IsEmpty();

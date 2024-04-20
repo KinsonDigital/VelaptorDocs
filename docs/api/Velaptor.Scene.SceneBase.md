@@ -102,6 +102,8 @@ Implements [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSiz
 
 ### Dispose() 
 
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+
 ```csharp
 public void Dispose();
 ```

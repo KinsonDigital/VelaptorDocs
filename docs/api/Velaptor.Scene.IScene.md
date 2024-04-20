@@ -39,7 +39,7 @@ System.Guid Id { get; }
 
 ### IsLoaded 
 
-Gets a value indicating whether or not the scene has been loaded.
+Gets a value indicating whether the scene has been loaded.
 
 ```csharp
 bool IsLoaded { get; }

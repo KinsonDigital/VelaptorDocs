@@ -7,7 +7,7 @@ title: Velaptor.Graphics.CornerRadius
 
 #### CornerRadius Struct
 
-Holds all of the radius values for each corner of a rectangle.
+Holds all the radius values for each corner of a rectangle.
 
 ```csharp
 public readonly struct CornerRadius :

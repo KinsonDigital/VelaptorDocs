@@ -24,7 +24,7 @@ Implements [IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont
 
 ### Atlas 
 
-Gets the font atlas texture that contains all of the bitmap data for all available glyphs for the font.
+Gets the font atlas texture that contains all the bitmap data for all available glyphs for the font.
 
 ```csharp
 public Velaptor.Content.ITexture Atlas { get; set; }
@@ -54,7 +54,7 @@ Implements [AvailableStylesForFamily](Velaptor.Content.Fonts.IFont.md#Velaptor.C
 
 ### CacheEnabled 
 
-Gets or sets a value indicating whether or not to cache the measurements of the text.
+Gets or sets a value indicating whether to cache the measurements of the text.
 
 ```csharp
 public bool CacheEnabled { get; set; }
@@ -99,7 +99,7 @@ Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Fil
 
 ### HasKerning 
 
-Gets a value indicating whether or not the font has kerning for text rendering layout.
+Gets a value indicating whether the font has kerning for text rendering layout.
 
 ```csharp
 public bool HasKerning { get; }
@@ -114,7 +114,7 @@ Implements [HasKerning](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.I
 
 ### IsDefaultFont 
 
-Gets a value indicating whether or not the font is a default font.
+Gets a value indicating whether the font is a default font.
 
 ```csharp
 public bool IsDefaultFont { get; }
@@ -159,7 +159,7 @@ Implements [MaxCacheSize](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts
 
 ### Metrics 
 
-Gets the list of metrics for all of the glyphs supported by the font.
+Gets the list of metrics for all the glyphs supported by the font.
 
 ```csharp
 public System.Collections.Generic.IReadOnlyCollection<Velaptor.Graphics.GlyphMetrics> Metrics { get; }
@@ -352,7 +352,7 @@ The width and height of the text in pixels.
 
 ### ToGlyphMetrics(string) 
 
-Returns all of the glyph metrics for the given text.
+Returns all the glyph metrics for the given text.
 
 ```csharp
 public Velaptor.Graphics.GlyphMetrics[] ToGlyphMetrics(string text);

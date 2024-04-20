@@ -32,7 +32,7 @@ public KeyboardState();
 
 ### AnyAltKeysDown() 
 
-Returns a value indicating whether or not any of the alt keys are in the down position.
+Returns a value indicating whether any of the alt keys are in the down position.
 
 ```csharp
 public bool AnyAltKeysDown();
@@ -46,7 +46,7 @@ public bool AnyAltKeysDown();
 
 ### AnyCtrlKeysDown() 
 
-Returns a value indicating whether or not any of the control keys are in the down position.
+Returns a value indicating whether any of the control keys are in the down position.
 
 ```csharp
 public bool AnyCtrlKeysDown();
@@ -60,7 +60,7 @@ public bool AnyCtrlKeysDown();
 
 ### AnyNumpadNumberKeysDown() 
 
-Returns a value indicating whether or not any of the numpad number keys  
+Returns a value indicating whether any of the numpad number keys  
 are in the down position.
 
 ```csharp
@@ -75,7 +75,7 @@ public bool AnyNumpadNumberKeysDown();
 
 ### AnyShiftKeysDown() 
 
-Returns a value indicating whether or not any of the shift keys are in the down position.
+Returns a value indicating whether any of the shift keys are in the down position.
 
 ```csharp
 public bool AnyShiftKeysDown();
@@ -89,7 +89,7 @@ public bool AnyShiftKeysDown();
 
 ### AnyStandardNumberKeysDown() 
 
-Returns a value indicating whether or not any of the standard number keys,  
+Returns a value indicating whether any of the standard number keys,  
 above the letter keys, are in the down position.
 
 ```csharp
@@ -104,7 +104,7 @@ public bool AnyStandardNumberKeysDown();
 
 ### GetDownKeys() 
 
-Returns all of the keys that are in the down position.
+Returns all the keys that are in the down position.
 
 ```csharp
 public System.Span<Velaptor.Input.KeyCode> GetDownKeys();
@@ -118,7 +118,7 @@ A list of the keys that are currently in the down position.
 
 ### IsKeyDown(KeyCode) 
 
-Returns a value indicating whether or not the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
+Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
 
 ```csharp
 public bool IsKeyDown(Velaptor.Input.KeyCode key);
@@ -139,7 +139,7 @@ The key to check.
 
 ### IsKeyUp(KeyCode) 
 
-Returns a value indicating whether or not the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
+Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
 
 ```csharp
 public bool IsKeyUp(Velaptor.Input.KeyCode key);
@@ -160,7 +160,7 @@ The key to check.
 
 ### IsLeftAltKeyDown() 
 
-Gets a value indicating whether or not the left alt key is in the down position.
+Gets a value indicating whether the left alt key is in the down position.
 
 ```csharp
 public bool IsLeftAltKeyDown();
@@ -174,7 +174,7 @@ public bool IsLeftAltKeyDown();
 
 ### IsLeftCtrlKeyDown() 
 
-Gets a value indicating whether or not the left control key is in the down position.
+Gets a value indicating whether the left control key is in the down position.
 
 ```csharp
 public bool IsLeftCtrlKeyDown();
@@ -188,7 +188,7 @@ public bool IsLeftCtrlKeyDown();
 
 ### IsLeftShiftKeyDown() 
 
-Gets a value indicating whether or not the left shift key is in the down position.
+Gets a value indicating whether the left shift key is in the down position.
 
 ```csharp
 public bool IsLeftShiftKeyDown();
@@ -202,7 +202,7 @@ public bool IsLeftShiftKeyDown();
 
 ### IsRightAltKeyDown() 
 
-Gets a value indicating whether or not the right alt key is in the down position.
+Gets a value indicating whether the right alt key is in the down position.
 
 ```csharp
 public bool IsRightAltKeyDown();
@@ -216,7 +216,7 @@ public bool IsRightAltKeyDown();
 
 ### IsRightCtrlKeyDown() 
 
-Gets a value indicating whether or not the right control key is in the down position.
+Gets a value indicating whether the right control key is in the down position.
 
 ```csharp
 public bool IsRightCtrlKeyDown();
@@ -230,7 +230,7 @@ public bool IsRightCtrlKeyDown();
 
 ### IsRightShiftKeyDown() 
 
-Gets a value indicating whether or not the right shift key is in the down position.
+Gets a value indicating whether the right shift key is in the down position.
 
 ```csharp
 public bool IsRightShiftKeyDown();

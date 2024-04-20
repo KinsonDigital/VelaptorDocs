@@ -113,7 +113,7 @@ If the display was set to a scale of 150%, this value of 1.5 should be used.
 
 ### IsMain 
 
-Gets a value indicating whether or not the display is the primary display in the system.
+Gets a value indicating whether the display is the primary display in the system.
 
 ```csharp
 public bool IsMain { get; set; }

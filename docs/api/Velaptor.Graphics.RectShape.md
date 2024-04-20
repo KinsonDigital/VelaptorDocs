@@ -201,7 +201,7 @@ The height is restricted to a minimum value of one.
 
 ### IsSolid 
 
-Gets or sets a value indicating whether or not the rectangle is solid.
+Gets or sets a value indicating whether the rectangle is solid.
 
 ```csharp
 public bool IsSolid { get; set; }
@@ -295,7 +295,7 @@ The width is restricted to a minimum value of one.
 
 ### Contains(Vector2) 
 
-Returns a value indicating whether or not the given [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2') is contained within the rectangle shape.
+Returns a value indicating whether the given [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2') is contained within the rectangle shape.
 
 ```csharp
 public bool Contains(System.Numerics.Vector2 vector);
@@ -329,7 +329,7 @@ public void Empty();
 
 ### IsEmpty() 
 
-Returns a value indicating whether or not the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor.Graphics.RectShape') struct is empty.
+Returns a value indicating whether the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor.Graphics.RectShape') struct is empty.
 
 ```csharp
 public bool IsEmpty();

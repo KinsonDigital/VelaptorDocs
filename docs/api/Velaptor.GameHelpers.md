@@ -256,7 +256,7 @@ The [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Dr
 
 ### DoesNotContain(this string, char) 
 
-Returns a value indicating whether or not a specified character occurs within this string.
+Returns a value indicating whether a specified character occurs within this string.
 
 ```csharp
 public static bool DoesNotContain(this string stringToSearchIn, char value);
@@ -283,7 +283,7 @@ The character to seek.
 
 ### DoesNotContain(this string, string) 
 
-Returns a value indicating whether or not a specified substring occurs within this string.
+Returns a value indicating whether a specified substring occurs within this string.
 
 ```csharp
 public static bool DoesNotContain(this string stringToSearchIn, string value);
@@ -310,7 +310,7 @@ The string to seek.
 
 ### DoesNotOnlyContainsLetters(this string) 
 
-Returns a value indicating whether or not this string does not only contain letters.
+Returns a value indicating whether this string does not only contain letters.
 
 ```csharp
 public static bool DoesNotOnlyContainsLetters(this string value);
@@ -448,7 +448,7 @@ The [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Dr
 
 ### IsLetter(this char) 
 
-Returns a value indicating whether or not the character is a letter.
+Returns a value indicating whether the character is a letter.
 
 ```csharp
 public static bool IsLetter(this char character);
@@ -469,7 +469,7 @@ True if the character is an upper or lower case letter.
 
 ### IsNotLetter(this char) 
 
-Returns a value indicating whether or not the character is not a letter.
+Returns a value indicating whether the character is not a letter.
 
 ```csharp
 public static bool IsNotLetter(this char character);
@@ -678,7 +678,7 @@ A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.m
 
 ### OnlyContainsLetters(this string) 
 
-Returns a value indicating whether or not this string only contains letters.
+Returns a value indicating whether this string only contains letters.
 
 ```csharp
 public static bool OnlyContainsLetters(this string value);

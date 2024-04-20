@@ -67,51 +67,6 @@
 				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
 			]
 		},
-		{ // DISABLE TESTING ENVIRONMENT
-			"label": "Disable Testing Environment",
-			"detail": "Disables the testing environment for the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-				"disable"
-			]
-		},
-		{ // ENABLE TESTING ENVIRONMENT
-			"label": "Enable Testing Environment",
-			"detail": "Enables the testing environment for the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-				"enable"
-			]
-		},
-		{ // TOGGLE TESTING ENVIRONMENT
-			"label": "Toggle Testing Environment",
-			"detail": "Toggles the testing environment for the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-				"toggle"
-			]
-		},
 		{ // DISABLE NEXT VERSION
 			"label": "Disable Next Version",
 			"detail": "Disables the next version feature of docusaurus.",

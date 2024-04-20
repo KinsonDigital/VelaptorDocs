@@ -1,6 +1,6 @@
 import { existsSync, Select, walkSync } from "../deps.ts";
 import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
-import chalk from "../deps.ts";
+import { crayon } from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
 
 /**
@@ -37,15 +37,15 @@ const apiDocVersions = [...dirEntries].filter((entry) => {
 
 //"This will delete the API docs for the chosen version locally."
 const chosenVersion: string = await Select.prompt({
-	message: chalk.yellow("Choose a version to delete:"),
+	message: crayon.yellow("Choose a version to delete:"),
 	options: apiDocVersions,
 	hint: "Use arrow keys to navigate, and enter to select.",
 	info: true,
 });
 
-console.log(chalk.cyan(`Deleting '${chosenVersion}' API docs. . .`));
+console.log(crayon.cyan(`Deleting '${chosenVersion}' API docs. . .`));
 
 const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionService(baseDirPath);
 delAPIVersionService.deleteDocs(chosenVersion);
 
-console.log(chalk.cyan(`API docs for version '${chosenVersion}' fully removed.`));
+console.log(crayon.cyan(`API docs for version '${chosenVersion}' fully removed.`));

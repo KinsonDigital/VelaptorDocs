@@ -5,7 +5,7 @@ import { MarkdownService } from "./services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Utils } from "./Utils.ts";
 import { Yarn } from "./Yarn.ts";
-import chalk, { existsSync, walkSync } from "../deps.ts";
+import { crayon, existsSync, walkSync } from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -34,24 +34,24 @@ export class DocProcessor {
 	 */
 	public async generateFromTag(apiDocsDirPath: string, releaseTag: string): Promise<void> {
 		if (Utils.isNothing(apiDocsDirPath)) {
-			console.log(chalk.red("The API doc dir path is required."));
+			console.log(crayon.red("The API doc dir path is required."));
 			Deno.exit(1);
 		}
 
 		if (Utils.isNothing(releaseTag)) {
-			console.log(chalk.red("The release tag is required."));
+			console.log(crayon.red("The release tag is required."));
 			Deno.exit(1);
 		}
 
-		console.log(chalk.cyan(`Validating Release '${releaseTag}'. . .`));
+		console.log(crayon.cyan(`Validating Release '${releaseTag}'. . .`));
 		const isValid = await this.validateReleaseService.releaseExists(releaseTag);
 
 		if (!isValid) {
-			console.log(chalk.red(`The release '${releaseTag}' is not valid.`));
+			console.log(crayon.red(`The release '${releaseTag}' is not valid.`));
 			Deno.exit(1);
 		}
 
-		console.log(chalk.cyan(`Release '${releaseTag}' Valid.`));
+		console.log(crayon.cyan(`Release '${releaseTag}' Valid.`));
 
 		await this.run(apiDocsDirPath, releaseTag);
 	}
@@ -63,16 +63,16 @@ export class DocProcessor {
 	 */
 	public async generateFromBranch(apiDocDirPath: string, branchName: string): Promise<void> {
 		if (Utils.isNothing(apiDocDirPath)) {
-			console.log(chalk.red("The API doc dir path is required."));
+			console.log(crayon.red("The API doc dir path is required."));
 			Deno.exit(1);
 		}
 
 		if (Utils.isNothing(branchName)) {
-			console.log(chalk.red("The branch name is required."));
+			console.log(crayon.red("The branch name is required."));
 			Deno.exit(1);
 		}
 
-		console.log(chalk.cyan(`Branch Name '${branchName}' Valid.`));
+		console.log(crayon.cyan(`Branch Name '${branchName}' Valid.`));
 
 		await this.run(apiDocDirPath, branchName);
 	}
@@ -141,11 +141,11 @@ export class DocProcessor {
 	 */
 	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {
 		console.log("\n-----------------------------------------------------------------\n");
-		console.log(chalk.cyan(startMsg));
+		console.log(crayon.cyan(startMsg));
 
 		await process();
 
-		console.log(chalk.cyan(`\n\n${endMsg}`));
+		console.log(crayon.cyan(`\n\n${endMsg}`));
 	}
 
 	/**

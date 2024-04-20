@@ -111,7 +111,7 @@ public class Game : Window
     /// </summary>
     private void UpdateTitle()
     {
-        string state;
+        var state = string.Empty;
 
         if (this.music.IsStopped)
         {

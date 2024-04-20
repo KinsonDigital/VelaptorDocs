@@ -24,7 +24,7 @@ Implements [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow'), [System.IDis
 
 ### AutoClearBuffer 
 
-Gets or sets a value indicating whether or not the buffers should  
+Gets or sets a value indicating whether the buffers should  
 be automatically cleared before rendering any textures.
 
 ```csharp
@@ -52,7 +52,7 @@ and set this property to true.  That would be a waste of resources.
 
 ### AutoSceneLoading 
 
-Gets or sets a value indicating whether or not the scenes should be automatically loaded.
+Gets or sets a value indicating whether the scenes should be automatically loaded.
 
 ```csharp
 public bool AutoSceneLoading { get; set; }
@@ -67,7 +67,7 @@ Implements [AutoSceneLoading](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoSce
 
 ### AutoSceneRendering 
 
-Gets or sets a value indicating whether or not the scenes should be automatically rendered.
+Gets or sets a value indicating whether the scenes should be automatically rendered.
 
 ```csharp
 public bool AutoSceneRendering { get; set; }
@@ -82,7 +82,7 @@ Implements [AutoSceneRendering](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoS
 
 ### AutoSceneUnloading 
 
-Gets or sets a value indicating whether or not the scenes should be automatically unloaded.
+Gets or sets a value indicating whether the scenes should be automatically unloaded.
 
 ```csharp
 public bool AutoSceneUnloading { get; set; }
@@ -97,7 +97,7 @@ Implements [AutoSceneUnloading](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoS
 
 ### AutoSceneUpdating 
 
-Gets or sets a value indicating whether or not the scenes should be automatically updated.
+Gets or sets a value indicating whether the scenes should be automatically updated.
 
 ```csharp
 public bool AutoSceneUpdating { get; set; }
@@ -172,7 +172,7 @@ Implements [Initialize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Initialize 'V
 
 ### Initialized 
 
-Gets a value indicating whether or not the window has been initialized.
+Gets a value indicating whether the window has been initialized.
 
 ```csharp
 public bool Initialized { get; }
@@ -187,7 +187,7 @@ Implements [Initialized](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Initialized 
 
 ### MouseCursorVisible 
 
-Gets or sets a value indicating whether or not the mouse cursor is visible.
+Gets or sets a value indicating whether the mouse cursor is visible.
 
 ```csharp
 public bool MouseCursorVisible { get; set; }

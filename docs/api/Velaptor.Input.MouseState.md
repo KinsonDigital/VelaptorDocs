@@ -66,7 +66,7 @@ The value of the mouse wheel.
 
 ### AnyButtonsDown() 
 
-Returns a value indicating whether or not any of the mouse buttons are in the down position.
+Returns a value indicating whether any of the mouse buttons are in the down position.
 
 ```csharp
 public bool AnyButtonsDown();
@@ -80,7 +80,7 @@ True if any buttons are in the down position.
 
 ### GetButtonState(MouseButton) 
 
-Returns a value indicating whether or not the state for the given [mouseButton](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton 'Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton')  
+Returns a value indicating whether the state for the given [mouseButton](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton 'Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton')  
 is in the down or up position.
 
 ```csharp
@@ -172,7 +172,7 @@ The Y position relative to the top left corner of the window.
 
 ### IsButtonDown(MouseButton) 
 
-Returns a value indicating whether or not the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button')  
+Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button')  
 is in the down position.
 
 ```csharp
@@ -194,7 +194,7 @@ True if the mouse button is in the down position.
 
 ### IsButtonUp(MouseButton) 
 
-Returns a value indicating whether or not the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button')  
+Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button')  
 is in the up position.
 
 ```csharp
@@ -221,7 +221,7 @@ Occurs if the [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseB
 
 ### IsLeftButtonDown() 
 
-Gets or sets a value indicating whether or not the left mouse button is in the down position.
+Gets or sets a value indicating whether the left mouse button is in the down position.
 
 ```csharp
 public bool IsLeftButtonDown();
@@ -235,7 +235,7 @@ public bool IsLeftButtonDown();
 
 ### IsLeftButtonUp() 
 
-Returns a value indicating whether or not the left mouse button is in the up position.
+Returns a value indicating whether the left mouse button is in the up position.
 
 ```csharp
 public bool IsLeftButtonUp();
@@ -249,7 +249,7 @@ public bool IsLeftButtonUp();
 
 ### IsMiddleButtonDown() 
 
-Gets or sets a value indicating whether or not the middle mouse button is in the down position.
+Gets or sets a value indicating whether the middle mouse button is in the down position.
 
 ```csharp
 public bool IsMiddleButtonDown();
@@ -263,7 +263,7 @@ public bool IsMiddleButtonDown();
 
 ### IsMiddleButtonUp() 
 
-Returns a value indicating whether or not the middle mouse button is in the up position.
+Returns a value indicating whether the middle mouse button is in the up position.
 
 ```csharp
 public bool IsMiddleButtonUp();
@@ -277,7 +277,7 @@ public bool IsMiddleButtonUp();
 
 ### IsRightButtonDown() 
 
-Gets or sets a value indicating whether or not the right mouse button is in the down position.
+Gets or sets a value indicating whether the right mouse button is in the down position.
 
 ```csharp
 public bool IsRightButtonDown();
@@ -291,7 +291,7 @@ public bool IsRightButtonDown();
 
 ### IsRightButtonUp() 
 
-Returns a value indicating whether or not the right mouse button is in the up position.
+Returns a value indicating whether the right mouse button is in the up position.
 
 ```csharp
 public bool IsRightButtonUp();

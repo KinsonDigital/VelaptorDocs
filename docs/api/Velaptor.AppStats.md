@@ -20,7 +20,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ### GetFontGlyphRenderingData() 
 
-Gets all of the rendered textures for the last two frames in `string` format.
+Gets all the rendered textures for the last two frames in `string` format.
 
 ```csharp
 public static string GetFontGlyphRenderingData();
@@ -34,7 +34,7 @@ The recorded frame information.
 
 ### GetLoadedFonts() 
 
-Returns all of the loaded fonts.
+Returns all the loaded fonts.
 
 ```csharp
 public static string GetLoadedFonts();
@@ -48,7 +48,7 @@ The string result of all the loaded fonts.
 
 ### GetLoadedTextures() 
 
-Returns all of the loaded textures.
+Returns all the loaded textures.
 
 ```csharp
 public static string GetLoadedTextures();

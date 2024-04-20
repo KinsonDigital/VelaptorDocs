@@ -7,7 +7,7 @@ title: Velaptor.Graphics.GlyphMetrics
 
 #### GlyphMetrics Struct
 
-Holds all of the various metrics of a glyph for rendering purposes.
+Holds all the various metrics of a glyph for rendering purposes.
 
 ```csharp
 public readonly struct GlyphMetrics :

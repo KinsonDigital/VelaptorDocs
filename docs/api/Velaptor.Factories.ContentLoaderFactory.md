@@ -30,6 +30,20 @@ public static Velaptor.Content.ILoader<Velaptor.Content.IAtlasData> CreateAtlasL
 [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IAtlasData](Velaptor.Content.IAtlasData.md 'Velaptor.Content.IAtlasData')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')  
 A loader for loading texture atlas data.
 
+<a name='Velaptor.Factories.ContentLoaderFactory.CreateAudioLoader()'></a>
+
+### CreateAudioLoader() 
+
+Creates a loader that loads audio from disk.
+
+```csharp
+public static Velaptor.Content.ILoader<Velaptor.Content.IAudio> CreateAudioLoader();
+```
+
+#### Returns
+[Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IAudio](Velaptor.Content.IAudio.md 'Velaptor.Content.IAudio')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')  
+A loader for loading audio data.
+
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateFontLoader()'></a>
 
 ### CreateFontLoader() 
@@ -42,21 +56,7 @@ public static Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont> CreateFontL
 
 #### Returns
 [Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')  
-A loader for loading sound data.
-
-<a name='Velaptor.Factories.ContentLoaderFactory.CreateSoundLoader()'></a>
-
-### CreateSoundLoader() 
-
-Creates a loader that loads sounds from disk.
-
-```csharp
-public static Velaptor.Content.ILoader<Velaptor.Content.ISound> CreateSoundLoader();
-```
-
-#### Returns
-[Velaptor.Content.ILoader&lt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')[ISound](Velaptor.Content.ISound.md 'Velaptor.Content.ISound')[&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>')  
-A loader for loading sound data.
+A loader for loading audio data.
 
 <a name='Velaptor.Factories.ContentLoaderFactory.CreateTextureLoader()'></a>
 

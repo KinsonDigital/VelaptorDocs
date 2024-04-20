@@ -12,17 +12,13 @@ Provides the ability to load content.
 ```csharp
 public interface IContentLoadable
 ```
-
-Derived  
-&#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')  
-&#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
 ## Properties
 
 <a name='Velaptor.Content.IContentLoadable.IsLoaded'></a>
 
 ### IsLoaded 
 
-Gets a value indicating whether or not the content for an object is loaded.
+Gets a value indicating whether the content for an object is loaded.
 
 ```csharp
 bool IsLoaded { get; }

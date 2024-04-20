@@ -38,7 +38,7 @@ Implements [CurrentPlatform](Velaptor.IPlatform.md#Velaptor.IPlatform.CurrentPla
 
 ### Is32BitProcess 
 
-Gets a value indicating whether or not the system is a 32 bit process.
+Gets a value indicating whether the system is a 32 bit process.
 
 ```csharp
 public bool Is32BitProcess { get; }
@@ -53,7 +53,7 @@ Implements [Is32BitProcess](Velaptor.IPlatform.md#Velaptor.IPlatform.Is32BitProc
 
 ### Is64BitProcess 
 
-Gets a value indicating whether or not the system is a 64 bit process.
+Gets a value indicating whether the system is a 64 bit process.
 
 ```csharp
 public bool Is64BitProcess { get; }

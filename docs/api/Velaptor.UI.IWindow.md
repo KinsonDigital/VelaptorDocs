@@ -26,7 +26,7 @@ Implements [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/Syst
 
 ### AutoClearBuffer 
 
-Gets or sets a value indicating whether or not the buffers should  
+Gets or sets a value indicating whether the buffers should  
 be automatically cleared before rendering any textures.
 
 ```csharp
@@ -52,7 +52,7 @@ and set this property to true.  That would be a waste of resources.
 
 ### AutoSceneLoading 
 
-Gets or sets a value indicating whether or not the scenes should be automatically loaded.
+Gets or sets a value indicating whether the scenes should be automatically loaded.
 
 ```csharp
 bool AutoSceneLoading { get; set; }
@@ -65,7 +65,7 @@ bool AutoSceneLoading { get; set; }
 
 ### AutoSceneRendering 
 
-Gets or sets a value indicating whether or not the scenes should be automatically rendered.
+Gets or sets a value indicating whether the scenes should be automatically rendered.
 
 ```csharp
 bool AutoSceneRendering { get; set; }
@@ -78,7 +78,7 @@ bool AutoSceneRendering { get; set; }
 
 ### AutoSceneUnloading 
 
-Gets or sets a value indicating whether or not the scenes should be automatically unloaded.
+Gets or sets a value indicating whether the scenes should be automatically unloaded.
 
 ```csharp
 bool AutoSceneUnloading { get; set; }
@@ -91,7 +91,7 @@ bool AutoSceneUnloading { get; set; }
 
 ### AutoSceneUpdating 
 
-Gets or sets a value indicating whether or not the scenes should be automatically updated.
+Gets or sets a value indicating whether the scenes should be automatically updated.
 
 ```csharp
 bool AutoSceneUpdating { get; set; }
@@ -156,7 +156,7 @@ System.Action? Initialize { get; set; }
 
 ### Initialized 
 
-Gets a value indicating whether or not the window has been initialized.
+Gets a value indicating whether the window has been initialized.
 
 ```csharp
 bool Initialized { get; }
@@ -169,7 +169,7 @@ bool Initialized { get; }
 
 ### MouseCursorVisible 
 
-Gets or sets a value indicating whether or not the mouse cursor is visible.
+Gets or sets a value indicating whether the mouse cursor is visible.
 
 ```csharp
 bool MouseCursorVisible { get; set; }

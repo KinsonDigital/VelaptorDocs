@@ -9,7 +9,6 @@ title: Velaptor.Content.Fonts
 | Classes | |
 | :--- | :--- |
 | [Font](Velaptor.Content.Fonts.Font.md 'Velaptor.Content.Fonts.Font') | Represents a font with a set size and style that can be used to render text to the screen. |
-| [FontLoader](Velaptor.Content.Fonts.FontLoader.md 'Velaptor.Content.Fonts.FontLoader') | Loads font content for rendering text. |
 
 | Interfaces | |
 | :--- | :--- |

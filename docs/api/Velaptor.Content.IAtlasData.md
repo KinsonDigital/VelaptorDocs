@@ -110,7 +110,7 @@ uint Width { get; }
 
 ### GetFrames(string) 
 
-Gets the all of the frames that have the given sub texture id.
+Gets the all the frames that have the given sub texture id.
 
 ```csharp
 Velaptor.Graphics.AtlasSubTextureData[] GetFrames(string subTextureId);

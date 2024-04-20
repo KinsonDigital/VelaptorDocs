@@ -49,7 +49,7 @@ System.Collections.Generic.IReadOnlyCollection<System.Guid> InActiveScenes { get
 
 ### IsLoaded 
 
-Gets a value indicating whether or not the scene manager has been loaded.
+Gets a value indicating whether the scene manager has been loaded.
 
 ```csharp
 bool IsLoaded { get; }
@@ -170,7 +170,7 @@ The ID of the scene to remove.
 
 ### SceneExists(Guid) 
 
-Returns a value indicating whether or not a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id 'Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id').
+Returns a value indicating whether a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id 'Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id').
 
 ```csharp
 bool SceneExists(System.Guid id);
@@ -205,7 +205,7 @@ void SetSceneAsActive(System.Guid id);
 The ID of the scene.
 
 #### Remarks
-This will set all of the other scenes to inactive.
+This will set all the other scenes to inactive.
 
 <a name='Velaptor.Scene.ISceneManager.UnloadContent()'></a>
 

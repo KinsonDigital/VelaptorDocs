@@ -16,9 +16,7 @@ public interface IUpdatable
 Derived  
 &#8627; [IScene](Velaptor.Scene.IScene.md 'Velaptor.Scene.IScene')  
 &#8627; [ISceneManager](Velaptor.Scene.ISceneManager.md 'Velaptor.Scene.ISceneManager')  
-&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')  
-&#8627; [ControlBase](Velaptor.UI.ControlBase.md 'Velaptor.UI.ControlBase')  
-&#8627; [IControl](Velaptor.UI.IControl.md 'Velaptor.UI.IControl')
+&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')
 ## Methods
 
 <a name='Velaptor.IUpdatable.Update(Velaptor.FrameTime)'></a>

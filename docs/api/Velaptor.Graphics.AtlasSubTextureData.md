@@ -42,7 +42,7 @@ public int FrameIndex { get; set; }
 
 #### Remarks
 This is used for frames of animation.  A negative value indicates  
-whether or not the sub texture is part of any animation frames.
+whether the sub texture is part of any animation frames.
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.Name'></a>
 

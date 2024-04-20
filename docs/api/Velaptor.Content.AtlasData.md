@@ -18,62 +18,6 @@ Velaptor.Content.IContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → AtlasData
 
 Implements [IAtlasData](Velaptor.Content.IAtlasData.md 'Velaptor.Content.IAtlasData'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-## Constructors
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string)'></a>
-
-### AtlasData(IItemCache&lt;string,ITexture&gt;, IDirectory, IPath, IEnumerable&lt;AtlasSubTextureData&gt;, string, string) Constructor
-
-Initializes a new instance of the [AtlasData](Velaptor.Content.AtlasData.md 'Velaptor.Content.AtlasData') class.
-
-```csharp
-public AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture> textureCache, System.IO.Abstractions.IDirectory directory, System.IO.Abstractions.IPath path, System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData> atlasSubTextureData, string dirPath, string atlasName);
-```
-#### Parameters
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string).textureCache'></a>
-
-`textureCache` [Velaptor.Content.Caching.IItemCache&lt;](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>')[ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture')[&gt;](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>')
-
-Caches textures for later use to improve performance.
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string).directory'></a>
-
-`directory` [System.IO.Abstractions.IDirectory](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Abstractions.IDirectory 'System.IO.Abstractions.IDirectory')
-
-Performs operations with directories.
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string).path'></a>
-
-`path` [System.IO.Abstractions.IPath](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Abstractions.IPath 'System.IO.Abstractions.IPath')
-
-Processes directory and file paths.
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string).atlasSubTextureData'></a>
-
-`atlasSubTextureData` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor.Graphics.AtlasSubTextureData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
-
-The sub texture data of all sub textures in the atlas.
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string).dirPath'></a>
-
-`dirPath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The path to the content.
-
-<a name='Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>,string,string).atlasName'></a>
-
-`atlasName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The name of the atlas.
-
-#### Exceptions
-
-[System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Thrown if any of the constructor parameters are null.
-
-[System.IO.DirectoryNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.DirectoryNotFoundException 'System.IO.DirectoryNotFoundException')  
-Thrown if the [dirPath](Velaptor.Content.AtlasData.md#Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache_string,Velaptor.Content.ITexture_,System.IO.Abstractions.IDirectory,System.IO.Abstractions.IPath,System.Collections.Generic.IEnumerable_Velaptor.Graphics.AtlasSubTextureData_,string,string).dirPath 'Velaptor.Content.AtlasData.AtlasData(Velaptor.Content.Caching.IItemCache<string,Velaptor.Content.ITexture>, System.IO.Abstractions.IDirectory, System.IO.Abstractions.IPath, System.Collections.Generic.IEnumerable<Velaptor.Graphics.AtlasSubTextureData>, string, string).dirPath') does not exist.
 ## Properties
 
 <a name='Velaptor.Content.AtlasData.AtlasDataFilePath'></a>
@@ -212,7 +156,7 @@ Implements [Width](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.Wi
 
 ### GetFrames(string) 
 
-Gets the all of the frames that have the given sub texture id.
+Gets the all the frames that have the given sub texture id.
 
 ```csharp
 public Velaptor.Graphics.AtlasSubTextureData[] GetFrames(string subTextureId);

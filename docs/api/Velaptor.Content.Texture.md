@@ -18,63 +18,6 @@ Velaptor.Content.IContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Texture
 
 Implements [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
-## Constructors
-
-<a name='Velaptor.Content.Texture.Texture(string,string)'></a>
-
-### Texture(string, string) Constructor
-
-Initializes a new instance of the [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture') class.
-
-```csharp
-public Texture(string name, string filePath);
-```
-#### Parameters
-
-<a name='Velaptor.Content.Texture.Texture(string,string).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The name of the texture.
-
-<a name='Velaptor.Content.Texture.Texture(string,string).filePath'></a>
-
-`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The file path to the image file.
-
-#### Exceptions
-
-[System.IO.FileNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.FileNotFoundException 'System.IO.FileNotFoundException')  
-Thrown if the [filePath](Velaptor.Content.Texture.md#Velaptor.Content.Texture.Texture(string,string).filePath 'Velaptor.Content.Texture.Texture(string, string).filePath') is not found.
-
-<a name='Velaptor.Content.Texture.Texture(string,Velaptor.Graphics.ImageData)'></a>
-
-### Texture(string, ImageData) Constructor
-
-Initializes a new instance of the [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture') class.
-
-```csharp
-public Texture(string name, Velaptor.Graphics.ImageData imageData);
-```
-#### Parameters
-
-<a name='Velaptor.Content.Texture.Texture(string,Velaptor.Graphics.ImageData).name'></a>
-
-`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The name of the texture.
-
-<a name='Velaptor.Content.Texture.Texture(string,Velaptor.Graphics.ImageData).imageData'></a>
-
-`imageData` [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')
-
-The image data of the texture.
-
-#### Exceptions
-
-[System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException')  
-Thrown if the [imageData](Velaptor.Content.Texture.md#Velaptor.Content.Texture.Texture(string,Velaptor.Graphics.ImageData).imageData 'Velaptor.Content.Texture.Texture(string, Velaptor.Graphics.ImageData).imageData') is empty.
 ## Properties
 
 <a name='Velaptor.Content.Texture.FilePath'></a>

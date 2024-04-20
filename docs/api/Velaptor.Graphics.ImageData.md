@@ -17,43 +17,31 @@ System.IEquatable<Velaptor.Graphics.ImageData>
 Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
 ## Constructors
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string)'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],string)'></a>
 
-### ImageData(Color[,], uint, uint, string) Constructor
+### ImageData(Color[,], string) Constructor
 
 Initializes a new instance of the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') struct.
 
 ```csharp
-public ImageData(System.Drawing.Color[,]? pixels, uint width, uint height, string filePath="");
+public ImageData(System.Drawing.Color[,] pixels, string filePath="");
 ```
 #### Parameters
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).pixels'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],string).pixels'></a>
 
 `pixels` [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
 The pixel data of the image.
 
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).width'></a>
-
-`width` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-
-The width of the image.
-
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).height'></a>
-
-`height` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
-
-The height of the image.
-
-<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).filePath'></a>
+<a name='Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],string).filePath'></a>
 
 `filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The file path of where the image exists.
 
 #### Remarks
-The [filePath](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],uint,uint,string).filePath 'Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,], uint, uint, string).filePath') is used for reference only.
+The [filePath](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],string).filePath 'Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,], string).filePath') is used for reference only.
 ## Properties
 
 <a name='Velaptor.Graphics.ImageData.FilePath'></a>
@@ -89,7 +77,7 @@ public uint Height { get; }
 
 ### IsFlippedHorizontally 
 
-Gets a value indicating whether or not the image is flipped horizontally.
+Gets a value indicating whether the image is flipped horizontally.
 
 ```csharp
 public bool IsFlippedHorizontally { get; }
@@ -102,7 +90,7 @@ public bool IsFlippedHorizontally { get; }
 
 ### IsFlippedVertically 
 
-Gets a value indicating whether or not the image is flipped vertically.
+Gets a value indicating whether the image is flipped vertically.
 
 ```csharp
 public bool IsFlippedVertically { get; }
@@ -181,7 +169,7 @@ image, it will be skipped.
 
 ### Equals(ImageData) 
 
-Returns a value indicating whether or not this instance is equal to the given [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData').
+Returns a value indicating whether this instance is equal to the given [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData').
 
 ```csharp
 public bool Equals(Velaptor.Graphics.ImageData other);
@@ -222,18 +210,21 @@ public void FlipVertically();
 
 ### GetHashCode() 
 
+Returns the hash code for this instance.
+
 ```csharp
 public override int GetHashCode();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+A 32-bit signed integer that is the hash code for this instance.
 
 <a name='Velaptor.Graphics.ImageData.IsEmpty()'></a>
 
 ### IsEmpty() 
 
-Returns a value indicating whether or not the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') contents are empty.
+Returns a value indicating whether the [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData') contents are empty.
 
 ```csharp
 public bool IsEmpty();
@@ -247,9 +238,12 @@ public bool IsEmpty();
 
 ### ToString() 
 
+Returns the fully qualified type name of this instance.
+
 ```csharp
 public override string ToString();
 ```
 
 #### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The fully qualified type name.

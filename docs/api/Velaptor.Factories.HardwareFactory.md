@@ -20,7 +20,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ### GetDisplays() 
 
-Gets all of the displays in the system.
+Gets all the displays in the system.
 
 ```csharp
 public static System.Collections.Immutable.ImmutableArray<Velaptor.Hardware.SystemDisplay> GetDisplays();

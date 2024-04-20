@@ -34,7 +34,7 @@ System.Runtime.InteropServices.OSPlatform CurrentPlatform { get; }
 
 ### Is32BitProcess 
 
-Gets a value indicating whether or not the system is a 32 bit process.
+Gets a value indicating whether the system is a 32 bit process.
 
 ```csharp
 bool Is32BitProcess { get; }
@@ -47,7 +47,7 @@ bool Is32BitProcess { get; }
 
 ### Is64BitProcess 
 
-Gets a value indicating whether or not the system is a 64 bit process.
+Gets a value indicating whether the system is a 64 bit process.
 
 ```csharp
 bool Is64BitProcess { get; }

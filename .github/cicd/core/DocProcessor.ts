@@ -231,28 +231,6 @@ export class DocProcessor {
 		}
 	}
 
-	private findDirPaths(dirStartPath: string, inclusions: string[]): string[] {
-		inclusions = inclusions.map((inclusion) => inclusion.trim().replaceAll("\\", "/").replaceAll("/", "(/|\\\\)"));
-		const matches = inclusions.map((inclusion) => new RegExp(`.*${inclusion}.*`));
-
-		const entries = walkSync(dirStartPath, {
-			includeDirs: true,
-			includeFiles: false,
-			match: matches,
-		});
-
-		const result = [...entries].map((entry) => entry.path.replaceAll("\\", "/"));
-
-		if (Utils.isNothing(result)) {
-			const errorMsg = `Could not find the directories relative to the directory '${dirStartPath}'.` +
-				`\nInclusions: ${inclusions.join(", ")}`;
-			Utils.printGitHubError(errorMsg);
-			Deno.exit(1);
-		}
-
-		return result;
-	}
-
 	private findFilePaths(dirStartPath: string, inclusions: string[]): string[] {
 		inclusions = inclusions.map((inclusion) => inclusion.trim().replaceAll("\\", "/").replaceAll("/", "(/|\\\\)"));
 		const matches = inclusions.map((inclusion) => new RegExp(`.*${inclusion}.*`));

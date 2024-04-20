@@ -6,6 +6,9 @@ import { RepoClient, TagClient } from "https://deno.land/x/kd_clients@v1.0.0-pre
 import { NuGetClient } from "https://deno.land/x/kd_clients@v1.0.0-preview.5/PackageClients/NuGetClient.ts";
 import { crayon } from "https://deno.land/x/crayon@3.3.3/mod.ts";
 
+// RAW GITHUB IMPORTS
+import { Utils } from "https://raw.githubusercontent.com/KinsonDigital/Infrastructure/v13.6.3/cicd/core/Utils.ts";
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // THIRD PARTY MODULE EXPORTS
@@ -13,5 +16,7 @@ export { copySync, emptyDirSync, ensureDirSync, existsSync, walkSync };
 export { basename, dirname, extname, parse, resolve };
 export { Input, Select };
 export { NuGetClient, RepoClient, TagClient };
-
 export { crayon };
+
+// RAW GITHUB IMPORTS
+export { Utils };

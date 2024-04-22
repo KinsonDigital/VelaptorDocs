@@ -99,13 +99,13 @@
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
-                "--inspect-wait",
                 "--allow-read",
 				"--allow-write",
 				"--allow-sys",
 				"--allow-net",
 				"--allow-run",
 				"--allow-env",
+                "--inspect-wait",
             ],
 			"args": [
 				"${workspaceFolder}/docs/api",

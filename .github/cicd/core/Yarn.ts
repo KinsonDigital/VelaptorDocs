@@ -15,7 +15,7 @@ export class Yarn {
 
 		const yarn = this.getYarnLocation();
 
-		console.log(crayon.gray (`Running Yarn Command: ${commands.join(" ")}`));
+		console.log(crayon.lightBlack(`Running Yarn Command: ${commands.join(" ")}`));
 
 		const command = new Deno.Command(yarn, {
 			args: commands,

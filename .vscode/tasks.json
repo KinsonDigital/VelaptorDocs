@@ -113,8 +113,8 @@
 				"${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			]
 		},
-		{ // BUILD
-			"label": "Build (Docusaurus)",
+		{ // BUILD SITE
+			"label": "Build (SITE)",
 			"detail": "Performs a build of the docusaurus site.",
 			"dependsOn": [
 				"Disable Testing Environment"
@@ -146,7 +146,7 @@
 				]
 			}
 		},
-		{ // DENO CHECK ALL FILES
+		{ // BUILD ALL FILES
 			"label": "Build (Deno Check)",
 			"detail": "Builds the project by running deno check on all files in the project.",
 			"type": "shell",

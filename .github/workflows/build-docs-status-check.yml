@@ -40,10 +40,5 @@ jobs:
     - name: Install Dependencies (pnpm)
       run: pnpm install
 
-    - name: Disable Testing Env
-      working-directory: ${{ github.workspace }}
-      run: deno run --allow-read --allow-write `
-        "${{ github.workspace }}/.github/cicd/scripts/testing-env.ts" "disable";
-
     - name: Build
       run: pnpm build

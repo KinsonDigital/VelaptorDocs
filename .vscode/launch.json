@@ -76,23 +76,6 @@
 			],
             "attachSimplePort": 9229,
         },
-        { // ENABLE TESTING ENVIRONMENT
-            "request": "launch",
-            "name": "Enable Testing Env",
-            "type": "node",
-            "program": "${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
-            "runtimeArgs": [
-                "run",
-                "--inspect-wait",
-                "--allow-all",
-            ],
-            "args": [
-                "enable",
-            ],
-            "attachSimplePort": 9229
-        },
         { // UPDATE WEBSITE VERSION
             "request": "launch",
             "name": "Update Website Version",
@@ -116,20 +99,23 @@
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
-                "--inspect-wait",
                 "--allow-read",
 				"--allow-write",
 				"--allow-sys",
 				"--allow-net",
 				"--allow-run",
 				"--allow-env",
+                "--inspect-wait",
             ],
 			"args": [
 				"${workspaceFolder}/docs/api",
 				"v1.0.0-preview.32",
 				"${env:CICD_TOKEN}",
-				"false" // Is Interactive
+				"true" // Is Interactive
 			],
+			"env": {
+				"CICD_TOKEN": "${env:CICD_TOKEN}"
+			},
 			"console": "integratedTerminal",
             "attachSimplePort": 9229
         },
@@ -149,7 +135,6 @@
             ],
 			"args": [
 				"${workspaceFolder}/docusaurus.config.js",
-				"next-version",
 				"enable"
 			],
             "attachSimplePort": 9229

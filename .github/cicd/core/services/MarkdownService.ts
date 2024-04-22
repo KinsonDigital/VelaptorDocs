@@ -199,6 +199,23 @@ export class MarkdownService {
 		return matches != null && matches.length > 0;
 	}
 
+
+	public isCodeBlockStartLine(line: string): boolean {
+		if (Utils.isNothing(line)) {
+			return false;
+		}
+
+		return line.trim() === "```csharp";
+	}
+
+	public isCodeBlockStopLine(line: string): boolean {
+		if (Utils.isNothing(line)) {
+			return false;
+		}
+
+		return line.trim() === "```";
+	}
+
 	public containsMarkdownLink(markDownLink: string): boolean {
 		if (Utils.isNothing(markDownLink)) {
 			return false;

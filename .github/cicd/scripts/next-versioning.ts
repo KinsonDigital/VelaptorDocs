@@ -1,28 +1,50 @@
-import { FlagService } from "../core/services/FlagService.ts";
 import { existsSync } from "../deps.ts";
 
 // Check the arguments
-if (Deno.args.length < 3) {
+if (Deno.args.length < 2) {
 	let errorMsg = "There must be 2 arguments";
 	errorMsg += "Usage: deno run FlagService.ts <file-path> <flag-id> <[enable | disable]>";
 
 	throw Error(errorMsg);
 }
 
+const filePath = Deno.args[0].trim();
+
 // Validate the file path argument
-if (!existsSync(Deno.args[0], { isFile: true })) {
-	throw Error(`The file path '${Deno.args[0]}' does not exist.`);
+if (!existsSync(filePath, { isFile: true })) {
+	throw Error(`The file path '${filePath}' does not exist.`);
 }
 
+const setting: "enable" | "disable" = <"enable" | "disable">Deno.args[1];
+
 // Validate the enable disable argument
-if (Deno.args[2] != "enable" && Deno.args[2] != "disable") {
+if (setting != "enable" && setting != "disable") {
 	throw Error(`The third argument must be either 'enable' or 'disable'.`);
 }
 
-const flagService: FlagService = new FlagService();
+const baseDirPath = Deno.cwd();
+const docuConfigFileName = "docusaurus.config.js";
+const docuConfigFilePath = `${baseDirPath}/${docuConfigFileName}`;
 
-if (Deno.args[2] === "enable") {
-	flagService.enableFlag(Deno.args[0], Deno.args[1]);
-} else {
-	flagService.disableFlag(Deno.args[0], Deno.args[1]);
+const fileDoesNotExist = !existsSync(docuConfigFilePath, { isFile: true });
+
+if (fileDoesNotExist) {
+	const errorMsg = `The file '${docuConfigFileName}' does not exist in the directory '${baseDirPath}'.`;
+	console.error(errorMsg);
+	Deno.exit(1);
 }
+
+const settingRegex = /includeCurrentVersion:\s(true|false).*/gm;
+
+let fileContent = Deno.readTextFileSync(docuConfigFilePath);
+
+if (!settingRegex.test(fileContent)) {
+	const errorMsg = `The setting 'includeCurrentVersion' does not exist in the file '${docuConfigFileName}'.` +
+		"\nThe setting is enabled by default if it does not exist.";
+	console.error(errorMsg);
+	Deno.exit(1);
+}
+
+const replacement = setting === "enable" ? "includeCurrentVersion: true" : "includeCurrentVersion: false";
+fileContent = fileContent.replace(settingRegex, replacement);
+Deno.writeTextFileSync(docuConfigFilePath, fileContent);

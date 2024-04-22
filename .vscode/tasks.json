@@ -67,57 +67,12 @@
 				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
 			]
 		},
-		{ // DISABLE TESTING ENVIRONMENT
-			"label": "Disable Testing Environment",
-			"detail": "Disables the testing environment for the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-				"disable"
-			]
-		},
-		{ // ENABLE TESTING ENVIRONMENT
-			"label": "Enable Testing Environment",
-			"detail": "Enables the testing environment for the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-				"enable"
-			]
-		},
-		{ // TOGGLE TESTING ENVIRONMENT
-			"label": "Toggle Testing Environment",
-			"detail": "Toggles the testing environment for the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/testing-env.ts",
-				"toggle"
-			]
-		},
 		{ // DISABLE NEXT VERSION
 			"label": "Disable Next Version",
 			"detail": "Disables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}"
 			},
 			"command": "deno",
 			"args": [
@@ -125,7 +80,6 @@
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
-				"next-version",
 				"disable"
 			]
 		},
@@ -134,7 +88,7 @@
 			"detail": "Enables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}"
 			},	
 			"command": "deno",
 			"args": [
@@ -142,7 +96,6 @@
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
-				"next-version",
 				"enable"
 			]
 		},
@@ -160,8 +113,8 @@
 				"${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			]
 		},
-		{ // BUILD
-			"label": "Build (Docusaurus)",
+		{ // BUILD SITE
+			"label": "Build (SITE)",
 			"detail": "Performs a build of the docusaurus site.",
 			"dependsOn": [
 				"Disable Testing Environment"
@@ -193,7 +146,7 @@
 				]
 			}
 		},
-		{ // DENO CHECK ALL FILES
+		{ // BUILD ALL FILES
 			"label": "Build (Deno Check)",
 			"detail": "Builds the project by running deno check on all files in the project.",
 			"type": "shell",

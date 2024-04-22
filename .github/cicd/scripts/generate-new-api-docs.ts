@@ -1,5 +1,6 @@
-import { Input, Select } from "../deps.ts";
+import { Input, Select, TagClient } from "../deps.ts";
 import { DocProcessor } from "../core/DocProcessor.ts";
+import { Utils } from "../deps.ts";
 
 console.clear();
 
@@ -44,20 +45,34 @@ if (isInteractive) {
 		options: [branchType, apiVersionType],
 	}));
 
-	const message = generateSrcType === "api version" ? "Enter the release version" : "Enter the branch name";
-	const minLength = generateSrcType === "api version" ? 5 : 0;
+	if (generateSrcType === "branch") {
+		tagOrBranch = await Input.prompt({
+			message: "Enter the branch name",
+		});
+	} else if(generateSrcType === "api version") {
+		const token = Deno.env.get("CICD_TOKEN");
 
-	tagOrBranch = await Input.prompt({
-		message: message,
-		minLength: minLength,
-		transform: (v) => {
-			if (generateSrcType === "api version") {
-				return v.startsWith("v") ? v : `v${v}`;
-			}
+		if (Utils.isNothing(token)) {
+			const errorMsg = "The environment variable 'CICD_TOKEN' does not exist, is empty, or null.";
+			console.log(errorMsg);
+			Deno.exit(1);
+		}
 
-			return v;
-		},
-	});
+		const tagClient = new TagClient("KinsonDigital", "Velaptor", token);
+
+		const tags = (await tagClient.getAllTags()).map((tag) => tag.name)
+			.filter((tag) => Utils.validPreviewVersion(tag) || Utils.validProdVersion(tag));
+		
+
+		tagOrBranch = await Select.prompt({
+			message: "Select a release version",
+			options: tags,
+		});
+
+	} else {
+		console.error("Unknown source type selected.");
+		Deno.exit();
+	}
 } else {
 	console.log(`Version To Generate: ${tagOrBranch}`);
 	tagOrBranch = tagOrBranch.startsWith("v") ? tagOrBranch : `v${tagOrBranch}`;

@@ -45,6 +45,9 @@ export class MarkdownFileContentService {
 			fileContent = this.processTable(fileContent);
 		}
 
+		// Process all HTML entities in C# code blocks
+		fileContent = this.processHTMLEntitiesInCodeDocs(fileContent);
+
 		// Process all link tags which are these 👉🏼 <a name/>
 		fileContent = this.processLinkTags(fileContent);
 
@@ -191,5 +194,32 @@ export class MarkdownFileContentService {
 		});
 
 		return fileContent;
+	}
+
+	private processHTMLEntitiesInCodeDocs(fileContent: string): string {
+		const leftCurlyHTMLEntity = "&#123;";
+		const rightCurlyHTMLEntity = "&#125;";
+
+		const lines: string[] = fileContent.split(/\r?\n/);
+		let insideCodeBlock = false;
+
+		for (let i = 0; i < lines.length; i++) {
+			const line = lines[i];
+
+			if (this.markDownService.isCodeBlockStartLine(line)) {
+				insideCodeBlock = true;
+			} else if (this.markDownService.isCodeBlockStopLine(line)) {
+				insideCodeBlock = false;
+			}
+
+			if (insideCodeBlock) {
+				continue;
+			}
+
+			lines[i] = lines[i].replaceAll("{", leftCurlyHTMLEntity);
+			lines[i] = lines[i].replaceAll("}", rightCurlyHTMLEntity);
+		}
+
+		return lines.join("\n");
 	}
 }

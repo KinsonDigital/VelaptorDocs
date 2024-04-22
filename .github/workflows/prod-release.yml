@@ -88,7 +88,6 @@ jobs:
             --allow-read --allow-write --allow-sys `
             "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
             "${{ github.workspace }}/docusaurus.config.js" `
-            "next-version" `
             "disable";
 
       - name: Install Dependencies (pnpm)

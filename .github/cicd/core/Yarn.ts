@@ -1,4 +1,4 @@
-import chalk from "../deps.ts";
+import { crayon } from "../deps.ts";
 
 /**
  * Executes yarn commands.
@@ -9,13 +9,13 @@ export class Yarn {
 	 */
 	public async run(commands: string[]): Promise<void> {
 		if (commands === undefined || commands.length === 0) {
-			console.log(chalk.red("The commands parameter must not be empty."));
+			console.log(crayon.red("The commands parameter must not be empty."));
 			Deno.exit();
 		}
 
 		const yarn = this.getYarnLocation();
 
-		console.log(chalk.gray(`Running Yarn Command: ${commands.join(" ")}`));
+		console.log(crayon.lightBlack(`Running Yarn Command: ${commands.join(" ")}`));
 
 		const command = new Deno.Command(yarn, {
 			args: commands,
@@ -39,7 +39,7 @@ export class Yarn {
 		const envUserName: string | undefined = this.isWindowsEnv() ? Deno.env.get("USERNAME") : Deno.env.get("USER");
 
 		if (envUserName === undefined) {
-			console.log(chalk.red("Could not find the system user name."));
+			console.log(crayon.red("Could not find the system user name."));
 			Deno.exit();
 		}
 

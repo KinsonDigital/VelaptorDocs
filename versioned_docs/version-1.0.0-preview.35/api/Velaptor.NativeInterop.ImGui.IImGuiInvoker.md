@@ -726,15 +726,15 @@ The [fmt](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velaptor.NativeInterop.I
 - Numerical Formatting  
   You can control how numeric values are displayed, including the number of decimal places,  
   whether to use scientific notation, whether to include a thousands separator, and more.  
-  For example, &#1230:F2&#125 formats the number with two decimal places.  
+  For example, &#123;0:F2&#125; formats the number with two decimal places.  
 - Date and Time Formatting  
   You can control how DateTime values are displayed, including the date format, time format, and more.  
-  For example, &#1230:yyyy-MM-dd&#125 formats the date as year-month-day.  
+  For example, &#123;0:yyyy-MM-dd&#125; formats the date as year-month-day.  
 - String Padding  
   You can control the width of the field in which the string is printed, and whether it’s aligned to  
-  the left or right. For example, &#1230,10&#125 prints the string in a field of width 10, right-aligned,  
-  while &#1230,-10&#125 prints it left-aligned.  
+  the left or right. For example, &#123;0,10&#125; prints the string in a field of width 10, right-aligned,  
+  while &#123;0,-10&#125; prints it left-aligned.  
 - Custom Formatting  
   You can define your own format strings to control how certain types of objects are displayed.  
 can escape a brace by adding another brace.  
-ple: &#123&#123 and &#125&#125 will display as &#123 and &#125.
+ple: &#123;&#123; and &#125;&#125; will display as &#123; and &#125;.

@@ -135,7 +135,6 @@
             ],
 			"args": [
 				"${workspaceFolder}/docusaurus.config.js",
-				"next-version",
 				"enable"
 			],
             "attachSimplePort": 9229

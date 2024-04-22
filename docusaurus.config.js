@@ -41,13 +41,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/KinsonDigital/Velaptor',
-          // ⚠️DO NOT CHANGE THIS⚠️
-          // This is used as part of the manual testing process for the CICD side of the project.
-          // This will always be disabled during the build process before a release.
-          // When disabled, the 'Next' version is enabled by default.
-          // <flag id=next-version enabled=false>
-          includeCurrentVersion: false,
-          // </flag>
+          includeCurrentVersion: true
         },
 		
         // ❕DO NOT DELETE.  ONLY DISABLED❕

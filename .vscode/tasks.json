@@ -72,7 +72,7 @@
 			"detail": "Disables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}"
 			},
 			"command": "deno",
 			"args": [
@@ -80,7 +80,6 @@
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
-				"next-version",
 				"disable"
 			]
 		},
@@ -89,7 +88,7 @@
 			"detail": "Enables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}"
 			},	
 			"command": "deno",
 			"args": [
@@ -97,7 +96,6 @@
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
 				"${workspaceFolder}/docusaurus.config.js",
-				"next-version",
 				"enable"
 			]
 		},

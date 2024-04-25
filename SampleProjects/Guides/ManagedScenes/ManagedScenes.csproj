@@ -23,11 +23,18 @@
       <None Remove="stylecop.json" />
       <AdditionalFiles Include="stylecop.json" />
       <None Update="Content\Graphics\velaptor-mascot.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Content\Graphics\kd-logo.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Content\Audio\mario-jump.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Content\Audio\" />
     </ItemGroup>
 
 </Project>

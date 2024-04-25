@@ -2,5 +2,5 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-var game = new Scenes.Game();
+var game = new UnmanagedScenes.Game();
 game.Show();

@@ -64,6 +64,9 @@
     margin-left: -5px !important;
 }
 
+.error {
+    color: #ca6c6c;
+}
 
 /* Github Logo (dark mode) for navbar link */
 [data-theme='dark'] .header-github-link:hover:after {

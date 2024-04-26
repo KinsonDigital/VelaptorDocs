@@ -165,7 +165,7 @@
 		},
 		{ // UPDATE VELAPTOR NUGET PACKAGES
 			"label": "Update Velaptor NuGet Packages",
-			"detail": "Updates all of the Velaptor NuGet packages for all tutorial projects.",
+			"detail": "Updates all of the Velaptor NuGet packages for all guide projects.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"

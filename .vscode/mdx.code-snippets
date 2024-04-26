@@ -116,15 +116,15 @@
 		],
 		"description": "Reference link to another guide."
 	},
-	"Tutorial Project Reference": {
+	"guide project Reference": {
 		"scope": "mdx",
 		"prefix": "tutorial-proj-ref",
 		"body": [
 			":::note Guide Source Code",
-			"Go to the <TutorialLink projectName=\"${1:project name}\"/> tutorial project to see the source code for a fully working example of this guide.",
+			"Go to the <TutorialLink projectName=\"${1:project name}\"/> guide project to see the source code for a fully working example of this guide.",
 			":::\n"
 		],
-		"description": "Reference to the open source guide tutorial project."
+		"description": "Reference to the open source guide guide project."
 	},
     "Open URL New Tab": {
 		"scope": "mdx",

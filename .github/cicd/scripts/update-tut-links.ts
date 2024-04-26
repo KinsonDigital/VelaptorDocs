@@ -3,8 +3,8 @@ import { existsSync, Select, TagClient, walkSync } from "../deps.ts";
 
 // If no args were passed
 if (Deno.args.length < 3) {
-	const errorMsg = "Please provide 3 arguments to update the tutorial projects." +
-		"\n1. The root directory path to start searching for tutorial projects." +
+	const errorMsg = "Please provide 3 arguments to update the guide projects." +
+		"\n1. The root directory path to start searching for guide projects." +
 		"\n2. The version number to update the Velaptor NuGet packages to." +
 		"\n3. The GitHub token.";
 

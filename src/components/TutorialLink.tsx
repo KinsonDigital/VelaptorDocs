@@ -6,20 +6,20 @@ import OpenNewTab from "@site/static/img/new-tab.svg";
  */
 interface TutorialLinkProps {
     /**
-     * The name of the tutorial project.
+     * The name of the guide project.
      * This ends up as the name of the link. This must be the correct
      * name of the C# project.
      */
     projectName: string;
 
     /**
-     * The version of the tutorial project.
+     * The version of the guide project.
      */
     version: string;
 }
 
 /**
- * Creates a link that opens in a new tab to the tutorial project.
+ * Creates a link that opens in a new tab to the guide project.
  * @param param The component properties.
  * @returns The component.
  */

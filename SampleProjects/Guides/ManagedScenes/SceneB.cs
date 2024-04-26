@@ -22,7 +22,7 @@ public class SceneB : SceneBase
 {
     private const int WindowWidth = 1000;
     private const int WindowHeight = 1000;
-    private const string Instructions = "Click anywhere in the window.";
+    private const string Instructions = "Left & right arrow keys to move to scenes.\nClick anywhere in the window.";
     private readonly ILoader<ITexture> textureLoader;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<IFont> fontLoader;
@@ -96,7 +96,7 @@ public class SceneB : SceneBase
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
         this.textureRenderer.Render(this.logoTexture, logoPos);
 
-        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
+        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
 
         base.Render();
     }

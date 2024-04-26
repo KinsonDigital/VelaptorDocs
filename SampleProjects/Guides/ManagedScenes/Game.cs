@@ -9,6 +9,9 @@ using Velaptor.Factories;
 using Velaptor.Input;
 using Velaptor.UI;
 
+/// <summary>
+/// The main game class.
+/// </summary>
 public class Game : Window
 {
     private readonly IAppInput<KeyboardState> keyboard;

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Numerics;
 using Velaptor;
 using Velaptor.Content;
+using Velaptor.Content.Fonts;
 using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
@@ -19,10 +20,15 @@ using Velaptor.Scene;
 /// </summary>
 public class SceneA : SceneBase
 {
+    private const int WindowWidth = 1000;
+    private const string Instructions = "Left & right arrow keys to move to scenes.";
     private readonly ILoader<ITexture> textureLoader;
-    private readonly ITextureRenderer renderer;
+    private readonly ILoader<IFont> fontLoader;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly IFontRenderer fontRenderer;
     private readonly IAppInput<MouseState> mouse;
     private ITexture? logoTexture;
+    private IFont? font;
     private PointF logoPosition;
 
     /// <summary>
@@ -31,7 +37,11 @@ public class SceneA : SceneBase
     public SceneA()
     {
         this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
-        this.renderer = RendererFactory.CreateTextureRenderer();
+        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+
+        this.textureRenderer = RendererFactory.CreateTextureRenderer();
+        this.fontRenderer = RendererFactory.CreateFontRenderer();
+
         this.mouse = HardwareFactory.GetMouse();
     }
 
@@ -41,6 +51,8 @@ public class SceneA : SceneBase
     public override void LoadContent()
     {
         this.logoTexture = this.textureLoader.Load("kd-logo");
+        this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
+
         base.LoadContent();
     }
 
@@ -63,9 +75,14 @@ public class SceneA : SceneBase
     public override void Render()
     {
         ArgumentNullException.ThrowIfNull(this.logoTexture);
+        ArgumentNullException.ThrowIfNull(this.font);
 
+        // Render the image
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
-        this.renderer.Render(this.logoTexture, logoPos);
+        this.textureRenderer.Render(this.logoTexture, logoPos);
+
+        // Render the text
+        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
 
         base.Render();
     }

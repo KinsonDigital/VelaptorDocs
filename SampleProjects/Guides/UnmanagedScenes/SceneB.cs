@@ -1,4 +1,4 @@
-﻿// <copyright file="Scene2.cs" company="KinsonDigital">
+﻿// <copyright file="SceneB.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -18,11 +18,11 @@ using Velaptor.Scene;
 /// <summary>
 /// The second scene of the managed scene guide.
 /// </summary>
-public class Scene2 : SceneBase
+public class SceneB : SceneBase
 {
     private const int WindowWidth = 1000;
     private const int WindowHeight = 1000;
-    private const string Instructions = "Click anywhere in the window.";
+    private const string Instructions = "Left & right arrow keys to move to scenes.\nClick anywhere in the window.";
     private readonly ILoader<ITexture> textureLoader;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<IFont> fontLoader;
@@ -36,9 +36,9 @@ public class Scene2 : SceneBase
     private IAudio? audio;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Scene2"/> class.
+    /// Initializes a new instance of the <see cref="SceneB"/> class.
     /// </summary>
-    public Scene2()
+    public SceneB()
     {
         this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
         this.fontLoader = ContentLoaderFactory.CreateFontLoader();
@@ -55,7 +55,7 @@ public class Scene2 : SceneBase
     /// </summary>
     public override void LoadContent()
     {
-        this.logoTexture = this.textureLoader.Load("dotnet-bot");
+        this.logoTexture = this.textureLoader.Load("velaptor-mascot");
         this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
         this.audio = this.audioLoader.Load("mario-jump", AudioBuffer.Full);
 
@@ -90,13 +90,15 @@ public class Scene2 : SceneBase
     /// </summary>
     public override void Render()
     {
-        ArgumentNullException.ThrowIfNull(this.font);
         ArgumentNullException.ThrowIfNull(this.logoTexture);
+        ArgumentNullException.ThrowIfNull(this.font);
 
+        // Render the image
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
         this.textureRenderer.Render(this.logoTexture, logoPos);
 
-        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
+        // Render the text
+        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
 
         base.Render();
     }

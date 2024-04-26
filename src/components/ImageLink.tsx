@@ -7,12 +7,13 @@ interface ImageLinkProps {
     /**
      * The URL link to goto when clicking the image.
      */
-    url: string,
+    gotoUrl: string,
 
     /**
      * The relative path to the image in the website static/img folder.
+     * If not provided, then the image shown will be the {@link gotoUrl}.
      */
-    relativeImagePath: string,
+    displayUrl?: string,
 
     /**
      * The size of the image as a percentage of the parent container.
@@ -25,12 +26,14 @@ interface ImageLinkProps {
  * @param param The component properties.
  * @returns The component.
  */
-const ImageLink: React.FC<ImageLinkProps> = ({ url, relativeImagePath, sizePercentage = 50 }: ImageLinkProps) => {
+const ImageLink: React.FC<ImageLinkProps> = ({ gotoUrl: url, displayUrl, sizePercentage = 50 }: ImageLinkProps) => {
     const sizePercentageStr = `${sizePercentage}%`;
+
+    const imgUrl = displayUrl === undefined ? url : displayUrl;
 
     return (
         <a target="\_blank" href={url}>
-            <img style={{width: sizePercentageStr}} src={relativeImagePath} alt="Example banner"/>
+            <img style={{width: sizePercentageStr}} src={imgUrl} alt="Example banner"/>
         </a>
     );
 }

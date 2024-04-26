@@ -3,7 +3,7 @@ import React from "react";
 /**
  * The properties for the {@link Audio} component.
  */
-interface AudioProps {
+interface Props {
     /**
      * The URL of the sound to play.
      */
@@ -20,7 +20,7 @@ interface AudioProps {
  * @param params The component properties.
  * @returns The component.
  */
-const Audio: React.FC<AudioProps> = ({ url, name }: AudioProps) => {
+const Audio: React.FC<Props> = ({ url, name }: Props) => {
 	const invalidUrl = url === undefined || url === null || url === '';
 
 	if (invalidUrl) {

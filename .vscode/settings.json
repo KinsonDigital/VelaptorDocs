@@ -11,6 +11,7 @@
 		"Multiauthor",
 		"preinstall",
 		"Structs",
+		"tailwindcss",
 		"Texinfo",
 		"typecheck",
 		"Velaptor"
@@ -32,7 +33,13 @@
 		"**/*.code-search": true,
 		"build/": true
 	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
+	},
 	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
 	},

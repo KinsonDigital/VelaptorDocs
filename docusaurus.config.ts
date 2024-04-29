@@ -1,10 +1,12 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-const {themes} = require('prism-react-renderer');
+import {themes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+import tailwindPlugin from './plugins/tailwind-config.cjs';
+
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+
+const config: Config = {
   title: 'Velaptor',
   tagline: 'The easy and fun to use 2D game development framework',
   favicon: 'img/favicon.ico',
@@ -34,8 +36,7 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -55,12 +56,11 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      } satisfies Preset.Options,
     ],
   ],
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       algolia: {
         // The application ID provided by Algolia
         appId: 'QM2KXVA7OT',
@@ -97,7 +97,7 @@ const config = {
         },
         {
           name: 'twitter:title',
-          content: 'Velaptor'
+          content: 'Velaptor',
         },
         {
           name: 'twitter:description',
@@ -162,7 +162,6 @@ const config = {
             position: 'right',
             dropdownActiveClassDisabled: true,
           },
-          
           {
             href: 'https://github.com/KinsonDigital/Velaptor',
             position: 'right',
@@ -241,6 +240,10 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['csharp'],
       },
-    }),
+    } satisfies Preset.ThemeConfig,
+	plugins: [
+		tailwindPlugin,
+	]
 };
+
 module.exports = config;

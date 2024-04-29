@@ -25,6 +25,19 @@ interface Props {
      * The name to give the audio player.
      */
     name?: string,
+
+    /**
+     * Used to put the control into test mode.
+     * A tag with the api version is not released yet during development.
+     * This will allow the use of the {@link testBranchOrTag} prop to be used
+     * instead to point to the development branch.
+     */
+    useTestMode?: string,
+
+    /**
+     * The branch or tag to use if in test mode.
+     */
+    testBranchOrTag?: string,
 }
 
 /**
@@ -32,7 +45,7 @@ interface Props {
  * @param params The component properties.
  * @returns The component.
  */
-const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, name}: Props) => {
+const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, name, useTestMode = "false", testBranchOrTag = "" }: Props) => {
     const versionRegex = /^\s*v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\s*$/gm;
     const invalidGuideProjName = guideName === undefined || guideName === "";
     const undefinedOrEmptyFileName = audioFileName === undefined || audioFileName === "";
@@ -40,14 +53,14 @@ const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, nam
     let errorMsg = undefined;
     
     if (!versionRegex.test(apiVersion)) {
-        errorMsg = "The api version is not a valid prod or prev version.";
+        errorMsg = "<GuideAudio/> Error: The api version is not a valid prod or prev version.";
     } else if (invalidGuideProjName) {
-        errorMsg = "You must provide a valid C# guide project name.";
+        errorMsg = "<GuideAudio/> Error: You must provide a valid C# guide project name.";
     } else if (undefinedOrEmptyFileName) {
-        errorMsg = "You must provide a valid audio file name.";
+        errorMsg = "<GuideAudio/> Error: You must provide a valid audio file name.";
     }
 
-    const fileSections = audioFileName.toLowerCase().split(".");
+    const fileSections = undefinedOrEmptyFileName ? "" : audioFileName.toLowerCase().split(".");
 
     const fileExtension = fileSections.length >= 2 ? fileSections[fileSections.length - 1] : "";
     const invalidFileName = fileExtension != "" && fileExtension != "mp3" && fileExtension != "ogg";
@@ -56,15 +69,16 @@ const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, nam
         errorMsg = "The audio file must be an '.mp3' or '.ogg' file.";
     }
 
+    const branchOrTag = useTestMode === "true" ? testBranchOrTag : `api-${apiVersion}`;
     const relativeImgPath = `SampleProjects/Guides/${guideName}/Content/Audio/${audioFileName}`;
-    const url = `https://raw.githubusercontent.com/KinsonDigital/VelaptorDocs/api-${apiVersion}/${relativeImgPath}`;
+    const url = `https://raw.githubusercontent.com/KinsonDigital/VelaptorDocs/${branchOrTag}/${relativeImgPath}`;
 
 	return (
 		<div>
             {
                 errorMsg !== undefined
                     ? <div className="error">{errorMsg}</div>
-                    : <Audio url={url} name={name} />
+                    : <Audio url={url} name={name}/>
             }
 		</div>
 	);

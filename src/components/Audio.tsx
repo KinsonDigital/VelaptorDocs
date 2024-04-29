@@ -12,7 +12,7 @@ interface Props {
     /**
      * The name of the sound.
      */
-    name: string;
+    name?: string;
 }
 
 /**
@@ -23,16 +23,24 @@ interface Props {
 const Audio: React.FC<Props> = ({ url, name }: Props) => {
 	const invalidUrl = url === undefined || url === null || url === '';
 
+    let errorMsg = undefined;
+
 	if (invalidUrl) {
-		throw new Error("The sound URL cannot be null, undefined, or empty.");
+		errorMsg = "<Audio/> Error: The url prop cannot be null, undefined, or empty.";
 	}
 
 	return (
 		<div>
-			<div style={{ marginBottom: -13, display: 'flex', justifyContent: 'center' }}>
-				<h3>{name}</h3>
-			</div>
-			<audio style={{ width: '270px' }} id="audioPlayer" controls title={url} src={url}></audio>
+            {
+                errorMsg !== undefined
+                    ? <div className="error">{errorMsg}</div>
+                    : <div>
+                        <div style={{ marginBottom: -13, display: 'flex', justifyContent: 'center' }}>
+                            <h3>{name}</h3>
+                        </div>
+                        <audio style={{ width: '270px' }} id="audioPlayer" controls title={url} src={url}></audio>
+                      </div>
+            }
 		</div>
 	);
 }

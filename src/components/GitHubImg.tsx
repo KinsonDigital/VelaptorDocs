@@ -30,6 +30,19 @@ interface Props {
     * The size of the image as a percentage.
     */
     sizePercentage: number,
+
+    /**
+     * Used to put the control into test mode.
+     * A tag with the api version is not released yet during development.
+     * This will allow the use of the {@link testBranchOrTag} prop to be used
+     * instead to point to the development branch.
+     */
+    useTestMode?: string,
+
+    /**
+     * The branch or tag to use if in test mode.
+     */
+    testBranchOrTag?: string,
 }
 
 /**
@@ -37,7 +50,7 @@ interface Props {
  * @param param The component properties.
  * @returns The component.
  */
-const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relativeImgPath, sizePercentage = 100 }: Props) => {
+const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relativeImgPath, sizePercentage = 100, useTestMode = "false", testBranchOrTag = "" }: Props) => {
     const invalidRepoOwner = repoOwner === undefined || repoOwner === "";
     const invalidRepoName = repoName === undefined || repoName === "";
     const invalidBranchOrTag = branchOrTag === undefined || branchOrTag === "";
@@ -46,29 +59,29 @@ const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relative
     let errorMsg = undefined;
 
     if (invalidRepoOwner) {
-        errorMsg = "You must provide a repository name.";
+        errorMsg = "<GitHubImg/> Error: You must provide a repository name.";
     } else if (invalidRepoName) {
-        errorMsg = "You must provide a repository name.";
+        errorMsg = "<GitHubImg/> Error: You must provide a repository name.";
     } else if (invalidBranchOrTag) {
-        errorMsg = "You must provide a branch or tag.";
+        errorMsg = "<GitHubImg/> Error: You must provide a branch or tag.";
     } else if (invalidRelativeImgPath) {
-        errorMsg = "You must provide a relative image path.";
+        errorMsg = "<GitHubImg/> Error: You must provide a relative image path.";
     }
 
+    branchOrTag = useTestMode ? testBranchOrTag : branchOrTag;
     const pageUrl = `https://github.com/${repoOwner}/${repoName}/blob/${branchOrTag}/${relativeImgPath}`;
     const imgUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/${branchOrTag}/${relativeImgPath}`;
     const sizePercentageStr = `${sizePercentage}%`;
 
-    console.log(`Page Url: ${pageUrl}`);
-    console.log(`Image Url: ${imgUrl}`);
+    const testModeLabel = (<div style={{color: 'yellow'}}>{useTestMode ? "test mode" : ""}</div>);
 
     return (
         <div>
             {
                 errorMsg !== undefined
                     ? <div className="error">{errorMsg}</div>
-                    : <a target="\_blank" href={pageUrl}>
-                        <img style={{width: sizePercentageStr}} src={imgUrl} alt="unknown image"/>
+                    : <a target="\_blank" href={pageUrl} className="bg-green-500">
+                        <img style={{width: sizePercentageStr}} src={imgUrl} alt="unknown image" className="w-full h-auto"/>
                       </a>
             }
         </div>

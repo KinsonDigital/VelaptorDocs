@@ -4,6 +4,16 @@
  * work well for content-centric websites.
  */
 
+@font-face {
+    font-family: 'PlayMeGames';
+    src: url('/static/PlaymegamesReguler-2OOee.woff2') format('woff2');
+}
+
+.hero__title {
+    font-family: "PlayMeGames";
+    font-size: 56pt;
+}
+
 /* You can override the default Infima variables here. */
 :root {
     --ifm-color-primary: #2e8555;

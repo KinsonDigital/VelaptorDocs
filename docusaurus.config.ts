@@ -3,9 +3,6 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import tailwindPlugin from './plugins/tailwind-config.cjs';
 
-const lightCodeTheme = themes.github;
-const darkCodeTheme = themes.dracula;
-
 const config: Config = {
 	title: 'Velaptor',
 	tagline: 'The easy and fun to use 2D game development framework',
@@ -238,8 +235,8 @@ const config: Config = {
 				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.03.08.063705)`,
 			},
 			prism: {
-				theme: lightCodeTheme,
-				darkTheme: darkCodeTheme,
+				theme: themes.github,
+				darkTheme: themes.vsDark,
 				additionalLanguages: ['csharp'],
 			},
 		} satisfies Preset.ThemeConfig,

@@ -49,10 +49,13 @@
 
 .color-step {
     color: #a3836b;
+    font-size: large;
+    font-weight: bold;
 }
 
 .color-sub-step {
     color: #a69384;
+    font-weight: bold;
 }
 
 /* Discord Logo for navbar link */

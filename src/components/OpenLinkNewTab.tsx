@@ -5,15 +5,15 @@ import OpenNewTab from "@site/static/img/new-tab.svg";
  * The properties for the {@link OpenLinkNewTab} component.
  */
 interface OpenLinkNewTabProps {
-    /**
-     * The name of the link.
-     */
-    linkName: string;
+	/**
+	 * The name of the link.
+	 */
+	linkName: string;
 
-    /**
-     * The URL that the link should take the user to in a new tab.
-     */
-    url: string;
+	/**
+	 * The URL that the link should take the user to in a new tab.
+	 */
+	url: string;
 }
 
 /**
@@ -22,15 +22,17 @@ interface OpenLinkNewTabProps {
  * @returns The component.
  */
 const OpenLinkNewTab: React.FC<OpenLinkNewTabProps> = ({ linkName, url }: OpenLinkNewTabProps) => {
-    return (
-        <a href={url}
-            target="_blank"
-            className="link"
-            rel="noopener noreferrer">
-            {linkName}
-            <OpenNewTab style={{paddingTop: '10', paddingLeft: '0.25%', width: '2%'}}/>
-        </a>
-    );
+	return (
+		<div className="inline-flex items-center">
+			<a href={url}
+				target="_blank"
+				className="link flex flex-row"
+				rel="noopener noreferrer">
+				{linkName}
+				<span><OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%'}}/></span>
+			</a>
+		</div>
+	);
 }
 
 export default OpenLinkNewTab;

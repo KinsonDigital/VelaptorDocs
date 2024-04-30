@@ -102,7 +102,7 @@ are automatically called by the scene manager to load and unload content, update
 
 Create a new class named `SceneA` and inherit from the `abstract` `SceneBase` class.
 
-```csharp
+```csharp showLineNumbers showLineNumbers
 public class SceneA : SceneBase
 {
 }
@@ -113,7 +113,7 @@ public class SceneA : SceneBase
 Now, we can take advantage of the lifecycle methods by overriding some of them.  Create the following methods in the
 `SceneA` class.
 
-```csharp
+```csharp showLineNumbers
 public class SceneA : SceneBase
 {
     public override void LoadContent()
@@ -149,7 +149,7 @@ Let us create some loaders and renderers to load and render the content.
 
 Create the class fields for the loaders and renderers.
 
-```csharp
+```csharp showLineNumbers
 public class SceneA: SceneBase
 {
     private readonly ILoader<ITexture> textureLoader;
@@ -162,7 +162,7 @@ public class SceneA: SceneBase
 
 Create a constructor for the scene and then create the loaders and renderers.
 
-```csharp
+```csharp showLineNumbers
 public SceneA()
 {
     this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
@@ -179,7 +179,7 @@ Now that we have a way to load content, we can use the loaders to load the conte
 as class fields so they can be used for the entire lifetime of the scene.
 
 Add the following class fields to store the loaded content.
-```csharp
+```csharp showLineNumbers
 public class SceneA : SceneBase
 {
     ...
@@ -191,7 +191,7 @@ public class SceneA : SceneBase
 
 Now load the content.
 
-```csharp
+```csharp showLineNumbers
 public override void LoadContent()
 {
     this.logoTexture = this.textureLoader.Load("kd-logo");
@@ -212,7 +212,7 @@ you do not need to the content anymore. To free up resources, you can unload the
 
 To do this, use the loaders to unload your content in the `UnloadContent` method as shown below.
 
-```csharp
+```csharp showLineNumbers
 public override void UnloadContent()
 {
     this.textureLoader.Unload(this.logoTexture);
@@ -229,7 +229,7 @@ to be able to have the texture follow the mouse as you move it around the screen
 Create some class fields to get the state of the mouse and remember the position of the mouse.
 We will use the `IAppInput<MouseState> mouse` field to get the state of the mouse on every frame.
 
-```csharp
+```csharp showLineNumbers
 public class SceneA : SceneBase
 {
     ...
@@ -240,7 +240,7 @@ public class SceneA : SceneBase
 
 Go into the constructor and use the `HardwareFactory` to set the mouse input class field.
 
-```csharp
+```csharp showLineNumbers
 public SceneA()
 {
     ...
@@ -251,7 +251,7 @@ public SceneA()
 Awesome!!  Now we have a way to get the state of the mouse.  We can now go into the `Update()` method and add some
 code to get the current position of the mouse.
 
-```csharp
+```csharp showLineNumbers
 public override void Update(FrameTime frameTime)
 {
     var mouseState = this.mouse.GetState();
@@ -273,7 +273,7 @@ The `Update()` method will be called in the same frame as the `Render()` method.
 
 Add the following code to the `Render()` method.
 
-```csharp
+```csharp showLineNumbers
 public override void Render()
 {
     // Convert the `PointF` to a `Vector2`
@@ -295,7 +295,7 @@ load the content, we would get a null reference exception and then we could fix 
 
 Add the following null check code to the beginning of the `Render()` method.
     
-```csharp
+```csharp showLineNumbers
 public override void Render()
 {
     ArgumentNullException.ThrowIfNull(this.logoTexture);
@@ -311,7 +311,7 @@ of the scene to let the user know what to do.
 
 Add some class field constants to hold the width of the window as well as the instruction text.
 
-```csharp
+```csharp showLineNumbers
 public class SceneA : SceneBase
 {
     private const int WindowWidth = 1000;
@@ -322,7 +322,7 @@ public class SceneA : SceneBase
 
 Now just add some code to render the instructions at the top of the scene.
 
-```csharp
+```csharp showLineNumbers
 public override void Render()
 {
     ...
@@ -354,7 +354,7 @@ in the `SceneB` class.
 Again, copy the instructions as before in the first scene. But this time we will have an extra loader.  This extra loader
 will be for loading the audio.  Use the same code but add the extra class field which will be the loader instance.
 
-```csharp
+```csharp showLineNumbers
 public class SceneB : SceneBase
 {
     ...
@@ -365,7 +365,7 @@ public class SceneB : SceneBase
 
 Create the loader instance in the `LoadContent()` method.  This is just an extra line of code compared to the first scene.
 
-```csharp
+```csharp showLineNumbers
 public SceneB()
 {
     ...
@@ -380,7 +380,7 @@ Next, we will create the class fields for the window width and height and then s
 
 Add the class fields for the width and height of the window.
 
-```csharp
+```csharp showLineNumbers
 public class SceneB : SceneBase
 {
     private const int WindowWidth = 1000;
@@ -393,7 +393,7 @@ Load the audio in the `LoadContent()` method and set the default position of the
 This is just a couple extra lines of code compared to the first scene. Also, the name of the texture content
 is different.
 
-```csharp
+```csharp showLineNumbers
 public override void LoadContent()
 {
     this.logoTexture = this.textureLoader.Load("velaptor-mascot"); // 👈🏻 Different texture name
@@ -410,7 +410,7 @@ public override void LoadContent()
 Unloading the content for `SceneB` is the same for `SceneA`, except that the audio content needs to be unloaded.
 This is one extra line of code.
 
-```csharp
+```csharp showLineNumbers
 public override void UnloadContent()
 {
     ...
@@ -426,7 +426,7 @@ image to the position of where the mouse is clicked and then play a sound.
 
 Add the code below to the `Update()` method.
 
-```csharp
+```csharp showLineNumbers
 public override void Update(FrameTime frameTime)
 {
     ArgumentNullException.ThrowIfNull(this.audio);
@@ -464,7 +464,7 @@ state is down, then the left mouse button must have been fully clicked.
 
 This time for the instructions, we will create a class field to hold the instruction text.
 
-```csharp
+```csharp showLineNumbers
 public class SceneB : SceneBase
 {
     ...
@@ -481,7 +481,7 @@ that renders the instructions.
 :::
 
 
-```csharp
+```csharp showLineNumbers
 public override void Render()
 {
     ...

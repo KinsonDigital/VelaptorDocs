@@ -29,19 +29,19 @@ This guide will show you how to use the built-in scene manager as well as the ve
 
 Let's start with the built-in scene manager.
 
-## <span class="color-step">Step 1: Project setup</span>
+## <span className="color-step">Step 1: Project setup</span>
 
 Before we start, make sure you have a basic project set up.
 
 
-### <span class="color-sub-step">Step 1.1: Setup project</span>
+### <span className="color-sub-step">Step 1.1: Setup project</span>
 
 To get started, create a new Velaptor application.
 :::note Refer To Guide
 For more info, refer to the [Project Setup](../project-setup) guide.
 :::
 
-### <span class="color-sub-step">Step 1.2: Add content</span>
+### <span className="color-sub-step">Step 1.2: Add content</span>
 
 By following the [Adding Content](../adding-content) guide, add the content below to your project.
 Just click the images below to download them, and click the three dots on the audio player to download it.
@@ -90,12 +90,12 @@ Absolutely!  Feel free to use any content you want.
 Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` file for audio.
 :::
 
-## <span class="color-step" className="size-20">Step 2: Create the first scene</span>
+## <span className="color-step" className="size-20">Step 2: Create Scene A</span>
 
 We will be creating two scenes.  One is named `SceneA` and the other is named `SceneB`.  If we want to demonstrate how to navigate
 between scenes, we need more than one scene.  We will create `SceneA` first.
 
-### <span class="color-sub-step">Step 2.1: Create the class</span>
+### <span className="color-sub-step">Step 2.1: Create the class</span>
 
 Scenes have various lifecycle methods that we can take advantage of just like with the `Window` class.  These methods
 are automatically called by the scene manager to load and unload content, update the scene, and render the scene.
@@ -108,7 +108,7 @@ public class SceneA : SceneBase
 }
 ```
 
-### <span class="color-sub-step">Step 2.2: Override methods</span>
+### <span className="color-sub-step">Step 2.2: Override methods</span>
 
 Now, we can take advantage of the lifecycle methods by overriding some of them.  Create the following methods in the
 `SceneA` class.
@@ -142,7 +142,7 @@ public class SceneA : SceneBase
 }
 ```
 
-### <span class="color-sub-step">Step 2.3: Create loaders and renderers</span>
+### <span className="color-sub-step">Step 2.3: Create loaders and renderers</span>
 
 We cannot load, use, render, and unload our scene content without our loaders and renderers.
 Let us create some loaders and renderers to load and render the content.
@@ -173,7 +173,7 @@ public SceneA()
 }
 ```
 
-### <span class="color-sub-step">Step 2.4: Load the scene content</span>
+### <span className="color-sub-step">Step 2.4: Load the scene content</span>
 
 Now that we have a way to load content, we can use the loaders to load the content.  Let's store the loaded
 as class fields so they can be used for the entire lifetime of the scene.
@@ -205,7 +205,7 @@ Remember, if you have decided to use your content, make sure that the name of th
 matches the name of your content file without the extension.
 :::
 
-### <span class="color-sub-step">Step 2.5: Unloading the content</span>
+### <span className="color-sub-step">Step 2.5: Unloading the content</span>
 
 Depending on your game, you may or may not need to unload the content.  In most cases, if you move to another scene,
 you do not need to the content anymore. To free up resources, you can unload the content in the `UnloadContent` method.
@@ -221,7 +221,7 @@ public override void UnloadContent()
 }
 ```
 
-### <span class="color-sub-step">Step 2.6: Add something interesting</span>
+### <span className="color-sub-step">Step 2.6: Add something interesting</span>
 
 To add something interesting in the scene to see the `Update` and `Render` methods in action, we can use the mouse input
 to be able to have the texture follow the mouse as you move it around the screen.
@@ -287,7 +287,7 @@ public override void Render()
 }
 ```
 
-### <span class="color-sub-step">Step 2.7: A little extra safety</span>
+### <span className="color-sub-step">Step 2.7: A little extra safety</span>
 
 To add a little extra safety, we can check if the content has been loaded before using it.  Not only does this satisfy
 any warnings for null references, but it will also make sure that we remembered to load the content.  If we did not
@@ -304,7 +304,7 @@ public override void Render()
 }
 ```
 
-### <span class="color-sub-step">Step 2.8: Add some instructions</span>
+### <span className="color-sub-step">Step 2.8: Add some instructions</span>
 
 Next, we will add some simple instructions to the scene.  This will be some text that will be rendered at the top
 of the scene to let the user know what to do.
@@ -334,22 +334,22 @@ public override void Render()
 That is it for the first scene!!. We have created our first scene!! Now we can move on to creating the second scene so we can
 demonstrate how to navigate from scene to scene.
 
-## <span class="color-step">Step 3: Create the second scene</span>
+## <span className="color-step">Step 3: Create Scene B</span>
 
 The second scene is almost identical to the first.  The only difference will be the image used, the instruction text, and
 the mouse behavior used.  For the behavior, instead of the image following the mouse, we will simply set the image
 to the position of where the mouse is clicked and then play a sound.
 
-### <span class="color-sub-step">Step 3.1: Create the class</span>
+### <span className="color-sub-step">Step 3.1: Create the class</span>
 
 Just like in the first scene instructions, create a new class but this time, name it `SceneB`.
 
-### <span class="color-sub-step">Step 3.2: Override methods</span>
+### <span className="color-sub-step">Step 3.2: Override methods</span>
 
 This will be the exact same as the first scene.  Create the `LoadContent()`, `UnloadContent()`, `Update()`, and `Render()` methods
 in the `SceneB` class.
 
-### <span class="color-sub-step">Step 3.3: Create loaders and renderers</span>
+### <span className="color-sub-step">Step 3.3: Create loaders and renderers</span>
 
 Again, copy the instructions as before in the first scene. But this time we will have an extra loader.  This extra loader
 will be for loading the audio.  Use the same code but add the extra class field which will be the loader instance.
@@ -374,7 +374,7 @@ public SceneB()
 }
 ```
 
-### <span class="color-sub-step">Step 3.4: Load the scene content</span>
+### <span className="color-sub-step">Step 3.4: Load the scene content</span>
 
 Next, we will create the class fields for the window width and height and then set up the `LoadContent()` method.
 
@@ -405,7 +405,7 @@ public override void LoadContent()
 }
 ```
 
-### <span class="color-sub-step">Step 3.5: Unloading the content</span>
+### <span className="color-sub-step">Step 3.5: Unloading the content</span>
 
 Unloading the content for `SceneB` is the same for `SceneA`, except that the audio content needs to be unloaded.
 This is one extra line of code.
@@ -419,7 +419,7 @@ public override void UnloadContent()
 }
 ```
 
-### <span class="color-sub-step">Step 3.6: Add something interesting</span>
+### <span className="color-sub-step">Step 3.6: Add something interesting</span>
 
 Now this time, the behavior is different then in `SceneA`.  Instead of the image following the mouse, we will set the
 image to the position of where the mouse is clicked and then play a sound.
@@ -460,7 +460,7 @@ button and comparing it to the state of the mouse button in the previous frame. 
 state is down, then the left mouse button must have been fully clicked.
 :::
 
-### <span class="color-sub-step">Step 3.7: Add some instructions</span>
+### <span className="color-sub-step">Step 3.7: Add some instructions</span>
 
 This time for the instructions, we will create a class field to hold the instruction text.
 
@@ -490,3 +490,5 @@ public override void Render()
     ...
 }
 ```
+
+## <span className="color-step">Step 4: Managed Scenes</span>

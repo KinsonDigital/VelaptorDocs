@@ -4,15 +4,15 @@ import React from "react";
  * The properties for the {@link Audio} component.
  */
 interface Props {
-    /**
-     * The URL of the sound to play.
-     */
-    url: string;
+	/**
+	 * The URL of the sound to play.
+	 */
+	url: string;
 
-    /**
-     * The name of the sound.
-     */
-    name?: string;
+	/**
+	 * The name of the sound.
+	 */
+	name?: string;
 }
 
 /**
@@ -22,25 +22,26 @@ interface Props {
  */
 const Audio: React.FC<Props> = ({ url, name }: Props) => {
 	const invalidUrl = url === undefined || url === null || url === '';
+	const hasNoName = name === undefined || name === null || name === '';
 
-    let errorMsg = undefined;
+	let errorMsg = undefined;
 
 	if (invalidUrl) {
 		errorMsg = "<Audio/> Error: The url prop cannot be null, undefined, or empty.";
 	}
 
+	const marginIfNoName = hasNoName ? "mt-2.5" : ""
+
 	return (
 		<div>
-            {
-                errorMsg !== undefined
-                    ? <div className="error">{errorMsg}</div>
-                    : <div>
-                        <div style={{ marginBottom: -13, display: 'flex', justifyContent: 'center' }}>
-                            <h3>{name}</h3>
-                        </div>
-                        <audio style={{ width: '270px' }} id="audioPlayer" controls title={url} src={url}></audio>
-                      </div>
-            }
+			{
+				errorMsg !== undefined
+					? <div className="error">{errorMsg}</div>
+					: <div className="flex flex-col items-center">
+						<h3>{name}</h3>
+						<audio id="audioPlayer" controls title={url} src={url} className={marginIfNoName} />
+					</div>
+			}
 		</div>
 	);
 }

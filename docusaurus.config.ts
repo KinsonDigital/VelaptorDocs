@@ -190,34 +190,31 @@ const config: Config = {
           {
             title: 'Docs',
             items: [
-              {
-                label: 'Guides',
-                to: '/docs/guides/intro',
-              },
-              {
-                label: 'Latest API Docs',
-                to: '/docs/api/Namespaces',
-              },
-              {
-                label: 'Sample Projects',
-                to: 'https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects',
-              },
+			{
+				html: "<a href='/docs/guides/intro' target='_blank'>Guides</a>",
+			},
+			{
+				html: "<a href='/docs/api/Namespaces' target='_blank'>Latest API Docs</a>",
+			},
+			{
+				html: "<a href='https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects' target='_blank'>Sample Projects</a>",
+			},
             ],
           },
           {
             title: 'Find Us',
             items: [
               {
-                label: 'GitHub is amazing and cool',
-                href: 'https://github.com/KinsonDigital/Velaptor',
+				html: `<a href='https://github.com/KinsonDigital/Velaptor' target='_blank'>GitHub</a>`,
               },
               {
-                label: 'Discord',
-                href: 'https://discord.gg/qewu6fNgv7',
+				html: `<a href='https://discord.gg/qewu6fNgv7' target='_blank'>Discord</a>`,
               },
               {
-                label: 'X (Twitter)',
-                href: 'https://x.com/KDCoder',
+				html: `<a href='https://x.com/KDCoder' target='_blank'>X (Twitter)</a>`,
+              },
+              {
+                html: `<a href='https://www.google.com' target='_blank'>More Stuff</a>`,
               },
             ],
           },

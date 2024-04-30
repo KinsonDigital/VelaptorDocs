@@ -59,9 +59,22 @@ public class SceneB : SceneBase
         this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
         this.audio = this.audioLoader.Load("mario-jump", AudioBuffer.Full);
 
+        // Set the default location of the texture to the center of the window
         this.logoPosition = new Point(WindowWidth / 2, WindowHeight / 2);
 
         base.LoadContent();
+    }
+
+    /// <summary>
+    /// Unloades the scenes content.
+    /// </summary>
+    public override void UnloadContent()
+    {
+        this.textureLoader.Unload(this.logoTexture);
+        this.fontLoader.Unload(this.font);
+        this.audioLoader.Unload(this.audio);
+
+        base.UnloadContent();
     }
 
     /// <summary>
@@ -93,8 +106,10 @@ public class SceneB : SceneBase
         ArgumentNullException.ThrowIfNull(this.logoTexture);
         ArgumentNullException.ThrowIfNull(this.font);
 
-        // Render the image
+        // Convert the `PointF` to a `Vector2`
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
+
+        // Render the image
         this.textureRenderer.Render(this.logoTexture, logoPos);
 
         // Render the text

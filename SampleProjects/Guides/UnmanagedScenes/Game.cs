@@ -112,6 +112,7 @@ public class Game : Window
     {
         this.batcher.Begin();
 
+        // Render the current scene.
         this.scenes[this.sceneIndex].Render();
 
         this.batcher.End();

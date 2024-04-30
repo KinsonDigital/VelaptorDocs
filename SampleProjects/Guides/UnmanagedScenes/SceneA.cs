@@ -57,13 +57,23 @@ public class SceneA : SceneBase
     }
 
     /// <summary>
+    /// Unloades the scenes content.
+    /// </summary>
+    public override void UnloadContent()
+    {
+        this.textureLoader.Unload(this.logoTexture);
+        this.fontLoader.Unload(this.font);
+
+        base.UnloadContent();
+    }
+
+    /// <summary>
     /// Updates the scene.
     /// </summary>
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public override void Update(FrameTime frameTime)
     {
         var mouseState = this.mouse.GetState();
-
         this.logoPosition = mouseState.GetPosition();
 
         base.Update(frameTime);
@@ -77,8 +87,10 @@ public class SceneA : SceneBase
         ArgumentNullException.ThrowIfNull(this.logoTexture);
         ArgumentNullException.ThrowIfNull(this.font);
 
-        // Render the image
+        // Convert the `PointF` to a `Vector2`
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
+
+        // Render the image
         this.textureRenderer.Render(this.logoTexture, logoPos);
 
         // Render the text

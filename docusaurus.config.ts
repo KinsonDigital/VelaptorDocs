@@ -89,6 +89,9 @@ const config: Config = {
 			},
 			metadata: [
 				{
+					name: "keywords", content: "Velaptor, 2D, Game, Game Dev, Game Development, Framework, Cross Platform, C#, .NET, OpenGL, KinsonDigital, Kinson Digital"
+				},
+				{
 					name: 'twitter:card',
 					content: 'summary'
 				},

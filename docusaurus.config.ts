@@ -58,6 +58,10 @@ const config: Config = {
 	],
 	themeConfig:
 		{
+			tableOfContents: {
+				minHeadingLevel: 2,
+				maxHeadingLevel: 3,
+			},
 			algolia: {
 				// The application ID provided by Algolia
 				appId: 'QM2KXVA7OT',

@@ -4,7 +4,7 @@ import OpenNewTab from "@site/static/img/new-tab.svg";
 /**
  * The properties for the {@link OpenLinkNewTab} component.
  */
-interface OpenLinkNewTabProps {
+interface Props {
 	/**
 	 * The name of the link.
 	 */
@@ -21,7 +21,7 @@ interface OpenLinkNewTabProps {
  * @param param The component properties.
  * @returns The component.
  */
-const OpenLinkNewTab: React.FC<OpenLinkNewTabProps> = ({ linkName, url }: OpenLinkNewTabProps) => {
+const OpenLinkNewTab: React.FC<Props> = ({ linkName, url }: Props) => {
 	return (
 		<div className="inline-flex items-center">
 			<a href={url}

@@ -73,8 +73,6 @@ const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relative
     const imgUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/${branchOrTag}/${relativeImgPath}`;
     const sizePercentageStr = `${sizePercentage}%`;
 
-    const testModeLabel = (<div style={{color: 'yellow'}}>{useTestMode ? "test mode" : ""}</div>);
-
     return (
         <div>
             {

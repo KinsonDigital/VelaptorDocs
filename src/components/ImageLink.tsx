@@ -3,7 +3,7 @@ import React from "react";
 /**
  * The properties for the {@link ImageLink} component.
  */
-interface ImageLinkProps {
+interface Props {
     /**
      * The URL link to goto when clicking the image.
      */
@@ -26,7 +26,7 @@ interface ImageLinkProps {
  * @param param The component properties.
  * @returns The component.
  */
-const ImageLink: React.FC<ImageLinkProps> = ({ gotoUrl: url, displayUrl, sizePercentage = 50 }: ImageLinkProps) => {
+const ImageLink: React.FC<Props> = ({ gotoUrl: url, displayUrl, sizePercentage = 50 }: Props) => {
     const sizePercentageStr = `${sizePercentage}%`;
 
     const imgUrl = displayUrl === undefined ? url : displayUrl;

@@ -1,0 +1,492 @@
+---
+sidebar_position: 8
+---
+
+import TutorialLink from "@site/src/components/TutorialLink";
+import ImageLink from "@site/src/components/ImageLink";
+import GitHubImg from "@site/src/components/GitHubImg";
+import GuideImg from "@site/src/components/GuideImg";
+import GuideAudio from "@site/src/components/GuideAudio";
+import GitHubDownloadImg from "./images/github-download.png";
+
+# Scenes Management
+
+:::note Guide Source Code
+Go to the following links to see the source code for fully working examples of managed and unmanaged scenes.
+- <TutorialLink projectName="ManagedScenes" version="v1.0.0-preview.35"/>
+- <TutorialLink projectName="UnmanagedScenes" version="v1.0.0-preview.35"/>
+:::
+
+When it comes to games, how you manage your scenes can impact many aspects of your game. It can improve performance by only loading what
+is necessary for that section of your game, keep your code organized, and make it easier to debug, and more. In this guide, we will cover how to manage
+scenes in your game.
+
+_**Velaptor**_ comes with its own scene manager.  This scene manager performs various common tasks for you like loading and unloading,
+auto-updating, rendering, and behavior of how you transition between scenes.  But you also do not have to use the built in
+scene manager!!  If you want more control, you can also build your own scene manager.  _**Velaptor**_ does not stand in your way!
+
+This guide will show you how to use the built-in scene manager as well as the very basics on how to manage scenes yourself.
+
+Let's start with the built-in scene manager.
+
+## <span class="color-step">Step 1: Project setup</span>
+
+Before we start, make sure you have a basic project set up.
+
+
+### <span class="color-sub-step">Step 1.1: Setup project</span>
+
+To get started, create a new Velaptor application.
+:::note Refer To Guide
+For more info, refer to the [Project Setup](../project-setup) guide.
+:::
+
+### <span class="color-sub-step">Step 1.2: Add content</span>
+
+By following the [Adding Content](../adding-content) guide, add the content below to your project.
+Just click the images below to download them, and click the three dots on the audio player to download it.
+
+<div className="flex flex-row items-center">
+    <div className="w-1/3">
+        <GuideImg className="justify-self-end"
+                apiVersion="v1.0.0-preview.35"
+                guideName="ManagedScenes"
+                imgFileName="kd-logo.png"
+                sizePercentage={50}
+                useTestMode="true"
+                testBranchOrTag="feature/226-create-scene-guide"/>
+    </div>
+
+    <div className="w-1/3">
+        <GuideImg className="justify-self-start"
+                apiVersion="v1.0.0-preview.35"
+                guideName="ManagedScenes"
+                imgFileName="velaptor-mascot.png"
+                sizePercentage={55}
+                useTestMode="true"
+                testBranchOrTag="feature/226-create-scene-guide"/>
+    </div>
+
+    <div className="w-1/3">
+        <GuideAudio apiVersion="v1.0.0-preview.35"
+                    guideName="ManagedScenes"
+                    name="Mario Jump"
+                    audioFileName="mario-jump.ogg"
+                    useTestMode="true"
+                    testBranchOrTag="feature/226-create-scene-guide"/>
+    </div>
+</div>
+
+<br/>
+
+:::note WANT TO USE YOUR OWN CONTENT?
+
+When clicking the images above, click the GitHub download button shown below.
+
+<img src={GitHubDownloadImg} width={20 + "%"}/>
+
+Absolutely!  Feel free to use any content you want.
+
+Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` file for audio.
+:::
+
+## <span class="color-step" className="size-20">Step 2: Create the first scene</span>
+
+We will be creating two scenes.  One is named `SceneA` and the other is named `SceneB`.  If we want to demonstrate how to navigate
+between scenes, we need more than one scene.  We will create `SceneA` first.
+
+### <span class="color-sub-step">Step 2.1: Create the class</span>
+
+Scenes have various lifecycle methods that we can take advantage of just like with the `Window` class.  These methods
+are automatically called by the scene manager to load and unload content, update the scene, and render the scene.
+
+Create a new class named `SceneA` and inherit from the `abstract` `SceneBase` class.
+
+```csharp
+public class SceneA : SceneBase
+{
+}
+```
+
+### <span class="color-sub-step">Step 2.2: Override methods</span>
+
+Now, we can take advantage of the lifecycle methods by overriding some of them.  Create the following methods in the
+`SceneA` class.
+
+```csharp
+public class SceneA : SceneBase
+{
+    public override void LoadContent()
+    {
+        // You load content in here
+        base.LoadContent();
+    }
+
+    public override void UnloadContent()
+    {
+        // You unload content in here
+        base.UnloadContent();
+    }
+
+    public override void Update(FrameTime frameTime)
+    {
+        // You update the scene here
+        base.Update(frameTime);
+    }
+
+    public override void Render()
+    {
+        // You render the scene here
+        base.Render();
+    }
+}
+```
+
+### <span class="color-sub-step">Step 2.3: Create loaders and renderers</span>
+
+We cannot load, use, render, and unload our scene content without our loaders and renderers.
+Let us create some loaders and renderers to load and render the content.
+
+Create the class fields for the loaders and renderers.
+
+```csharp
+public class SceneA: SceneBase
+{
+    private readonly ILoader<ITexture> textureLoader;
+    private readonly ILoader<IFont> fontLoader; // Used to load the font to for rendering the instructions
+    private readonly ITextureRenderer textureRenderer;
+    private readonly IFontRenderer fontRenderer; // Used to render the instructions
+    ...
+}
+```
+
+Create a constructor for the scene and then create the loaders and renderers.
+
+```csharp
+public SceneA()
+{
+    this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+    this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+
+    this.textureRenderer = RendererFactory.CreateTextureRenderer();
+    this.fontRenderer = RendererFactory.CreateFontRenderer();
+}
+```
+
+### <span class="color-sub-step">Step 2.4: Load the scene content</span>
+
+Now that we have a way to load content, we can use the loaders to load the content.  Let's store the loaded
+as class fields so they can be used for the entire lifetime of the scene.
+
+Add the following class fields to store the loaded content.
+```csharp
+public class SceneA : SceneBase
+{
+    ...
+    private ITexture? logoTexture;
+    private IFont? font;
+    ...
+}
+```
+
+Now load the content.
+
+```csharp
+public override void LoadContent()
+{
+    this.logoTexture = this.textureLoader.Load("kd-logo");
+    this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
+    ...
+}
+```
+
+:::tip Content Reminder
+Remember, if you have decided to use your content, make sure that the name of the content being loaded
+matches the name of your content file without the extension.
+:::
+
+### <span class="color-sub-step">Step 2.5: Unloading the content</span>
+
+Depending on your game, you may or may not need to unload the content.  In most cases, if you move to another scene,
+you do not need to the content anymore. To free up resources, you can unload the content in the `UnloadContent` method.
+
+To do this, use the loaders to unload your content in the `UnloadContent` method as shown below.
+
+```csharp
+public override void UnloadContent()
+{
+    this.textureLoader.Unload(this.logoTexture);
+    this.fontLoader.Unload(this.font);
+    ...
+}
+```
+
+### <span class="color-sub-step">Step 2.6: Add something interesting</span>
+
+To add something interesting in the scene to see the `Update` and `Render` methods in action, we can use the mouse input
+to be able to have the texture follow the mouse as you move it around the screen.
+
+Create some class fields to get the state of the mouse and remember the position of the mouse.
+We will use the `IAppInput<MouseState> mouse` field to get the state of the mouse on every frame.
+
+```csharp
+public class SceneA : SceneBase
+{
+    ...
+    private readonly IAppInput<MouseState> mouse;
+    private PointF logoPosition;
+}
+```
+
+Go into the constructor and use the `HardwareFactory` to set the mouse input class field.
+
+```csharp
+public SceneA()
+{
+    ...
+    this.mouse = HardwareFactory.GetMouse();
+}
+```
+
+Awesome!!  Now we have a way to get the state of the mouse.  We can now go into the `Update()` method and add some
+code to get the current position of the mouse.
+
+```csharp
+public override void Update(FrameTime frameTime)
+{
+    var mouseState = this.mouse.GetState();
+    this.logoPosition = mouseState.GetPosition();
+    ...
+}
+```
+
+Almost there!!
+
+The final piece is to render the texture at the mouse's position on every frame.  When you move the mouse,
+the position of the mouse is remembered and then used to render the texture at that position.
+
+:::tip INVOKE ORDER Reminder
+Remember, 99% of game frameworks and engines, the `Update()` is called first, and then the `Render()` is called.
+This is no different in _**Velaptor**_.
+The `Update()` method will be called in the same frame as the `Render()` method.
+:::
+
+Add the following code to the `Render()` method.
+
+```csharp
+public override void Render()
+{
+    // Convert the `PointF` to a `Vector2`
+    var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
+
+    // Render the image
+    this.textureRenderer.Render(this.logoTexture, logoPos);
+
+    // Render the text
+    this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
+}
+```
+
+### <span class="color-sub-step">Step 2.7: A little extra safety</span>
+
+To add a little extra safety, we can check if the content has been loaded before using it.  Not only does this satisfy
+any warnings for null references, but it will also make sure that we remembered to load the content.  If we did not
+load the content, we would get a null reference exception and then we could fix the problem.
+
+Add the following null check code to the beginning of the `Render()` method.
+    
+```csharp
+public override void Render()
+{
+    ArgumentNullException.ThrowIfNull(this.logoTexture);
+    ArgumentNullException.ThrowIfNull(this.font);
+    ...
+}
+```
+
+### <span class="color-sub-step">Step 2.8: Add some instructions</span>
+
+Next, we will add some simple instructions to the scene.  This will be some text that will be rendered at the top
+of the scene to let the user know what to do.
+
+Add some class field constants to hold the width of the window as well as the instruction text.
+
+```csharp
+public class SceneA : SceneBase
+{
+    private const int WindowWidth = 1000;
+    private const string Instructions = "Left & right arrow keys to move to scenes.";
+    ...
+}
+```
+
+Now just add some code to render the instructions at the top of the scene.
+
+```csharp
+public override void Render()
+{
+    ...
+    this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
+    ..
+}
+```
+
+That is it for the first scene!!. We have created our first scene!! Now we can move on to creating the second scene so we can
+demonstrate how to navigate from scene to scene.
+
+## <span class="color-step">Step 3: Create the second scene</span>
+
+The second scene is almost identical to the first.  The only difference will be the image used, the instruction text, and
+the mouse behavior used.  For the behavior, instead of the image following the mouse, we will simply set the image
+to the position of where the mouse is clicked and then play a sound.
+
+### <span class="color-sub-step">Step 3.1: Create the class</span>
+
+Just like in the first scene instructions, create a new class but this time, name it `SceneB`.
+
+### <span class="color-sub-step">Step 3.2: Override methods</span>
+
+This will be the exact same as the first scene.  Create the `LoadContent()`, `UnloadContent()`, `Update()`, and `Render()` methods
+in the `SceneB` class.
+
+### <span class="color-sub-step">Step 3.3: Create loaders and renderers</span>
+
+Again, copy the instructions as before in the first scene. But this time we will have an extra loader.  This extra loader
+will be for loading the audio.  Use the same code but add the extra class field which will be the loader instance.
+
+```csharp
+public class SceneB : SceneBase
+{
+    ...
+    private readonly ILoader<IAudio> audioLoader;
+    ...
+}
+```
+
+Create the loader instance in the `LoadContent()` method.  This is just an extra line of code compared to the first scene.
+
+```csharp
+public SceneB()
+{
+    ...
+    this.audioLoader = ContentLoaderFactory.CreateAudioLoader();
+    ...
+}
+```
+
+### <span class="color-sub-step">Step 3.4: Load the scene content</span>
+
+Next, we will create the class fields for the window width and height and then set up the `LoadContent()` method.
+
+Add the class fields for the width and height of the window.
+
+```csharp
+public class SceneB : SceneBase
+{
+    private const int WindowWidth = 1000;
+    private const int WindowHeight = 1000;
+    ...
+}
+```
+
+Load the audio in the `LoadContent()` method and set the default position of the texture.
+This is just a couple extra lines of code compared to the first scene. Also, the name of the texture content
+is different.
+
+```csharp
+public override void LoadContent()
+{
+    this.logoTexture = this.textureLoader.Load("velaptor-mascot"); // 👈🏻 Different texture name
+    this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
+    this.audio = this.audioLoader.Load("mario-jump", AudioBuffer.Full); // 👈🏻 New load audio line
+
+    this.logoPosition = new Point(WindowWidth / 2, WindowHeight / 2); // 👈🏻 New default logo position
+    this.LoadContent();
+}
+```
+
+### <span class="color-sub-step">Step 3.5: Unloading the content</span>
+
+Unloading the content for `SceneB` is the same for `SceneA`, except that the audio content needs to be unloaded.
+This is one extra line of code.
+
+```csharp
+public override void UnloadContent()
+{
+    ...
+    this.audioLoader.Unload(this.audio); // 👈🏻 New line to unload content
+    ...
+}
+```
+
+### <span class="color-sub-step">Step 3.6: Add something interesting</span>
+
+Now this time, the behavior is different then in `SceneA`.  Instead of the image following the mouse, we will set the
+image to the position of where the mouse is clicked and then play a sound.
+
+Add the code below to the `Update()` method.
+
+```csharp
+public override void Update(FrameTime frameTime)
+{
+    ArgumentNullException.ThrowIfNull(this.audio);
+
+    var currentMouseState = this.mouse.GetState();
+
+    // If the left mouse button was fully clicked
+    if (currentMouseState.IsLeftButtonUp() && this.prevMouseState.IsLeftButtonDown())
+    {
+        this.audio.Play();
+        this.logoPosition = currentMouseState.GetPosition();
+    }
+
+    this.prevMouseState = currentMouseState;
+    base.Update(frameTime);
+}
+```
+
+This is what is happening in the code above:  
+1\. The `audio` content is checked to make sure it is not null.
+
+2\. The current state of the mouse is retrieved.
+
+3\. If the left mouse button has been fully clicked, the audio is played and the position of the texture is set to the position of the mouse.
+
+4\. The previous mouse state is set to the current mouse state.
+
+:::info Fully Clicked? 😕
+How do we know if the left mouse was fully clicked? This is works because we are getting the current state of the mouse
+button and comparing it to the state of the mouse button in the previous frame.  If the current state is up and the previous
+state is down, then the left mouse button must have been fully clicked.
+:::
+
+### <span class="color-sub-step">Step 3.7: Add some instructions</span>
+
+This time for the instructions, we will create a class field to hold the instruction text.
+
+```csharp
+public class SceneB : SceneBase
+{
+    ...
+    private const string Instructions = "Left & right arrow keys to move to scenes.\nClick anywhere in the window.";
+    ...
+}
+```
+
+Now all we need to do is render the instructions at the top of the scene.  Update the `Render()` method.
+
+:::note difference
+The only difference with this render method compared to the `SceneA`'s render method is the line of code
+that renders the instructions.
+:::
+
+
+```csharp
+public override void Render()
+{
+    ...
+    // Render the text
+    this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
+    ...
+}
+```

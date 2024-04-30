@@ -1,0 +1,8 @@
+{
+    "label": "Scenes",
+    "position": 8,
+    "link": {
+        "type": "generated-index",
+        "description": "Tutorials on how to use Velaptor to create games."
+    }
+}

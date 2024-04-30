@@ -194,13 +194,21 @@ const config: Config = {
                 label: 'Guides',
                 to: '/docs/guides/intro',
               },
+              {
+                label: 'Latest API Docs',
+                to: '/docs/api/Namespaces',
+              },
+              {
+                label: 'Sample Projects',
+                to: 'https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects',
+              },
             ],
           },
           {
             title: 'Find Us',
             items: [
               {
-                label: 'GitHub',
+                label: 'GitHub is amazing and cool',
                 href: 'https://github.com/KinsonDigital/Velaptor',
               },
               {
@@ -208,7 +216,7 @@ const config: Config = {
                 href: 'https://discord.gg/qewu6fNgv7',
               },
               {
-                label: 'X',
+                label: 'X (Twitter)',
                 href: 'https://x.com/KDCoder',
               },
             ],
@@ -233,7 +241,7 @@ const config: Config = {
           src: 'img/kinson-digital-logo.png',
           href: 'https://github.com/KinsonDigital',
         },
-        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.03.08.063705) - Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.03.08.063705)`,
       },
       prism: {
         theme: lightCodeTheme,

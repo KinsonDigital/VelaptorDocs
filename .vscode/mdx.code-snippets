@@ -56,6 +56,14 @@
 		],
 		"description": "Tutorial Sub Step"
 	},
+	"Sub-Step-Item": {
+		"scope": "mdx",
+		"prefix": "sub-step-item",
+		"body": [
+			"#### <span className=\"color-sub-step-item\">Step ${1: sub step #}${2: letter}: ${3: description}</span>\n\n$4"
+		],
+		"description": "Tutorial Sub Step Item"
+	},
 	"Note Admonition": {
 		"scope": "mdx",
 		"prefix": "note-admonition",

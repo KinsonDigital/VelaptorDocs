@@ -60,7 +60,7 @@ const config: Config = {
 		{
 			tableOfContents: {
 				minHeadingLevel: 2,
-				maxHeadingLevel: 3,
+				maxHeadingLevel: 4,
 			},
 			algolia: {
 				// The application ID provided by Algolia

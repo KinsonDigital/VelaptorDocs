@@ -29,7 +29,7 @@ public class SceneB : SceneBase
     private readonly IFontRenderer fontRenderer;
     private readonly ILoader<IAudio> audioLoader;
     private readonly IAppInput<MouseState> mouse;
-    private Point logoPosition;
+    private PointF logoPosition;
     private MouseState prevMouseState;
     private ITexture? logoTexture;
     private IFont? font;

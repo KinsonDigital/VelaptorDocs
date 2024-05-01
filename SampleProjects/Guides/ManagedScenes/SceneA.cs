@@ -28,8 +28,8 @@ public class SceneA : SceneBase
     private readonly IFontRenderer fontRenderer;
     private readonly IAppInput<MouseState> mouse;
     private ITexture? logoTexture;
-    private IFont? font;
     private PointF logoPosition;
+    private IFont? font;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SceneA"/> class.
@@ -73,8 +73,8 @@ public class SceneA : SceneBase
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     public override void Update(FrameTime frameTime)
     {
-        var mouseState = this.mouse.GetState();
-        this.logoPosition = mouseState.GetPosition();
+        var currentMouseState = this.mouse.GetState();
+        this.logoPosition = currentMouseState.GetPosition();
 
         base.Update(frameTime);
     }

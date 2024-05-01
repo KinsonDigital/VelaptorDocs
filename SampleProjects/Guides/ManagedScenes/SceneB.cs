@@ -24,16 +24,16 @@ public class SceneB : SceneBase
     private const int WindowHeight = 1000;
     private const string Instructions = "Left & right arrow keys to move to scenes.\nClick anywhere in the window.";
     private readonly ILoader<ITexture> textureLoader;
-    private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<IFont> fontLoader;
-    private readonly IFontRenderer fontRenderer;
     private readonly ILoader<IAudio> audioLoader;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly IFontRenderer fontRenderer;
     private readonly IAppInput<MouseState> mouse;
-    private Point logoPosition;
-    private MouseState prevMouseState;
     private ITexture? logoTexture;
+    private PointF logoPosition;
     private IFont? font;
     private IAudio? audio;
+    private MouseState prevMouseState;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SceneB"/> class.
@@ -103,8 +103,8 @@ public class SceneB : SceneBase
     /// </summary>
     public override void Render()
     {
-        ArgumentNullException.ThrowIfNull(this.font);
         ArgumentNullException.ThrowIfNull(this.logoTexture);
+        ArgumentNullException.ThrowIfNull(this.font);
 
         // Convert the `PointF` to a `Vector2`
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);

@@ -70,13 +70,18 @@
 }
 
 .color-step {
-    color: #a3836b;
+    color: hsl(26, 16%, 60%);
     font-size: large;
     font-weight: bold;
 }
 
 .color-sub-step {
-    color: #a69384;
+    color: hsl(26, 16%, 50%);
+    font-weight: bold;
+}
+
+.color-sub-step-item {
+    color: hsl(26, 16%, 35%);
     font-weight: bold;
 }
 

@@ -242,6 +242,37 @@ const config: Config = {
 				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.03.08.063705)`,
 			},
 			prism: {
+				/* We disabled the default magic comments and added custom ones to support better naming and colors
+				 * to represent the removal and adding of code lines.
+				 * 
+				 * The css for these custom magic comments can be found in the custom.css file with the following classes:
+				 * 1. code-block-highlight-add-line
+				 * 2. code-block-highlight-remove-line
+				*/
+				magicComments: [
+					// This is disabled on purpose and is replaced by the 'highlight-add' setup below it
+					// {
+					// 	className: 'theme-code-block-highlighted-line',
+					// 	line: 'highlight-next-line',
+					// 	block: { start: 'highlight-start', end: 'highlight-end' },
+					// },
+					{
+						className: 'code-block-highlight-add-line',
+						line: 'highlight-add-next-line',
+						block: {
+							start: "highlight-add-start",
+							end: "highlight-add-end",
+						}
+					},
+					{
+						className: 'code-block-highlight-remove-line',
+						line: 'highlight-remove-next-line',
+						block: {
+							start: "highlight-remove-start",
+							end: "highlight-remove-end",
+						}
+					},
+				],
 				theme: themes.github,
 				darkTheme: themes.vsDark,
 				additionalLanguages: ['csharp'],

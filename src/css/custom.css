@@ -1,4 +1,3 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -71,7 +70,6 @@
 
 .color-step {
     color: hsl(26, 16%, 60%);
-    font-size: large;
     font-weight: bold;
 }
 
@@ -81,7 +79,7 @@
 }
 
 .color-sub-step-item {
-    color: hsl(26, 16%, 35%);
+    color: hsl(26, 16%, 40%);
     font-weight: bold;
 }
 

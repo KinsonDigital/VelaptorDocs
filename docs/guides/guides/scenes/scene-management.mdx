@@ -27,8 +27,7 @@ _**Velaptor**_ comes with a scene manager, which performs tasks like loading and
 You can also build a custom scene manager for more control.  _**Velaptor**_ does not stand in your way!
 
 :::note ABOUT THIS GUIDE
-This guide will not show you how to manage scenes yourself.  That is a more advanced topic.  If you are interested
-in how it works, _**Velaptor**_ is open source!  You can see how we built the scene manager and how it works by looking at the source code.
+This guide will not show you how to manage scenes yourself.  That is a more advanced topic.  If you are interested, _**Velaptor**_ is open source!  You can see how we built the scene manager and how it works by looking at the source code.
 :::
 
 
@@ -85,12 +84,14 @@ You can download the images below by clicking them and the audio player by click
 
 <br/>
 
-:::note WANT TO USE YOUR CONTENT?
-
-When clicking the images above, click the GitHub download button shown below.
+:::tip GETTING IMAGES
+Clicking the images above will take you to a GitHub page.  On the page, click the download button shown below.
 
 <img src={GitHubDownloadImg} width={20 + "%"}/>
+:::
 
+
+:::note WANT TO USE YOUR CONTENT?
 Absolutely!  Feel free to use any content you want.
 
 Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` file for audio.
@@ -162,7 +163,7 @@ public class SceneA: SceneBase
 {
     // highlight-add-start
     private readonly ILoader<ITexture> textureLoader;
-    private readonly ILoader<IFont> fontLoader; // Used to load the font to for rendering the instructions
+    private readonly ILoader<IFont> fontLoader; // Used to load the font for rendering the instructions
     private readonly ITextureRenderer textureRenderer;
     private readonly IFontRenderer fontRenderer; // Used to render the instructions
     // highlight-add-end
@@ -171,6 +172,8 @@ public class SceneA: SceneBase
 ```
 
 #### <span className="color-sub-step-item">Step 2.3b: Set loaders and renderers</span>
+
+Create a constructor and add the following code to set the loaders and renderers.
 
 ```csharp showLineNumbers
 // highlight-add-start
@@ -197,7 +200,7 @@ Add the following class fields to hold the texture and font.
 public class SceneA : SceneBase
 {
     private readonly ILoader<ITexture> textureLoader;
-    private readonly ILoader<IFont> fontLoader; // Used to load the font to for rendering the instructions
+    private readonly ILoader<IFont> fontLoader; // Used to load the font for rendering the instructions
     private readonly ITextureRenderer textureRenderer;
     private readonly IFontRenderer fontRenderer; // Used to render the instructions
     // highlight-add-start
@@ -245,6 +248,11 @@ public override void UnloadContent()
 }
 ```
 
+:::tip PREVENT MULTIPLE UNLOADS
+
+:::
+
+
 ### <span className="color-sub-step">Step 2.6: Add something interesting</span>
 
 To add something interesting in the scene to see the `Update()` and `Render()` methods in action, we can use the mouse input
@@ -257,7 +265,7 @@ We will use the `IAppInput<MouseState> mouse` field to get the state of the mous
 public class SceneA : SceneBase
 {
     private readonly ILoader<ITexture> textureLoader;
-    private readonly ILoader<IFont> fontLoader; // Used to load the font to for rendering the instructions
+    private readonly ILoader<IFont> fontLoader; // Used to load the font for rendering the instructions
     private readonly ITextureRenderer textureRenderer;
     private readonly IFontRenderer fontRenderer; // Used to render the instructions
     // highlight-add-next-line
@@ -376,10 +384,10 @@ public class SceneA : SceneBase
 {
     // highlight-add-start
     private const int WindowWidth = 1000;
-    private const string Instructions = "Left & right arrow keys to move to scenes.";
+    private const string Instructions = "Left & right arrow keys to navigate to scenes.";
     // highlight-add-end
     private readonly ILoader<ITexture> textureLoader;
-    private readonly ILoader<IFont> fontLoader; // Used to load the font to for rendering the instructions
+    private readonly ILoader<IFont> fontLoader; // Used to load the font for rendering the instructions
     private readonly ITextureRenderer textureRenderer;
     private readonly IFontRenderer fontRenderer; // Used to render the instructions
     private readonly IAppInput<MouseState> mouse;
@@ -405,8 +413,10 @@ public override void Render()
     // Render the image
     this.textureRenderer.Render(this.logoTexture, logoPos);
 
+    // highlight-add-start
     // Render the text
     this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
+    // highlight-add-end
 
     base.Render();
 }
@@ -426,6 +436,27 @@ Also, rename the constructor from `SceneA` to `SceneB`.
 After this is complete, we will make the necessary changes.  Do not worry; we will show you what should be removed
 and added.
 
+Perform the rename as shown below.
+
+```csharp showLineNumbers
+// highlight-remove-next-line
+public class SceneA : SceneBase
+// highlight-add-next-line
+public class SceneB : SceneBase
+{
+    ...
+    // highlight-remove-next-line
+    public SceneA()
+    // highlight-add-next-line
+    public SceneB()
+    {
+        ...
+    }
+}
+
+```
+
+
 ### <span className="color-sub-step">Step 3.2: Add class fields</span>
 
 Here, we will add some additional class fields. You can use the class fields to hold the audio, which makes a sound every time the user clicks the mouse button and updates the instructions.
@@ -436,7 +467,7 @@ public class SceneB : SceneBase
     private const int WindowWidth = 1000;
     // highlight-add-next-line
     private const int WindowHeight = 1000;
-    private const string Instructions = "Left & right arrow keys to move to scenes.\nClick anywhere in the window.";
+    private const string Instructions = "Left & right arrow keys to navigate to scenes.\nClick anywhere in the window.";
     private readonly ILoader<ITexture> textureLoader;
     // highlight-add-next-line
     private readonly ILoader<IFont> fontLoader;
@@ -513,7 +544,7 @@ public override void UnloadContent()
 }
 ```
 
-### <span className="color-sub-step">Step 3.6: Change behavior</span>
+### <span className="color-sub-step">Step 3.6: Change the behavior</span>
 
 The most significant change in `SceneB` is the behavior.
 The texture's position will be set, and a sound will be played wherever the user clicks the mouse.
@@ -588,7 +619,7 @@ In the `Game` constructor, you will instantiate the scenes and add them to the m
 You should have created the `Game` class in step [Step 1.1](./scene-management.mdx#step-11-setup-project).
 :::
 
-Set the title and the window size.
+Set the title and the window size in the constructor.
 
 ```csharp showLineNumbers
 public Game()
@@ -603,7 +634,7 @@ public Game()
 
 ### <span className="color-sub-step">Step 4.2: Keyboard scene navigation</span>
 
-We will be using the arrow keyboard keys to navigate between the scenes, which is something you should be familiar with.
+We will be using the arrow keyboard keys to navigate between the scenes.  Keyboard input is something you should be familiar with.
 
 #### <span className="color-sub-step-item">Step 4.2a: Keyboard input fields</span>
 
@@ -636,7 +667,7 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">Step 4.3: Create scenes</span>
+### <span className="color-sub-step">Step 4.3: Create the scenes</span>
 
 Now, we can create instances of the scenes we made earlier in the guide and add them to the scene manager.
 
@@ -681,8 +712,8 @@ public Game()
 
 ### <span className="color-sub-step">Step 4.4: Scene navigation behavior</span>
 
-Now, all we need is to add some logic to the `Update()` method to navigate between the scenes when the user.
-Press the left or right arrow keys.
+Now, add some logic to the `Update()` method.  It will allow the user to navigate between the scenes if the left or
+right arrow keys are pressed.
 
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)

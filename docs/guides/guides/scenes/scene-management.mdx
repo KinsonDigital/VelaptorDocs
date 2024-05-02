@@ -27,8 +27,11 @@ _**Velaptor**_ comes with its own scene manager.  This scene manager performs va
 auto-updating, rendering, and behavior of how you transition between scenes.  But you also do not have to use the built in
 scene manager!  If you want more control, you can also build your own scene manager.  _**Velaptor**_ does not stand in your way!
 
-This guide will show you how to use the built-in scene manager as well as the very basics on how to manage scenes yourself.
-We will be creating two scenes in this guide to help demonstrate how to manage scenes.
+:::note ABOUT THIS GUIDE
+This guide will not show you how to manage scenes yourself.  That is a more advanced topic.  If you are interested
+in how it works, _**Velaptor**_ is open source!!  You can see how we built the scene manager and see how it works by looking at the source code.
+:::
+
 
 Let's start by creating our first scene.
 
@@ -42,9 +45,7 @@ Before we start, make sure you have a basic project set up.
 To get started, create a new _**Velaptor**_ application.
 :::note Refer To Guide
 
-<Url href="../project-setup" text="Project Setup"/>
-
-For more info, refer to the [Project Setup](../project-setup 'asdf') guide.
+For more info, refer to the [Project Setup](../project-setup) guide.
 :::
 
 ### <span className="color-sub-step">Step 1.2: Add content</span>
@@ -96,7 +97,7 @@ Absolutely!  Feel free to use any content you want.
 Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` file for audio.
 :::
 
-## <span className="color-step" className="size-20">Step 2: Create Scene A</span>
+## <span className="color-step">Step 2: Create Scene A</span>
 
 We will be creating two scenes.  One will be named `SceneA` and the other will be named `SceneB`.  If we want to demonstrate how to navigate
 between scenes, we need more than one scene.  We will create `SceneA` first.
@@ -584,3 +585,144 @@ public override void Render()
 ```
 
 ## <span className="color-step">Step 4: Managed Scenes</span>
+
+So now we have two scenes to work with. Each scene does something a little different so that way we can see the difference
+between the scenes as we navigate between them.  But what is the point of multiple scenes if you can't get to them?
+
+Let's get into it!!
+
+
+There are two ways to manage scenes.  You can either use the built-in scene manager or you can manage the scenes yourself.
+Why would you want to manage the scenes yourself?  Well, you may want more control over how the scenes are managed.  Maybe
+during the time of developing your game, the built in scene manager does not have a particular feature you need.
+
+This is software.  Flexibility is important for many kinds of software, but in games it is even more important.
+
+### <span className="color-sub-step">Step 4.1: Update the game class</span>
+
+So far we have created the scenes, but we have not created out game class yet.  In the game class, this is where you will
+instantiate the scenes and add them to the manager.
+
+In step [Step 1.1](./scene-management.mdx#step-11-setup-project), you should of already created the class.
+
+In the code shown below, set the title of the tile and size of the window.
+
+```csharp showLineNumbers
+public Game()
+{
+    // highlight-add-start
+    Title = "Managed Scenes";
+    Width = 1000;
+    Height = 1000;
+    // highlight-add-end
+}
+```
+
+### <span className="color-sub-step">Step 4.2: Keyboard scene navigation</span>
+
+We will be using the arrow keyboard keys to navigate between the scenes.  This is something you should be familiar with.
+
+#### <span className="color-sub-step-item">Step 4.2a: Keyboard input fields</span>
+
+Add the 2 class fields and create a keyboard object.
+
+```csharp showLineNumbers
+public class Game : Window
+{
+    // highlight-add-start
+    private readonly IAppInput<KeyboardState> keyboard;
+    private KeyboardState prevKeyState;
+    // highlight-add-end
+    ...
+}
+```
+
+#### <span className="color-sub-step">Step 4.2b: Create keyboard input object</span>
+
+In the constructor, create the keyboard object.
+
+```csharp showLineNumbers
+public Game()
+{
+    Title = "Managed Scenes";
+    Width = 1000;
+    Height = 1000;
+
+    // highlight-add-next-line
+    this.keyboard = HardwareFactory.GetKeyboard();
+}
+```
+
+### <span className="color-sub-step">Step 4.3: Create scenes</span>
+
+Now we can create instances of the scenes we created earlier in the guide and add them to the scene manager.
+
+#### <span className="color-sub-step-item">Step 4.3a: Create scene instances</span>
+
+```csharp showLineNumbers
+public Game()
+{
+    Title = "Managed Scenes";
+    Width = 1000;
+    Height = 1000;
+
+    this.keyboard = HardwareFactory.GetKeyboard();
+
+    // highlight-add-start
+    var sceneA = new SceneA { Name = "Scene A", };
+    var sceneB = new SceneB { Name = "Scene B", };
+    // highlight-add-end
+}
+```
+
+#### <span className="color-sub-step-item">Step 4.3b: Add scenes to the manager</span>
+
+```csharp showLineNumbers
+public Game()
+{
+    Title = "Managed Scenes";
+    Width = 1000;
+    Height = 1000;
+
+    this.keyboard = HardwareFactory.GetKeyboard();
+
+    var sceneA = new SceneA { Name = "Scene A", };
+    var sceneB = new SceneB { Name = "Scene B", };
+
+    // highlight-add-start
+    SceneManager.AddScene(sceneA, setToActive: true);
+    SceneManager.AddScene(sceneB);
+    // highlight-add-end
+}
+```
+
+### <span className="color-sub-step">Step 4.4: Scene navigation behavior</span>
+
+Now all we need now is to add some logic to the `Update()` method to navigate between the scenes when the user
+presses the left or right arrow keys.
+
+```csharp showLineNumbers
+protected override void OnUpdate(FrameTime frameTime)
+{
+    // highlight-add-start
+    var currentKeyState = this.keyboard.GetState();
+
+    // If the user has pressed the left or right arrow keys
+    if (currentKeyState.IsKeyDown(KeyCode.Right) && this.prevKeyState.IsKeyUp(KeyCode.Right))
+    {
+        SceneManager.NextScene();
+    }
+    else if (currentKeyState.IsKeyDown(KeyCode.Left) && this.prevKeyState.IsKeyUp(KeyCode.Left))
+    {
+        SceneManager.PreviousScene();
+    }
+
+    this.prevKeyState = currentKeyState;
+    base.OnUpdate(frameTime);
+    // highlight-add-end
+}
+```
+
+That is it!!  You have created a game with two scenes and you can navigate between them using the arrow keys.
+As you can see, the code for managing the scenes is straight forward and minimal.  All of the scene content loading and unloading,
+updating, and rendering is handled by the scene manager.

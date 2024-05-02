@@ -78,7 +78,7 @@ const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relative
             {
                 errorMsg !== undefined
                     ? <div className="error">{errorMsg}</div>
-                    : <a target="\_blank" href={pageUrl} className="bg-green-500">
+                    : <a target="\_blank" href={pageUrl}>
                         <img style={{width: sizePercentageStr}} src={imgUrl} alt="unknown image" className="w-full h-auto"/>
                       </a>
             }

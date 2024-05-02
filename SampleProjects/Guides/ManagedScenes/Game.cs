@@ -44,7 +44,7 @@ public class Game : Window
     {
         var currentKeyState = this.keyboard.GetState();
 
-        // If the right arrow key has been pressed
+        // If the user has pressed the left or right arrow keys
         if (currentKeyState.IsKeyDown(KeyCode.Right) && this.prevKeyState.IsKeyUp(KeyCode.Right))
         {
             SceneManager.NextScene();

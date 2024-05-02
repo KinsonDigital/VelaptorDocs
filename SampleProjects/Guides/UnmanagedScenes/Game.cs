@@ -76,6 +76,7 @@ public class Game : Window
     {
         var currentKeyState = this.keyboard.GetState();
 
+        // If the user pressed the right arrow key
         if (currentKeyState.IsKeyDown(KeyCode.Right) && this.prevKeyState.IsKeyUp(KeyCode.Right))
         {
             this.sceneIndex++;
@@ -86,6 +87,7 @@ public class Game : Window
             }
         }
 
+        // If the user pressed the left arrow key
         if (currentKeyState.IsKeyDown(KeyCode.Left) && this.prevKeyState.IsKeyUp(KeyCode.Left))
         {
             this.sceneIndex--;

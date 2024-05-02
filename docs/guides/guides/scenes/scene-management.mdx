@@ -10,26 +10,25 @@ import GuideAudio from "@site/src/components/GuideAudio";
 import Url from "@site/src/components/Url";
 import GitHubDownloadImg from "./images/github-download.png";
 
-# Scenes Management
+# Scene Management
 
 :::note Guide Source Code
-Go to the following links to see the source code for fully working examples of managed and unmanaged scenes.
+Go to the following links for the source code for fully working examples of managed and unmanaged scenes.
 
 - <TutorialLink projectName="ManagedScenes" version="v1.0.0-preview.35"/>
 - <TutorialLink projectName="UnmanagedScenes" version="v1.0.0-preview.35"/>
 :::
 
 When it comes to games, how you manage your scenes can impact many aspects of your game. It can improve performance by only loading what
-is necessary for that section of your game, keep your code organized, and make it easier to debug, and more. In this guide, we will cover how to manage
-scenes in your game.
+is necessary for that section of your game, keeping your code organized, and making debugging more effortless. This guide will cover how to manage scenes in your game.
 
-_**Velaptor**_ comes with its own scene manager.  This scene manager performs various common tasks for you like loading and unloading,
-auto-updating, rendering, and behavior of how you transition between scenes.  But you also do not have to use the built in
-scene manager!  If you want more control, you can also build your own scene manager.  _**Velaptor**_ does not stand in your way!
+
+_**Velaptor**_ comes with a scene manager, which performs tasks like loading and unloading content, updating, rendering, and determining how you transition between scenes. 
+You can also build a custom scene manager for more control.  _**Velaptor**_ does not stand in your way!
 
 :::note ABOUT THIS GUIDE
 This guide will not show you how to manage scenes yourself.  That is a more advanced topic.  If you are interested
-in how it works, _**Velaptor**_ is open source!!  You can see how we built the scene manager and see how it works by looking at the source code.
+in how it works, _**Velaptor**_ is open source!  You can see how we built the scene manager and how it works by looking at the source code.
 :::
 
 
@@ -37,7 +36,7 @@ Let's start by creating our first scene.
 
 ## <span className="color-step">Step 1: Project setup</span>
 
-Before we start, make sure you have a basic project set up.
+Before we start, make sure you have a project set up.
 
 
 ### <span className="color-sub-step">Step 1.1: Setup project</span>
@@ -45,13 +44,13 @@ Before we start, make sure you have a basic project set up.
 To get started, create a new _**Velaptor**_ application.
 :::note Refer To Guide
 
-For more info, refer to the [Project Setup](../project-setup) guide.
+Refer to the [Project Setup](../project-setup) guide for more info.
 :::
 
 ### <span className="color-sub-step">Step 1.2: Add content</span>
 
-By following the [Adding Content](../adding-content) guide, add the content below to your project.
-Just click the images below to download them, and click the three dots on the audio player to download it.
+Follow the [Adding Content](../adding-content) guide to add the content below to your project.
+You can download the images below by clicking them and the audio player by clicking the three dots.
 
 <div className="flex flex-row items-center">
     <div className="w-1/3">
@@ -86,7 +85,7 @@ Just click the images below to download them, and click the three dots on the au
 
 <br/>
 
-:::note WANT TO USE YOUR OWN CONTENT?
+:::note WANT TO USE YOUR CONTENT?
 
 When clicking the images above, click the GitHub download button shown below.
 
@@ -99,12 +98,12 @@ Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` 
 
 ## <span className="color-step">Step 2: Create Scene A</span>
 
-We will be creating two scenes.  One will be named `SceneA` and the other will be named `SceneB`.  If we want to demonstrate how to navigate
+We will be creating two scenes.  One will be named `SceneA`, and the other will be named `SceneB`.  If we want to demonstrate how to navigate
 between scenes, we need more than one scene.  We will create `SceneA` first.
 
 ### <span className="color-sub-step">Step 2.1: Create the class</span>
 
-Scenes have various lifecycle methods that we can take advantage of just like with the `Window` class.  These methods
+We can take advantage of scenes with various lifecycle methods, similar to the `Window` class.  These methods
 are automatically called by the scene manager to load and unload content, update the scene, and render the scene.
 
 Create a new class named `SceneA` and inherit from the `abstract` `SceneBase` class.
@@ -153,9 +152,8 @@ public class SceneA : SceneBase
 
 ### <span className="color-sub-step">Step 2.3: Create loaders and renderers</span>
 
-We cannot load, use, render, and unload our scene content without our loaders and renderers.
-We need to create the loaders and renderers as class fields so they can be used through the lifetime
-of the scene to load and render the content.
+We must load, use, render, and unload our scene content with our loaders and renderers.
+We need to create the loaders and renderers as class fields, which will be used throughout the scene's lifetime to load and render the content.
 
 #### <span className="color-sub-step-item">Step 2.3a: Create class fields</span>
 
@@ -212,7 +210,7 @@ public class SceneA : SceneBase
 
 #### <span className="color-sub-step-item">Step 2.4b: Load the content</span>
 
-Now we can load the content in the `LoadContent()` method.  Use the loaders to load the texture and font.
+Now, we can load the content using the `LoadContent()` method.  The loaders load the texture and font.
 
 ```csharp showLineNumbers
 public override void LoadContent()
@@ -226,16 +224,15 @@ public override void LoadContent()
 ```
 
 :::tip Content Reminder
-Remember, if you have decided to use your content, make sure that the name of the content being loaded
-matches the name of your content file without the extension.
+Remember, if you have decided to use your content, make sure that the name of the content loaded matches the name of your content file without the extension.
 :::
 
 ### <span className="color-sub-step">Step 2.5: Unloading the content</span>
 
 Depending on your game, you may or may not need to unload the content.  In most cases, if you move to another scene,
-you do not need to the content anymore. To free up resources, you can unload the content in the `UnloadContent` method.
+you no longer need the content. To free up resources, you can unload the content using the `UnloadContent()` method.
 
-To do this, use the loaders to unload your content in the `UnloadContent` method as shown below.
+To do this, use the loaders to unload your content using the `UnloadContent()` method, as shown below.
 
 ```csharp showLineNumbers
 public override void UnloadContent()
@@ -250,10 +247,10 @@ public override void UnloadContent()
 
 ### <span className="color-sub-step">Step 2.6: Add something interesting</span>
 
-To add something interesting in the scene to see the `Update` and `Render` methods in action, we can use the mouse input
-to be able to have the texture follow the mouse as you move it around the screen.
+To add something interesting in the scene to see the `Update()` and `Render()` methods in action, we can use the mouse input
+to have the texture follow the mouse as you move it around the screen.
 
-Create some class fields to get the state of the mouse and remember the position of the mouse.
+Create class fields to get the mouse's state and remember its position.
 We will use the `IAppInput<MouseState> mouse` field to get the state of the mouse on every frame.
 
 ```csharp showLineNumbers
@@ -292,7 +289,7 @@ public SceneA()
 
 #### <span className="color-sub-step-item">Step 2.6b: Setting mouse position</span>
 
-Awesome!!  Now that we have a way to get the state of the mouse.  We can now go into the `Update()` method and add some
+Awesome!  Now that we have a way to get the state of the mouse.  We can now go into the `Update()` method and add some
 code to get the current position of the mouse.
 
 ```csharp showLineNumbers
@@ -307,14 +304,14 @@ public override void Update(FrameTime frameTime)
 }
 ```
 
-Almost there!!
+Almost there!
 
 The final piece is to render the texture at the mouse's position on every frame.  When you move the mouse,
 the position of the mouse is remembered and then used to render the texture at that position.
 
 :::tip INVOKE ORDER REMINDER
-Remember, most game frameworks and engines, the `Update()` is called first, and then the `Render()` is called.
-This is no different in _**Velaptor**_.
+Remember, in most game frameworks and engines, the `Update()` is called first, and then the `Render()` is called.
+_**Velaptor**_ is no different .
 The `Update()` method will be called in the same frame as the `Render()` method.
 :::
 
@@ -342,7 +339,7 @@ public override void Render()
 
 ### <span className="color-sub-step">Step 2.7: A little extra safety</span>
 
-To add some extra safety, we can check if the content was loaded before using it.  Not only does this satisfy
+Before rendering the texture, check if the content is null before using it to add some extra safety.  Not only does this satisfy
 any warnings for null references, but it will also verify that we remembered to load the content.  If we did not
 load the content, we would get a null reference exception, and then we could fix the problem.
 
@@ -368,12 +365,11 @@ public override void Render()
 
 ### <span className="color-sub-step">Step 2.8: Add some instructions</span>
 
-Next, we will add some simple instructions to the scene.  This will be some text that will be rendered at the top
-of the scene to let the user know what to do.
+Next, we will add some simple instructions to the scene and render the instruction text at the top of the window to let the user know what to do.
 
 #### <span className="color-sub-step-item">Step 2.8a: Add constants</span>
 
-Add some class field constants to hold the width of the window as well as the instruction text.
+Add some class field constants to hold the window's width and the instruction text.
 
 ```csharp showLineNumbers
 public class SceneA : SceneBase
@@ -395,7 +391,7 @@ public class SceneA : SceneBase
 
 #### <span className="color-sub-step-item">Step 2.8b: Render the instructions</span>
 
-Now just add some code to render the instructions at the top of the scene.
+Add some code to render the instructions at the scene's top.
 
 ```csharp showLineNumbers
 public override void Render()
@@ -416,27 +412,23 @@ public override void Render()
 }
 ```
 
-That is it for the first scene!!. We have created our first scene!! Now we can move on to creating the second scene so we can
+That is it for the first scene!!. We have created our first scene! Now we can move on to creating the second scene so we can
 demonstrate how to navigate from scene to scene.
 
 ## <span className="color-step">Step 3: Create Scene B</span>
 
-The second scene is almost identical to the first.  The only difference will be the image used, the instruction text, and
-the mouse behavior used.  For the behavior, instead of the image following the mouse, we will simply set the image
-to the position of where the mouse is clicked and then play a sound.
+The second scene is almost identical to the first. The only differences will be the image, the instruction text, and the mouse behavior. For the behavior, instead of following the mouse, we will simply set the image to the position where the mouse is clicked and then play a sound.
 
 ### <span className="color-sub-step">Step 3.1: Copy the other scene</span>
 
 To make things easier, since `SceneB` will be almost identical to `SceneA`, copy the `SceneA` class and rename it to `SceneB`.
 Also, rename the constructor from `SceneA` to `SceneB`.
-Once this is done, we will go through and make the necessary changes.  Do not worry, we will show what should be removed
-and what should be added.
+After this is complete, we will make the necessary changes.  Do not worry; we will show you what should be removed
+and added.
 
 ### <span className="color-sub-step">Step 3.2: Add class fields</span>
 
-Here we will add some additional class fields.  These fields will be used to
-load and hold audio content to be used to make a sound every time the user clicks
-the mouse button, and update the instructions.
+Here, we will add some additional class fields. You can use the class fields to hold the audio, which makes a sound every time the user clicks the mouse button and updates the instructions.
 
 ```csharp showLineNumbers
 public class SceneB : SceneBase
@@ -465,8 +457,7 @@ public class SceneB : SceneBase
 
 ### <span className="color-sub-step">Step 3.3: Create audio loader</span>
 
-This scene uses audio as part of the behavior as explained before.  This means we need to create
-an audio loader.
+`SceneB` uses audio as part of the behavior, which means we must create an audio loader.
 
 ```csharp showLineNumbers
 public SceneB()
@@ -485,9 +476,7 @@ public SceneB()
 
 ### <span className="color-sub-step">Step 3.4: Update load content</span>
 
-With the additional audio loader, we can now update our `LoadContent()` method to load the audio content.
-In addition, the position of the texture will be set when the user click the mouse. Set a default
-starting position for the texture in the center of the window.  We also cannot forget to change which texture is being loaded.
+Now that we have the additional audio loader, we can update our `LoadContent()` method.
 
 ```csharp showLineNumbers
 public override void LoadContent()
@@ -510,8 +499,7 @@ public override void LoadContent()
 
 ### <span className="color-sub-step">Step 3.5: Update unload content</span>
 
-These scene has an additional type of content that needs to be unloaded.  Update the `UnloadContent()` method to
-unload the audio content.
+This scene has an additional type of content. Update the `UnloadContent()` method to unload the audio content.
 
 ```csharp showLineNumbers
 public override void UnloadContent()
@@ -527,8 +515,8 @@ public override void UnloadContent()
 
 ### <span className="color-sub-step">Step 3.6: Change behavior</span>
 
-The largest change in `SceneB` is the behavior.  Instead of the texture following the mouse, the texture will be set to the
-position of where the mouse is clicked.  When the mouse is clicked, we will play a sound.
+The most significant change in `SceneB` is the behavior.
+The texture's position will be set, and a sound will be played wherever the user clicks the mouse.
 
 ```csharp showLineNumbers
 public override void Update(FrameTime frameTime)
@@ -558,9 +546,8 @@ public override void Update(FrameTime frameTime)
 
 ### <span className="color-sub-step">Step 3.7: Adjust text position</span>
 
-We will update the `Render()` method so that way the instructions are rendered so we can see them.
-Since `SceneB` has larger instruction text, we need to position the text farther down the screen
-so it is not cut off at the top of the window.
+We will update the `Render()` method to render the instructions.
+Since `SceneB` has larger instruction text, we need to position the text farther down so it is not rendered off the screen.
 
 ```csharp showLineNumbers
 public override void Render()
@@ -586,26 +573,22 @@ public override void Render()
 
 ## <span className="color-step">Step 4: Managed Scenes</span>
 
-So now we have two scenes to work with. Each scene does something a little different so that way we can see the difference
-between the scenes as we navigate between them.  But what is the point of multiple scenes if you can't get to them?
+Let's get into it!
 
-Let's get into it!!
+There are two ways to manage scenes.  You can either use the built-in scene manager or manage the scenes yourself.
+Why would you want to manage the scenes yourself?  You may want more control over how you manage scenes, or the built-in scene manager does not have a particular feature you need.
 
-
-There are two ways to manage scenes.  You can either use the built-in scene manager or you can manage the scenes yourself.
-Why would you want to manage the scenes yourself?  Well, you may want more control over how the scenes are managed.  Maybe
-during the time of developing your game, the built in scene manager does not have a particular feature you need.
-
-This is software.  Flexibility is important for many kinds of software, but in games it is even more important.
+Flexibility is important in many kinds of software, but it is even more important in games.
 
 ### <span className="color-sub-step">Step 4.1: Update the game class</span>
 
-So far we have created the scenes, but we have not created out game class yet.  In the game class, this is where you will
-instantiate the scenes and add them to the manager.
+In the `Game` constructor, you will instantiate the scenes and add them to the manager.
 
-In step [Step 1.1](./scene-management.mdx#step-11-setup-project), you should of already created the class.
+:::info REMINDER
+You should have created the `Game` class in step [Step 1.1](./scene-management.mdx#step-11-setup-project).
+:::
 
-In the code shown below, set the title of the tile and size of the window.
+Set the title and the window size.
 
 ```csharp showLineNumbers
 public Game()
@@ -620,7 +603,7 @@ public Game()
 
 ### <span className="color-sub-step">Step 4.2: Keyboard scene navigation</span>
 
-We will be using the arrow keyboard keys to navigate between the scenes.  This is something you should be familiar with.
+We will be using the arrow keyboard keys to navigate between the scenes, which is something you should be familiar with.
 
 #### <span className="color-sub-step-item">Step 4.2a: Keyboard input fields</span>
 
@@ -655,7 +638,7 @@ public Game()
 
 ### <span className="color-sub-step">Step 4.3: Create scenes</span>
 
-Now we can create instances of the scenes we created earlier in the guide and add them to the scene manager.
+Now, we can create instances of the scenes we made earlier in the guide and add them to the scene manager.
 
 #### <span className="color-sub-step-item">Step 4.3a: Create scene instances</span>
 
@@ -698,8 +681,8 @@ public Game()
 
 ### <span className="color-sub-step">Step 4.4: Scene navigation behavior</span>
 
-Now all we need now is to add some logic to the `Update()` method to navigate between the scenes when the user
-presses the left or right arrow keys.
+Now, all we need is to add some logic to the `Update()` method to navigate between the scenes when the user.
+Press the left or right arrow keys.
 
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
@@ -723,6 +706,5 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-That is it!!  You have created a game with two scenes and you can navigate between them using the arrow keys.
-As you can see, the code for managing the scenes is straight forward and minimal.  All of the scene content loading and unloading,
-updating, and rendering is handled by the scene manager.
+That is it!  You have created a game with two scenes and can navigate between them using the arrow keys.
+As you can see, the code for managing the scenes is straightforward and minimal.  The scene manager handles all the content loading, unloading, updating, and rendering.

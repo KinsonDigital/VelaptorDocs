@@ -15,6 +15,7 @@
 .hero__title {
     font-family: "PlayMeGames";
     font-size: 56pt;
+    font-weight: lighter;
 }
 
 /* You can override the default Infima variables here. */

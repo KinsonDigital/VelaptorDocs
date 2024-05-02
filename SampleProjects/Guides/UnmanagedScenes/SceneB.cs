@@ -1,4 +1,4 @@
-﻿// <copyright file="SceneB.cs" company="KinsonDigital">
+// <copyright file="SceneB.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -22,7 +22,7 @@ public class SceneB : SceneBase
 {
     private const int WindowWidth = 1000;
     private const int WindowHeight = 1000;
-    private const string Instructions = "Left & right arrow keys to move to scenes.\nClick anywhere in the window.";
+    private const string Instructions = "Left & right arrow keys to navigate to scenes.\nClick anywhere in the window.";
     private readonly ILoader<ITexture> textureLoader;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILoader<IFont> fontLoader;

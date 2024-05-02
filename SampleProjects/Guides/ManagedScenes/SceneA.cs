@@ -1,4 +1,4 @@
-﻿// <copyright file="SceneA.cs" company="KinsonDigital">
+// <copyright file="SceneA.cs" company="KinsonDigital">
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
@@ -21,7 +21,7 @@ using Velaptor.Scene;
 public class SceneA : SceneBase
 {
     private const int WindowWidth = 1000;
-    private const string Instructions = "Left & right arrow keys to move to scenes.";
+    private const string Instructions = "Left & right arrow keys to navigate to scenes.";
     private readonly ILoader<ITexture> textureLoader;
     private readonly ILoader<IFont> fontLoader;
     private readonly ITextureRenderer textureRenderer;

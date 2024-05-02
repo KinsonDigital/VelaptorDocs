@@ -20,7 +20,7 @@
 		"scope": "mdx",
 		"prefix": "csharp",
 		"body": [
-			"```csharp showLineNumbers\n${1: code}\n```\n$2"
+			"```csharp showLineNumbers\n$1\n```\n"
 		],
 		"description": "C# Code Block"
 	},

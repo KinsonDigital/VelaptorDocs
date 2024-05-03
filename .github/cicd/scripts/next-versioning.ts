@@ -1,5 +1,3 @@
-import { existsSync } from "../deps.ts";
-
 throw new Error("Next versioning has been disabled");
 
 // // Check the arguments

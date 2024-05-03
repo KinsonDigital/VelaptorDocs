@@ -119,9 +119,9 @@
 			"console": "integratedTerminal",
             "attachSimplePort": 9229
         },
-		{ // ENABLE/DISABLE NEXT VERSION
+		{ // ENABLE/DISABLE NEXT VERSION (currently disabled)
             "request": "launch",
-            "name": "Enable/Disable Next Version",
+            "name": "Enable/Disable Next Version (currently disabled)",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
             "cwd": "${workspaceFolder}",
@@ -134,7 +134,7 @@
 				"--allow-sys",
             ],
 			"args": [
-				"${workspaceFolder}/docusaurus.config.js",
+				"${workspaceFolder}/docusaurus.config.ts",
 				"enable"
 			],
             "attachSimplePort": 9229

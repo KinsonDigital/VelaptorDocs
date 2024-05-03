@@ -147,13 +147,6 @@ jobs:
             "${{ inputs.api-version }}" `
             "${{ secrets.CICD_TOKEN }}";
   
-      - name: Disable Next Version Feature
-        run: |
-          deno run --allow-read --allow-write --allow-sys `
-            "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
-            "${{ github.workspace }}/docusaurus.config.js" `
-            "disable";
-
       - name: Remove Oldest API Version
         run: |
           deno run --allow-read --allow-write `

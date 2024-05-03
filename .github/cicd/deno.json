@@ -1,6 +1,6 @@
 {
 	"fmt": {
-        "include": ["**/.github/cicd/*\\.ts$"],
+        "include": ["**/*.ts"],
         "exclude": [
             "**/.config/",
             "**/.docusaurus/",
@@ -28,7 +28,7 @@
 	},
     "nodeModulesDir": false,
 	"lint": {
-        "include": ["./.github/cicd/.*\\.ts$"],
+        "include": ["**/*.ts"],
         "exclude": [
             "**/*.json",
             "**/*.md",

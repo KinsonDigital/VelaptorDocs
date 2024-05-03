@@ -114,7 +114,8 @@ Click the GitHub download button shown below to download the file
 
 ## <span class="color-step">Step 3: Add content to project</span>
 
-Add the downloaded atlas texture and metadata JSON file to the _**Content/Atlas/**_ directory in the project.
+Add the downloaded atlas texture and metadata JSON file to the ***Content/Atlas/****/ directory in the project.
+
 :::note Refer To Guide
 For more info, refer to the [Adding Content](./adding-content) guide.
 :::
@@ -172,7 +173,7 @@ public class Game : Window
 
 ## <span class="color-step">Step 6: Load and unload the content</span>
 
-### <span class="color-sub-step">Step 6.1: Load content</span>
+### <span class="color-sub-step">6.1: Load content</span>
 
 Next, let's create the `OnLoad()` override method and add code to the method to load the atlas data.
 
@@ -238,7 +239,7 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 </details>
 :::
 
-### <span class="color-sub-step">Step 6.2: Unload content</span>
+### <span class="color-sub-step">6.2: Unload content</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the atlas loader
@@ -273,7 +274,7 @@ protected override void OnUnload()
 
 Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` method to animate the sub-textures.
 
-### <span class="color-sub-step">Step 7.1: Tracking time</span>
+### <span class="color-sub-step">7.1: Tracking time</span>
 
 For us to run an animation, we need to keep track of how much time has passed.
 Add the following fields to the `Game` class.
@@ -306,7 +307,7 @@ How fast you want to run your animation is up to you. You can make it run as fas
 </details>
 :::
 
-### <span class="color-sub-step">Step 7.2: Has enough time passed?</span>
+### <span class="color-sub-step">7.2: Has enough time passed?</span>
 
 Add some code to the `OnUpdate()` method to check if enough time has passed to
 change the frame of the animation.
@@ -445,7 +446,7 @@ The animation will be much smoother than what is shown here.
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
 
-### <span class="color-sub-step">Step 10.1: Add more fields</span>
+### <span class="color-sub-step">10.1: Add more fields</span>
 
 Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between horizontal
 or non-horizontal orientation. The `horizontalLayout` field will be the layout setting at the time of rendering.
@@ -460,7 +461,7 @@ public class Game: Window
 }
 ```
 
-### <span class="color-sub-step">Step 10.2: Add flip behavior</span>
+### <span class="color-sub-step">10.2: Add flip behavior</span>
 
 Add the following code to randomly choose whether or not the flame should be flipped horizontally to the
 bottom of the `if` block. This will choose a number between the values 0 and 1. If 0 is chosen,
@@ -487,7 +488,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 10.3: Run it</span>
+### <span class="color-sub-step">10.3: Run it</span>
 
 Now run your game again and the flame will be a little bit more realistic to the randomness of
 the orientation of the flame!!

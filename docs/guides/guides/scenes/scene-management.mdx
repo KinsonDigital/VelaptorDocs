@@ -52,7 +52,7 @@ Let's start by creating our first scene.
 
 Before we start, make sure you have a project set up.
 
-### <span className="color-sub-step">Step 1.1: Setup project</span>
+### <span className="color-sub-step">1.1: Setup project</span>
 
 To get started, create a new _**Velaptor**_ application.
 :::note Refer To Guide
@@ -60,7 +60,7 @@ To get started, create a new _**Velaptor**_ application.
 Refer to the [Project Setup](../project-setup) guide for more info.
 :::
 
-### <span className="color-sub-step">Step 1.2: Add content</span>
+### <span className="color-sub-step">1.2: Add content</span>
 
 Follow the [Adding Content](../adding-content) guide to add the content below to your project.
 You can download the images below by clicking them and the audio player by clicking the three dots.
@@ -117,7 +117,7 @@ Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` 
 We will be creating two scenes.  One will be named `SceneA`, and the other will be named `SceneB`.  If we want to demonstrate how to navigate
 between scenes, we need more than one scene.  We will create `SceneA` first.
 
-### <span className="color-sub-step">Step 2.1: Create the class</span>
+### <span className="color-sub-step">2.1: Create the class</span>
 
 We can take advantage of scenes with various lifecycle methods, similar to the `Window` class.  These methods
 are automatically called by the scene manager to load and unload content, update the scene, and render the scene.
@@ -130,7 +130,7 @@ public class SceneA : SceneBase
 }
 ```
 
-### <span className="color-sub-step">Step 2.2: Create override methods</span>
+### <span className="color-sub-step">2.2: Create override methods</span>
 
 Now, we can take advantage of the lifecycle methods by overriding some of them.  Create the following methods in the
 `SceneA` class.
@@ -166,12 +166,12 @@ public class SceneA : SceneBase
 }
 ```
 
-### <span className="color-sub-step">Step 2.3: Create loaders and renderers</span>
+### <span className="color-sub-step">2.3: Create loaders and renderers</span>
 
 We must load, use, render, and unload our scene content with our loaders and renderers.
 We need to create the loaders and renderers as class fields, which will be used throughout the scene's lifetime to load and render the content.
 
-#### <span className="color-sub-step-item">Step 2.3a: Create class fields</span>
+#### <span className="color-sub-step-item">2.3a: Create class fields</span>
 
 ```csharp showLineNumbers
 public class SceneA: SceneBase
@@ -186,7 +186,7 @@ public class SceneA: SceneBase
 }
 ```
 
-#### <span className="color-sub-step-item">Step 2.3b: Set loaders and renderers</span>
+#### <span className="color-sub-step-item">2.3b: Set loaders and renderers</span>
 
 Create a constructor and add the following code to set the loaders and renderers.
 
@@ -203,11 +203,11 @@ public SceneA()
 // highlight-add-end
 ```
 
-### <span className="color-sub-step">Step 2.4: Load the scene content</span>
+### <span className="color-sub-step">2.4: Load the scene content</span>
 
 Now that we have a way to load content, we can use the loaders to load the content.
 
-#### <span className="color-sub-step-item">Step 2.4a: Texture and font class fields</span>
+#### <span className="color-sub-step-item">2.4a: Texture and font class fields</span>
 
 Add the following class fields to hold the texture and font.
 
@@ -226,7 +226,7 @@ public class SceneA : SceneBase
 }
 ```
 
-#### <span className="color-sub-step-item">Step 2.4b: Load the content</span>
+#### <span className="color-sub-step-item">2.4b: Load the content</span>
 
 Now, we can load the content using the `LoadContent()` method.  The loaders load the texture and font.
 
@@ -245,7 +245,7 @@ public override void LoadContent()
 Remember, if you have decided to use your content, make sure that the name of the content loaded matches the name of your content file without the extension.
 :::
 
-### <span className="color-sub-step">Step 2.5: Unloading the content</span>
+### <span className="color-sub-step">2.5: Unloading the content</span>
 
 Depending on your game, you may or may not need to unload the content.  In most cases, if you move to another scene,
 you no longer need the content. To free up resources, you can unload the content using the `UnloadContent()` method.
@@ -267,7 +267,7 @@ public override void UnloadContent()
 
 :::
 
-### <span className="color-sub-step">Step 2.6: Add something interesting</span>
+### <span className="color-sub-step">2.6: Add something interesting</span>
 
 To add something interesting in the scene to see the `Update()` and `Render()` methods in action, we can use the mouse input
 to have the texture follow the mouse as you move it around the screen.
@@ -291,7 +291,7 @@ public class SceneA : SceneBase
 }
 ```
 
-#### <span className="color-sub-step-item">Step 2.6a: Create mouse object</span>
+#### <span className="color-sub-step-item">2.6a: Create mouse object</span>
 
 Go into the constructor and use the `HardwareFactory` to set the mouse input class field.
 
@@ -309,7 +309,7 @@ public SceneA()
 }
 ```
 
-#### <span className="color-sub-step-item">Step 2.6b: Setting mouse position</span>
+#### <span className="color-sub-step-item">2.6b: Setting mouse position</span>
 
 Awesome!  Now that we have a way to get the state of the mouse.  We can now go into the `Update()` method and add some
 code to get the current position of the mouse.
@@ -337,7 +337,7 @@ _**Velaptor**_ is no different .
 The `Update()` method will be called in the same frame as the `Render()` method.
 :::
 
-#### <span className="color-sub-step-item">Step 2.6c: Render the texture</span>
+#### <span className="color-sub-step-item">2.6c: Render the texture</span>
 
 Add the following code to the `Render()` method.
 
@@ -359,7 +359,7 @@ public override void Render()
 }
 ```
 
-### <span className="color-sub-step">Step 2.7: A little extra safety</span>
+### <span className="color-sub-step">2.7: A little extra safety</span>
 
 Before rendering the texture, check if the content is null before using it to add some extra safety.  Not only does this satisfy
 any warnings for null references, but it will also verify that we remembered to load the content.  If we did not
@@ -385,11 +385,11 @@ public override void Render()
 }
 ```
 
-### <span className="color-sub-step">Step 2.8: Add some instructions</span>
+### <span className="color-sub-step">2.8: Add some instructions</span>
 
 Next, we will add some simple instructions to the scene and render the instruction text at the top of the window to let the user know what to do.
 
-#### <span className="color-sub-step-item">Step 2.8a: Add constants</span>
+#### <span className="color-sub-step-item">2.8a: Add constants</span>
 
 Add some class field constants to hold the window's width and the instruction text.
 
@@ -411,7 +411,7 @@ public class SceneA : SceneBase
 }
 ```
 
-#### <span className="color-sub-step-item">Step 2.8b: Render the instructions</span>
+#### <span className="color-sub-step-item">2.8b: Render the instructions</span>
 
 Add some code to render the instructions at the scene's top.
 
@@ -444,7 +444,7 @@ demonstrate how to navigate from scene to scene.
 
 The second scene is almost identical to the first. The only differences will be the image, the instruction text, and the mouse behavior. For the behavior, instead of following the mouse, we will simply set the image to the position where the mouse is clicked and then play a sound.
 
-### <span className="color-sub-step">Step 3.1: Copy the other scene</span>
+### <span className="color-sub-step">3.1: Copy the other scene</span>
 
 To make things easier, since `SceneB` will be almost identical to `SceneA`, copy the `SceneA` class and rename it to `SceneB`.
 Also, rename the constructor from `SceneA` to `SceneB`.
@@ -471,7 +471,7 @@ public class SceneB : SceneBase
 
 ```
 
-### <span className="color-sub-step">Step 3.2: Add class fields</span>
+### <span className="color-sub-step">3.2: Add class fields</span>
 
 Here, we will add some additional class fields. You can use the class fields to hold the audio, which makes a sound every time the user clicks the mouse button and updates the instructions.
 
@@ -500,7 +500,7 @@ public class SceneB : SceneBase
 }
 ```
 
-### <span className="color-sub-step">Step 3.3: Create audio loader</span>
+### <span className="color-sub-step">3.3: Create audio loader</span>
 
 `SceneB` uses audio as part of the behavior, which means we must create an audio loader.
 
@@ -519,7 +519,7 @@ public SceneB()
 }
 ```
 
-### <span className="color-sub-step">Step 3.4: Update load content</span>
+### <span className="color-sub-step">3.4: Update load content</span>
 
 Now that we have the additional audio loader, we can update our `LoadContent()` method.
 
@@ -542,7 +542,7 @@ public override void LoadContent()
 }
 ```
 
-### <span className="color-sub-step">Step 3.5: Update unload content</span>
+### <span className="color-sub-step">3.5: Update unload content</span>
 
 This scene has an additional type of content. Update the `UnloadContent()` method to unload the audio content.
 
@@ -558,7 +558,7 @@ public override void UnloadContent()
 }
 ```
 
-### <span className="color-sub-step">Step 3.6: Change the behavior</span>
+### <span className="color-sub-step">3.6: Change the behavior</span>
 
 The most significant change in `SceneB` is the behavior.
 The texture's position will be set, and a sound will be played wherever the user clicks the mouse.
@@ -589,7 +589,7 @@ public override void Update(FrameTime frameTime)
 }
 ```
 
-### <span className="color-sub-step">Step 3.7: Adjust text position</span>
+### <span className="color-sub-step">3.7: Adjust text position</span>
 
 We will update the `Render()` method to render the instructions.
 Since `SceneB` has larger instruction text, we need to position the text farther down so it is not rendered off the screen.
@@ -626,7 +626,7 @@ Why would you want to manage the scenes yourself?  You may want more control ove
 
 Flexibility is important in many kinds of software, but it is even more important in games.
 
-### <span className="color-sub-step">Step 4.1: Update the game class</span>
+### <span className="color-sub-step">4.1: Update the game class</span>
 
 In the `Game` constructor, you will instantiate the scenes and add them to the manager.
 
@@ -647,11 +647,11 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">Step 4.2: Keyboard scene navigation</span>
+### <span className="color-sub-step">4.2: Keyboard scene navigation</span>
 
 We will be using the arrow keyboard keys to navigate between the scenes.  Keyboard input is something you should be familiar with.
 
-#### <span className="color-sub-step-item">Step 4.2a: Keyboard input fields</span>
+#### <span className="color-sub-step-item">4.2a: Keyboard input fields</span>
 
 Add the 2 class fields and create a keyboard object.
 
@@ -666,7 +666,7 @@ public class Game : Window
 }
 ```
 
-#### <span className="color-sub-step">Step 4.2b: Create keyboard input object</span>
+#### <span className="color-sub-step">4.2b: Create keyboard input object</span>
 
 In the constructor, create the keyboard object.
 
@@ -682,11 +682,11 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">Step 4.3: Create the scenes</span>
+### <span className="color-sub-step">4.3: Create the scenes</span>
 
 Now, we can create instances of the scenes we made earlier in the guide and add them to the scene manager.
 
-#### <span className="color-sub-step-item">Step 4.3a: Create scene instances</span>
+#### <span className="color-sub-step-item">4.3a: Create scene instances</span>
 
 ```csharp showLineNumbers
 public Game()
@@ -704,7 +704,7 @@ public Game()
 }
 ```
 
-#### <span className="color-sub-step-item">Step 4.3b: Add scenes to the manager</span>
+#### <span className="color-sub-step-item">4.3b: Add scenes to the manager</span>
 
 ```csharp showLineNumbers
 public Game()
@@ -725,7 +725,7 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">Step 4.4: Scene navigation behavior</span>
+### <span className="color-sub-step">4.4: Scene navigation behavior</span>
 
 Now, add some logic to the `Update()` method.  It will allow the user to navigate between the scenes if the left or
 right arrow keys are pressed.

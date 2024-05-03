@@ -13,7 +13,6 @@
             "**/*.md",
             "**/*.json",
             "**/*.js",
-            "**/blog/",
             "**/RepoSrc/",
             "**/versioned_docs/",
             "**/SampleProjects/",
@@ -44,7 +43,6 @@
             "**/SampleProjects/",
             "**/node_modules/",
             "**/docs/",
-            "**/blog/",
             "**/RepoSrc/"
         ],
 		"rules": {
@@ -70,7 +68,6 @@
         "**/versioned_sidebars/",
         "**/node_modules/",
         "**/package.json",
-        "**/blog/",
         "**/build/",
         "**/RepoSrc/"
     ]

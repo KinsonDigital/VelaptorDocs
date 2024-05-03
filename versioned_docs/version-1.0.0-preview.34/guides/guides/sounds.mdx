@@ -92,7 +92,7 @@ control the audio playback.
 Currently, the supported audio formats are _**.mp3**_ and _**.ogg**_.
 :::
 
-### <span class="color-sub-step">Step 4.1: Get audio content</span>
+### <span class="color-sub-step">4.1: Get audio content</span>
 
 You can provide whatever audio file you want, but if you don't have one, you can download the original guide project
 sound <Url href="https://github.com/KinsonDigital/VelaptorDocs/raw/api-v1.0.0-preview.34/SampleProjects/Guides/Sounds/Content/Sounds/deep-consistency.ogg" text="here" openInNewtab="true"/>.
@@ -100,7 +100,7 @@ sound <Url href="https://github.com/KinsonDigital/VelaptorDocs/raw/api-v1.0.0-pr
 Play it to see if you like it.  😀
 <Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/api-v1.0.0-preview.34/SampleProjects/Guides/Sounds/Content/Sounds/deep-consistency.ogg" />
 
-### <span class="color-sub-step">Step 4.2: Setup file as content</span>
+### <span class="color-sub-step">4.2: Setup file as content</span>
 
 We need to add the audio file to the project into a particular directory and then set the file to be copied to the
 build output.  This will be the default location where Velaptor will be looking for audio content.
@@ -109,7 +109,7 @@ build output.  This will be the default location where Velaptor will be looking 
 For more info, refer to the [Adding Content](./adding-content) guide.
 :::
 
-### <span class="color-sub-step">Step 4.3: Load the content</span>
+### <span class="color-sub-step">4.3: Load the content</span>
 
 Now that we have the audio file added to the project, we can write some code to load the audio content.
 Add the following code to the `OnLoad()` method to load the sound.
@@ -128,7 +128,7 @@ Remember, the name of the audio file _**without its extension**_ will be the nam
 Example: 'deep-consistency.ogg' will become 'deep-consistency'.
 :::
 
-### <span class="color-sub-step">Step 4.4: Unload the content</span>
+### <span class="color-sub-step">4.4: Unload the content</span>
 
 We also need to unload the audio content when the window is closed.  Add the following code to the `OnUnload()` method.
 
@@ -167,7 +167,7 @@ In the spirit of keeping things simple, we'll display the information in the tit
 You could absolutely display the information in the window itself by rendering text.
 :::
 
-### <span class="color-sub-step">Step 5.1: Displaying audo state</span>
+### <span class="color-sub-step">5.1: Displaying audo state</span>
 
 We'll create a method that will be used to display the information we want in the title bar.  Create the following `UpdateTitle()`
 method and add some code to get a string representing the current state of the audio file.
@@ -188,7 +188,7 @@ private void UpdateTitle()
 }
 ```
 
-### <span class="color-sub-step">Step 5.2: Display time and instructions</span>
+### <span class="color-sub-step">5.2: Display time and instructions</span>
 
 Now, add the code below the code you added previously added.  This code will get the minutes and seconds of the audio
 playback in the correct 2-digit format as well as the instructions for the user on how to play, pause, fast forward,
@@ -223,7 +223,7 @@ For more info, refer to the [Keyboard Input](./keyboard-input) guide.
 We can put this all together so we can control the audio playback but first, we need to inspect the state of the keyboard
 to see which key is being pressed.
 
-### <span class="color-sub-step">Step 6.1: Keyboard state & key pressed</span>
+### <span class="color-sub-step">6.1: Keyboard state & key pressed</span>
 
 To get the current state of the keyboard and to check if any key has been fully pressed, add the code below to the
 `OnUpdate()` method. 
@@ -252,7 +252,7 @@ bool IsPressed(KeyCode key)
 ```
 :::
 
-### <span class="color-sub-step">Step 6.2: Audio control with keyboard</span>
+### <span class="color-sub-step">6.2: Audio control with keyboard</span>
 
 This tutorial would be pretty useless if we didn't provide control over the audio for demo and learning purposes, right?😉
 You can make that happen by adding the following code after the local function in the `OnUpdate()` method.
@@ -287,7 +287,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 6.3: Finishing up</span>
+### <span class="color-sub-step">6.3: Finishing up</span>
 
 Now, to finish things up, we can finalize our code by implementing keyboard state tracking for the previous frame, alongside
 updating the window title. The significance of the previous keyboard state is important. Without it, we cannot accurately

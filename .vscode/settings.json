@@ -2,6 +2,7 @@
 	"deno.enablePaths": [
 		"cicd/"
 	],
+	"deno.config": ".github/cicd/deno.json",
 	"cSpell.words": [
 		"cicd",
 		"clsx",

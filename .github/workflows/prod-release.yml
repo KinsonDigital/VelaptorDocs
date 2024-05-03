@@ -82,14 +82,6 @@ jobs:
         with:
           version: ${{ vars.PNPM_VERSION }}
 
-      - name: Disable Next Version Feature
-        run: |
-          deno run `
-            --allow-read --allow-write --allow-sys `
-            "${{ github.workspace }}/.github/cicd/scripts/next-versioning.ts" `
-            "${{ github.workspace }}/docusaurus.config.js" `
-            "disable";
-
       - name: Install Dependencies (pnpm)
         run: pnpm install;
 

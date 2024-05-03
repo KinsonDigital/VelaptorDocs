@@ -2,15 +2,20 @@
 	"deno.enablePaths": [
 		"cicd/"
 	],
+	"deno.config": ".github/cicd/deno.json",
 	"cSpell.words": [
 		"cicd",
 		"clsx",
 		"defaultdocumentation",
+		"Infima",
 		"Kinson",
 		"KXVA",
 		"Multiauthor",
+		"Playmegames",
 		"preinstall",
+		"Reguler",
 		"Structs",
+		"tailwindcss",
 		"Texinfo",
 		"typecheck",
 		"Velaptor"
@@ -18,9 +23,9 @@
 	"files.exclude": {
 		".docusaurus/": true,
 		"node_modules": true,
-		"VelaptorDocs.code-workspace": false,
+		"VelaptorDocs.code-workspace": true,
 		"build/": true,
-		".github/cicd/": true,
+		".github/cicd/": false,
 		".config": false,
 		"RepoSrc/": true,
 		"*.lock": true,
@@ -32,9 +37,10 @@
 		"**/*.code-search": true,
 		"build/": true
 	},
-	"[typescript]": {
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
+		"editor.tabSize": 3,
 	},
 	"[yaml]": {
 		"editor.insertSpaces": true,

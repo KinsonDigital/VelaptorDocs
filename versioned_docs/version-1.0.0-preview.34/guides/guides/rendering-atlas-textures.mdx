@@ -3,12 +3,12 @@ sidebar_position: 5
 ---
 
 import TutorialLink from "@site/src/components/TutorialLink";
-import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
+import Url from "@site/src/components/Url";
 
 # Rendering With An Atlas Texture
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="AtlasTextures" version="v1.0.0-preview.34"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="AtlasTextures" version="v1.0.0-preview.34"/> guide project to see the source code for a fully working example of this guide.
 :::
 
 Another way to render textures is by using an atlas texture. This guide is a little more
@@ -16,16 +16,16 @@ in-depth and longer than the previous guides. Stick with it though, it will be w
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
-1. <OpenLinkNewTab url="https://en.wikipedia.org/wiki/Texture_atlas" linkName="Wikipedia"/>
-2. <OpenLinkNewTab url="https://gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" linkName="Game Dev Tuts Plus"/>
-3. <OpenLinkNewTab url="https://www.pinterest.com/pin/676877018967605282/" linkName="Examples"/>
+1. <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openInNewtab="true"/>
+2. <Url href="https://gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openInNewtab="true"/>
+3. <Url href="https://www.pinterest.com/pin/676877018967605282/" text="Examples" openInNewtab="true"/>
 :::
 
 An atlas texture is a large image with multiple sub-images packed into a single image. With this single image, you use another file
 of a particular format such as JSON or XML, that describes the location, size, and other kinds of attributes for each image in the atlas texture.
 
 :::info JSON
-If you are new to **JSON**, click <OpenLinkNewTab url="https://www.youtube.com/watch?v=iiADhChRriM" linkName="here"/> for a great 10-minute video.
+If you are new to **JSON**, click <Url href="https://www.youtube.com/watch?v=iiADhChRriM" text="here" openInNewtab="true"/> for a great 10-minute video.
 :::
 
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
@@ -46,8 +46,8 @@ atlas textures and their associated metadata.
 It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
 
 Various tools out there give you the ability to easily create atlas textures and metadata.  
-A couple of examples are: <OpenLinkNewTab url="https://www.codeandweb.com/texturepacker" linkName="Texture Packer"/>
-and <OpenLinkNewTab url="https://esotericsoftware.com/" linkName="Spine"/>.
+A couple of examples are: <Url href="https://www.codeandweb.com/texturepacker" text="Texture Packer" openInNewtab="true"/>
+and <Url href="https://esotericsoftware.com/" text="Spine" openInNewtab="true"/>.
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
@@ -105,8 +105,8 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 ## <span class="color-step">Step 2: Get atlas content</span>
 
 Download the atlas texture files below:
-- Go <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.png" linkName="here"/> to download the <b><i>atlas.png</i></b> file.
-- Go <OpenLinkNewTab url="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.json" linkName="here"/> to download the <b><i>atlas.json</i></b> file.
+- Go <Url href="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.png" text="here" openInNewtab="true"/> to download the <b><i>atlas.png</i></b> file.
+- Go <Url href="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.json" text="here" openInNewtab="true"/> to download the <b><i>atlas.json</i></b> file.
 
 Click the GitHub download button shown below to download the file
 <img style={{width: '20%'}} src={require('@site/static/img/tutorials/guides/rendering-atlas-textures/github-download-btn.jpg').default}/>
@@ -172,7 +172,7 @@ public class Game : Window
 
 ## <span class="color-step">Step 6: Load and unload the content</span>
 
-### <span class="color-sub-step">Step 6.1: Load content</span>
+### <span class="color-sub-step">6.1: Load content</span>
 
 Next, let's create the `OnLoad()` override method and add code to the method to load the atlas data.
 
@@ -238,7 +238,7 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 </details>
 :::
 
-### <span class="color-sub-step">Step 6.2: Unload content</span>
+### <span class="color-sub-step">6.2: Unload content</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the atlas loader
@@ -273,7 +273,7 @@ protected override void OnUnload()
 
 Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` method to animate the sub-textures.
 
-### <span class="color-sub-step">Step 7.1: Tracking time</span>
+### <span class="color-sub-step">7.1: Tracking time</span>
 
 For us to run an animation, we need to keep track of how much time has passed.
 Add the following fields to the `Game` class.
@@ -293,7 +293,7 @@ public class Game : Window
 <details>
 	<summary>Expand me for more info!!</summary>
 
-Think of a <OpenLinkNewTab url="https://www.youtube.com/watch?v=Un-BdBSOGKY" linkName="flip book"/>.
+Think of a <Url href="https://www.youtube.com/watch?v=Un-BdBSOGKY" text="flip book" openInNewtab="true"/>.
 If you were to flip through the pages of a flip book, you would see the animation.
 The faster you flip through the pages, the faster the animation will appear. The slower you flip
 through the pages, the slower the animation will appear. The same concept applies to animations in games.
@@ -306,7 +306,7 @@ How fast you want to run your animation is up to you. You can make it run as fas
 </details>
 :::
 
-### <span class="color-sub-step">Step 7.2: Has enough time passed?</span>
+### <span class="color-sub-step">7.2: Has enough time passed?</span>
 
 Add some code to the `OnUpdate()` method to check if enough time has passed to
 change the frame of the animation.
@@ -445,7 +445,7 @@ The animation will be much smoother than what is shown here.
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
 
-### <span class="color-sub-step">Step 10.1: Add more fields</span>
+### <span class="color-sub-step">10.1: Add more fields</span>
 
 Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between horizontal
 or non-horizontal orientation. The `horizontalLayout` field will be the layout setting at the time of rendering.
@@ -460,7 +460,7 @@ public class Game: Window
 }
 ```
 
-### <span class="color-sub-step">Step 10.2: Add flip behavior</span>
+### <span class="color-sub-step">10.2: Add flip behavior</span>
 
 Add the following code to randomly choose whether or not the flame should be flipped horizontally to the
 bottom of the `if` block. This will choose a number between the values 0 and 1. If 0 is chosen,
@@ -487,7 +487,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 10.3: Run it</span>
+### <span class="color-sub-step">10.3: Run it</span>
 
 Now run your game again and the flame will be a little bit more realistic to the randomness of
 the orientation of the flame!!

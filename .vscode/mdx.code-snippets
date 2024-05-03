@@ -20,7 +20,7 @@
 		"scope": "mdx",
 		"prefix": "csharp",
 		"body": [
-			"```csharp\n${1: code}\n```\n$2"
+			"```csharp showLineNumbers\n$1\n```\n"
 		],
 		"description": "C# Code Block"
 	},
@@ -44,7 +44,7 @@
 		"scope": "mdx",
 		"prefix": "step",
 		"body": [
-			"## <span class=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n$3"
+			"## <span className=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n$3"
 		],
 		"description": "Tutorial Step"
 	},
@@ -52,9 +52,17 @@
 		"scope": "mdx",
 		"prefix": "sub-step",
 		"body": [
-			"### <span class=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n$3"
+			"### <span className=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n$3"
 		],
 		"description": "Tutorial Sub Step"
+	},
+	"Sub-Step-Item": {
+		"scope": "mdx",
+		"prefix": "sub-step-item",
+		"body": [
+			"#### <span className=\"color-sub-step-item\">Step ${1: sub step #}${2: letter}: ${3: description}</span>\n\n$4"
+		],
+		"description": "Tutorial Sub Step Item"
 	},
 	"Note Admonition": {
 		"scope": "mdx",
@@ -116,15 +124,15 @@
 		],
 		"description": "Reference link to another guide."
 	},
-	"Tutorial Project Reference": {
+	"guide project Reference": {
 		"scope": "mdx",
 		"prefix": "tutorial-proj-ref",
 		"body": [
 			":::note Guide Source Code",
-			"Go to the <TutorialLink projectName=\"${1:project name}\"/> tutorial project to see the source code for a fully working example of this guide.",
+			"Go to the <TutorialLink projectName=\"${1:project name}\"/> guide project to see the source code for a fully working example of this guide.",
 			":::\n"
 		],
-		"description": "Reference to the open source guide tutorial project."
+		"description": "Reference to the open source guide guide project."
 	},
     "Open URL New Tab": {
 		"scope": "mdx",

@@ -67,8 +67,8 @@
 				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
 			]
 		},
-		{ // DISABLE NEXT VERSION
-			"label": "Disable Next Version",
+		{ // DISABLE NEXT VERSION (currently disabled)
+			"label": "Disable Next Version (currently disabled)",
 			"detail": "Disables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
@@ -79,12 +79,12 @@
 				"run",
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
-				"${workspaceFolder}/docusaurus.config.js",
+				"${workspaceFolder}/docusaurus.config.ts",
 				"disable"
 			]
 		},
-		{ // ENABLE NEXT VERSION
-			"label": "Enable Next Version",
+		{ // ENABLE NEXT VERSION (currently disabled)
+			"label": "Enable Next Version (currently disabled)",
 			"detail": "Enables the next version feature of docusaurus.",
 			"type": "shell",
 			"options": {
@@ -95,7 +95,7 @@
 				"run",
 				"-A",
 				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
-				"${workspaceFolder}/docusaurus.config.js",
+				"${workspaceFolder}/docusaurus.config.ts",
 				"enable"
 			]
 		},
@@ -165,7 +165,7 @@
 		},
 		{ // UPDATE VELAPTOR NUGET PACKAGES
 			"label": "Update Velaptor NuGet Packages",
-			"detail": "Updates all of the Velaptor NuGet packages for all tutorial projects.",
+			"detail": "Updates all of the Velaptor NuGet packages for all guide projects.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"

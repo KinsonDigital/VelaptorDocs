@@ -1,7 +1,7 @@
 import { existsSync } from "../../deps.ts";
 
 /**
- * Updates the version in the docusaurus.config.js file.
+ * Updates the version in the docusaurus.config.ts file.
  */
 export class UpdateWebsiteVersionService {
 	private readonly newLine: string = Deno.build.os === "windows" ? "\r\n" : "\n";
@@ -19,11 +19,11 @@ export class UpdateWebsiteVersionService {
 	}
 
 	/**
-	 * Updates the version in the docusaurus.config.js file.
+	 * Updates the version in the docusaurus.config.ts file.
 	 */
 	public updateVersion(): void {
 		const baseDirPath = Deno.cwd();
-		const path = `${baseDirPath}/docusaurus.config.js`;
+		const path = `${baseDirPath}/docusaurus.config.ts`;
 		let fileContent: string = Deno.readTextFileSync(path);
 		const fileLines: string[] = this.toLines(fileContent);
 		let version = "";

@@ -9,7 +9,7 @@ import TutorialLink from "@site/src/components/TutorialLink";
 This guide will show you the basics of rendering text to a window using **Velaptor**.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="RenderingText" version="v1.0.0-preview.33"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="RenderingText" version="v1.0.0-preview.33"/> guide project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -26,7 +26,7 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 Let's setup the game window and create the necessary objects that will be used for rendering,
 loading content, and perform batching during rendering.
 
-### <span class="color-sub-step">Step 2.1: Create class fields</span>
+### <span class="color-sub-step">2.1: Create class fields</span>
 
 Create some class fields at the top of the class. These will be used for loading the font,
 rendering text, and rendering in a batch.
@@ -38,7 +38,7 @@ private IFontRenderer? fontRenderer; // Renders text using the font
 private IBatcher? batcher; // Renders the text in a batch
 ```
 
-### <span class="color-sub-step">Step 2.2: Setup window</span>
+### <span class="color-sub-step">2.2: Setup window</span>
 
 Set the window title and size in the `Game` constructor.  This is self explantory.
 
@@ -51,7 +51,7 @@ public Game()
 }
 ```
 
-### <span class="color-sub-step">Step 2.3: Content & rendering objects</span>
+### <span class="color-sub-step">2.3: Content & rendering objects</span>
 
 Now we can create the font loader, font renderer, and a batcher.  These will be used to
 load the font, render the text, and render the content in a single batch.
@@ -103,7 +103,7 @@ That's it!!
 Loading and unloading of content is very important!!  The content is what will be rendered
 to the screen, played as sound, or event contain data that will be used by the game.
 
-### <span class="color-sub-step">Step 3.1: Load the font</span>
+### <span class="color-sub-step">3.1: Load the font</span>
 
 We need to load the font and to do this we can use a loader.  There are various loaders available in **Velaptor**.
 The loader that we need is the `ILoader<IFont>` loader and this can be created using the `ContentLoaderFactory`.
@@ -142,7 +142,7 @@ The 4 different font types are:
 </details>
 :::
 
-### <span class="color-sub-step">Step 3.2: Unload the font</span>
+### <span class="color-sub-step">3.2: Unload the font</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the font loader
@@ -176,7 +176,7 @@ protected override void OnUnload()
 
 ## <span class="color-step">Step 4: Rendering text</span>
 
-### <span class="color-sub-step">Step 4.1: Setup batcher and renderer</span>
+### <span class="color-sub-step">4.1: Setup batcher and renderer</span>
 
 Now that we have a text renderer and a font to render text, we need to use the font renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
@@ -219,7 +219,7 @@ If you call a render method with any renderer before the `Begin()` method or aft
 you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
 :::
 
-### <span class="color-sub-step">Step 4.2: Run it!</span>
+### <span class="color-sub-step">4.2: Run it!</span>
 
 Now for the best part!! Let's see the fruits of your labor and run the application.
 You should see the result below!! 🥳
@@ -233,7 +233,7 @@ Better yet, let's move the text around the screen and have it bounce off of the 
 
 Every time the text bounces off the edge of the screen, we can change the color of the text to a random color.
 
-### <span class="color-sub-step">Step 5.1: Class fields</span>
+### <span class="color-sub-step">5.1: Class fields</span>
 
 To accomplish the bouncing of the text off the edges of the screen, we need to keep track of the position
 and velocity of the text. Also, add the text that will be rendered as a `string` constant as a class field as well.
@@ -255,7 +255,7 @@ public class Game : Window
 }
 ```
 
-### <span class="color-sub-step">Step 5.2:  Screen collision detection</span>
+### <span class="color-sub-step">5.2:  Screen collision detection</span>
 
 To detect if the text is colliding with the edge of the screen, we need to check if the text is outside of the screen's bounds.
 The screen bounds are made up of the four sides of the screen the left, top, right, and bottom. The left and top
@@ -314,7 +314,7 @@ With this information, we can then compare it against the sides of the window. I
 flip the sign of the X and/or Y velocity by negating it. Negating the velocity changes the direction of the
 text's movement. This is just vector math.
 
-### <span class="color-sub-step">Step 5.3: Update position with collision</span>
+### <span class="color-sub-step">5.3: Update position with collision</span>
 
 Now all we have to do is process the collision and update the position of the text.  We can do this in the `OnUpdate()` method.
 
@@ -341,7 +341,7 @@ Remember, velocity is a representation of 2 things, direction and magnitude.  Th
 If the number is negative, it will move in the opposite direction of the positive number.
 :::
 
-### <span class="color-sub-step">Step 5.4: Changing the color</span>
+### <span class="color-sub-step">5.4: Changing the color</span>
 
 To change the color, we can use the `Random` class to generate a random color.  
 Create 2 more class fields.  One for creating random numbers and one for holding the color of the text.
@@ -370,7 +370,7 @@ private void RandomizeColor()
 }
 ```
 
-### <span class="color-sub-step">Step 5.5: Update the color</span>
+### <span class="color-sub-step">5.5: Update the color</span>
 
 Now that we have our little helper method, we can use it in the `ProcessCollisionAndColor()` method.
 Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
@@ -405,7 +405,7 @@ private void ProcessCollision()
 }
 ```
 
-### <span class="color-sub-step">Step 5.6: Finishing up</span>
+### <span class="color-sub-step">5.6: Finishing up</span>
 
 Now the exciting part!!  Let's update the `OnDraw()` method to use our `position` and `textColor` class fields.
 No point in doing all of this hard work if we can see it.

@@ -7,7 +7,7 @@ import TutorialLink from "@site/src/components/TutorialLink";
 # Mouse Input
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="MouseInput" version="v1.0.0-preview.31"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="MouseInput" version="v1.0.0-preview.31"/> guide project to see the source code for a fully working example of this guide.
 :::
 
 As explained in the [Keyboard Input](./keyboard-input) tutorial, being able to interact with a game is very important.
@@ -33,7 +33,7 @@ The rest of the game loop methods described in the _**project setup guide**_ can
 
 Let's create some class fields to help us control the window size.
 
-### <span class="color-sub-step">Step 2.1: Creating the class fields</span>
+### <span class="color-sub-step">2.1: Creating the class fields</span>
 
 Create some class fields that can hold the state of the mouse and the amount that will be applied to the height of the
 window.
@@ -47,7 +47,7 @@ public class Game : Window
 }
 ```
 
-### <span class="color-sub-step">Step 2.2: Creating a mouse object</span>
+### <span class="color-sub-step">2.2: Creating a mouse object</span>
 
 To enable mouse input in your Velaptor game, you'll need to create a new instance of `IAppInput<MouseState>`,
 which will be set to the class field `mouse`. This will provide access to the current state of the mouse.
@@ -64,7 +64,7 @@ public Game() => this.mouse = HardwareFactory.GetMouse();
 
 Perform the following steps to change the size of the window by using the mouse.
 
-### <span class="color-sub-step">Step 3.1: Getting the mouse state</span>
+### <span class="color-sub-step">3.1: Getting the mouse state</span>
 
 We can get the state of the mouse by using the `mouse` object that we saved to the class field.  In the `OnUpdate()` method,
 use the `mouse` object to get the current state of the mouse.  Also, save the current mouse state as the previous mouse state.
@@ -82,7 +82,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 3.2: Changing the window width</span>
+### <span class="color-sub-step">3.2: Changing the window width</span>
 
 Next, between the two mouse states in the `OnUpdate()` method, change the width of the window by adding the code below:
 
@@ -116,7 +116,7 @@ left and right, it will take the difference between the position on the X-axis a
 The important part here is the `this.prevMouseState = currMouseState`.  As long as the logic is added between the current
 and previous mouse states, there is something to compare to know if the mouse has moved.
 
-### <span class="color-sub-step">Step 3.3: Changing the window height</span>
+### <span class="color-sub-step">3.3: Changing the window height</span>
 
 Now we can add the code to change the height of the window as we scroll the mouse wheel.
 Below the `if` block we added in the previous step, add the following code:
@@ -160,7 +160,7 @@ This of course can be used for _**ANYTHING**_.  Character movement, aiming a wea
 some examples of what the mouse can be used for in a game.
 
 
-### <span class="color-sub-step">Step 3.4: Run it</span>
+### <span class="color-sub-step">3.4: Run it</span>
 
 Run the application and you should be able to change the width and height of the window using the mouse.
 To change the width of the window, hold down the left mouse button and move the mouse from left to right.

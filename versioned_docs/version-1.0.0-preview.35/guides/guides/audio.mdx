@@ -4,12 +4,13 @@ sidebar_position: 8
 
 import Audio from "@site/src/components/Audio";
 import TutorialLink from "@site/src/components/TutorialLink";
-import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
+import GuideAudio from "@site/src/components/GuideAudio";
+import Url from "@site/src/components/Url";
 
 # Audio
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="Audio" version="v1.0.0-preview.35"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="Audio" version="v1.0.0-preview.35"/> guide project to see the source code for a fully working example of this guide.
 :::
 
 Can you imagine playing Mario Brothers games without the **jump** sound effect? How about playing Metroid with no amazing music
@@ -20,16 +21,13 @@ Check out some of this audio!! They might bring back memories. 😉
 <table>
   <tr style={{ border: 'none' }}>
     <td style={{ border: 'none' }}>
-		<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/api-v1.0.0-preview.35/SampleProjects/Guides/Audio/Content/Audio/mario-jump.mp3"
-               name="Mario Jump"/>
+        <GuideAudio apiVersion="v1.0.0-preview.35" guideName="Audio" audioFileName="mario-jump.mp3" name="Mario Jump"/>
 	</td>
     <td style={{ border: 'none' }}>
-        <Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/api-v1.0.0-preview.35/SampleProjects/Guides/Audio/Content/Audio/metroid-ice-beam.mp3" 
-               name="Metroid Ice Beam"/>
+        <GuideAudio apiVersion="v1.0.0-preview.35" guideName="Audio" audioFileName="metroid-ice-beam.mp3" name="Metroid Ice Beam"/>
 	</td>
     <td style={{ border: 'none' }}>
-		<Audio url="https://github.com/KinsonDigital/VelaptorDocs/raw/api-v1.0.0-preview.35/SampleProjects/Guides/Audio/Content/Audio/brinstar-music.mp3" 
-               name="Metroid Brinstar Music"/>
+        <GuideAudio apiVersion="v1.0.0-preview.35" guideName="Audio" audioFileName="brinstar-music.mp3" name="Metroid Brinstar Music"/>
 	</td>
   </tr>
 </table>
@@ -92,14 +90,14 @@ control the audio playback.
 Currently, the supported audio formats are _**.mp3**_ and _**.ogg**_.
 :::
 
-### <span class="color-sub-step">Step 4.1: Get audio content</span>
+### <span class="color-sub-step">4.1: Get audio content</span>
 
 You can provide whatever audio file you want, but if you don't have one, you can download one of these from the audio guide project,
 or from the mini audio players on this page.
 
 <img style={{width: '35%'}} src={require('@site/static/img/tutorials/guides/audio/download-audio.gif').default} alt="Example banner"/>
 
-### <span class="color-sub-step">Step 4.2: Setup file as content</span>
+### <span class="color-sub-step">4.2: Setup file as content</span>
 
 We need to add the audio file to the project into a particular directory and then set the file to be copied to the
 build output.  This will be the default location where Velaptor will be looking for audio content.
@@ -108,7 +106,7 @@ build output.  This will be the default location where Velaptor will be looking 
 For more info, refer to the [Adding Content](./adding-content) guide.
 :::
 
-### <span class="color-sub-step">Step 4.3: Load the content</span>
+### <span class="color-sub-step">4.3: Load the content</span>
 
 Now that we have the audio file added to the project, we can write some code to load the audio content.
 Add the following code to the `OnLoad()` method to load the sound.  All that is required is the name of the
@@ -142,7 +140,7 @@ You can use either buffer type you want for short and large audio content, but t
 If you want to save memory, use `AudioBuffer.Stream`.  This will directly affect the performance of loading content.  If you want better performance when it comes
 to quick response time when changing audio playback such as pausing, playing, rewinding, and fast forwarding, use `AudioBuffer.Full`.
 
-### <span class="color-sub-step">Step 4.4: Unload the content</span>
+### <span class="color-sub-step">4.4: Unload the content</span>
 
 We also need to unload the audio content when the window is closed.  Add the following code to the `OnUnload()` method.
 
@@ -181,7 +179,7 @@ In the spirit of keeping things simple, we'll display the information in the tit
 You could display the information in the window itself by rendering text.
 :::
 
-### <span class="color-sub-step">Step 5.1: Displaying audo state</span>
+### <span class="color-sub-step">5.1: Displaying audo state</span>
 
 We'll create a method that will be used to display the information we want in the title bar.  Create the following `UpdateTitle()`
 method and add some code to get a string representing the current state of the audio file.
@@ -202,7 +200,7 @@ private void UpdateTitle()
 }
 ```
 
-### <span class="color-sub-step">Step 5.2: Display time and instructions</span>
+### <span class="color-sub-step">5.2: Display time and instructions</span>
 
 Now, add the code below the code you previously added.  This code will get the minutes and seconds of the audio
 playback in the correct 2-digit format as well as the instructions for the user on how to play, pause, fast forward,
@@ -237,7 +235,7 @@ For more info, refer to the [Keyboard Input](./keyboard-input) guide.
 We can put this all together so we can control the audio playback but first, we need to inspect the state of the keyboard
 to see which key is being pressed.
 
-### <span class="color-sub-step">Step 6.1: Keyboard state & key pressed</span>
+### <span class="color-sub-step">6.1: Keyboard state & key pressed</span>
 
 To get the current state of the keyboard and to check if any key has been fully pressed, add the code below to the
 `OnUpdate()` method. 
@@ -256,7 +254,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 :::tip Local Functions
 This code snippet uses a local function to check whether or not a key is pressed, which is a new feature in C# 7.0.  If you are not
-familiar with local functions, you can read more about them <OpenLinkNewTab url="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions" linkName="here"/>.
+familiar with local functions, you can read more about them <Url href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions" text="here" openInNewtab="true"/>.
 ```csharp
 // This is a local function
 bool IsPressed(KeyCode key) 
@@ -266,7 +264,7 @@ bool IsPressed(KeyCode key)
 ```
 :::
 
-### <span class="color-sub-step">Step 6.2: Audio control with keyboard</span>
+### <span class="color-sub-step">6.2: Audio control with keyboard</span>
 
 This tutorial would be pretty useless if we didn't provide control over the audio for demo and learning purposes, right?😉  
 You can make that happen by adding the following code after the local function in the `OnUpdate()` method.
@@ -309,7 +307,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 6.3: Finishing up</span>
+### <span class="color-sub-step">6.3: Finishing up</span>
 
 Now, to finish things up, we can finalize our code by implementing keyboard state tracking for the previous frame, alongside
 updating the window title. The significance of the previous keyboard state is important. Without it, we cannot accurately

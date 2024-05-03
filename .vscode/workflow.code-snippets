@@ -17,6 +17,7 @@
 	// }
 
 	"Workflow Job": {
+        "scope": "yml,yaml",
 		"prefix": "workflow-job",
 		"body": [
 			"${1: job id}:",
@@ -29,6 +30,7 @@
 		"description": "Workflow Job"
 	},
 	"Set Up Deno Step": {
+        "scope": "yml,yaml",
 		"prefix": "step-setup-deno",
 		"body": [
   			"- name: ${1:Set Up Deno}",
@@ -39,6 +41,7 @@
 		"description": "Installs deno"
 	},
 	"Checkout Repo": {
+        "scope": "yml,yaml",
 		"prefix": "repo-checkout",
 		"body": [
 			"- name: ${1: Checkout Repo}",

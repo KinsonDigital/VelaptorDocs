@@ -1,11 +1,5 @@
 {
-	"deno.enable": true,
-	"deno.config": "../deno.json",
-	"cSpell.words": [
-		"cicd",
-		"defaultdocumentation",
-		"docu",
-		"Kinson",
-		"Velaptor"
-	],
+	"[typescript]": {
+		"editor.defaultFormatter": "denoland.vscode-deno",
+	}
 }

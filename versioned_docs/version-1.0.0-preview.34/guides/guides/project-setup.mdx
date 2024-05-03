@@ -5,19 +5,19 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TutorialLink from "@site/src/components/TutorialLink";
-import OpenLinkNewTab from "@site/src/components/OpenLinkNewTab";
+import Url from "@site/src/components/Url";
 
 # Project Setup
 
 This guide will show you the basics of creating a simple, empty Velaptor application.
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="EmptyProject" version="v1.0.0-preview.34"/> tutorial project to see the source code for a fully working example of this guide.
+Go to the <TutorialLink projectName="EmptyProject" version="v1.0.0-preview.34"/> guide project to see the source code for a fully working example of this guide.
 :::
 
 :::note Guide Source Code
-There are plans in the future to create a project template for <OpenLinkNewTab url="https://visualstudio.microsoft.com/" linkName="Visual Studio"/> and
-<OpenLinkNewTab url="https://www.jetbrains.com/rider/" linkName="JetBrains Rider"/> users to easily create a basic Velaptor application.
+There are plans in the future to create a project template for <Url href="https://visualstudio.microsoft.com/" text="Visual Studio" openInNewtab="true"/> and
+<Url href="https://www.jetbrains.com/rider/" text="JetBrains Rider" openInNewtab="true"/> users to easily create a basic Velaptor application.
 :::
 
 First things first. You have to create a project with your preferred IDE!!
@@ -29,7 +29,7 @@ Create a new C# console application using dotnet _**v7.0**_
 
 ## <span class="color-step">Step 2: Add Velaptor to the project</span>
 
-Add the Velaptor <OpenLinkNewTab url="https://www.nuget.org/packages/KinsonDigital.Velaptor" linkName="NuGet package"/> to the project.
+Add the Velaptor <Url href="https://www.nuget.org/packages/KinsonDigital.Velaptor" text="NuGet package" openInNewtab="true"/> to the project.
    - Make sure to click the preview check box in your IDE of choice. Since Velaptor is currently in preview, clicking the checkbox will allow you to see the NuGet package.
     <Tabs>
        <TabItem value="vs" label="Visual Studio" default>
@@ -46,7 +46,7 @@ Add the Velaptor <OpenLinkNewTab url="https://www.nuget.org/packages/KinsonDigit
 The game class is the class used to contain all of the game loop/lifecycle methods.  These are the update and render methods,
 the load and unload content methods and more.
 
-### <span class="color-sub-step">Step 3.1: Create game class</span>
+### <span class="color-sub-step">3.1: Create game class</span>
 
 Create a new class file named `Game`. This will be necessary to take advantage of the game-related methods of Velaptor. These methods
 are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
@@ -62,11 +62,11 @@ public class Game : Window
 :::tip Top Level Statements
 Top-level statements are a newer feature added in C#10 that enables you to avoid the extra ceremony of creating the `main` entry point method
 in a class.
-Click <OpenLinkNewTab url="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements" linkName="here"/> to learn more!!
+Click <Url href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements" text="here" openInNewtab="true"/> to learn more!!
 :::
 
 
-### <span class="color-sub-step">Step 3.2: Create app entry point</span>
+### <span class="color-sub-step">3.2: Create app entry point</span>
 
 All applications need some kind of entry point.  This is the starting point of your application.  In the case of Velaptor as well as
 all C# applications, the entry point is the `main` method in the `Program` class.  Let's take advantage of the latest C#
@@ -103,7 +103,7 @@ flowchart LR
 	style id4 stroke:#c5635c
 ```
 
-### <span class="color-sub-step">Step 4.1: Create `OnLoad()` method</span>
+### <span class="color-sub-step">4.1: Create `OnLoad()` method</span>
 Once the game class file has been created, we need a way to load content. We can load sounds, textures, fonts, atlas textures and atlas data, or any
 kind of content your game needs. This method will be invoked once time as the application loads up.
 
@@ -116,7 +116,7 @@ protected override void OnLoad()
 }
 ```
 
-### <span class="color-sub-step">Step 4.2: Create `OnUpdate()` method</span>
+### <span class="color-sub-step">4.2: Create `OnUpdate()` method</span>
 
 The next method to create is the `OnUpdate()` method. This method will be invoked once every frame and always before the `OnDraw()` method is
 invoked. This is where you should add your game logic and update your game state. The point of
@@ -129,7 +129,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 4.3: Create `OnDraw()` method</span>
+### <span class="color-sub-step">4.3: Create `OnDraw()` method</span>
 
 Now that we have a way to update our game state, we need to create a method to render our game to the screen. Create a method override of the `Window.OnDraw()` method.
 The `OnDraw()` method is invoked once every frame and always after the `OnUpdate()` method is invoked.
@@ -142,7 +142,7 @@ protected override void OnDraw(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">Step 4.4: Create `OnResize()` method</span>
+### <span class="color-sub-step">4.4: Create `OnResize()` method</span>
 
 If you want to have your game react when the window size changes, you can create a method override of the `Window.OnResize()` method.
 The `OnResize()` method is invoked anytime the window's size is changed. This includes minimizing, maximizing, and restoring the window.
@@ -156,7 +156,7 @@ protected override void OnResize(SizeU size)
 }
 ```
 
-### <span class="color-sub-step">Step 4.5: Create `OnUnload()` method</span>
+### <span class="color-sub-step">4.5: Create `OnUnload()` method</span>
 
 We need a way to unload our content. This can be performed by creating a method override of the `Window.OnUnload()` method.
 The `OnUnload()` method is invoked one time when the window is closed. This is to free resources and content from your game on

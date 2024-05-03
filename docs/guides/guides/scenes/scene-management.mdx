@@ -22,21 +22,35 @@ Go to the following links for the source code for fully working examples of mana
 When it comes to games, how you manage your scenes can impact many aspects of your game. It can improve performance by only loading what
 is necessary for that section of your game, keeping your code organized, and making debugging more effortless. This guide will cover how to manage scenes in your game.
 
+_**Velaptor**_ comes with a scene manager, which performs routine tasks for you.
 
-_**Velaptor**_ comes with a scene manager, which performs tasks like loading and unloading content, updating, rendering, and determining how you transition between scenes. 
+Here is a list of the tasks the scene manager handles:
+- Life cycle method for loading content
+- Life cycle method for unloading content
+- Life cycle method for updating
+- Life cycle method for rendering
+- Scene transition
+- Texture batching
+
+What does this mean?  Regarding the life cycle methods, this means that the standard loading and unloading of content,
+updating, and rendering are invoked for you by _**Velaptor**_. You can use these methods if your scene inherits from the `SceneBase` class.
+
+Also, `SceneBase` handles batching for you.  What this means is that in your `Render()` methods, you don't have to worry about calling
+the `IBatcher.Begin()` and `IBatcher.End()` methods.
+
 You can also build a custom scene manager for more control.  _**Velaptor**_ does not stand in your way!
 
 :::note ABOUT THIS GUIDE
-This guide will not show you how to manage scenes yourself.  That is a more advanced topic.  If you are interested, _**Velaptor**_ is open source!  You can see how we built the scene manager and how it works by looking at the source code.
+This guide will not show you how to manage scenes yourself.  That is a more advanced topic.  If you are interested,
+_**Velaptor**_ is open source!  You can see how we built the scene manager and how it works by looking at the source code.
 :::
 
-
 Let's start by creating our first scene.
+
 
 ## <span className="color-step">Step 1: Project setup</span>
 
 Before we start, make sure you have a project set up.
-
 
 ### <span className="color-sub-step">Step 1.1: Setup project</span>
 
@@ -96,6 +110,7 @@ Absolutely!  Feel free to use any content you want.
 
 Remember, the content has to be a `.png` file for images and a `.mp3` or `.ogg` file for audio.
 :::
+
 
 ## <span className="color-step">Step 2: Create Scene A</span>
 
@@ -251,7 +266,6 @@ public override void UnloadContent()
 :::tip PREVENT MULTIPLE UNLOADS
 
 :::
-
 
 ### <span className="color-sub-step">Step 2.6: Add something interesting</span>
 
@@ -425,6 +439,7 @@ public override void Render()
 That is it for the first scene!!. We have created our first scene! Now we can move on to creating the second scene so we can
 demonstrate how to navigate from scene to scene.
 
+
 ## <span className="color-step">Step 3: Create Scene B</span>
 
 The second scene is almost identical to the first. The only differences will be the image, the instruction text, and the mouse behavior. For the behavior, instead of following the mouse, we will simply set the image to the position where the mouse is clicked and then play a sound.
@@ -455,7 +470,6 @@ public class SceneB : SceneBase
 }
 
 ```
-
 
 ### <span className="color-sub-step">Step 3.2: Add class fields</span>
 
@@ -602,6 +616,7 @@ public override void Render()
 }
 ```
 
+
 ## <span className="color-step">Step 4: Managed Scenes</span>
 
 Let's get into it!
@@ -739,6 +754,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 That is it!  You have created a game with two scenes and can navigate between them using the arrow keys.
 As you can see, the code for managing the scenes is straightforward and minimal.  The scene manager handles all the content loading, unloading, updating, and rendering.
+
 
 ## <span className="color-step">Step 5: Run it!</span>
 

@@ -1,8 +1,11 @@
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
+
 <span align="center">
 
 # 📃 Velaptor Documentation Website 📃
-</span>
 
+</span>
 
 <span align="center">
 
@@ -16,6 +19,7 @@ Hello!!  This repository is for the documentation website for [Velaptor](https:/
 <span align="center">
 
 ## **How to Contribute**
+
 </span>
 
 This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
@@ -44,6 +48,7 @@ Below are simple steps you will need when contributing.
 <span align="center">
 
 ## **Common Development Commands**
+
 </span>
 
 ### **Install npm packages**

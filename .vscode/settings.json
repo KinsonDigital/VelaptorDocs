@@ -22,9 +22,9 @@
 	"files.exclude": {
 		".docusaurus/": true,
 		"node_modules": true,
-		"VelaptorDocs.code-workspace": false,
+		"VelaptorDocs.code-workspace": true,
 		"build/": true,
-		".github/cicd/": true,
+		".github/cicd/": false,
 		".config": false,
 		"RepoSrc/": true,
 		"*.lock": true,
@@ -40,11 +40,6 @@
 		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"editor.insertSpaces": false,
 		"editor.tabSize": 3,
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
 	},
 	"[yaml]": {
 		"editor.insertSpaces": true,

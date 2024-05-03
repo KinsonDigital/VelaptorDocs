@@ -4,21 +4,21 @@ import React from "react";
  * The properties for the {@link ImageLink} component.
  */
 interface Props {
-    /**
-     * The URL link to goto when clicking the image.
-     */
-    gotoUrl: string,
+	/**
+	 * The URL link to goto when clicking the image.
+	 */
+	gotoUrl: string,
 
-    /**
-     * The relative path to the image in the website static/img folder.
-     * If not provided, then the image shown will be the {@link gotoUrl}.
-     */
-    displayUrl?: string,
+	/**
+	 * The relative path to the image in the website static/img folder.
+	 * If not provided, then the image shown will be the {@link gotoUrl}.
+	 */
+	displayUrl?: string,
 
-    /**
-     * The size of the image as a percentage of the parent container.
-     */
-    sizePercentage: number
+	/**
+	 * The size of the image as a percentage of the parent container.
+	 */
+	sizePercentage: number
 }
 
 /**
@@ -27,15 +27,15 @@ interface Props {
  * @returns The component.
  */
 const ImageLink: React.FC<Props> = ({ gotoUrl: url, displayUrl, sizePercentage = 50 }: Props) => {
-    const sizePercentageStr = `${sizePercentage}%`;
+	const sizePercentageStr = `${sizePercentage}%`;
 
-    const imgUrl = displayUrl === undefined ? url : displayUrl;
+	const imgUrl = displayUrl === undefined ? url : displayUrl;
 
-    return (
-        <a target="\_blank" href={url}>
-            <img style={{width: sizePercentageStr}} src={imgUrl} alt="Example banner"/>
-        </a>
-    );
+	return (
+		<a target="\_blank" href={url}>
+			<img style={{ width: sizePercentageStr }} src={imgUrl} alt="Example banner" />
+		</a>
+	);
 }
 
 export default ImageLink;

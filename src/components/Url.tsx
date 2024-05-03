@@ -49,7 +49,7 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 					{
 						openInNewTab === undefined
 							? <></>
-							: <span><OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%'}}/></span>
+							: <span><OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} /></span>
 					}
 				</a>
 			</div>

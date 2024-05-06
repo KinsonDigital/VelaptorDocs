@@ -22,9 +22,9 @@ public class Game : Window
 {
     private const string Text = "Hello Velaptor!";
     private readonly Random random = new ();
-    private readonly ILoader<IFont>? fontLoader;
-    private readonly IFontRenderer? fontRenderer;
-    private readonly IBatcher? batcher;
+    private readonly ILoader<IFont> fontLoader;
+    private readonly IFontRenderer fontRenderer;
+    private readonly IBatcher batcher;
     private IFont? font;
     private Vector2 velocity = new (200, 200);
     private Vector2 position = new (400, 400);

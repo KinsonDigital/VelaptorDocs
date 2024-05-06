@@ -68,7 +68,7 @@ const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relative
 		errorMsg = "<GitHubImg/> Error: You must provide a relative image path.";
 	}
 
-	branchOrTag = useTestMode ? testBranchOrTag : branchOrTag;
+	branchOrTag = useTestMode === "true" ? testBranchOrTag : branchOrTag;
 	const pageUrl = `https://github.com/${repoOwner}/${repoName}/blob/${branchOrTag}/${relativeImgPath}`;
 	const imgUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/${branchOrTag}/${relativeImgPath}`;
 	const sizePercentageStr = `${sizePercentage}%`;

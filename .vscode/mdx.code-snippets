@@ -69,7 +69,7 @@
 		"prefix": "note-admonition",
 		"body": [
 			":::note ${1:Note Title}",
-			"${2: Note Content}",
+			"${2:Content}",
 			":::\n"
 		],
 		"description": "Note Admonition"
@@ -79,7 +79,7 @@
 		"prefix": "tip-admonition",
 		"body": [
 			":::tip ${1:Note Title}",
-			"${2: Note Content}",
+			"${2:Content}",
 			":::\n"
 		],
 		"description": "Tip Admonition"
@@ -89,7 +89,7 @@
 		"prefix": "info-admonition",
 		"body": [
 			":::info ${1:Note Title}",
-			"${2: Note Content}",
+			"${2:Content}",
 			":::\n"
 		],
 		"description": "Info Admonition"
@@ -99,7 +99,7 @@
 		"prefix": "caution-admonition",
 		"body": [
 			":::caution ${1:Note Title}",
-			"${2: Note Content}",
+			"${2:Content}",
 			":::\n"
 		],
 		"description": "Caution Admonition"
@@ -109,7 +109,7 @@
 		"prefix": "danger-admonition",
 		"body": [
 			":::danger ${1:Note Title}",
-			"${2: Note Content}",
+			"${2:Content}",
 			":::\n"
 		],
 		"description": "Danger Admonition"

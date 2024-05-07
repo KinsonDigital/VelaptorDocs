@@ -2,7 +2,7 @@ import React from "react";
 import OpenNewTab from "@site/static/img/new-tab.svg";
 
 /**
- * The properties for the {@link TutorialLink} component.
+ * The properties for the {@link GuideLink} component.
  */
 interface Props {
 	/**
@@ -23,7 +23,7 @@ interface Props {
  * @param param The component properties.
  * @returns The component.
  */
-const TutorialLink: React.FC<Props> = ({ projectName, version }: Props) => {
+const GuideLink: React.FC<Props> = ({ projectName, version }: Props) => {
 	const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/api-${version}/SampleProjects/Guides/${projectName}`;
 
 	return (
@@ -39,4 +39,4 @@ const TutorialLink: React.FC<Props> = ({ projectName, version }: Props) => {
 	);
 }
 
-export default TutorialLink;
+export default GuideLink;

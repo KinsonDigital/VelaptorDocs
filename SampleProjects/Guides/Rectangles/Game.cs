@@ -24,29 +24,40 @@ using Velaptor.UI;
 /// </summary>
 public class Game : Window
 {
+    private const string CtrlText = "Press 'Up' or 'Down' to change the selected attribute.\nMouse 'Click' & 'Scroll' to change the attribute values.";
     private readonly IAppInput<KeyboardState> keyboard;
     private readonly IAppInput<MouseState> mouse;
     private readonly IBatcher batcher;
     private readonly IShapeRenderer shapeRenderer;
     private readonly IFontRenderer fontRenderer;
     private readonly ILoader<IFont> fontLoader;
+    private readonly (string Text, SizeF Size)[] rectAttrText =
+    [
+        ("Width (Scroll)", SizeF.Empty),
+        ("Height (Scroll)", SizeF.Empty),
+        ("Color (Left Click)", SizeF.Empty),
+        ("Border Thickness (Scroll)", SizeF.Empty),
+        ("Is Solid (Left Click)", SizeF.Empty),
+        ("Gradient Type (Left Click)", SizeF.Empty),
+        ("Gradient Start (Left Click)", SizeF.Empty),
+        ("Gradient Stop (Left Click)", SizeF.Empty),
+        ("Top Left Corner Radius (Scroll)", SizeF.Empty),
+        ("Top Right Corner Radius (Scroll)", SizeF.Empty),
+        ("Bottom Left Corner Radius (Scroll)", SizeF.Empty),
+        ("Bottom Right Corner Radius (Scroll)", SizeF.Empty),
+    ];
+    private readonly Color[] colors = [Color.RoyalBlue, Color.MediumPurple, Color.DarkOrange, Color.MediumSeaGreen];
+    private readonly Color[] gradStartClrs = [Color.RoyalBlue, Color.MediumPurple, Color.DarkOrange, Color.MediumSeaGreen];
+    private readonly Color[] gradStopClrs = [Color.RoyalBlue, Color.MediumPurple, Color.DarkOrange, Color.MediumSeaGreen];
+    private int colorIndex;
+    private int gradStartClrIndex;
+    private int gradStopClrIndex;
     private RectShape rect;
     private RectAttribute rectAttribute = RectAttribute.Width;
     private KeyboardState prevKeyState;
     private MouseState prevMouseState;
-    private IFont? font;
-    private Dictionary<RectAttribute, string> rectAttrText = new ()
-    {
-        { RectAttribute.Width, "Width" },
-        { RectAttribute.Height, "Height" },
-        { RectAttribute.Color, "Color" },
-        { RectAttribute.BorderThickness, "Border Thickness" },
-        { RectAttribute.IsSolid, "Is Solid" },
-        { RectAttribute.GradientType, "Gradient Type" },
-        { RectAttribute.GradientStart, "Gradient Start" },
-        { RectAttribute.GradientStop, "Gradient Stop" },
-        { RectAttribute.CornerRadius, "Corner Radius" },
-    };
+    private IFont? regularFont;
+    private IFont? boldFont;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
@@ -54,8 +65,8 @@ public class Game : Window
     public Game()
     {
         Title = "Render Rectangles Guide";
-        Width = 800;
-        Height = 800;
+        Width = 1500;
+        Height = 1000;
 
         this.fontLoader = ContentLoaderFactory.CreateFontLoader();
         this.keyboard = HardwareFactory.GetKeyboard();
@@ -71,14 +82,15 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.font = this.fontLoader.Load("app-font", 14);
+        this.regularFont = this.fontLoader.Load("regular-font", 12);
+        this.boldFont = this.fontLoader.Load("bold-font", 12);
 
         this.rect = new RectShape
         {
             Width = 100,
             Height = 100,
-            Color = Color.CornflowerBlue,
-            Position = new Vector2(400, 400),
+            Color = this.colors[this.colorIndex],
+            Position = new Vector2(Width / 2f, Height / 2f),
             BorderThickness = 1,
             IsSolid = true,
             GradientType = ColorGradient.None,
@@ -86,6 +98,11 @@ public class Game : Window
             GradientStop = Color.MediumPurple,
             CornerRadius = default,
         };
+
+        for (var i = 0; i < this.rectAttrText.Length; i++)
+        {
+            this.rectAttrText[i].Size = this.regularFont.Measure(this.rectAttrText[i].Text);
+        }
 
         base.OnLoad();
     }
@@ -95,7 +112,7 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.fontLoader.Unload(this.font);
+        this.fontLoader.Unload(this.boldFont);
         base.OnUnload();
     }
 
@@ -119,12 +136,33 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnDraw(FrameTime frameTime)
     {
-        ArgumentNullException.ThrowIfNull(this.font);
+        ArgumentNullException.ThrowIfNull(this.regularFont);
+        ArgumentNullException.ThrowIfNull(this.boldFont);
 
         this.batcher.Begin();
 
         this.shapeRenderer.Render(this.rect);
-        this.fontRenderer.Render(this.font, $"Current Rect Attribute: {this.rectAttrText[this.rectAttribute]}", new Vector2(400, 30));
+
+        var largestWidth = this.rectAttrText.Max(x => x.Size.Width);
+        var totalHeightWithSpacing = this.rectAttrText.Sum(x => x.Size.Height) + ((this.rectAttrText.Length - 1) * 10);
+        var totalTextHalfHeight = totalHeightWithSpacing / 2;
+
+        var winHalfHeight = Height / 2f;
+        var startPos = new Vector2((largestWidth / 2) + 5, winHalfHeight - totalTextHalfHeight);
+        var selectedIndex = (int)this.rectAttribute;
+
+        for (var i = 0; i < this.rectAttrText.Length; i++)
+        {
+            var (text, size) = this.rectAttrText[i];
+            var color = i == selectedIndex ? Color.LightCyan : Color.DarkGray;
+
+            var renderPos = new Vector2((size.Width / 2) + 20, startPos.Y + ((size.Height + 10) * i));
+
+            var chosenFont = i == selectedIndex ? this.boldFont : this.regularFont;
+            this.fontRenderer.Render(chosenFont, text, renderPos, color);
+        }
+
+        this.fontRenderer.Render(this.regularFont, CtrlText, new Vector2(Width / 2f, 50), Color.White);
 
         this.batcher.End();
 
@@ -138,25 +176,18 @@ public class Game : Window
     {
         var currentKeyState = this.keyboard.GetState();
 
-        if (currentKeyState.IsKeyUp(KeyCode.Space) && this.prevKeyState.IsKeyDown(KeyCode.Space))
+        if (currentKeyState.IsKeyUp(KeyCode.Down) && this.prevKeyState.IsKeyDown(KeyCode.Down))
         {
-            var anyShiftKeyDown = currentKeyState.IsKeyDown(KeyCode.LeftShift) || currentKeyState.IsKeyDown(KeyCode.RightShift);
-            var incrementAmount = anyShiftKeyDown ? -1 : 1;
-
             var currentValue = (int)this.rectAttribute;
-            var lastIndex = Enum.GetValues<RectAttribute>().Length - 1;
-
-            currentValue += incrementAmount;
-
-            if (currentValue < 0)
-            {
-                currentValue = lastIndex;
-            }
-            else if (currentValue > lastIndex)
-            {
-                currentValue = 0;
-            }
-
+            currentValue += 1;
+            currentValue = currentValue > this.rectAttrText.Length - 1 ? 0 : currentValue;
+            this.rectAttribute = (RectAttribute)currentValue;
+        }
+        else if (currentKeyState.IsKeyUp(KeyCode.Up) && this.prevKeyState.IsKeyDown(KeyCode.Up))
+        {
+            var currentValue = (int)this.rectAttribute;
+            currentValue -= 1;
+            currentValue = currentValue < 0 ? this.rectAttrText.Length - 1 : currentValue;
             this.rectAttribute = (RectAttribute)currentValue;
         }
 
@@ -176,6 +207,9 @@ public class Game : Window
             switch (this.rectAttribute)
             {
                 case RectAttribute.Color:
+                    this.colorIndex += 1;
+                    this.colorIndex = this.colorIndex > this.colors.Length - 1 ? 0 : this.colorIndex;
+                    this.rect.Color = this.colors[this.colorIndex];
                     break;
                 case RectAttribute.IsSolid:
                     this.rect.IsSolid = !this.rect.IsSolid;
@@ -189,11 +223,19 @@ public class Game : Window
                     };
                     break;
                 case RectAttribute.GradientStart:
+                    this.gradStartClrIndex += 1;
+                    this.gradStartClrIndex = this.gradStartClrIndex > this.gradStartClrs.Length - 1 ? 0 : this.gradStartClrIndex;
+                    this.rect.GradientStart = this.gradStartClrs[this.gradStartClrIndex];
                     break;
                 case RectAttribute.GradientStop:
+                    this.gradStopClrIndex += 1;
+                    this.gradStopClrIndex = this.gradStopClrIndex > this.gradStopClrs.Length - 1 ? 0 : this.gradStopClrIndex;
+                    this.rect.GradientStop = this.gradStopClrs[this.gradStopClrIndex];
                     break;
             }
         }
+
+        var halfWidth = this.rect.Width / 2;
 
         if (currentMouseState.GetScrollDirection() == MouseScrollDirection.ScrollDown)
         {
@@ -206,8 +248,23 @@ public class Game : Window
                     this.rect.Height -= 20;
                     break;
                 case RectAttribute.BorderThickness:
+                    this.rect.BorderThickness -= 10;
                     break;
-                case RectAttribute.CornerRadius:
+                case RectAttribute.TopLeftRadius:
+                    var newTopLeft = Math.Clamp(this.rect.CornerRadius.TopLeft + 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetTopLeft(this.rect.CornerRadius, newTopLeft);
+                    break;
+                case RectAttribute.TopRightRadius:
+                    var newTopRight = Math.Clamp(this.rect.CornerRadius.TopRight + 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetTopRight(this.rect.CornerRadius, newTopRight);
+                    break;
+                case RectAttribute.BottomRightRadius:
+                    var newBottomRight = Math.Clamp(this.rect.CornerRadius.BottomRight + 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetBottomRight(this.rect.CornerRadius, newBottomRight);
+                    break;
+                case RectAttribute.BottomLeftRadius:
+                    var newBottomLeft = Math.Clamp(this.rect.CornerRadius.BottomLeft + 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetBottomLeft(this.rect.CornerRadius, newBottomLeft);
                     break;
             }
         }
@@ -221,22 +278,25 @@ public class Game : Window
                 case RectAttribute.Height:
                     this.rect.Height += 20;
                     break;
-                case RectAttribute.Color:
-                    break;
                 case RectAttribute.BorderThickness:
+                    this.rect.BorderThickness += 10;
                     break;
-                case RectAttribute.IsSolid:
+                case RectAttribute.TopLeftRadius:
+                    var newTopLeft = Math.Clamp(this.rect.CornerRadius.TopLeft - 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetTopLeft(this.rect.CornerRadius, newTopLeft);
                     break;
-                case RectAttribute.GradientType:
+                case RectAttribute.TopRightRadius:
+                    var newTopRight = Math.Clamp(this.rect.CornerRadius.TopRight - 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetTopRight(this.rect.CornerRadius, newTopRight);
                     break;
-                case RectAttribute.GradientStart:
+                case RectAttribute.BottomRightRadius:
+                    var newBottomRight = Math.Clamp(this.rect.CornerRadius.BottomRight - 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetBottomRight(this.rect.CornerRadius, newBottomRight);
                     break;
-                case RectAttribute.GradientStop:
+                case RectAttribute.BottomLeftRadius:
+                    var newBottomLeft = Math.Clamp(this.rect.CornerRadius.BottomLeft - 12, 0, halfWidth);
+                    this.rect.CornerRadius = CornerRadius.SetBottomLeft(this.rect.CornerRadius, newBottomLeft);
                     break;
-                case RectAttribute.CornerRadius:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 

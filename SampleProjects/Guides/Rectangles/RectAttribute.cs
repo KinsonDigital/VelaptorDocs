@@ -50,7 +50,22 @@ public enum RectAttribute
     GradientStop,
 
     /// <summary>
-    /// The corner radius of the rectangle.
+    /// The corner radius of the rectangle's top left corner.
     /// </summary>
-    CornerRadius,
+    TopLeftRadius,
+
+    /// <summary>
+    /// The corner radius of the rectangle's top right corner.
+    /// </summary>
+    TopRightRadius,
+
+    /// <summary>
+    /// The corner radius of the rectangle's bottom right corner.
+    /// </summary>
+    BottomRightRadius,
+
+    /// <summary>
+    /// The corner radius of the rectangle's bottom left corner.
+    /// </summary>
+    BottomLeftRadius,
 }

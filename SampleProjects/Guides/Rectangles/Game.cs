@@ -91,10 +91,10 @@ public class Game : Window
             Height = 100,
             Color = this.colors[this.colorIndex],
             Position = new Vector2(Width / 2f, Height / 2f),
-            BorderThickness = 1,
-            IsSolid = true,
+            BorderThickness = 12,
+            IsSolid = false,
             GradientType = ColorGradient.None,
-            GradientStart = Color.CornflowerBlue,
+            GradientStart = Color.RoyalBlue,
             GradientStop = Color.MediumPurple,
             CornerRadius = default,
         };

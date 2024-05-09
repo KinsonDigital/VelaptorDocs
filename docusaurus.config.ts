@@ -2,6 +2,7 @@ import { themes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import tailwindPlugin from './plugins/tailwind-config.cjs';
+
 const config: Config = {
 	title: 'Velaptor',
 	tagline: 'The easy and fun to use 2D game development framework',
@@ -250,4 +251,5 @@ const config: Config = {
 		tailwindPlugin,
 	]
 };
+
 module.exports = config;

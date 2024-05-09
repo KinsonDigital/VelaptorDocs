@@ -2,13 +2,13 @@
 sidebar_position: 5
 ---
 
-import TutorialLink from "@site/src/components/TutorialLink";
+import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 
 # Rendering With An Atlas Texture
 
 :::note Guide Source Code
-Go to the <TutorialLink projectName="AtlasTextures" version="v1.0.0-preview.36"/> guide project to see the source code for a fully working example of this guide.
+Go to the <GuideLink projectName="AtlasTextures" version="v1.0.0-preview.36"/> guide project to see the source code for a fully working example of this guide.
 :::
 
 Another way to render textures is by using an atlas texture. This guide is a little more
@@ -16,16 +16,16 @@ in-depth and longer than the previous guides. Stick with it though, it will be w
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
-1. <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openLinkNewTab="true"/>
-2. <Url href="https://gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openLinkNewTab="true"/>
-3. <Url href="https://www.pinterest.com/pin/676877018967605282/" text="Examples" openLinkNewTab="true"/>
+1. <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openInNewTab="true"/>
+2. <Url href="https://gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openInNewTab="true"/>
+3. <Url href="https://www.pinterest.com/pin/676877018967605282/" text="Examples" openInNewTab="true"/>
 :::
 
 An atlas texture is a large image with multiple sub-images packed into a single image. With this single image, you use another file
 of a particular format such as JSON or XML, that describes the location, size, and other kinds of attributes for each image in the atlas texture.
 
 :::info JSON
-If you are new to **JSON**, click <Url href="https://www.youtube.com/watch?v=iiADhChRriM" text="here" openLinkNewTab="true"/> for a great 10-minute video.
+If you are new to **JSON**, click <Url href="https://www.youtube.com/watch?v=iiADhChRriM" text="here" openInNewTab="true"/> for a great 10-minute video.
 :::
 
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
@@ -46,8 +46,8 @@ atlas textures and their associated metadata.
 It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
 
 Various tools out there give you the ability to easily create atlas textures and metadata.  
-A couple of examples are: <Url href="https://www.codeandweb.com/texturepacker" text="Texture Packer" openLinkNewTab="true"/>
-and <Url href="https://esotericsoftware.com/" text="Spine" openLinkNewTab="true"/>.
+A couple of examples are: <Url href="https://www.codeandweb.com/texturepacker" text="Texture Packer" openInNewTab="true"/>
+and <Url href="https://esotericsoftware.com/" text="Spine" openInNewTab="true"/>.
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
@@ -105,8 +105,8 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 ## <span class="color-step">Step 2: Get atlas content</span>
 
 Download the atlas texture files below:
-- Go <Url href="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.png" text="here" openLinkNewTab="true"/> to download the <b><i>atlas.png</i></b> file.
-- Go <Url href="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.json" text="here" openLinkNewTab="true"/> to download the <b><i>atlas.json</i></b> file.
+- Go <Url href="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.png" text="here" openInNewTab="true"/> to download the <b><i>atlas.png</i></b> file.
+- Go <Url href="https://github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.json" text="here" openInNewTab="true"/> to download the <b><i>atlas.json</i></b> file.
 
 Click the GitHub download button shown below to download the file
 <img style={{width: '20%'}} src={require('@site/static/img/tutorials/guides/rendering-atlas-textures/github-download-btn.jpg').default}/>

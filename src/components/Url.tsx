@@ -1,6 +1,6 @@
 import React from "react";
-import { useLocation } from '@docusaurus/router';
 import OpenNewTab from "@site/static/img/new-tab.svg";
+import Link from "@docusaurus/Link";
 
 /**
  * The parameter object used for this component.
@@ -19,7 +19,7 @@ interface Props {
 	/**
 	 * If true, then the link will open in a new tab.
 	 */
-	openInNewTab?: boolean;
+	openInNewTab?: string;
 }
 
 /**
@@ -32,28 +32,22 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 		? href
 		: `https://${href}`;
 
-	text = text === undefined || text === null || text === ""
-		? href
-		: text;
+	text = text === undefined || text === "" ? href : text;
 
-	const target = openInNewTab === undefined ? "" : "_blank";
+	const shouldUseNewTab = openInNewTab?.toLowerCase() === "true";
+	const target = shouldUseNewTab ? "_blank" : "";
 
 	return (
-		<>
-			<div className="inline-flex items-center">
-				<a href={href}
-					target={target}
-					className="link flex flex-row"
-					rel="noopener noreferrer">
-					{text}
-					{
-						openInNewTab === undefined
-							? <></>
-							: <span><OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} /></span>
-					}
-				</a>
-			</div>
-		</>
+		<div className="inline-flex items-center">
+			<Link to={href} target={target} className={"link"}>{text}</Link>
+			<span>
+				{
+					shouldUseNewTab
+						? <OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }}/>
+						: <></>
+				}
+			</span>
+		</div>
 	);
 }
 

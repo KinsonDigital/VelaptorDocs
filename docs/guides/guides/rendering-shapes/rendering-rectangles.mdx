@@ -90,7 +90,11 @@ protected void OnDraw(FrameTime frameTime)
 
 You should end up with a rectangle that looks like the image below.
 
-![rendered-rect](./images/rendered-rect.png)
+<div className="flex flex-row space-x-10 justify-center items-center app-win">
+    <div className="mt-7">
+    ![rendered-rect](./images/rendered-rect.png)
+    </div>
+</div>
 
 ## <span className="color-step">Rectangle Size</span>
 
@@ -191,9 +195,34 @@ Here is an example of how to create a solid rectangle:
 ```csharp showLineNumbers
 var rect = new RectShape(); // My default is solid
 
-rect.IsSolid = false; // Not I am empty
-rect.IsSolid = false; // Not I am solid again
+rect.IsSolid = false; // I am not solid
+rect.IsSolid = true; // I am solid again
 ```
+
+## <span className="color-step">Border Thickness</span>
+
+When it comes to the border thickness, it is only visible when the rectangle is not solid.
+The border thickness is controlled by the `BorderThickness` property and is of type `float`.
+
+Refer to the code below to see how to set the border thickness.
+
+```csharp showLineNumbers
+var rect = new RectShape();
+rect.Width = 100;
+rect.Height = 100;
+
+rect.IsSolid = false;
+rect.BorderThickness = 25;
+```
+
+Using the settings above, this is what your rectangle would look like.
+
+<div className="flex flex-row space-x-10 justify-center items-center app-win">
+    <div className="mt-7">
+        ![border-thickness](./images/border-thickness.png)
+    </div>
+</div>
+
 
 ## <span className="color-step">Corner Radius</span>
 
@@ -211,7 +240,11 @@ rect.CornerRadius = new CornerRadius(10, 20, 30, 40);
 
 If the width and height of the rectangle were **80**, the result would be like the image below.
 
-![radius-sample](./images/render-rect-radius-sample.png)
+<div className="flex flex-row space-x-10 justify-center items-center app-win">
+    <div className="mt-7">
+        ![radius-sample](./images/render-rect-radius-sample.png)
+    </div>
+</div>
 
 ### <span className="color-sub-step">All Corners The Same</span>
 
@@ -224,7 +257,11 @@ rect.CornerRadius = new CornerRadius(25);
 
 If the width and height of the rectangle was **100**, the result would be like the image below.
 
-![all-corners-same](./images/all-corners-same.png)
+<div className="flex flex-row space-x-10 justify-center items-center app-win">
+    <div className="mt-7">
+        ![all-corners-same](./images/all-corners-same.png)
+    </div>
+</div>
 
 ### <span className="color-sub-step">One Corner At A Time</span>
 
@@ -284,8 +321,6 @@ by setting the `GradientType` property to either `GradientType.Horizontal` or `G
 
 These gradients will transition from one color to another using the `GradientStart` and `GradientStop` properties.
 
-
-
 The code below shows you how you could have a horizontal color gradient that would transition from  
 <ClrText text="Color.RoyalBlue" foreColor="RoyalBlue"/> to <ClrText text="Color.MediumPurple" foreColor="MediumPurple"/>,
 and a vertical color gradient that would transition from <ClrText text="Color.RoyalBlue" foreColor="RoyalBlue"/> to <ClrText text="Color.DarkOrange" foreColor="DarkOrange"/>.
@@ -299,18 +334,40 @@ hGradRect.GradientStop = Color.MediumPurple;
 
 // Vertical gradient rectangle
 var vGradRect = new RectShape();
-vGradRect.GradientType = GradientType.Horizontal;
+vGradRect.GradientType = GradientType.Vertical;
 vGradRect.GradientStart = Color.RoyalBlue;
 vGradRect.GradientStop = Color.DarkOrange;
 ```
 
 This would end with the result shown below.
 
-![horizontal-gradient](./images/horizontal-gradient.png)
-![vertical-gradient](./images/vertical-gradient.png)
+<div className="flex flex-row space-x-10 justify-center items-center app-win mb-10">
+    <div className="mt-7">
+        ![horizontal-gradient](./images/horizontal-gradient.png)
+        ![vertical-gradient](./images/vertical-gradient.png)
+    </div>
+</div>
 
-:::note GRADIENTS SET TO NONE
+:::note GRADIENTS WHEN SET TO NONE
 Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `GradientType.None`,
 the gradient will not be rendered and the rectangle will be rendered using the `Color` property.
 :::
 
+## <span className="color-step">Vector Containment</span>
+
+You can easily check if the rectangle contains a `Vector2` in 2D space.  This can be done by using
+the `Contains()` method.
+
+```csharp showLineNumbers
+var rect = new RectShape();
+rect.Position = new Vector2(50, 50);
+rect.Width = 100;
+rect.Height = 100;
+
+
+var vector = new Vector2(10, 10);
+var isNotContained = rect.Contains(vector); // False
+
+vector = new Vector2(60, 60);
+var isContained = rect.Contains(vector); // True
+```

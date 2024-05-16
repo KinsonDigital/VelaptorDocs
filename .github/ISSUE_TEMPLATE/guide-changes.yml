@@ -1,17 +1,22 @@
-name: 📜/🛡️ Guide & API Doc Changes
-description: Create an issue to add or update guide and API documentation.
-title: "📜/🛡️Guide & API Doc Change - "
-labels: ['📜guide doc changes', '🛡️api doc changes']
+name: 📜 Guide Doc Change
+description: Create an issue to add or update guide documentation.
+title: "📜"
+labels: ['📜guide doc changes']
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes
   attributes:
     label: Complete The Item Below
     options:
-    - label: I have added the version to the very end of the issue title.
+    - label: I have updated the title without removing the 📜 emoji.
       required: true
-    - label: I have updated the title without removing the 🛡️ and 📜 emoji.
-      required: true
+
+- type: textarea
+  attributes:
+    label: Description
+    description: A description of the change to the documentation.
+  validations:
+    required: true
 
 - type: textarea
   attributes:
@@ -47,16 +52,14 @@ body:
     label: "Additional Information:"
     description: DO NOT CHANGE ANYTHING BELOW!!
     value: |
-      **Priority Type Labels**
+      **_<details closed><summary>Priority Type Labels</summary>_**
+      
       | Priority Type       | Label                                                                  |
       |---------------------|------------------------------------------------------------------------|
       | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
       | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
       | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
-
-      > **Note**
-      > Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.
-      > Just follow the CLI instructions to remove the version.
+      </details>
 
 - type: checkboxes
   id: terms

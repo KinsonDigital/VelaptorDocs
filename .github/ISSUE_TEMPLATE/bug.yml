@@ -1,5 +1,5 @@
 name: 🐛 Bug
-description: File a bug
+description: Fix a bug
 title: "🐛"
 labels: [bug, ⚕️NEEDS TRIAGE]
 projects: ["KinsonDigital/11"]

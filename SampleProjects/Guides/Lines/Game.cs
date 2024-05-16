@@ -4,7 +4,17 @@
 
 namespace Lines;
 
+using System.Drawing;
+using System.Numerics;
 using Velaptor;
+using Velaptor.Batching;
+using Velaptor.Content;
+using Velaptor.Content.Fonts;
+using Velaptor.ExtensionMethods;
+using Velaptor.Factories;
+using Velaptor.Graphics;
+using Velaptor.Graphics.Renderers;
+using Velaptor.Input;
 using Velaptor.UI;
 
 /// <summary>
@@ -12,6 +22,31 @@ using Velaptor.UI;
 /// </summary>
 public class Game : Window
 {
+    private const float Speed = 300;
+    private readonly ILoader<IFont> fontLoader;
+    private readonly IBatcher batcher;
+    private readonly ILineRenderer lineRenderer;
+    private readonly IFontRenderer fontRenderer;
+    private readonly IAppInput<MouseState> mouse;
+    private readonly IAppInput<KeyboardState> keyboard;
+    private readonly Color[] colors =
+    [
+        Color.WhiteSmoke,
+        Color.IndianRed,
+        Color.RoyalBlue,
+        Color.MediumPurple,
+        Color.MediumSeaGreen,
+        Color.Yellow,
+        Color.Black,
+    ];
+    private IFont? font;
+    private string instructions;
+    private KeyboardState prevKeyState;
+    private MouseState prevMouseState;
+    private Line line;
+    private Vector2 velocity = new (0, 0);
+    private int currentColorIndex;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
     /// </summary>
@@ -20,6 +55,15 @@ public class Game : Window
         Title = "Render Lines Guide";
         Width = 1500;
         Height = 1000;
+
+        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+
+        this.batcher = RendererFactory.CreateBatcher();
+        this.lineRenderer = RendererFactory.CreateLineRenderer();
+        this.fontRenderer = RendererFactory.CreateFontRenderer();
+
+        this.mouse = HardwareFactory.GetMouse();
+        this.keyboard = HardwareFactory.GetKeyboard();
     }
 
     /// <summary>
@@ -27,6 +71,18 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
+        this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
+        this.line = new Line
+        {
+            Color = Color.MediumPurple, P1 = new Vector2(100, 100), P2 = new Vector2(300, 300), Thickness = 10,
+        };
+
+        this.instructions = "Use the 'W' and 'S' keys to move the line up and down.\n" +
+                           "Use the 'A' and 'D' keys to move the line left and right.\n" +
+                           "Use the mouse wheel to increase or decrease the line thickness.\n" +
+                           "Left click to change the line color to the next color.\n" +
+                           "Right click to change the line color to the previous color.";
+
         base.OnLoad();
     }
 
@@ -35,6 +91,8 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
+        this.fontLoader.Unload(this.font);
+
         base.OnUnload();
     }
 
@@ -45,6 +103,12 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
+        ProcessKeyboard();
+        ProcessMouse();
+
+        var deltaVel = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
+        this.line.P1 += deltaVel;
+
         base.OnUpdate(frameTime);
     }
 
@@ -55,6 +119,91 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnDraw(FrameTime frameTime)
     {
+        ArgumentNullException.ThrowIfNull(this.font);
+
+        this.batcher.Begin();
+
+        this.lineRenderer.Render(this.line);
+
+        this.fontRenderer.Render(this.font, this.instructions, new Vector2(100, 100));
+
+        this.batcher.End();
+
         base.OnDraw(frameTime);
+    }
+
+    /// <summary>
+    /// Process keyboard input.
+    /// </summary>
+    private void ProcessKeyboard()
+    {
+        var currentKeyState = this.keyboard.GetState();
+
+        if (this.prevKeyState.IsKeyDown(KeyCode.A))
+        {
+            this.velocity.X = -Speed;
+        }
+        else if (this.prevKeyState.IsKeyDown(KeyCode.D))
+        {
+            this.velocity.X = Speed;
+        }
+        else
+        {
+            this.velocity.X = 0;
+        }
+
+        if (this.prevKeyState.IsKeyDown(KeyCode.W))
+        {
+            this.velocity.Y = -Speed;
+        }
+        else if (this.prevKeyState.IsKeyDown(KeyCode.S))
+        {
+            this.velocity.Y = Speed;
+        }
+        else
+        {
+            this.velocity.Y = 0;
+        }
+
+        this.prevKeyState = currentKeyState;
+    }
+
+    /// <summary>
+    /// Process mouse input.
+    /// </summary>
+    private void ProcessMouse()
+    {
+        var currentMouseState = this.mouse.GetState();
+
+        this.line.P2 = new Vector2(currentMouseState.GetX(), currentMouseState.GetY());
+
+        var scrollDir = currentMouseState.GetScrollDirection();
+
+        if (scrollDir == MouseScrollDirection.ScrollDown)
+        {
+            this.line.Thickness += 10;
+        }
+        else if (scrollDir == MouseScrollDirection.ScrollUp)
+        {
+            this.line.Thickness -= 10;
+        }
+
+        if (currentMouseState.IsLeftButtonUp() && this.prevMouseState.IsLeftButtonDown())
+        {
+            this.currentColorIndex += 1;
+
+            this.currentColorIndex = this.currentColorIndex > this.colors.Length - 1 ? 0 : this.currentColorIndex;
+        }
+
+        if (currentMouseState.IsRightButtonUp() && this.prevMouseState.IsRightButtonDown())
+        {
+            this.currentColorIndex -= 1;
+
+            this.currentColorIndex = this.currentColorIndex < 0 ? this.colors.Length - 1 : this.currentColorIndex;
+        }
+
+        this.line.Color = this.colors[this.currentColorIndex];
+
+        this.prevMouseState = currentMouseState;
     }
 }

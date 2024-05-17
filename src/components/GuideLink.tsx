@@ -14,9 +14,9 @@ interface Props {
 	projectName: string;
 
 	/**
-	 * The version of the guide project.
+	 * The name of the tag where the guide project exists.
 	 */
-	version: string;
+	tagName: string;
 }
 
 /**
@@ -24,8 +24,8 @@ interface Props {
  * @param param The component properties.
  * @returns The component.
  */
-const GuideLink: React.FC<Props> = ({ projectName, version }: Props) => {
-	const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/api-${version}/SampleProjects/Guides/${projectName}`;
+const GuideLink: React.FC<Props> = ({ projectName, tagName }: Props) => {
+	const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/${tagName}/SampleProjects/Guides/${projectName}`;
 
 	return (
 		<>

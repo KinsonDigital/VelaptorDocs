@@ -24,6 +24,9 @@
     <ItemGroup>
       <None Remove="stylecop.json" />
       <AdditionalFiles Include="stylecop.json" />
+      <None Update="Content\Fonts\regular-font.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

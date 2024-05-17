@@ -46,6 +46,7 @@ public class Game : Window
     private Line line;
     private Vector2 velocity = new (0, 0);
     private int currentColorIndex;
+    private SizeF textSize;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
@@ -74,7 +75,9 @@ public class Game : Window
         this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
         this.line = new Line
         {
-            Color = Color.MediumPurple, P1 = new Vector2(100, 100), P2 = new Vector2(300, 300), Thickness = 10,
+            Color = Color.MediumPurple,
+            P1 = new Vector2(1500f / 2f, 1000f / 2f),
+            P2 = new Vector2(300, 300), Thickness = 10,
         };
 
         this.instructions = "Use the 'W' and 'S' keys to move the line up and down.\n" +
@@ -82,6 +85,8 @@ public class Game : Window
                            "Use the mouse wheel to increase or decrease the line thickness.\n" +
                            "Left click to change the line color to the next color.\n" +
                            "Right click to change the line color to the previous color.";
+
+        this.textSize = this.font.Measure(this.instructions);
 
         base.OnLoad();
     }
@@ -125,7 +130,10 @@ public class Game : Window
 
         this.lineRenderer.Render(this.line);
 
-        this.fontRenderer.Render(this.font, this.instructions, new Vector2(100, 100));
+        const int topMargin = 25;
+        var textPos = new Vector2(1500f / 2f, (this.textSize.Height / 2f) + topMargin);
+
+        this.fontRenderer.Render(this.font, this.instructions, textPos);
 
         this.batcher.End();
 

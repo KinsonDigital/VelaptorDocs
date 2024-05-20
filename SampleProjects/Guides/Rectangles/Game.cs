@@ -87,10 +87,10 @@ public class Game : Window
 
         this.rect = new RectShape
         {
-            Width = 100,
-            Height = 100,
+            Width = 12,
+            Height = 10,
             Color = this.colors[this.colorIndex],
-            Position = new Vector2(Width / 2f, Height / 2f),
+            Position = new Vector2(100, 200),
             BorderThickness = 12,
             IsSolid = false,
             GradientType = ColorGradient.None,

@@ -94,7 +94,7 @@ You should end up with a circle that looks like the image below.
 
 ## <span className="color-step">Rectangle Color</span>
 
-Setting the color of the circle involves setting the 'Color' property. This uses the `System.Drawing.Color` struct that is built
+Setting the color of the circle involves setting the `Color` property. This uses the `System.Drawing.Color` struct that is built
 right into dotnet.
 
 ```csharp showLineNumbers
@@ -113,7 +113,7 @@ This should give you a rectangle that looks like the image below.
 ## <span className="color-step">Circle Size</span>
 
 You can set the size of the circle using the `Radius` or `Diameter` properties.  These properties are of type `float`
-for precision. You can also use the `Diameter` property to set the size of the circle.
+for precision.
 
 ```csharp showLineNumbers
 var circle = new CircleShape();
@@ -140,7 +140,7 @@ Dealing with the position of the circle is straightforward.  You can set the pos
 Changing the values of the properties above will affect the other property values.
 For example, let's say your circle was at the position of (10, 20) and the size was (100, 200).
 
-If you were to move the circle to the right by **30** pixels to the right using the `Left` property, then
+If you were to move the circle to the right by **30** pixels using the 'Left' property, then
 the value of the `Right` property would be **130**.
 
 The result is that it makes circle positioning easy to work with.  Your code will also be more readable and maintainable because
@@ -205,7 +205,7 @@ circle will affect the position of the sides of the circle.
 
 You can render circles as solid or empty by setting the `IsSolid` property to `true` or `false`.
 
-Here is an example of how to create a solid circle:
+Here is an example of how to create a solid or empty circle:
 
 ```csharp showLineNumbers
 var circle = new CircleShape(); // My default is solid

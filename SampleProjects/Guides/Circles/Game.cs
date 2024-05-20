@@ -1,10 +1,10 @@
 ﻿// <copyright file="Game.cs" company="KinsonDigital">
-// Copyright (c) KinsonDigital. All rights reserved.
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 #pragma warning disable CS8524 // The switch expression does not handle some values of its input type (it is not exhaustive) involving an unnamed enum value.
 
-namespace Rectangles;
+namespace Circles;
 
 using System.Drawing;
 using System.Numerics;
@@ -31,20 +31,15 @@ public class Game : Window
     private readonly IShapeRenderer shapeRenderer;
     private readonly IFontRenderer fontRenderer;
     private readonly ILoader<IFont> fontLoader;
-    private readonly (string Text, SizeF Size)[] rectAttrText =
+    private readonly (string Text, SizeF Size)[] circlettrText =
     [
-        ("Width (Scroll)", SizeF.Empty),
-        ("Height (Scroll)", SizeF.Empty),
+        ("Radius (Scroll)", SizeF.Empty),
         ("Color (Left Click)", SizeF.Empty),
         ("Border Thickness (Scroll)", SizeF.Empty),
         ("Is Solid (Left Click)", SizeF.Empty),
         ("Gradient Type (Left Click)", SizeF.Empty),
         ("Gradient Start (Left Click)", SizeF.Empty),
         ("Gradient Stop (Left Click)", SizeF.Empty),
-        ("Top Left Corner Radius (Scroll)", SizeF.Empty),
-        ("Top Right Corner Radius (Scroll)", SizeF.Empty),
-        ("Bottom Left Corner Radius (Scroll)", SizeF.Empty),
-        ("Bottom Right Corner Radius (Scroll)", SizeF.Empty),
     ];
     private readonly Color[] colors = [Color.RoyalBlue, Color.MediumPurple, Color.DarkOrange, Color.MediumSeaGreen];
     private readonly Color[] gradStartClrs = [Color.RoyalBlue, Color.MediumPurple, Color.DarkOrange, Color.MediumSeaGreen];
@@ -52,8 +47,8 @@ public class Game : Window
     private int colorIndex;
     private int gradStartClrIndex;
     private int gradStopClrIndex;
-    private RectShape rect;
-    private RectAttribute rectAttribute = RectAttribute.Width;
+    private CircleShape circle;
+    private CircleAttribute circleAttribute = CircleAttribute.Radius;
     private KeyboardState prevKeyState;
     private MouseState prevMouseState;
     private IFont? regularFont;
@@ -64,7 +59,7 @@ public class Game : Window
     /// </summary>
     public Game()
     {
-        Title = "Render Rectangles Guide";
+        Title = "Render Circles Guide";
         Width = 1500;
         Height = 1000;
 
@@ -85,23 +80,21 @@ public class Game : Window
         this.regularFont = this.fontLoader.Load("regular-font", 12);
         this.boldFont = this.fontLoader.Load("bold-font", 12);
 
-        this.rect = new RectShape
+        this.circle = new CircleShape
         {
-            Width = 12,
-            Height = 10,
+            Radius = 100,
             Color = this.colors[this.colorIndex],
-            Position = new Vector2(100, 200),
+            Position = new Vector2(Width / 2f, Height / 2f),
             BorderThickness = 12,
             IsSolid = false,
             GradientType = ColorGradient.None,
             GradientStart = Color.RoyalBlue,
             GradientStop = Color.MediumPurple,
-            CornerRadius = default,
         };
 
-        for (var i = 0; i < this.rectAttrText.Length; i++)
+        for (var i = 0; i < this.circlettrText.Length; i++)
         {
-            this.rectAttrText[i].Size = this.regularFont.Measure(this.rectAttrText[i].Text);
+            this.circlettrText[i].Size = this.regularFont.Measure(this.circlettrText[i].Text);
         }
 
         base.OnLoad();
@@ -141,19 +134,19 @@ public class Game : Window
 
         this.batcher.Begin();
 
-        this.shapeRenderer.Render(this.rect);
+        this.shapeRenderer.Render(this.circle);
 
-        var largestWidth = this.rectAttrText.Max(x => x.Size.Width);
-        var totalHeightWithSpacing = this.rectAttrText.Sum(x => x.Size.Height) + ((this.rectAttrText.Length - 1) * 10);
+        var largestWidth = this.circlettrText.Max(x => x.Size.Width);
+        var totalHeightWithSpacing = this.circlettrText.Sum(x => x.Size.Height) + ((this.circlettrText.Length - 1) * 10);
         var totalTextHalfHeight = totalHeightWithSpacing / 2;
 
         var winHalfHeight = Height / 2f;
         var startPos = new Vector2((largestWidth / 2) + 5, winHalfHeight - totalTextHalfHeight);
-        var selectedIndex = (int)this.rectAttribute;
+        var selectedIndex = (int)this.circleAttribute;
 
-        for (var i = 0; i < this.rectAttrText.Length; i++)
+        for (var i = 0; i < this.circlettrText.Length; i++)
         {
-            var (text, size) = this.rectAttrText[i];
+            var (text, size) = this.circlettrText[i];
             var color = i == selectedIndex ? Color.LightCyan : Color.DarkGray;
 
             var renderPos = new Vector2((size.Width / 2) + 20, startPos.Y + ((size.Height + 10) * i));
@@ -178,17 +171,17 @@ public class Game : Window
 
         if (currentKeyState.IsKeyUp(KeyCode.Down) && this.prevKeyState.IsKeyDown(KeyCode.Down))
         {
-            var currentValue = (int)this.rectAttribute;
+            var currentValue = (int)this.circleAttribute;
             currentValue += 1;
-            currentValue = currentValue > this.rectAttrText.Length - 1 ? 0 : currentValue;
-            this.rectAttribute = (RectAttribute)currentValue;
+            currentValue = currentValue > this.circlettrText.Length - 1 ? 0 : currentValue;
+            this.circleAttribute = (CircleAttribute)currentValue;
         }
         else if (currentKeyState.IsKeyUp(KeyCode.Up) && this.prevKeyState.IsKeyDown(KeyCode.Up))
         {
-            var currentValue = (int)this.rectAttribute;
+            var currentValue = (int)this.circleAttribute;
             currentValue -= 1;
-            currentValue = currentValue < 0 ? this.rectAttrText.Length - 1 : currentValue;
-            this.rectAttribute = (RectAttribute)currentValue;
+            currentValue = currentValue < 0 ? this.circlettrText.Length - 1 : currentValue;
+            this.circleAttribute = (CircleAttribute)currentValue;
         }
 
         this.prevKeyState = currentKeyState;
@@ -204,98 +197,58 @@ public class Game : Window
         // If the left mouse button has been clicked
         if (currentMouseState.IsLeftButtonUp() && this.prevMouseState.IsLeftButtonDown())
         {
-            switch (this.rectAttribute)
+            switch (this.circleAttribute)
             {
-                case RectAttribute.Color:
+                case CircleAttribute.Color:
                     this.colorIndex += 1;
                     this.colorIndex = this.colorIndex > this.colors.Length - 1 ? 0 : this.colorIndex;
-                    this.rect.Color = this.colors[this.colorIndex];
+                    this.circle.Color = this.colors[this.colorIndex];
                     break;
-                case RectAttribute.IsSolid:
-                    this.rect.IsSolid = !this.rect.IsSolid;
+                case CircleAttribute.IsSolid:
+                    this.circle.IsSolid = !this.circle.IsSolid;
                     break;
-                case RectAttribute.GradientType:
-                    this.rect.GradientType = this.rect.GradientType switch
+                case CircleAttribute.GradientType:
+                    this.circle.GradientType = this.circle.GradientType switch
                     {
                         ColorGradient.None => ColorGradient.Horizontal,
                         ColorGradient.Horizontal => ColorGradient.Vertical,
                         ColorGradient.Vertical => ColorGradient.None,
                     };
                     break;
-                case RectAttribute.GradientStart:
+                case CircleAttribute.GradientStart:
                     this.gradStartClrIndex += 1;
                     this.gradStartClrIndex = this.gradStartClrIndex > this.gradStartClrs.Length - 1 ? 0 : this.gradStartClrIndex;
-                    this.rect.GradientStart = this.gradStartClrs[this.gradStartClrIndex];
+                    this.circle.GradientStart = this.gradStartClrs[this.gradStartClrIndex];
                     break;
-                case RectAttribute.GradientStop:
+                case CircleAttribute.GradientStop:
                     this.gradStopClrIndex += 1;
                     this.gradStopClrIndex = this.gradStopClrIndex > this.gradStopClrs.Length - 1 ? 0 : this.gradStopClrIndex;
-                    this.rect.GradientStop = this.gradStopClrs[this.gradStopClrIndex];
+                    this.circle.GradientStop = this.gradStopClrs[this.gradStopClrIndex];
                     break;
             }
         }
 
-        var halfWidth = this.rect.Width / 2;
-
         if (currentMouseState.GetScrollDirection() == MouseScrollDirection.ScrollDown)
         {
-            switch (this.rectAttribute)
+            switch (this.circleAttribute)
             {
-                case RectAttribute.Width:
-                    this.rect.Width -= 20;
+                case CircleAttribute.Radius:
+                    this.circle.Radius -= 20;
                     break;
-                case RectAttribute.Height:
-                    this.rect.Height -= 20;
-                    break;
-                case RectAttribute.BorderThickness:
-                    this.rect.BorderThickness -= 10;
-                    break;
-                case RectAttribute.TopLeftRadius:
-                    var newTopLeft = Math.Clamp(this.rect.CornerRadius.TopLeft + 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetTopLeft(this.rect.CornerRadius, newTopLeft);
-                    break;
-                case RectAttribute.TopRightRadius:
-                    var newTopRight = Math.Clamp(this.rect.CornerRadius.TopRight + 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetTopRight(this.rect.CornerRadius, newTopRight);
-                    break;
-                case RectAttribute.BottomRightRadius:
-                    var newBottomRight = Math.Clamp(this.rect.CornerRadius.BottomRight + 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetBottomRight(this.rect.CornerRadius, newBottomRight);
-                    break;
-                case RectAttribute.BottomLeftRadius:
-                    var newBottomLeft = Math.Clamp(this.rect.CornerRadius.BottomLeft + 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetBottomLeft(this.rect.CornerRadius, newBottomLeft);
+                case CircleAttribute.BorderThickness:
+                    this.circle.BorderThickness -= 10;
                     break;
             }
         }
         else if (currentMouseState.GetScrollDirection() == MouseScrollDirection.ScrollUp)
         {
-            switch (this.rectAttribute)
+            switch (this.circleAttribute)
             {
-                case RectAttribute.Width:
-                    this.rect.Width += 20;
+                case CircleAttribute.Radius:
+                    this.circle.Radius += 20;
                     break;
-                case RectAttribute.Height:
-                    this.rect.Height += 20;
-                    break;
-                case RectAttribute.BorderThickness:
-                    this.rect.BorderThickness += 10;
-                    break;
-                case RectAttribute.TopLeftRadius:
-                    var newTopLeft = Math.Clamp(this.rect.CornerRadius.TopLeft - 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetTopLeft(this.rect.CornerRadius, newTopLeft);
-                    break;
-                case RectAttribute.TopRightRadius:
-                    var newTopRight = Math.Clamp(this.rect.CornerRadius.TopRight - 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetTopRight(this.rect.CornerRadius, newTopRight);
-                    break;
-                case RectAttribute.BottomRightRadius:
-                    var newBottomRight = Math.Clamp(this.rect.CornerRadius.BottomRight - 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetBottomRight(this.rect.CornerRadius, newBottomRight);
-                    break;
-                case RectAttribute.BottomLeftRadius:
-                    var newBottomLeft = Math.Clamp(this.rect.CornerRadius.BottomLeft - 12, 0, halfWidth);
-                    this.rect.CornerRadius = CornerRadius.SetBottomLeft(this.rect.CornerRadius, newBottomLeft);
+                case CircleAttribute.BorderThickness:
+                    this.circle.BorderThickness += 10;
                     break;
             }
         }

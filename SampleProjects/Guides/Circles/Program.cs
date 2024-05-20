@@ -2,5 +2,5 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-var game = new KeyboardInput.Game();
+var game = new Circles.Game();
 game.Show();

@@ -1,4 +1,4 @@
-﻿// <copyright file="Game.cs" company="PlaceholderCompany">
+﻿// <copyright file="Game.cs" company="KinsonDigital">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

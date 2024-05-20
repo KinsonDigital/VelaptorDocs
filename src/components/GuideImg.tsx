@@ -46,11 +46,13 @@ interface Props {
  * @returns The component.
  */
 const GuidImg: React.FC<Props> = ({ apiVersion, guideName, imgFileName, sizePercentage = 100, useTestMode = "false", testBranchOrTag = "" }: Props) => {
-	const versionRegex = /^\s*v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\s*$/gm;
+	const versionRegex = /\s*v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\s*/gm;
 	const invalidGuideProjName = guideName === undefined || guideName === "";
 	const invalidFileName = imgFileName === undefined || imgFileName === "";
 
 	let errorMsg = undefined;
+
+	apiVersion = apiVersion.trim();
 
 	if (!versionRegex.test(apiVersion)) {
 		errorMsg = "<GuideImg/> Error: The api version is not a valid prod or prev version.";

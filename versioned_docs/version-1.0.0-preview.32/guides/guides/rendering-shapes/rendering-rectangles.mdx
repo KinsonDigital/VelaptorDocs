@@ -9,7 +9,7 @@ import ClrText from "@site/src/components/ClrText";
 # Rendering Rectangles
 
 :::note Guide Source Code
-Go to the <GuideLink projectName="Rectangles" tagName="v2024.05.17.070656"/> guide project to see the source code for a fully working example of this guide.
+Go to the <GuideLink projectName="Rectangles" tagName="api-v1.0.0-preview.36"/> guide project to see the source code for a fully working example of this guide.
 
 This guide will show you only some steps relative to the guide project.  
 It will only show you the most essential information related to rendering rectangles.  
@@ -20,7 +20,7 @@ Rendering primitive shapes is a fundamental part of game development. Shapes can
 
 What is debug drawing, you ask?
 
-Debug drawing draws shapes to the screen to help you debug your game.  For example, you could draw
+Debug drawing renders shapes to the screen to help you debug your game.  For example, you could draw
 a rectangle for sprites bounding box to help you see where the sprite is on the screen, which can help with debugging
 issues with collision detection.
 
@@ -48,9 +48,7 @@ var rect = new RectShape();
 The code above will create a rectangle with all attributes set to default values.  If you were to render this, you would
 not see anything. The reason for this would be that we did not set the size of the rectangle.
 
-### <span className="color-sub-step">Size & Color</span>
-
-Let's give the rectangle a size and a color.
+Let's give the rectangle a size by setting the `Width` and `Height` properties.
 
 ```csharp showLineNumbers
 var rect = new RectShape();
@@ -91,14 +89,28 @@ You should end up with a rectangle that looks like the image below.
 
 <div className="flex flex-row space-x-10 justify-center items-center app-win">
     <div className="mt-7">
-    ![rendered-rect](./images/rendered-rect.png)
+    ![rendered-rect](./images/rendered-white-rect.png)
     </div>
 </div>
 
-## <span className="color-step">Rectangle Size</span>
 
-You can set the size of the rectangle using the `Width` and `Height` properties.  These properties are of type `float`
-for precision.
+## <span className="color-step">Rectangle Color</span>
+
+Setting the color of the rectangle involves setting the 'Color' property. This uses the `System.Drawing.Color` struct that is built
+right into dotnet.
+
+```csharp showLineNumbers
+var rect = new RectShape();
+rect.Color = Color.RoyalBlue;
+```
+
+This should give you a rectangle that looks like the image below.
+
+<div className="flex flex-row space-x-10 justify-center items-center app-win">
+    <div className="mt-7">
+    ![rendered-rect](./images/rendered-blue-rect.png)
+    </div>
+</div>
 
 
 ## <span className="color-step">Rectangle Position</span>
@@ -114,7 +126,7 @@ Dealing with the position of the rectangle is straightforward.  You can set the 
 Changing the values of the properties above will affect the other property values.
 For example, let's say your rectangle was at the position of (10, 20) and the size was (100, 200).
 
-If you were to move the rectangle to the right by **30** pixels to the right using the `Left` property, then
+If you were to move the rectangle to the right by **30** pixels to using the `Left` property, then
 the value of the `Right` property would be **130**.
 
 The result is that it makes rectangle positioning easy to work with.  Your code will also be more readable and maintainable because
@@ -180,7 +192,7 @@ Not the top left corner.
 
 Did you notice that the `Width` and `Height` properties changed the values of the `Left`, `Right`, `Top`, and `Bottom` properties?
 
-Since the position of the rectangle is relative to the center of the rectangle, changing the value of the 'Width' and 'Height' of the
+Since the position of the rectangle is relative to the center of the rectangle, changing the value of the `Width` and `Height` of the
 rectangle will affect the position of the sides of the rectangle.
 
 
@@ -217,7 +229,7 @@ Using the settings above, this is what your rectangle would look like.
 
 <div className="flex flex-row space-x-10 justify-center items-center app-win">
     <div className="mt-7">
-        ![border-thickness](./images/border-thickness.png)
+        ![border-thickness](./images/rect-border-thickness.png)
     </div>
 </div>
 
@@ -324,13 +336,13 @@ and a vertical color gradient that would transition from <ClrText text="Color.Te
 var hGradRect = new RectShape();
 // Horizontal gradient rectangle
 hGradRect.GradientType = GradientType.Horizontal;
-hGradRect.GradientStart = Color.RoyalBlue;
+hGradRect.GradientStart = Color.MediumSeaGreen;
 hGradRect.GradientStop = Color.MediumPurple;
 
 // Vertical gradient rectangle
 var vGradRect = new RectShape();
 vGradRect.GradientType = GradientType.Vertical;
-vGradRect.GradientStart = Color.RoyalBlue;
+vGradRect.GradientStart = Color.Teal;
 vGradRect.GradientStop = Color.DarkOrange;
 ```
 
@@ -338,8 +350,8 @@ This would end with the result shown below.
 
 <div className="flex flex-row space-x-10 justify-center items-center app-win mb-10">
     <div className="mt-7">
-        ![horizontal-gradient](./images/horizontal-gradient.png)
-        ![vertical-gradient](./images/vertical-gradient.png)
+        ![horizontal-gradient](./images/rect-horizontal-gradient.png)
+        ![vertical-gradient](./images/rect-vertical-gradient.png)
     </div>
 </div>
 

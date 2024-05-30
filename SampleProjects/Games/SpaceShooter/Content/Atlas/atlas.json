@@ -1,0 +1,38 @@
+[
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1, 1, 83, 80",
+        "FrameIndex": 0,
+        "Name": "ghost-ship"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "84, 1, 62, 56",
+        "FrameIndex": 0,
+        "Name": "red-enemy"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "148, 1, 37, 54",
+        "FrameIndex": 0,
+        "Name": "orange-enemy"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "1, 83, 28, 51",
+        "FrameIndex": 0,
+        "Name": "weapon-selection"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "31, 83, 12, 35",
+        "FrameIndex": 0,
+        "Name": "laser"
+    },
+    {
+        "$type": "Velaptor.Graphics.AtlasSubTextureData, Velaptor",
+        "Bounds": "45, 83, 10, 10",
+        "FrameIndex": 0,
+        "Name": "star"
+    }
+]

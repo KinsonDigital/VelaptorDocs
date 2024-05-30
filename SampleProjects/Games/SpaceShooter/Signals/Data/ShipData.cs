@@ -8,12 +8,12 @@ using System.Drawing;
 using System.Numerics;
 
 /// <summary>
-/// Holds various data about the ship.
+/// Holds data about a ship.
 /// </summary>
 public readonly record struct ShipData
 {
     /// <summary>
-    /// Gets the ship's position.
+    /// Gets the position of the ship.
     /// </summary>
     public Vector2 ShipPos { get; init; }
 

@@ -6,13 +6,18 @@ namespace SpaceShooter;
 
 using System.Drawing;
 using System.Numerics;
+using CASL;
 using Signals;
 using Signals.Data;
+using Signals.Interfaces;
 using UI;
 using Velaptor;
 using Velaptor.Batching;
+using Velaptor.Content;
+using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.UI;
+using ISound = Velaptor.Content.ISound;
 
 /// <summary>
 /// The main game class.
@@ -20,9 +25,17 @@ using Velaptor.UI;
 public class Game : Window
 {
     private readonly IBatcher batcher;
+    private readonly ILoader<ISound> soundLoader;
     private readonly IWorldSignal worldSignal;
     private readonly Ship ship;
+    private readonly List<Enemy> enemies = new ();
     private readonly WeaponSelectionUi weaponSelectionUi;
+    private readonly RandomNumGenerator random = new ();
+    private readonly Background background;
+    private readonly Score score;
+    private ISound? music;
+    private double elapsedTime;
+    private int spawnInterval;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
@@ -33,35 +46,71 @@ public class Game : Window
         Width = Height;
         UpdateFrequency = 120;
 
+        this.spawnInterval = this.random.Next(1000, 5000);
+
         this.batcher = RendererFactory.CreateBatcher();
+        this.soundLoader = ContentLoaderFactory.CreateSoundLoader();
         this.ship = App.Factory.GetInstance<Ship>();
+
+        for (var i = 0; i < 10; i++)
+        {
+            var newEnemy = App.Factory.GetInstance<Enemy>();
+
+            this.enemies.Add(newEnemy);
+        }
+
         this.worldSignal = App.Factory.GetInstance<IWorldSignal>();
+        var scoreSignal = App.Factory.GetInstance<IScoreSignal>();
         this.weaponSelectionUi = App.Factory.GetInstance<WeaponSelectionUi>();
+
+        this.background = new Background(this.worldSignal);
+        this.score = new Score(scoreSignal);
     }
 
     /// <summary>
-    /// Loads the game content.
+    /// Loads game content.
     /// </summary>
     protected override void OnLoad()
     {
         this.weaponSelectionUi.Position = new Vector2(Width - 300, 23);
 
         var worldBounds = new Rectangle(0, 0, (int)Width, (int)Height);
-        this.worldSignal.Push(SignalIds.WorldDataUpdate, new WorldData { WorldBounds = worldBounds });
+        this.worldSignal.Push(new WorldData { WorldBounds = worldBounds }, SignalIds.WorldDataUpdate);
+
+        this.background.LoadContent();
+        this.score.LoadContent();
 
         this.ship.LoadContent();
         this.weaponSelectionUi.LoadContent();
+
+        foreach (var enemy in this.enemies)
+        {
+            enemy.LoadContent();
+        }
+
+        this.music = this.soundLoader.Load("music");
+
+        this.music.IsLooping = true;
 
         base.OnLoad();
     }
 
     /// <summary>
-    /// Unloads the game content.
+    /// Unloads the content.
     /// </summary>
     protected override void OnUnload()
     {
+        this.background.UnloadContent();
+        this.score.UnloadContent();
         this.ship.UnloadContent();
         this.weaponSelectionUi.UnloadContent();
+        this.soundLoader.Unload(this.music);
+
+        foreach (var enemy in this.enemies)
+        {
+            enemy.UnloadContent();
+        }
+
         base.OnUnload();
     }
 
@@ -72,8 +121,35 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
+        ArgumentNullException.ThrowIfNull(this.music);
+
+        this.elapsedTime += frameTime.ElapsedTime.TotalMilliseconds;
+
+        if (this.elapsedTime >= this.spawnInterval)
+        {
+            SpawnNewEnemy();
+
+            this.elapsedTime = 0;
+
+            // Generate a new spawn internal
+            this.spawnInterval = this.random.Next(500, 1000);
+        }
+
+        this.background.Update(frameTime);
         this.ship.Update(frameTime);
+
+        foreach (var enemy in this.enemies)
+        {
+            enemy.Update(frameTime);
+        }
+
         this.weaponSelectionUi.Update(frameTime);
+        this.score.Update(frameTime);
+
+        if (this.music.State != SoundState.Playing)
+        {
+            this.music.Play();
+        }
 
         base.OnUpdate(frameTime);
     }
@@ -87,11 +163,36 @@ public class Game : Window
     {
         this.batcher.Begin();
 
+        this.background.Render();
         this.ship.Render();
+
+        foreach (var enemy in this.enemies)
+        {
+            enemy.Render();
+        }
+
         this.weaponSelectionUi.Render();
+        this.score.Render();
 
         this.batcher.End();
 
         base.OnDraw(frameTime);
+    }
+
+    /// <summary>
+    /// Spawns a new enemy.
+    /// </summary>
+    private void SpawnNewEnemy()
+    {
+        foreach (var t in this.enemies)
+        {
+            if (t.Visible)
+            {
+                continue;
+            }
+
+            t.Respawn();
+            break;
+        }
     }
 }

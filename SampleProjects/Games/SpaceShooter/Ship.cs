@@ -9,10 +9,12 @@ using System.Numerics;
 using Carbonate.Fluent;
 using Signals;
 using Signals.Data;
+using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
+using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 
@@ -24,15 +26,14 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     private const float VelocityX = 50;
     private const float VelocityY = 50;
     private const float MaxVel = 350;
-    private readonly ITextureRenderer renderer;
-    private readonly ILoader<ITexture> contentLoader;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly ILoader<IAtlasData> atlasLoader;
     private readonly IAppInput<KeyboardState> keyboard;
     private readonly Vector2 minVelocity = new (-MaxVel, -MaxVel);
     private readonly Vector2 maxVelocity = new (MaxVel, MaxVel);
     private readonly IShipSignal shipSignal;
     private readonly Weapon weapon;
-    private ITexture? texture;
-    private Rectangle worldBounds;
+    private RectangleF worldBounds;
     private KeyboardState currentKeyState;
     private KeyboardState prevKeyState;
     private Vector2 shipPos;
@@ -45,13 +46,15 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     private bool downKeyDown;
     private bool isNotMovingHorizontally;
     private bool isNotMovingVertically;
+    private IAtlasData atlasData;
+    private Rectangle srcRect;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Ship"/> class.
     /// </summary>
     /// <param name="worldSignal">Receives updates about the world.</param>
-    /// <param name="shipSignal">Receives notifications of the ship.</param>
-    /// <param name="weapon">The ships weapon system.</param>
+    /// <param name="shipSignal">Pushes notifications about the ship.</param>
+    /// <param name="weapon">The weapon system of the ship.</param>
     public Ship(
         IWorldSignal worldSignal,
         IShipSignal shipSignal,
@@ -65,19 +68,16 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
 
         this.shipSignal = shipSignal;
 
-        this.renderer = RendererFactory.CreateTextureRenderer();
-        this.contentLoader = ContentLoaderFactory.CreateTextureLoader();
+        this.textureRenderer = RendererFactory.CreateTextureRenderer();
+        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
 
         this.keyboard = HardwareFactory.GetKeyboard();
 
         this.weapon = weapon;
-
-        // Set the starting position of the ship to the center of the world
-        this.shipPos = new Vector2(this.worldBounds.Width / 2f, this.worldBounds.Height - (this.worldBounds.Height / 4f));
     }
 
     /// <summary>
-    /// Gets a value indicating whether or not the ship's content is loaded.
+    /// Gets a value indicating whether or not the content is loaded.
     /// </summary>
     public bool IsLoaded { get; private set; }
 
@@ -91,16 +91,21 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.texture = this.contentLoader.Load("ghost-ship");
-        this.halfWidth = this.texture.Width / 2f;
-        this.halfHeight = this.texture.Height / 2f;
+        this.atlasData = this.atlasLoader.Load("atlas");
+        this.srcRect = this.atlasData.GetFrames("ghost-ship")[0].Bounds;
+
+        this.halfWidth = this.srcRect.Width / 2f;
+        this.halfHeight = this.srcRect.Height / 2f;
 
         this.weapon.LoadContent();
 
-        var shipSize = new SizeF(this.texture.Width, this.texture.Height);
+        var shipSize = new SizeF(this.srcRect.Width, this.srcRect.Height);
+
+        // Set the starting position of the ship to the center of the world
+        this.shipPos = new Vector2(this.worldBounds.Width / 2f, this.worldBounds.Height - (this.worldBounds.Height / 4f));
 
         // Send a signal of the ship data
-        this.shipSignal.Push(SignalIds.ShipUpdate, new ShipData { ShipPos = this.shipPos, ShipSize = shipSize });
+        this.shipSignal.Push(new ShipData { ShipPos = this.shipPos, ShipSize = shipSize }, SignalIds.ShipUpdate);
 
         IsLoaded = true;
     }
@@ -115,7 +120,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.contentLoader.Unload(this.texture);
+        this.atlasLoader.Unload(this.atlasData);
         this.weapon.UnloadContent();
     }
 
@@ -156,12 +161,26 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// </summary>
     public void Render()
     {
-        ArgumentNullException.ThrowIfNull(this.texture);
+        ArgumentNullException.ThrowIfNull(this.atlasData);
+        ArgumentNullException.ThrowIfNull(this.atlasData.Texture);
 
         this.weapon.Render();
 
         // Render the ship image in the center of the window
-        this.renderer.Render(this.texture, (int)this.shipPos.X, (int)this.shipPos.Y);
+        var destRect = new Rectangle(
+            (int)this.shipPos.X,
+            (int)this.shipPos.Y,
+            (int)this.atlasData.Texture.Width,
+            (int)this.atlasData.Texture.Height);
+
+        this.textureRenderer.Render(
+            this.atlasData.Texture,
+            this.srcRect,
+            destRect,
+            1,
+            0,
+            Color.White,
+            RenderEffects.None);
     }
 
     /// <summary>
@@ -170,8 +189,6 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     private void MoveShip(FrameTime frameTime)
     {
-        ArgumentNullException.ThrowIfNull(this.texture);
-
         // Increase velocity in each direction of commanded
         this.velocity.X -= this.leftKeyDown ? VelocityX : 0;
         this.velocity.X += this.rightKeyDown ? VelocityX : 0;
@@ -213,10 +230,10 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
             ? this.worldBounds.Bottom - this.halfHeight
             : this.shipPos.Y;
 
-        var shipSize = new SizeF(this.texture.Width, this.texture.Height);
+        var shipSize = new SizeF(this.srcRect.Width, this.srcRect.Height);
 
         // Update the position of the ship to the weapon for bullet positioning
-        this.shipSignal.Push(SignalIds.ShipUpdate, new ShipData { ShipPos = this.shipPos, ShipSize = shipSize });
+        this.shipSignal.Push(new ShipData { ShipPos = this.shipPos, ShipSize = shipSize }, SignalIds.ShipUpdate);
     }
 
     /// <summary>

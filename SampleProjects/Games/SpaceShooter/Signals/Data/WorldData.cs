@@ -14,5 +14,5 @@ public readonly record struct WorldData
     /// <summary>
     /// Gets the bounds of the world.
     /// </summary>
-    public Rectangle WorldBounds { get; init; }
+    public RectangleF WorldBounds { get; init; }
 }

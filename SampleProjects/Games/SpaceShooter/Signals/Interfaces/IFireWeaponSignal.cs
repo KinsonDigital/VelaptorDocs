@@ -2,14 +2,13 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-namespace SpaceShooter.Signals;
+namespace SpaceShooter.Signals.Interfaces;
 
 using Carbonate.NonDirectional;
 
 /// <summary>
-/// Represents a signal to send a fire weapon signal.
+/// Sends a notification to fire a weapon.
 /// </summary>
 public interface IFireWeaponSignal : IPushReactable
 {
-    // Nothing required here
 }

@@ -2,15 +2,14 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-namespace SpaceShooter.Signals;
+namespace SpaceShooter.Signals.Interfaces;
 
 using Carbonate.OneWay;
 using Data;
 
 /// <summary>
-/// Represents a signal to send world related data.
+/// Sends a notification about the world.
 /// </summary>
 public interface IWorldSignal : IPushReactable<WorldData>
 {
-    // Nothing required here
 }

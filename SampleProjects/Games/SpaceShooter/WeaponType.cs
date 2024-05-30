@@ -5,27 +5,27 @@
 namespace SpaceShooter;
 
 /// <summary>
-/// The type of weapon.
+/// Represents the different types of weapons.
 /// </summary>
 public enum WeaponType
 {
     /// <summary>
-    /// An orange laser weapon.
+    /// An orange lazer weapon.
     /// </summary>
     Orange,
 
     /// <summary>
-    /// A red laser weapon.
+    /// A red lazer weapon.
     /// </summary>
     Red,
 
     /// <summary>
-    /// A green laser weapon.
+    /// A green lazer weapon.
     /// </summary>
     Green,
 
     /// <summary>
-    /// A blue laser weapon.
+    /// A blue lazer weapon.
     /// </summary>
     Blue,
 }

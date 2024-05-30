@@ -14,27 +14,16 @@ using Velaptor;
 public class Bullet
 {
     private const float VelocityY = -400;
-    private readonly Rectangle worldBounds;
     private readonly Vector2 bulletSize;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Bullet"/> class.
     /// </summary>
-    /// <param name="worldBounds">The world bounds.</param>
     /// <param name="bulletSize">The size of the bullet.</param>
-    public Bullet(Rectangle worldBounds, Vector2 bulletSize)
-    {
-        this.worldBounds = worldBounds;
-        this.bulletSize = bulletSize;
-    }
+    public Bullet(Vector2 bulletSize) => this.bulletSize = bulletSize;
 
     /// <summary>
-    /// Gets or sets the world position of the bullet.
-    /// </summary>
-    public Vector2 Position { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether or not the bullet is visible.
+    /// Gets or sets a value indicating whether the bullet is visible.
     /// </summary>
     public bool IsVisible { get; set; }
 
@@ -42,6 +31,16 @@ public class Bullet
     /// Gets or sets the type of weapon that the bullet was fired from.
     /// </summary>
     public WeaponType FiredFromWeapon { get; set; }
+
+    /// <summary>
+    /// Gets or sets the bounds of the bullet.  This represents the size and position of the bullet.
+    /// </summary>
+    public RectangleF BulletBounds { get; set; }
+
+    /// <summary>
+    /// Gets or sets the bounds of the world.
+    /// </summary>
+    public RectangleF WorldBounds { get; set; }
 
     /// <summary>
     /// Updates the bullet.
@@ -58,15 +57,16 @@ public class Bullet
         var velocity = new Vector2(0, VelocityY);
         var displacement = velocity * (float)frameTime.ElapsedTime.TotalSeconds;
 
-        Position += displacement;
+        var position = BulletBounds.Location.ToVector2();
+        position += displacement;
 
-        var bulletBounds = new Rectangle(
-            (int)Position.X,
-            (int)Position.Y,
+        BulletBounds = new Rectangle(
+            (int)position.X,
+            (int)position.Y,
             (int)this.bulletSize.X,
             (int)this.bulletSize.Y);
 
-        if (!this.worldBounds.Contains(bulletBounds))
+        if (!WorldBounds.Contains(BulletBounds))
         {
             IsVisible = false;
         }

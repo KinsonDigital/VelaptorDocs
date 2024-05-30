@@ -2,7 +2,5 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-using CirclePrison;
-
-var game = new Game();
+var game = new CirclePrison.Game();
 game.Show();

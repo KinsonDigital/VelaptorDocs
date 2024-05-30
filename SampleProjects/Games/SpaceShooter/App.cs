@@ -5,11 +5,12 @@
 namespace SpaceShooter;
 
 using Signals;
+using Signals.Interfaces;
 using SimpleInjector;
 using UI;
 
 /// <summary>
-/// The application.
+/// Represents the application.
 /// </summary>
 public static class App
 {
@@ -33,31 +34,34 @@ public static class App
     }
 
     /// <summary>
-    /// Sets up the IoC container.
+    /// Sets up the factory container.
     /// </summary>
     private static void SetupContainer()
     {
         SetupSignaling();
-        SetupUi();
+        SetupUI();
 
         FactoryContainer.Register<Weapon>(Lifestyle.Singleton);
         FactoryContainer.Register<Ship>(Lifestyle.Singleton);
+        FactoryContainer.Register<Enemy>();
 
         isInitialized = true;
     }
 
     /// <summary>
-    /// Sets up dependency injection for signaling.
+    /// Sets up the signals used for communication.
     /// </summary>
     private static void SetupSignaling()
     {
         FactoryContainer.Register<IWorldSignal, WorldSignal>(Lifestyle.Singleton);
         FactoryContainer.Register<ISwapWeaponSignal, SwapWeaponSignal>(Lifestyle.Singleton);
         FactoryContainer.Register<IShipSignal, ShipSignal>(Lifestyle.Singleton);
+        FactoryContainer.Register<IScoreSignal, ScoreSignal>(Lifestyle.Singleton);
+        FactoryContainer.Register<IEnemyUpdateSignal, EnemyUpdateSignal>(Lifestyle.Singleton);
     }
 
     /// <summary>
-    /// Sets up dependency injection for UI.
+    /// Sets up UI related registrations.
     /// </summary>
-    private static void SetupUi() => FactoryContainer.Register<WeaponSelectionUi>(Lifestyle.Singleton);
+    private static void SetupUI() => FactoryContainer.Register<WeaponSelectionUi>(Lifestyle.Singleton);
 }

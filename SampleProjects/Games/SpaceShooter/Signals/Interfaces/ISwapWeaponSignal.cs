@@ -2,14 +2,13 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-namespace SpaceShooter.Signals;
+namespace SpaceShooter.Signals.Interfaces;
 
 using Carbonate.OneWay;
 
 /// <summary>
-/// Represents a signal to swap a weapon.
+/// Sends a notification to swap a weapon.
 /// </summary>
 public interface ISwapWeaponSignal : IPushReactable<WeaponType>
 {
-    // Nothing required here
 }

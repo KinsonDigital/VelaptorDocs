@@ -120,7 +120,7 @@ public class Game : Window
     }
 
     /// <summary>
-    /// Returns a value indicating whether or not the given <paramref name="key"/> is pressed.
+    /// Returns a value indicating whether the given <paramref name="key"/> is pressed.
     /// </summary>
     /// <param name="key">The key to check for.</param>
     /// <returns>True if the given <paramref name="key"/> has been pressed.</returns>

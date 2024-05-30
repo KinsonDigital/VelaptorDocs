@@ -2,13 +2,13 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-namespace SpaceShooter.Signals;
+namespace SpaceShooter.Signals.Interfaces;
 
 using Carbonate.OneWay;
 using Data;
 
 /// <summary>
-/// Represents a signal to send ship related data.
+/// Sends a notification about the ship.
 /// </summary>
 public interface IShipSignal : IPushReactable<ShipData>
 {

@@ -11,10 +11,12 @@ using Carbonate.Fluent;
 using Carbonate.OneWay;
 using Signals;
 using Signals.Data;
+using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
+using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 
 /// <summary>
@@ -23,15 +25,22 @@ using Velaptor.Graphics.Renderers;
 public class Weapon : IUpdatable, IDrawable, IContentLoadable
 {
     private readonly IPushReactable<WeaponType> swapWeaponSignal;
-    private readonly ITextureRenderer renderer;
-    private readonly ILoader<ITexture> textureLoader;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly ILoader<IAtlasData> atlasLoader;
+    private readonly ILoader<IAudio> soundLoader;
+    private readonly IScoreSignal scoreSignal;
+    private readonly IDisposable worldSignalUnsubscriber;
+    private readonly IDisposable shipSignalUnsubscriber;
+    private readonly IDisposable enemySignalUnsubscriber;
     private readonly List<Bullet> bullets = new ();
     private readonly int[] weaponTypeValues;
-    private ITexture? texture;
-    private Rectangle worldBounds;
+    private IAudio? lazerSound;
+    private IAudio? changeWeaponSound;
+    private RectangleF worldBounds;
     private SizeF shipSize;
     private Vector2 shipPos;
-    private uint textureHeight;
+    private IAtlasData? atlasData;
+    private Rectangle srcRect;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Weapon"/> class.
@@ -39,48 +48,65 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// <param name="shipSignal">Provides notifications of the ships position.</param>
     /// <param name="swapWeaponSignal">Sends a signal that a weapon has been swapped.</param>
     /// <param name="worldDataSignal">Receives updates about the world.</param>
+    /// <param name="enemyUpdateSignal">Receives updates about enemies.</param>
+    /// <param name="scoreSignal">Updates the score.</param>
     public Weapon(
         IShipSignal shipSignal,
         ISwapWeaponSignal swapWeaponSignal,
-        IWorldSignal worldDataSignal)
+        IWorldSignal worldDataSignal,
+        IEnemyUpdateSignal enemyUpdateSignal,
+        IScoreSignal scoreSignal)
     {
         this.swapWeaponSignal = swapWeaponSignal;
 
         var worldUpdateSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.WorldDataUpdate)
-            .BuildOneWayReceive<WorldData>(worldData => this.worldBounds = worldData.WorldBounds);
-
-        worldDataSignal.Subscribe(worldUpdateSubscription);
-
-        this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
-
-        this.renderer = RendererFactory.CreateTextureRenderer();
-
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+            .BuildOneWayReceive<WorldData>(
+                worldData =>
+                {
+                    this.worldBounds = worldData.WorldBounds;
+                    foreach (var bullet in this.bullets)
+                    {
+                        bullet.WorldBounds = worldData.WorldBounds;
+                    }
+                });
+        this.worldSignalUnsubscriber = worldDataSignal.Subscribe(worldUpdateSubscription);
 
         var shipSignalSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.ShipUpdate)
-            .BuildOneWayReceive<ShipData>(shipData =>
-            {
-                this.shipPos = shipData.ShipPos;
-                this.shipSize = shipData.ShipSize;
-            });
+            .BuildOneWayReceive<ShipData>(
+                shipData =>
+                {
+                    this.shipPos = shipData.ShipPos;
+                    this.shipSize = shipData.ShipSize;
+                });
+        this.shipSignalUnsubscriber = shipSignal.Subscribe(shipSignalSubscription);
 
-        shipSignal.Subscribe(shipSignalSubscription);
+        var enemyUpdateSubscription = ISubscriptionBuilder.Create()
+            .WithId(SignalIds.EnemyUpdate)
+            .BuildTwoWay<EnemyData, EnemyCommands>(ProcessEnemyCollisions);
+        this.enemySignalUnsubscriber = enemyUpdateSignal.Subscribe(enemyUpdateSubscription);
+
+        this.scoreSignal = scoreSignal;
+
+        this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
+        this.textureRenderer = RendererFactory.CreateTextureRenderer();
+        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
+        this.soundLoader = ContentLoaderFactory.CreateAudioLoader();
     }
 
     /// <summary>
-    /// Gets the type of weapon.
+    /// Gets the type of weapon currently equipped.
     /// </summary>
     public WeaponType TypeOfWeapon { get; private set; } = WeaponType.Orange;
 
     /// <summary>
-    /// Gets a value indicating whether or not the weapon is loaded.
+    /// Gets a value indicating whether the content is loaded.
     /// </summary>
     public bool IsLoaded { get; private set; }
 
     /// <summary>
-    /// Loads the weapons content.
+    /// Loads the weapon content.
     /// </summary>
     public void LoadContent()
     {
@@ -89,14 +115,17 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.texture = this.textureLoader.Load("laser");
-        this.textureHeight = this.texture.Height;
+        this.atlasData = this.atlasLoader.Load("atlas");
+        this.srcRect = this.atlasData.GetFrames("laser")[0].Bounds;
+
+        this.lazerSound = this.soundLoader.Load("space-lazer-5", AudioBuffer.Full);
+        this.changeWeaponSound = this.soundLoader.Load("change-weapon", AudioBuffer.Full);
 
         IsLoaded = true;
     }
 
     /// <summary>
-    /// Unloads the weapons content.
+    /// Unloads the weapon content.
     /// </summary>
     public void UnloadContent()
     {
@@ -105,13 +134,19 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.textureLoader.Unload(this.texture);
+        this.worldSignalUnsubscriber.Dispose();
+        this.shipSignalUnsubscriber.Dispose();
+        this.enemySignalUnsubscriber.Dispose();
+
+        this.atlasLoader.Unload(this.atlasData);
+        this.soundLoader.Unload(this.lazerSound);
+        this.soundLoader.Unload(this.changeWeaponSound);
     }
 
     /// <summary>
     /// Updates the bullets of the weapon.
     /// </summary>
-    /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
+    /// <param name="frameTime">The total amount of time for the current frame.</param>
     public void Update(FrameTime frameTime)
     {
         foreach (var bullet in this.bullets)
@@ -125,10 +160,13 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// </summary>
     public void Render()
     {
-        // Render all of the bullets
+        ArgumentNullException.ThrowIfNull(this.atlasData);
+        ArgumentNullException.ThrowIfNull(this.atlasData.Texture);
+
+        // Render all the bullets
         foreach (var bullet in this.bullets)
         {
-            if (bullet.IsVisible && this.texture is not null)
+            if (bullet.IsVisible)
             {
                 var bulletClr = bullet.FiredFromWeapon switch
                 {
@@ -139,7 +177,20 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
                     _ => throw new InvalidEnumArgumentException(nameof(TypeOfWeapon), (int)TypeOfWeapon, typeof(WeaponType)),
                 };
 
-                this.renderer.Render(this.texture, (int)bullet.Position.X, (int)bullet.Position.Y, bulletClr);
+                var destRect = new Rectangle(
+                    (int)bullet.BulletBounds.Location.X,
+                    (int)bullet.BulletBounds.Location.Y,
+                    (int)this.atlasData.Texture.Width,
+                    (int)this.atlasData.Texture.Height);
+
+                this.textureRenderer.Render(
+                    this.atlasData.Texture,
+                    this.srcRect,
+                    destRect,
+                    1,
+                    0,
+                    bulletClr,
+                    RenderEffects.None);
             }
         }
     }
@@ -149,7 +200,10 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// </summary>
     public void Fire()
     {
-        var noBulletExists = true;
+        var bulletExists = false;
+
+        this.lazerSound?.Stop();
+        this.lazerSound?.Play();
 
         for (var i = 0; i < this.bullets.Count; i++)
         {
@@ -158,14 +212,14 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
                 continue;
             }
 
-            noBulletExists = false;
+            bulletExists = true;
 
             this.bullets[i] = SetupBullet(this.bullets[i]);
 
             break;
         }
 
-        if (!noBulletExists)
+        if (bulletExists)
         {
             return;
         }
@@ -192,6 +246,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
 
         // Send a notification to the UI that the weapon has been swapped
         this.swapWeaponSignal.Push(SignalIds.SwapWeapon, TypeOfWeapon);
+        this.changeWeaponSound?.Stop();
+        this.changeWeaponSound?.Play();
     }
 
     /// <summary>
@@ -200,8 +256,6 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
     /// <returns>The new bullet.</returns>
     private Bullet CreateBullet()
     {
-        ArgumentNullException.ThrowIfNull(this.texture);
-
         // Check the object pool to see if any bullets are available
         foreach (var bullet in this.bullets)
         {
@@ -214,10 +268,8 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         }
 
         // If this point is reached, then no bullets are available in the pool
-        // Create a brand new bullet object to add to the pool and return it
-        var newBullet = new Bullet(
-            new Rectangle(0, 0, this.worldBounds.Width, this.worldBounds.Height),
-            new Vector2(this.texture.Width, this.texture.Height));
+        // Create a brand-new bullet object to add to the pool and return it
+        var newBullet = new Bullet(new Vector2(this.srcRect.Width, this.srcRect.Height)) { WorldBounds = this.worldBounds, };
 
         this.bullets.Add(newBullet);
 
@@ -236,12 +288,44 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         const int bulletVerticalOffset = 15;
         var shipHalfHeight = this.shipSize.Width / 2f;
         var shipTop = this.shipPos.Y - shipHalfHeight;
-        var bulletHalfHeight = this.textureHeight / 2f;
+        var bulletHalfHeight = this.srcRect.Height / 2f;
         var bulletPosY = shipTop - bulletHalfHeight + bulletVerticalOffset;
+        var bulletPos = this.shipPos with { Y = bulletPosY };
 
-        bullet.Position = this.shipPos with { Y = bulletPosY };
+        bullet.BulletBounds = bullet.BulletBounds with
+        {
+            Location = bulletPos.ToPointF(),
+        };
         bullet.FiredFromWeapon = TypeOfWeapon;
 
         return bullet;
+    }
+
+    /// <summary>
+    /// Processes enemy collisions against the bullets.
+    /// </summary>
+    private EnemyCommands ProcessEnemyCollisions(EnemyData enemy)
+    {
+        foreach (var bullet in this.bullets)
+        {
+            if (!bullet.IsVisible)
+            {
+                continue;
+            }
+
+            if (!enemy.Bounds.IntersectsWith(bullet.BulletBounds))
+            {
+                continue;
+            }
+
+            bullet.IsVisible = false;
+
+            // Update the score
+            this.scoreSignal.Push(SignalIds.ScoreUpdate, new ScoreData { Amount = 1, ApplyMethod = MathOperations.Add });
+
+            return EnemyCommands.Die;
+        }
+
+        return EnemyCommands.Nothing;
     }
 }

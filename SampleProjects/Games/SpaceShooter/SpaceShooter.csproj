@@ -3,7 +3,6 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>12.0</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -17,16 +16,40 @@
       <None Update="Content\Graphics\ship.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Content\Graphics\ghost-ship.png">
+      <None Update="Content\Graphics\lazer.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Content\Graphics\lazer.png">
+      <None Update="Content\Sounds\space-lazer-5.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Sounds\change-weapon.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Sounds\music.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Atlas\atlas.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Atlas\atlas.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Graphics\weapon-selection.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Content\Graphics\laser.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Content\Graphics\weapon-selection.png">
+      <None Update="Content\Graphics\ghost-ship.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Audio\change-weapon.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Audio\music.ogg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Content\Audio\space-lazer-5.ogg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
@@ -38,7 +61,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="SimpleInjector" Version="5.4.5" />
+      <PackageReference Include="SimpleInjector" Version="5.4.6" />
       <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -46,8 +69,8 @@
 
     </ItemGroup>
 
-
-
-
+    <ItemGroup>
+      <Folder Include="Content\Graphics\" />
+    </ItemGroup>
 
 </Project>

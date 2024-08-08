@@ -53,21 +53,20 @@ body:
     value: |
       **_<details closed><summary>Change Type Labels</summary>_**
       
-      | Change Type  | Label                                                                                             |
       |--------------|---------------------------------------------------------------------------------------------------|
-      | CICD                 | https://github.com/KinsonDigital/VelaptorDocs/labels/%E2%99%BB%EF%B8%8Fcicd               |
-      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%A6dependency%20update      |
+      | CICD                 | https://github.com/KinsonDigital/VelaptorDocs/labels/cicd                                 |
+      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%A6dependency-update        |
       | Miscellaneous        | https://github.com/KinsonDigital/VelaptorDocs/labels/miscellaneous                        |
-      | Tutorial Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Ctutorial%20doc%20changes |
+      | Guide Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Cguide-doc-changes           |
       </details>
 
       **_<details closed><summary>Priority Type Labels</summary>_**
       
       | Priority Type       | Label                                                                  |
       |---------------------|------------------------------------------------------------------------|
-      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
-      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
-      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
+      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low-priority    |
+      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium-priority |
+      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high-priority   |
       </details>
 
 - type: checkboxes

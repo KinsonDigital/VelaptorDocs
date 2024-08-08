@@ -50,9 +50,9 @@ body:
       **Priority Type Labels**
       | Priority Type       | Label                                                                  |
       |---------------------|------------------------------------------------------------------------|
-      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
-      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
-      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
+      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low-priority    |
+      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium-priority |
+      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high-priority   |
 
       > [!Note]
       > Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.

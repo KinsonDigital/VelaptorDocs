@@ -54,7 +54,7 @@ body:
       | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
       | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
 
-      > **Note**
+      > [!Note]
       > Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.
       > Just follow the CLI instructions to remove the version.
 

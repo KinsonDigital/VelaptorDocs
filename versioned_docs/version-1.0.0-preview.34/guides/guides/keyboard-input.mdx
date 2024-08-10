@@ -24,7 +24,7 @@ Go to the <GuideLink projectName="KeyboardInput" tagName="api-v1.0.0-preview.34"
 :::
 
 
-## <span class="color-step">Step 1: Project setup</span>
+## <span className="color-step">Step 1: Project setup</span>
 
 This tutorial will demonstrate how to use keyboard input to move and resize the game window in a Velaptor application.
 While this may seem simple, it is a crucial skill for any game developer to master.
@@ -38,11 +38,11 @@ The only game loop method required for this tutorial will be the `OnUpdate()` me
 will be used to update the game state and resize and move the window respectively.
 
 
-## <span class="color-step">Step 2: Creating game state</span>
+## <span className="color-step">Step 2: Creating game state</span>
 
 We need to create some class fields to hold onto the state of the game. Let's do this now.
 
-### <span class="color-sub-step">2.1: Creating the class fields</span>
+### <span className="color-sub-step">2.1: Creating the class fields</span>
 
 
 Create some class fields that will be useful for things such as getting keyboard state, saving keyboard state,
@@ -59,7 +59,7 @@ public class Game : Window
 }
 ```
 
-### <span class="color-sub-step">2.2: Creating a keyboard object</span>
+### <span className="color-sub-step">2.2: Creating a keyboard object</span>
 
 To enable keyboard input in your Velaptor game, you'll need to create a new instance of `IAppInput<KeyboardState>`,
 which will be set to the class field `keyboard`. This will provide access to the current state of the keyboard.
@@ -75,12 +75,12 @@ Click <Url href="refactoring.guru/design-patterns/factory-method" text="here" op
 :::
 
 
-## <span class="color-step">Step 3: Creating helpful methods</span>
+## <span className="color-step">Step 3: Creating helpful methods</span>
 
 We don't _**NEED**_ these methods that we are about to create. However, they will make our code more readable and
 easier to understand. This is good practice no matter what kind of software you are writing.
 
-### <span class="color-sub-step">3.1: Key pressed detection</span>
+### <span className="color-sub-step">3.1: Key pressed detection</span>
 
 Create a private method in the `Game` class with the name `IsPressed()` which will check if a keyboard key has been pressed.
 
@@ -94,7 +94,7 @@ the key was pressed.
 
 This will make more sense when we create our `Update()` method logic.
 
-### <span class="color-sub-step">3.2: Moving the window</span>
+### <span className="color-sub-step">3.2: Moving the window</span>
 
 When we press the arrow keys on the keyboard, we want to move the window around. To do this, create the `MoveWindow()`
 below with the following code.
@@ -146,7 +146,7 @@ their code to achieve consistent results.
 </details>
 ::: 
 
-### <span class="color-sub-step">3.3: Changing the window size</span>
+### <span className="color-sub-step">3.3: Changing the window size</span>
 
 The window size will be changed when we press the arrow keys. Create the `ChangeWinSize()` method with the code below
 to change the size of the window using the keyboard.
@@ -180,12 +180,12 @@ This method checks if the arrow keys have been pressed fully down and then relea
 the window will be changed. This will also be called later in our `OnUpdate()` method.
 
 
-## <span class="color-step">Step 4: Finish up</span>
+## <span className="color-step">Step 4: Finish up</span>
 
 We can now finish up the rest by tracking the state of the keyboard and using some simple logic to move or resize
 the window based on the state of the keyboard keys.
 
-### <span class="color-sub-step">4.1: Getting the keyboard state</span>
+### <span className="color-sub-step">4.1: Getting the keyboard state</span>
 
 To check the state of keyboard keys in your game, you need to retrieve the keyboard state for each frame of
 the game loop. This will allow you to analyze which keys are currently in the up or down position. With this
@@ -205,7 +205,7 @@ To accurately detect keyboard input, we need to get and save both the _**current
 track changes in key states, such as when a key is pressed down and then released, which is necessary for
 accurate detection of a _**full**_ key press.
 
-### <span class="color-sub-step">4.2: Putting it all together</span>
+### <span className="color-sub-step">4.2: Putting it all together</span>
 
 In between the _**current**_ and _**previous**_ keyboard state lines of code, add the logic to the `OnUpdate()` method below:
 
@@ -232,7 +232,7 @@ protected override void OnUpdate(FrameTime frameTime)
 The `OnUpdate()` method will first check if the _**current**_ state of any _**Ctrl**_ keys is being pressed in the down position.
 If this is the case, then the window will be moved. If not, then the window size will be changed.
 
-### <span class="color-sub-step">4.3: Run it</span>
+### <span className="color-sub-step">4.3: Run it</span>
 
 Run the application and then begin by pressing the arrow keys to observe the window's width and height increase
 or decrease. The window will only resize when you release the arrow key from the down position.
@@ -242,7 +242,7 @@ the window moving without releasing the arrow keys, as we're not looking for a f
 
 Now you have all that you need to get input from the user via the keyboard!!
 
-## <span class="color-step">Step 5: Bonus</span>
+## <span className="color-step">Step 5: Bonus</span>
 
 It would be nice to see the current size and position of the window. To do this, we can override the `OnResize()` method
 and update the window's title with the new size and position.

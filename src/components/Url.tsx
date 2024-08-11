@@ -44,7 +44,7 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 				{
 					shouldUseNewTab
 						? <OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }}/>
-						: <></>
+						: <div></div>
 				}
 			</span>
 		</div>

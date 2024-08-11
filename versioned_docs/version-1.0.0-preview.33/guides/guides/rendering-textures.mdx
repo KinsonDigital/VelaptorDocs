@@ -4,6 +4,7 @@ sidebar_position: 4
 
 import GuideLink from "@site/src/components/GuideLink";
 import GuideImg from "@site/src/components/GuideImg";
+import StaticDownload from "@site/src/components/StaticDownload";
 
 # Rendering Textures
 
@@ -15,7 +16,7 @@ Go to the <GuideLink projectName="RenderingTextures" tagName="api-v1.0.0-preview
 :::
 
 
-## <span class="color-step">Step 1: Project setup</span>
+## <span className="color-step">Step 1: Project setup</span>
 
 Create a basic Velaptor application.
 :::note Refer To Guide
@@ -23,9 +24,9 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 :::
 
 
-## <span class="color-step">Step 2: Rendering a texture</span>
+## <span className="color-step">Step 2: Rendering a texture</span>
 
-### <span class="color-sub-step">2.1: Create class fields</span>
+### <span className="color-sub-step">2.1: Create class fields</span>
 
 Create the class fields shown below. These will be used to render the Velaptor mascot texture to the screen.
 
@@ -40,7 +41,7 @@ public class Game : Window
 }
 ```
 
-### <span class="color-sub-step">2.2: Setup window</span>
+### <span className="color-sub-step">2.2: Setup window</span>
 
 Add code to the constructor to setup the window to have a title as well as a smaller size.
 
@@ -53,7 +54,7 @@ public Game()
 }
 ```
 
-### <span class="color-sub-step">2.3: Create loader, batcher, & renderer</span>
+### <span className="color-sub-step">2.3: Create loader, batcher, & renderer</span>
 
 In the constructor, create the `textureLoader`, `batcher`, and `textureRenderer` objects.
 This is done by using various factories that make it easy to create these often used types.
@@ -69,30 +70,26 @@ public Game()
 ```
 
 
-## <span class="color-step">Step 3: Load and unload the content</span>
+## <span className="color-step">Step 3: Load and unload the content</span>
 
 Loading and unloading content is a very important part of game development.  It is also important to unload the content
 when it is not needed or used anymore.  In the next couple of steps, we will setup the loading and unloading of the texture.
 
-### <span class="color-sub-step">3.1: Get the content</span>
+### <span className="color-sub-step">3.1: Get the content</span>
 
 Download or create any _**.png**_ file you want.
 
 :::info Velaptor Mascot Image
-Click the image below to download the image from GitHub.
+Click the image below to download the file.
 
-<GuideImg 
-    guideName="RenderingTextures"
-    apiVersion="api-v1.0.0-preview.33"
-    imgFileName="velaptor-mascot.png"
-    sizePercentage={10}/>
+<StaticDownload relativePath="/img/velaptor.png" sizePercentage={12}/>
 :::
 
-### <span class="color-sub-step">3.2: Add the content</span>
+### <span className="color-sub-step">3.2: Add the content</span>
 
 Add the image to the project and set it as content by following the steps in the [Adding Content](./adding-content) tutorial.
 
-### <span class="color-sub-step">3.3: Load the texture content</span>
+### <span className="color-sub-step">3.3: Load the texture content</span>
 
 Now that our content has been successfully added to the project, we can now move on to loading the texture and rendering it.
 
@@ -111,7 +108,7 @@ protected override void OnLoad()
 }
 ```
 
-### <span class="color-sub-step">3.4: Unload the texture content</span>
+### <span className="color-sub-step">3.4: Unload the texture content</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the texture loader
@@ -141,7 +138,7 @@ protected override void OnUnload()
 
 ```
 
-## <span class="color-step">Step 4: Render the texture</span>
+## <span className="color-step">Step 4: Render the texture</span>
 
 Finally, we can now render our image.  Create the the `OnDraw()` method with the following code to render the texture.
 
@@ -163,7 +160,7 @@ protected override void OnDraw(FrameTime frameTime)
 ```
 
 
-## <span class="color-step">Step 5: Run it</span>
+## <span className="color-step">Step 5: Run it</span>
 
 Run the application. You should see the result below!!
 <img style={{width: '50%'}} src={require('@site/static/img/tutorials/guides/rendering-textures/render-textures-complete.png').default} alt="Example banner"/>

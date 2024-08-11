@@ -4,6 +4,7 @@ sidebar_position: 5
 
 import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
+import StaticDownload from "@site/src/components/StaticDownload";
 
 # Rendering With An Atlas Texture
 
@@ -94,7 +95,7 @@ This flame will be rendered in the center of the window and will animate in a lo
 We will also add a very small amount of randomness to it as well to enhance the animation.
 
 
-## <span class="color-step">Step 1: Create Project</span>
+## <span className="color-step">Step 1: Create Project</span>
 
 Create a basic Velaptor application.
 :::note Refer To Guide
@@ -102,17 +103,14 @@ For more info, refer to the [Project Setup](./project-setup) guide.
 :::
 
 
-## <span class="color-step">Step 2: Get atlas content</span>
+## <span className="color-step">Step 2: Get atlas content</span>
 
 Download the atlas texture files below:
-- Go <Url href="github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.png" text="here" openInNewTab="true"/> to download the <b><i>atlas.png</i></b> file.
-- Go <Url href="github.com/KinsonDigital/VelaptorDocs/blob/main/SampleProjects/Guides/AtlasTextures/Content/Atlas/atlas.json" text="here" openInNewTab="true"/> to download the <b><i>atlas.json</i></b> file.
-
-Click the GitHub download button shown below to download the file
-<img style={{width: '20%'}} src={require('@site/static/img/tutorials/guides/rendering-atlas-textures/github-download-btn.jpg').default}/>
+<StaticDownload relativePath="/img/tutorials/guides/rendering-atlas-textures/atlas.png" sizePercentage={25} text="Click to download the texture atlas."/>
+<StaticDownload relativePath="/atlas.json" text="Click here to download the texture atlas metadata"/>
 
 
-## <span class="color-step">Step 3: Add content to project</span>
+## <span className="color-step">Step 3: Add content to project</span>
 
 Add the downloaded atlas texture and metadata JSON file to the _**Content/Atlas/**_ directory in the project.
 :::note Refer To Guide
@@ -133,7 +131,7 @@ If you have an image file with no metadata file or vice versa, Velaptor will thr
 letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
 :::
 
-## <span class="color-step">Step 4: Create class fields</span>
+## <span className="color-step">Step 4: Create class fields</span>
 
 Create the following class fields which will be used for holding content data, loading content, manage batching, and rendering content.
 
@@ -148,7 +146,7 @@ public class Game : Window
 }
 ```
 
-## <span class="color-step">Step 5: Basic setup</span>
+## <span className="color-step">Step 5: Basic setup</span>
 
 In the `Game` class, add the following code to the constructor to set up the window and instantiate the objects mentioned before.
 
@@ -170,9 +168,9 @@ public class Game : Window
 ```
 
 
-## <span class="color-step">Step 6: Load and unload the content</span>
+## <span className="color-step">Step 6: Load and unload the content</span>
 
-### <span class="color-sub-step">6.1: Load content</span>
+### <span className="color-sub-step">6.1: Load content</span>
 
 Next, let's create the `OnLoad()` override method and add code to the method to load the atlas data.
 
@@ -238,7 +236,7 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 </details>
 :::
 
-### <span class="color-sub-step">6.2: Unload content</span>
+### <span className="color-sub-step">6.2: Unload content</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the atlas loader
@@ -269,11 +267,11 @@ protected override void OnUnload()
 ```
 
 
-## <span class="color-step">Step 7: Let's animate</span>
+## <span className="color-step">Step 7: Let's animate</span>
 
 Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` method to animate the sub-textures.
 
-### <span class="color-sub-step">7.1: Tracking time</span>
+### <span className="color-sub-step">7.1: Tracking time</span>
 
 For us to run an animation, we need to keep track of how much time has passed.
 Add the following fields to the `Game` class.
@@ -306,7 +304,7 @@ How fast you want to run your animation is up to you. You can make it run as fas
 </details>
 :::
 
-### <span class="color-sub-step">7.2: Has enough time passed?</span>
+### <span className="color-sub-step">7.2: Has enough time passed?</span>
 
 Add some code to the `OnUpdate()` method to check if enough time has passed to
 change the frame of the animation.
@@ -383,7 +381,7 @@ happen at a certain frequency. In this case, the speed at which we want our anim
 :::
 
 
-## <span class="color-step">Step 8: Render animation</span>
+## <span className="color-step">Step 8: Render animation</span>
 
 Now we can finally render the animation to the screen. Add the following code to the `OnDraw()` method.
 
@@ -428,7 +426,7 @@ the current frame or sub-texture is located. We then render only that sub-textur
 
 The `srcRect` and `destRect` variables are what tell Velaptor the _**section**_ of the atlas to render.
 
-## <span class="color-step">Step 9: Run it</span>
+## <span className="color-step">Step 9: Run it</span>
 
 Run the game and see the results!  You should see a small window with a blue flame
 animating in the center of the window as shown below.
@@ -440,12 +438,12 @@ The animation will be much smoother than what is shown here.
 ![Flame Animation](@site/static/img/tutorials/guides/rendering-atlas-textures/flame.gif)
 
 
-## <span class="color-step">Step 10: Bonus!!</span>
+## <span className="color-step">Step 10: Bonus!!</span>
 
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
 
-### <span class="color-sub-step">10.1: Add more fields</span>
+### <span className="color-sub-step">10.1: Add more fields</span>
 
 Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between horizontal
 or non-horizontal orientation. The `horizontalLayout` field will be the layout setting at the time of rendering.
@@ -460,7 +458,7 @@ public class Game: Window
 }
 ```
 
-### <span class="color-sub-step">10.2: Add flip behavior</span>
+### <span className="color-sub-step">10.2: Add flip behavior</span>
 
 Add the following code to randomly choose whether or not the flame should be flipped horizontally to the
 bottom of the `if` block. This will choose a number between the values 0 and 1. If 0 is chosen,
@@ -487,7 +485,7 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span class="color-sub-step">10.3: Run it</span>
+### <span className="color-sub-step">10.3: Run it</span>
 
 Now run your game again and the flame will be a little bit more realistic to the randomness of
 the orientation of the flame!!

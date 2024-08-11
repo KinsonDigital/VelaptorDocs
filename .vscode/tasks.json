@@ -30,7 +30,7 @@
 			]
 		},
 		{ // GENERATE API DOCS
-			"label": "Generate API Docs",
+			"label": "Generate New API Docs",
 			"detail": "Generates the API docs for the website.",
 			"type": "shell",
 			"options": {

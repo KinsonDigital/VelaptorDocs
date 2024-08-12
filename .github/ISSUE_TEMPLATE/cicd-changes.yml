@@ -21,7 +21,7 @@ body:
 - type: textarea
   attributes:
     label: Acceptance Criteria
-    description: The items to complete in order to satisfy the Definition of Done.
+    description: The items to complete to satisfy the Definition of Done.
     placeholder: |
       ```[tasklist]
       - [ ] Item 1
@@ -41,7 +41,7 @@ body:
     value: |
       ```[tasklist]
       - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
-      - [ ] Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
+      - [ ] A priority label was added to this issue.  Refer to the _**Priority Type Labels**_ section below.
       ```
   validations:
     required: true
@@ -63,9 +63,9 @@ body:
       
       | Priority Type       | Label                                                                  |
       |---------------------|------------------------------------------------------------------------|
-      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
-      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
-      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
+      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low-priority    |
+      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium-priority |
+      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high-priority   |
       </details>
 
 - type: checkboxes

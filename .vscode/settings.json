@@ -38,6 +38,11 @@
 		"**/*.code-search": true,
 		"build/": true
 	},
+	"[typescript]": {
+		"editor.defaultFormatter": "denoland.vscode-deno",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
+	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"editor.insertSpaces": false,

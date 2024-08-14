@@ -4,13 +4,14 @@ import { MarkdownHeaderService } from "./MarkdownHeaderService.ts";
 import { MarkdownService } from "./MarkdownService.ts";
 import { Utils } from "../Utils.ts";
 import { basename, extname } from "../../deps.ts";
+import { ProcessFragmentService } from "./ProcessFragmentService.ts";
 
 export class MarkdownFileContentService {
 	private readonly markDownService: MarkdownService;
 	private readonly markdownHeaderService: MarkdownHeaderService;
 	private readonly htmlService: HTMLService;
 	private readonly codeBlockService: CodeBlockService;
-	private readonly markDownLinkRegEx: RegExp;
+	private readonly singleLinkRegEx: RegExp;
 	private readonly linkTagRegEx: RegExp;
 	private readonly htmlArrow = "&#129106;";
 
@@ -19,7 +20,7 @@ export class MarkdownFileContentService {
 		this.markdownHeaderService = new MarkdownHeaderService();
 		this.htmlService = new HTMLService();
 		this.codeBlockService = new CodeBlockService();
-		this.markDownLinkRegEx = /\[(.*?)\]\((.*?)\)/g;
+		this.singleLinkRegEx = /\[.+?\]\(.+?\)/g;
 		this.linkTagRegEx = /<a\s+name\s*=\s*'(.+)'><\/a\s*>/;
 	}
 
@@ -61,6 +62,9 @@ export class MarkdownFileContentService {
 		// Process all headers to change them to the appropriate size
 		fileContent = this.markdownHeaderService.processHeaders(fileContent);
 
+		// Process all fragments in markdown links 👉🏼 [stuff](Item1.Item2#Item1.Item2) gets converted to [stuff](Item1.Item2#item2)
+		fileContent = this.processMarkdownLinkFragments(fileContent);
+
 		// Extract the name of the file without its extension
 		const baseName = basename(filePath);
 		const extension = extname(filePath);
@@ -81,7 +85,7 @@ export class MarkdownFileContentService {
 			const line = fileLines[i];
 
 			const linkTagMatches = line.match(this.linkTagRegEx);
-			const isLinkTag: boolean = linkTagMatches != null && linkTagMatches.length > 0;
+			const isLinkTag: boolean = linkTagMatches !== null && linkTagMatches.length > 0;
 
 			if (isLinkTag) {
 				let nameValue: string = this.htmlService.getNameAttrValue(line);
@@ -92,6 +96,104 @@ export class MarkdownFileContentService {
 		}
 
 		return Utils.toString(fileLines);
+	}
+
+	/**
+	 * Processes the given {@link fileContent} by finding all markdown links that contain fragments
+	 * in the url and changes the fragment by setting it to lowercase, replacing spaces with hyphens,
+	 * and removing all api namespace prefixes.
+	 * @param fileContent The content of the file to process.
+	 * @returns The processed file content.
+	 */
+	private processMarkdownLinkFragments(fileContent: string): string {
+		const fileLines: string[] = Utils.toLines(fileContent);
+
+		const getMatch = (value: string, regex: RegExp): string => {
+			const firstLink = [...value.match(regex)?.entries() ?? []];
+
+			return firstLink.length > 0 ? firstLink[0][1] : "";
+		}
+
+		const service = new ProcessFragmentService();
+
+		for (let i = 0; i < fileLines.length; i++) {
+			fileLines[i] = service.processFragments(fileLines[i]);
+
+			// const firstMatch = this.multiLinksMatchFirstRegEx.test(line);
+			// const secondMatch = this.multiLinksMatchSecondRegEx.test(line);
+			
+			// const containsMultiLinks = this.multiLinksMatchFirstRegEx.test(line) &&
+			// 	this.multiLinksMatchSecondRegEx.test(line);
+
+			// if (containsMultiLinks) {
+			// 	const firstLink = getMatch(line, this.multiLinksMatchFirstRegEx);
+			// 	const secondLink = getMatch(line, this.multiLinksMatchSecondRegEx);
+
+			// 	const updatedFirstLink = this.updateMarkdownLinkFragment(firstLink);
+			// 	const updatedSecondLink = this.updateMarkdownLinkFragment(secondLink);
+
+			// 	if (updatedFirstLink !== "") {
+			// 		fileLines[i] = fileLines[i].replaceAll(firstLink, updatedFirstLink);
+			// 	}
+
+			// 	if (updatedSecondLink !== "") {
+			// 		fileLines[i] = fileLines[i].replaceAll(secondLink, updatedSecondLink);
+			// 	}
+			// } else {
+			// 	const link = this.markDownService.extractMarkdownLink(line);
+
+			// 	if (link === undefined || !this.hasFragmentRegEx.test(link)) {
+			// 		continue;
+			// 	}
+
+			// 	const updatedLink = this.updateMarkdownLinkFragment(link);
+					
+			// 	if (updatedLink !== "") {
+			// 		fileLines[i] = fileLines[i].replaceAll(link, updatedLink);
+			// 	}
+			// }
+		}
+
+		return `${fileLines.join("\n")}\n`;
+	}
+
+	/**
+	 * Updates the url fragment in the given {@link markdownLink} if it contains some hover text
+	 * and the fragment contains periods which means it is a fully qualified type name.
+	 * @param markdownLink The markdown link.
+	 * @returns The updated markdown link.
+	 */
+	private updateMarkdownLinkFragment(markdownLink: string): string {
+		const hoverTextRegex = /'.+?'/gm;
+
+		const linkText = this.markDownService.extractLinkText(markdownLink);
+		const fullUrl = this.markDownService.extractLinkUrl(markdownLink);
+		const containsHoverText = hoverTextRegex.test(fullUrl);
+		const containsFragment = fullUrl.includes("#");
+
+		if (containsHoverText && containsFragment) {
+			const [urlSection, hoverTextSection] = fullUrl.split(" ");
+
+			const [url, fragment] = urlSection.split("#");
+
+			if (fragment === undefined) {
+				debugger;
+			}
+
+			if (fragment.includes(".")) {
+				const fragmentSections = fragment.split(".");
+				const fragmentIsGenericParam = fragment.includes("_T_");
+
+				const newFragment = fragmentIsGenericParam
+					? "type-parameters"
+					: fragmentSections[fragmentSections.length - 1].toLowerCase().replace(" ", "-");
+
+				const newUrl = `${url}#${newFragment} ${hoverTextSection}`;
+				return this.markDownService.createLink(linkText, newUrl);
+			}
+		}
+
+		return "";
 	}
 
 	private processHeaderAngleBrackets(fileContent: string): string {
@@ -120,8 +222,8 @@ export class MarkdownFileContentService {
 		for (let i = 0; i < fileLines.length; i++) {
 			const line = fileLines[i];
 
-			const notEmpty = line != "";
-			const containsAngles: boolean = line.indexOf("<") != -1 && line.indexOf(">") != -1;
+			const notEmpty = line !== "";
+			const containsAngles: boolean = line.indexOf("<") !== -1 && line.indexOf(">") !== -1;
 			const notCodeBlock = !this.codeBlockService.inAnyCodeBlocks(codeBlocks, i);
 			const notHeader = !this.markDownService.isHeaderLine(line);
 			const notHTMLLink = !this.htmlService.isHTMLLink(line);
@@ -166,9 +268,9 @@ export class MarkdownFileContentService {
 		for (let i = 0; i < fileLines.length; i++) {
 			const line = fileLines[i];
 
-			if (line.lastIndexOf("| |") != -1) {
+			if (line.lastIndexOf("| |") !== -1) {
 				fileLines[i] = line.replace("| |", "|");
-			} else if (line.indexOf("| :--- |") != -1) {
+			} else if (line.indexOf("| :--- |") !== -1) {
 				fileLines[i] = "| :--- |";
 			}
 		}
@@ -181,7 +283,7 @@ export class MarkdownFileContentService {
 		newUrl: string,
 		predicate: ((text: string, url: string) => boolean) | null = null,
 	): string {
-		const matches = fileContent.match(this.markDownLinkRegEx);
+		const matches = fileContent.match(this.singleLinkRegEx);
 		matches?.forEach((link) => {
 			const text: string = this.markDownService.extractLinkText(link);
 			const url: string = this.markDownService.extractLinkUrl(link);

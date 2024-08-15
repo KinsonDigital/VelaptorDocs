@@ -12,3 +12,4 @@ title: Velaptor.Graphics.Renderers
 | [ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor.Graphics.Renderers.ILineRenderer') | Renders lines to the screen. |
 | [IShapeRenderer](Velaptor.Graphics.Renderers.IShapeRenderer.md 'Velaptor.Graphics.Renderers.IShapeRenderer') | Renders rectangles to the screen. |
 | [ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor.Graphics.Renderers.ITextureRenderer') | Renders textures to the screen. |
+

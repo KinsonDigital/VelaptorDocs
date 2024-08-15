@@ -30,8 +30,8 @@ All the audio data has been loaded into memory.
                   
 - Large audio files that take up much more memory.  
 - Large audio files take longer when loading as content.<br/>  
-            It is recommended to use [Full](Velaptor.Content.AudioBuffer.md#Velaptor.Content.AudioBuffer.Full 'Velaptor.Content.AudioBuffer.Full') for very short audio effects such as lasers, weapons, etc. and  
-            to use [Stream](Velaptor.Content.AudioBuffer.md#Velaptor.Content.AudioBuffer.Stream 'Velaptor.Content.AudioBuffer.Stream') for large files such as game music.
+            It is recommended to use [Full](Velaptor.Content.AudioBuffer.md#full 'Velaptor.Content.AudioBuffer.Full') for very short audio effects such as lasers, weapons, etc. and  
+            to use [Stream](Velaptor.Content.AudioBuffer.md#stream 'Velaptor.Content.AudioBuffer.Stream') for large files such as game music.
 
 <a name='Velaptor.Content.AudioBuffer.Stream'></a>
 
@@ -48,5 +48,5 @@ Audio data is streamed from a source during playback.
             Not Good For:  
                   
 - Sounds that need to be played in quick succession such as audio effects.<br/>  
-            It is recommended to use [Stream](Velaptor.Content.AudioBuffer.md#Velaptor.Content.AudioBuffer.Stream 'Velaptor.Content.AudioBuffer.Stream') for large files such as game music and to use [Full](Velaptor.Content.AudioBuffer.md#Velaptor.Content.AudioBuffer.Full 'Velaptor.Content.AudioBuffer.Full')  
+            It is recommended to use [Stream](Velaptor.Content.AudioBuffer.md#stream 'Velaptor.Content.AudioBuffer.Stream') for large files such as game music and to use [Full](Velaptor.Content.AudioBuffer.md#full 'Velaptor.Content.AudioBuffer.Full')  
             for very short audio effects such as lasers, weapons, etc.

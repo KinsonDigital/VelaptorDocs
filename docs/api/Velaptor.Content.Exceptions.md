@@ -15,3 +15,4 @@ title: Velaptor.Content.Exceptions
 | [LoadAudioException](Velaptor.Content.Exceptions.LoadAudioException.md 'Velaptor.Content.Exceptions.LoadAudioException') | Thrown when there is an issue loading audio. |
 | [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') | Thrown when there is an issue loading content. |
 | [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException') | Thrown when there is an issue loading textures. |
+

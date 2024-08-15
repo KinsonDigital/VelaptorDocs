@@ -19,9 +19,10 @@ title: Velaptor.Content
 | [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent') | Represents loadable content data. |
 | [IContentLoadable](Velaptor.Content.IContentLoadable.md 'Velaptor.Content.IContentLoadable') | Provides the ability to load content. |
 | [IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor.Content.IContentPathResolver') | Resolves file paths. |
-| [ILoader&lt;T&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>') | Loads data of type [T](Velaptor.Content.ILoader_T_.md#Velaptor.Content.ILoader_T_.T 'Velaptor.Content.ILoader<T>.T'). |
+| [ILoader&lt;T&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>') | Loads data of type [T](Velaptor.Content.ILoader_T_.md#t 'Velaptor.Content.ILoader<T>.T'). |
 | [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture') | The texture to render to a screen. |
 
 | Enums | |
 | :--- | :--- |
 | [AudioBuffer](Velaptor.Content.AudioBuffer.md 'Velaptor.Content.AudioBuffer') | The kinds of buffering used for audio. |
+

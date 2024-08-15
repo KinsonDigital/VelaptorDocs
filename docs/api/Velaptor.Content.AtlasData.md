@@ -30,7 +30,7 @@ Gets the file path to the atlas data.
 public string AtlasDataFilePath { get; }
 ```
 
-Implements [AtlasDataFilePath](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.AtlasDataFilePath 'Velaptor.Content.IAtlasData.AtlasDataFilePath')
+Implements [AtlasDataFilePath](Velaptor.Content.IAtlasData.md#atlasdatafilepath 'Velaptor.Content.IAtlasData.AtlasDataFilePath')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -45,7 +45,7 @@ Gets the path to the texture.
 public string FilePath { get; }
 ```
 
-Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor.Content.IContent.FilePath')
+Implements [FilePath](Velaptor.Content.IContent.md#filepath 'Velaptor.Content.IContent.FilePath')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -60,7 +60,7 @@ Gets the height of the entire texture atlas texture.
 public uint Height { get; }
 ```
 
-Implements [Height](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.Height 'Velaptor.Content.IAtlasData.Height')
+Implements [Height](Velaptor.Content.IAtlasData.md#height 'Velaptor.Content.IAtlasData.Height')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
@@ -75,7 +75,7 @@ Gets the name of the atlas.
 public string Name { get; }
 ```
 
-Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor.Content.IContent.Name')
+Implements [Name](Velaptor.Content.IContent.md#name 'Velaptor.Content.IContent.Name')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -90,7 +90,7 @@ Gets a list of unique sub texture names.
 public System.Collections.Generic.IReadOnlyCollection<string> SubTextureNames { get; }
 ```
 
-Implements [SubTextureNames](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.SubTextureNames 'Velaptor.Content.IAtlasData.SubTextureNames')
+Implements [SubTextureNames](Velaptor.Content.IAtlasData.md#subtexturenames 'Velaptor.Content.IAtlasData.SubTextureNames')
 
 #### Property Value
 [System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')
@@ -109,7 +109,7 @@ Gets the texture of the atlas.
 public Velaptor.Content.ITexture Texture { get; }
 ```
 
-Implements [Texture](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.Texture 'Velaptor.Content.IAtlasData.Texture')
+Implements [Texture](Velaptor.Content.IAtlasData.md#texture 'Velaptor.Content.IAtlasData.Texture')
 
 #### Property Value
 [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture')
@@ -131,7 +131,7 @@ public Velaptor.Graphics.AtlasSubTextureData this[int index] { get; }
 
 The index of the item to retrieve.
 
-Implements [this[int]](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.this[int] 'Velaptor.Content.IAtlasData.this[int]')
+Implements [this[int](Velaptor.Content.IAtlasData.md#this[int] 'Velaptor.Content.IAtlasData.this[int]')
 
 #### Property Value
 [AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor.Graphics.AtlasSubTextureData')
@@ -146,7 +146,7 @@ Gets the width of the entire texture atlas texture.
 public uint Width { get; }
 ```
 
-Implements [Width](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.Width 'Velaptor.Content.IAtlasData.Width')
+Implements [Width](Velaptor.Content.IAtlasData.md#width 'Velaptor.Content.IAtlasData.Width')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')

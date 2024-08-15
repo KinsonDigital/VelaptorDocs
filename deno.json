@@ -3,7 +3,7 @@
         "build": "deno run --allow-read --allow-env --allow-sys --allow-run ./scripts/deno-check.ts"
     },
 	"fmt": {
-        "include": ["**/*.ts"],
+        "include": [".github/cicd/**/*.ts"],
         "exclude": [
             "**/.config/",
             "**/.docusaurus/",
@@ -30,7 +30,7 @@
 	},
     "nodeModulesDir": false,
 	"lint": {
-        "include": ["**/*.ts"],
+        "include": [".github/cicd/**/*.ts"],
         "exclude": [
             "**/*.json",
             "**/*.md",

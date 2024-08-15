@@ -118,7 +118,7 @@ A list of the keys that are currently in the down position.
 
 ### IsKeyDown(KeyCode) 
 
-Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
+Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
 
 ```csharp
 public bool IsKeyDown(Velaptor.Input.KeyCode key);
@@ -133,13 +133,13 @@ The key to check.
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
+`true` if the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode).key') is in the down position.
 
 <a name='Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode)'></a>
 
 ### IsKeyUp(KeyCode) 
 
-Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
+Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
 
 ```csharp
 public bool IsKeyUp(Velaptor.Input.KeyCode key);
@@ -154,7 +154,7 @@ The key to check.
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
+`true` if the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode).key') is in the up position.
 
 <a name='Velaptor.Input.KeyboardState.IsLeftAltKeyDown()'></a>
 
@@ -267,7 +267,7 @@ The character that matches the given key.
 
 ### SetKeyState(KeyCode, bool) 
 
-Sets the state of the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool).key 'Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode, bool).key') to the given [state](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool).state 'Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode, bool).state') value.
+Sets the state of the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode, bool).key') to the given [state](Velaptor.Input.KeyboardState.md#state 'Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode, bool).state') value.
 
 ```csharp
 public void SetKeyState(Velaptor.Input.KeyCode key, bool state);

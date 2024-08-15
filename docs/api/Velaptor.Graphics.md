@@ -30,3 +30,4 @@ title: Velaptor.Graphics
 | :--- | :--- |
 | [ColorGradient](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient') | Represents the type of gradient a color can. |
 | [RenderEffects](Velaptor.Graphics.RenderEffects.md 'Velaptor.Graphics.RenderEffects') | Adds basic effects to a texture when rendered. |
+

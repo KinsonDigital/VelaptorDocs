@@ -9,3 +9,4 @@ title: Velaptor.Graphics.Renderers.Exceptions
 | Classes | |
 | :--- | :--- |
 | [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') | Thrown when there is a renderer type of issue. |
+

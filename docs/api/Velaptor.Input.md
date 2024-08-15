@@ -21,3 +21,4 @@ title: Velaptor.Input
 | [KeyCode](Velaptor.Input.KeyCode.md 'Velaptor.Input.KeyCode') | Specifies key codes and modifiers in US keyboard layout. |
 | [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseButton') | Represents the buttons on a mouse. |
 | [MouseScrollDirection](Velaptor.Input.MouseScrollDirection.md 'Velaptor.Input.MouseScrollDirection') | Represents the different scroll directions of a mouse. |
+

@@ -16,7 +16,7 @@ title: Velaptor
 | Structs | |
 | :--- | :--- |
 | [FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime') | Holds timing information for a loop iteration. |
-| [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU') | Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#Velaptor.SizeU.Width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#Velaptor.SizeU.Height 'Velaptor.SizeU.Height'). |
+| [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU') | Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#height 'Velaptor.SizeU.Height'). |
 
 | Interfaces | |
 | :--- | :--- |
@@ -28,3 +28,4 @@ title: Velaptor
 | :--- | :--- |
 | [StateOfWindow](Velaptor.StateOfWindow.md 'Velaptor.StateOfWindow') | The different states that a [Window](Velaptor.UI.Window.md 'Velaptor.UI.Window') can be in. |
 | [WindowBorder](Velaptor.WindowBorder.md 'Velaptor.WindowBorder') | The different kinds of borders that a [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow') can have. |
+

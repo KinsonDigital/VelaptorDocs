@@ -7,7 +7,7 @@ title: Velaptor.SizeU
 
 #### SizeU Struct
 
-Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#Velaptor.SizeU.Width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#Velaptor.SizeU.Height 'Velaptor.SizeU.Height').
+Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#height 'Velaptor.SizeU.Height').
 
 ```csharp
 public readonly struct SizeU :

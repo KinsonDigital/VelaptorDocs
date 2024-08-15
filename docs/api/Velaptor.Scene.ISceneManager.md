@@ -153,7 +153,7 @@ void PreviousScene();
 
 ### RemoveScene(Guid) 
 
-Removes the scene that matches the given [sceneId](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.RemoveScene(System.Guid).sceneId 'Velaptor.Scene.ISceneManager.RemoveScene(System.Guid).sceneId').
+Removes the scene that matches the given [sceneId](Velaptor.Scene.ISceneManager.md#sceneid 'Velaptor.Scene.ISceneManager.RemoveScene(System.Guid).sceneId').
 
 ```csharp
 void RemoveScene(System.Guid sceneId);
@@ -187,7 +187,7 @@ The new size.
 
 ### SceneExists(Guid) 
 
-Returns a value indicating whether a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id 'Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id').
+Returns a value indicating whether a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#id 'Velaptor.Scene.ISceneManager.SceneExists(System.Guid).id').
 
 ```csharp
 bool SceneExists(System.Guid id);
@@ -208,7 +208,7 @@ The ID of the scene.
 
 ### SetSceneAsActive(Guid) 
 
-Sets a scene that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid).id 'Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid).id') to be the active scene.
+Sets a scene that matches the given [id](Velaptor.Scene.ISceneManager.md#id 'Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid).id') to be the active scene.
 
 ```csharp
 void SetSceneAsActive(System.Guid id);

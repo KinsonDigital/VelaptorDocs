@@ -1,5 +1,12 @@
 {
+	"deno.enable": true,
+	"files.eol": "\n",
+	"files.exclude": {
+		"**/RepoSrc": true
+	},
 	"[typescript]": {
 		"editor.defaultFormatter": "denoland.vscode-deno",
-	}
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
+	},
 }

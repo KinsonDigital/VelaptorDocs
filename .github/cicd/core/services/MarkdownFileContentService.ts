@@ -108,50 +108,10 @@ export class MarkdownFileContentService {
 	private processMarkdownLinkFragments(fileContent: string): string {
 		const fileLines: string[] = Utils.toLines(fileContent);
 
-		const getMatch = (value: string, regex: RegExp): string => {
-			const firstLink = [...value.match(regex)?.entries() ?? []];
-
-			return firstLink.length > 0 ? firstLink[0][1] : "";
-		}
-
 		const service = new ProcessFragmentService();
 
 		for (let i = 0; i < fileLines.length; i++) {
 			fileLines[i] = service.processFragments(fileLines[i]);
-
-			// const firstMatch = this.multiLinksMatchFirstRegEx.test(line);
-			// const secondMatch = this.multiLinksMatchSecondRegEx.test(line);
-			
-			// const containsMultiLinks = this.multiLinksMatchFirstRegEx.test(line) &&
-			// 	this.multiLinksMatchSecondRegEx.test(line);
-
-			// if (containsMultiLinks) {
-			// 	const firstLink = getMatch(line, this.multiLinksMatchFirstRegEx);
-			// 	const secondLink = getMatch(line, this.multiLinksMatchSecondRegEx);
-
-			// 	const updatedFirstLink = this.updateMarkdownLinkFragment(firstLink);
-			// 	const updatedSecondLink = this.updateMarkdownLinkFragment(secondLink);
-
-			// 	if (updatedFirstLink !== "") {
-			// 		fileLines[i] = fileLines[i].replaceAll(firstLink, updatedFirstLink);
-			// 	}
-
-			// 	if (updatedSecondLink !== "") {
-			// 		fileLines[i] = fileLines[i].replaceAll(secondLink, updatedSecondLink);
-			// 	}
-			// } else {
-			// 	const link = this.markDownService.extractMarkdownLink(line);
-
-			// 	if (link === undefined || !this.hasFragmentRegEx.test(link)) {
-			// 		continue;
-			// 	}
-
-			// 	const updatedLink = this.updateMarkdownLinkFragment(link);
-					
-			// 	if (updatedLink !== "") {
-			// 		fileLines[i] = fileLines[i].replaceAll(link, updatedLink);
-			// 	}
-			// }
 		}
 
 		return `${fileLines.join("\n")}\n`;
@@ -175,10 +135,6 @@ export class MarkdownFileContentService {
 			const [urlSection, hoverTextSection] = fullUrl.split(" ");
 
 			const [url, fragment] = urlSection.split("#");
-
-			if (fragment === undefined) {
-				debugger;
-			}
 
 			if (fragment.includes(".")) {
 				const fragmentSections = fragment.split(".");

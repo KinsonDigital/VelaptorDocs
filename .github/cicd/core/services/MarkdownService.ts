@@ -62,7 +62,7 @@ export class MarkdownService {
 	 * @returns The markdown links.
 	 */
 	public extractMarkdownLink(value: string): string | undefined {
-		const matches =  Array.from(value.matchAll(this.fullMarkdownLinkRegEx), (match) => match[0]);
+		const matches = Array.from(value.matchAll(this.fullMarkdownLinkRegEx), (match) => match[0]);
 
 		return matches.length > 0 ? matches[0] : undefined;
 	}
@@ -209,7 +209,6 @@ export class MarkdownService {
 		const matches = line.match(this.headerLineRegEx);
 		return matches != null && matches.length > 0;
 	}
-
 
 	public isCodeBlockStartLine(line: string): boolean {
 		if (Utils.isNothing(line)) {

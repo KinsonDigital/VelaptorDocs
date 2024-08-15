@@ -26,9 +26,9 @@
 		"node_modules": true,
 		"VelaptorDocs.code-workspace": true,
 		"build/": true,
-		".github/cicd/": false,
-		".config": false,
-		"RepoSrc/": true,
+		".github/cicd/": true,
+		".config": true,
+		"**/RepoSrc": true,
 		"*.lock": true,
 		"SampleProjects": true,
 	},
@@ -37,11 +37,6 @@
 		"**/bower_components": true,
 		"**/*.code-search": true,
 		"build/": true
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "denoland.vscode-deno",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 3,
 	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features",

@@ -3,6 +3,7 @@
 		".github/cicd/"
 	],
 	"deno.config": ".github/cicd/deno.json",
+	"files.eol": "\n",
 	"cSpell.words": [
 		"cicd",
 		"clsx",

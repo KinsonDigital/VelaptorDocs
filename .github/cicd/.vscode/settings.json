@@ -1,5 +1,6 @@
 {
 	"deno.enable": true,
+	"files.eol": "\n",
 	"files.exclude": {
 		"**/RepoSrc": true
 	},

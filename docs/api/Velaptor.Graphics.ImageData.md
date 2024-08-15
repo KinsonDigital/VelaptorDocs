@@ -41,7 +41,7 @@ The pixel data of the image.
 The file path of where the image exists.
 
 #### Remarks
-The [filePath](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,],string).filePath 'Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,], string).filePath') is used for reference only.
+The [filePath](Velaptor.Graphics.ImageData.md#filepath 'Velaptor.Graphics.ImageData.ImageData(System.Drawing.Color[,], string).filePath') is used for reference only.
 ## Properties
 
 <a name='Velaptor.Graphics.ImageData.FilePath'></a>
@@ -136,8 +136,8 @@ public uint Width { get; }
 
 ### DrawImage(ImageData, Point) 
 
-Draws the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') onto this image,  
-starting at the given [location](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).location 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).location').
+Draws the given [image](Velaptor.Graphics.ImageData.md#image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') onto this image,  
+starting at the given [location](Velaptor.Graphics.ImageData.md#location 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).location').
 
 ```csharp
 public Velaptor.Graphics.ImageData DrawImage(Velaptor.Graphics.ImageData image, System.Drawing.Point location);
@@ -155,14 +155,14 @@ The image to draw onto this one.
 `location` [System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Point 'System.Drawing.Point')
 
 The location of where to draw the image.  
-References the top left corner of the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image').
+References the top left corner of the given [image](Velaptor.Graphics.ImageData.md#image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image').
 
 #### Returns
 [ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')  
-This current image with the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') painted onto it.
+This current image with the given [image](Velaptor.Graphics.ImageData.md#image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') painted onto it.
 
 #### Remarks
-If a pixel of the given [image](Velaptor.Graphics.ImageData.md#Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData,System.Drawing.Point).image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') is outside of the bounds of this  
+If a pixel of the given [image](Velaptor.Graphics.ImageData.md#image 'Velaptor.Graphics.ImageData.DrawImage(Velaptor.Graphics.ImageData, System.Drawing.Point).image') is outside of the bounds of this  
 image, it will be skipped.
 
 <a name='Velaptor.Graphics.ImageData.Equals(Velaptor.Graphics.ImageData)'></a>

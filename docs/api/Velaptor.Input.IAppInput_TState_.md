@@ -33,5 +33,5 @@ TState GetState();
 ```
 
 #### Returns
-[TState](Velaptor.Input.IAppInput_TState_.md#Velaptor.Input.IAppInput_TState_.TState 'Velaptor.Input.IAppInput<TState>.TState')  
+[TState](Velaptor.Input.IAppInput_TState_.md#tstate 'Velaptor.Input.IAppInput<TState>.TState')  
 The state of the input.

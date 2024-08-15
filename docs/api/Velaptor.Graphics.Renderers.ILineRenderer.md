@@ -18,7 +18,7 @@ public interface ILineRenderer
 
 ### Render(Line, int) 
 
-Renders the given [line](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line,int).line 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).line').
+Renders the given [line](Velaptor.Graphics.Renderers.ILineRenderer.md#line 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).line').
 
 ```csharp
 void Render(Velaptor.Graphics.Line line, int layer=0);
@@ -44,8 +44,8 @@ Thrown if the [Begin()](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher
 
 #### Remarks
   
-Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).layer') values.  
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).layer') value, they will  
+Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).layer') values.  
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.Render(Velaptor.Graphics.Line, int).layer') value, they will  
 render in the order that the method was invoked.  
   
 Example below:<b>Render Method Invoked Order:</b>  
@@ -66,7 +66,7 @@ Example below:<b>Render Method Invoked Order:</b>
 
 ### RenderLine(Vector2, Vector2, int) 
 
-Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,int).start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,int).end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer').
+Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer').
 
 ```csharp
 void RenderLine(System.Numerics.Vector2 start, System.Numerics.Vector2 end, int layer=0);
@@ -98,8 +98,8 @@ Thrown if the [Begin()](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher
 
 #### Remarks
   
-Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer') values.  
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer') value, they will  
+Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer') values.  
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, int).layer') value, they will  
 render in the order that the method was invoked.  
   
 Example below:<b>Render Method Invoked Order:</b>  
@@ -120,8 +120,8 @@ Example below:<b>Render Method Invoked Order:</b>
 
 ### RenderLine(Vector2, Vector2, Color, int) 
 
-Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer')  
-using the given [color](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).color 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).color').
+Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer')  
+using the given [color](Velaptor.Graphics.Renderers.ILineRenderer.md#color 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).color').
 
 ```csharp
 void RenderLine(System.Numerics.Vector2 start, System.Numerics.Vector2 end, System.Drawing.Color color, int layer=0);
@@ -159,8 +159,8 @@ Thrown if the [Begin()](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher
 
 #### Remarks
   
-Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer') values.  
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer') value, they will  
+Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer') values.  
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, int).layer') value, they will  
 render in the order that the method was invoked.  
   
 Example below:<b>Render Method Invoked Order:</b>  
@@ -181,8 +181,8 @@ Example below:<b>Render Method Invoked Order:</b>
 
 ### RenderLine(Vector2, Vector2, Color, uint, int) 
 
-Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer')  
-using the given [color](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).color 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).color') and line [thickness](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).thickness 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).thickness').
+Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer')  
+using the given [color](Velaptor.Graphics.Renderers.ILineRenderer.md#color 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).color') and line [thickness](Velaptor.Graphics.Renderers.ILineRenderer.md#thickness 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).thickness').
 
 ```csharp
 void RenderLine(System.Numerics.Vector2 start, System.Numerics.Vector2 end, System.Drawing.Color color, uint thickness, int layer=0);
@@ -226,8 +226,8 @@ Thrown if the [Begin()](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher
 
 #### Remarks
   
-Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer') values.  
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer') value, they will  
+Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer') values.  
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, System.Drawing.Color, uint, int).layer') value, they will  
 render in the order that the method was invoked.  
   
 Example below:<b>Render Method Invoked Order:</b>  
@@ -248,8 +248,8 @@ Example below:<b>Render Method Invoked Order:</b>
 
 ### RenderLine(Vector2, Vector2, uint, int) 
 
-Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer')  
-using the given line [thickness](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).thickness 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).thickness').
+Renders a line using the given [start](Velaptor.Graphics.Renderers.ILineRenderer.md#start 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).start') and [end](Velaptor.Graphics.Renderers.ILineRenderer.md#end 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).end') vectors on the given [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer')  
+using the given line [thickness](Velaptor.Graphics.Renderers.ILineRenderer.md#thickness 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).thickness').
 
 ```csharp
 void RenderLine(System.Numerics.Vector2 start, System.Numerics.Vector2 end, uint thickness, int layer=0);
@@ -287,8 +287,8 @@ Thrown if the [Begin()](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher
 
 #### Remarks
   
-Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer') values.  
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2,System.Numerics.Vector2,uint,int).layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer') value, they will  
+Lower [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer') values will render before higher [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer') values.  
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.ILineRenderer.md#layer 'Velaptor.Graphics.Renderers.ILineRenderer.RenderLine(System.Numerics.Vector2, System.Numerics.Vector2, uint, int).layer') value, they will  
 render in the order that the method was invoked.  
   
 Example below:<b>Render Method Invoked Order:</b>  

@@ -19,7 +19,7 @@ export class MarkdownService {
 		// /(?!.*\(\()/ is 2 consecutive ( parenthesis
 		// /(?!.*\)\))/ is 2 consecutive ) parenthesis
 
-		this.fullMarkdownLinkRegEx = /(?!.*\[\[)(?!.*\]\])(?!.*\(\()(?!.*\)\))(\[.+\]\(.+\))/;
+		this.fullMarkdownLinkRegEx = /\[.+?\]\(.+?\)/gm;
 		this.headerLineRegEx = /^#+ .+$/g;
 
 		this.newLine = Utils.isWindows() ? "\r\n" : "\n";
@@ -32,7 +32,7 @@ export class MarkdownService {
 
 		// TODO: The URL link is going to have to change somehow
 		// once we start having versions. Maybe bring in a version parameter somehow
-		return `[${text}](<${url}>)`;
+		return `[${text}](${url})`;
 	}
 
 	public prefixUrl(markDownLink: string, prefix: string): string {
@@ -54,6 +54,17 @@ export class MarkdownService {
 		const text: string = this.extractLinkText(markDownLink);
 
 		return `[${text}](${newUrl})`;
+	}
+
+	/**
+	 * Extracts all markdown links from the given {@link value}.
+	 * @param value The value to extract markdown links from.
+	 * @returns The markdown links.
+	 */
+	public extractMarkdownLink(value: string): string | undefined {
+		const matches = Array.from(value.matchAll(this.fullMarkdownLinkRegEx), (match) => match[0]);
+
+		return matches.length > 0 ? matches[0] : undefined;
 	}
 
 	public extractLinkText(markDownLink: string): string {
@@ -198,7 +209,6 @@ export class MarkdownService {
 		const matches = line.match(this.headerLineRegEx);
 		return matches != null && matches.length > 0;
 	}
-
 
 	public isCodeBlockStartLine(line: string): boolean {
 		if (Utils.isNothing(line)) {

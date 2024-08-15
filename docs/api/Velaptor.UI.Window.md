@@ -31,7 +31,7 @@ be automatically cleared before rendering any textures.
 public bool AutoClearBuffer { get; set; }
 ```
 
-Implements [AutoClearBuffer](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoClearBuffer 'Velaptor.UI.IWindow.AutoClearBuffer')
+Implements [AutoClearBuffer](Velaptor.UI.IWindow.md#autoclearbuffer 'Velaptor.UI.IWindow.AutoClearBuffer')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -58,7 +58,7 @@ Gets or sets a value indicating whether the scenes should be automatically loade
 public bool AutoSceneLoading { get; set; }
 ```
 
-Implements [AutoSceneLoading](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoSceneLoading 'Velaptor.UI.IWindow.AutoSceneLoading')
+Implements [AutoSceneLoading](Velaptor.UI.IWindow.md#autosceneloading 'Velaptor.UI.IWindow.AutoSceneLoading')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -73,7 +73,7 @@ Gets or sets a value indicating whether the scenes should be automatically rende
 public bool AutoSceneRendering { get; set; }
 ```
 
-Implements [AutoSceneRendering](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoSceneRendering 'Velaptor.UI.IWindow.AutoSceneRendering')
+Implements [AutoSceneRendering](Velaptor.UI.IWindow.md#autoscenerendering 'Velaptor.UI.IWindow.AutoSceneRendering')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -88,7 +88,7 @@ Gets or sets a value indicating whether the scenes should be automatically unloa
 public bool AutoSceneUnloading { get; set; }
 ```
 
-Implements [AutoSceneUnloading](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoSceneUnloading 'Velaptor.UI.IWindow.AutoSceneUnloading')
+Implements [AutoSceneUnloading](Velaptor.UI.IWindow.md#autosceneunloading 'Velaptor.UI.IWindow.AutoSceneUnloading')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -103,7 +103,7 @@ Gets or sets a value indicating whether the scenes should be automatically updat
 public bool AutoSceneUpdating { get; set; }
 ```
 
-Implements [AutoSceneUpdating](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.AutoSceneUpdating 'Velaptor.UI.IWindow.AutoSceneUpdating')
+Implements [AutoSceneUpdating](Velaptor.UI.IWindow.md#autosceneupdating 'Velaptor.UI.IWindow.AutoSceneUpdating')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -118,7 +118,7 @@ Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/Sys
 public System.Action<Velaptor.FrameTime>? Draw { get; set; }
 ```
 
-Implements [Draw](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Draw 'Velaptor.UI.IWindow.Draw')
+Implements [Draw](Velaptor.UI.IWindow.md#draw 'Velaptor.UI.IWindow.Draw')
 
 #### Property Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
@@ -133,7 +133,7 @@ Gets the frames per second that the main loop is running at.
 public float Fps { get; }
 ```
 
-Implements [Fps](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Fps 'Velaptor.UI.IWindow.Fps')
+Implements [Fps](Velaptor.UI.IWindow.md#fps 'Velaptor.UI.IWindow.Fps')
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
@@ -148,7 +148,7 @@ Gets or sets the height of the window.
 public uint Height { get; set; }
 ```
 
-Implements [Height](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Height 'Velaptor.UI.IWindow.Height')
+Implements [Height](Velaptor.UI.IWindow.md#height 'Velaptor.UI.IWindow.Height')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
@@ -163,7 +163,7 @@ Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/Sys
 public System.Action? Initialize { get; set; }
 ```
 
-Implements [Initialize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Initialize 'Velaptor.UI.IWindow.Initialize')
+Implements [Initialize](Velaptor.UI.IWindow.md#initialize 'Velaptor.UI.IWindow.Initialize')
 
 #### Property Value
 [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
@@ -178,7 +178,7 @@ Gets a value indicating whether the window has been initialized.
 public bool Initialized { get; }
 ```
 
-Implements [Initialized](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Initialized 'Velaptor.UI.IWindow.Initialized')
+Implements [Initialized](Velaptor.UI.IWindow.md#initialized 'Velaptor.UI.IWindow.Initialized')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -193,7 +193,7 @@ Gets or sets a value indicating whether the mouse cursor is visible.
 public bool MouseCursorVisible { get; set; }
 ```
 
-Implements [MouseCursorVisible](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.MouseCursorVisible 'Velaptor.UI.IWindow.MouseCursorVisible')
+Implements [MouseCursorVisible](Velaptor.UI.IWindow.md#mousecursorvisible 'Velaptor.UI.IWindow.MouseCursorVisible')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -208,7 +208,7 @@ Gets or sets the position of the window.
 public System.Numerics.Vector2 Position { get; set; }
 ```
 
-Implements [Position](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Position 'Velaptor.UI.IWindow.Position')
+Implements [Position](Velaptor.UI.IWindow.md#position 'Velaptor.UI.IWindow.Position')
 
 #### Property Value
 [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2')
@@ -223,7 +223,7 @@ Gets the scene manager.
 public Velaptor.Scene.ISceneManager SceneManager { get; }
 ```
 
-Implements [SceneManager](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.SceneManager 'Velaptor.UI.IWindow.SceneManager')
+Implements [SceneManager](Velaptor.UI.IWindow.md#scenemanager 'Velaptor.UI.IWindow.SceneManager')
 
 #### Property Value
 [ISceneManager](Velaptor.Scene.ISceneManager.md 'Velaptor.Scene.ISceneManager')
@@ -238,7 +238,7 @@ Gets or sets the title of the window.
 public string Title { get; set; }
 ```
 
-Implements [Title](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Title 'Velaptor.UI.IWindow.Title')
+Implements [Title](Velaptor.UI.IWindow.md#title 'Velaptor.UI.IWindow.Title')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -253,7 +253,7 @@ Gets or sets the type of border that the [IWindow](Velaptor.UI.IWindow.md 'Velap
 public Velaptor.WindowBorder TypeOfBorder { get; set; }
 ```
 
-Implements [TypeOfBorder](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.TypeOfBorder 'Velaptor.UI.IWindow.TypeOfBorder')
+Implements [TypeOfBorder](Velaptor.UI.IWindow.md#typeofborder 'Velaptor.UI.IWindow.TypeOfBorder')
 
 #### Property Value
 [WindowBorder](Velaptor.WindowBorder.md 'Velaptor.WindowBorder')
@@ -268,7 +268,7 @@ Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/Sys
 public System.Action? Uninitialize { get; set; }
 ```
 
-Implements [Uninitialize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Uninitialize 'Velaptor.UI.IWindow.Uninitialize')
+Implements [Uninitialize](Velaptor.UI.IWindow.md#uninitialize 'Velaptor.UI.IWindow.Uninitialize')
 
 #### Property Value
 [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
@@ -283,7 +283,7 @@ Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/Sys
 public System.Action<Velaptor.FrameTime>? Update { get; set; }
 ```
 
-Implements [Update](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Update 'Velaptor.UI.IWindow.Update')
+Implements [Update](Velaptor.UI.IWindow.md#update 'Velaptor.UI.IWindow.Update')
 
 #### Property Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
@@ -298,7 +298,7 @@ Gets or sets the value of how often the update and render calls are invoked in t
 public int UpdateFrequency { get; set; }
 ```
 
-Implements [UpdateFrequency](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.UpdateFrequency 'Velaptor.UI.IWindow.UpdateFrequency')
+Implements [UpdateFrequency](Velaptor.UI.IWindow.md#updatefrequency 'Velaptor.UI.IWindow.UpdateFrequency')
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
@@ -313,7 +313,7 @@ Gets or sets the width of the window.
 public uint Width { get; set; }
 ```
 
-Implements [Width](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.Width 'Velaptor.UI.IWindow.Width')
+Implements [Width](Velaptor.UI.IWindow.md#width 'Velaptor.UI.IWindow.Width')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
@@ -328,7 +328,7 @@ Gets or sets the state of the window.
 public Velaptor.StateOfWindow WindowState { get; set; }
 ```
 
-Implements [WindowState](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.WindowState 'Velaptor.UI.IWindow.WindowState')
+Implements [WindowState](Velaptor.UI.IWindow.md#windowstate 'Velaptor.UI.IWindow.WindowState')
 
 #### Property Value
 [StateOfWindow](Velaptor.StateOfWindow.md 'Velaptor.StateOfWindow')
@@ -343,7 +343,7 @@ Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/Sys
 public System.Action<Velaptor.SizeU>? WinResize { get; set; }
 ```
 
-Implements [WinResize](Velaptor.UI.IWindow.md#Velaptor.UI.IWindow.WinResize 'Velaptor.UI.IWindow.WinResize')
+Implements [WinResize](Velaptor.UI.IWindow.md#winresize 'Velaptor.UI.IWindow.WinResize')
 
 #### Property Value
 [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')

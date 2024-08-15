@@ -13,3 +13,4 @@ title: Velaptor.NativeInterop.ImGui
 | Interfaces | |
 | :--- | :--- |
 | [IImGuiInvoker](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md 'Velaptor.NativeInterop.ImGui.IImGuiInvoker') | Invokes [ImGuiNET.ImGui](https://docs.microsoft.com/en-us/dotnet/api/ImGuiNET.ImGui 'ImGuiNET.ImGui') functions. |
+

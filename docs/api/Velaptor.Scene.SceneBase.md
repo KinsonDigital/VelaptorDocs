@@ -32,7 +32,7 @@ Gets the unique ID of the scene.
 public System.Guid Id { get; }
 ```
 
-Implements [Id](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Id 'Velaptor.Scene.IScene.Id')
+Implements [Id](Velaptor.Scene.IScene.md#id 'Velaptor.Scene.IScene.Id')
 
 #### Property Value
 [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/System.Guid 'System.Guid')
@@ -47,7 +47,7 @@ Gets the name of the scene.
 public bool IsLoaded { get; set; }
 ```
 
-Implements [IsLoaded](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.IsLoaded 'Velaptor.Scene.IScene.IsLoaded')
+Implements [IsLoaded](Velaptor.Scene.IScene.md#isloaded 'Velaptor.Scene.IScene.IsLoaded')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -62,7 +62,7 @@ Gets the name of the scene.
 public string Name { get; set; }
 ```
 
-Implements [Name](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Name 'Velaptor.Scene.IScene.Name')
+Implements [Name](Velaptor.Scene.IScene.md#name 'Velaptor.Scene.IScene.Name')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -77,7 +77,7 @@ Gets the center of the window.
 public System.Drawing.Point WindowCenter { get; }
 ```
 
-Implements [WindowCenter](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowCenter 'Velaptor.Scene.IScene.WindowCenter')
+Implements [WindowCenter](Velaptor.Scene.IScene.md#windowcenter 'Velaptor.Scene.IScene.WindowCenter')
 
 #### Property Value
 [System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Point 'System.Drawing.Point')
@@ -92,7 +92,7 @@ Gets the size of the window.
 public Velaptor.SizeU WindowSize { get; set; }
 ```
 
-Implements [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor.Scene.IScene.WindowSize')
+Implements [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor.Scene.IScene.WindowSize')
 
 #### Property Value
 [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')
@@ -138,7 +138,7 @@ Implements [Render()](Velaptor.IDrawable.md#Velaptor.IDrawable.Render() 'Velapto
 
 ### Resize(SizeU) 
 
-Updates the [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor.Scene.IScene.WindowSize').
+Updates the [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor.Scene.IScene.WindowSize').
 
 ```csharp
 public virtual void Resize(Velaptor.SizeU size);

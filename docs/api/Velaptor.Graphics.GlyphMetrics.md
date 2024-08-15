@@ -90,7 +90,7 @@ public char Glyph { get; set; }
 ### GlyphBounds 
 
 Gets the rectangular bounds of where in a font texture  
-atlas the given [Glyph](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Glyph 'Velaptor.Graphics.GlyphMetrics.Glyph') resides.
+atlas the given [Glyph](Velaptor.Graphics.GlyphMetrics.md#glyph 'Velaptor.Graphics.GlyphMetrics.Glyph') resides.
 
 ```csharp
 public System.Drawing.RectangleF GlyphBounds { get; set; }

@@ -37,7 +37,7 @@ Velaptor.Content.ITexture Atlas { get; }
 
 ### AvailableStylesForFamily 
 
-Gets a list of all the available font styles for the current font [FamilyName](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.FamilyName 'Velaptor.Content.Fonts.IFont.FamilyName').
+Gets a list of all the available font styles for the current font [FamilyName](Velaptor.Content.Fonts.IFont.md#familyname 'Velaptor.Content.Fonts.IFont.FamilyName').
 
 ```csharp
 System.Collections.Generic.IEnumerable<Velaptor.Content.Fonts.FontStyle> AvailableStylesForFamily { get; }
@@ -181,8 +181,8 @@ Velaptor.Content.Fonts.FontStyle Style { get; set; }
 
 ### GetCharacterBounds(string, Vector2) 
 
-Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetCharacterBounds(string,System.Numerics.Vector2).text 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(string, System.Numerics.Vector2).text') based on the  
-given [textPos](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetCharacterBounds(string,System.Numerics.Vector2).textPos 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(string, System.Numerics.Vector2).textPos').
+Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.IFont.md#text 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(string, System.Numerics.Vector2).text') based on the  
+given [textPos](Velaptor.Content.Fonts.IFont.md#textpos 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(string, System.Numerics.Vector2).textPos').
 
 ```csharp
 System.Collections.Generic.IEnumerable<(char character,System.Drawing.RectangleF bounds)> GetCharacterBounds(string text, System.Numerics.Vector2 textPos);
@@ -209,8 +209,8 @@ The bounds for each character.
 
 ### GetCharacterBounds(StringBuilder, Vector2) 
 
-Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2).text 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder, System.Numerics.Vector2).text') based on the  
-given [textPos](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2).textPos 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder, System.Numerics.Vector2).textPos').
+Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.IFont.md#text 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder, System.Numerics.Vector2).text') based on the  
+given [textPos](Velaptor.Content.Fonts.IFont.md#textpos 'Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder, System.Numerics.Vector2).textPos').
 
 ```csharp
 System.Collections.Generic.IEnumerable<(char character,System.Drawing.RectangleF bounds)> GetCharacterBounds(System.Text.StringBuilder text, System.Numerics.Vector2 textPos);
@@ -237,7 +237,7 @@ The bounds for each character.
 
 ### GetKerning(uint, uint) 
 
-Gets the kerning between two glyphs using the given [leftGlyphIndex](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetKerning(uint,uint).leftGlyphIndex 'Velaptor.Content.Fonts.IFont.GetKerning(uint, uint).leftGlyphIndex') and [rightGlyphIndex](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetKerning(uint,uint).rightGlyphIndex 'Velaptor.Content.Fonts.IFont.GetKerning(uint, uint).rightGlyphIndex').
+Gets the kerning between two glyphs using the given [leftGlyphIndex](Velaptor.Content.Fonts.IFont.md#leftglyphindex 'Velaptor.Content.Fonts.IFont.GetKerning(uint, uint).leftGlyphIndex') and [rightGlyphIndex](Velaptor.Content.Fonts.IFont.md#rightglyphindex 'Velaptor.Content.Fonts.IFont.GetKerning(uint, uint).rightGlyphIndex').
 
 ```csharp
 float GetKerning(uint leftGlyphIndex, uint rightGlyphIndex);
@@ -267,7 +267,7 @@ Refer to https://freetype.org/freetype2/docs/glyphs/glyphs-4.html for more info.
 
 ### Measure(string) 
 
-Measures the width and height bounds of the given [text](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Measure(string).text 'Velaptor.Content.Fonts.IFont.Measure(string).text').
+Measures the width and height bounds of the given [text](Velaptor.Content.Fonts.IFont.md#text 'Velaptor.Content.Fonts.IFont.Measure(string).text').
 
 ```csharp
 System.Drawing.SizeF Measure(string text);
@@ -288,7 +288,7 @@ The width and height of the text in pixels.
 
 ### ToGlyphMetrics(string) 
 
-Gets the glyph metrics using the given [text](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.ToGlyphMetrics(string).text 'Velaptor.Content.Fonts.IFont.ToGlyphMetrics(string).text').
+Gets the glyph metrics using the given [text](Velaptor.Content.Fonts.IFont.md#text 'Velaptor.Content.Fonts.IFont.ToGlyphMetrics(string).text').
 
 ```csharp
 Velaptor.Graphics.GlyphMetrics[] ToGlyphMetrics(string text);

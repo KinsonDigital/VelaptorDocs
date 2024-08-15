@@ -18,3 +18,4 @@ title: Velaptor.Content.Fonts
 | :--- | :--- |
 | [FontSource](Velaptor.Content.Fonts.FontSource.md 'Velaptor.Content.Fonts.FontSource') | Represents the source of where a font was loaded. |
 | [FontStyle](Velaptor.Content.Fonts.FontStyle.md 'Velaptor.Content.Fonts.FontStyle') | The kind of font styles. |
+

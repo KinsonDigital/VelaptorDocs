@@ -621,5 +621,27 @@
     "https://raw.githubusercontent.com/KinsonDigital/Infrastructure/v13.6.3/cicd/core/Utils.ts": "e2c0dd08e79e79b616f6b5ff90ddac1d24847fa39d483354e4abee775e64fc35",
     "https://raw.githubusercontent.com/KinsonDigital/Infrastructure/v13.6.3/cicd/core/mod.ts": "8a80efd845c06db8329dd58d5d29cb4427b793fcd86a2230634fd60f233e59a5",
     "https://raw.githubusercontent.com/KinsonDigital/Infrastructure/v13.6.3/deps.ts": "8a380f4e2d6312114caafc6d1ef46061e9369865a549ca3852a6aab382270927"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@docusaurus/core@3.5.1",
+        "npm:@docusaurus/module-type-aliases@^3.2.1",
+        "npm:@docusaurus/preset-classic@3.5.1",
+        "npm:@docusaurus/theme-mermaid@3.5.1",
+        "npm:@docusaurus/tsconfig@^3.2.1",
+        "npm:@docusaurus/types@3.5.1",
+        "npm:@mdx-js/react@^3.0.0",
+        "npm:@types/react@^18.2.42",
+        "npm:autoprefixer@^10.4.19",
+        "npm:clsx@2.1.1",
+        "npm:postcss@^8.4.38",
+        "npm:prism-react-renderer@^2.3.0",
+        "npm:react-dom@^18.2.0",
+        "npm:react@^18.2.0",
+        "npm:tailwindcss@^3.4.3",
+        "npm:typescript@~5.5.0"
+      ]
+    }
   }
 }

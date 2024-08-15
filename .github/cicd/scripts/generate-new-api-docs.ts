@@ -40,7 +40,7 @@ const apiVersionType: GenerateSrcType = "api version";
 
 if (isInteractive) {
 	// Ask for an API version or branch name
-	generateSrcType = <GenerateSrcType>(await Select.prompt({
+	generateSrcType = <GenerateSrcType> (await Select.prompt({
 		message: "Enter the type of source you want to generate from.",
 		options: [branchType, apiVersionType],
 	}));
@@ -49,7 +49,7 @@ if (isInteractive) {
 		tagOrBranch = await Input.prompt({
 			message: "Enter the branch name",
 		});
-	} else if(generateSrcType === "api version") {
+	} else if (generateSrcType === "api version") {
 		const token = Deno.env.get("CICD_TOKEN");
 
 		if (Utils.isNothing(token)) {
@@ -62,13 +62,11 @@ if (isInteractive) {
 
 		const tags = (await tagClient.getAllTags()).map((tag) => tag.name)
 			.filter((tag) => Utils.validPreviewVersion(tag) || Utils.validProdVersion(tag));
-		
 
 		tagOrBranch = await Select.prompt({
 			message: "Select a release version",
 			options: tags,
 		});
-
 	} else {
 		console.error("Unknown source type selected.");
 		Deno.exit();

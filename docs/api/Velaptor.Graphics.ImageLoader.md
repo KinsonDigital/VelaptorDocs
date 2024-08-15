@@ -54,7 +54,7 @@ Implements [LoadImage(string)](Velaptor.Graphics.IImageLoader.md#Velaptor.Graphi
 The image data.
 
 #### Remarks
-If the [filePath](Velaptor.Graphics.ImageLoader.md#Velaptor.Graphics.ImageLoader.LoadImage(string).filePath 'Velaptor.Graphics.ImageLoader.LoadImage(string).filePath') is a relative path, it will be resolved  
+If the [filePath](Velaptor.Graphics.ImageLoader.md#filepath 'Velaptor.Graphics.ImageLoader.LoadImage(string).filePath') is a relative path, it will be resolved  
 to the content directory of the application.  
 <br/>  
 The default content directory is <b>Content/Graphics/</b>.

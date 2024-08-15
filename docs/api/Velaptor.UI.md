@@ -17,3 +17,4 @@ title: Velaptor.UI
 | Interfaces | |
 | :--- | :--- |
 | [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow') | Provides the core of an application window which facilitates how the&lt;br/&gt;window behaves, its state and the ability to be used in various types&lt;br/&gt;of applications. |
+

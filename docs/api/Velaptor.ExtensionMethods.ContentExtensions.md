@@ -52,7 +52,7 @@ The loaded font.
 #### Exceptions
 
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Occurs when the [fontName](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Load(thisVelaptor.Content.ILoader_Velaptor.Content.Fonts.IFont_,string,uint).fontName 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont>, string, uint).fontName') argument is null or empty.
+Occurs when the [fontName](Velaptor.ExtensionMethods.ContentExtensions.md#fontname 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont>, string, uint).fontName') argument is null or empty.
 
 [System.IO.FileNotFoundException](https://docs.microsoft.com/en-us/dotnet/api/System.IO.FileNotFoundException 'System.IO.FileNotFoundException')  
 Occurs if the font file does not exist.
@@ -66,7 +66,7 @@ Directory paths are not valid.
 
 ### Load(this ILoader&lt;IAtlasData&gt;, string) 
 
-Loads texture atlas data using the given [atlasPathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Load(thisVelaptor.Content.ILoader_Velaptor.Content.IAtlasData_,string).atlasPathOrName 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>, string).atlasPathOrName').
+Loads texture atlas data using the given [atlasPathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#atlaspathorname 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>, string).atlasPathOrName').
 
 ```csharp
 public static Velaptor.Content.IAtlasData Load(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData> loader, string atlasPathOrName);
@@ -92,7 +92,7 @@ The loaded atlas data.
 #### Exceptions
 
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Thrown if the [atlasPathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Load(thisVelaptor.Content.ILoader_Velaptor.Content.IAtlasData_,string).atlasPathOrName 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>, string).atlasPathOrName') is null or empty.
+Thrown if the [atlasPathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#atlaspathorname 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>, string).atlasPathOrName') is null or empty.
 
 [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException')  
 Thrown if the resulting texture content file path is invalid.
@@ -161,7 +161,7 @@ The loaded audio.
 #### Exceptions
 
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Thrown if the [audioPathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Load(thisVelaptor.Content.ILoader_Velaptor.Content.IAudio_,string,Velaptor.Content.AudioBuffer).audioPathOrName 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.IAudio>, string, Velaptor.Content.AudioBuffer).audioPathOrName') is null or empty.
+Thrown if the [audioPathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#audiopathorname 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.IAudio>, string, Velaptor.Content.AudioBuffer).audioPathOrName') is null or empty.
 
 [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException')  
 Thrown if the resulting texture content file path is invalid.
@@ -188,7 +188,7 @@ The path contains a colon character `:` that is not part of a drive label.
 
 ### Load(this ILoader&lt;ITexture&gt;, string) 
 
-Loads a texture with the given [texturePathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Load(thisVelaptor.Content.ILoader_Velaptor.Content.ITexture_,string).texturePathOrName 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.ITexture>, string).texturePathOrName').
+Loads a texture with the given [texturePathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#texturepathorname 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.ITexture>, string).texturePathOrName').
 
 ```csharp
 public static Velaptor.Content.ITexture Load(this Velaptor.Content.ILoader<Velaptor.Content.ITexture> loader, string texturePathOrName);
@@ -214,7 +214,7 @@ The loaded texture.
 #### Exceptions
 
 [System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
-Thrown if the [texturePathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Load(thisVelaptor.Content.ILoader_Velaptor.Content.ITexture_,string).texturePathOrName 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.ITexture>, string).texturePathOrName') is null or empty.
+Thrown if the [texturePathOrName](Velaptor.ExtensionMethods.ContentExtensions.md#texturepathorname 'Velaptor.ExtensionMethods.ContentExtensions.Load(this Velaptor.Content.ILoader<Velaptor.Content.ITexture>, string).texturePathOrName') is null or empty.
 
 [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException')  
 Thrown if the resulting texture content file path is invalid.
@@ -241,7 +241,7 @@ The path contains a colon character `:` that is not part of a drive label.
 
 ### Unload(this ILoader&lt;IFont&gt;, IFont) 
 
-Unloads the given [font](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Unload(thisVelaptor.Content.ILoader_Velaptor.Content.Fonts.IFont_,Velaptor.Content.Fonts.IFont).font 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont>, Velaptor.Content.Fonts.IFont).font').
+Unloads the given [font](Velaptor.ExtensionMethods.ContentExtensions.md#font 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont>, Velaptor.Content.Fonts.IFont).font').
 
 ```csharp
 public static void Unload(this Velaptor.Content.ILoader<Velaptor.Content.Fonts.IFont> loader, Velaptor.Content.Fonts.IFont? font);
@@ -264,7 +264,7 @@ The content to unload.
 
 ### Unload(this ILoader&lt;IAtlasData&gt;, IAtlasData) 
 
-Unloads the given [atlas](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Unload(thisVelaptor.Content.ILoader_Velaptor.Content.IAtlasData_,Velaptor.Content.IAtlasData).atlas 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>, Velaptor.Content.IAtlasData).atlas').
+Unloads the given [atlas](Velaptor.ExtensionMethods.ContentExtensions.md#atlas 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData>, Velaptor.Content.IAtlasData).atlas').
 
 ```csharp
 public static void Unload(this Velaptor.Content.ILoader<Velaptor.Content.IAtlasData> loader, Velaptor.Content.IAtlasData? atlas);
@@ -287,7 +287,7 @@ The content to unload.
 
 ### Unload(this ILoader&lt;IAudio&gt;, IAudio) 
 
-Unloads the given [audio](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Unload(thisVelaptor.Content.ILoader_Velaptor.Content.IAudio_,Velaptor.Content.IAudio).audio 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.IAudio>, Velaptor.Content.IAudio).audio').
+Unloads the given [audio](Velaptor.ExtensionMethods.ContentExtensions.md#audio 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.IAudio>, Velaptor.Content.IAudio).audio').
 
 ```csharp
 public static void Unload(this Velaptor.Content.ILoader<Velaptor.Content.IAudio> loader, Velaptor.Content.IAudio? audio);
@@ -310,7 +310,7 @@ The content to unload.
 
 ### Unload(this ILoader&lt;ITexture&gt;, ITexture) 
 
-Unloads the given [texture](Velaptor.ExtensionMethods.ContentExtensions.md#Velaptor.ExtensionMethods.ContentExtensions.Unload(thisVelaptor.Content.ILoader_Velaptor.Content.ITexture_,Velaptor.Content.ITexture).texture 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.ITexture>, Velaptor.Content.ITexture).texture').
+Unloads the given [texture](Velaptor.ExtensionMethods.ContentExtensions.md#texture 'Velaptor.ExtensionMethods.ContentExtensions.Unload(this Velaptor.Content.ILoader<Velaptor.Content.ITexture>, Velaptor.Content.ITexture).texture').
 
 ```csharp
 public static void Unload(this Velaptor.Content.ILoader<Velaptor.Content.ITexture> loader, Velaptor.Content.ITexture? texture);

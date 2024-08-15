@@ -31,7 +31,7 @@ A single audio that can be played, paused etc.
 public Velaptor.Content.AudioBuffer BufferType { get; }
 ```
 
-Implements [BufferType](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.BufferType 'Velaptor.Content.IAudio.BufferType')
+Implements [BufferType](Velaptor.Content.IAudio.md#buffertype 'Velaptor.Content.IAudio.BufferType')
 
 #### Property Value
 [AudioBuffer](Velaptor.Content.AudioBuffer.md 'Velaptor.Content.AudioBuffer')
@@ -46,7 +46,7 @@ A single audio that can be played, paused etc.
 public string FilePath { get; }
 ```
 
-Implements [FilePath](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.FilePath 'Velaptor.Content.IAudio.FilePath'), [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor.Content.IContent.FilePath')
+Implements [FilePath](Velaptor.Content.IAudio.md#filepath 'Velaptor.Content.IAudio.FilePath'), [FilePath](Velaptor.Content.IContent.md#filepath 'Velaptor.Content.IContent.FilePath')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -61,7 +61,7 @@ Gets the unique ID of the audio.
 public uint Id { get; set; }
 ```
 
-Implements [Id](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Id 'Velaptor.Content.IAudio.Id')
+Implements [Id](Velaptor.Content.IAudio.md#id 'Velaptor.Content.IAudio.Id')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
@@ -76,7 +76,7 @@ A single audio that can be played, paused etc.
 public bool IsLooping { get; set; }
 ```
 
-Implements [IsLooping](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.IsLooping 'Velaptor.Content.IAudio.IsLooping')
+Implements [IsLooping](Velaptor.Content.IAudio.md#islooping 'Velaptor.Content.IAudio.IsLooping')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -91,7 +91,7 @@ A single audio that can be played, paused etc.
 public bool IsPaused { get; }
 ```
 
-Implements [IsPaused](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.IsPaused 'Velaptor.Content.IAudio.IsPaused')
+Implements [IsPaused](Velaptor.Content.IAudio.md#ispaused 'Velaptor.Content.IAudio.IsPaused')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -106,7 +106,7 @@ A single audio that can be played, paused etc.
 public bool IsPlaying { get; }
 ```
 
-Implements [IsPlaying](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.IsPlaying 'Velaptor.Content.IAudio.IsPlaying')
+Implements [IsPlaying](Velaptor.Content.IAudio.md#isplaying 'Velaptor.Content.IAudio.IsPlaying')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -121,7 +121,7 @@ A single audio that can be played, paused etc.
 public bool IsStopped { get; }
 ```
 
-Implements [IsStopped](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.IsStopped 'Velaptor.Content.IAudio.IsStopped')
+Implements [IsStopped](Velaptor.Content.IAudio.md#isstopped 'Velaptor.Content.IAudio.IsStopped')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
@@ -136,7 +136,7 @@ A single audio that can be played, paused etc.
 public System.TimeSpan Length { get; }
 ```
 
-Implements [Length](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Length 'Velaptor.Content.IAudio.Length')
+Implements [Length](Velaptor.Content.IAudio.md#length 'Velaptor.Content.IAudio.Length')
 
 #### Property Value
 [System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan')
@@ -151,7 +151,7 @@ A single audio that can be played, paused etc.
 public string Name { get; }
 ```
 
-Implements [Name](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Name 'Velaptor.Content.IAudio.Name'), [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor.Content.IContent.Name')
+Implements [Name](Velaptor.Content.IAudio.md#name 'Velaptor.Content.IAudio.Name'), [Name](Velaptor.Content.IContent.md#name 'Velaptor.Content.IContent.Name')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -166,7 +166,7 @@ A single audio that can be played, paused etc.
 public float PlaySpeed { get; set; }
 ```
 
-Implements [PlaySpeed](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.PlaySpeed 'Velaptor.Content.IAudio.PlaySpeed')
+Implements [PlaySpeed](Velaptor.Content.IAudio.md#playspeed 'Velaptor.Content.IAudio.PlaySpeed')
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
@@ -181,7 +181,7 @@ A single audio that can be played, paused etc.
 public System.TimeSpan Position { get; }
 ```
 
-Implements [Position](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Position 'Velaptor.Content.IAudio.Position')
+Implements [Position](Velaptor.Content.IAudio.md#position 'Velaptor.Content.IAudio.Position')
 
 #### Property Value
 [System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan')
@@ -196,7 +196,7 @@ A single audio that can be played, paused etc.
 public float Volume { get; set; }
 ```
 
-Implements [Volume](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Volume 'Velaptor.Content.IAudio.Volume')
+Implements [Volume](Velaptor.Content.IAudio.md#volume 'Velaptor.Content.IAudio.Volume')
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')

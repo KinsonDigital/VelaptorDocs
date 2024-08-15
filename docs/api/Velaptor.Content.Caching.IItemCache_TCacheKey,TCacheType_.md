@@ -58,7 +58,7 @@ int TotalCachedItems { get; }
 
 ### GetItem(TCacheKey) 
 
-Gets a cached item that matches the given [cacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.GetItem(TCacheKey).cacheKey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.GetItem(TCacheKey).cacheKey').
+Gets a cached item that matches the given [cacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#cachekey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.GetItem(TCacheKey).cacheKey').
 
 ```csharp
 TCacheType GetItem(TCacheKey cacheKey);
@@ -67,12 +67,12 @@ TCacheType GetItem(TCacheKey cacheKey);
 
 <a name='Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.GetItem(TCacheKey).cacheKey'></a>
 
-`cacheKey` [TCacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.TCacheKey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheKey')
+`cacheKey` [TCacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#tcachekey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheKey')
 
 The unique key to identify a cached item.
 
 #### Returns
-[TCacheType](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.TCacheType 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheType')  
+[TCacheType](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#tcachetype 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheType')  
 The cached item.
 
 #### Remarks
@@ -85,7 +85,7 @@ If the item does already exist in the cache, then that cached item is returned.
 
 ### Unload(TCacheKey) 
 
-Unloads a cached item that matches the given [cacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.Unload(TCacheKey).cacheKey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.Unload(TCacheKey).cacheKey').
+Unloads a cached item that matches the given [cacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#cachekey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.Unload(TCacheKey).cacheKey').
 
 ```csharp
 void Unload(TCacheKey cacheKey);
@@ -94,6 +94,6 @@ void Unload(TCacheKey cacheKey);
 
 <a name='Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.Unload(TCacheKey).cacheKey'></a>
 
-`cacheKey` [TCacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.TCacheKey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheKey')
+`cacheKey` [TCacheKey](Velaptor.Content.Caching.IItemCache_TCacheKey,TCacheType_.md#tcachekey 'Velaptor.Content.Caching.IItemCache<TCacheKey,TCacheType>.TCacheKey')
 
 The unique key to identify a cached item.

@@ -9,3 +9,4 @@ title: Velaptor.ExtensionMethods
 | Classes | |
 | :--- | :--- |
 | [ContentExtensions](Velaptor.ExtensionMethods.ContentExtensions.md 'Velaptor.ExtensionMethods.ContentExtensions') | Provides content related extension methods. |
+

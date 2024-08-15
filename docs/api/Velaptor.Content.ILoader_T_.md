@@ -7,7 +7,7 @@ title: Velaptor.Content.ILoader<T>
 
 #### ILoader&lt;T&gt; Interface
 
-Loads data of type [T](Velaptor.Content.ILoader_T_.md#Velaptor.Content.ILoader_T_.T 'Velaptor.Content.ILoader<T>.T').
+Loads data of type [T](Velaptor.Content.ILoader_T_.md#t 'Velaptor.Content.ILoader<T>.T').
 
 ```csharp
 public interface ILoader<out T>
@@ -26,7 +26,7 @@ The type of data to load.
 
 ### Unload(string) 
 
-Unloads the data with the given [contentPathOrName](Velaptor.Content.ILoader_T_.md#Velaptor.Content.ILoader_T_.Unload(string).contentPathOrName 'Velaptor.Content.ILoader<T>.Unload(string).contentPathOrName').
+Unloads the data with the given [contentPathOrName](Velaptor.Content.ILoader_T_.md#contentpathorname 'Velaptor.Content.ILoader<T>.Unload(string).contentPathOrName').
 
 ```csharp
 void Unload(string contentPathOrName);

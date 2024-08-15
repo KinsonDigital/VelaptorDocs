@@ -44,7 +44,7 @@ Gets the fully qualified path to the content file.
 string FilePath { get; }
 ```
 
-Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor.Content.IContent.FilePath')
+Implements [FilePath](Velaptor.Content.IContent.md#filepath 'Velaptor.Content.IContent.FilePath')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -137,7 +137,7 @@ Gets the name of the content.
 string Name { get; }
 ```
 
-Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor.Content.IContent.Name')
+Implements [Name](Velaptor.Content.IContent.md#name 'Velaptor.Content.IContent.Name')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
@@ -195,7 +195,7 @@ this range is used, it will be set within that range.
 
 ### FastForward(float) 
 
-Fast forwards the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.FastForward(float).seconds 'Velaptor.Content.IAudio.FastForward(float).seconds').
+Fast forwards the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#seconds 'Velaptor.Content.IAudio.FastForward(float).seconds').
 
 ```csharp
 void FastForward(float seconds);
@@ -232,7 +232,7 @@ void Play();
 
 ### Rewind(float) 
 
-Rewinds the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Rewind(float).seconds 'Velaptor.Content.IAudio.Rewind(float).seconds').
+Rewinds the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#seconds 'Velaptor.Content.IAudio.Rewind(float).seconds').
 
 ```csharp
 void Rewind(float seconds);

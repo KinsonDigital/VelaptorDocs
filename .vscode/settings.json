@@ -3,6 +3,7 @@
 		".github/cicd/"
 	],
 	"deno.config": ".github/cicd/deno.json",
+	"files.eol": "\n",
 	"cSpell.words": [
 		"cicd",
 		"clsx",
@@ -26,9 +27,9 @@
 		"node_modules": true,
 		"VelaptorDocs.code-workspace": true,
 		"build/": true,
-		".github/cicd/": false,
-		".config": false,
-		"RepoSrc/": true,
+		".github/cicd/": true,
+		".config": true,
+		"**/RepoSrc": true,
 		"*.lock": true,
 		"SampleProjects": true,
 	},

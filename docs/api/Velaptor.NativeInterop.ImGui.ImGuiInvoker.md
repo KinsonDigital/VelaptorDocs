@@ -119,7 +119,7 @@ True if an item was chosen.
 
 ### Button(string) 
 
-Creates a button with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Button(string).label 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Button(string).label').
+Creates a button with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#label 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Button(string).label').
 
 ```csharp
 public void Button(string label);
@@ -138,7 +138,7 @@ Implements [Button(string)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velapt
 
 ### CalcTextSize(string) 
 
-Calculates the size of the given [text](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.CalcTextSize(string).text 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.CalcTextSize(string).text').
+Calculates the size of the given [text](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#text 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.CalcTextSize(string).text').
 
 ```csharp
 public System.Numerics.Vector2 CalcTextSize(string text);
@@ -161,7 +161,7 @@ The size of the text described by the X representing the width and the Y represe
 
 ### Checkbox(string, bool) 
 
-Creates a checkbox with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Checkbox(string,bool).label 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Checkbox(string, bool).label').
+Creates a checkbox with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#label 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Checkbox(string, bool).label').
 
 ```csharp
 public bool Checkbox(string label, ref bool v);
@@ -332,7 +332,7 @@ True if the mouse is hovering over the item.
 
 ### IsMouseDown(ImGuiMouseButton) 
 
-Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDown(ImGuiNET.ImGuiMouseButton).button 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDown(ImGuiNET.ImGuiMouseButton).button') is in the down state.
+Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#button 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDown(ImGuiNET.ImGuiMouseButton).button') is in the down state.
 
 ```csharp
 public bool IsMouseDown(ImGuiNET.ImGuiMouseButton button);
@@ -355,7 +355,7 @@ True if the mouse is in the down state.
 
 ### IsMouseDragging(ImGuiMouseButton) 
 
-Gets a value indicating whether a window is being dragged by the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDragging(ImGuiNET.ImGuiMouseButton).button 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDragging(ImGuiNET.ImGuiMouseButton).button').
+Gets a value indicating whether a window is being dragged by the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#button 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDragging(ImGuiNET.ImGuiMouseButton).button').
 
 ```csharp
 public bool IsMouseDragging(ImGuiNET.ImGuiMouseButton button);
@@ -378,7 +378,7 @@ True if the window is being dragged.
 
 ### IsMouseReleased(ImGuiMouseButton) 
 
-Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseReleased(ImGuiNET.ImGuiMouseButton).button 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseReleased(ImGuiNET.ImGuiMouseButton).button') is in the released state.
+Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#button 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseReleased(ImGuiNET.ImGuiMouseButton).button') is in the released state.
 
 ```csharp
 public bool IsMouseReleased(ImGuiNET.ImGuiMouseButton button);
@@ -453,7 +453,7 @@ Implements [PopStyleColor()](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velap
 
 ### PopStyleColor(int) 
 
-Pops the most recent style colors a total number of times by the given [count](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor(int).count 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor(int).count').
+Pops the most recent style colors a total number of times by the given [count](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#count 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor(int).count').
 
 ```csharp
 public void PopStyleColor(int count);
@@ -529,7 +529,7 @@ Implements [PushID(string)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velapt
 
 ### PushStyleColor(ImGuiCol, Vector4) 
 
-Pushes the color using the given [col](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol,System.Numerics.Vector4).col 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol, System.Numerics.Vector4).col') to the current style described by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol,System.Numerics.Vector4).idx 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol, System.Numerics.Vector4).idx').
+Pushes the color using the given [col](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#col 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol, System.Numerics.Vector4).col') to the current style described by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#idx 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol, System.Numerics.Vector4).idx').
 
 ```csharp
 public void PushStyleColor(ImGuiNET.ImGuiCol idx, System.Numerics.Vector4 col);
@@ -555,7 +555,7 @@ Implements [PushStyleColor(ImGuiCol, Vector4)](Velaptor.NativeInterop.ImGui.IImG
 ### PushStyleVar(ImGuiStyleVar, float) 
 
 Temporarily modifies the style of [ImGuiNET.ImGui](https://docs.microsoft.com/en-us/dotnet/api/ImGuiNET.ImGui 'ImGuiNET.ImGui') by applying a style to a part of  
-the GUI dictated by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar,float).idx 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar, float).idx') with the given [val](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar,float).val 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar, float).val').
+the GUI dictated by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#idx 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar, float).idx') with the given [val](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#val 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar, float).val').
 
 ```csharp
 public void PushStyleVar(ImGuiNET.ImGuiStyleVar idx, float val);
@@ -620,7 +620,7 @@ Implements [SameLine(float, float)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.m
 
 ### Selectable(string, bool) 
 
-Returns a value indicating whether the given item [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Selectable(string,bool).label 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Selectable(string, bool).label') is selectable.
+Returns a value indicating whether the given item [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#label 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Selectable(string, bool).label') is selectable.
 
 ```csharp
 public bool Selectable(string label, bool selected);
@@ -800,7 +800,7 @@ The text to display.
 Implements [Text(string)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velaptor.NativeInterop.ImGui.IImGuiInvoker.Text(string) 'Velaptor.NativeInterop.ImGui.IImGuiInvoker.Text(string)')
 
 #### Remarks
-The [fmt](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Text(string).fmt 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Text(string).fmt') can take syntax for formatting values such as:  
+The [fmt](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#fmt 'Velaptor.NativeInterop.ImGui.ImGuiInvoker.Text(string).fmt') can take syntax for formatting values such as:  
 - Numerical Formatting  
   You can control how numeric values are displayed, including the number of decimal places,  
   whether to use scientific notation, whether to include a thousand separator, and more.  

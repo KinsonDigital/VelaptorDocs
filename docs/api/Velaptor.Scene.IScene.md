@@ -102,7 +102,7 @@ void LoadContent();
 
 ### Resize(SizeU) 
 
-Updates the [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor.Scene.IScene.WindowSize').
+Updates the [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor.Scene.IScene.WindowSize').
 
 ```csharp
 void Resize(Velaptor.SizeU size);

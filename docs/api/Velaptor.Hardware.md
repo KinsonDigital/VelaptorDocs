@@ -9,3 +9,4 @@ title: Velaptor.Hardware
 | Structs | |
 | :--- | :--- |
 | [SystemDisplay](Velaptor.Hardware.SystemDisplay.md 'Velaptor.Hardware.SystemDisplay') | Holds information about a single display in the system. |
+

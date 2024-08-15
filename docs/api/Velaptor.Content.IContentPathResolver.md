@@ -30,7 +30,7 @@ string ContentDirectoryName { get; }
 #### Remarks
   
 This directory is not a path. It is just a name and is always located  
-as a child directory of the [RootDirectoryPath](Velaptor.Content.IContentPathResolver.md#Velaptor.Content.IContentPathResolver.RootDirectoryPath 'Velaptor.Content.IContentPathResolver.RootDirectoryPath').  
+as a child directory of the [RootDirectoryPath](Velaptor.Content.IContentPathResolver.md#rootdirectorypath 'Velaptor.Content.IContentPathResolver.RootDirectoryPath').  
   
 If the value is a file path, the file name will be stripped and the  
 deepest child directory name will be used.
@@ -67,7 +67,7 @@ The directory only path to some content.
 
 ### ResolveFilePath(string) 
 
-Resolves the full file path to a content item that matches the given [contentPathOrName](Velaptor.Content.IContentPathResolver.md#Velaptor.Content.IContentPathResolver.ResolveFilePath(string).contentPathOrName 'Velaptor.Content.IContentPathResolver.ResolveFilePath(string).contentPathOrName').
+Resolves the full file path to a content item that matches the given [contentPathOrName](Velaptor.Content.IContentPathResolver.md#contentpathorname 'Velaptor.Content.IContentPathResolver.ResolveFilePath(string).contentPathOrName').
 
 ```csharp
 string ResolveFilePath(string contentPathOrName);
@@ -82,4 +82,4 @@ The name of the content item with or without the file extension.
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The [RootDirectoryPath](Velaptor.Content.IContentPathResolver.md#Velaptor.Content.IContentPathResolver.RootDirectoryPath 'Velaptor.Content.IContentPathResolver.RootDirectoryPath'), content file name, and the [ContentDirectoryName](Velaptor.Content.IContentPathResolver.md#Velaptor.Content.IContentPathResolver.ContentDirectoryName 'Velaptor.Content.IContentPathResolver.ContentDirectoryName') combined.
+The [RootDirectoryPath](Velaptor.Content.IContentPathResolver.md#rootdirectorypath 'Velaptor.Content.IContentPathResolver.RootDirectoryPath'), content file name, and the [ContentDirectoryName](Velaptor.Content.IContentPathResolver.md#contentdirectoryname 'Velaptor.Content.IContentPathResolver.ContentDirectoryName') combined.

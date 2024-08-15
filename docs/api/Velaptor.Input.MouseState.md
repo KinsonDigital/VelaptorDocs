@@ -80,7 +80,7 @@ True if any buttons are in the down position.
 
 ### GetButtonState(MouseButton) 
 
-Returns a value indicating whether the state for the given [mouseButton](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton 'Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton')  
+Returns a value indicating whether the state for the given [mouseButton](Velaptor.Input.MouseState.md#mousebutton 'Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton')  
 is in the down or up position.
 
 ```csharp
@@ -172,7 +172,7 @@ The Y position relative to the top left corner of the window.
 
 ### IsButtonDown(MouseButton) 
 
-Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button')  
+Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#button 'Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button')  
 is in the down position.
 
 ```csharp
@@ -194,7 +194,7 @@ True if the mouse button is in the down position.
 
 ### IsButtonUp(MouseButton) 
 
-Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button 'Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button')  
+Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#button 'Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button')  
 is in the up position.
 
 ```csharp

@@ -1,6 +1,6 @@
 {
     "tasks": {
-        "build": "deno run --allow-read --allow-env --allow-sys --allow-run ./scripts/deno-check.ts"
+        "build": "deno check '.github/cicd/core/**/*.ts'"
     },
 	"fmt": {
         "include": [".github/cicd/**/*.ts"],

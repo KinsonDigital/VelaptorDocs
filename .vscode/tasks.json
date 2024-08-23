@@ -146,23 +146,6 @@
 				]
 			}
 		},
-		{ // BUILD ALL FILES
-			"label": "Build (Deno Check)",
-			"detail": "Builds the project by running deno check on all files in the project.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"--allow-read",
-				"--allow-run",
-				"--allow-sys",
-				"--allow-env",
-				"${workspaceFolder}/.github/cicd/scripts/deno-check.ts",
-			]
-		},
 		{ // UPDATE VELAPTOR NUGET PACKAGES
 			"label": "Update Velaptor NuGet Packages",
 			"detail": "Updates all of the Velaptor NuGet packages for all guide projects.",

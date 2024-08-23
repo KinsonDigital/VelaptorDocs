@@ -1,5 +1,5 @@
 name: ✅CICD Build Status Check
-run-name: ✅CICD Build Status Check (${{ github.base_ref }} branch)
+run-name: ✅CICD Build Status Check
 
 
 defaults:

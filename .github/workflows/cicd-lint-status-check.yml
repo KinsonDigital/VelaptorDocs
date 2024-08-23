@@ -1,5 +1,5 @@
 name: ✅CICD Lint Status Check
-run-name: ✅CICD Lint Status Check (${{ github.base_ref }} branch)
+run-name: ✅CICD Lint Status Check
 
 
 defaults:

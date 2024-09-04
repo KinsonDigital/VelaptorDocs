@@ -135,7 +135,10 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}/.github/cicd",
+				"env": {
+					"BASE_DIR_PATH": "${workspaceFolder}/versioned_docs"
+				},
 			},
 			"windows": {
 				"command": "deno",

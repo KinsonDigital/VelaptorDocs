@@ -1,6 +1,5 @@
 import { existsSync, Select, walkSync } from "../deps.ts";
 import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
-import { crayon } from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
 
 /**
@@ -9,11 +8,13 @@ import { Utils } from "../core/Utils.ts";
  * eventually will be as time goes on.
  */
 
-if (Deno.args.length <= 0) {
-	throw new Error("The script must have at least one argument.");
-}
+const baseDirPath = (Deno.env.get("BASE_DIR_PATH") ?? "").trim();
 
-const baseDirPath = Deno.args[0].trim();
+if (baseDirPath === "") {
+	const errorMsg = "%cThe 'BASE_DIR_PATH' environment variable is not set.";
+	console.log(errorMsg);
+	Deno.exit();
+}
 
 if (!existsSync(baseDirPath, { isDirectory: true })) {
 	throw new Error(`The current working directory '${baseDirPath}' does not exist.`);
@@ -22,7 +23,7 @@ if (!existsSync(baseDirPath, { isDirectory: true })) {
 const dirEntries = walkSync(baseDirPath, {
 	includeDirs: true,
 	includeFiles: false,
-	match: [new RegExp(`version-.+`, "gm")],
+	match: [/version-.+/gm],
 });
 
 const apiDocVersions = [...dirEntries].filter((entry) => {
@@ -37,15 +38,15 @@ const apiDocVersions = [...dirEntries].filter((entry) => {
 
 //"This will delete the API docs for the chosen version locally."
 const chosenVersion: string = await Select.prompt({
-	message: crayon.yellow("Choose a version to delete:"),
+	message: "Choose a version to delete:",
 	options: apiDocVersions,
 	hint: "Use arrow keys to navigate, and enter to select.",
 	info: true,
 });
 
-console.log(crayon.cyan(`Deleting '${chosenVersion}' API docs. . .`));
+console.log(`%cDeleting '${chosenVersion}' API docs. . .`, "color: cyan");
 
 const delAPIVersionService: DeleteAPIVersionService = new DeleteAPIVersionService(baseDirPath);
 delAPIVersionService.deleteDocs(chosenVersion);
 
-console.log(crayon.cyan(`API docs for version '${chosenVersion}' fully removed.`));
+console.log(`%cAPI docs for version '${chosenVersion}' fully removed.`, "color: cyan");

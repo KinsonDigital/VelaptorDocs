@@ -2,11 +2,30 @@
 	"deno.enable": true,
 	"files.eol": "\n",
 	"files.exclude": {
-		"**/RepoSrc": true
+		"**/RepoSrc/**": true,
 	},
+	"search.exclude": {
+		"**/RepoSrc/**": true,
+	},
+	"files.watcherExclude": {
+        "**/RepoSrc/**": true,
+    },
 	"[typescript]": {
 		"editor.defaultFormatter": "denoland.vscode-deno",
 		"editor.insertSpaces": false,
 		"editor.tabSize": 3,
 	},
+	"cSpell.words": [
+		"CICD",
+		"Kinson",
+		"Velaptor"
+	],
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		"vscode-extension",
+		".git/objects",
+		".vscode",
+		".vscode-insiders"
+	]
 }

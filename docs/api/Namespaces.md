@@ -26,5 +26,6 @@ title: Namespaces
 | [Velaptor.NativeInterop.ImGui](Velaptor.NativeInterop.ImGui.md 'Velaptor.NativeInterop.ImGui') |
 | [Velaptor.OpenGL.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor.OpenGL.Exceptions') |
 | [Velaptor.Scene](Velaptor.Scene.md 'Velaptor.Scene') |
+| [Velaptor.Scene.Exceptions](Velaptor.Scene.Exceptions.md 'Velaptor.Scene.Exceptions') |
 | [Velaptor.UI](Velaptor.UI.md 'Velaptor.UI') |
 

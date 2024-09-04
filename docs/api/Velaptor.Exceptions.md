@@ -13,6 +13,5 @@ title: Velaptor.Exceptions
 | [InvalidRenderEffectsException](Velaptor.Exceptions.InvalidRenderEffectsException.md 'Velaptor.Exceptions.InvalidRenderEffectsException') | Thrown when an invalid [RenderEffects](Velaptor.Graphics.RenderEffects.md 'Velaptor.Graphics.RenderEffects') value is used. |
 | [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') | Occurs when something goes wrong with loading an embedded resource. |
 | [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') | Thrown when there is an issue with the push notification system. |
-| [SceneAlreadyExistsException](Velaptor.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Exceptions.SceneAlreadyExistsException') | Thrown when a scene already exists. |
 | [SystemDisplayException](Velaptor.Exceptions.SystemDisplayException.md 'Velaptor.Exceptions.SystemDisplayException') | Occurs when there is an issue with one of the system displays. |
 

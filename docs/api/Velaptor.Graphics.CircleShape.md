@@ -251,6 +251,27 @@ public float Top { get; set; }
 Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#position 'Velaptor.Graphics.CircleShape.Position') of the circle.
 ## Methods
 
+<a name='Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2)'></a>
+
+### Contains(Vector2) 
+
+Returns a value indicating whether the circle contains the given [vector](Velaptor.Graphics.CircleShape.md#vector 'Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2).vector').
+
+```csharp
+public bool Contains(System.Numerics.Vector2 vector);
+```
+#### Parameters
+
+<a name='Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2).vector'></a>
+
+`vector` [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2')
+
+The possibly contained [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2').
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if the [vector](Velaptor.Graphics.CircleShape.md#vector 'Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2).vector') is contained.
+
 <a name='Velaptor.Graphics.CircleShape.Empty()'></a>
 
 ### Empty() 

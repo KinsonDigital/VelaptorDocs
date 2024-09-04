@@ -32,6 +32,19 @@ Velaptor.Scene.IScene? CurrentScene { get; }
 #### Property Value
 [IScene](Velaptor.Scene.IScene.md 'Velaptor.Scene.IScene')
 
+<a name='Velaptor.Scene.ISceneManager.CurrentSceneIndex'></a>
+
+### CurrentSceneIndex 
+
+Gets the index of the current scene.
+
+```csharp
+int CurrentSceneIndex { get; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
 <a name='Velaptor.Scene.ISceneManager.InActiveScenes'></a>
 
 ### InActiveScenes 
@@ -73,6 +86,19 @@ int TotalScenes { get; }
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='Velaptor.Scene.ISceneManager.UsesNavigationWrapping'></a>
+
+### UsesNavigationWrapping 
+
+Gets or sets a value indicating whether navigation wrapping is used when navigating past the first or list scenes.
+
+```csharp
+bool UsesNavigationWrapping { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ## Methods
 
 <a name='Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene,bool)'></a>

@@ -24,7 +24,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 Initializes a new instance of the [CornerRadius](Velaptor.Graphics.CornerRadius.md 'Velaptor.Graphics.CornerRadius') struct.
 
 ```csharp
-public CornerRadius(float topLeft, float bottomLeft, float bottomRight, float topRight);
+public CornerRadius(float topLeft, float topRight, float bottomRight, float bottomLeft);
 ```
 #### Parameters
 
@@ -34,11 +34,11 @@ public CornerRadius(float topLeft, float bottomLeft, float bottomRight, float to
 
 The top left corner radius.
 
-<a name='Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float).bottomLeft'></a>
+<a name='Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float).topRight'></a>
 
-`bottomLeft` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+`topRight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-The bottom left corner radius.
+The top right corner radius.
 
 <a name='Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float).bottomRight'></a>
 
@@ -46,11 +46,11 @@ The bottom left corner radius.
 
 The bottom right corner radius.
 
-<a name='Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float).topRight'></a>
+<a name='Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float).bottomLeft'></a>
 
-`topRight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+`bottomLeft` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-The top right corner radius.
+The bottom left corner radius.
 
 <a name='Velaptor.Graphics.CornerRadius.CornerRadius(float)'></a>
 

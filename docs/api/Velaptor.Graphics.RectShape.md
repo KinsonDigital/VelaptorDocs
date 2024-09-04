@@ -295,7 +295,7 @@ The width is restricted to a minimum value of one.
 
 ### Contains(Vector2) 
 
-Returns a value indicating whether the given [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2') is contained within the rectangle shape.
+Returns a value indicating whether the rectangle contains the given [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2').
 
 ```csharp
 public bool Contains(System.Numerics.Vector2 vector);

@@ -1,2 +1,2 @@
-const _rootRepoDirPath = Deno.args[0];
-const _token = Deno.args[1];
+const _rootRepoDirPath = (Deno.env.get("ROOT_REPO_DIR_PATH") ?? "").trim().replaceAll("\\", "/");
+const _token = (Deno.env.get("GITHUB_TOKEN") ?? "");

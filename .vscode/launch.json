@@ -10,15 +10,15 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/playground.ts",
             "cwd": "${workspaceFolder}",
+			"env": {
+				"ROOT_REPO_DIR_PATH": "${workspaceFolder}",
+				"GITHUB_TOKEN": "${env:CICD_TOKEN}",
+			},
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
                 "--allow-all"
             ],
-			"args": [
-				"${workspaceFolder}",
-				"${env:CICD_TOKEN}",
-			],
             "attachSimplePort": 9229,
             "windows": {
                 "runtimeExecutable": "${userHome}/.deno/bin/deno.exe"

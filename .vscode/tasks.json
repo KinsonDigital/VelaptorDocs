@@ -141,25 +141,5 @@
 				"${env:CICD_TOKEN}"
 			],
 		},
-		{ // UPDATE TUTORIAL LINK COMPONENT VERSIONS
-			"label": "Update Tutorial Link Component Versions",
-			"detail": "Updates all of the tutorial component versions for all mdx files.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net",
-				"${workspaceFolder}/.github/cicd/scripts/update-tut-links.ts",
-				"${workspaceFolder}/SampleProjects",
-				"interactive",
-				"${env:CICD_TOKEN}"
-			],
-		}
 	]
 }

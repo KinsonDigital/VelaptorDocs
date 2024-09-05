@@ -5,7 +5,6 @@ import { MarkdownService } from "./services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Utils } from "./Utils.ts";
 import { existsSync, walkSync } from "../deps.ts";
-import { crayon, existsSync, walkSync } from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -14,7 +13,6 @@ export class DocProcessor {
 	private readonly cloneService: CloneRepoService;
 	private readonly validateReleaseService: ValidateReleaseService;
 	private readonly defaultDocTool: DefaultDocTool;
-	private readonly yarn: Yarn;
 
 	/**
 	 * Initializes a new instance of the DocProcessor class.
@@ -24,7 +22,6 @@ export class DocProcessor {
 		this.cloneService = new CloneRepoService();
 		this.validateReleaseService = new ValidateReleaseService();
 		this.defaultDocTool = new DefaultDocTool(token);
-		this.yarn = new Yarn();
 	}
 
 	/**

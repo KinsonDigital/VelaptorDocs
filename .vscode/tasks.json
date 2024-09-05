@@ -67,38 +67,6 @@
 				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
 			]
 		},
-		{ // DISABLE NEXT VERSION (currently disabled)
-			"label": "Disable Next Version (currently disabled)",
-			"detail": "Disables the next version feature of docusaurus.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
-				"${workspaceFolder}/docusaurus.config.ts",
-				"disable"
-			]
-		},
-		{ // ENABLE NEXT VERSION (currently disabled)
-			"label": "Enable Next Version (currently disabled)",
-			"detail": "Enables the next version feature of docusaurus.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},	
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
-				"${workspaceFolder}/docusaurus.config.ts",
-				"enable"
-			]
-		},
 		{ // CREATE DOCUSAURUS VERSION
 			"label": "Create Docusaurus Version",
 			"detail": "Creates a new docusaurus API version.",

@@ -1,37 +1,23 @@
-import { TagClient } from "../deps.ts";
+import { TagClient, Utils } from "../deps.ts";
 
-if (Deno.args.length < 2) {
-	const errorMsg = `The required number of arguments is 2 but received ${Deno.args.length}.`;
-	console.log(`::error::${errorMsg}`);
+const version = (Deno.env.get("VERSION") ?? "").trim().toLowerCase();
+
+if (version === "") {
+	Utils.printAsGitHubError("The environment variable 'VERSION' does not exist.");
 	Deno.exit(1);
 }
 
-const containsPAT = (value: string): boolean => {
-	const fineGrainedTokenPrefix = "github_pat_";
-	const classicTokenPrefix = "ghp_";
+const token = (Deno.env.get("GITHUB_TOKEN") ?? "").trim();
 
-	return value.startsWith(fineGrainedTokenPrefix) || value.startsWith(classicTokenPrefix);
-};
+if (token === "") {
+	Utils.printAsGitHubError("The environment variable 'GITHUB_TOKEN' does not exist.");
+	Deno.exit(1);
+}
 
 const versionRegex = /^v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?$/gm;
-const version = Deno.args[0].trim().toLowerCase();
-const token = Deno.args[1].trim();
-
-if (containsPAT(version)) {
-	const errorMsg = "The version cannot contain a GitHub PAT.";
-	console.log(`::error::${errorMsg}`);
-	Deno.exit(1);
-}
-
-if (!containsPAT(token)) {
-	const errorMsg = "The 2nd argument must be a GitHub PAT.";
-	console.log(`::error::${errorMsg}`);
-	Deno.exit(1);
-}
 
 if (!versionRegex.test(version)) {
-	const errorMsg = `The version '${version}' is not a valid version.`;
-	console.log(`::error::${errorMsg}`);
+	Utils.printAsGitHubError(`The version '${version}' is not a valid version.`);
 	Deno.exit(1);
 }
 
@@ -43,7 +29,6 @@ const tagClient: TagClient = new TagClient(ownerName, repoName, token);
 const versionDoesNotExist = !(await tagClient.tagExists(version));
 
 if (versionDoesNotExist) {
-	const errorMsg = `The Velaptor version '${version}' does not exist.`;
-	console.log(`::error::${errorMsg}`);
+	Utils.printAsGitHubError(`The Velaptor version '${version}' does not exist.`);
 	Deno.exit(1);
 }

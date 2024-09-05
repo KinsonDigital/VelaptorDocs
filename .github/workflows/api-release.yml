@@ -60,12 +60,13 @@ jobs:
           deno-version: ${{ vars.DENO_VERSION }}
 
       - name: Validate Version Exists
+        env:
+          VERSION: "${{ inputs.api-version }}"
+          GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: |
           deno run `
-            --allow-read --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
+            --allow-env --allow-read --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts";
 
 
   update_csharp_project_files:

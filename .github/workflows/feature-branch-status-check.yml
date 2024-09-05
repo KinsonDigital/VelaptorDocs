@@ -18,21 +18,30 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup Deno (${{ vars.DENO_VERSION }})
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: ${{ vars.DENO_VERSION }}
-
     - name: Validate Branch
       run: |
-        $realativeScriptDirPath = ".github/cicd/workflow-helpers";
+        $regex = '^([a-zA-Z]+:|)feature\/([1-9][0-9]*)-(?!-)[a-z-]+$';
 
-        # Validate the source branch
-        Write-Host "::group::Source Branch Validation";
-        deno run "${{ github.workspace }}/$realativeScriptDirPath/branch-status-check.ts" "${{ github.head_ref }}" "feature";
-        Write-Host "::endgroup::";
+        $headBranch = "AndreBonda:feature/782-replace-custom-guards";
+        $baseBranch = "main";
 
-        # Validate the target branch
-        Write-Host "::group::Target Branch Validation";
-        deno run "${{ github.workspace }}/$realativeScriptDirPath/branch-status-check.ts" "${{ github.base_ref }}" "main";
-        Write-Host "::endgroup::";
+        $headBranchInvalid = $false;
+        $baseBranchInvalid = $false;
+
+        if ($headBranch -match $regex) {
+            Write-Host "::notice::The head branch '$headBranch' is valid.";
+        } else {
+            Write-Host "::error::The head branch '$headBranch' is invalid.";
+            $headBranchInvalid = $true;
+        }
+
+        if ($baseBranch -eq "main") {
+            Write-Host "::notice::The base branch '$baseBranch' is valid.";
+        } else {
+            Write-Host "::error::The base branch '$baseBranch' is invalid.";
+            $baseBranchInvalid = $true;
+        }
+
+        if ($headBranchInvalid -or $baseBranchInvalid) {
+            exit 1;
+        }

@@ -1,4 +1,3 @@
-import { crayon } from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
 import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
 import { VersionsFileService } from "../core/services/VersionsFileService.ts";
@@ -8,21 +7,21 @@ import { VersionsFileService } from "../core/services/VersionsFileService.ts";
  * to delete the oldest api docs version from the repo.
  */
 
-if (Deno.args.length <= 0) {
-	const errorMsg = "The script requires a single argument of where to start searching for the versions file.";
+const versionsFileSearchDirPath = (Deno.env.get("SEARCH_DIR_PATH") ?? "").trim();
+
+if (versionsFileSearchDirPath === "") {
+	const errorMsg = "The environment variable 'SEARCH_DIR_PATH' does not exist.";
 	Utils.printGitHubError(errorMsg);
 	Deno.exit(1);
 }
-
-const versionsFileSearchDirPath = Deno.args[0].trim();
 
 const allVersions = new VersionsFileService(versionsFileSearchDirPath).getVersions();
 const oldestVersion = Utils.getOldestVersion(allVersions);
 
 const versionsFileService: DeleteAPIVersionService = new DeleteAPIVersionService(versionsFileSearchDirPath);
 
-console.log(crayon.cyan(`Deleting '${oldestVersion}' API docs. . .`));
+console.log(`%cDeleting '${oldestVersion}' API docs. . .`, "color: cyan");
 
 versionsFileService.deleteOldestDocs();
 
-console.log(crayon.cyan(`API docs for version '${oldestVersion}' fully removed.`));
+console.log(`%cAPI docs for version '${oldestVersion}' fully removed.`, "color: cyan");

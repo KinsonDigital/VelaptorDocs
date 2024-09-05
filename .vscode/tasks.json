@@ -22,7 +22,9 @@
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
 			},
-			"dependsOn": ["clear-terminal"],
+			"dependsOn": [
+				"clear-terminal"
+			],
 			"command": "deno",
 			"args": [
 				"fmt",
@@ -34,7 +36,13 @@
 			"detail": "Generates the API docs for the website.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}"
+				"cwd": "${workspaceFolder}",
+				"env": {
+					"OUTPUT_DIR_PATH": "${workspaceFolder}/docs/api",
+					"TAG_OR_BRANCH": "no-value",
+					"GITHUB_TOKEN": "${env:CICD_TOKEN}",
+					"IS_INTERACTIVE": "true"
+				},
 			},
 			"command": "deno",
 			"args": [
@@ -46,10 +54,6 @@
 				"--allow-run",
 				"--allow-env",
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
-				"${workspaceFolder}/docs/api",
-				"no-value",
-				"${env:CICD_TOKEN}",
-				"true", // Is Interactive
 			]
 		},
 		{ // RESET DOCS
@@ -67,45 +71,13 @@
 				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
 			]
 		},
-		{ // DISABLE NEXT VERSION (currently disabled)
-			"label": "Disable Next Version (currently disabled)",
-			"detail": "Disables the next version feature of docusaurus.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
-				"${workspaceFolder}/docusaurus.config.ts",
-				"disable"
-			]
-		},
-		{ // ENABLE NEXT VERSION (currently disabled)
-			"label": "Enable Next Version (currently disabled)",
-			"detail": "Enables the next version feature of docusaurus.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},	
-			"command": "deno",
-			"args": [
-				"run",
-				"-A",
-				"${workspaceFolder}/.github/cicd/scripts/next-versioning.ts",
-				"${workspaceFolder}/docusaurus.config.ts",
-				"enable"
-			]
-		},
 		{ // CREATE DOCUSAURUS VERSION
 			"label": "Create Docusaurus Version",
 			"detail": "Creates a new docusaurus API version.",
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
-			},			
+			},
 			"command": "deno",
 			"args": [
 				"run",
@@ -154,7 +126,12 @@
 			"detail": "Updates all of the Velaptor NuGet packages for all guide projects.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}/.github/cicd",
+				"env": {
+					"ROOT_DIR_PATH": "${workspaceFolder}",
+					"VERSION_OR_INTERACTIVE": "interactive",
+					"GITHUB_TOKEN": "${env:CICD_TOKEN}"
+				}
 			},
 			"command": "deno",
 			"args": [
@@ -169,25 +146,5 @@
 				"${env:CICD_TOKEN}"
 			],
 		},
-		{ // UPDATE TUTORIAL LINK COMPONENT VERSIONS
-			"label": "Update Tutorial Link Component Versions",
-			"detail": "Updates all of the tutorial component versions for all mdx files.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net",
-				"${workspaceFolder}/.github/cicd/scripts/update-tut-links.ts",
-				"${workspaceFolder}/SampleProjects",
-				"interactive",
-				"${env:CICD_TOKEN}"
-			],
-		}
 	]
 }

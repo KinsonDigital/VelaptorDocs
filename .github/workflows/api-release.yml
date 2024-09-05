@@ -60,12 +60,13 @@ jobs:
           deno-version: ${{ vars.DENO_VERSION }}
 
       - name: Validate Version Exists
+        env:
+          VERSION: "${{ inputs.api-version }}"
+          GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: |
           deno run `
-            --allow-read --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
+            --allow-env --allow-read --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts";
 
 
   update_csharp_project_files:
@@ -139,40 +140,33 @@ jobs:
           version: ${{ vars.PNPM_VERSION }}
 
       - name: Update CSharp Project Files
+        env:
+          ROOT_DIR_PATH: "${{ github.workspace }}/SampleProjects"
+          VERSION_OR_INTERACTIVE: "${{ inputs.api-version }}"
         run: |
           deno run `
-            --allow-read --allow-write --allow-sys --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
-            "${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
+            --allow-env --allow-read --allow-write --allow-sys --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts";
   
       - name: Remove Oldest API Version
+        env:
+          SEARCH_DIR_PATH: "${{ github.workspace }}"        
         run: |
-          deno run --allow-read --allow-write `
-            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts" `
-            "${{ github.workspace }}";
+          deno run --allow-env --allow-read --allow-write `
+            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
+        env:
+          OUTPUT_DIR_PATH: "${{ github.workspace }}/docs/api"
+          TAG_OR_BRANCH: "${{ inputs.api-version }}"
+          GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: |
           deno run `
-            --allow-read --allow-write --allow-run --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
-            "${{ github.workspace }}/docs/api" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
+            --allow-env --allow-read --allow-write --allow-run --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts";
 
       - name: Install Dependencies (pnpm)
         run: pnpm install;
-
-      - name: Update Tutorial Link Component Versions
-        run: |
-          deno run `
-            --allow-read --allow-write --allow-sys --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/update-tut-links.ts" `
-            "${{ github.workspace }}/docs/guides" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
 
       - name: Create Docusaurus Version (${{ inputs.api-version }})
         run: |

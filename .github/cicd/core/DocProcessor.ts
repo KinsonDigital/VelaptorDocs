@@ -4,8 +4,7 @@ import { ValidateReleaseService } from "./services/ValidateReleaseService.ts";
 import { MarkdownService } from "./services/MarkdownService.ts";
 import { DefaultDocTool } from "./DefaultDocTool.ts";
 import { Utils } from "./Utils.ts";
-import { Yarn } from "./Yarn.ts";
-import { crayon, existsSync, walkSync } from "../deps.ts";
+import { existsSync, walkSync } from "../deps.ts";
 
 /**
  * Generates and performs post-processing on Velaptor API documentation.
@@ -14,7 +13,6 @@ export class DocProcessor {
 	private readonly cloneService: CloneRepoService;
 	private readonly validateReleaseService: ValidateReleaseService;
 	private readonly defaultDocTool: DefaultDocTool;
-	private readonly yarn: Yarn;
 
 	/**
 	 * Initializes a new instance of the DocProcessor class.
@@ -24,7 +22,6 @@ export class DocProcessor {
 		this.cloneService = new CloneRepoService();
 		this.validateReleaseService = new ValidateReleaseService();
 		this.defaultDocTool = new DefaultDocTool(token);
-		this.yarn = new Yarn();
 	}
 
 	/**
@@ -34,24 +31,24 @@ export class DocProcessor {
 	 */
 	public async generateFromTag(apiDocsDirPath: string, releaseTag: string): Promise<void> {
 		if (Utils.isNothing(apiDocsDirPath)) {
-			console.log(crayon.red("The API doc dir path is required."));
+			console.log("%cThe API doc dir path is required.", "color: indianred");
 			Deno.exit(1);
 		}
 
 		if (Utils.isNothing(releaseTag)) {
-			console.log(crayon.red("The release tag is required."));
+			console.log("%cThe release tag is required.", "color: indianred");
 			Deno.exit(1);
 		}
 
-		console.log(crayon.cyan(`Validating Release '${releaseTag}'. . .`));
+		console.log(`%cValidating Release '${releaseTag}'. . .`, "color: cyan");
 		const isValid = await this.validateReleaseService.releaseExists(releaseTag);
 
 		if (!isValid) {
-			console.log(crayon.red(`The release '${releaseTag}' is not valid.`));
+			console.log(`%cThe release '${releaseTag}' is not valid.`, "color: indianred");
 			Deno.exit(1);
 		}
 
-		console.log(crayon.cyan(`Release '${releaseTag}' Valid.`));
+		console.log(`%cRelease '${releaseTag}' Valid.`, "color: cyan");
 
 		await this.run(apiDocsDirPath, releaseTag);
 	}
@@ -63,16 +60,16 @@ export class DocProcessor {
 	 */
 	public async generateFromBranch(apiDocDirPath: string, branchName: string): Promise<void> {
 		if (Utils.isNothing(apiDocDirPath)) {
-			console.log(crayon.red("The API doc dir path is required."));
+			console.log("%cThe API doc dir path is required.", "color: indianred");
 			Deno.exit(1);
 		}
 
 		if (Utils.isNothing(branchName)) {
-			console.log(crayon.red("The branch name is required."));
+			console.log("%cThe branch name is required.", "color: indianred");
 			Deno.exit(1);
 		}
 
-		console.log(crayon.cyan(`Branch Name '${branchName}' Valid.`));
+		console.log(`%cBranch Name '${branchName}' Valid.`, "color: cyan");
 
 		await this.run(apiDocDirPath, branchName);
 	}
@@ -141,11 +138,11 @@ export class DocProcessor {
 	 */
 	private async runProcess(startMsg: string, process: () => void | Promise<void>, endMsg: string): Promise<void> {
 		console.log("\n-----------------------------------------------------------------\n");
-		console.log(crayon.cyan(startMsg));
+		console.log(`%c${startMsg}`, "color: indianred");
 
 		await process();
 
-		console.log(crayon.cyan(`\n\n${endMsg}`));
+		console.log(`%c\n\n${endMsg}`, "color: indianred");
 	}
 
 	/**

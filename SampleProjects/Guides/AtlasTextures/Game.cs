@@ -5,6 +5,7 @@
 namespace AtlasTextures;
 
 using System.Drawing;
+using System.Numerics;
 using Velaptor.Graphics;
 using Velaptor;
 using Velaptor.Batching;
@@ -116,28 +117,17 @@ public class Game : Window
         // Start the batch
         this.batcher.Begin();
 
-        var x = (int)(Width / 2); // Center of the window horizontally
-        var y = (int)(Height / 2); // Center of the window vertically
-
-        // Get the bounds of the sub-texture in the entire atlas at the current frame
-        var subBounds = this.subTextureData[this.currentFrame].Bounds;
-
-        // Create the rectangle of where the frame is located in the atlas
-        var srcRect = new Rectangle(subBounds.X, subBounds.Y, subBounds.Width, subBounds.Height);
-
-        // Create the rectangle of the entire atlas.
-        var destRect = new Rectangle(x, y, (int)this.atlasData.Texture.Width, (int)this.atlasData.Texture.Height);
+        var pos = new Vector2(Width / 2f, Height / 2f);
 
         // Render only the sub-texture in the atlas at the center of the window
-        this.textureRenderer.Render(
-            this.atlasData.Texture,
-            srcRect,
-            destRect,
-            0.25f,
+        this.textureRenderer.Render(this.atlasData,
+            "flame",
+            pos,
             0f,
+            0.25f,
             Color.White,
             this.horizontalLayout,
-            1);
+            this.currentFrame);
 
         // End the batch to render the entire batch
         this.batcher.End();

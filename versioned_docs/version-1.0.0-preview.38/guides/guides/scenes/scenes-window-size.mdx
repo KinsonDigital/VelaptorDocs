@@ -1,0 +1,50 @@
+---
+sidebar_position: 2
+---
+
+# Scenes & Window Size
+
+If you want to be able to access the size of the window in your scenes, you can use the `WindowSize` property and
+override the `Resize()` method.
+
+This information in games is essential. You can use it to position elements, scale them, understand the bounds of
+the game world, check for collisions in 2D space, and more.
+
+Let's cover both.
+
+## <span className="color-step">Window Size property</span>
+
+In any scene that inherits from the `SceneBase` class, you can access a property named `WindowSize`.
+
+Here is a simple example of using the property to get the center of the window.
+
+```csharp showLineNumbers
+protected override void OnUpdate(FrameTime frameTime)
+{
+    var center = new Vector2(WindowSize.Width / 2f, WindowSize.Height / 2f);
+
+    base.OnUpdate(frameTime);
+}
+```
+
+## <span className="color-step">Resize method override</span>
+
+All scenes inherited from the `SceneBase` class can override a method named `Resize()`. This method is called every time the size of the window
+changes. The parameter `size` will contain the new size of the window.
+
+```csharp showLineNumbers
+public override void Resize(SizeU size)
+{
+    this.center = new Vector2(size.Width / 2f, size.Height / 2f);
+
+    base.Resize(size);
+}
+```
+
+:::info
+The method `Resize()` override will not be invoked unless you use _**Velaptor's**_ built-in scene management.
+The method will not be invoked unless you add the scene to the `SceneManager`.
+
+If you are manually managing your scenes, that is ok.  Manually invoke the `Resize()` method for each scene
+in your `Game` class. Utilize the `OnResize()` method override to invoke your scene's `Resize()` method.
+:::

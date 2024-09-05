@@ -34,7 +34,7 @@
 			"detail": "Generates the API docs for the website.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}"
 			},
 			"command": "deno",
 			"args": [
@@ -135,7 +135,10 @@
 			],
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}/.github/cicd",
+				"env": {
+					"BASE_DIR_PATH": "${workspaceFolder}/versioned_docs"
+				},
 			},
 			"windows": {
 				"command": "deno",

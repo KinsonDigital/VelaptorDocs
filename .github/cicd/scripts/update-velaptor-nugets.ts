@@ -1,18 +1,13 @@
 import { Utils } from "../core/Utils.ts";
 import { existsSync, Select, TagClient, walkSync } from "../deps.ts";
 
-// If no args were passed
-if (Deno.args.length < 3) {
-	const errorMsg = "Please provide 3 arguments to update the guide projects." +
-		"\n1. The root directory path to start searching for guide projects." +
-		"\n2. The version number to update the Velaptor NuGet packages to." +
-		"\n3. The GitHub token.";
+const rootDirPath = (Deno.env.get("ROOT_DIR_PATH") ?? "").trim().replaceAll("\\", "/");
 
+if (rootDirPath === "") {
+	const errorMsg = "The environment variable 'ROOT_DIR_PATH' does not exist.";
 	Utils.printGitHubError(errorMsg);
-	Deno.exit(100);
+	Deno.exit(1);
 }
-
-const rootDirPath = Deno.args[0].trim().replaceAll("\\", "/");
 
 // If the directory does not exist, throw and error
 if (!existsSync(rootDirPath, { isDirectory: true })) {
@@ -22,13 +17,27 @@ if (!existsSync(rootDirPath, { isDirectory: true })) {
 
 const tagRegex = /^v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?$/;
 
-const possibleVersion = Deno.args[1].trim().toLowerCase();
+const possibleVersion = (Deno.env.get("VERSION_OR_INTERACTIVE") ?? "").trim().toLowerCase();
+
+if (possibleVersion === "") {
+	const errorMsg = "The environment variable 'VERSION_OR_INTERACTIVE' does not exist.";
+	Utils.printGitHubError(errorMsg);
+	Deno.exit(1);
+}
+
 const isInteractive = possibleVersion === "interactive";
 
 let newVersion = "";
 
 if (isInteractive) {
-	const token = Deno.args[2].trim();
+	const token = (Deno.env.get("GITHUB_TOKEN") ?? "").trim();
+
+	if (token === "") {
+		const errorMsg = "The environment variable 'GITHUB_TOKEN' does not exist.";
+		Utils.printGitHubError(errorMsg);
+		Deno.exit(1);
+	}
+
 	const tagClient = new TagClient("KinsonDigital", "Velaptor", token);
 
 	const tags = (await tagClient.getAllTags()).map((tag) => tag.name);

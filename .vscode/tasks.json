@@ -126,7 +126,12 @@
 			"detail": "Updates all of the Velaptor NuGet packages for all guide projects.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
+				"cwd": "${workspaceFolder}/.github/cicd",
+				"env": {
+					"ROOT_DIR_PATH": "${workspaceFolder}",
+					"VERSION_OR_INTERACTIVE": "interactive",
+					"GITHUB_TOKEN": "${env:CICD_TOKEN}"
+				}
 			},
 			"command": "deno",
 			"args": [

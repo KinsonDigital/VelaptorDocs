@@ -139,13 +139,13 @@ jobs:
           version: ${{ vars.PNPM_VERSION }}
 
       - name: Update CSharp Project Files
+        env:
+          ROOT_DIR_PATH: "${{ github.workspace }}/SampleProjects"
+          VERSION_OR_INTERACTIVE: "${{ inputs.api-version }}"
         run: |
           deno run `
-            --allow-read --allow-write --allow-sys --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
-            "${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
+            --allow-env --allow-read --allow-write --allow-sys --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts";
   
       - name: Remove Oldest API Version
         env:

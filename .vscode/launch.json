@@ -158,6 +158,11 @@
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts",
 			"cwd": "${workspaceFolder}/.github/cicd",
+			"env": {
+				"ROOT_DIR_PATH": "${workspaceFolder}/SampleProjects",
+				"VERSION_OR_INTERACTIVE": "interactive",
+				"GITHUB_TOKEN": "${env:CICD_TOKEN}"
+			},
 			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
 			"runtimeArgs": [
 				"run",
@@ -166,11 +171,6 @@
 				"--allow-write",
 				"--allow-sys",
 				"--allow-net"
-			],
-			"args": [
-				"${workspaceFolder}/SampleProjects",
-				"1.0.0-preview.300",
-				"${env:CICD_TOKEN}"
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"

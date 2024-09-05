@@ -1,4 +1,3 @@
-import { crayon } from "../deps.ts";
 import { Utils } from "../core/Utils.ts";
 import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
 import { VersionsFileService } from "../core/services/VersionsFileService.ts";
@@ -21,8 +20,8 @@ const oldestVersion = Utils.getOldestVersion(allVersions);
 
 const versionsFileService: DeleteAPIVersionService = new DeleteAPIVersionService(versionsFileSearchDirPath);
 
-console.log(crayon.cyan(`Deleting '${oldestVersion}' API docs. . .`));
+console.log(`%cDeleting '${oldestVersion}' API docs. . .`, "color: cyan");
 
 versionsFileService.deleteOldestDocs();
 
-console.log(crayon.cyan(`API docs for version '${oldestVersion}' fully removed.`));
+console.log(`%cAPI docs for version '${oldestVersion}' fully removed.`, "color: cyan");

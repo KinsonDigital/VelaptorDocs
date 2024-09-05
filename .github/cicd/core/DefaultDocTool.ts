@@ -1,7 +1,6 @@
 import { existsSync, RepoClient } from "../deps.ts";
 import { DotNetToolService } from "./services/DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
-import { CLI } from "./CLI.ts";
 
 /**
  * Provides ability to generate documentation.
@@ -39,9 +38,11 @@ export class DefaultDocTool {
 		Utils.isNothing(outputDirPath);
 		Utils.isNothing(configFilePath);
 
-		const defaultDocToolRepoVar = (await this.repoClient.getVariables()).find((repoVar) => {
-			return repoVar.name === this.DEFAULT_DOC_DOTNET_TOOL_VERSION;
-		});
+		const defaultDocToolRepoVar = (await this.repoClient.getVariables()).find(
+			(repoVar) => {
+				return repoVar.name === this.DEFAULT_DOC_DOTNET_TOOL_VERSION;
+			},
+		);
 
 		if (defaultDocToolRepoVar === undefined) {
 			let errorMsg = `The required repo variable '${this.DEFAULT_DOC_DOTNET_TOOL_VERSION}' was not found.`;
@@ -55,15 +56,16 @@ export class DefaultDocTool {
 			? defaultDocToolRepoVar.value.substring(1)
 			: defaultDocToolRepoVar.value;
 
-		await this.dotNetToolService.setupDotNetTools(this.defaultDocToolName, defaultDocToolVersion);
+		await this.dotNetToolService.setupDotNetTools(
+			this.defaultDocToolName,
+			defaultDocToolVersion,
+		);
 
 		if (existsSync(outputDirPath, { isDirectory: true })) {
 			Deno.removeSync(outputDirPath, { recursive: true });
 		}
 
 		Deno.mkdirSync(outputDirPath, { recursive: true });
-
-		const cli = new CLI();
 
 		const args = [
 			"--AssemblyFilePath",
@@ -75,7 +77,7 @@ export class DefaultDocTool {
 		];
 
 		const command = `defaultdocumentation ${args.join(" ")}`;
-		const commandResult = await cli.runAsync(command);
+		const commandResult = await this.runAsync(command);
 
 		if (commandResult instanceof Error) {
 			Utils.printGitHubError(commandResult.message);
@@ -83,5 +85,39 @@ export class DefaultDocTool {
 		}
 
 		console.log(commandResult);
+	}
+
+	/**
+	 * Runs the following CLI {@link command}.
+	 * @param command The command to run.
+	 * @returns The output of the command if successful, otherwise an error.
+	 */
+	public async runAsync(command: string): Promise<string | Error> {
+		if (command === undefined || command === null || command === "") {
+			const errorMsg = "The command parameter cannot be null or empty.";
+			console.log(errorMsg);
+			Deno.exit(1);
+		}
+
+		if (!command.includes(" ")) {
+			const errorMsg = "The command parameter must include a space.";
+			console.log(errorMsg);
+			Deno.exit(1);
+		}
+
+		const sections: string[] = command.split(" ");
+
+		const app = sections[0];
+		const args = sections.slice(1);
+
+		const cmd = new Deno.Command(app, { args: args });
+
+		const { code, stdout, stderr } = await cmd.output();
+
+		if (code === 0) {
+			return new TextDecoder().decode(stdout);
+		} else {
+			return new Error(new TextDecoder().decode(stderr));
+		}
 	}
 }

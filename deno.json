@@ -1,6 +1,8 @@
 {
     "tasks": {
         "build": "deno check './.github/cicd/**/*.ts'",
+        "fmt": "deno fmt './.github/cicd/**/*.ts'",
+        "lint": "deno lint './.github/cicd/**/*.ts'",
         "reload-cache": "deno cache -r './.github/cicd/core/**/*.ts' './.github/cicd/manual-testing/**/*.ts' './.github/cicd/scripts/**/*.ts' './.github/cicd/workflow-helpers/**/*.ts'"
     },
 	"fmt": {

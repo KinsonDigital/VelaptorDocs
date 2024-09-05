@@ -22,7 +22,9 @@
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
 			},
-			"dependsOn": ["clear-terminal"],
+			"dependsOn": [
+				"clear-terminal"
+			],
 			"command": "deno",
 			"args": [
 				"fmt",
@@ -34,7 +36,13 @@
 			"detail": "Generates the API docs for the website.",
 			"type": "shell",
 			"options": {
-				"cwd": "${workspaceFolder}"
+				"cwd": "${workspaceFolder}",
+				"env": {
+					"OUTPUT_DIR_PATH": "${workspaceFolder}/docs/api",
+					"TAG_OR_BRANCH": "no-value",
+					"GITHUB_TOKEN": "${env:CICD_TOKEN}",
+					"IS_INTERACTIVE": "true"
+				},
 			},
 			"command": "deno",
 			"args": [
@@ -46,10 +54,6 @@
 				"--allow-run",
 				"--allow-env",
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
-				"${workspaceFolder}/docs/api",
-				"no-value",
-				"${env:CICD_TOKEN}",
-				"true", // Is Interactive
 			]
 		},
 		{ // RESET DOCS
@@ -73,7 +77,7 @@
 			"type": "shell",
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd"
-			},			
+			},
 			"command": "deno",
 			"args": [
 				"run",

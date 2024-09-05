@@ -155,13 +155,14 @@ jobs:
             "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
+        env:
+          OUTPUT_DIR_PATH: "${{ github.workspace }}/docs/api"
+          TAG_OR_BRANCH: "${{ inputs.api-version }}"
+          GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: |
           deno run `
-            --allow-read --allow-write --allow-run --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts" `
-            "${{ github.workspace }}/docs/api" `
-            "${{ inputs.api-version }}" `
-            "${{ secrets.CICD_TOKEN }}";
+            --allow-env --allow-read --allow-write --allow-run --allow-net `
+            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts";
 
       - name: Install Dependencies (pnpm)
         run: pnpm install;

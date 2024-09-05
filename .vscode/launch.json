@@ -98,6 +98,12 @@
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
             "cwd": "${workspaceFolder}",
+			"env": {
+				"OUTPUT_DIR_PATH": "${workspaceFolder}/docs/api",
+				"TAG_OR_BRANCH": "v1.0.0-preview.32",
+				"GITHUB_TOKEN": "${env:CICD_TOKEN}",
+				"IS_INTERACTIVE": "true"
+			},
             "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
             "runtimeArgs": [
                 "run",
@@ -109,15 +115,6 @@
 				"--allow-env",
                 "--inspect-wait",
             ],
-			"args": [
-				"${workspaceFolder}/docs/api",
-				"v1.0.0-preview.32",
-				"${env:CICD_TOKEN}",
-				"true" // Is Interactive
-			],
-			"env": {
-				"CICD_TOKEN": "${env:CICD_TOKEN}"
-			},
 			"console": "integratedTerminal",
             "attachSimplePort": 9229
         },

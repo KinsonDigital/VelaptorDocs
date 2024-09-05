@@ -148,10 +148,11 @@ jobs:
             "${{ secrets.CICD_TOKEN }}";
   
       - name: Remove Oldest API Version
+        env:
+          SEARCH_DIR_PATH: "${{ github.workspace }}"        
         run: |
-          deno run --allow-read --allow-write `
-            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts" `
-            "${{ github.workspace }}";
+          deno run --allow-env --allow-read --allow-write `
+            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
         run: |

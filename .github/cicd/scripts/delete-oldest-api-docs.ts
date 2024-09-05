@@ -7,13 +7,13 @@ import { VersionsFileService } from "../core/services/VersionsFileService.ts";
  * to delete the oldest api docs version from the repo.
  */
 
-if (Deno.args.length <= 0) {
-	const errorMsg = "The script requires a single argument of where to start searching for the versions file.";
+const versionsFileSearchDirPath = (Deno.env.get("SEARCH_DIR_PATH") ?? "").trim();
+
+if (versionsFileSearchDirPath === "") {
+	const errorMsg = "The environment variable 'SEARCH_DIR_PATH' does not exist.";
 	Utils.printGitHubError(errorMsg);
 	Deno.exit(1);
 }
-
-const versionsFileSearchDirPath = Deno.args[0].trim();
 
 const allVersions = new VersionsFileService(versionsFileSearchDirPath).getVersions();
 const oldestVersion = Utils.getOldestVersion(allVersions);

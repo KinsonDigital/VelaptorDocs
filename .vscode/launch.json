@@ -27,20 +27,6 @@
                 "runtimeExecutable": "${userHome}/.deno/bin/deno"
             }
         },
-        { // RESET DOCS
-            "request": "launch",
-            "name": "Reset Docs",
-            "type": "node",
-            "program": "${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
-            "runtimeArgs": [
-                "run",
-                "--inspect-wait",
-                "--allow-all",
-            ],
-            "attachSimplePort": 9229
-        },
 		{ // DELETE API DOCS
             "request": "launch",
             "name": "Delete API Docs (DEBUG)",

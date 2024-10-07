@@ -7,7 +7,7 @@ defaults:
 
 
 on:
-  pull_request:
+  pull_request_target:
     branches: main
 
 
@@ -20,9 +20,9 @@ jobs:
 
     - name: Validate Branch
       run: |
-        $regex = '^([a-zA-Z]+:|)feature\/([1-9][0-9]*)-(?!-)[a-z-]+$';
+        $regex = '${{ vars.FEATURE_BRANCH_REGEX }}';
 
-        $headBranch = "AndreBonda:feature/782-replace-custom-guards";
+        $headBranch = "${{ github.head_ref }}";
         $baseBranch = "main";
 
         $headBranchInvalid = $false;

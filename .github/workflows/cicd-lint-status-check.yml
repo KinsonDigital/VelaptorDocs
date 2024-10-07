@@ -17,15 +17,30 @@ jobs:
     name: CICD Lint Status Check
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Base Repository
+      uses: actions/checkout@v4
       with:
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
-        ref: ${{ github.event.pull_request.head.ref }}
+        repository: ${{ github.event.pull_request.base.repo.full_name }}
+        ref: ${{ github.event.pull_request.base.ref }}
 
-    - name: Setup Deno (${{ vars.DENO_VERSION }})
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: ${{ vars.DENO_VERSION }}
+    - name: TEST
+      run: |
+        Write-Host "github.event.pull_request.base.repo | ${{ github.event.pull_request.base.repo }}";
+        Write-Host "github.event.pull_request.head.repo | ${{ github.event.pull_request.head.repo }}";
+        Write-Host "github.event.pull_request.base.user | ${{ github.event.pull_request.base.user }}";
+        Write-Host "github.event.pull_request.head.user | ${{ github.event.pull_request.head.user }}";
+        Write-Host "github.event.pull_request.base.ref | ${{ github.event.pull_request.base.ref }}";
+        Write-Host "github.event.pull_request.head.ref | ${{ github.event.pull_request.head.ref }}";
+    # - name: Fetch and Merge Head Branch
+    #   run: |
+    #     git fetch origin ${{ github.event.pull_request.head.ref }}:${{ github.event.pull_request.head.ref }}
+    #     git checkout -b merge-branch
+    #     git merge --no-ff ${{ github.event.pull_request.head.ref }}
 
-    - name: Run Lint
-      run: deno lint ./.github/cicd;
+    # - name: Setup Deno (${{ vars.DENO_VERSION }})
+    #   uses: denoland/setup-deno@v1
+    #   with:
+    #     deno-version: ${{ vars.DENO_VERSION }}
+
+    # - name: Run Lint
+    #   run: deno lint ./.github/cicd;

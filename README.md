@@ -58,7 +58,7 @@ Use the command `pnpm start` to starts a local development server. Most changes 
 
 ### **Build**
 
-Use the command `pnpm build` to produce a production build of the site. This command puts the production build into the `build` directory and can be served using any static content hosting service.
+Use the command `pnpm build` or `docusaurus build` to produce a production build of the site. This command puts the production build into the `build` directory and can be served using any static content hosting service.
 
 ### **Serve Build Locally**
 

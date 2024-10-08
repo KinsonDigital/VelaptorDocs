@@ -106,7 +106,7 @@ jobs:
             "$outputFilePath";
 
       - name: Build Site
-        run: pnpm build
+        run: docusaurus build
 
       - name: Setup Pages
         if: ${{ inputs.dry-run == false }}

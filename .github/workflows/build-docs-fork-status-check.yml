@@ -1,0 +1,56 @@
+name: ✅Build Docs Status Check (FORK)
+run-name: ✅Build Docs Status Check (FORK)
+
+
+defaults:
+  run:
+    shell: pwsh
+
+
+on:
+  pull_request_target:
+    branches: main
+
+
+jobs:
+  build_status_check_fork:
+    name: Build Status Check (FORK)
+    runs-on: ubuntu-latest
+    steps:
+    - name: Detect Fork
+      id: detect_fork
+      run: |
+        if ("${{ github.event.pull_request.head.repo.full_name }}" -ne "${{ github.event.pull_request.base.repo. full_name }}") {
+          echo "is_fork=true" >> $env:GITHUB_OUTPUT;
+        } else {
+          echo "is_fork=false" >> $env:GITHUB_OUTPUT;
+        }
+
+    - uses: actions/checkout@v4
+      if: steps.detect_fork.outputs.is_fork == 'true'
+
+    - name: Setup Node (18.14.2)
+      if: steps.detect_fork.outputs.is_fork == 'true'
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.14.2
+
+    - name: Setup Deno (v1.46.x)
+      if: steps.detect_fork.outputs.is_fork == 'true'
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.46.x
+
+    - name: Setup PNPM (9.7.0)
+      if: steps.detect_fork.outputs.is_fork == 'true'
+      uses: pnpm/action-setup@v2
+      with:
+        version: 9.7.0
+
+    - name: Install Dependencies (pnpm)
+      if: steps.detect_fork.outputs.is_fork == 'true'
+      run: pnpm install
+
+    - name: Build
+      if: steps.detect_fork.outputs.is_fork == 'true'
+      run: npx docusaurus build

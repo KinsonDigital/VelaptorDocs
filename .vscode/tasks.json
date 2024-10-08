@@ -56,21 +56,6 @@
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
 			]
 		},
-		{ // RESET DOCS
-			"label": "Reset Docs",
-			"detail": "Resets the docs to the default state.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"command": "deno",
-			"args": [
-				"run",
-				"--allow-read",
-				"--allow-write",
-				"'${workspaceFolder}/.github/cicd/manual-testing/reset-docs.ts'"
-			]
-		},
 		{ // CREATE DOCUSAURUS VERSION
 			"label": "Create Docusaurus Version",
 			"detail": "Creates a new docusaurus API version.",

@@ -13,8 +13,26 @@ on:
 
 
 jobs:
+  detect_fork:
+    name: Detect Fork
+    runs-on: ubuntu-latest
+    outputs:
+      is_fork: ${{ steps.detect_fork.outputs.is_fork }}
+    steps:
+    - name: Detect Fork
+      id: detect_fork
+      run: |
+        if ("${{ github.event.pull_request.head.repo.full_name }}" -ne "${{ github.event.pull_request.base.repo. full_name }}") {
+          echo "is_fork=true" >> $env:GITHUB_OUTPUT;
+        } else {
+          echo "is_fork=false" >> $env:GITHUB_OUTPUT;
+        }
+
+
   csharp_projects_build_status_check:
     name: CSharp Projects Build Status Check
+    needs: detect_fork
+    if: ${{ needs.detect_fork.outputs.is_fork == 'false' }}
     uses: ./.github/workflows/build-csharp-solution.yml
     with:
       build-config: Release

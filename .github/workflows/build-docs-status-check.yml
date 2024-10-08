@@ -38,4 +38,4 @@ jobs:
       run: pnpm install
 
     - name: Build
-      run: pnpm build
+      run: docusaurus build

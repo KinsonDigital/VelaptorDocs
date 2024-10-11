@@ -7,7 +7,7 @@ defaults:
 
 
 on:
-  pull_request:
+  pull_request_target:
     branches: main
 
 
@@ -20,13 +20,20 @@ jobs:
 
     - name: Validate Branch
       run: |
-        $regex = '^([a-zA-Z]+:|)feature\/([1-9][0-9]*)-(?!-)[a-z-]+$';
+        $renovateRegEx = "^renovate/.+$";
+        $regex = '${{ vars.FEATURE_BRANCH_REGEX }}';
 
-        $headBranch = "AndreBonda:feature/782-replace-custom-guards";
+        $headBranch = $github_head_ref;
         $baseBranch = "main";
 
         $headBranchInvalid = $false;
         $baseBranchInvalid = $false;
+
+        # If the PR branch is a Renovate branch, it is valid and do not check for a feature branch.
+        if ($headBranch -match $renovateRegEx) {
+            Write-Host "::notice::The head branch '$headBranch' is a Renovate branch.";
+            exit 0;
+        }
 
         if ($headBranch -match $regex) {
             Write-Host "::notice::The head branch '$headBranch' is valid.";
@@ -45,3 +52,4 @@ jobs:
         if ($headBranchInvalid -or $baseBranchInvalid) {
             exit 1;
         }
+

@@ -144,9 +144,9 @@ protected override void OnDraw(FrameTime frameTime)
 
 ### <span className="color-sub-step">4.4: Create `OnResize()` method</span>
 
-If you want to have your game react when the window size changes, you can create a method override of the `Window.OnResize()` method.
-The `OnResize()` method is invoked anytime the window's size is changed. This includes minimizing, maximizing, and restoring the window.
-This is a great location to run game logic that can do anything you need. One good example is to pause your game automatically
+If you want your game to react when the window size changes, you can create an override method using the `Window.OnResize()` method.
+The `OnResize()` method is invoked anytime the window's size is changed, including minimizing, maximizing, and restoring it.
+This is a great location to run game logic that can do anything your game needs. One good example is to pause your game automatically
 when minimized and to unpause when the window is maximized or restored.
 
 ```csharp

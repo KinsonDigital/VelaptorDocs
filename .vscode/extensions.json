@@ -1,8 +1,9 @@
 {
-	"recommendations": [
-		"simonsiefke.svg-preview",
-		"yzhang.markdown-all-in-one",
-		"unifiedjs.vscode-mdx",
-		"mistermunchkin.simple-markdown-snippets"
-	]
+  "recommendations": [
+    "simonsiefke.svg-preview",
+    "yzhang.markdown-all-in-one",
+    "unifiedjs.vscode-mdx",
+    "mistermunchkin.simple-markdown-snippets"
+  ],
+  "unwantedRecommendations": ["ms-dotnettools.csdevkit"]
 }

@@ -23,7 +23,7 @@ jobs:
         $renovateRegEx = "^renovate/.+$";
         $regex = '${{ vars.FEATURE_BRANCH_REGEX }}';
 
-        $headBranch = "${{ github.head_ref }}";
+        $headBranch = ${{ github.head_ref }};
         $baseBranch = "main";
 
         $headBranchInvalid = $false;

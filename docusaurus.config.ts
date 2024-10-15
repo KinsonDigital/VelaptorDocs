@@ -156,16 +156,6 @@ const config: Config = {
 						position: 'right',
 						className: "header-discord-link"
 					},
-					// ⚠️DO NOT CHANGE THIS⚠️
-					// This is used as part of the manual testing process for the CICD side of the project.
-					// <flag id=testing enabled=false>
-					// {
-					// type: 'doc',
-					// label: 'API Testing',
-					// position: 'left',
-					// docId: 'api/Namespaces',
-					// },
-					// </flag>
 				],
 			},
 			footer: {

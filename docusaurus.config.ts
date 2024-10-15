@@ -134,9 +134,6 @@ const config: Config = {
 						position: 'left',
 						label: 'Guides',
 					},
-					// ⚠️DO NOT CHANGE THIS⚠️
-					// This is used as part of the manual testing process for the CICD side of the project.
-					// <flag id=api enabled=true>
 					{
 						type: 'doc',
 						docId: 'api/Namespaces',

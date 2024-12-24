@@ -85,7 +85,7 @@ jobs:
       - name: Update CSharp Project Files
         run: |
           deno run `
-            --allow-read --allow-write --allow-sys --allow-net `
+            --allow-env --allow-read --allow-write --allow-sys --allow-net `
             "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
             "${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}" `
             "${{ inputs.api-version }}" `

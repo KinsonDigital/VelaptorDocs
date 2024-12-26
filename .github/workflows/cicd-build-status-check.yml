@@ -37,4 +37,4 @@ jobs:
 
     - name: Run Build
       if: steps.detect_fork.outputs.is_not_fork == 'true'
-      run: deno task build;
+      run: deno check "./.github/cicd/**/*.ts";

@@ -37,4 +37,4 @@ jobs:
 
     - name: Run Lint
       if: steps.detect_fork.outputs.is_not_fork == 'true'
-      run: deno lint ./.github/cicd;
+      run: deno lint "./.github/cicd/**/*.ts";

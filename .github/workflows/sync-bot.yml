@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Set Up Deno
         if: startsWith(github.ref_name, 'feature/')
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: ${{ vars.DENO_VERSION }}
 

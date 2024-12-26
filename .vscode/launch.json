@@ -36,7 +36,15 @@
 			"env": {
 				"BASE_DIR_PATH": "${workspaceFolder}"
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -54,7 +62,15 @@
 			"env": {
 				"SEARCH_DIR_PATH": "${workspaceFolder}",
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -69,8 +85,19 @@
             "name": "Update Website Version",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/update-website-version.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+            "cwd": "${workspaceFolder}",
+			"env": {
+				"GITHUB_OUTPUT": "${workspaceFolder}",
+			},
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -90,7 +117,15 @@
 				"GITHUB_TOKEN": "${env:CICD_TOKEN}",
 				"IS_INTERACTIVE": "true"
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
                 "--allow-read",
@@ -114,7 +149,15 @@
 				"VERSION": "v1.0.0-preview.39",
 				"GITHUB_TOKEN": "${env:CICD_TOKEN}"
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
                 "--inspect-wait",
@@ -133,7 +176,7 @@
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			"cwd": "${workspaceFolder}/.github/cicd",
-			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
 			"runtimeArgs": [
 				"run",
 				"--inspect-wait",
@@ -153,7 +196,15 @@
 				"VERSION_OR_INTERACTIVE": "interactive",
 				"GITHUB_TOKEN": "${env:CICD_TOKEN}"
 			},
-			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
 			"runtimeArgs": [
 				"run",
 				"--inspect-wait",

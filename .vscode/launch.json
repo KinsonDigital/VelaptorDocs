@@ -36,11 +36,19 @@
 			"env": {
 				"BASE_DIR_PATH": "${workspaceFolder}"
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
+				"-ERW",
                 "--inspect-wait",
-                "--allow-all",
             ],
             "attachSimplePort": 9229,
 			"console": "integratedTerminal"
@@ -54,13 +62,19 @@
 			"env": {
 				"SEARCH_DIR_PATH": "${workspaceFolder}",
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
+				"-ERWS",
                 "--inspect-wait",
-                "--allow-read",
-				"--allow-write",
-				"--allow-sys",
             ],
             "attachSimplePort": 9229,
         },
@@ -69,12 +83,23 @@
             "name": "Update Website Version",
             "type": "node",
             "program": "${workspaceFolder}/.github/cicd/scripts/update-website-version.ts",
-            "cwd": "${workspaceFolder}/.github/cicd",
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+            "cwd": "${workspaceFolder}",
+			"env": {
+				"GITHUB_OUTPUT": "${workspaceFolder}",
+			},
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
+				"-ERW",
                 "--inspect-wait",
-                "--allow-all",
             ],
             "attachSimplePort": 9229
         },
@@ -90,15 +115,19 @@
 				"GITHUB_TOKEN": "${env:CICD_TOKEN}",
 				"IS_INTERACTIVE": "true"
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
-                "--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net",
+				"-ERWNS",
 				"--allow-run",
-				"--allow-env",
                 "--inspect-wait",
             ],
 			"console": "integratedTerminal",
@@ -114,30 +143,42 @@
 				"VERSION": "v1.0.0-preview.39",
 				"GITHUB_TOKEN": "${env:CICD_TOKEN}"
 			},
-            "runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
             "runtimeArgs": [
                 "run",
+				"-ERN",
                 "--inspect-wait",
-				"--allow-read",
-				"--allow-net"
             ],
-			"args": [
-				"v1.0.0-preview.12",
-				"${env:CICD_TOKEN}",
-			],
             "attachSimplePort": 9229
         },
-		{ // GENERATE DOCUSAURUS API DOCS VERSION
+		{ // CREATE DOCUSAURUS API DOCS VERSION
 			"request": "launch",
-			"name": "Generate Docusaurus API Version",
+			"name": "Create Docusaurus API Version",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			"cwd": "${workspaceFolder}/.github/cicd",
-			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
 			"runtimeArgs": [
 				"run",
+				"-E",
+				"--allow-run",
 				"--inspect-wait",
-				"--allow-all",
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"
@@ -153,14 +194,19 @@
 				"VERSION_OR_INTERACTIVE": "interactive",
 				"GITHUB_TOKEN": "${env:CICD_TOKEN}"
 			},
-			"runtimeExecutable": "${userHome}/.deno/bin/deno.EXE",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
 			"runtimeArgs": [
 				"run",
+				"-ERWSN",
 				"--inspect-wait",
-				"--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net"
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"

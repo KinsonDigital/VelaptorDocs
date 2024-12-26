@@ -55,7 +55,7 @@ jobs:
           }
 
       - name: Set Up Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: ${{ vars.DENO_VERSION }}
 
@@ -63,10 +63,7 @@ jobs:
         env:
           VERSION: "${{ inputs.api-version }}"
           GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
-        run: |
-          deno run `
-            --allow-env --allow-read --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts";
+        run: deno run -ERN "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts";
 
 
   update_csharp_project_files:
@@ -78,7 +75,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set Up Deno (${{ vars.DENO_VERSION }})
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: ${{ vars.DENO_VERSION }}
 
@@ -88,8 +85,7 @@ jobs:
           VERSION_OR_INTERACTIVE: "${{ inputs.api-version }}"
           GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: |
-          deno run `
-            --allow-env --allow-read --allow-write --allow-sys --allow-net `
+          deno run -ERWNS `
             "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts" `
             "${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}" `
             "${{ inputs.api-version }}" `
@@ -123,7 +119,7 @@ jobs:
           persist-credentials: true
 
       - name: Set Up Deno (${{ vars.DENO_VERSION }})
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: ${{ vars.DENO_VERSION }}
 
@@ -147,27 +143,19 @@ jobs:
         env:
           ROOT_DIR_PATH: "${{ github.workspace }}/SampleProjects"
           VERSION_OR_INTERACTIVE: "${{ inputs.api-version }}"
-        run: |
-          deno run `
-            --allow-env --allow-read --allow-write --allow-sys --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts";
+        run: deno run -ERWNS "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts";
   
       - name: Remove Oldest API Version
         env:
           SEARCH_DIR_PATH: "${{ github.workspace }}"        
-        run: |
-          deno run --allow-env --allow-read --allow-write `
-            "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
+        run: deno run -ERW "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
         env:
           OUTPUT_DIR_PATH: "${{ github.workspace }}/docs/api"
           TAG_OR_BRANCH: "${{ inputs.api-version }}"
           GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
-        run: |
-          deno run `
-            --allow-env --allow-read --allow-write --allow-run --allow-net `
-            "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts";
+        run: deno run -ERWN --allow-run "${{ github.workspace }}/.github/cicd/scripts/generate-new-api-docs.ts";
 
       - name: Install Dependencies (pnpm)
         run: pnpm install;
@@ -191,9 +179,7 @@ jobs:
 
           # NOTE: The script executed below sets the step output.  This is why the output file
           # path is passed in as an argument using the '$outputFilePath' variable.
-          deno run --allow-read --allow-write --allow-env `
-            "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
-            "$outputFilePath";
+          deno run -ERW "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" "$outputFilePath";
 
       - name: Build Site
         run: pnpm docusaurus build

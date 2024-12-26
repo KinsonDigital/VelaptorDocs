@@ -31,10 +31,10 @@ jobs:
 
     - name: Setup Deno (v1.46.x)
       if: steps.detect_fork.outputs.is_fork == 'true'
-      uses: denoland/setup-deno@v1
+      uses: denoland/setup-deno@v2
       with:
         deno-version: v1.46.x
 
     - name: Run Build
       if: steps.detect_fork.outputs.is_fork == 'true'
-      run: deno task build;
+      run: deno check "./.github/cicd/**/*.ts";

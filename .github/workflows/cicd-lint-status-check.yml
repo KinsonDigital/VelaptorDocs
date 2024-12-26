@@ -31,10 +31,10 @@ jobs:
 
     - name: Setup Deno (${{ vars.DENO_VERSION }})
       if: steps.detect_fork.outputs.is_not_fork == 'true'
-      uses: denoland/setup-deno@v1
+      uses: denoland/setup-deno@v2
       with:
         deno-version: ${{ vars.DENO_VERSION }}
 
     - name: Run Lint
       if: steps.detect_fork.outputs.is_not_fork == 'true'
-      run: deno lint ./.github/cicd;
+      run: deno lint "./.github/cicd/**/*.ts";

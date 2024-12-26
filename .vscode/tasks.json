@@ -1,36 +1,6 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{ // CLEAR TERMINAL
-			"label": "clear-terminal",
-			"detail": "Clears the terminal.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"windows": {
-				"command": "cls"
-			},
-			"linux": {
-				"command": "clear"
-			}
-		},
-		{ // FORMAT CODE
-			"label": "Format Code",
-			"detail": "Formats the code using deno fmt.",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/.github/cicd"
-			},
-			"dependsOn": [
-				"clear-terminal"
-			],
-			"command": "deno",
-			"args": [
-				"fmt",
-				"${workspaceFolder}/.github/cicd",
-			]
-		},
 		{ // GENERATE API DOCS
 			"label": "Generate New API Docs",
 			"detail": "Generates the API docs for the website.",
@@ -47,12 +17,8 @@
 			"command": "deno",
 			"args": [
 				"run",
-				"--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net",
+				"-ERWNS",
 				"--allow-run",
-				"--allow-env",
 				"${workspaceFolder}/.github/cicd/scripts/generate-new-api-docs.ts",
 			]
 		},
@@ -66,23 +32,10 @@
 			"command": "deno",
 			"args": [
 				"run",
-				"-A",
+				"-E",
+				"--allow-run",
 				"${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			]
-		},
-		{ // BUILD SITE
-			"label": "Build (SITE)",
-			"detail": "Performs a build of the docusaurus site.",
-			"dependsOn": [
-				"Disable Testing Environment"
-			],
-			"type": "shell",
-			"windows": {
-				"command": "pnpm",
-				"args": [
-					"build"
-				]
-			}
 		},
 		{ // DELETE API DOCS
 			"label": "Delete API Docs",
@@ -101,7 +54,7 @@
 				"command": "deno",
 				"args": [
 					"run",
-					"-A",
+					"-ERW",
 					"${workspaceFolder}/.github/cicd/scripts/delete-api-docs.ts",
 				]
 			}
@@ -113,7 +66,7 @@
 			"options": {
 				"cwd": "${workspaceFolder}/.github/cicd",
 				"env": {
-					"ROOT_DIR_PATH": "${workspaceFolder}",
+					"ROOT_DIR_PATH": "${workspaceFolder}/SampleProjects",
 					"VERSION_OR_INTERACTIVE": "interactive",
 					"GITHUB_TOKEN": "${env:CICD_TOKEN}"
 				}
@@ -121,14 +74,8 @@
 			"command": "deno",
 			"args": [
 				"run",
-				"--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net",
-				"${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts",
-				"${workspaceFolder}/SampleProjects",
-				"interactive",
-				"${env:CICD_TOKEN}"
+				"-ERWSN",
+				"${workspaceFolder}/.github/cicd/scripts/update-velaptor-nugets.ts"
 			],
 		},
 	]

@@ -847,12 +847,12 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
-        "npm:@docusaurus/core@3.5.2",
+        "npm:@docusaurus/core@3.6.3",
         "npm:@docusaurus/module-type-aliases@^3.2.1",
-        "npm:@docusaurus/preset-classic@3.5.2",
-        "npm:@docusaurus/theme-mermaid@3.5.2",
+        "npm:@docusaurus/preset-classic@3.6.3",
+        "npm:@docusaurus/theme-mermaid@3.6.3",
         "npm:@docusaurus/tsconfig@^3.2.1",
-        "npm:@docusaurus/types@3.5.2",
+        "npm:@docusaurus/types@3.6.3",
         "npm:@mdx-js/react@^3.0.0",
         "npm:@types/react@^18.2.42",
         "npm:autoprefixer@^10.4.19",
@@ -862,7 +862,7 @@
         "npm:react-dom@^18.2.0",
         "npm:react@^18.2.0",
         "npm:tailwindcss@^3.4.3",
-        "npm:typescript@~5.5.0"
+        "npm:typescript@~5.6.0"
       ]
     }
   }

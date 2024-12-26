@@ -2,7 +2,6 @@ import { themes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import tailwindPlugin from './plugins/tailwind-config.cjs';
-
 const config: Config = {
 	title: 'Velaptor',
 	tagline: 'The easy and fun to use 2D game development framework',
@@ -195,7 +194,7 @@ const config: Config = {
 					src: 'img/kinson-digital-logo.png',
 					href: 'https://github.com/KinsonDigital',
 				},
-				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.05.05.094330)`,
+				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2024.12.26.145527)`,
 			},
 			prism: {
 				/* We disabled the default magic comments and added custom ones to support better naming and colors
@@ -238,5 +237,4 @@ const config: Config = {
 		tailwindPlugin,
 	]
 };
-
 module.exports = config;

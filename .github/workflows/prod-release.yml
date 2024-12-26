@@ -98,10 +98,7 @@ jobs:
 
           # NOTE: The script executed below sets the step output.  This is why the output file
           # path is passed in as an argument using the '$outputFilePath' variable.
-          deno run `
-            --allow-read `
-            --allow-write `
-            --allow-env `
+          deno run -ERW `
             "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" `
             "$outputFilePath";
 

@@ -31,7 +31,7 @@
         "semiColons": true,
         "singleQuote": false
 	},
-    "nodeModulesDir": false,
+    "nodeModulesDir": "none",
 	"lint": {
         "include": [".github/cicd/**/*.ts"],
         "exclude": [

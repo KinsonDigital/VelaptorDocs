@@ -47,8 +47,8 @@
 			},
             "runtimeArgs": [
                 "run",
+				"-ERW",
                 "--inspect-wait",
-                "--allow-all",
             ],
             "attachSimplePort": 9229,
 			"console": "integratedTerminal"
@@ -73,10 +73,8 @@
 			},
             "runtimeArgs": [
                 "run",
+				"-ERWS",
                 "--inspect-wait",
-                "--allow-read",
-				"--allow-write",
-				"--allow-sys",
             ],
             "attachSimplePort": 9229,
         },
@@ -100,8 +98,8 @@
 			},
             "runtimeArgs": [
                 "run",
+				"-ERW",
                 "--inspect-wait",
-                "--allow-all",
             ],
             "attachSimplePort": 9229
         },
@@ -128,12 +126,8 @@
 			},
             "runtimeArgs": [
                 "run",
-                "--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net",
+				"-ERWNS",
 				"--allow-run",
-				"--allow-env",
                 "--inspect-wait",
             ],
 			"console": "integratedTerminal",
@@ -160,27 +154,31 @@
 			},
             "runtimeArgs": [
                 "run",
+				"-ERN",
                 "--inspect-wait",
-				"--allow-read",
-				"--allow-net"
             ],
-			"args": [
-				"v1.0.0-preview.12",
-				"${env:CICD_TOKEN}",
-			],
             "attachSimplePort": 9229
         },
-		{ // GENERATE DOCUSAURUS API DOCS VERSION
+		{ // CREATE DOCUSAURUS API DOCS VERSION
 			"request": "launch",
-			"name": "Generate Docusaurus API Version",
+			"name": "Create Docusaurus API Version",
 			"type": "node",
 			"program": "${workspaceFolder}/.github/cicd/scripts/create-docusaurus-version.ts",
 			"cwd": "${workspaceFolder}/.github/cicd",
 			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
 			"runtimeArgs": [
 				"run",
+				"-E",
+				"--allow-run",
 				"--inspect-wait",
-				"--allow-all",
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"
@@ -207,11 +205,8 @@
 			},
 			"runtimeArgs": [
 				"run",
+				"-ERWSN",
 				"--inspect-wait",
-				"--allow-read",
-				"--allow-write",
-				"--allow-sys",
-				"--allow-net"
 			],
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"

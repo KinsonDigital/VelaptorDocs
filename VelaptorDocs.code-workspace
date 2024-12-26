@@ -19,5 +19,6 @@
         "testing.openTesting": "neverOpen",
 		"typescript.referencesCodeLens.enabled": true,
 		"powershell.cwd": "VelaptorDocs",
+		"testing.automaticallyOpenTestResults": "neverOpen",
 	}
 }

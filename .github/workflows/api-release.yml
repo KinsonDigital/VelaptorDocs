@@ -83,6 +83,10 @@ jobs:
           deno-version: ${{ vars.DENO_VERSION }}
 
       - name: Update CSharp Project Files
+        env:
+          ROOT_DIR_PATH: "${{ github.workspace }}/SampleProjects"
+          VERSION_OR_INTERACTIVE: "${{ inputs.api-version }}"
+          GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: |
           deno run `
             --allow-env --allow-read --allow-write --allow-sys --allow-net `
@@ -227,7 +231,7 @@ jobs:
           git commit -m "🚀API Doc Release (Velaptor Version ${{ inputs.api-version }})";
           git push;
 
-          # Create a website date specific releease tag
+          # Create a website date specific release tag
           git tag -a $tag -m "API Doc Release Version $apiVersion";
           git push origin $tag;
 

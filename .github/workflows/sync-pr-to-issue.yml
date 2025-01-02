@@ -16,7 +16,7 @@ on:
 jobs:
   initial_sync:
     name: Start Initial Sync
-    if: ${{ github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/') }}
+    if: ${{ github.event_name == 'pull_request_target' && !startsWith(github.head_ref, 'renovate/') }}
     uses: KinsonDigital/Infrastructure/.github/workflows/initial-manual-sync.yml@v14.1.0
     with:
       issue-or-pr-number: ${{ github.event.pull_request.number }}

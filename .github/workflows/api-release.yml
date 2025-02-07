@@ -129,6 +129,11 @@ jobs:
         with:
           dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
 
+      - name: Setup dotnet (${{ vars.DEFAULT_DOC_DOTNET_SDK_VERSION }})
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ vars.DEFAULT_DOC_DOTNET_SDK_VERSION }}
+
       - name: Setup Node (${{ vars.NODE_VERSION }})
         uses: actions/setup-node@v4
         with:

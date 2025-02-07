@@ -26,7 +26,8 @@ jobs:
           echo "is_fork=false" >> $env:GITHUB_OUTPUT;
         }
 
-    - uses: actions/checkout@v4
+    - name: Checkout Repo
+      uses: actions/checkout@v4
       if: steps.detect_fork.outputs.is_fork == 'true'
 
     - name: Setup Node (18.14.2)
@@ -35,22 +36,22 @@ jobs:
       with:
         node-version: 18.14.2
 
-    - name: Setup Deno (v1.46.x)
+    - name: Setup Deno (v2.1.x)
       if: steps.detect_fork.outputs.is_fork == 'true'
       uses: denoland/setup-deno@v2
       with:
-        deno-version: v1.46.x
+        deno-version: v2.1.x
 
-    - name: Setup PNPM (9.7.0)
+    - name: Setup PNPM (10.2.1)
       if: steps.detect_fork.outputs.is_fork == 'true'
-      uses: pnpm/action-setup@v2
+      uses: pnpm/action-setup@v4
       with:
-        version: 9.7.0
+        version: 10.2.1
 
     - name: Install Dependencies (pnpm)
       if: steps.detect_fork.outputs.is_fork == 'true'
-      run: pnpm install
+      run: pnpm install;
 
     - name: Build
       if: steps.detect_fork.outputs.is_fork == 'true'
-      run: npx docusaurus build
+      run: pnpm exec docusaurus build;

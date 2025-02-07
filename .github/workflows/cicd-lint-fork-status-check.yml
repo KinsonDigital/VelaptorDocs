@@ -26,7 +26,8 @@ jobs:
           echo "is_fork=false" >> $env:GITHUB_OUTPUT;
         }
 
-    - uses: actions/checkout@v4
+    - name: Checkout Repo
+      uses: actions/checkout@v4
       if: steps.detect_fork.outputs.is_fork == 'true'
 
     - name: Setup Deno (v2.1.x)

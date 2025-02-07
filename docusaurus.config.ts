@@ -194,7 +194,7 @@ const config: Config = {
 					src: 'img/kinson-digital-logo.png',
 					href: 'https://github.com/KinsonDigital',
 				},
-				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2025.02.07.153140)`,
+				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2025.02.07.175011)`,
 			},
 			prism: {
 				/* We disabled the default magic comments and added custom ones to support better naming and colors

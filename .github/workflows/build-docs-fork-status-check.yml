@@ -50,8 +50,8 @@ jobs:
 
     - name: Install Dependencies (pnpm)
       if: steps.detect_fork.outputs.is_fork == 'true'
-      run: pnpm install
+      run: pnpm install;
 
     - name: Build
       if: steps.detect_fork.outputs.is_fork == 'true'
-      run: npx docusaurus build
+      run: pnpm exec docusaurus build;

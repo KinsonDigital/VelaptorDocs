@@ -34,7 +34,7 @@ jobs:
       if: steps.detect_fork.outputs.is_fork == 'true'
       uses: actions/setup-node@v4
       with:
-        node-version: 18.14.2
+        node-version: 18.20.8
 
     - name: Setup Deno (v2.1.x)
       if: steps.detect_fork.outputs.is_fork == 'true'

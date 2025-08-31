@@ -18,9 +18,9 @@
         "preinstall": "npx only-allow pnpm"
     },
     "dependencies": {
-        "@docusaurus/core": "3.6.3",
-        "@docusaurus/preset-classic": "3.6.3",
-        "@docusaurus/theme-mermaid": "3.6.3",
+        "@docusaurus/core": "3.8.1",
+        "@docusaurus/preset-classic": "3.8.1",
+        "@docusaurus/theme-mermaid": "3.8.1",
         "@mdx-js/react": "^3.0.0",
         "autoprefixer": "^10.4.19",
         "clsx": "2.1.1",
@@ -32,7 +32,7 @@
     "devDependencies": {
         "@docusaurus/module-type-aliases": "^3.2.1",
         "@docusaurus/tsconfig": "^3.2.1",
-        "@docusaurus/types": "3.6.3",
+        "@docusaurus/types": "3.8.1",
         "@types/react": "^18.2.42",
         "tailwindcss": "^3.4.3",
         "typescript": "~5.6.0"

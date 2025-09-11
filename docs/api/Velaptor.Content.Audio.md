@@ -206,6 +206,8 @@ Implements [Volume](Velaptor.Content.IAudio.md#volume 'Velaptor.Content.IAudio.V
 
 ### Dispose() 
 
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+
 ```csharp
 public void Dispose();
 ```

@@ -2,6 +2,7 @@ name: 📜/🛡️ Guide & API Doc Changes
 description: Create an issue to add or update guide and API documentation.
 title: "📜/🛡️Guide & API Doc Change - "
 labels: ['📜guide doc changes', '🛡️api doc changes']
+type: "Enhancement"
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes

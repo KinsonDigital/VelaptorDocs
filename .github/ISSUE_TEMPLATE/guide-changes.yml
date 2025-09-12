@@ -2,6 +2,7 @@ name: 📜 Guide Doc Change
 description: Create an issue to add or update guide documentation.
 title: "📜"
 labels: ['📜guide doc changes']
+type: "Enhancement"
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes

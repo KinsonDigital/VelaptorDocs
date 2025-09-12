@@ -8,12 +8,11 @@
         "build": "pnpm i && docusaurus build",
         "swizzle": "docusaurus swizzle",
         "deploy": "docusaurus deploy",
-        "clear": "docusaurus clear",
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
         "write-heading-ids": "docusaurus write-heading-ids",
         "typecheck": "tsc",
-        "clean": "deno eval \"Deno.removeSync('./node_modules', { recursive: true });\"",
+        "clean": "docusaurus clear && deno eval \"Deno.removeSync('./node_modules', { recursive: true });\"",
         "reinstall-deps": "pnpm clear && pnpm clean && pnpm install",
         "preinstall": "npx only-allow pnpm"
     },

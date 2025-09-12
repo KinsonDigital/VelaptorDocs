@@ -24,16 +24,12 @@ body:
     label: Acceptance Criteria
     description: The items to complete in order to satisfy the Definition of Done.
     placeholder: |
-      ```[tasklist]
       - [ ] Item 1
       - [ ] Item 2
-      ```
     value: |
-      ```[tasklist]
       - [ ] If adding a new version of the API documentation, I have locally executed the documentation processing scripts to generate new API documentation.
       - [ ] If adding a new version of the API documentation, I have used the correct [Velaptor version](https://github.com/KinsonDigital/Velaptor/tags).
       - [ ] Any documentation changes have been checked for proper spelling and grammar.
-      ```
   validations:
     required: true
     render: markdown
@@ -43,11 +39,9 @@ body:
     label: ToDo Items
     description: Complete the following items before requesting a PR review.
     value: |
-      ```[tasklist]
       - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
       - [ ] Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
       - [ ] If more than 5 versions exist after adding the new version, the oldest version is removed.
-      ```
   validations:
     required: true
     render: markdown

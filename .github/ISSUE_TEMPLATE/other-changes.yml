@@ -22,13 +22,8 @@ body:
     label: Acceptance Criteria
     description: The items to complete to satisfy the Definition of Done.
     placeholder: |
-      ```[tasklist]
       - [ ] Item 1
       - [ ] Item 2
-      ```
-    value: |
-      ```[tasklist]
-      ```
   validations:
     required: true
     render: markdown
@@ -38,10 +33,8 @@ body:
     label: ToDo items
     description: Complete the following items before requesting a PR review.
     value: |
-      ```[tasklist]
       - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
       - [ ] A priority label was added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-      ```
   validations:
     required: true
     render: markdown

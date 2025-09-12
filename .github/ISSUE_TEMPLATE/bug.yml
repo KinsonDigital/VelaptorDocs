@@ -2,6 +2,7 @@ name: 🐛 Bug
 description: Fix a bug
 title: "🐛"
 labels: [bug, ⚕️NEEDS TRIAGE]
+type: "Bug"
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes

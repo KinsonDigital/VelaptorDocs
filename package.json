@@ -17,6 +17,12 @@
         "reinstall-deps": "pnpm clear && pnpm clean && pnpm install",
         "preinstall": "npx only-allow pnpm"
     },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "core-js",
+            "core-js-pure"
+        ]
+    },
     "dependencies": {
         "@docusaurus/core": "3.8.1",
         "@docusaurus/preset-classic": "3.8.1",

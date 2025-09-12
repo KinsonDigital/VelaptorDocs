@@ -27,14 +27,14 @@ jobs:
         }
 
     - name: Checkout Repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       if: steps.detect_fork.outputs.is_fork == 'true'
 
     - name: Setup Node (18.14.2)
       if: steps.detect_fork.outputs.is_fork == 'true'
       uses: actions/setup-node@v4
       with:
-        node-version: 18.14.2
+        node-version: 22.19.0
 
     - name: Setup Deno (v2.1.x)
       if: steps.detect_fork.outputs.is_fork == 'true'
@@ -46,7 +46,7 @@ jobs:
       if: steps.detect_fork.outputs.is_fork == 'true'
       uses: pnpm/action-setup@v4
       with:
-        version: 10.2.1
+        version: 10.15.1
 
     - name: Install Dependencies (pnpm)
       if: steps.detect_fork.outputs.is_fork == 'true'

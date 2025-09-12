@@ -2,6 +2,7 @@ name: 🏗️ CICD Related Changes
 description: Create an issue for CICD related changes.
 title: "🏗️"
 labels: [cicd]
+type: "CICD"
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes

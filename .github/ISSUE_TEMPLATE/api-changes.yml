@@ -2,6 +2,7 @@ name: 🛡️ API Doc Change
 description: Create an issue to add or update the API documentation.
 title: "🛡️API Doc Change - "
 labels: ['🛡️api doc changes', 'high priority']
+type: "Feature"
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes

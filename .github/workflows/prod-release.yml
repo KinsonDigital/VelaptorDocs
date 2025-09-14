@@ -73,7 +73,7 @@ jobs:
           dotnet-version: ${{ vars.VELAPTOR_DOTNET_SDK_VERSION }}
 
       - name: Setup Node (${{ vars.NODE_VERSION }})
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ vars.NODE_VERSION }}
 

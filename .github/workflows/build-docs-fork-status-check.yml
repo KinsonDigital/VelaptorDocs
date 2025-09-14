@@ -32,7 +32,7 @@ jobs:
 
     - name: Setup Node (18.14.2)
       if: steps.detect_fork.outputs.is_fork == 'true'
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: 22.19.0
 

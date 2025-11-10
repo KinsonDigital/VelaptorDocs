@@ -40,7 +40,7 @@ jobs:
       if: steps.detect_fork.outputs.is_fork == 'true'
       uses: denoland/setup-deno@v2
       with:
-        deno-version: v2.1.x
+        deno-version: 2.5.x
 
     - name: Setup PNPM (10.2.1)
       if: steps.detect_fork.outputs.is_fork == 'true'

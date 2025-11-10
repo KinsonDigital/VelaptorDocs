@@ -135,7 +135,7 @@ jobs:
           dotnet-version: ${{ vars.DEFAULT_DOC_DOTNET_SDK_VERSION }}
 
       - name: Setup Node (${{ vars.NODE_VERSION }})
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ vars.NODE_VERSION }}
 

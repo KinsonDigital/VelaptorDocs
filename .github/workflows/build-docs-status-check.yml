@@ -31,7 +31,7 @@ jobs:
 
     - name: Setup Node (${{ vars.NODE_VERSION }})
       if: steps.detect_fork.outputs.is_not_fork == 'true'
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ vars.NODE_VERSION }}
 

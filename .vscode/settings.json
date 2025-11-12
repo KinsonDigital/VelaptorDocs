@@ -2,7 +2,7 @@
 	"deno.enablePaths": [
 		".github/cicd/"
 	],
-	"deno.config": ".github/cicd/deno.json",
+	"deno.config": "deno.json",
 	"files.eol": "\n",
 	"cSpell.words": [
 		"cicd",
@@ -14,6 +14,7 @@
 		"ERWNS",
 		"Infima",
 		"Kinson",
+		"kinsondigital",
 		"KXVA",
 		"milestoned",
 		"Multiauthor",

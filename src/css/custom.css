@@ -1,6 +1,4 @@
-/* @tailwind base; */
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /**
  * Any CSS included here will be global. The classic template
@@ -56,17 +54,6 @@
 /* Color of a guide project window background */
 .app-win-background {
     background-color: #101D24;
-}
-
-.app-win-border {
-    color: #a3836b;
-    @apply border-solid;
-    @apply rounded-md;
-}
-
-.app-win {
-    @apply app-win-border;
-    @apply app-win-background;
 }
 
 /* Custom magic comment for green add lines */

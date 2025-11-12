@@ -1,4 +1,4 @@
-import { Input } from "../deps.ts";
+import { Input } from "@cliffy/prompt";
 
 console.clear();
 

@@ -72,9 +72,11 @@
         "**/SampleProjects/",
         "**/versioned_docs/",
         "**/versioned_sidebars/",
-        "**/node_modules/",
-        "**/package.json",
-        "**/build/",
-        "**/RepoSrc/"
-    ]
-}
+    ],
+    "imports": {
+        "@std/fs": "jsr:@std/fs@^1.0.19",
+        "@std/path": "jsr:@std/path@1.1.2",
+        "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.8",
+        "@kd-clients/github": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/github",
+        "@kd-clients/packaging": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/packaging"
+    }

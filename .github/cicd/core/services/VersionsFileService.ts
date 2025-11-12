@@ -1,4 +1,5 @@
-import { basename, extname, walkSync } from "../../deps.ts";
+import { basename, extname } from "@std/path";
+import { walkSync } from "@std/fs";
 import { Guard } from "../Guard.ts";
 import { Utils } from "../Utils.ts";
 

@@ -1,4 +1,5 @@
-import { existsSync, RepoClient } from "../deps.ts";
+import { existsSync } from "@std/fs";
+import { RepoClient } from "@kd-clients/github";
 import { DotNetToolService } from "./services/DotNetToolService.ts";
 import { Utils } from "./Utils.ts";
 

@@ -11,11 +11,9 @@ title: Namespaces
 | [Velaptor](Velaptor.md 'Velaptor') |
 | [Velaptor.Batching](Velaptor.Batching.md 'Velaptor.Batching') |
 | [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content') |
-| [Velaptor.Content.Caching](Velaptor.Content.Caching.md 'Velaptor.Content.Caching') |
 | [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions') |
 | [Velaptor.Content.Fonts](Velaptor.Content.Fonts.md 'Velaptor.Content.Fonts') |
 | [Velaptor.Exceptions](Velaptor.Exceptions.md 'Velaptor.Exceptions') |
-| [Velaptor.ExtensionMethods](Velaptor.ExtensionMethods.md 'Velaptor.ExtensionMethods') |
 | [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories') |
 | [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics') |
 | [Velaptor.Graphics.Renderers](Velaptor.Graphics.Renderers.md 'Velaptor.Graphics.Renderers') |

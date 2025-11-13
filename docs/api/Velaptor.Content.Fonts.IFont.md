@@ -7,7 +7,7 @@ title: Velaptor.Content.Fonts.IFont
 
 #### IFont Interface
 
-The font to use when rendering text to the screen.
+Represents a font with a set size and style that can be used to render text to the screen.
 
 ```csharp
 public interface IFont :
@@ -58,6 +58,19 @@ bool CacheEnabled { get; set; }
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='Velaptor.Content.Fonts.IFont.CurrentMeasureCacheSize'></a>
+
+### CurrentMeasureCacheSize 
+
+Gets the total number of text size measurements that are cached.
+
+```csharp
+int CurrentMeasureCacheSize { get; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 <a name='Velaptor.Content.Fonts.IFont.FamilyName'></a>
 
@@ -111,14 +124,14 @@ float LineSpacing { get; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='Velaptor.Content.Fonts.IFont.MaxCacheSize'></a>
+<a name='Velaptor.Content.Fonts.IFont.MaxMeasureCacheSize'></a>
 
-### MaxCacheSize 
+### MaxMeasureCacheSize 
 
-Gets or sets the maximum number of measurements to cache.
+Gets or sets the maximum number of text measurements to cache.
 
 ```csharp
-int MaxCacheSize { get; set; }
+int MaxMeasureCacheSize { get; set; }
 ```
 
 #### Property Value
@@ -141,10 +154,10 @@ System.Collections.Generic.IReadOnlyCollection<Velaptor.Graphics.GlyphMetrics> M
 
 ### Size 
 
-Gets or sets the size of the font in points.
+Gets the size of the font in points.
 
 ```csharp
-uint Size { get; set; }
+uint Size { get; }
 ```
 
 #### Property Value
@@ -167,10 +180,10 @@ Velaptor.Content.Fonts.FontSource Source { get; }
 
 ### Style 
 
-Gets or sets the style of the font.
+Gets the style of the font.
 
 ```csharp
-Velaptor.Content.Fonts.FontStyle Style { get; set; }
+Velaptor.Content.Fonts.FontStyle Style { get; }
 ```
 
 #### Property Value

@@ -27,7 +27,7 @@ Implements [IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont
 Gets the font atlas texture that contains all the bitmap data for all available glyphs for the font.
 
 ```csharp
-public Velaptor.Content.ITexture Atlas { get; set; }
+public Velaptor.Content.ITexture Atlas { get; }
 ```
 
 Implements [Atlas](Velaptor.Content.Fonts.IFont.md#atlas 'Velaptor.Content.Fonts.IFont.Atlas')
@@ -64,6 +64,21 @@ Implements [CacheEnabled](Velaptor.Content.Fonts.IFont.md#cacheenabled 'Velaptor
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='Velaptor.Content.Fonts.Font.CurrentMeasureCacheSize'></a>
+
+### CurrentMeasureCacheSize 
+
+Gets the total number of text size measurements that are cached.
+
+```csharp
+public int CurrentMeasureCacheSize { get; }
+```
+
+Implements [CurrentMeasureCacheSize](Velaptor.Content.Fonts.IFont.md#currentmeasurecachesize 'Velaptor.Content.Fonts.IFont.CurrentMeasureCacheSize')
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 <a name='Velaptor.Content.Fonts.Font.FamilyName'></a>
 
@@ -132,7 +147,7 @@ Implements [IsDefaultFont](Velaptor.Content.Fonts.IFont.md#isdefaultfont 'Velapt
 Gets the spacing between lines of text in pixels.
 
 ```csharp
-public float LineSpacing { get; set; }
+public float LineSpacing { get; }
 ```
 
 Implements [LineSpacing](Velaptor.Content.Fonts.IFont.md#linespacing 'Velaptor.Content.Fonts.IFont.LineSpacing')
@@ -140,17 +155,17 @@ Implements [LineSpacing](Velaptor.Content.Fonts.IFont.md#linespacing 'Velaptor.C
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
-<a name='Velaptor.Content.Fonts.Font.MaxCacheSize'></a>
+<a name='Velaptor.Content.Fonts.Font.MaxMeasureCacheSize'></a>
 
-### MaxCacheSize 
+### MaxMeasureCacheSize 
 
-Gets or sets the maximum number of measurements to cache.
+Gets or sets the maximum number of text measurements to cache.
 
 ```csharp
-public int MaxCacheSize { get; set; }
+public int MaxMeasureCacheSize { get; set; }
 ```
 
-Implements [MaxCacheSize](Velaptor.Content.Fonts.IFont.md#maxcachesize 'Velaptor.Content.Fonts.IFont.MaxCacheSize')
+Implements [MaxMeasureCacheSize](Velaptor.Content.Fonts.IFont.md#maxmeasurecachesize 'Velaptor.Content.Fonts.IFont.MaxMeasureCacheSize')
 
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
@@ -189,7 +204,7 @@ Implements [Name](Velaptor.Content.IContent.md#name 'Velaptor.Content.IContent.N
 
 ### Size 
 
-Gets or sets the size of the font in points.
+Gets the size of the font in points.
 
 ```csharp
 public uint Size { get; set; }
@@ -219,7 +234,7 @@ Implements [Source](Velaptor.Content.Fonts.IFont.md#source 'Velaptor.Content.Fon
 
 ### Style 
 
-Gets or sets the style of the font.
+Gets the style of the font.
 
 ```csharp
 public Velaptor.Content.Fonts.FontStyle Style { get; set; }

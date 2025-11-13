@@ -10,6 +10,7 @@ title: Velaptor.Content
 | :--- | :--- |
 | [AtlasData](Velaptor.Content.AtlasData.md 'Velaptor.Content.AtlasData') | Holds data relating to a texture atlas. |
 | [Audio](Velaptor.Content.Audio.md 'Velaptor.Content.Audio') | A single audio that can be played, paused etc. |
+| [ContentManager](Velaptor.Content.ContentManager.md 'Velaptor.Content.ContentManager') | Loads various types of content. |
 | [Texture](Velaptor.Content.Texture.md 'Velaptor.Content.Texture') | The texture to render to a screen. |
 
 | Interfaces | |
@@ -18,8 +19,8 @@ title: Velaptor.Content
 | [IAudio](Velaptor.Content.IAudio.md 'Velaptor.Content.IAudio') | A single audio that can be played, paused etc. |
 | [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent') | Represents loadable content data. |
 | [IContentLoadable](Velaptor.Content.IContentLoadable.md 'Velaptor.Content.IContentLoadable') | Provides the ability to load content. |
+| [IContentManager](Velaptor.Content.IContentManager.md 'Velaptor.Content.IContentManager') | Loads various types of content. |
 | [IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor.Content.IContentPathResolver') | Resolves file paths. |
-| [ILoader&lt;T&gt;](Velaptor.Content.ILoader_T_.md 'Velaptor.Content.ILoader<T>') | Loads data of type [T](Velaptor.Content.ILoader_T_.md#t 'Velaptor.Content.ILoader<T>.T'). |
 | [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture') | The texture to render to a screen. |
 
 | Enums | |

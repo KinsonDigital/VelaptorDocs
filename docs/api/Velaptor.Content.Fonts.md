@@ -12,7 +12,7 @@ title: Velaptor.Content.Fonts
 
 | Interfaces | |
 | :--- | :--- |
-| [IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont') | The font to use when rendering text to the screen. |
+| [IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor.Content.Fonts.IFont') | Represents a font with a set size and style that can be used to render text to the screen. |
 
 | Enums | |
 | :--- | :--- |

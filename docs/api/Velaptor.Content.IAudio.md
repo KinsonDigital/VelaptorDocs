@@ -11,14 +11,13 @@ A single audio that can be played, paused etc.
 
 ```csharp
 public interface IAudio :
-Velaptor.Content.IContent,
-System.IDisposable
+Velaptor.Content.IContent
 ```
 
 Derived  
 &#8627; [Audio](Velaptor.Content.Audio.md 'Velaptor.Content.Audio')
 
-Implements [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
+Implements [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
 ## Properties
 
 <a name='Velaptor.Content.IAudio.BufferType'></a>

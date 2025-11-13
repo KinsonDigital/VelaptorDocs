@@ -12,13 +12,12 @@ A single audio that can be played, paused etc.
 ```csharp
 public sealed class Audio :
 Velaptor.Content.IAudio,
-Velaptor.Content.IContent,
-System.IDisposable
+Velaptor.Content.IContent
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → Audio
 
-Implements [IAudio](Velaptor.Content.IAudio.md 'Velaptor.Content.IAudio'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
+Implements [IAudio](Velaptor.Content.IAudio.md 'Velaptor.Content.IAudio'), [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
 ## Properties
 
 <a name='Velaptor.Content.Audio.BufferType'></a>
@@ -58,7 +57,7 @@ Implements [FilePath](Velaptor.Content.IAudio.md#filepath 'Velaptor.Content.IAud
 Gets the unique ID of the audio.
 
 ```csharp
-public uint Id { get; set; }
+public uint Id { get; }
 ```
 
 Implements [Id](Velaptor.Content.IAudio.md#id 'Velaptor.Content.IAudio.Id')
@@ -201,18 +200,6 @@ Implements [Volume](Velaptor.Content.IAudio.md#volume 'Velaptor.Content.IAudio.V
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 ## Methods
-
-<a name='Velaptor.Content.Audio.Dispose()'></a>
-
-### Dispose() 
-
-Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-
-```csharp
-public void Dispose();
-```
-
-Implements [Dispose()](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable.Dispose 'System.IDisposable.Dispose')
 
 <a name='Velaptor.Content.Audio.FastForward(float)'></a>
 

@@ -1,6 +1,7 @@
 {
 	"deno.enablePaths": [
-		".github/cicd/"
+		".github/cicd/",
+		"dev-scripts/"
 	],
 	"deno.config": "deno.json",
 	"files.eol": "\n",

@@ -5,8 +5,8 @@ sidebar_position: 2
 # Loading Content
 
 Loading content is a crucial part of any game. The process of loading and unloading content is important
-for not only performance by getting the content loaded into memory before it is needed but also for
-managing the total memory of the game by unloading the content that is no longer needed.
+for not only performance by getting the content loaded into memory before it is needed, but also for
+managing the total memory of the game by unloading content that is no longer needed.
 
 
 ## <span className="color-step">Types of content</span>
@@ -20,132 +20,166 @@ The types of content supported by Velaptor are:
 | Atlas    | .png with .json                     |
 | Fonts    | .ttf                                |
 
-These formats are well-known.  More formats will be added in the future as needed.
+These formats are well-known. More formats will be added in the future as needed.
+
 
 ## <span className="color-step">Content caching</span>
 
-Caching content is done in Velaptor automatically. This caching helps significantly improve the performance of loading content.
-All content types are cached until the content item is unloaded.  If you want to take advantage of a texture that is already loaded and cached and wish to use it in another part of your game, you can do so by not unloading
-the content item.
+Caching content is done automatically in Velaptor. This caching helps significantly improve the performance of loading content.
+All content types are cached until the content item is unloaded. If you want to take advantage of a texture that is already loaded
+and cached and wish to use it in another part of your game, you can do so by not unloading the content item.
 
-When loading a content item with the same name later, Velaptor will check to see if it is already loaded and cached; if so, it will just use the cached content. The content item does not need to be loaded.
+When loading a content item with the same name later, Velaptor will check to see if it is already loaded and cached. If so, it will
+just use the cached content and the content item does not need to be loaded again.
 
 Velaptor uses the file's fully qualified path to identify if the file is cached.
 
-Velaptor can't know when content is needed or not.  Managing the content is put into the hands of the game developer.  The game developer is responsible for loading and unloading content as required.
+Velaptor can't know when content is needed or not. Managing the content is put into the hands of the game developer. The game developer is responsible for loading and unloading content as required.
+
 
 ## <span className="color-step">Content paths</span>
 
-You can use various types of pathing in Velaptor to load content. Depending on the path, Velaptor will automatically determine where the content is located based on whether you are using relative or absolute paths.
+You can use various types of paths in Velaptor to load content. Depending on the path, Velaptor will automatically determine where the content is located based on whether you are using relative or absolute paths.
 
 ### <span className="color-sub-step">Relative paths</span>
 
 By default, Velaptor looks for content in the following locations:
 
-- Graphics: `Content/Graphics`
-- Audio: `Content/Audio`
-- Atlas: `Content/Atlas`
-- Fonts: `Content/Fonts`
+- Graphics: `<proj-path>/Content/Graphics`
+- Audio: `<proj-path>/Content/Audio`
+- Atlas: `<proj-path>/Content/Atlas`
+- Fonts: `<proj-path>/Content/Fonts`
 
-When loading content with relative paths, these relative paths are _**relative**_ to the content folder based on its content type.
+When loading content with relative paths, these paths are _**relative**_ to the content folder based on its content type.
 
-For example, if you are loading a texture named _**velaptor-logo.png**_, you would use the following path:
+For example, to load a texture named _**velaptor-logo.png**_:
 
 ```csharp showLineNumbers
 const logoPath = "velaptor-logo";
 
-var textureLoader = ContentLoaderFactory.CreateFontLoader();
-var mascotTexture = textureLoader.Load(logoPath);
+var contentManager = ContentManager.Create();
+contentManager.Load<ITexture>(logoPath);
 ```
 
-Notice that the content item path does not include the relative `Content/Graphics` directory path or the file extension.
-Velaptor automatically looks in the `Content/Graphics` directory for the content item because you are using a texture loader, which will save you unnecessary typing.
+Notice the path excludes the `Content/Graphics` directory and a file extension. Velaptor automatically looks in the correct content directory based on the loader type.
 
-:::tip Default pathing
-Remember, as long as you are using relative file paths, you are telling Velaptor to load the content
-in the default content folder for that content type.
+:::tip Default Paths
+Relative file paths tell Velaptor to load content from the default content folder for that content type.
 :::
 
 ### <span className="color-sub-step">Absolute paths</span>
 
-You can also use absolute paths to load content.  Absolute paths give you more control over where you want to put your content.
+You can also use absolute paths to load content. Absolute paths give you more control over where you want to put your content.
+Remember, though, if you want to avoid having to use fully qualified paths every time you load content, you will need to
+implement your own solution for resolving content paths.
 
 ### <span className="color-sub-step">File extensions</span>
 
-You can include or exclude the file extension when using absolute or relative paths. Not including the file extension tells Velaptor to look for files with the supported formats in a particular order until the file is found.
+You can include or exclude the file extension when using absolute or relative paths. Not including the file extension tells Velaptor
+to look for files with the supported formats in a particular order until the file is found.
 
-For example, with audio, you can use _**ogg**_ or _**mp3**_ files.  If you do not include the file extension, Velaptor will
-first look for an _**ogg**_ file with the same base file name, and if not found, it will look for an _**mp3**_ file with the same name.  If neither file format exists, then an exception will be thrown.
+For example, with audio, you can use _**ogg**_ or _**mp3**_ files. If you do not include the file extension, Velaptor will
+first look for an _**ogg**_ file with the same base file name, and if not found, it will look for an _**mp3**_ file with the same name.
+If neither file format exists, an exception will be thrown.
 
 :::info Auto File Format Loading
 The only content type requiring some forethought into multiple formats is audio.
 :::
 
-:::tip Never use file extensions
-To avoid file extensions, use a different base file name across multiple files with other extensions.  This way, Velaptor will always find the file you want to load.
-
-For example, if you have a sound named _**explosion-1.ogg**_ and _**explosion-2.mp3**_, then you do not need to worry
-about using a file extension because the base file names _**explosion-1**_ and _**explosion-2**_ are different and Velaptor
-can easily distinguish between the two.
-
-Most of the time, there is no need to worry about file extensions because there is no need for the same base file name.
-This feature is for very unique situations.
+:::tip File Extensions
+Using unique base file names across different format types eliminates the need to specify file extensions.
+For example, _**explosion-1.ogg**_ and _**explosion-2.mp3**_ can both be loaded without extensions since their base names differ.
 :::
 
 
 ## <span className="color-step">Loading content</span>
 
-Loading content is very straightforward.  Depending on the type of content format you want to load, you use the appropriate
-content loader to load the content and is required to be in the `OnLoad()` method in your game class.
+Create a `ContentManager` instance and use it to load the type of content you need.
 
 ```csharp showLineNumbers
 protected override void OnLoad()
 {
+    var contentManager = ContentManager.Create();
+
     // Loading textures
-    var textureLoader = ContentLoaderFactory.CreateTextureLoader();
-    var texture = textureLoader.Load("velaptor-logo");
+    var texture = contentManager.Load<ITexture>("velaptor-logo");
 
     // Loading audio
-    var audioLoader = ContentLoaderFactory.CreateAudioLoader();
-    var audio = audioLoader.Load("ice-beam");
+    var audio = contentManager.Load<IAudio>("ice-beam");
 
-    // Loading atlas'
-    var atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
-    var atlas = atlasLoader.Load("level-1-atlas");
+    // Loading atlas data
+    var atlas = contentManager.Load<IAtlasData>("level-1-atlas");
 
     // Loading fonts
-    var fontLoader = ContentLoaderFactfory.CreateFontLoader();
-    var font = fontLoader.Load("Arial");
+    var font = contentManager.Load<IFont>("game-throne");
 }
+```
+
+### <span className="color-sub-step">Loading different buffer types</span>
+
+When loading audio using the `ContentManager.Load<IAudio>()` method, you are not specifying
+the type of audio buffer you want to use. By default, the `Load<IAudio>()` method will load
+the audio using the `AudioBuffer.Full` buffer type. If you want to use a different audio buffer type,
+you can use the `LoadAudio()` method as shown below.
+
+```csharp showLineNumbers
+var contentManager = ContentManager.Create();
+var audio = contentManager.LoadAudio("ice-beam", AudioBuffer.Stream);
+```
+
+### <span className="color-sub-step">Loading different font sizes</span>
+
+When loading fonts using the `ContentManager.Load<IFont>()` method, you are not specifying
+the size of the font you want to use. By default, the `Load<IFont>()` method will load
+the font using a size of 12 points. If you want to have control over the size of the font,
+you can use the `LoadFont()` method as shown below.
+
+```csharp showLineNumbers
+var contentManager = ContentManager.Create();
+var font = contentManager.LoadFont("game-font", 16);
 ```
 
 ## <span className="color-step">Unloading content</span>
 
-Unloading content is also very straightforward. Depending on your needs, it is essential to keep your memory usage as low as possible.
+To keep memory usage low, unload content when it's no longer needed.
+For example, unload level-specific content before loading the next level.
 
-Do in the `OnUnload()` method.
+Unload your content in the `OnUnload()` in your derived `Window` class or in the `UnloadContent()` method
+of your derived `SceneBase` class.
 
 ```csharp showLineNumbers
 protected override void OnUnload()
 {
     // Unloading textures
-    textureLoader.Unload(texture);
+    this.contentManager.Unload(texture);
 
     // Unloading audio
-    audioLoader.Unload(audio);
+    this.contentManager.Unload(audio);
 
     // Unloading atlas'
-    atlasLoader.Unload(atlas);
+    this.contentManager.Unload(atlas);
 
     // Unloading fonts
-    fontLoader.Unload(font);
+    this.contentManager.Unload(font);
 }
 ```
+
+:::note Unloading Content
+Remember, to unload content, you are not only freeing up memory but also removing the content from the cache.
+This means that the next time you load the exact same content, it will have to be fully loaded again.
+
+Loading content that is uncached is a slower process than a cached content item.
+:::
 
 
 ## <span className="color-step">Cross-platform features</span>
 
-Velaptor is cross-platform and considers the differences between paths on different operating systems.
-Windows and POSIX systems such as Linux and MacOS have different pathing conventions.  Window uses backslashes and forward
-slashes for pathing, while POSIX systems only use forward slashes.  You can use back or forward slashes in Velaptor, and it
-Velaptor will automatically convert all backslashes to cross-platform compatible forward slashes.
+Velaptor is cross-platform and handles path differences between operating systems automatically.
+Windows supports both backslashes and forward slashes, while POSIX systems (Linux, MacOS) use only forward slashes.
+You can use either slash type, and Velaptor will ensure the path works correctly on each platform.
+
+:::caution Fully Qualified Paths
+Fully qualified paths bypass Velaptor's automatic content directory resolution. Velaptor will convert `Windows` paths to `POSIX` paths automatically, but not vice versa.
+
+Avoid hard-coded fully qualified paths! If implementing custom path resolution, use the built-in dotnet `Path` class to ensure cross-platform compatibility.
+:::

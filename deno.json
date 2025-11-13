@@ -4,7 +4,8 @@
         "fmt": "deno fmt ./.github/cicd/",
         "lint": "deno lint ./.github/cicd/",
         "check": "deno check ./.github/cicd/",
-        "reload-cache": "deno cache -r ./.github/cicd/"
+        "reload-cache": "deno cache -r ./.github/cicd/",
+        "create-pr": "deno run -A jsr:@kinsondigital/sprocket@2.2.0 run-job ./DevTools/sprocket-config.ts --job-name Create-PR"
     },
     "fmt": {
         "include": [

@@ -16,7 +16,6 @@ const config: Config = {
 	organizationName: 'KinsonDigital', // Usually your GitHub org/user name.
 	projectName: 'Velaptor', // Usually your repo name.
 	onBrokenLinks: 'throw',
-	onBrokenMarkdownLinks: 'warn',
 	// Used for creating diagrams
 	markdown: {
 		mermaid: true,

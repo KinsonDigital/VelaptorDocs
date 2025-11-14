@@ -13,7 +13,6 @@ using Signals.Data;
 using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -26,16 +25,16 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
     private const int SelectionItemMargin = 5;
     private const int SelectionUiMargin = 10;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<IAtlasData> atlasLoader;
+    private readonly IContentManager contentManager;
     private WeaponType typeOfWeapon;
     private Vector2 orangePos;
     private Vector2 redPos;
     private Vector2 greenPos;
     private Vector2 bluePos;
     private RectangleF worldBounds;
-    private IAtlasData atlasData;
     private Rectangle selectionSrcRect;
     private Rectangle lazerSrcRect;
+    private IAtlasData? atlasData;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="WeaponSelectionUi"/> class.
@@ -57,7 +56,7 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
         swapWeaponSignal.Subscribe(swapSubscription);
         worldSignal.Subscribe(worldSubscription);
 
-        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
+        this.contentManager = ContentManager.Create();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
     }
 
@@ -81,7 +80,7 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
             return;
         }
 
-        this.atlasData = this.atlasLoader.Load("atlas");
+        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
 
         this.selectionSrcRect = this.atlasData.GetFrames("weapon-selection")[0].Bounds;
         this.lazerSrcRect = this.atlasData.GetFrames("laser")[0].Bounds;
@@ -99,7 +98,13 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
     /// <summary>
     /// Unloads the weapons selection UI content.
     /// </summary>
-    public void UnloadContent() => this.atlasLoader.Unload(this.atlasData);
+    public void UnloadContent()
+    {
+        if (this.atlasData is not null)
+        {
+            this.contentManager.Unload(this.atlasData);
+        }
+    }
 
     /// <summary>
     /// Updates the weapon selection UI.
@@ -127,6 +132,11 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
     /// </exception>
     public void Render()
     {
+        if (this.atlasData is null)
+        {
+            throw new Exception("The atlas data is null.");
+        }
+
         // Render the colored lazer options
         RenderWeaponTypes(this.orangePos, Color.Orange);
         RenderWeaponTypes(this.redPos, Color.Red);
@@ -165,6 +175,11 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
     /// <param name="color">The color of the weapon.</param>
     private void RenderWeaponTypes(Vector2 pos, Color color)
     {
+        if (this.atlasData is null)
+        {
+            throw new Exception("The atlas data is null.");
+        }
+
         var destRect = new Rectangle(
             (int)pos.X,
             (int)pos.Y,

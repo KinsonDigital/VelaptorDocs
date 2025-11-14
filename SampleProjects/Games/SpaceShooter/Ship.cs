@@ -12,7 +12,6 @@ using Signals.Data;
 using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -27,7 +26,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     private const float VelocityY = 50;
     private const float MaxVel = 350;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<IAtlasData> atlasLoader;
+    private readonly IContentManager contentManager;
     private readonly IAppInput<KeyboardState> keyboard;
     private readonly Vector2 minVelocity = new (-MaxVel, -MaxVel);
     private readonly Vector2 maxVelocity = new (MaxVel, MaxVel);
@@ -46,7 +45,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
     private bool downKeyDown;
     private bool isNotMovingHorizontally;
     private bool isNotMovingVertically;
-    private IAtlasData atlasData;
+    private IAtlasData? atlasData;
     private Rectangle srcRect;
 
     /// <summary>
@@ -69,7 +68,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
         this.shipSignal = shipSignal;
 
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
+        this.contentManager = ContentManager.Create();
 
         this.keyboard = HardwareFactory.GetKeyboard();
 
@@ -91,7 +90,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.atlasData = this.atlasLoader.Load("atlas");
+        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
         this.srcRect = this.atlasData.GetFrames("ghost-ship")[0].Bounds;
 
         this.halfWidth = this.srcRect.Width / 2f;
@@ -120,7 +119,11 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.atlasLoader.Unload(this.atlasData);
+        if (this.atlasData is not null)
+        {
+            this.contentManager.Unload(this.atlasData);
+        }
+
         this.weapon.UnloadContent();
     }
 

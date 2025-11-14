@@ -6,7 +6,6 @@ namespace Audio;
 
 using Velaptor;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Input;
 using Velaptor.UI;
@@ -16,7 +15,7 @@ using Velaptor.UI;
 /// </summary>
 public class Game : Window
 {
-    private readonly ILoader<IAudio> audioLoader;
+    private readonly IContentManager contentManager;
     private readonly IAppInput<KeyboardState> keyboard;
     private IAudio? music;
     private KeyboardState prevKeyState;
@@ -31,7 +30,7 @@ public class Game : Window
         Height = 600;
 
         this.keyboard = HardwareFactory.GetKeyboard();
-        this.audioLoader = ContentLoaderFactory.CreateAudioLoader();
+        this.contentManager = ContentManager.Create();
     }
 
     /// <summary>
@@ -39,7 +38,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.music = this.audioLoader.Load("deep-consistency", AudioBuffer.Full);
+        this.music = this.contentManager.LoadAudio("deep-consistency", AudioBuffer.Full);
 
         base.OnLoad();
     }
@@ -49,7 +48,11 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.audioLoader.Unload(this.music);
+        if (this.music is not null)
+        {
+            this.contentManager.Unload(this.music);
+        }
+
         base.OnUnload();
     }
 

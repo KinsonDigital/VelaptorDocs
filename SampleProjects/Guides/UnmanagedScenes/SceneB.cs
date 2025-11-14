@@ -9,7 +9,6 @@ using System.Numerics;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
@@ -23,11 +22,9 @@ public class SceneB : SceneBase
     private const int WindowWidth = 1000;
     private const int WindowHeight = 1000;
     private const string Instructions = "Left & right arrow keys to navigate to scenes.\nClick anywhere in the window.";
-    private readonly ILoader<ITexture> textureLoader;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<IFont> fontLoader;
+    private readonly IContentManager contentManager;
     private readonly IFontRenderer fontRenderer;
-    private readonly ILoader<IAudio> audioLoader;
     private readonly IAppInput<MouseState> mouse;
     private PointF logoPosition;
     private MouseState prevMouseState;
@@ -40,9 +37,7 @@ public class SceneB : SceneBase
     /// </summary>
     public SceneB()
     {
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
-        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
-        this.audioLoader = ContentLoaderFactory.CreateAudioLoader();
+        this.contentManager = ContentManager.Create();
 
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
         this.fontRenderer = RendererFactory.CreateFontRenderer();
@@ -55,9 +50,9 @@ public class SceneB : SceneBase
     /// </summary>
     public override void LoadContent()
     {
-        this.logoTexture = this.textureLoader.Load("velaptor-mascot");
-        this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
-        this.audio = this.audioLoader.Load("mario-jump", AudioBuffer.Full);
+        this.logoTexture = this.contentManager.Load<ITexture>("velaptor-mascot");
+        this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 12);
+        this.audio = this.contentManager.LoadAudio("mario-jump", AudioBuffer.Full);
 
         // Set the default location of the texture to the center of the window
         this.logoPosition = new Point(WindowWidth / 2, WindowHeight / 2);
@@ -70,9 +65,20 @@ public class SceneB : SceneBase
     /// </summary>
     public override void UnloadContent()
     {
-        this.textureLoader.Unload(this.logoTexture);
-        this.fontLoader.Unload(this.font);
-        this.audioLoader.Unload(this.audio);
+        if (this.logoTexture is not null)
+        {
+            this.contentManager.Unload(this.logoTexture);
+        }
+
+        if (this.font is not null)
+        {
+            this.contentManager.Unload(this.font);
+        }
+
+        if (this.audio is not null)
+        {
+            this.contentManager.Unload(this.audio);
+        }
 
         base.UnloadContent();
     }

@@ -9,7 +9,6 @@ using System.Numerics;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
@@ -22,8 +21,7 @@ public class SceneA : SceneBase
 {
     private const int WindowWidth = 1000;
     private const string Instructions = "Left & right arrow keys to navigate to scenes.";
-    private readonly ILoader<ITexture> textureLoader;
-    private readonly ILoader<IFont> fontLoader;
+    private readonly IContentManager contentManager;
     private readonly ITextureRenderer textureRenderer;
     private readonly IFontRenderer fontRenderer;
     private readonly IAppInput<MouseState> mouse;
@@ -36,8 +34,7 @@ public class SceneA : SceneBase
     /// </summary>
     public SceneA()
     {
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
-        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+        this.contentManager = ContentManager.Create();
 
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
         this.fontRenderer = RendererFactory.CreateFontRenderer();
@@ -50,8 +47,8 @@ public class SceneA : SceneBase
     /// </summary>
     public override void LoadContent()
     {
-        this.logoTexture = this.textureLoader.Load("kd-logo");
-        this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
+        this.logoTexture = this.contentManager.Load<ITexture>("kd-logo");
+        this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 12);
 
         base.LoadContent();
     }
@@ -61,8 +58,15 @@ public class SceneA : SceneBase
     /// </summary>
     public override void UnloadContent()
     {
-        this.textureLoader.Unload(this.logoTexture);
-        this.fontLoader.Unload(this.font);
+        if (this.logoTexture is not null)
+        {
+            this.contentManager.Unload(this.logoTexture);
+        }
+
+        if (this.font is not null)
+        {
+            this.contentManager.Unload(this.font);
+        }
 
         base.UnloadContent();
     }

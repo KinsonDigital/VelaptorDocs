@@ -7,7 +7,6 @@ namespace RotatingTextures;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
@@ -20,7 +19,7 @@ public class Game : Window
     private const float AngleSpeed = 50;
     private readonly ITextureRenderer textureRenderer;
     private readonly IBatcher batcher;
-    private readonly ILoader<ITexture> textureLoader;
+    private readonly IContentManager contentManager;
     private ITexture? textTexture;
     private ITexture? gearTexture;
     private float angle;
@@ -34,7 +33,7 @@ public class Game : Window
         Width = 800;
         Height = 800;
 
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+        this.contentManager = ContentManager.Create();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
         this.batcher = RendererFactory.CreateBatcher();
     }
@@ -44,8 +43,8 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.textTexture = this.textureLoader.Load("text");
-        this.gearTexture = this.textureLoader.Load("gear");
+        this.textTexture = this.contentManager.Load<ITexture>("text");
+        this.gearTexture = this.contentManager.Load<ITexture>("gear");
 
         base.OnLoad();
     }
@@ -55,8 +54,15 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.textureLoader.Unload(this.textTexture);
-        this.textureLoader.Unload(this.gearTexture);
+        if (this.textTexture is not null)
+        {
+            this.contentManager.Unload(this.textTexture);
+        }
+
+        if (this.gearTexture is not null)
+        {
+            this.contentManager.Unload(this.gearTexture);
+        }
 
         base.OnUnload();
     }

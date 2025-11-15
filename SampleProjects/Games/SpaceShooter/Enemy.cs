@@ -13,7 +13,6 @@ using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.Exceptions;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -25,11 +24,11 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
 {
     private const double AngularVelocity = 100;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<IAtlasData> atlasLoader;
     private readonly IDisposable worldSignalUnsubscriber;
     private readonly IEnemyUpdateSignal enemyUpdateSignal;
     private readonly RandomNumGenerator random = new ();
     private readonly string[] enemyTypes = ["red-enemy", "orange-enemy"];
+    private readonly IContentManager contentManager;
     private readonly MultiPath multiPath = new ();
     private readonly Vector2 unsetVector = new (float.MinValue, float.MaxValue);
     private IAtlasData? atlasData;
@@ -54,7 +53,7 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
 
         this.enemyUpdateSignal = enemyUpdateSignal;
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
+        this.contentManager = ContentManager.Create();
     }
 
     /// <summary>
@@ -78,7 +77,7 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         }
 
         this.multiPath.IsLooping = false;
-        this.atlasData = this.atlasLoader.Load("atlas");
+        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
 
         if (this.atlasData is null)
         {
@@ -101,7 +100,11 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         }
 
         this.worldSignalUnsubscriber.Dispose();
-        this.atlasLoader.Unload(this.atlasData);
+
+        if (this.atlasData is not null)
+        {
+            this.contentManager.Unload(this.atlasData);
+        }
     }
 
     /// <summary>

@@ -1,12 +1,17 @@
 {
     "tasks": {
-        "build": "deno check './.github/cicd/**/*.ts'",
-        "fmt": "deno fmt './.github/cicd/**/*.ts'",
-        "lint": "deno lint './.github/cicd/**/*.ts'",
-        "reload-cache": "deno cache -r './.github/cicd/core/**/*.ts' './.github/cicd/scripts/**/*.ts'"
+        "build": "deno check ./.github/cicd/",
+        "fmt": "deno fmt ./.github/cicd/",
+        "lint": "deno lint ./.github/cicd/",
+        "check": "deno check ./.github/cicd/",
+        "reload-cache": "deno cache -r ./.github/cicd/",
+        "create-pr": "deno run -A jsr:@kinsondigital/sprocket@2.2.0 run-job ./DevTools/sprocket-config.ts --job-name Create-PR",
+        "create-nuget-pkg": "deno run -ERWSN --allow-run ./dev-scripts/create-local-nuget.ts"
     },
-	"fmt": {
-        "include": [".github/cicd/**/*.ts"],
+    "fmt": {
+        "include": [
+            ".github/cicd/"
+        ],
         "exclude": [
             "**/.config/",
             "**/.docusaurus/",
@@ -30,51 +35,50 @@
         "indentWidth": 4,
         "semiColons": true,
         "singleQuote": false
-	},
-    "nodeModulesDir": "none",
-	"lint": {
-        "include": [".github/cicd/**/*.ts"],
+    },
+    "lint": {
         "exclude": [
-            "**/*.json",
-            "**/*.md",
-            "**/*.mdx",
-            "**/*.js",
-            ".docusaurus/",
-            "**/code_coverage/",
+            "**/.config/",
+            "**/.docusaurus/",
+            "**/.vscode/",
+            "**/node_modules/",
             "**/build/",
             "**/src/",
             "**/static/",
+            "**/code_coverage/",
+            "**/*.md",
+            "**/*.json",
+            "**/*.js",
+            "**/RepoSrc/",
             "**/versioned_docs/",
-            "**/versioned_sidebars/",
             "**/SampleProjects/",
-            "**/node_modules/",
-            "**/docs/",
-            "**/RepoSrc/"
-        ],
-		"rules": {
-			"include": [
-				"explicit-function-return-type"
-			]
-		}
-	},
+            "**/unprocessed-docs/",
+            "playground.ts"
+        ]
+    },
     "exclude": [
+        "**/.config/",
+        "**/.docusaurus/",
+        "**/.vscode/",
+        "**/node_modules/",
+        "**/build/",
+        "**/src/",
+        "**/static/",
+        "**/code_coverage/",
         "**/*.md",
-        "**/*.mdx",
         "**/*.json",
         "**/*.js",
-        ".git/",
-        ".docusaurus/",
-        "code_coverage/",
-        "build/",
-        "docs/",
-        "src/",
-        "static/",
-        "**/SampleProjects/",
+        "**/RepoSrc/",
         "**/versioned_docs/",
-        "**/versioned_sidebars/",
-        "**/node_modules/",
-        "**/package.json",
-        "**/build/",
-        "**/RepoSrc/"
-    ]
+        "**/SampleProjects/",
+        "**/unprocessed-docs/",
+        "playground.ts"
+    ],
+    "imports": {
+        "@std/fs": "jsr:@std/fs@^1.0.19",
+        "@std/path": "jsr:@std/path@1.1.2",
+        "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.8",
+        "@kd-clients/github": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/github",
+        "@kd-clients/packaging": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/packaging"
+    }
 }

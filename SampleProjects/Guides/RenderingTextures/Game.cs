@@ -7,7 +7,6 @@ namespace RenderingTextures;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
@@ -19,7 +18,7 @@ public class Game : Window
 {
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<ITexture> textureLoader;
+    private readonly IContentManager contentManager;
     private ITexture? mascotTexture;
 
     /// <summary>
@@ -31,7 +30,7 @@ public class Game : Window
         Width = 800;
         Height = 800;
 
-        this.textureLoader = ContentLoaderFactory.CreateTextureLoader();
+        this.contentManager = ContentManager.Create();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
         this.batcher = RendererFactory.CreateBatcher();
     }
@@ -41,7 +40,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.mascotTexture = this.textureLoader.Load("velaptor-mascot");
+        this.mascotTexture = this.contentManager.Load<ITexture>("velaptor-mascot");
 
         base.OnLoad();
     }
@@ -51,7 +50,10 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.textureLoader.Unload(this.mascotTexture);
+        if (this.mascotTexture is not null)
+        {
+            this.contentManager.Unload(this.mascotTexture);
+        }
 
         base.OnUnload();
     }

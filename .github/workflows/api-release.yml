@@ -1,18 +1,16 @@
 name: 🚀Production API Release
 run-name: 🚀Production API Release (Velaptor ${{ inputs.api-version }}) ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
 
-
 defaults:
   run:
     shell: pwsh
 
-
 on:
-  # NOTE: Do not delete this trigger.  This is used by the Velaptor release system 
+  # NOTE: Do not delete this trigger.  This is used by the Velaptor release system
   workflow_dispatch:
     inputs:
       api-version:
-        description: 'The version of API docs to release.'
+        description: "The version of API docs to release."
         required: true
         type: string
       dry-run:
@@ -20,7 +18,6 @@ on:
         required: false
         default: false
         type: boolean
-
 
 jobs:
   validate_branch:
@@ -37,7 +34,6 @@ jobs:
             Write-Host "::error::This workflow can only be run on the '${{ vars.RELEASE_BRANCH }}' branch.";
             exit 1;
           }
-
 
   validate_api_version:
     name: Validate API Version (${{ inputs.api-version }})
@@ -64,7 +60,6 @@ jobs:
           VERSION: "${{ inputs.api-version }}"
           GITHUB_TOKEN: "${{ secrets.CICD_TOKEN }}"
         run: deno run -ERN "${{ github.workspace }}/.github/cicd/scripts/velaptor-version-exists.ts";
-
 
   update_csharp_project_files:
     name: Update CSharp Project Files
@@ -99,7 +94,6 @@ jobs:
       - name: Build Solution
         run: dotnet build ${{ github.workspace }}/${{ vars.SAMPLES_DIR_NAME }}/${{ vars.SAMPLES_SOLUTION_NAME }}.sln -c Debug;
 
-
   perform_api_release:
     name: Perform API Release
     needs: [validate_branch, validate_api_version, update_csharp_project_files]
@@ -108,7 +102,7 @@ jobs:
       contents: write
       pages: write
       id-token: write
-    concurrency: 
+    concurrency:
       group: "pages"
       cancel-in-progress: true
     steps:
@@ -135,13 +129,14 @@ jobs:
           dotnet-version: ${{ vars.DEFAULT_DOC_DOTNET_SDK_VERSION }}
 
       - name: Setup Node (${{ vars.NODE_VERSION }})
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ vars.NODE_VERSION }}
 
       - name: Setup PNPM (${{ vars.PNPM_VERSION }})
         uses: pnpm/action-setup@v4
         with:
+          
           version: ${{ vars.PNPM_VERSION }}
 
       - name: Update CSharp Project Files
@@ -149,10 +144,10 @@ jobs:
           ROOT_DIR_PATH: "${{ github.workspace }}/SampleProjects"
           VERSION_OR_INTERACTIVE: "${{ inputs.api-version }}"
         run: deno run -ERWNS "${{ github.workspace }}/.github/cicd/scripts/update-velaptor-nugets.ts";
-  
+
       - name: Remove Oldest API Version
         env:
-          SEARCH_DIR_PATH: "${{ github.workspace }}"        
+          SEARCH_DIR_PATH: "${{ github.workspace }}"
         run: deno run -ERW "${{ github.workspace }}/.github/cicd/scripts/delete-oldest-api-docs.ts";
 
       - name: Generate API Docs (${{ inputs.api-version }})
@@ -212,7 +207,7 @@ jobs:
           # Add the letter 'v' if it is missing
           $apiVersion = $apiVersion.StartsWith("v") ? $apiVersion : "v" + $apiVersion;
           $apiVersion = "api-$apiVersion";
-          
+
           $tag = "${{ steps.apply_version_to_site.outputs.version }}";
 
           git config --global user.email "${{ vars.GIT_CONFIG_EMAIL }}";

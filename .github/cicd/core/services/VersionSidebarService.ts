@@ -1,5 +1,5 @@
+import { existsSync, walkSync } from "@std/fs";
 import { Guard } from "../Guard.ts";
-import { existsSync, walkSync } from "../../deps.ts";
 import { Utils } from "../Utils.ts";
 
 /**

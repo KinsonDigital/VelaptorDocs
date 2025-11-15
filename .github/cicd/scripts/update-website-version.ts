@@ -1,4 +1,4 @@
-import { existsSync } from "jsr:@std/fs@1.0.8";
+import { existsSync } from "@std/fs";
 
 const envVarValue: string | undefined = Deno.env.get("GITHUB_OUTPUT");
 

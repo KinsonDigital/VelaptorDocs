@@ -1,7 +1,7 @@
+import { walkSync } from "@std/fs";
 import { Guard } from "../Guard.ts";
 import { VersionSideBarService } from "./VersionSidebarService.ts";
 import { VersionsFileService } from "./VersionsFileService.ts";
-import { walkSync } from "../../deps.ts";
 import { Utils } from "../Utils.ts";
 
 /**

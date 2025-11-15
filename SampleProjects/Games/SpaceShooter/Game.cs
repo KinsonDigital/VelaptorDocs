@@ -13,7 +13,6 @@ using UI;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.UI;
 using IAudio = Velaptor.Content.IAudio;
@@ -24,7 +23,7 @@ using IAudio = Velaptor.Content.IAudio;
 public class Game : Window
 {
     private readonly IBatcher batcher;
-    private readonly ILoader<IAudio> soundLoader;
+    private readonly IContentManager contentManager;
     private readonly IWorldSignal worldSignal;
     private readonly Ship ship;
     private readonly List<Enemy> enemies = new ();
@@ -48,7 +47,7 @@ public class Game : Window
         this.spawnInterval = this.random.Next(1000, 5000);
 
         this.batcher = RendererFactory.CreateBatcher();
-        this.soundLoader = ContentLoaderFactory.CreateAudioLoader();
+        this.contentManager = ContentManager.Create();
         this.ship = App.Factory.GetInstance<Ship>();
 
         for (var i = 0; i < 10; i++)
@@ -87,7 +86,7 @@ public class Game : Window
             enemy.LoadContent();
         }
 
-        this.music = this.soundLoader.Load("music", AudioBuffer.Stream);
+        this.music = this.contentManager.LoadAudio("music", AudioBuffer.Stream);
 
         this.music.IsLooping = true;
 
@@ -103,7 +102,11 @@ public class Game : Window
         this.score.UnloadContent();
         this.ship.UnloadContent();
         this.weaponSelectionUi.UnloadContent();
-        this.soundLoader.Unload(this.music);
+
+        if (this.music is not null)
+        {
+            this.contentManager.Unload(this.music);
+        }
 
         foreach (var enemy in this.enemies)
         {

@@ -10,7 +10,6 @@ using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
@@ -22,7 +21,7 @@ public class Game : Window
 {
     private const string Text = "Hello Velaptor!";
     private readonly Random random = new ();
-    private readonly ILoader<IFont> fontLoader;
+    private readonly IContentManager contentManager;
     private readonly IFontRenderer fontRenderer;
     private readonly IBatcher batcher;
     private IFont? font;
@@ -39,7 +38,7 @@ public class Game : Window
         Width = 800;
         Height = 800;
 
-        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+        this.contentManager = ContentManager.Create();
         this.batcher = RendererFactory.CreateBatcher();
         this.fontRenderer = RendererFactory.CreateFontRenderer();
     }
@@ -49,7 +48,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.font = this.fontLoader.Load("TimesNewRoman-Regular", 22);
+        this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 22);
 
         base.OnLoad();
     }
@@ -89,7 +88,11 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.fontLoader.Unload(this.font);
+        if (this.font is not null)
+        {
+            this.contentManager.Unload(this.font);
+        }
+
         base.OnUnload();
     }
 

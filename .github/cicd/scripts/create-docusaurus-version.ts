@@ -1,4 +1,4 @@
-import { Input } from "../deps.ts";
+import { Input } from "@cliffy/prompt";
 
 console.clear();
 
@@ -22,8 +22,7 @@ const version = await Input.prompt({
 
 console.log(`Chosen Version: ${version}`);
 
-const isWindows = Deno.build.os === "windows";
-const fullNPMPath = isWindows ? `${nodeJSDirPath}npm.cmd` : `${nodeJSDirPath}npm`;
+const fullNPMPath = Deno.build.os === "windows" ? `${nodeJSDirPath}npm.cmd` : `${nodeJSDirPath}npm`;
 
 console.log(`OS NPM Path: ${fullNPMPath}`);
 

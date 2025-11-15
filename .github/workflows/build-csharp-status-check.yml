@@ -1,16 +1,13 @@
 name: ✅Build CSharp Status Check
 run-name: ✅Build CSharp Status Check
 
-
 defaults:
   run:
     shell: pwsh
 
-
 on:
   pull_request:
-    branches: main
-
+    branches: [main]
 
 jobs:
   detect_fork:
@@ -19,15 +16,14 @@ jobs:
     outputs:
       is_fork: ${{ steps.detect_fork.outputs.is_fork }}
     steps:
-    - name: Detect Fork
-      id: detect_fork
-      run: |
-        if ("${{ github.event.pull_request.head.repo.full_name }}" -ne "${{ github.event.pull_request.base.repo. full_name }}") {
-          echo "is_fork=true" >> $env:GITHUB_OUTPUT;
-        } else {
-          echo "is_fork=false" >> $env:GITHUB_OUTPUT;
-        }
-
+      - name: Detect Fork
+        id: detect_fork
+        run: |
+          if ("${{ github.event.pull_request.head.repo.full_name }}" -ne "${{ github.event.pull_request.base.repo. full_name }}") {
+            echo "is_fork=true" >> $env:GITHUB_OUTPUT;
+          } else {
+            echo "is_fork=false" >> $env:GITHUB_OUTPUT;
+          }
 
   csharp_projects_build_status_check:
     name: CSharp Projects Build Status Check

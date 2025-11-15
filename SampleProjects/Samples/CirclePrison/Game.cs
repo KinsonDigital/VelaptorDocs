@@ -9,7 +9,6 @@ using System.Numerics;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -24,7 +23,7 @@ public class Game : Window
     private readonly IBatcher batcher;
     private readonly IShapeRenderer shapeRenderer;
     private readonly ILineRenderer lineRenderer;
-    private readonly ILoader<IAudio> audioLoader;
+    private readonly IContentManager contentManager;
     private readonly IAppInput<MouseState> mouse;
     private readonly Random random = new ();
     private CircleShape prisoner;
@@ -49,7 +48,7 @@ public class Game : Window
         this.shapeRenderer = RendererFactory.CreateShapeRenderer();
         this.lineRenderer = RendererFactory.CreateLineRenderer();
 
-        this.audioLoader = ContentLoaderFactory.CreateAudioLoader();
+        this.contentManager = ContentManager.Create();
 
         this.mouse = HardwareFactory.GetMouse();
     }
@@ -94,7 +93,7 @@ public class Game : Window
 
         this.prisoner.Position = new Vector2(x, y);
 
-        this.audio = this.audioLoader.Load("bounce", AudioBuffer.Full);
+        this.audio = this.contentManager.LoadAudio("bounce", AudioBuffer.Full);
 
         if (this.audio.IsPlaying)
         {
@@ -151,6 +150,16 @@ public class Game : Window
         this.batcher.End();
 
         base.OnDraw(frameTime);
+    }
+
+    protected override void OnUnload()
+    {
+        if (this.audio is not null)
+        {
+            this.contentManager.Unload(this.audio);
+        }
+
+        base.OnUnload();
     }
 
     /// <summary>

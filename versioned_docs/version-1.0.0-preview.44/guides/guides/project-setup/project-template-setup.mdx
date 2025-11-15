@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+---
+
+import GuideLink from "@site/src/components/GuideLink";
+
+# Quick Project Setup Using Template
+
+Using a project template is the fastest and most recommended approach to creating a Velaptor project. This guide will demonstrate how to use the dotnet CLI tool to create a Velaptor project, similar to creating other types of .NET projects with built-in templates.
+
+If you are already familiar with the dotnet CLI tool, creating a project using a template will be straightforward.
+
+:::note Guide Source Code
+Go to the <GuideLink projectName="EmptyProject" tagName="api-v1.0.0-preview.44"/> guide project to see the source code for a fully working example of this guide.
+:::
+
+## <span className="color-step">Step 1: Install dotnet CLI</span>
+
+The dotnet CLI tool comes with the dotnet SDK. If you already have the dotnet SDK installed, skip this step.
+
+
+## <span className="color-step">Step 2: Install Velaptor Project Templates</span>
+
+To install the latest version of the Velaptor project templates, run the following command in your terminal:
+
+```bash
+dotnet new install KinsonDigital.VelaptorTemplates
+```
+
+:::tip Installing a Specific Version
+If you prefer to install a specific version of the templates, use the command below, replacing `1.0.0` with your desired version number:
+
+```bash
+dotnet new install KinsonDigital.VelaptorTemplates::1.0.0
+```
+
+To uninstall the project templates, execute the following command:
+
+```bash
+dotnet new uninstall KinsonDigital.VelaptorTemplates
+```
+:::
+
+
+## <span className="color-step">Step 3: Create Velaptor Project</span>
+
+With the project templates installed, you can easily create a Velaptor project. To see a list of Velaptor projects that you can create, run the following command:
+
+```bash
+dotnet new details KinsonDigital.VelaptorTemplates
+```
+
+You will receive a list of short names that you can use to create your project. To create a simple, empty project, run the following command:
+
+```bash
+dotnet new VelEmpty --name MyVelaptorProject
+```
+
+That's it! You now have a Velaptor project created using a project template.

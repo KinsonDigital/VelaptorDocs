@@ -13,7 +13,6 @@ using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -25,16 +24,16 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
 {
     private const int StarSpawnXOffset = 10;
     private readonly IBatcher batcher;
-    private readonly ILoader<IAtlasData> atlasLoader;
     private readonly ITextureRenderer textureRenderer;
+    private readonly IContentManager contentManager;
     private readonly RandomNumGenerator random = new ();
-    private readonly List<Star> stars = new ();
+    private readonly List<Star> stars = [];
     private readonly IDisposable worldSignalUnsubscriber;
     private readonly ShuffleBag<Vector2> screenPosBag = new ();
+    private readonly (Color, float)[] starColors;
     private double starSpawnIntervalElapsed;
     private IAtlasData? atlasData;
     private RectangleF worldBounds;
-    private (Color, float)[] starColors;
     private Rectangle srcRect;
 
     /// <summary>
@@ -45,13 +44,21 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
     {
         this.batcher = RendererFactory.CreateBatcher();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
+        this.contentManager = ContentManager.Create();
 
         var worldUpdateSubscription = ISubscriptionBuilder.Create()
             .WithId(SignalIds.WorldDataUpdate)
             .BuildOneWayReceive<WorldData>(worldData => this.worldBounds = worldData.WorldBounds);
 
         this.worldSignalUnsubscriber = worldSignal.Subscribe(worldUpdateSubscription);
+
+        this.starColors =
+        [
+            (Color.White, 0.7f),
+            (Color.DarkOrange, 0.15f),
+            (Color.CornflowerBlue, 0.10f),
+            (Color.MediumPurple, 0.05f)
+        ];
     }
 
     /// <summary>
@@ -79,15 +86,7 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
 
         this.screenPosBag.Shuffle();
 
-        this.starColors = new[]
-        {
-            (Color.White, 0.7f),
-            (Color.DarkOrange, 0.15f),
-            (Color.CornflowerBlue, 0.10f),
-            (Color.MediumPurple, 0.05f),
-        };
-
-        this.atlasData = this.atlasLoader.Load("atlas");
+        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
         this.srcRect = this.atlasData.GetFrames("star")[0].Bounds;
 
         for (var i = 0; i < 300; i++)
@@ -109,7 +108,11 @@ public class Background : IContentLoadable, IUpdatable, IDrawable
             return;
         }
 
-        this.atlasLoader.Unload(this.atlasData);
+        if (this.atlasData is not null)
+        {
+            this.contentManager.Unload(this.atlasData);
+        }
+
         this.worldSignalUnsubscriber.Dispose();
     }
 

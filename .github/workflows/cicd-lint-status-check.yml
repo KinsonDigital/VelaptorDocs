@@ -1,41 +1,38 @@
 name: ✅CICD Lint Status Check
 run-name: ✅CICD Lint Status Check
 
-
 defaults:
   run:
     shell: pwsh
 
-
 on:
   pull_request:
-    branches: main
-
+    branches: [main]
 
 jobs:
   cicd_lint_status_check:
     name: CICD Lint Status Check
     runs-on: ubuntu-latest
     steps:
-    - name: Detect Fork
-      id: detect_fork
-      run: |
-        if ("${{ github.event.pull_request.head.repo.full_name }}" -eq "${{ github.event.pull_request.base.repo. full_name }}") {
-          echo "is_not_fork=true" >> $env:GITHUB_OUTPUT;
-        } else {
-          echo "is_not_fork=false" >> $env:GITHUB_OUTPUT;
-        }
+      - name: Detect Fork
+        id: detect_fork
+        run: |
+          if ("${{ github.event.pull_request.head.repo.full_name }}" -eq "${{ github.event.pull_request.base.repo. full_name }}") {
+            echo "is_not_fork=true" >> $env:GITHUB_OUTPUT;
+          } else {
+            echo "is_not_fork=false" >> $env:GITHUB_OUTPUT;
+          }
 
-    - name: Checkout Repo
-      uses: actions/checkout@v5
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
 
-    - name: Setup Deno (${{ vars.DENO_VERSION }})
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      uses: denoland/setup-deno@v2
-      with:
-        deno-version: ${{ vars.DENO_VERSION }}
+      - name: Setup Deno (${{ vars.DENO_VERSION }})
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
 
-    - name: Run Lint
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      run: deno lint "./.github/cicd/**/*.ts";
+      - name: Run Lint
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        run: deno lint "./.github/cicd/**/*.ts";

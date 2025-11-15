@@ -1,9 +1,9 @@
+import { basename, extname } from "@std/path";
 import { CodeBlockService } from "./CodeBlockService.ts";
 import { HTMLService } from "./HTMLService.ts";
 import { MarkdownHeaderService } from "./MarkdownHeaderService.ts";
 import { MarkdownService } from "./MarkdownService.ts";
 import { Utils } from "../Utils.ts";
-import { basename, extname } from "../../deps.ts";
 import { ProcessFragmentService } from "./ProcessFragmentService.ts";
 
 export class MarkdownFileContentService {

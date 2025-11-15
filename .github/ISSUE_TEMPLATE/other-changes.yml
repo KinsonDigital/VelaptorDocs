@@ -1,6 +1,5 @@
 name: ⚙️ Other Changes
 description: Create an issue for non-documentation-related changes.
-title: "⚙️"
 projects: ["KinsonDigital/11"]
 body:
 - type: checkboxes
@@ -27,40 +26,6 @@ body:
   validations:
     required: true
     render: markdown
-
-- type: textarea
-  attributes:
-    label: ToDo items
-    description: Complete the following items before requesting a PR review.
-    value: |
-      - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
-      - [ ] A priority label was added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-  validations:
-    required: true
-    render: markdown
-
-- type: textarea
-  attributes:
-    label: "Additional Information:"
-    description: DO NOT CHANGE ANYTHING BELOW!!
-    value: |
-      **_<details closed><summary>Change Type Labels</summary>_**
-
-      |--------------|---------------------------------------------------------------------------------------------------|
-      | CICD                 | https://github.com/KinsonDigital/VelaptorDocs/labels/cicd                                 |
-      | Dependency Update    | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%A6dependency-update        |
-      | Miscellaneous        | https://github.com/KinsonDigital/VelaptorDocs/labels/miscellaneous                        |
-      | Guide Doc Changes | https://github.com/KinsonDigital/VelaptorDocs/labels/%F0%9F%93%9Cguide-doc-changes           |
-      </details>
-
-      **_<details closed><summary>Priority Type Labels</summary>_**
-
-      | Priority Type       | Label                                                                  |
-      |---------------------|------------------------------------------------------------------------|
-      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low-priority    |
-      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium-priority |
-      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high-priority   |
-      </details>
 
 - type: checkboxes
   id: terms

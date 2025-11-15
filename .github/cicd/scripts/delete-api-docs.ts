@@ -1,4 +1,5 @@
-import { existsSync, Select, walkSync } from "../deps.ts";
+import { existsSync, walkSync } from "@std/fs";
+import { Select } from "@cliffy/prompt";
 import { DeleteAPIVersionService } from "../core/services/DeleteAPIVersionService.ts";
 import { Utils } from "../core/Utils.ts";
 

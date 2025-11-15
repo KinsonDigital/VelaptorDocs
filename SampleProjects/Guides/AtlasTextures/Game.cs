@@ -10,7 +10,6 @@ using Velaptor.Graphics;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
@@ -21,7 +20,7 @@ using Velaptor.UI;
 public class Game : Window
 {
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<IAtlasData> atlasTextureLoader;
+    private readonly IContentManager contentManager;
     private readonly IBatcher batcher;
     private readonly Random random = new ();
     private IAtlasData? atlasData;
@@ -40,7 +39,7 @@ public class Game : Window
         Width = 500;
         Height = 500;
 
-        this.atlasTextureLoader = ContentLoaderFactory.CreateAtlasLoader();
+        this.contentManager = ContentManager.Create();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
 
         this.batcher = RendererFactory.CreateBatcher();
@@ -52,7 +51,7 @@ public class Game : Window
     protected override void OnLoad()
     {
         // Loads the atlas.png and atlas.json file
-        this.atlasData = this.atlasTextureLoader.Load("atlas");
+        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
         this.subTextureData = this.atlasData.GetFrames("flame");
 
         base.OnLoad();
@@ -63,7 +62,11 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.atlasTextureLoader.Unload(this.atlasData);
+        if (this.atlasData is not null)
+        {
+            this.contentManager.Unload(this.atlasData);
+        }
+
         base.OnUnload();
     }
 

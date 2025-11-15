@@ -1,12 +1,10 @@
 name: ⚙️Build C# Solution
 run-name: Build Velaptor Tutorials Solution
 
-
 defaults:
   run:
     shell: pwsh
-  
-  
+
 on:
   workflow_call:
     inputs:
@@ -24,7 +22,6 @@ on:
         description: The git reference to checkout the code at.
         type: string
         default: ${{ github.ref }}
-
 
 jobs:
   print_validate_workflow:
@@ -58,7 +55,6 @@ jobs:
             Write-Host "::error::The 'net-sdk-version' workflow input is invalid.  Expected version format: '#.#.#'";
             exit 1;
           }
-
 
   build_solution:
     name: Build Velaptor Tutorials Solution

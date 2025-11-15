@@ -1,0 +1,8 @@
+{
+    "label": "Project Setup",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "description": "Guides on how to create a project. The fastest and easiest way to get started is by using a project template."
+    }
+}

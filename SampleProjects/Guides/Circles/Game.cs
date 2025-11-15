@@ -12,7 +12,6 @@ using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -30,8 +29,8 @@ public class Game : Window
     private readonly IBatcher batcher;
     private readonly IShapeRenderer shapeRenderer;
     private readonly IFontRenderer fontRenderer;
-    private readonly ILoader<IFont> fontLoader;
-    private readonly (string Text, SizeF Size)[] circlettrText =
+    private readonly IContentManager contentManager;
+    private readonly (string Text, SizeF Size)[] circleText =
     [
         ("Radius (Scroll)", SizeF.Empty),
         ("Color (Left Click)", SizeF.Empty),
@@ -63,7 +62,7 @@ public class Game : Window
         Width = 1500;
         Height = 1000;
 
-        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+        this.contentManager = ContentManager.Create();
         this.keyboard = HardwareFactory.GetKeyboard();
         this.mouse = HardwareFactory.GetMouse();
 
@@ -77,8 +76,8 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.regularFont = this.fontLoader.Load("regular-font", 12);
-        this.boldFont = this.fontLoader.Load("bold-font", 12);
+        this.regularFont = this.contentManager.LoadFont("regular-font", 12);
+        this.boldFont = this.contentManager.LoadFont("bold-font", 12);
 
         this.circle = new CircleShape
         {
@@ -92,9 +91,9 @@ public class Game : Window
             GradientStop = Color.MediumPurple,
         };
 
-        for (var i = 0; i < this.circlettrText.Length; i++)
+        for (var i = 0; i < this.circleText.Length; i++)
         {
-            this.circlettrText[i].Size = this.regularFont.Measure(this.circlettrText[i].Text);
+            this.circleText[i].Size = this.regularFont.Measure(this.circleText[i].Text);
         }
 
         base.OnLoad();
@@ -105,7 +104,16 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.fontLoader.Unload(this.boldFont);
+        if (this.regularFont is not null)
+        {
+            this.contentManager.Unload(this.regularFont);
+        }
+
+        if (this.boldFont is not null)
+        {
+            this.contentManager.Unload(this.boldFont);
+        }
+
         base.OnUnload();
     }
 
@@ -136,17 +144,17 @@ public class Game : Window
 
         this.shapeRenderer.Render(this.circle);
 
-        var largestWidth = this.circlettrText.Max(x => x.Size.Width);
-        var totalHeightWithSpacing = this.circlettrText.Sum(x => x.Size.Height) + ((this.circlettrText.Length - 1) * 10);
+        var largestWidth = this.circleText.Max(x => x.Size.Width);
+        var totalHeightWithSpacing = this.circleText.Sum(x => x.Size.Height) + ((this.circleText.Length - 1) * 10);
         var totalTextHalfHeight = totalHeightWithSpacing / 2;
 
         var winHalfHeight = Height / 2f;
         var startPos = new Vector2((largestWidth / 2) + 5, winHalfHeight - totalTextHalfHeight);
         var selectedIndex = (int)this.circleAttribute;
 
-        for (var i = 0; i < this.circlettrText.Length; i++)
+        for (var i = 0; i < this.circleText.Length; i++)
         {
-            var (text, size) = this.circlettrText[i];
+            var (text, size) = this.circleText[i];
             var color = i == selectedIndex ? Color.LightCyan : Color.DarkGray;
 
             var renderPos = new Vector2((size.Width / 2) + 20, startPos.Y + ((size.Height + 10) * i));
@@ -173,14 +181,14 @@ public class Game : Window
         {
             var currentValue = (int)this.circleAttribute;
             currentValue += 1;
-            currentValue = currentValue > this.circlettrText.Length - 1 ? 0 : currentValue;
+            currentValue = currentValue > this.circleText.Length - 1 ? 0 : currentValue;
             this.circleAttribute = (CircleAttribute)currentValue;
         }
         else if (currentKeyState.IsKeyUp(KeyCode.Up) && this.prevKeyState.IsKeyDown(KeyCode.Up))
         {
             var currentValue = (int)this.circleAttribute;
             currentValue -= 1;
-            currentValue = currentValue < 0 ? this.circlettrText.Length - 1 : currentValue;
+            currentValue = currentValue < 0 ? this.circleText.Length - 1 : currentValue;
             this.circleAttribute = (CircleAttribute)currentValue;
         }
 

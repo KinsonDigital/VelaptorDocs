@@ -13,7 +13,6 @@ using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 
@@ -24,7 +23,7 @@ public class Score : IContentLoadable, IUpdatable, IDrawable
 {
     private const int Margin = 10;
     private readonly IFontRenderer fontRenderer;
-    private readonly ILoader<IFont> fontLoader;
+    private readonly IContentManager contentManager;
     private readonly IDisposable scoreSignalUnsubscriber;
     private IFont? font;
     private SizeF textSize;
@@ -44,7 +43,7 @@ public class Score : IContentLoadable, IUpdatable, IDrawable
         this.scoreSignalUnsubscriber = scoreSignal.Subscribe(scoreSubscription);
 
         this.fontRenderer = RendererFactory.CreateFontRenderer();
-        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+        this.contentManager = ContentManager.Create();
     }
 
     /// <summary>
@@ -62,7 +61,7 @@ public class Score : IContentLoadable, IUpdatable, IDrawable
             return;
         }
 
-        this.font = this.fontLoader.Load("TimesNewRoman-Regular", 24);
+        this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 24);
 
         IsLoaded = true;
     }
@@ -77,7 +76,11 @@ public class Score : IContentLoadable, IUpdatable, IDrawable
             return;
         }
 
-        this.fontLoader.Unload(this.font);
+        if (this.font is not null)
+        {
+            this.contentManager.Unload(this.font);
+        }
+
         this.scoreSignalUnsubscriber.Dispose();
     }
 

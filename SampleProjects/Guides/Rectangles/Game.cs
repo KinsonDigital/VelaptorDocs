@@ -12,7 +12,6 @@ using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -30,7 +29,7 @@ public class Game : Window
     private readonly IBatcher batcher;
     private readonly IShapeRenderer shapeRenderer;
     private readonly IFontRenderer fontRenderer;
-    private readonly ILoader<IFont> fontLoader;
+    private readonly IContentManager contentManager;
     private readonly (string Text, SizeF Size)[] rectAttrText =
     [
         ("Width (Scroll)", SizeF.Empty),
@@ -68,7 +67,7 @@ public class Game : Window
         Width = 1500;
         Height = 1000;
 
-        this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+        this.contentManager = ContentManager.Create();
         this.keyboard = HardwareFactory.GetKeyboard();
         this.mouse = HardwareFactory.GetMouse();
 
@@ -82,8 +81,8 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.regularFont = this.fontLoader.Load("regular-font", 12);
-        this.boldFont = this.fontLoader.Load("bold-font", 12);
+        this.regularFont = this.contentManager.LoadFont("regular-font", 12);
+        this.boldFont = this.contentManager.LoadFont("bold-font", 12);
 
         this.rect = new RectShape
         {
@@ -112,7 +111,16 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        this.fontLoader.Unload(this.boldFont);
+        if (this.regularFont is not null)
+        {
+            this.contentManager.Unload(this.regularFont);
+        }
+
+        if (this.boldFont is not null)
+        {
+            this.contentManager.Unload(this.boldFont);
+        }
+
         base.OnUnload();
     }
 
@@ -123,6 +131,9 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
+        this.rect.Left = (Width / 2f) - (this.rect.Width / 2f);
+        this.rect.Top = (Height / 2f) - (this.rect.Height / 2f);
+
         ProcessKeyboard();
         ProcessMouse();
 

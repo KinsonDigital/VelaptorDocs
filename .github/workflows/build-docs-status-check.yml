@@ -1,56 +1,53 @@
 name: ✅Build Docs Status Check
 run-name: ✅Build Docs Status Check
 
-
 defaults:
   run:
     shell: pwsh
 
-
 on:
   pull_request:
-    branches: main
-
+    branches: [main]
 
 jobs:
   build_status_check:
     name: Build Status Check
     runs-on: ubuntu-latest
     steps:
-    - name: Detect Fork
-      id: detect_fork
-      run: |
-        if ("${{ github.event.pull_request.head.repo.full_name }}" -eq "${{ github.event.pull_request.base.repo. full_name }}") {
-          echo "is_not_fork=true" >> $env:GITHUB_OUTPUT;
-        } else {
-          echo "is_not_fork=false" >> $env:GITHUB_OUTPUT;
-        }
+      - name: Detect Fork
+        id: detect_fork
+        run: |
+          if ("${{ github.event.pull_request.head.repo.full_name }}" -eq "${{ github.event.pull_request.base.repo. full_name }}") {
+            echo "is_not_fork=true" >> $env:GITHUB_OUTPUT;
+          } else {
+            echo "is_not_fork=false" >> $env:GITHUB_OUTPUT;
+          }
 
-    - uses: actions/checkout@v5
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
+      - uses: actions/checkout@v5
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
 
-    - name: Setup Node (${{ vars.NODE_VERSION }})
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ vars.NODE_VERSION }}
+      - name: Setup Node (${{ vars.NODE_VERSION }})
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
 
-    - name: Setup Deno (${{ vars.DENO_VERSION }})
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      uses: denoland/setup-deno@v2
-      with:
-        deno-version: ${{ vars.DENO_VERSION }}
+      - name: Setup Deno (${{ vars.DENO_VERSION }})
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: ${{ vars.DENO_VERSION }}
 
-    - name: Setup PNPM (${{ vars.PNPM_VERSION }})
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      uses: pnpm/action-setup@v4
-      with:
-        version: ${{ vars.PNPM_VERSION }}
+      - name: Setup PNPM (${{ vars.PNPM_VERSION }})
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ vars.PNPM_VERSION }}
 
-    - name: Install Dependencies (pnpm)
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      run: pnpm install
+      - name: Install Dependencies (pnpm)
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        run: pnpm install
 
-    - name: Build
-      if: steps.detect_fork.outputs.is_not_fork == 'true'
-      run: npx docusaurus build
+      - name: Build
+        if: steps.detect_fork.outputs.is_not_fork == 'true'
+        run: npx docusaurus build

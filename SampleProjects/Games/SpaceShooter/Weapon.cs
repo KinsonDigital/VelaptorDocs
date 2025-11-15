@@ -14,7 +14,6 @@ using Signals.Data;
 using Signals.Interfaces;
 using Velaptor;
 using Velaptor.Content;
-using Velaptor.ExtensionMethods;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
@@ -26,8 +25,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
 {
     private readonly IPushReactable<WeaponType> swapWeaponSignal;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILoader<IAtlasData> atlasLoader;
-    private readonly ILoader<IAudio> soundLoader;
+    private readonly IContentManager contentManager;
     private readonly IScoreSignal scoreSignal;
     private readonly IDisposable worldSignalUnsubscriber;
     private readonly IDisposable shipSignalUnsubscriber;
@@ -91,8 +89,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
 
         this.weaponTypeValues = Enum.GetValues(typeof(WeaponType)).Cast<int>().ToArray();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader();
-        this.soundLoader = ContentLoaderFactory.CreateAudioLoader();
+        this.contentManager = ContentManager.Create();
     }
 
     /// <summary>
@@ -115,11 +112,11 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
             return;
         }
 
-        this.atlasData = this.atlasLoader.Load("atlas");
+        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
         this.srcRect = this.atlasData.GetFrames("laser")[0].Bounds;
 
-        this.lazerSound = this.soundLoader.Load("space-lazer-5", AudioBuffer.Full);
-        this.changeWeaponSound = this.soundLoader.Load("change-weapon", AudioBuffer.Full);
+        this.lazerSound = this.contentManager.LoadAudio("space-lazer-5", AudioBuffer.Full);
+        this.changeWeaponSound = this.contentManager.LoadAudio("change-weapon", AudioBuffer.Full);
 
         IsLoaded = true;
     }
@@ -138,9 +135,20 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         this.shipSignalUnsubscriber.Dispose();
         this.enemySignalUnsubscriber.Dispose();
 
-        this.atlasLoader.Unload(this.atlasData);
-        this.soundLoader.Unload(this.lazerSound);
-        this.soundLoader.Unload(this.changeWeaponSound);
+        if (this.atlasData is not null)
+        {
+            this.contentManager.Unload(this.atlasData);
+        }
+
+        if (this.lazerSound is not null)
+        {
+            this.contentManager.Unload(this.lazerSound);
+        }
+
+        if (this.changeWeaponSound is not null)
+        {
+            this.contentManager.Unload(this.changeWeaponSound);
+        }
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-import { NuGetClient, TagClient } from "../../deps.ts";
+import { NuGetClient } from "@kd-clients/packaging";
+import { TagClient } from "@kd-clients/github";
 import { Utils } from "../Utils.ts";
 
 /**
@@ -36,7 +37,7 @@ export class ValidateReleaseService {
 
 		const tagClient: TagClient = new TagClient(this.ownerName, this.repoName);
 
-		return await tagClient.tagExists(tagToCheck);
+		return await tagClient.exists(tagToCheck);
 	}
 
 	/**
@@ -54,7 +55,7 @@ export class ValidateReleaseService {
 		const nugetClient: NuGetClient = new NuGetClient();
 
 		const velaptorPackageName = "kinsondigital.velaptor";
-		const packageExists = await nugetClient.packageExists(velaptorPackageName);
+		const packageExists = await nugetClient.exists(velaptorPackageName);
 
 		if (!packageExists) {
 			return false;

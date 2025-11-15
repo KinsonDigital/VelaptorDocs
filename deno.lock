@@ -1,39 +1,124 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
+    "jsr:@cliffy/ansi@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/internal@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/keycode@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/prompt@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@kinsondigital/kd-clients@1.0.0-preview.15": "1.0.0-preview.15",
     "jsr:@nexterias/twitter-api-fetch@3.0.1": "3.0.1",
+    "jsr:@std/assert@~1.0.6": "1.0.15",
+    "jsr:@std/encoding@1.0.5": "1.0.5",
     "jsr:@std/encoding@~0.219.1": "0.219.1",
+    "jsr:@std/encoding@~1.0.5": "1.0.5",
+    "jsr:@std/fmt@~1.0.2": "1.0.8",
+    "jsr:@std/fs@1.0.5": "1.0.5",
     "jsr:@std/fs@1.0.8": "1.0.8",
+    "jsr:@std/fs@^1.0.19": "1.0.19",
     "jsr:@std/internal@^1.0.10": "1.0.10",
+    "jsr:@std/internal@^1.0.9": "1.0.10",
+    "jsr:@std/io@~0.224.9": "0.224.9",
+    "jsr:@std/path@1.0.7": "1.0.7",
+    "jsr:@std/path@1.1.2": "1.1.2",
+    "jsr:@std/path@^1.0.7": "1.1.2",
     "jsr:@std/path@^1.0.8": "1.1.2",
+    "jsr:@std/path@^1.1.1": "1.1.2",
+    "jsr:@std/path@~1.0.6": "1.0.7",
+    "jsr:@std/text@~1.0.7": "1.0.16",
     "npm:chalk@4.1.1": "4.1.1",
     "npm:chalk@5.3.0": "5.3.0",
     "npm:twitter-api-v2@1.15.0": "1.15.0"
   },
   "jsr": {
+    "@cliffy/ansi@1.0.0-rc.8": {
+      "integrity": "ba37f10ce55bbfbdd8ddd987f91f029b17bce88385b98ba3058870f3b007b80c",
+      "dependencies": [
+        "jsr:@cliffy/internal",
+        "jsr:@std/encoding@~1.0.5",
+        "jsr:@std/io"
+      ]
+    },
+    "@cliffy/internal@1.0.0-rc.8": {
+      "integrity": "34cdf2fad9b084b5aed493b138d573f52d4e988767215f7460daf0b918ff43d8"
+    },
+    "@cliffy/keycode@1.0.0-rc.8": {
+      "integrity": "76dbf85a67ec0aea2e29ca049b8507b6b3f62a2a971bd744d8d3fc447c177cd9"
+    },
+    "@cliffy/prompt@1.0.0-rc.8": {
+      "integrity": "eba403ea1d47b9971bf2210fa35f4dc7ebd2aba87beec9540ae47552806e2f25",
+      "dependencies": [
+        "jsr:@cliffy/ansi",
+        "jsr:@cliffy/internal",
+        "jsr:@cliffy/keycode",
+        "jsr:@std/assert",
+        "jsr:@std/fmt",
+        "jsr:@std/io",
+        "jsr:@std/path@~1.0.6",
+        "jsr:@std/text"
+      ]
+    },
+    "@kinsondigital/kd-clients@1.0.0-preview.15": {
+      "integrity": "c06ccf539262b5cfa66f64c2c3359b2d3acdbfb268db5c7d5d51461bfc40372b",
+      "dependencies": [
+        "jsr:@std/encoding@1.0.5",
+        "jsr:@std/fs@1.0.5",
+        "jsr:@std/path@1.0.7"
+      ]
+    },
     "@nexterias/twitter-api-fetch@3.0.1": {
       "integrity": "9fb5a6770ce659b46df02c3b93ed4ab13ce7b3dd9a84232e0bc921fe7bdd1dad",
       "dependencies": [
-        "jsr:@std/encoding"
+        "jsr:@std/encoding@~0.219.1"
       ]
+    },
+    "@std/assert@1.0.15": {
+      "integrity": "d64018e951dbdfab9777335ecdb000c0b4e3df036984083be219ce5941e4703b"
     },
     "@std/encoding@0.219.1": {
       "integrity": "77b30e481a596cfb2a8f2f38c3165e6035a4f76a7259bf89b6a622ceaf57d575"
     },
+    "@std/encoding@1.0.5": {
+      "integrity": "ecf363d4fc25bd85bd915ff6733a7e79b67e0e7806334af15f4645c569fefc04"
+    },
+    "@std/fmt@1.0.8": {
+      "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
+    },
+    "@std/fs@1.0.5": {
+      "integrity": "41806ad6823d0b5f275f9849a2640d87e4ef67c51ee1b8fb02426f55e02fd44e",
+      "dependencies": [
+        "jsr:@std/path@^1.0.7"
+      ]
+    },
     "@std/fs@1.0.8": {
       "integrity": "161c721b6f9400b8100a851b6f4061431c538b204bb76c501d02c508995cffe0",
       "dependencies": [
-        "jsr:@std/path"
+        "jsr:@std/path@^1.0.8"
+      ]
+    },
+    "@std/fs@1.0.19": {
+      "integrity": "051968c2b1eae4d2ea9f79a08a3845740ef6af10356aff43d3e2ef11ed09fb06",
+      "dependencies": [
+        "jsr:@std/internal@^1.0.9",
+        "jsr:@std/path@^1.1.1"
       ]
     },
     "@std/internal@1.0.10": {
       "integrity": "e3be62ce42cab0e177c27698e5d9800122f67b766a0bea6ca4867886cbde8cf7"
     },
+    "@std/io@0.224.9": {
+      "integrity": "4414664b6926f665102e73c969cfda06d2c4c59bd5d0c603fd4f1b1c840d6ee3"
+    },
+    "@std/path@1.0.7": {
+      "integrity": "76a689e07f0e15dcc6002ec39d0866797e7156629212b28f27179b8a5c3b33a1"
+    },
     "@std/path@1.1.2": {
       "integrity": "c0b13b97dfe06546d5e16bf3966b1cadf92e1cc83e56ba5476ad8b498d9e3038",
       "dependencies": [
-        "jsr:@std/internal"
+        "jsr:@std/internal@^1.0.10"
       ]
+    },
+    "@std/text@1.0.16": {
+      "integrity": "ddb9853b75119a2473857d691cf1ec02ad90793a2e8b4a4ac49d7354281a0cf8"
     }
   },
   "npm": {
@@ -692,15 +777,22 @@
     "https://raw.githubusercontent.com/KinsonDigital/Infrastructure/v13.6.3/deps.ts": "8a380f4e2d6312114caafc6d1ef46061e9369865a549ca3852a6aab382270927"
   },
   "workspace": {
+    "dependencies": [
+      "jsr:@cliffy/prompt@1.0.0-rc.8",
+      "jsr:@kinsondigital/kd-clients@1.0.0-preview.15",
+      "jsr:@std/fs@^1.0.19",
+      "jsr:@std/path@1.1.2"
+    ],
     "packageJson": {
       "dependencies": [
-        "npm:@docusaurus/core@3.8.1",
+        "npm:@docusaurus/core@3.9.2",
         "npm:@docusaurus/module-type-aliases@^3.2.1",
-        "npm:@docusaurus/preset-classic@3.8.1",
-        "npm:@docusaurus/theme-mermaid@3.8.1",
+        "npm:@docusaurus/preset-classic@3.9.2",
+        "npm:@docusaurus/theme-mermaid@3.9.2",
         "npm:@docusaurus/tsconfig@^3.2.1",
-        "npm:@docusaurus/types@3.8.1",
+        "npm:@docusaurus/types@3.9.2",
         "npm:@mdx-js/react@3",
+        "npm:@tailwindcss/postcss@^4.1.17",
         "npm:@types/react@^18.2.42",
         "npm:autoprefixer@^10.4.19",
         "npm:clsx@2.1.1",
@@ -708,7 +800,7 @@
         "npm:prism-react-renderer@^2.3.0",
         "npm:react-dom@^18.2.0",
         "npm:react@^18.2.0",
-        "npm:tailwindcss@^3.4.3",
+        "npm:tailwindcss@^4.1.17",
         "npm:typescript@5.6"
       ]
     }

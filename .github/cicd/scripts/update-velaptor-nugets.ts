@@ -1,5 +1,7 @@
 import { Utils } from "../core/Utils.ts";
-import { existsSync, Select, TagClient, walkSync } from "../deps.ts";
+import { existsSync, walkSync } from "@std/fs";
+import { TagClient } from "@kd-clients/github";
+import { Select } from "@cliffy/prompt";
 
 const rootDirPath = (Deno.env.get("ROOT_DIR_PATH") ?? "").trim().replaceAll("\\", "/");
 

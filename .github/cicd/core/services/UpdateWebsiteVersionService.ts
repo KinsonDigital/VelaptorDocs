@@ -1,4 +1,4 @@
-import { existsSync } from "../../deps.ts";
+import { existsSync } from "@std/fs";
 
 /**
  * Updates the version in the docusaurus.config.ts file.

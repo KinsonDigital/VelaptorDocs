@@ -211,5 +211,29 @@
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"
 		},
+		{ // CREATE LOCAL NUGET PACKAGE
+			"request": "launch",
+			"name": "Create Local NuGet Package",
+			"type": "node",
+			"program": "${workspaceFolder}/dev-scripts/create-local-nuget.ts",
+			"cwd": "${workspaceFolder}/.github/cicd",
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"runtimeArgs": [
+				"run",
+				"-ERWSN",
+				"--allow-run",
+				"--inspect-wait",
+			],
+			"attachSimplePort": 9229,
+			"console": "integratedTerminal"
+		},
     ]
 }

@@ -1,8 +1,9 @@
 {
 	"deno.enablePaths": [
-		".github/cicd/"
+		".github/cicd/",
+		"dev-scripts/"
 	],
-	"deno.config": ".github/cicd/deno.json",
+	"deno.config": "deno.json",
 	"files.eol": "\n",
 	"cSpell.words": [
 		"cicd",
@@ -12,8 +13,11 @@
 		"denoland",
 		"ERWN",
 		"ERWNS",
+		"ERWSN",
+		"indianred",
 		"Infima",
 		"Kinson",
+		"kinsondigital",
 		"KXVA",
 		"milestoned",
 		"Multiauthor",
@@ -24,6 +28,7 @@
 		"pwsh",
 		"Reguler",
 		"REPONAME",
+		"snupkg",
 		"Structs",
 		"tailwindcss",
 		"Texinfo",
@@ -60,7 +65,13 @@
 		"**/RepoSrc/**": true,
 		"*.lock": true,
 		"SampleProjects": true,
-    },
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 3,
+		"typescript.preferences.quoteStyle": "double"
+	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"editor.insertSpaces": false,

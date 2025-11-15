@@ -1,55 +1,51 @@
 name: ✅Feature Branch Status Check
 
-
 defaults:
   run:
     shell: pwsh
 
-
 on:
   pull_request_target:
-    branches: main
-
+    branches: [main]
 
 jobs:
   feature_branch_status_check:
     name: Feature Branch Status Check
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-    - name: Validate Branch
-      run: |
-        $renovateRegEx = "^renovate/.+$";
-        $regex = '${{ vars.FEATURE_BRANCH_REGEX }}';
+      - name: Validate Branch
+        run: |
+          $renovateRegEx = "^renovate/.+$";
+          $regex = '${{ vars.FEATURE_BRANCH_REGEX }}';
 
-        $headBranch = "${{ github.head_ref }}";
-        $baseBranch = "main";
+          $headBranch = "${{ github.head_ref }}";
+          $baseBranch = "main";
 
-        $headBranchInvalid = $false;
-        $baseBranchInvalid = $false;
+          $headBranchInvalid = $false;
+          $baseBranchInvalid = $false;
 
-        # If the PR branch is a Renovate branch, it is valid and do not check for a feature branch.
-        if ($headBranch -match $renovateRegEx) {
-            Write-Host "::notice::The head branch '$headBranch' is a Renovate branch.";
-            exit 0;
-        }
+          # If the PR branch is a Renovate branch, it is valid and do not check for a feature branch.
+          if ($headBranch -match $renovateRegEx) {
+              Write-Host "::notice::The head branch '$headBranch' is a Renovate branch.";
+              exit 0;
+          }
 
-        if ($headBranch -match $regex) {
-            Write-Host "::notice::The head branch '$headBranch' is valid.";
-        } else {
-            Write-Host "::error::The head branch '$headBranch' is invalid.";
-            $headBranchInvalid = $true;
-        }
+          if ($headBranch -match $regex) {
+              Write-Host "::notice::The head branch '$headBranch' is valid.";
+          } else {
+              Write-Host "::error::The head branch '$headBranch' is invalid.";
+              $headBranchInvalid = $true;
+          }
 
-        if ($baseBranch -eq "main") {
-            Write-Host "::notice::The base branch '$baseBranch' is valid.";
-        } else {
-            Write-Host "::error::The base branch '$baseBranch' is invalid.";
-            $baseBranchInvalid = $true;
-        }
+          if ($baseBranch -eq "main") {
+              Write-Host "::notice::The base branch '$baseBranch' is valid.";
+          } else {
+              Write-Host "::error::The base branch '$baseBranch' is invalid.";
+              $baseBranchInvalid = $true;
+          }
 
-        if ($headBranchInvalid -or $baseBranchInvalid) {
-            exit 1;
-        }
-
+          if ($headBranchInvalid -or $baseBranchInvalid) {
+              exit 1;
+          }

@@ -1,7 +1,7 @@
 name: 📜/🛡️ Guide & API Doc Changes
 description: Create an issue to add or update guide and API documentation.
-title: "📜/🛡️Guide & API Doc Change - "
-labels: ['📜guide doc changes', '🛡️api doc changes']
+title: "Guide & API Doc Change - "
+labels: ['📜guide-doc-changes', '🛡️api-doc-changes']
 type: "Enhancement"
 projects: ["KinsonDigital/11"]
 body:
@@ -24,33 +24,6 @@ body:
   validations:
     required: true
     render: markdown
-
-- type: textarea
-  attributes:
-    label: ToDo Items
-    description: Complete the following items before requesting a PR review.
-    value: |
-      - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
-      - [ ] A priority label was added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-  validations:
-    required: true
-    render: markdown
-
-- type: textarea
-  attributes:
-    label: "Additional Information:"
-    description: DO NOT CHANGE ANYTHING BELOW!!
-    value: |
-      **Priority Type Labels**
-      | Priority Type       | Label                                                                  |
-      |---------------------|------------------------------------------------------------------------|
-      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low-priority    |
-      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium-priority |
-      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high-priority   |
-
-      > [!Note]
-      > Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.
-      > Just follow the CLI instructions to remove the version.
 
 - type: checkboxes
   id: terms

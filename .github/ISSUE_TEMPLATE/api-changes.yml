@@ -1,7 +1,7 @@
 name: 🛡️ API Doc Change
 description: Create an issue to add or update the API documentation.
-title: "🛡️API Doc Change - "
-labels: ['🛡️api doc changes', 'high priority']
+title: "API Doc Change - "
+labels: ['🛡️api-doc-changes', 'high-priority']
 type: "Feature"
 projects: ["KinsonDigital/11"]
 body:
@@ -39,28 +39,10 @@ body:
     label: ToDo Items
     description: Complete the following items before requesting a PR review.
     value: |
-      - [ ] Change type labels added to this issue.  Refer to the _**Change Type Labels**_ section below.
-      - [ ] Priority label added to this issue.  Refer to the _**Priority Type Labels**_ section below.
-      - [ ] If more than 5 versions exist after adding the new version, the oldest version is removed.
+      - [ ] The oldest version is removed with a remaining maximum of 5 versions.
   validations:
     required: true
     render: markdown
-
-- type: textarea
-  attributes:
-    label: "Additional Information:"
-    description: DO NOT CHANGE ANYTHING BELOW!!
-    value: |
-      **Priority Type Labels**
-      | Priority Type       | Label                                                                  |
-      |---------------------|------------------------------------------------------------------------|
-      | Low Priority        | https://github.com/KinsonDigital/VelaptorDocs/labels/low%20priority    |
-      | Medium Priority     | https://github.com/KinsonDigital/VelaptorDocs/labels/medium%20priority |
-      | High Priority       | https://github.com/KinsonDigital/VelaptorDocs/labels/high%20priority   |
-
-      > [!Note]
-      > Removing a version of the API docs can be done by executing the _**Delete API Docs**_ VSCode task.
-      > Just follow the CLI instructions to remove the version.
 
 - type: checkboxes
   id: terms

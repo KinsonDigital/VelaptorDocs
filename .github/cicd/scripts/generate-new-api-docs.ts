@@ -1,6 +1,7 @@
-import { Input, Select, TagClient } from "../deps.ts";
+import { Input, Select } from "@cliffy/prompt";
+import { TagClient } from "@kd-clients/github";
 import { DocProcessor } from "../core/DocProcessor.ts";
-import { Utils } from "../deps.ts";
+import { Utils } from "../core/Utils.ts";
 
 console.clear();
 
@@ -9,27 +10,27 @@ type GenerateSrcType = "api version" | "branch";
 const generateOutputDirPath: string = (Deno.env.get("OUTPUT_DIR_PATH") ?? "").trim();
 
 if (generateOutputDirPath === "") {
-	Utils.printAsGitHubError("The environment variable 'OUTPUT_DIR_PATH' does not exist.");
+	Utils.printGitHubError("The environment variable 'OUTPUT_DIR_PATH' does not exist.");
 	Deno.exit(1);
 }
 
 let tagOrBranch = (Deno.env.get("TAG_OR_BRANCH") ?? "").trim().toLowerCase();
 
 if (tagOrBranch === "") {
-	Utils.printAsGitHubError("The environment variable 'TAG_OR_BRANCH' does not exist.");
+	Utils.printGitHubError("The environment variable 'TAG_OR_BRANCH' does not exist.");
 	Deno.exit(1);
 }
 
 const token = (Deno.env.get("GITHUB_TOKEN") ?? "").trim();
 
 if (token === "") {
-	Utils.printAsGitHubError("The environment variable 'GITHUB_TOKEN' does not exist.");
+	Utils.printGitHubError("The environment variable 'GITHUB_TOKEN' does not exist.");
 }
 
 // Optional env variable
 const isInteractive = (Deno.env.get("IS_INTERACTIVE") ?? "").trim().toLowerCase() === "true";
 
-Utils.printAsGitHubNotice(`Generate Output Dir Path: ${generateOutputDirPath}`);
+Utils.printGitHubNotice(`Generate Output Dir Path: ${generateOutputDirPath}`);
 
 /*NOTE:
 	This script is executed by the 'api-release.yml' workflow.  The workflow
@@ -58,14 +59,14 @@ if (isInteractive) {
 
 		if (Utils.isNothing(token)) {
 			const errorMsg = "The environment variable 'CICD_TOKEN' does not exist, is empty, or null.";
-			Utils.printAsGitHubError(errorMsg);
+			Utils.printGitHubError(errorMsg);
 			Deno.exit(1);
 		}
 
 		const tagClient = new TagClient("KinsonDigital", "Velaptor", token);
 
 		const tags = (await tagClient.getAllTags()).map((tag) => tag.name)
-			.filter((tag) => Utils.validPreviewVersion(tag) || Utils.validProdVersion(tag));
+			.filter((tag) => Utils.isPrevVersion(tag) || Utils.isProdVersion(tag));
 
 		tagOrBranch = await Select.prompt({
 			message: "Select a release version",
@@ -76,7 +77,7 @@ if (isInteractive) {
 		Deno.exit();
 	}
 } else {
-	Utils.printAsGitHubNotice(`Version To Generate: ${tagOrBranch}`);
+	Utils.printGitHubNotice(`Version To Generate: ${tagOrBranch}`);
 	tagOrBranch = tagOrBranch.startsWith("v") ? tagOrBranch : `v${tagOrBranch}`;
 }
 

@@ -56,7 +56,7 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.CICD_TOKEN }}
           persist-credentials: true

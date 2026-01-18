@@ -31,7 +31,7 @@ jobs:
         if: steps.detect_fork.outputs.is_fork == 'true'
         uses: denoland/setup-deno@v2
         with:
-          deno-version: v2.1.x
+          deno-version: 2.6.x
 
       - name: Run Lint
         if: steps.detect_fork.outputs.is_fork == 'true'

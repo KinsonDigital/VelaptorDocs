@@ -121,10 +121,6 @@ Global
 		{C17CCB2E-29D0-49B7-8A7A-82E1719513C4} = {02B09EF2-D131-4628-BAD5-602A3BD9188E}
 	EndGlobalSection
 	GlobalSection(RiderSharedRunConfigurations) = postSolution
-		File = ..\.github\cicd\RepoSrc\.run\KeyboardPerf.run.xml
-		File = ..\.github\cicd\RepoSrc\.run\MeasureTextPerf.run.xml
-		File = ..\.github\cicd\RepoSrc\.run\MousePerf.run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Playground.run.xml
 		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug Linux).run.xml
 		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug Win).run.xml
 		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug-Console Linux).run.xml
@@ -134,5 +130,18 @@ Global
 		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Release Linux).run.xml
 		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Release Win).run.xml
 		File = ..\.github\cicd\RepoSrc\.run\VelaptorTesting.run.xml
+		File = ..\RepoSrc\.run\KeyboardPerf.run.xml
+		File = ..\RepoSrc\.run\MeasureTextPerf.run.xml
+		File = ..\RepoSrc\.run\MousePerf.run.xml
+		File = ..\RepoSrc\.run\Playground.run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug Linux).run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug Win).run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug-Console Linux).run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug-Console Win).run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Console Linux) .run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Console Win) .run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Linux).run.xml
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Win).run.xml
+		File = ..\RepoSrc\.run\VelaptorTesting.run.xml
 	EndGlobalSection
 EndGlobal

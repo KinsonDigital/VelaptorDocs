@@ -123,7 +123,7 @@ const config: Config = {
 				respectPrefersColorScheme: false
 			},
 			// Replace with your project's social card
-			image: 'img/docusaurus-social-card.jpg',
+			image: 'img/meta-image.jpg',
 			navbar: {
 				title: 'Velaptor',
 				logo: {

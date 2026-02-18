@@ -35,7 +35,7 @@ public class Game : Window
 {
     private readonly IBatcher batcher; // Used to control batching
     private readonly ITextureRenderer textureRenderer; // Renders textures
-    private ILoader<ITexture>? textureLoader; // Used to load textures
+    private IContentManager contentManager; // Used to load content
     private ITexture? mascotTexture; // The texture to render
     ...
 }
@@ -54,16 +54,16 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">2.3: Create loader, batcher, & renderer</span>
+### <span className="color-sub-step">2.3: Create content manager, batcher, & renderer</span>
 
-In the constructor, create the `textureLoader`, `batcher`, and `textureRenderer` objects.
+In the constructor, create the `contentManager`, `batcher`, and `textureRenderer` objects.
 This is done by using various factories that make it easy to create these often used types.
 
 ```csharp
 public Game()
 {
     ...
-    this.textureLoader = ContentLoaderFactory.CreateFontLoader();
+    this.contentManager = ContentManager.Create();
     this.batcher = RendererFactory.CreateBatcher();
     this.textureRenderer = RendererFactory.CreateTextureRenderer();
 }
@@ -73,7 +73,7 @@ public Game()
 ## <span className="color-step">Step 3: Load and unload the content</span>
 
 Loading and unloading content is a very important part of game development.  It is also important to unload the content
-when it is not needed or used anymore.  In the next couple of steps, we will setup the loading and unloading of the texture.
+when it is not needed or used anymore.  In the next couple of steps, we will setup the loading and unloading of a texture.
 
 ### <span className="color-sub-step">3.1: Get the content</span>
 
@@ -93,7 +93,7 @@ Add the image to the project and set it as content by following the steps in the
 
 Now that our content has been successfully added to the project, we can now move on to loading the texture and rendering it.
 
-We can load the texture by using the `textureLoader`.  There are various loaders available in **Velaptor**
+We can load the texture by using the `contentManager`.  There are various loaders available in **Velaptor**
 that can be used to load different kinds of content.
 
 To do this, override the `OnLoad()` method and add the following code to load the texture.
@@ -102,7 +102,7 @@ To do this, override the `OnLoad()` method and add the following code to load th
 ```csharp
 protected override void OnLoad()
 {
-    this.mascotTexture = this.textureLoader.Load("velaptor-mascot");
+    this.mascotTexture = this.contentManager.Load<ITexture>("velaptor-mascot");
 
     base.OnLoad();
 }
@@ -111,31 +111,18 @@ protected override void OnLoad()
 ### <span className="color-sub-step">3.4: Unload the texture content</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
-To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the texture loader
-and send in the texture object we loaded earlier.  To do this, we need to add the `Velaptor.ExtensionMethods` namespace
-to the top of the file to get access to the `Unload()` extension method.
+To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the content manager
+and send in the texture object we loaded earlier.
 
-Add the following using statement.
-
-```csharp
-...
-using Velaptor.ExtensionMethods; // Add this line here
-...
-public class Game : Window
-{
-    ...
-}
-```
-
-Now we can override the `OnUnload()` method and unload the font.
+Let's override the `OnUnload()` method and unload the texture.  It is always a good idea to unload
+and release resources when shutting down the game or when switching to a new scene.
 
 ```csharp
 protected override void OnUnload()
 {
-    this.textureLoader.Unload(this.mascotTexture);
+    this.contentManager.Unload(this.mascotTexture);
     base.OnUnload();
 }
-
 ```
 
 ## <span className="color-step">Step 4: Render the texture</span>
@@ -145,7 +132,7 @@ Finally, we can now render our image.  Create the the `OnDraw()` method with the
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
 {
-    IBatcher.Begin();
+    this.batcher.Begin();
 
     var x = (int)(Width / 2); // Center of the window horizontally
     var y = (int)(Height / 2); // Center of the window vertically
@@ -153,7 +140,7 @@ protected override void OnDraw(FrameTime frameTime)
     // Render the mascot image in the center of the window
     this.textureRenderer.Render(this.mascotTexture, x, y);
 
-    IBatcher.End();
+    this.batcher.End();
 
     base.OnDraw(frameTime);
 }

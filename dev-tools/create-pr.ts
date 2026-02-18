@@ -173,7 +173,7 @@ const featureBranch = await Input.prompt({
 	},
 });
 
-const chosenBaseBranch = "preview";
+const chosenBaseBranch = "main";
 
 // If the chosen branch exists
 if (await branchExistsLocally(chosenBaseBranch)) {

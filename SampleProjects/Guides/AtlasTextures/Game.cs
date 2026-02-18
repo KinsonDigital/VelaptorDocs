@@ -19,13 +19,14 @@ using Velaptor.UI;
 /// </summary>
 public class Game : Window
 {
+    private const int FullSizeStartFrame = 8;
     private readonly ITextureRenderer textureRenderer;
     private readonly IContentManager contentManager;
     private readonly IBatcher batcher;
     private readonly Random random = new ();
     private IAtlasData? atlasData;
     private AtlasSubTextureData[]? subTextureData;
-    private RenderEffects horizontalLayout;
+    private RenderEffects renderEffects;
     private float elapsedMs;
     private int currentFrame;
     private bool isFullSize;
@@ -83,14 +84,14 @@ public class Game : Window
         {
             // If the current frame is one of the frames after
             // the flame has grown to full size.
-            if (this.currentFrame >= 8)
+            if (this.currentFrame >= FullSizeStartFrame)
             {
                 this.isFullSize = true;
             }
 
             // Get the starting frame index based on if the flame has
             // grown to full size or not.
-            var startFrame = this.isFullSize ? 8 : 0;
+            var startFrame = this.isFullSize ? FullSizeStartFrame : 0;
 
             // If the last frame has been reached, reset to the starting frame
             this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
@@ -102,7 +103,7 @@ public class Game : Window
             this.elapsedMs = 0;
 
             // Randomly choose to have the flame flipped horizontally or not flipped at all
-            this.horizontalLayout = this.random.Next(0, 2) == 0
+            this.renderEffects = this.random.Next(0, 2) == 0
                 ? RenderEffects.FlipHorizontally
                 : RenderEffects.None;
         }
@@ -129,7 +130,7 @@ public class Game : Window
             0f,
             0.25f,
             Color.White,
-            this.horizontalLayout,
+            this.renderEffects,
             this.currentFrame);
 
         // End the batch to render the entire batch

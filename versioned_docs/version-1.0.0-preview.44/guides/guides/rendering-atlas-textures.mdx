@@ -13,7 +13,7 @@ Go to the <GuideLink projectName="AtlasTextures" tagName="api-v1.0.0-preview.44"
 :::
 
 Another way to render textures is by using an atlas texture. This guide is a little more
-in-depth and longer than the previous guides. Stick with it though, it will be worth it!!
+in-depth and longer than the previous guides. Stick with it though, it will be worth it!
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
@@ -32,39 +32,45 @@ If you are new to **JSON**, click <Url href="www.youtube.com/watch?v=iiADhChRriM
 When [rendering textures](./rendering-textures) the standard way, you render the entire texture.
 Though there is nothing wrong with rendering whole textures one at a time, there are pros and cons. In the end, it all depends on what you are trying to accomplish.
 
-With an atlas texture, you can pack all of the sequences of animation into the atlas. This is usually loaded by a library that loads the atlas texture
-and the associated metadata. At this point, it is very easy to automate the process of switching between textures to run an animation. Velaptor comes built-in with loading
-atlas textures and their associated metadata.
+It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
+
+There are various tools that can create atlas textures and their metadata for you, such as <Url href="www.codeandweb.com/texturepacker" text="Texture Packer" openInNewTab="true"/>
+and <Url href="esotericsoftware.com/" text="Spine" openInNewTab="true"/>.
+
+<details>
+    <summary>Want to know more?</summary>
+
+With an atlas texture, you can pack one or more animation sequences into a single image. In most game frameworks, a content system (or loader) takes
+care of loading both the atlas texture and its metadata.  In Velaptor, the content manager fills this role, loading the atlas image and metadata together.
+At this point, it is very easy to automate the process of switching between textures to run an animation.  Velaptor has built-in support for loading atlas textures
+and their associated metadata. You load both using the content manager, which handles the atlas image and JSON together.
 
 **Benefits:**
 
 - **Reduces draw calls:** Reduces the number of times Velaptor needs to send data to the GPU and reduces the number of draw calls. Instead of sending data and making draw calls for each texture, you only have to for a single atlas texture.
 - **Improved performance:** Reduces draw calls to improve the performance of your game.
-- **Easier management:** Easier to manage one large texture than many small ones, especially when it comes to loading and unloading textures and coordinating the draw calls between textures. This result is less code.
+- **Easier management:** Easier to manage one large texture than many small ones, especially when it comes to loading and unloading textures and coordinating the draw calls between textures. The result is less code.
 - **Smoother Animations:** Makes animations smoother by reducing the amount of time your game spends loading and unloading textures.
-- **Reduced memory usage:** Reduces the amount of memory your games use since you only need to load one large texture instead of many smaller ones.
+- **Reduced memory usage:** Can reduce memory overhead and state changes, since you can often load and manage one large texture instead of many small ones.
 
-It all depends on your goals. A lot of games use a combination of whole texture and atlas texture rendering.
-
-Various tools out there give you the ability to easily create atlas textures and metadata.  
-A couple of examples are: <Url href="www.codeandweb.com/texturepacker" text="Texture Packer" openInNewTab="true"/>
-and <Url href="esotericsoftware.com/" text="Spine" openInNewTab="true"/>.
+</details>
 
 :::note Loading Metadata
 Velaptor does not currently have a tool to build these atlas texture images with the associated metadata.
-Plans are in the works to add _**Texture Packer**_ integration. One option you have is to create your own
-tool to load the _**Texture Packer**_ JSON data for use.  This is not complicated and can get you by
-until the _**Texture Packer**_ integration is complete.
+Plans are in the works to add _**Texture Packer**_ integration. Velaptor can load atlas metadata at runtime,
+but it does not yet ship with a tool to generate atlas images and JSON from your raw images. Until official
+Texture Packer integration is complete, you can use Texture Packer directly or build a small tool to convert
+its JSON format into the metadata format Velaptor expects.
 :::
 
 :::tip
-Do not overstress about whole vs. atlas texture rendering. This comes with practice and depends on your needs.
+Do not overstress about whole vs. atlas texture rendering. Choosing between whole-texture and atlas rendering comes with practice and depends on your game's needs.
 Keep your needs into account as you develop your game and do not worry about performance until it starts to become an issue.
 :::
 
 :::info Atlas Texture Scenario
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 Let's consider a 2D space shooter game with lots of bullets and enemies. In this type of game, there may be a large
 number of sprites for the player, the enemies, and the projectiles.
@@ -88,7 +94,7 @@ Overall, using atlas textures in a game can improve performance, reduce file siz
 </details>
 :::
 
-Enough explanation!!  Let's get our hands dirty and build something!!
+Enough explanation!  Let's get our hands dirty and build something!
 
 For this tutorial, we are going to build a simple game that will show a blue animating flame.
 This flame will be rendered in the center of the window and will animate in a loop indefinitely.
@@ -139,11 +145,13 @@ Create the following class fields which will be used for holding content data, l
 ```csharp
 public class Game : Window
 {
+    private const int FullSizeStartFrame = 8; // The frame index where the flame has grown to full size
     private readonly ITextureRenderer textureRenderer; // Renders textures
     private readonly IBatcher batcher; // Batches the rendering of textures
-    private ILoader<IAtlasData>? atlasLoader; // Loads the atlas data
-    private AtlasSubTextureData[]? subTextureData; // Holds all of the atlas data
-    private IAtlasdata? atlasData;  // The atlas data
+    private IContentManager contentManager; // Loads various types of content
+    private AtlasSubTextureData[]? subTextureData; // Holds all of the frame metadata from the atlas for the flame animation
+    private IAtlasData? atlasData;  // Reference to the loaded atlas (texture + metadata)
+    private RenderEffects renderEffects = RenderEffects.None;
 }
 ```
 
@@ -161,9 +169,9 @@ public class Game : Window
         Width = 500;
         Height = 500;
 
-        this.atlasLoader = ContentLoaderFactory.CreateAtlasLoader(this.batcher);
+        this.contentManager = ContentManager.Create();
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.batcher = rendererFactory.CreateBatcher();
+        this.batcher = RendererFactory.CreateBatcher();
     }
 }
 ```
@@ -179,7 +187,9 @@ Next, let's create the `OnLoad()` override method and add code to the method to 
 protected override void OnLoad()
 {
     // Loads the atlas.png and atlas.json file
-    this.atlasData = this.atlasLoader.Load("atlas");
+    this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
+
+    // The string "flame" must match the frame name used in your atlas metadata.
     this.subTextureData = this.atlasData.GetFrames("flame");
 
     base.OnLoad();
@@ -197,7 +207,7 @@ it is not required and there is no need to load the _**.png**_ and _**.json**_ f
 :::info metadata format
 
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info</summary>
 
 Let's go over the JSON data that is contained in the metadata file.
 
@@ -240,31 +250,18 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 ### <span className="color-sub-step">6.2: Unload content</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
-To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the atlas loader
-and send in the `IAtlasData` class field we created earlier.  To do this, we need to add the `Velaptor.ExtensionMethods` namespace
-to the top of the file.
+To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the content manager
+and send in the `IAtlasData` class field we created earlier.
 
-Add the following using statement.
-
-```csharp
-...
-using Velaptor.ExtensionMethods; // Add this line here
-...
-public class Game : Window
-{
-    ...
-}
-```
-
-Now we can override the `OnUnload()` method and unload the font.
+Let's override the `OnUnload()` method and unload the atlas data.  It is always a good idea to unload
+and release resources when shutting down the game or when switching to a new scene.
 
 ```csharp
 protected override void OnUnload()
 {
-    this.atlasLoader.Unload(this.atlasTexture);
+    this.contentManager.Unload(this.atlasData);
     base.OnUnload();
 }
-
 ```
 
 
@@ -281,7 +278,7 @@ Add the following fields to the `Game` class.
 public class Game : Window
 {
     ...
-    private float elapsedMs; // The total milliseconds that have passed
+    private float elapsedMs; // Milliseconds elapsed since the last animation frame change
     private int currentFrame; // The current frame of the animation
     private bool isFullSize; // Whether or not the flame has grown to full size
     ...
@@ -290,7 +287,7 @@ public class Game : Window
 
 :::info WHY?
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 Think of a <Url href="www.youtube.com/watch?v=Un-BdBSOGKY" text="flip book" openInNewTab="true"/>.
 If you were to flip through the pages of a flip book, you would see the animation.
@@ -320,14 +317,14 @@ protected override void OnUpdate(FrameTime frameTime)
     {
         // If the current frame is one of the frames after
         // the flame has grown to full size.
-        if (this.currentFrame >= 8)
+        if (this.currentFrame >= FullSizeStartFrame)
         {
             this.isFullSize = true;
         }
 
         // Get the starting frame index based on if the flame has
         // grown to full size or not.
-        var startFrame = this.isFullSize ? 8 : 0;
+        var startFrame = this.isFullSize ? FullSizeStartFrame : 0;
 
         // If the last frame has been reached, reset to the starting frame
         this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
@@ -345,7 +342,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 This code will check if 124ms has passed. If it has, then it will move to the next frame of
 the animation. If the last frame has been reached, then it will reset to the first frame.
-Now we have our flip book!!
+Now we have our flip book!
 
 The `startFrame` is the frame where the animation starts, which will be either 0 or 8. If the flame has not grown to
 full size, frames 0-7 will be used. If the flame has grown to full size, frames 8-15 will be used.
@@ -354,7 +351,7 @@ full size, frames 0-7 will be used. If the flame has grown to full size, frames 
 If you want to calculate how many milliseconds it takes for a particular frame rate, just take
 the value 1000 and divide it by the desired frame rate.
 
-_**Formula:**_ ms/sec <span style={{fontSize: '14pt', fontWeight: 'bold'}}>÷</span> fps = ms/frame.
+_**Formula:**_ 1000 ms(one second) <span style={{fontSize: '14pt', fontWeight: 'bold'}}>÷</span> fps = ms/frame.
 
 For example, 1000 <span style={{fontSize: '14pt', fontWeight: 'bold'}}>÷</span> 60 = 16.66ms. This means if you want to run something at 60fps, you would need to
 to make something happen every 16ms to obtain that frame rate.
@@ -362,7 +359,7 @@ to make something happen every 16ms to obtain that frame rate.
 
 :::info What is FPS?
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 FPS stands for frames per second, which, as the name implies, is the number of frames that are rendered every second.
 The game loop of a game consists of the two most important methods: `OnUpdate()` and `OnRender()`.
@@ -395,13 +392,14 @@ protected override void OnDraw(FrameTime frameTime)
     var pos = new Vector2(Width / 2f, Height / 2f);
 
     // Render only the sub-texture in the atlas at the center of the window
+    // Until the first 124ms elapse, it renders unflipped
     this.textureRenderer.Render(this.atlasData,
         "flame",
         pos,
         0f,
         0.25f,
         Color.White,
-        this.horizontalLayout,
+        this.renderEffects,
         this.currentFrame);
 
     // End the batch to render the entire batch
@@ -413,8 +411,6 @@ protected override void OnDraw(FrameTime frameTime)
 
 Here we are using the location data from the frame metadata to know where in the atlas
 the current frame or sub-texture is located. We then render only that sub-texture to the screen.
-
-The `srcRect` and `destRect` variables are what tell Velaptor the _**section**_ of the atlas to render.
 
 ## <span className="color-step">Step 9: Run it</span>
 
@@ -428,7 +424,7 @@ The animation will be much smoother than what is shown here.
 ![Flame Animation](@site/static/img/guides/rendering-atlas-textures/flame.gif)
 
 
-## <span className="color-step">Step 10: Bonus!!</span>
+## <span className="color-step">Step 10: Bonus!</span>
 
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
@@ -436,14 +432,14 @@ bit of extra fun?  Let's improve the randomness of the flame animation.
 ### <span className="color-sub-step">10.1: Add more fields</span>
 
 Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between horizontal
-or non-horizontal orientation. The `horizontalLayout` field will be the layout setting at the time of rendering.
+or non-horizontal orientation. The `renderEffects` field will be the layout setting at the time of rendering.
 
 ```csharp
 public class Game: Window
 {
     ...
     private readonly Random random = new (); // Chooses random numbers
-    private RenderEffects horizontalLayout; // The horizontal orientation to render flame
+    private RenderEffects renderEffects; // The horizontal orientation to render flame
     ...
 }
 ```
@@ -466,7 +462,7 @@ protected override void OnUpdate(FrameTime frameTime)
     {
         ...
         // Randomly choose to have the flame flipped horizontally or not flipped at all
-        this.horizontalLayout = this.random.Next(0, 2) == 0
+        this.renderEffects = this.random.Next(0, 2) == 0
             ? RenderEffects.FlipHorizontally
             : RenderEffects.None;
     }
@@ -478,4 +474,4 @@ protected override void OnUpdate(FrameTime frameTime)
 ### <span className="color-sub-step">10.3: Run it</span>
 
 Now run your game again and the flame will be a little bit more realistic to the randomness of
-the orientation of the flame!!
+the orientation of the flame!

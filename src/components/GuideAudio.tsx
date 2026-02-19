@@ -1,16 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import Audio from "@site/src/components/Audio";
 
 /**
  * The properties for the {@link GuidImg} component.
  */
 interface Props {
-	/**
-	 * The version of the Velaptor API to use.
-	 * @remarks If not provided, then the main branch will be used.
-	 */
-	apiVersion: string;
-
 	/**
 	 * The name of the guide project.
 	 */
@@ -45,10 +40,13 @@ interface Props {
  * @param params The component properties.
  * @returns The component.
  */
-const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, name, useTestMode = "false", testBranchOrTag = "" }: Props) => {
-	const versionRegex = /^\s*v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\s*$/gm;
+export default function GuideAudio(props: Props): ReactNode {
+	const { guideName, audioFileName, name, useTestMode = "false", testBranchOrTag = "" } = props;
+	const versionRegex = /(main|^\s*api-v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\s*$)/gm;
 	const invalidGuideProjName = guideName === undefined || guideName === "";
 	const undefinedOrEmptyFileName = audioFileName === undefined || audioFileName === "";
+	const activeVersion = useDocsVersion();
+	const apiVersion = activeVersion.version === "current" ? "main" : `api-v${activeVersion.version}`;
 
 	let errorMsg = undefined;
 
@@ -69,7 +67,7 @@ const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, nam
 		errorMsg = "The audio file must be an '.mp3' or '.ogg' file.";
 	}
 
-	const branchOrTag = useTestMode === "true" ? testBranchOrTag : `api-${apiVersion}`;
+	const branchOrTag = useTestMode === "true" ? testBranchOrTag : apiVersion;
 	const relativeImgPath = `SampleProjects/Guides/${guideName}/Content/Audio/${audioFileName}`;
 	const url = `https://raw.githubusercontent.com/KinsonDigital/VelaptorDocs/${branchOrTag}/${relativeImgPath}`;
 
@@ -83,5 +81,3 @@ const GuideAudio: React.FC<Props> = ({ apiVersion, guideName, audioFileName, nam
 		</div>
 	);
 }
-
-export default GuideAudio;

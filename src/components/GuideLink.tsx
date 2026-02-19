@@ -1,4 +1,5 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import OpenNewTab from "@site/static/img/new-tab.svg";
 import Link from "@docusaurus/Link";
 
@@ -24,17 +25,19 @@ interface Props {
  * @param param The component properties.
  * @returns The component.
  */
-const GuideLink: React.FC<Props> = ({ projectName, tagName }: Props) => {
-	const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/${tagName}/SampleProjects/Guides/${projectName}`;
+export default function GuideLink({ projectName, tagName }: Props): ReactNode {
+	const activeVersion = useDocsVersion();
+
+	const version = activeVersion.version === "current"
+		? "main"
+		: `api-v${activeVersion.version}`;
+	const versionText = version.replace("api-", "");
+	const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/${version}/SampleProjects/Guides/${projectName}`;
 
 	return (
-		<>
-			<div className="inline-flex items-center">
-				<Link to={url} className="link" target="_blank">{projectName}</Link>
-				<span><OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} /></span>
-			</div>
-		</>
+		<span className="inline-flex items-center">
+			<Link to={url} className="link" target="_blank">{projectName}</Link>
+			<span><OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} /></span>
+		</span>
 	);
 }
-
-export default GuideLink;

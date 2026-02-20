@@ -38,7 +38,7 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 	const target = shouldUseNewTab ? "_blank" : "";
 
 	return (
-		<div className="inline-flex items-center">
+		<span className="inline-flex items-center">
 			<Link to={href} target={target} className={"link"}>{text}</Link>
 			<span>
 				{
@@ -47,7 +47,7 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 						: <div></div>
 				}
 			</span>
-		</div>
+		</span>
 	);
 }
 

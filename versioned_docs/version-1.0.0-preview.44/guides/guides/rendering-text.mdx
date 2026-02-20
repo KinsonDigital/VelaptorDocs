@@ -9,7 +9,7 @@ import GuideLink from "@site/src/components/GuideLink";
 This guide will show you the basics of rendering text to a window using **Velaptor**.
 
 :::note Guide Source Code
-Go to the <GuideLink projectName="RenderingText" tagName="api-v1.0.0-preview.44"/> guide project to see the source code for a fully working example of this guide.
+Go to the <GuideLink projectName="RenderingText" /> guide project to see the source code for a fully working example of this guide.
 :::
 
 
@@ -32,7 +32,7 @@ Create some class fields at the top of the class. These will be used for loading
 rendering text, and rendering in a batch.
 
 ```csharp
-private ILoader<IFont>? fontLoader; // Loads the font content
+private IContentManager contentManager; // Loads various types of content
 private IFont? font; // Holds the font
 private IFontRenderer? fontRenderer; // Renders text using the font
 private IBatcher? batcher; // Renders the text in a batch
@@ -40,7 +40,7 @@ private IBatcher? batcher; // Renders the text in a batch
 
 ### <span className="color-sub-step">2.2: Setup window</span>
 
-Set the window title and size in the `Game` constructor.  This is self explantory.
+Set the window title and size in the `Game` constructor.  This is self explanatory.
 
 ```csharp
 public Game()
@@ -53,7 +53,7 @@ public Game()
 
 ### <span className="color-sub-step">2.3: Content & rendering objects</span>
 
-Now we can create the font loader, font renderer, and a batcher.  These will be used to
+Now we can create the content manager, font renderer, and a batcher.  These will be used to
 load the font, render the text, and render the content in a single batch.
 
 Add the following code to the constructor create the class field instances.
@@ -62,7 +62,7 @@ Add the following code to the constructor create the class field instances.
 public Game()
 {
     ...
-    this.fontLoader = ContentLoaderFactory.CreateFontLoader();
+    this.contentManager = ContentManager.Create();
     this.fontRenderer = RendererFactory.CreateFontRenderer();
     this.batcher = RendererFactory.CreateBatcher();
 }
@@ -77,7 +77,7 @@ As you might have guessed, this is used for batching.  But that does not mean yo
 Let's fill you in.
 
 Think of a batch as a group of something.  Just like a batch of cookies is a group of cookies, a batch of textures is a group of textures.
-What we are doing is making **Velaptor** aware that we will be rendering a bunch of textures.  By rendering textures **together**, we mean
+What we are doing is making **Velaptor** aware that we will be rendering a bunch of textures all at once.  By rendering textures **together**, we mean
 that all of the textures will be sent to the GPU and rendered all together as a group.  Once we are done **rendering**, we then
 tell **Velaptor** that we are finished creating our batch and it can now be rendered to the screen.
 
@@ -105,15 +105,15 @@ to the screen, played as sound, or event contain data that will be used by the g
 
 ### <span className="color-sub-step">3.1: Load the font</span>
 
-We need to load the font and to do this we can use a loader.  There are various loaders available in **Velaptor**.
-The loader that we need is the `ILoader<IFont>` loader and this can be created using the `ContentLoaderFactory`.
+We need to load the font and to do this we can use the content manager created earlier.
+This can be created using the `ContentManager.Create()` method.
 
-Add the following code to the `OnLoad()` method to create the font loader and load the font.
+Add the following code to the `OnLoad()` method to load the font.
 
 ```csharp
 protected override void OnLoad()
 {
-    this.font = this.fontLoader.Load("TimesNewRoman-Regular", 24);
+    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 24);
 
     base.OnLoad();
 }
@@ -124,7 +124,7 @@ Since the name of the content to load is based on the name of the file, renaming
 
 :::tip content name
 The name of the content to load is the same as the content file minus the file extension. You can use or
-omit the file extension when using the `this.fontLoader.Load()` method. Also, the name is not _**case-sensitive**_.  
+omit the file extension when using the `this.contentManager.LoadFont()` method. Also, the name is not _**case-sensitive**_.  
 Example: The content names _**'my-texture'**_ and _**'My-Texture'**_ are equivalent.
 :::
 
@@ -145,34 +145,27 @@ The 4 different font types are:
 ### <span className="color-sub-step">3.2: Unload the font</span>
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
-To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the font loader
-and send in the `IFont` class field we created earlier.  To do this, we need to add the `Velaptor.ExtensionMethods` namespace
-to the top of the file.
+To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the content manager
+and send in the `IFont` class field we created earlier.
 
-
-Add the following using statement.
-
-```csharp
-...
-using Velaptor.ExtensionMethods; // Add this line here
-...
-public class Game : Window
-{
-    ...
-}
-```
-
-Now we can override the `OnUnload()` method and unload the font.  It is always a good idea to unload
+Let's override the `OnUnload()` method and unload the font.  It is always a good idea to unload
 and release resources when shutting down the game or when switching to a new scene.
 
 ```csharp
 protected override void OnUnload()
 {
-    this.fontLoader.Unload(this.font);
+    this.contentManager.Unload(this.font);
     base.OnUnload();
 }
 ```
 
+:::tip Content Caching
+When you load content, it is cached in memory.  This means that if you load the same content multiple times,
+it will only be loaded once and the cached version will be returned for subsequent loads.
+This is a good thing because it helps to improve performance and reduce memory usage.
+
+If you want to take advantage of this caching mechanism in the next scene, do not unload the content in the `OnUnload()` method.
+:::
 
 ## <span className="color-step">Step 4: Rendering text</span>
 
@@ -255,7 +248,7 @@ public class Game : Window
 }
 ```
 
-### <span className="color-sub-step">5.2:  Screen collision detection</span>
+### <span className="color-sub-step">5.2: Screen collision detection</span>
 
 To detect if the text is colliding with the edge of the screen, we need to check if the text is outside of the screen's bounds.
 The screen bounds are made up of the four sides of the screen the left, top, right, and bottom. The left and top

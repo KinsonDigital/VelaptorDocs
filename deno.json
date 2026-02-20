@@ -5,12 +5,13 @@
         "lint": "deno lint ./.github/cicd/",
         "check": "deno check ./.github/cicd/",
         "reload-cache": "deno cache -r ./.github/cicd/",
-        "create-pr": "deno run -A jsr:@kinsondigital/sprocket@2.2.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR",
+        "create-pr": "deno run -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR",
         "create-nuget-pkg": "deno run -ERWSN --allow-run ./dev-scripts/create-local-nuget.ts"
     },
     "fmt": {
         "include": [
-            ".github/cicd/"
+            ".github/cicd/",
+            "dev-tools/"
         ],
         "exclude": [
             "**/.config/",
@@ -75,10 +76,13 @@
         "playground.ts"
     ],
     "imports": {
-        "@std/fs": "jsr:@std/fs@^1.0.19",
+        "@std/fs": "jsr:@std/fs@^1.0.23",
+        "@std/async": "jsr:@std/async@1.2.0",
         "@std/path": "jsr:@std/path@1.1.2",
-        "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.8",
+        "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0",
         "@kd-clients/github": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/github",
-        "@kd-clients/packaging": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/packaging"
+        "@kd-clients/packaging": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/packaging",
+        "@kd-clients": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15",
+        "@sprocket": "jsr:@kinsondigital/sprocket@3.0.0"
     }
 }

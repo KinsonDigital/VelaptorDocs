@@ -1,12 +1,12 @@
-import { delay } from "jsr:@std/async@1.0.15";
-import { existsSync, walkSync } from "jsr:@std/fs@1.0.19";
-import { Input } from "jsr:@cliffy/prompt@1.0.0-rc.8/input";
-import { IssueOrPRRequestData } from "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/core";
+import { delay } from "@std/async";
+import { existsSync, walkSync } from "@std/fs";
+import { Input } from "@cliffy/prompt/input";
+import { IssueOrPRRequestData } from "@kd-clients/core";
 import {
 	IssueClient,
 	ProjectClient,
 	PullRequestClient,
-} from "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/github";
+} from "@kd-clients/github";
 import {
 	branchExistsLocally,
 	branchExistsRemotely,
@@ -15,13 +15,13 @@ import {
 	createCommit,
 	isCheckedOut,
 	pushToRemote,
-} from "jsr:@kinsondigital/sprocket@2.2.0/git";
+} from "@sprocket/git";
 import {
 	printCyan,
 	printGray,
 	printIndianRed,
 	printYellow,
-} from "jsr:@kinsondigital/sprocket@2.2.0/console";
+} from "@sprocket/console";
 
 const token = (Deno.env.get("CICD_TOKEN") ?? "").trim();
 const prReviewer = "KinsonDigitalAdmin";

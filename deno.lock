@@ -787,6 +787,7 @@
       "dependencies": [
         "npm:@docusaurus/core@3.9.2",
         "npm:@docusaurus/module-type-aliases@^3.2.1",
+        "npm:@docusaurus/plugin-content-docs@^3.9.2",
         "npm:@docusaurus/preset-classic@3.9.2",
         "npm:@docusaurus/theme-mermaid@3.9.2",
         "npm:@docusaurus/tsconfig@^3.2.1",

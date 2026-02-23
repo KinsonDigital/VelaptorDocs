@@ -3,24 +3,24 @@ title: Velaptor.OpenGL.Exceptions.ShaderNotInitializedException
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.OpenGL.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor.OpenGL.Exceptions')
+### [Velaptor\.OpenGL\.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor\.OpenGL\.Exceptions')
 
 #### ShaderNotInitializedException Class
 
-Thrown when a shader has not been initialized.
+Thrown when a shader has not been initialized\.
 
 ```csharp
 public sealed class ShaderNotInitializedException : System.Exception
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → ShaderNotInitializedException
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') → ShaderNotInitializedException
 ## Constructors
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException()'></a>
 
-### ShaderNotInitializedException() Constructor
+### ShaderNotInitializedException\(\) Constructor
 
-Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
+Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderNotInitializedException') class\.
 
 ```csharp
 public ShaderNotInitializedException();
@@ -28,9 +28,9 @@ public ShaderNotInitializedException();
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,string)'></a>
 
-### ShaderNotInitializedException(string, string) Constructor
+### ShaderNotInitializedException\(string, string\) Constructor
 
-Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
+Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderNotInitializedException') class\.
 
 ```csharp
 public ShaderNotInitializedException(string message, string shaderName="");
@@ -39,21 +39,21 @@ public ShaderNotInitializedException(string message, string shaderName="");
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message that describes the error.
+The message that describes the error\.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,string).shaderName'></a>
 
-`shaderName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`shaderName` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The name of the shader.
+The name of the shader\.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,System.Exception)'></a>
 
-### ShaderNotInitializedException(string, Exception) Constructor
+### ShaderNotInitializedException\(string, Exception\) Constructor
 
-Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
+Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderNotInitializedException') class\.
 
 ```csharp
 public ShaderNotInitializedException(string message, System.Exception innerException);
@@ -62,12 +62,12 @@ public ShaderNotInitializedException(string message, System.Exception innerExcep
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,System.Exception).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message that describes the error.
+The message that describes the error\.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,System.Exception).innerException'></a>
 
-`innerException` [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')
+`innerException` [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')
 
-The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') instance that caused the current exception.
+The [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') instance that caused the current exception\.

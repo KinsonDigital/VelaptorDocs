@@ -3,31 +3,31 @@ title: Velaptor.Content.Fonts.FontStyle
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Content.Fonts](Velaptor.Content.Fonts.md 'Velaptor.Content.Fonts')
+### [Velaptor\.Content\.Fonts](Velaptor.Content.Fonts.md 'Velaptor\.Content\.Fonts')
 
 ## FontStyle Enum
 
-The kind of font styles.
+The kind of font styles\.
 
 ```csharp
 public enum FontStyle
 ```
 #### Fields
 
-<a name='Velaptor.Content.Fonts.FontStyle.Bold'></a>
+<a name='Velaptor.Content.Fonts.FontStyle.Regular'></a>
 
-`Bold` 2
+`Regular` 0
 
-Bold font style.
+Regular font style\.
 
 <a name='Velaptor.Content.Fonts.FontStyle.Italic'></a>
 
 `Italic` 1
 
-Italic font style.
+Italic font style\.
 
-<a name='Velaptor.Content.Fonts.FontStyle.Regular'></a>
+<a name='Velaptor.Content.Fonts.FontStyle.Bold'></a>
 
-`Regular` 0
+`Bold` 2
 
-Regular font style.
+Bold font style\.

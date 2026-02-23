@@ -7,21 +7,20 @@ title: Velaptor.SizeU
 
 #### SizeU Struct
 
-Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#height 'Velaptor.SizeU.Height').
+Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#width 'Velaptor\.SizeU\.Width') and [Height](Velaptor.SizeU.md#height 'Velaptor\.SizeU\.Height')\.
 
 ```csharp
-public readonly struct SizeU :
-System.IEquatable<Velaptor.SizeU>
+public readonly record struct SizeU : System.IEquatable<Velaptor.SizeU>
 ```
 
-Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 ## Constructors
 
 <a name='Velaptor.SizeU.SizeU(uint,uint)'></a>
 
-### SizeU(uint, uint) Constructor
+### SizeU\(uint, uint\) Constructor
 
-Initializes a new instance of the [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU') struct.
+Initializes a new instance of the [SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU') struct\.
 
 ```csharp
 public SizeU(uint width, uint height);
@@ -30,39 +29,39 @@ public SizeU(uint width, uint height);
 
 <a name='Velaptor.SizeU.SizeU(uint,uint).width'></a>
 
-`width` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+`width` [System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')
 
-The width of the size.
+The width of the size\.
 
 <a name='Velaptor.SizeU.SizeU(uint,uint).height'></a>
 
-`height` [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+`height` [System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')
 
-The height of the size.
+The height of the size\.
 ## Properties
 
 <a name='Velaptor.SizeU.Height'></a>
 
 ### Height 
 
-Gets the height of the size.
+Gets the height of the size\.
 
 ```csharp
-public uint Height { get; set; }
+public uint Height { get; init; }
 ```
 
 #### Property Value
-[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+[System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')
 
 <a name='Velaptor.SizeU.Width'></a>
 
 ### Width 
 
-Gets the width of the size.
+Gets the width of the size\.
 
 ```csharp
-public uint Width { get; set; }
+public uint Width { get; init; }
 ```
 
 #### Property Value
-[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+[System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')

@@ -3,37 +3,37 @@ title: Velaptor.Graphics.RenderEffects
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
+### [Velaptor\.Graphics](Velaptor.Graphics.md 'Velaptor\.Graphics')
 
 ## RenderEffects Enum
 
-Adds basic effects to a texture when rendered.
+Adds basic effects to a texture when rendered\.
 
 ```csharp
 public enum RenderEffects
 ```
 #### Fields
 
-<a name='Velaptor.Graphics.RenderEffects.FlipBothDirections'></a>
+<a name='Velaptor.Graphics.RenderEffects.None'></a>
 
-`FlipBothDirections` 3
+`None` 0
 
-The texture is flipped horizontally and vertically.
+No effects are applied\.
 
 <a name='Velaptor.Graphics.RenderEffects.FlipHorizontally'></a>
 
 `FlipHorizontally` 1
 
-The texture is flipped horizontally.
+The texture is flipped horizontally\.
 
 <a name='Velaptor.Graphics.RenderEffects.FlipVertically'></a>
 
 `FlipVertically` 2
 
-The texture is flipped vertically.
+The texture is flipped vertically\.
 
-<a name='Velaptor.Graphics.RenderEffects.None'></a>
+<a name='Velaptor.Graphics.RenderEffects.FlipBothDirections'></a>
 
-`None` 0
+`FlipBothDirections` 3
 
-No effects are applied.
+The texture is flipped horizontally and vertically\.

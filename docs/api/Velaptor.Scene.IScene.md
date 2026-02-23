@@ -3,96 +3,93 @@ title: Velaptor.Scene.IScene
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Scene](Velaptor.Scene.md 'Velaptor.Scene')
+### [Velaptor\.Scene](Velaptor.Scene.md 'Velaptor\.Scene')
 
 #### IScene Interface
 
-Represents a single scene that can be rendered to the screen.
+Represents a single scene that can be rendered to the screen\.
 
 ```csharp
-public interface IScene :
-Velaptor.IUpdatable,
-Velaptor.IDrawable,
-System.IDisposable
+public interface IScene : Velaptor.IUpdatable, Velaptor.IDrawable, System.IDisposable
 ```
 
 Derived  
-&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')
+&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor\.Scene\.SceneBase')
 
-Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor.IDrawable'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
+Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable'), [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
 ## Properties
 
 <a name='Velaptor.Scene.IScene.Id'></a>
 
 ### Id 
 
-Gets the unique ID of the scene.
+Gets the unique ID of the scene\.
 
 ```csharp
 System.Guid Id { get; }
 ```
 
 #### Property Value
-[System.Guid](https://docs.microsoft.com/en-us/dotnet/api/System.Guid 'System.Guid')
+[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
 
 <a name='Velaptor.Scene.IScene.IsLoaded'></a>
 
 ### IsLoaded 
 
-Gets a value indicating whether the scene has been loaded.
+Gets a value indicating whether the scene has been loaded\.
 
 ```csharp
 bool IsLoaded { get; }
 ```
 
 #### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
 <a name='Velaptor.Scene.IScene.Name'></a>
 
 ### Name 
 
-Gets the name of the scene.
+Gets the name of the scene\.
 
 ```csharp
 string Name { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Scene.IScene.WindowCenter'></a>
 
 ### WindowCenter 
 
-Gets the center of the window.
+Gets the center of the window\.
 
 ```csharp
 System.Drawing.Point WindowCenter { get; }
 ```
 
 #### Property Value
-[System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Point 'System.Drawing.Point')
+[System\.Drawing\.Point](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point 'System\.Drawing\.Point')
 
 <a name='Velaptor.Scene.IScene.WindowSize'></a>
 
 ### WindowSize 
 
-Gets the size of the window.
+Gets the size of the window\.
 
 ```csharp
 Velaptor.SizeU WindowSize { get; }
 ```
 
 #### Property Value
-[SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')
+[SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')
 ## Methods
 
 <a name='Velaptor.Scene.IScene.LoadContent()'></a>
 
-### LoadContent() 
+### LoadContent\(\) 
 
-Loads the scene content.
+Loads the scene content\.
 
 ```csharp
 void LoadContent();
@@ -100,9 +97,9 @@ void LoadContent();
 
 <a name='Velaptor.Scene.IScene.Resize(Velaptor.SizeU)'></a>
 
-### Resize(SizeU) 
+### Resize\(SizeU\) 
 
-Updates the [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor.Scene.IScene.WindowSize').
+Updates the [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor\.Scene\.IScene\.WindowSize')\.
 
 ```csharp
 void Resize(Velaptor.SizeU size);
@@ -111,15 +108,15 @@ void Resize(Velaptor.SizeU size);
 
 <a name='Velaptor.Scene.IScene.Resize(Velaptor.SizeU).size'></a>
 
-`size` [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU')
+`size` [SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')
 
-The new size.
+The new size\.
 
 <a name='Velaptor.Scene.IScene.UnloadContent()'></a>
 
-### UnloadContent() 
+### UnloadContent\(\) 
 
-Unloads the scene's content.
+Unloads the scene's content\.
 
 ```csharp
 void UnloadContent();

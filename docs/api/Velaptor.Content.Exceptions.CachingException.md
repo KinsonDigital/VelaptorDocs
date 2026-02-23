@@ -3,57 +3,34 @@ title: Velaptor.Content.Exceptions.CachingException
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions')
+### [Velaptor\.Content\.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor\.Content\.Exceptions')
 
 #### CachingException Class
 
-Thrown when there is an issue caching items.
+Thrown when there is an issue caching items\.
 
 ```csharp
 public sealed class CachingException : System.Exception
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → CachingException
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') → CachingException
 ## Constructors
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException()'></a>
 
-### CachingException() Constructor
+### CachingException\(\) Constructor
 
-Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor.Content.Exceptions.CachingException') class.
+Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor\.Content\.Exceptions\.CachingException') class\.
 
 ```csharp
 public CachingException();
 ```
 
-<a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception)'></a>
-
-### CachingException(string, Exception) Constructor
-
-Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor.Content.Exceptions.CachingException') class.
-
-```csharp
-public CachingException(string message, System.Exception innerException);
-```
-#### Parameters
-
-<a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception).message'></a>
-
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The message that describes the error.
-
-<a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception).innerException'></a>
-
-`innerException` [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')
-
-The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') instance that caused the current exception.
-
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException(string)'></a>
 
-### CachingException(string) Constructor
+### CachingException\(string\) Constructor
 
-Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor.Content.Exceptions.CachingException') class.
+Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor\.Content\.Exceptions\.CachingException') class\.
 
 ```csharp
 public CachingException(string message);
@@ -62,6 +39,29 @@ public CachingException(string message);
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException(string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message that describes the error.
+The message that describes the error\.
+
+<a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception)'></a>
+
+### CachingException\(string, Exception\) Constructor
+
+Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor\.Content\.Exceptions\.CachingException') class\.
+
+```csharp
+public CachingException(string message, System.Exception innerException);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception).message'></a>
+
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The message that describes the error\.
+
+<a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception).innerException'></a>
+
+`innerException` [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')
+
+The [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') instance that caused the current exception\.

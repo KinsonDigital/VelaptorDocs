@@ -3,24 +3,24 @@ title: Velaptor.OpenGL.Exceptions.GLException
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.OpenGL.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor.OpenGL.Exceptions')
+### [Velaptor\.OpenGL\.Exceptions](Velaptor.OpenGL.Exceptions.md 'Velaptor\.OpenGL\.Exceptions')
 
 #### GLException Class
 
-Thrown when an error has been thrown by OpenGL.
+Thrown when an error has been thrown by OpenGL\.
 
 ```csharp
 public sealed class GLException : System.Exception
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → GLException
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') → GLException
 ## Constructors
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException()'></a>
 
-### GLException() Constructor
+### GLException\(\) Constructor
 
-Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor.OpenGL.Exceptions.GLException') class.
+Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor\.OpenGL\.Exceptions\.GLException') class\.
 
 ```csharp
 public GLException();
@@ -28,9 +28,9 @@ public GLException();
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,string)'></a>
 
-### GLException(string, string) Constructor
+### GLException\(string, string\) Constructor
 
-Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor.OpenGL.Exceptions.GLException') class.
+Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor\.OpenGL\.Exceptions\.GLException') class\.
 
 ```csharp
 public GLException(string message, string bufferName="");
@@ -39,21 +39,21 @@ public GLException(string message, string bufferName="");
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message that describes the error.
+The message that describes the error\.
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,string).bufferName'></a>
 
-`bufferName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`bufferName` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The name of the buffer.
+The name of the buffer\.
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,System.Exception)'></a>
 
-### GLException(string, Exception) Constructor
+### GLException\(string, Exception\) Constructor
 
-Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor.OpenGL.Exceptions.GLException') class.
+Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor\.OpenGL\.Exceptions\.GLException') class\.
 
 ```csharp
 public GLException(string message, System.Exception innerException);
@@ -62,12 +62,12 @@ public GLException(string message, System.Exception innerException);
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,System.Exception).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message that describes the error.
+The message that describes the error\.
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,System.Exception).innerException'></a>
 
-`innerException` [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')
+`innerException` [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')
 
-The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') instance that caused the current exception.
+The [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') instance that caused the current exception\.

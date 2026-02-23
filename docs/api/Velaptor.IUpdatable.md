@@ -7,23 +7,23 @@ title: Velaptor.IUpdatable
 
 #### IUpdatable Interface
 
-Provides the ability for an object to be updated.
+Provides the ability for an object to be updated\.
 
 ```csharp
 public interface IUpdatable
 ```
 
 Derived  
-&#8627; [IScene](Velaptor.Scene.IScene.md 'Velaptor.Scene.IScene')  
-&#8627; [ISceneManager](Velaptor.Scene.ISceneManager.md 'Velaptor.Scene.ISceneManager')  
-&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor.Scene.SceneBase')
+&#8627; [IScene](Velaptor.Scene.IScene.md 'Velaptor\.Scene\.IScene')  
+&#8627; [ISceneManager](Velaptor.Scene.ISceneManager.md 'Velaptor\.Scene\.ISceneManager')  
+&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor\.Scene\.SceneBase')
 ## Methods
 
 <a name='Velaptor.IUpdatable.Update(Velaptor.FrameTime)'></a>
 
-### Update(FrameTime) 
+### Update\(FrameTime\) 
 
-Updates the object.
+Updates the object\.
 
 ```csharp
 void Update(Velaptor.FrameTime frameTime);
@@ -32,6 +32,6 @@ void Update(Velaptor.FrameTime frameTime);
 
 <a name='Velaptor.IUpdatable.Update(Velaptor.FrameTime).frameTime'></a>
 
-`frameTime` [FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime')
+`frameTime` [FrameTime](Velaptor.FrameTime.md 'Velaptor\.FrameTime')
 
-The amount of time that has passed for the current frame.
+The amount of time that has passed for the current frame\.

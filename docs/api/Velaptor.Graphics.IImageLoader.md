@@ -3,25 +3,25 @@ title: Velaptor.Graphics.IImageLoader
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Graphics](Velaptor.Graphics.md 'Velaptor.Graphics')
+### [Velaptor\.Graphics](Velaptor.Graphics.md 'Velaptor\.Graphics')
 
 #### IImageLoader Interface
 
-Loads images from disk.
+Loads images from disk\.
 
 ```csharp
 public interface IImageLoader
 ```
 
 Derived  
-&#8627; [ImageLoader](Velaptor.Graphics.ImageLoader.md 'Velaptor.Graphics.ImageLoader')
+&#8627; [ImageLoader](Velaptor.Graphics.ImageLoader.md 'Velaptor\.Graphics\.ImageLoader')
 ## Methods
 
 <a name='Velaptor.Graphics.IImageLoader.LoadImage(string)'></a>
 
-### LoadImage(string) 
+### LoadImage\(string\) 
 
-Loads an image from the specified file path.
+Loads an image from the specified file path\.
 
 ```csharp
 Velaptor.Graphics.ImageData LoadImage(string filePath);
@@ -30,10 +30,10 @@ Velaptor.Graphics.ImageData LoadImage(string filePath);
 
 <a name='Velaptor.Graphics.IImageLoader.LoadImage(string).filePath'></a>
 
-`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`filePath` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The path to the image file.
+The path to the image file\.
 
 #### Returns
-[ImageData](Velaptor.Graphics.ImageData.md 'Velaptor.Graphics.ImageData')  
-The image data.
+[ImageData](Velaptor.Graphics.ImageData.md 'Velaptor\.Graphics\.ImageData')  
+The image data\.

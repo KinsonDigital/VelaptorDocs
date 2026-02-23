@@ -3,11 +3,11 @@ title: Velaptor.Content.IContentLoadable
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
+### [Velaptor\.Content](Velaptor.Content.md 'Velaptor\.Content')
 
 #### IContentLoadable Interface
 
-Provides the ability to load content.
+Provides the ability to load content\.
 
 ```csharp
 public interface IContentLoadable
@@ -18,21 +18,21 @@ public interface IContentLoadable
 
 ### IsLoaded 
 
-Gets a value indicating whether the content for an object is loaded.
+Gets a value indicating whether the content for an object is loaded\.
 
 ```csharp
 bool IsLoaded { get; }
 ```
 
 #### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 ## Methods
 
 <a name='Velaptor.Content.IContentLoadable.LoadContent()'></a>
 
-### LoadContent() 
+### LoadContent\(\) 
 
-Loads the content for an object.
+Loads the content for an object\.
 
 ```csharp
 void LoadContent();
@@ -40,9 +40,9 @@ void LoadContent();
 
 <a name='Velaptor.Content.IContentLoadable.UnloadContent()'></a>
 
-### UnloadContent() 
+### UnloadContent\(\) 
 
-Unloads the content for an object.
+Unloads the content for an object\.
 
 ```csharp
 void UnloadContent();

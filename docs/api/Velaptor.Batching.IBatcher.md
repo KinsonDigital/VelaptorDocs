@@ -3,11 +3,11 @@ title: Velaptor.Batching.IBatcher
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Batching](Velaptor.Batching.md 'Velaptor.Batching')
+### [Velaptor\.Batching](Velaptor.Batching.md 'Velaptor\.Batching')
 
 #### IBatcher Interface
 
-Provides the ability to start and end the batch rendering process.
+Provides the ability to start and end the batch rendering process\.
 
 ```csharp
 public interface IBatcher
@@ -18,34 +18,34 @@ public interface IBatcher
 
 ### ClearColor 
 
-Gets or sets the color of the back buffer when cleared.
+Gets or sets the color of the back buffer when cleared\.
 
 ```csharp
 System.Drawing.Color ClearColor { get; set; }
 ```
 
 #### Property Value
-[System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')
+[System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color')
 
 <a name='Velaptor.Batching.IBatcher.HasBegun'></a>
 
 ### HasBegun 
 
-Gets a value indicating whether the batch process has begun.
+Gets a value indicating whether the batch process has begun\.
 
 ```csharp
 bool HasBegun { get; }
 ```
 
 #### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 ## Methods
 
 <a name='Velaptor.Batching.IBatcher.Begin()'></a>
 
-### Begin() 
+### Begin\(\) 
 
-Starts the batch rendering process.  Must be called before invoking any render methods.
+Starts the batch rendering process\.  Must be called before invoking any render methods\.
 
 ```csharp
 void Begin();
@@ -53,23 +53,23 @@ void Begin();
 
 <a name='Velaptor.Batching.IBatcher.Clear()'></a>
 
-### Clear() 
+### Clear\(\) 
 
-Clears the buffers.
+Clears the buffers\.
 
 ```csharp
 void Clear();
 ```
 
 #### Remarks
-It is best to clear the buffer before rendering all the textures.  
-This is to make sure smearing does not occur during texture movement or animation.
+It is best to clear the buffer before rendering all the textures\.
+This is to make sure smearing does not occur during texture movement or animation\.
 
 <a name='Velaptor.Batching.IBatcher.End()'></a>
 
-### End() 
+### End\(\) 
 
-Ends the batch process.  Calling this will perform the actual GPU render process.
+Ends the batch process\.  Calling this will perform the actual GPU render process\.
 
 ```csharp
 void End();

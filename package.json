@@ -14,7 +14,8 @@
         "typecheck": "tsc",
         "clean": "docusaurus clear && deno eval \"Deno.removeSync('./node_modules', { recursive: true });\"",
         "reinstall-deps": "pnpm clear && pnpm clean && pnpm install",
-        "preinstall": "npx only-allow pnpm"
+        "preinstall": "npx only-allow pnpm",
+        "create-pr": "deno run -c ./deno.json --node-modules-dir=false -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR"
     },
     "pnpm": {
         "onlyBuiltDependencies": [

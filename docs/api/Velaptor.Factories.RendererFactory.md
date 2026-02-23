@@ -3,85 +3,85 @@ title: Velaptor.Factories.RendererFactory
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
+### [Velaptor\.Factories](Velaptor.Factories.md 'Velaptor\.Factories')
 
 #### RendererFactory Class
 
-Creates renderers for rendering different types of graphics.
+Creates renderers for rendering different types of graphics\.
 
 ```csharp
 public static class RendererFactory
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → RendererFactory
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → RendererFactory
 ## Methods
 
 <a name='Velaptor.Factories.RendererFactory.CreateBatcher()'></a>
 
-### CreateBatcher() 
+### CreateBatcher\(\) 
 
-Creates an instance of [IBatcher](Velaptor.Batching.IBatcher.md 'Velaptor.Batching.IBatcher') to start and stop batching.
+Creates an instance of [IBatcher](Velaptor.Batching.IBatcher.md 'Velaptor\.Batching\.IBatcher') to start and stop batching\.
 
 ```csharp
 public static Velaptor.Batching.IBatcher CreateBatcher();
 ```
 
 #### Returns
-[IBatcher](Velaptor.Batching.IBatcher.md 'Velaptor.Batching.IBatcher')  
-The batcher instance.
+[IBatcher](Velaptor.Batching.IBatcher.md 'Velaptor\.Batching\.IBatcher')  
+The batcher instance\.
 
 <a name='Velaptor.Factories.RendererFactory.CreateFontRenderer()'></a>
 
-### CreateFontRenderer() 
+### CreateFontRenderer\(\) 
 
-Creates an instance of the [IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor.Graphics.Renderers.IFontRenderer').
+Creates an instance of the [IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor\.Graphics\.Renderers\.IFontRenderer')\.
 
 ```csharp
 public static Velaptor.Graphics.Renderers.IFontRenderer CreateFontRenderer();
 ```
 
 #### Returns
-[IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor.Graphics.Renderers.IFontRenderer')  
-The font renderer.
+[IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor\.Graphics\.Renderers\.IFontRenderer')  
+The font renderer\.
 
 <a name='Velaptor.Factories.RendererFactory.CreateLineRenderer()'></a>
 
-### CreateLineRenderer() 
+### CreateLineRenderer\(\) 
 
-Creates an instance of the [ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor.Graphics.Renderers.ILineRenderer').
+Creates an instance of the [ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor\.Graphics\.Renderers\.ILineRenderer')\.
 
 ```csharp
 public static Velaptor.Graphics.Renderers.ILineRenderer CreateLineRenderer();
 ```
 
 #### Returns
-[ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor.Graphics.Renderers.ILineRenderer')  
-The line renderer.
+[ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor\.Graphics\.Renderers\.ILineRenderer')  
+The line renderer\.
 
 <a name='Velaptor.Factories.RendererFactory.CreateShapeRenderer()'></a>
 
-### CreateShapeRenderer() 
+### CreateShapeRenderer\(\) 
 
-Creates an instance of the [IShapeRenderer](Velaptor.Graphics.Renderers.IShapeRenderer.md 'Velaptor.Graphics.Renderers.IShapeRenderer').
+Creates an instance of the [IShapeRenderer](Velaptor.Graphics.Renderers.IShapeRenderer.md 'Velaptor\.Graphics\.Renderers\.IShapeRenderer')\.
 
 ```csharp
 public static Velaptor.Graphics.Renderers.IShapeRenderer CreateShapeRenderer();
 ```
 
 #### Returns
-[IShapeRenderer](Velaptor.Graphics.Renderers.IShapeRenderer.md 'Velaptor.Graphics.Renderers.IShapeRenderer')  
-The rectangle renderer.
+[IShapeRenderer](Velaptor.Graphics.Renderers.IShapeRenderer.md 'Velaptor\.Graphics\.Renderers\.IShapeRenderer')  
+The rectangle renderer\.
 
 <a name='Velaptor.Factories.RendererFactory.CreateTextureRenderer()'></a>
 
-### CreateTextureRenderer() 
+### CreateTextureRenderer\(\) 
 
-Creates an instance of the [ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor.Graphics.Renderers.ITextureRenderer').
+Creates an instance of the [ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor\.Graphics\.Renderers\.ITextureRenderer')\.
 
 ```csharp
 public static Velaptor.Graphics.Renderers.ITextureRenderer CreateTextureRenderer();
 ```
 
 #### Returns
-[ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor.Graphics.Renderers.ITextureRenderer')  
-The texture renderer.
+[ITextureRenderer](Velaptor.Graphics.Renderers.ITextureRenderer.md 'Velaptor\.Graphics\.Renderers\.ITextureRenderer')  
+The texture renderer\.

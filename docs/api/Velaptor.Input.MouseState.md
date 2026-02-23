@@ -3,11 +3,11 @@ title: Velaptor.Input.MouseState
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Input](Velaptor.Input.md 'Velaptor.Input')
+### [Velaptor\.Input](Velaptor.Input.md 'Velaptor\.Input')
 
 #### MouseState Struct
 
-Represents the state of the mouse.
+Represents the state of the mouse\.
 
 ```csharp
 public readonly struct MouseState
@@ -16,9 +16,9 @@ public readonly struct MouseState
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int)'></a>
 
-### MouseState(Point, bool, bool, bool, MouseScrollDirection, int) Constructor
+### MouseState\(Point, bool, bool, bool, MouseScrollDirection, int\) Constructor
 
-Initializes a new instance of the [MouseState](Velaptor.Input.MouseState.md 'Velaptor.Input.MouseState') struct.
+Initializes a new instance of the [MouseState](Velaptor.Input.MouseState.md 'Velaptor\.Input\.MouseState') struct\.
 
 ```csharp
 public MouseState(System.Drawing.Point pos, bool isLeftButtonDown, bool isRightButtonDown, bool isMiddleButtonDown, Velaptor.Input.MouseScrollDirection scrollDirection, int scrollWheelValue);
@@ -27,61 +27,61 @@ public MouseState(System.Drawing.Point pos, bool isLeftButtonDown, bool isRightB
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int).pos'></a>
 
-`pos` [System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Point 'System.Drawing.Point')
+`pos` [System\.Drawing\.Point](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point 'System\.Drawing\.Point')
 
-The position of the mouse.
+The position of the mouse\.
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int).isLeftButtonDown'></a>
 
-`isLeftButtonDown` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`isLeftButtonDown` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-True if the left button is down.
+True if the left button is down\.
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int).isRightButtonDown'></a>
 
-`isRightButtonDown` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`isRightButtonDown` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-True if the right button is down.
+True if the right button is down\.
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int).isMiddleButtonDown'></a>
 
-`isMiddleButtonDown` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`isMiddleButtonDown` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-True if the middle button is down.
+True if the middle button is down\.
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int).scrollDirection'></a>
 
-`scrollDirection` [MouseScrollDirection](Velaptor.Input.MouseScrollDirection.md 'Velaptor.Input.MouseScrollDirection')
+`scrollDirection` [MouseScrollDirection](Velaptor.Input.MouseScrollDirection.md 'Velaptor\.Input\.MouseScrollDirection')
 
-The travel direction of the mouse wheel.
+The travel direction of the mouse wheel\.
 
 <a name='Velaptor.Input.MouseState.MouseState(System.Drawing.Point,bool,bool,bool,Velaptor.Input.MouseScrollDirection,int).scrollWheelValue'></a>
 
-`scrollWheelValue` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`scrollWheelValue` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The value of the mouse wheel.
+The value of the mouse wheel\.
 ## Methods
 
 <a name='Velaptor.Input.MouseState.AnyButtonsDown()'></a>
 
-### AnyButtonsDown() 
+### AnyButtonsDown\(\) 
 
-Returns a value indicating whether any of the mouse buttons are in the down position.
+Returns a value indicating whether any of the mouse buttons are in the down position\.
 
 ```csharp
 public bool AnyButtonsDown();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-True if any buttons are in the down position.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if any buttons are in the down position\.
 
 <a name='Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton)'></a>
 
-### GetButtonState(MouseButton) 
+### GetButtonState\(MouseButton\) 
 
-Returns a value indicating whether the state for the given [mouseButton](Velaptor.Input.MouseState.md#mousebutton 'Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton')  
-is in the down or up position.
+Returns a value indicating whether the state for the given [mouseButton](Velaptor.Input.MouseState.md#mousebutton 'Velaptor\.Input\.MouseState\.GetButtonState\(Velaptor\.Input\.MouseButton\)\.mouseButton')
+is in the down or up position\.
 
 ```csharp
 public bool GetButtonState(Velaptor.Input.MouseButton mouseButton);
@@ -90,90 +90,90 @@ public bool GetButtonState(Velaptor.Input.MouseButton mouseButton);
 
 <a name='Velaptor.Input.MouseState.GetButtonState(Velaptor.Input.MouseButton).mouseButton'></a>
 
-`mouseButton` [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseButton')
+`mouseButton` [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor\.Input\.MouseButton')
 
-The button state to retrieve.
+The button state to retrieve\.
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is down.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is down\.
 
 <a name='Velaptor.Input.MouseState.GetPosition()'></a>
 
-### GetPosition() 
+### GetPosition\(\) 
 
-Gets or sets the position of the mouse.
+Gets or sets the position of the mouse\.
 
 ```csharp
 public System.Drawing.Point GetPosition();
 ```
 
 #### Returns
-[System.Drawing.Point](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Point 'System.Drawing.Point')  
-The position relative to the top left corner of the window.
+[System\.Drawing\.Point](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point 'System\.Drawing\.Point')  
+The position relative to the top left corner of the window\.
 
 <a name='Velaptor.Input.MouseState.GetScrollDirection()'></a>
 
-### GetScrollDirection() 
+### GetScrollDirection\(\) 
 
-Gets the direction that the mouse wheel has been turned.
+Gets the direction that the mouse wheel has been turned\.
 
 ```csharp
 public Velaptor.Input.MouseScrollDirection GetScrollDirection();
 ```
 
 #### Returns
-[MouseScrollDirection](Velaptor.Input.MouseScrollDirection.md 'Velaptor.Input.MouseScrollDirection')  
-The scroll direction of the mouse wheel.
+[MouseScrollDirection](Velaptor.Input.MouseScrollDirection.md 'Velaptor\.Input\.MouseScrollDirection')  
+The scroll direction of the mouse wheel\.
 
 <a name='Velaptor.Input.MouseState.GetScrollWheelValue()'></a>
 
-### GetScrollWheelValue() 
+### GetScrollWheelValue\(\) 
 
-Gets the position value of the mouse scroll wheel.
+Gets the position value of the mouse scroll wheel\.
 
 ```csharp
 public int GetScrollWheelValue();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
-The value of the scroll wheel.
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
+The value of the scroll wheel\.
 
 <a name='Velaptor.Input.MouseState.GetX()'></a>
 
-### GetX() 
+### GetX\(\) 
 
-Gets or sets the X position of the mouse.
+Gets or sets the X position of the mouse\.
 
 ```csharp
 public int GetX();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
-The X position relative to the top left corner of the window.
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
+The X position relative to the top left corner of the window\.
 
 <a name='Velaptor.Input.MouseState.GetY()'></a>
 
-### GetY() 
+### GetY\(\) 
 
-Gets or sets the Y position of the mouse.
+Gets or sets the Y position of the mouse\.
 
 ```csharp
 public int GetY();
 ```
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
-The Y position relative to the top left corner of the window.
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
+The Y position relative to the top left corner of the window\.
 
 <a name='Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton)'></a>
 
-### IsButtonDown(MouseButton) 
+### IsButtonDown\(MouseButton\) 
 
-Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#button 'Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button')  
-is in the down position.
+Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#button 'Velaptor\.Input\.MouseState\.IsButtonDown\(Velaptor\.Input\.MouseButton\)\.button')
+is in the down position\.
 
 ```csharp
 public bool IsButtonDown(Velaptor.Input.MouseButton button);
@@ -182,20 +182,20 @@ public bool IsButtonDown(Velaptor.Input.MouseButton button);
 
 <a name='Velaptor.Input.MouseState.IsButtonDown(Velaptor.Input.MouseButton).button'></a>
 
-`button` [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseButton')
+`button` [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor\.Input\.MouseButton')
 
-The mouse button to check.
+The mouse button to check\.
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-True if the mouse button is in the down position.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the mouse button is in the down position\.
 
 <a name='Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton)'></a>
 
-### IsButtonUp(MouseButton) 
+### IsButtonUp\(MouseButton\) 
 
-Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#button 'Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button')  
-is in the up position.
+Returns a value indicating whether the given mouse [button](Velaptor.Input.MouseState.md#button 'Velaptor\.Input\.MouseState\.IsButtonUp\(Velaptor\.Input\.MouseButton\)\.button')
+is in the up position\.
 
 ```csharp
 public bool IsButtonUp(Velaptor.Input.MouseButton button);
@@ -204,99 +204,99 @@ public bool IsButtonUp(Velaptor.Input.MouseButton button);
 
 <a name='Velaptor.Input.MouseState.IsButtonUp(Velaptor.Input.MouseButton).button'></a>
 
-`button` [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseButton')
+`button` [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor\.Input\.MouseButton')
 
-The mouse button to check.
+The mouse button to check\.
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-True if the mouse button is in the up position.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the mouse button is in the up position\.
 
 #### Exceptions
 
-[System.ComponentModel.InvalidEnumArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.InvalidEnumArgumentException 'System.ComponentModel.InvalidEnumArgumentException')  
-Occurs if the [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor.Input.MouseButton') is an invalid value.
+[System\.ComponentModel\.InvalidEnumArgumentException](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.invalidenumargumentexception 'System\.ComponentModel\.InvalidEnumArgumentException')  
+Occurs if the [MouseButton](Velaptor.Input.MouseButton.md 'Velaptor\.Input\.MouseButton') is an invalid value\.
 
 <a name='Velaptor.Input.MouseState.IsLeftButtonDown()'></a>
 
-### IsLeftButtonDown() 
+### IsLeftButtonDown\(\) 
 
-Gets or sets a value indicating whether the left mouse button is in the down position.
+Gets or sets a value indicating whether the left mouse button is in the down position\.
 
 ```csharp
 public bool IsLeftButtonDown();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is down.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is down\.
 
 <a name='Velaptor.Input.MouseState.IsLeftButtonUp()'></a>
 
-### IsLeftButtonUp() 
+### IsLeftButtonUp\(\) 
 
-Returns a value indicating whether the left mouse button is in the up position.
+Returns a value indicating whether the left mouse button is in the up position\.
 
 ```csharp
 public bool IsLeftButtonUp();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is up.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is up\.
 
 <a name='Velaptor.Input.MouseState.IsMiddleButtonDown()'></a>
 
-### IsMiddleButtonDown() 
+### IsMiddleButtonDown\(\) 
 
-Gets or sets a value indicating whether the middle mouse button is in the down position.
+Gets or sets a value indicating whether the middle mouse button is in the down position\.
 
 ```csharp
 public bool IsMiddleButtonDown();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is down.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is down\.
 
 <a name='Velaptor.Input.MouseState.IsMiddleButtonUp()'></a>
 
-### IsMiddleButtonUp() 
+### IsMiddleButtonUp\(\) 
 
-Returns a value indicating whether the middle mouse button is in the up position.
+Returns a value indicating whether the middle mouse button is in the up position\.
 
 ```csharp
 public bool IsMiddleButtonUp();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is up.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is up\.
 
 <a name='Velaptor.Input.MouseState.IsRightButtonDown()'></a>
 
-### IsRightButtonDown() 
+### IsRightButtonDown\(\) 
 
-Gets or sets a value indicating whether the right mouse button is in the down position.
+Gets or sets a value indicating whether the right mouse button is in the down position\.
 
 ```csharp
 public bool IsRightButtonDown();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is down.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is down\.
 
 <a name='Velaptor.Input.MouseState.IsRightButtonUp()'></a>
 
-### IsRightButtonUp() 
+### IsRightButtonUp\(\) 
 
-Returns a value indicating whether the right mouse button is in the up position.
+Returns a value indicating whether the right mouse button is in the up position\.
 
 ```csharp
 public bool IsRightButtonUp();
 ```
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the button is up.
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+`true` if the button is up\.

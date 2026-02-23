@@ -3,80 +3,66 @@ title: Velaptor.Content.IAtlasData
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Content](Velaptor.Content.md 'Velaptor.Content')
+### [Velaptor\.Content](Velaptor.Content.md 'Velaptor\.Content')
 
 #### IAtlasData Interface
 
-Holds data for a texture atlas.
+Holds data for a texture atlas\.
 
 ```csharp
-public interface IAtlasData :
-Velaptor.Content.IContent
+public interface IAtlasData : Velaptor.Content.IContent
 ```
 
 Derived  
-&#8627; [AtlasData](Velaptor.Content.AtlasData.md 'Velaptor.Content.AtlasData')
+&#8627; [AtlasData](Velaptor.Content.AtlasData.md 'Velaptor\.Content\.AtlasData')
 
-Implements [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
+Implements [IContent](Velaptor.Content.IContent.md 'Velaptor\.Content\.IContent')
 ## Properties
 
 <a name='Velaptor.Content.IAtlasData.AtlasDataFilePath'></a>
 
 ### AtlasDataFilePath 
 
-Gets the file path to the atlas data.
+Gets the file path to the atlas data\.
 
 ```csharp
 string AtlasDataFilePath { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='Velaptor.Content.IAtlasData.Height'></a>
-
-### Height 
-
-Gets the height of the entire texture atlas texture.
-
-```csharp
-uint Height { get; }
-```
-
-#### Property Value
-[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Content.IAtlasData.SubTextureNames'></a>
 
 ### SubTextureNames 
 
-Gets the list of frame names.
+Gets the list of frame names\.
 
 ```csharp
 System.Collections.Generic.IReadOnlyCollection<string> SubTextureNames { get; }
 ```
 
 #### Property Value
-[System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')
+[System\.Collections\.Generic\.IReadOnlyCollection&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1 'System\.Collections\.Generic\.IReadOnlyCollection\`1')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1 'System\.Collections\.Generic\.IReadOnlyCollection\`1')
 
 <a name='Velaptor.Content.IAtlasData.Texture'></a>
 
 ### Texture 
 
-Gets the texture of the atlas.
+Gets the texture of the atlas\.
 
 ```csharp
 Velaptor.Content.ITexture Texture { get; }
 ```
 
 #### Property Value
-[ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture')
+[ITexture](Velaptor.Content.ITexture.md 'Velaptor\.Content\.ITexture')
 
 <a name='Velaptor.Content.IAtlasData.this[int]'></a>
 
-### this[int] 
+### this\[int\] 
 
-The iterator for the atlas sub texture data.
+The iterator for the atlas sub texture data\.
 
 ```csharp
 Velaptor.Graphics.AtlasSubTextureData this[int index] { get; }
@@ -85,32 +71,19 @@ Velaptor.Graphics.AtlasSubTextureData this[int index] { get; }
 
 <a name='Velaptor.Content.IAtlasData.this[int].index'></a>
 
-`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`index` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The index of the item to retrieve.
-
-#### Property Value
-[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor.Graphics.AtlasSubTextureData')
-
-<a name='Velaptor.Content.IAtlasData.Width'></a>
-
-### Width 
-
-Gets the width of the entire texture atlas texture.
-
-```csharp
-uint Width { get; }
-```
+The index of the item to retrieve\.
 
 #### Property Value
-[System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
+[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor\.Graphics\.AtlasSubTextureData')
 ## Methods
 
 <a name='Velaptor.Content.IAtlasData.GetFrames(string)'></a>
 
-### GetFrames(string) 
+### GetFrames\(string\) 
 
-Gets the all the frames that have the given sub texture id.
+Gets the all the frames that have the given sub texture id\.
 
 ```csharp
 Velaptor.Graphics.AtlasSubTextureData[] GetFrames(string subTextureId);
@@ -119,10 +92,10 @@ Velaptor.Graphics.AtlasSubTextureData[] GetFrames(string subTextureId);
 
 <a name='Velaptor.Content.IAtlasData.GetFrames(string).subTextureId'></a>
 
-`subTextureId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`subTextureId` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The sub texture ID of the frames to return.
+The sub texture ID of the frames to return\.
 
 #### Returns
-[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor.Graphics.AtlasSubTextureData')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')  
-The list of frame rectangles.
+[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor\.Graphics\.AtlasSubTextureData')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
+The list of frame rectangles\.

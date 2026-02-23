@@ -3,11 +3,11 @@ title: Velaptor.Input.MouseButton
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Input](Velaptor.Input.md 'Velaptor.Input')
+### [Velaptor\.Input](Velaptor.Input.md 'Velaptor\.Input')
 
 ## MouseButton Enum
 
-Represents the buttons on a mouse.
+Represents the buttons on a mouse\.
 
 ```csharp
 public enum MouseButton
@@ -18,16 +18,16 @@ public enum MouseButton
 
 `LeftButton` 0
 
-Represents the left mouse button.
-
-<a name='Velaptor.Input.MouseButton.MiddleButton'></a>
-
-`MiddleButton` 2
-
-Represents the middle mouse button.
+Represents the left mouse button\.
 
 <a name='Velaptor.Input.MouseButton.RightButton'></a>
 
 `RightButton` 1
 
-Represents the right mouse button.
+Represents the right mouse button\.
+
+<a name='Velaptor.Input.MouseButton.MiddleButton'></a>
+
+`MiddleButton` 2
+
+Represents the middle mouse button\.

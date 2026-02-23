@@ -7,38 +7,37 @@ title: Velaptor.FrameTime
 
 #### FrameTime Struct
 
-Holds timing information for a loop iteration.
+Holds timing information for a loop iteration\.
 
 ```csharp
-public readonly struct FrameTime :
-System.IEquatable<Velaptor.FrameTime>
+public readonly record struct FrameTime : System.IEquatable<Velaptor.FrameTime>
 ```
 
-Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[FrameTime](Velaptor.FrameTime.md 'Velaptor.FrameTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[FrameTime](Velaptor.FrameTime.md 'Velaptor\.FrameTime')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 ## Properties
 
 <a name='Velaptor.FrameTime.ElapsedTime'></a>
 
 ### ElapsedTime 
 
-Gets the total time that has passed for the current frame.
+Gets the total time that has passed for the current frame\.
 
 ```csharp
-public System.TimeSpan ElapsedTime { get; set; }
+public System.TimeSpan ElapsedTime { get; init; }
 ```
 
 #### Property Value
-[System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan')
+[System\.TimeSpan](https://learn.microsoft.com/en-us/dotnet/api/system.timespan 'System\.TimeSpan')
 
 <a name='Velaptor.FrameTime.TotalTime'></a>
 
 ### TotalTime 
 
-Gets the total time that the entire application has been running.
+Gets the total time that the entire application has been running\.
 
 ```csharp
-public System.TimeSpan TotalTime { get; set; }
+public System.TimeSpan TotalTime { get; init; }
 ```
 
 #### Property Value
-[System.TimeSpan](https://docs.microsoft.com/en-us/dotnet/api/System.TimeSpan 'System.TimeSpan')
+[System\.TimeSpan](https://learn.microsoft.com/en-us/dotnet/api/system.timespan 'System\.TimeSpan')

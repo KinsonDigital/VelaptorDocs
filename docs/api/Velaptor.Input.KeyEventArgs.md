@@ -3,25 +3,24 @@ title: Velaptor.Input.KeyEventArgs
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Input](Velaptor.Input.md 'Velaptor.Input')
+### [Velaptor\.Input](Velaptor.Input.md 'Velaptor\.Input')
 
 #### KeyEventArgs Struct
 
-Holds information about a keyboard key event.
+Holds information about a keyboard key event\.
 
 ```csharp
-public readonly struct KeyEventArgs :
-System.IEquatable<Velaptor.Input.KeyEventArgs>
+public readonly record struct KeyEventArgs : System.IEquatable<Velaptor.Input.KeyEventArgs>
 ```
 
-Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[KeyEventArgs](Velaptor.Input.KeyEventArgs.md 'Velaptor.Input.KeyEventArgs')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[KeyEventArgs](Velaptor.Input.KeyEventArgs.md 'Velaptor\.Input\.KeyEventArgs')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 ## Constructors
 
 <a name='Velaptor.Input.KeyEventArgs.KeyEventArgs(Velaptor.Input.KeyCode)'></a>
 
-### KeyEventArgs(KeyCode) Constructor
+### KeyEventArgs\(KeyCode\) Constructor
 
-Initializes a new instance of the [KeyEventArgs](Velaptor.Input.KeyEventArgs.md 'Velaptor.Input.KeyEventArgs') struct.
+Initializes a new instance of the [KeyEventArgs](Velaptor.Input.KeyEventArgs.md 'Velaptor\.Input\.KeyEventArgs') struct\.
 
 ```csharp
 public KeyEventArgs(Velaptor.Input.KeyCode key);
@@ -30,20 +29,20 @@ public KeyEventArgs(Velaptor.Input.KeyCode key);
 
 <a name='Velaptor.Input.KeyEventArgs.KeyEventArgs(Velaptor.Input.KeyCode).key'></a>
 
-`key` [KeyCode](Velaptor.Input.KeyCode.md 'Velaptor.Input.KeyCode')
+`key` [KeyCode](Velaptor.Input.KeyCode.md 'Velaptor\.Input\.KeyCode')
 
-The keyboard key related to the event.
+The keyboard key related to the event\.
 ## Properties
 
 <a name='Velaptor.Input.KeyEventArgs.Key'></a>
 
 ### Key 
 
-Gets the key that was pushed into the down position or lifted into the up position.
+Gets the key that was pushed into the down position or lifted into the up position\.
 
 ```csharp
 public Velaptor.Input.KeyCode Key { get; }
 ```
 
 #### Property Value
-[KeyCode](Velaptor.Input.KeyCode.md 'Velaptor.Input.KeyCode')
+[KeyCode](Velaptor.Input.KeyCode.md 'Velaptor\.Input\.KeyCode')

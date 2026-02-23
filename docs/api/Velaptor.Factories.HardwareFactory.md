@@ -3,71 +3,71 @@ title: Velaptor.Factories.HardwareFactory
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Factories](Velaptor.Factories.md 'Velaptor.Factories')
+### [Velaptor\.Factories](Velaptor.Factories.md 'Velaptor\.Factories')
 
 #### HardwareFactory Class
 
-Generates input type objects for processing input such as the keyboard and mouse.
+Generates input type objects for processing input such as the keyboard and mouse\.
 
 ```csharp
 public static class HardwareFactory
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → HardwareFactory
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → HardwareFactory
 ## Methods
 
 <a name='Velaptor.Factories.HardwareFactory.GetDisplays()'></a>
 
-### GetDisplays() 
+### GetDisplays\(\) 
 
-Gets all the displays in the system.
+Gets all the displays in the system\.
 
 ```csharp
 public static System.Collections.Immutable.ImmutableArray<Velaptor.Hardware.SystemDisplay> GetDisplays();
 ```
 
 #### Returns
-[System.Collections.Immutable.ImmutableArray&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Immutable.ImmutableArray-1 'System.Collections.Immutable.ImmutableArray`1')[SystemDisplay](Velaptor.Hardware.SystemDisplay.md 'Velaptor.Hardware.SystemDisplay')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Immutable.ImmutableArray-1 'System.Collections.Immutable.ImmutableArray`1')  
-The list of displays.
+[System\.Collections\.Immutable\.ImmutableArray&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1 'System\.Collections\.Immutable\.ImmutableArray\`1')[SystemDisplay](Velaptor.Hardware.SystemDisplay.md 'Velaptor\.Hardware\.SystemDisplay')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray-1 'System\.Collections\.Immutable\.ImmutableArray\`1')  
+The list of displays\.
 
 <a name='Velaptor.Factories.HardwareFactory.GetKeyboard()'></a>
 
-### GetKeyboard() 
+### GetKeyboard\(\) 
 
-Gets a keyboard object.
+Gets a keyboard object\.
 
 ```csharp
 public static Velaptor.Input.IAppInput<Velaptor.Input.KeyboardState> GetKeyboard();
 ```
 
 #### Returns
-[Velaptor.Input.IAppInput&lt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor.Input.IAppInput<TState>')[KeyboardState](Velaptor.Input.KeyboardState.md 'Velaptor.Input.KeyboardState')[&gt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor.Input.IAppInput<TState>')  
-The keyboard singleton object.
+[Velaptor\.Input\.IAppInput&lt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor\.Input\.IAppInput\<TState\>')[KeyboardState](Velaptor.Input.KeyboardState.md 'Velaptor\.Input\.KeyboardState')[&gt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor\.Input\.IAppInput\<TState\>')  
+The keyboard singleton object\.
 
 <a name='Velaptor.Factories.HardwareFactory.GetMainDisplay()'></a>
 
-### GetMainDisplay() 
+### GetMainDisplay\(\) 
 
-Gets the primary display in the system.
+Gets the primary display in the system\.
 
 ```csharp
 public static Velaptor.Hardware.SystemDisplay GetMainDisplay();
 ```
 
 #### Returns
-[SystemDisplay](Velaptor.Hardware.SystemDisplay.md 'Velaptor.Hardware.SystemDisplay')  
-The system's primary display.
+[SystemDisplay](Velaptor.Hardware.SystemDisplay.md 'Velaptor\.Hardware\.SystemDisplay')  
+The system's primary display\.
 
 <a name='Velaptor.Factories.HardwareFactory.GetMouse()'></a>
 
-### GetMouse() 
+### GetMouse\(\) 
 
-Gets a mouse object.
+Gets a mouse object\.
 
 ```csharp
 public static Velaptor.Input.IAppInput<Velaptor.Input.MouseState> GetMouse();
 ```
 
 #### Returns
-[Velaptor.Input.IAppInput&lt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor.Input.IAppInput<TState>')[MouseState](Velaptor.Input.MouseState.md 'Velaptor.Input.MouseState')[&gt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor.Input.IAppInput<TState>')  
-The keyboard singleton object.
+[Velaptor\.Input\.IAppInput&lt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor\.Input\.IAppInput\<TState\>')[MouseState](Velaptor.Input.MouseState.md 'Velaptor\.Input\.MouseState')[&gt;](Velaptor.Input.IAppInput_TState_.md 'Velaptor\.Input\.IAppInput\<TState\>')  
+The keyboard singleton object\.

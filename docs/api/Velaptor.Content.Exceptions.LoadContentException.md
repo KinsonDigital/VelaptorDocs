@@ -3,57 +3,34 @@ title: Velaptor.Content.Exceptions.LoadContentException
 ---
 
 #### [Velaptor](Namespaces.md 'Velaptor Namespaces')
-### [Velaptor.Content.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor.Content.Exceptions')
+### [Velaptor\.Content\.Exceptions](Velaptor.Content.Exceptions.md 'Velaptor\.Content\.Exceptions')
 
 #### LoadContentException Class
 
-Thrown when there is an issue loading content.
+Thrown when there is an issue loading content\.
 
 ```csharp
 public sealed class LoadContentException : System.Exception
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') → [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') → LoadContentException
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') → LoadContentException
 ## Constructors
 
 <a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException()'></a>
 
-### LoadContentException() Constructor
+### LoadContentException\(\) Constructor
 
-Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') class.
+Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor\.Content\.Exceptions\.LoadContentException') class\.
 
 ```csharp
 public LoadContentException();
 ```
 
-<a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception)'></a>
-
-### LoadContentException(string, Exception) Constructor
-
-Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') class.
-
-```csharp
-public LoadContentException(string message, System.Exception innerException);
-```
-#### Parameters
-
-<a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception).message'></a>
-
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The message that describes the error.
-
-<a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception).innerException'></a>
-
-`innerException` [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')
-
-The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception') instance that caused the current exception.
-
 <a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string)'></a>
 
-### LoadContentException(string) Constructor
+### LoadContentException\(string\) Constructor
 
-Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') class.
+Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor\.Content\.Exceptions\.LoadContentException') class\.
 
 ```csharp
 public LoadContentException(string message);
@@ -62,6 +39,29 @@ public LoadContentException(string message);
 
 <a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message that describes the error.
+The message that describes the error\.
+
+<a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception)'></a>
+
+### LoadContentException\(string, Exception\) Constructor
+
+Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor\.Content\.Exceptions\.LoadContentException') class\.
+
+```csharp
+public LoadContentException(string message, System.Exception innerException);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception).message'></a>
+
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The message that describes the error\.
+
+<a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception).innerException'></a>
+
+`innerException` [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')
+
+The [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') instance that caused the current exception\.

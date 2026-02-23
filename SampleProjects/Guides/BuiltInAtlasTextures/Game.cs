@@ -2,7 +2,7 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-namespace AtlasTextures;
+namespace BuiltInAtlasTextures;
 
 using System.Drawing;
 using System.Numerics;
@@ -36,7 +36,7 @@ public class Game : Window
     /// </summary>
     public Game()
     {
-        Title = "Atlas Textures";
+        Title = "Built In Atlas Textures";
         Width = 500;
         Height = 500;
 

@@ -2,5 +2,5 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-var game = new AtlasTextures.Game();
+var game = new BuiltInAtlasTextures.Game();
 game.Show();

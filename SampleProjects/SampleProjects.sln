@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlasTextures", "Guides\AtlasTextures\AtlasTextures.csproj", "{1352A677-C91D-41AF-B8DC-DB01B714B25D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuiltInAtlasTextures", "Guides\BuiltInAtlasTextures\BuiltInAtlasTextures.csproj", "{1352A677-C91D-41AF-B8DC-DB01B714B25D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardInput", "Guides\KeyboardInput\KeyboardInput.csproj", "{1DE2B2D1-7516-432B-8793-C717D76AA629}"
 EndProject

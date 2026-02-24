@@ -103,6 +103,8 @@ We will also add a very small amount of randomness to it as well to enhance the 
 
 ## <span className="color-step">Step 1: Create Project</span>
 
+TODO: Add tabs here for setting up Velaptor atlas vs Aseprite.
+
 Create a basic Velaptor application.
 :::note Refer To Guide
 For more info, refer to the [Project Setup](./project-setup/project-template-setup) guide.
@@ -110,6 +112,8 @@ For more info, refer to the [Project Setup](./project-setup/project-template-set
 
 
 ## <span className="color-step">Step 2: Get atlas content</span>
+
+TODO: Show assets to download if it is aseprite
 
 Download the atlas texture files below:
 <StaticDownload relativePath="/img/guides/rendering-atlas-textures/atlas.png" sizePercentage={25} text="Click to download the texture atlas."/>
@@ -181,6 +185,8 @@ public class Game : Window
 
 ### <span className="color-sub-step">6.1: Load content</span>
 
+TODO: Add tabs here for Velaptor vs Aseprite loading.
+
 Next, let's create the `OnLoad()` override method and add code to the method to load the atlas data.
 
 ```csharp
@@ -248,6 +254,8 @@ sub-texture, you would call `GetFrames("ship")` and you would only get an array 
 :::
 
 ### <span className="color-sub-step">6.2: Unload content</span>
+
+TODO: Add tabs here for Velaptor vs Aseprite loading.
 
 Now we can unload the content when the game shuts down.  This is to clean up resources that are no longer needed.
 To do this, we can override the `OnUnload()` method.  We can then call the `Unload()` method on the content manager

@@ -1,0 +1,146 @@
+{ "frames": {
+   "grow-0": {
+    "frame": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 124
+   },
+   "grow-1": {
+    "frame": { "x": 108, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "grow-2": {
+    "frame": { "x": 216, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "grow-3": {
+    "frame": { "x": 324, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "grow-4": {
+    "frame": { "x": 432, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "grow-5": {
+    "frame": { "x": 540, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "grow-6": {
+    "frame": { "x": 648, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "grow-7": {
+    "frame": { "x": 756, "y": 0, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-0": {
+    "frame": { "x": 0, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-1": {
+    "frame": { "x": 108, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-2": {
+    "frame": { "x": 216, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-3": {
+    "frame": { "x": 324, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-4": {
+    "frame": { "x": 432, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-5": {
+    "frame": { "x": 540, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-6": {
+    "frame": { "x": 648, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 100
+   },
+   "burn-7": {
+    "frame": { "x": 756, "y": 239, "w": 106, "h": 237 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 237 },
+    "sourceSize": { "w": 106, "h": 237 },
+    "duration": 124
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.16.1-x64",
+  "image": "fire-atlas.png",
+  "format": "RGBA8888",
+  "size": { "w": 862, "h": 476 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "grow", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" },
+   { "name": "burn", "from": 8, "to": 15, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "fire", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}

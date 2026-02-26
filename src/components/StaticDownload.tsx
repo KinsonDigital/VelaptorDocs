@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 /**
  * The properties for the {@link StaticDownload} component.
@@ -15,6 +15,11 @@ interface Props {
 	text?: string,
 
 	/**
+	 * The name of the file when downloaded.
+	 */
+	downloadFileName?: string,
+
+	/**
 	 * The size of the image as a percentage if the file is an image.
 	 */
 	sizePercentage?: number
@@ -22,20 +27,24 @@ interface Props {
 
 /**
  * Creates a new {@link StaticDownload} component.
- * @param param0 The component properties.
+ * @param props The component properties.
  * @returns The {@link StaticDownload} component.
  * @remarks This component can only download static files in the static folder.
  */
-const StaticDownload: React.FC<Props> = ({ relativePath, text, sizePercentage = 100 }: Props) => {
+export default function StaticDownload(props: Props): ReactNode {
+	const { relativePath, text, sizePercentage = 100, downloadFileName } = props;
 	const imgExtensions = ["png", "jpg", "jpeg", "gif", "svg"];
-	const fileName = relativePath.split("/").pop();
-	const fileExtension = fileName.split(".")[1].toLowerCase();
+	const fileNameValue = downloadFileName === undefined
+		? relativePath.split("/").pop()
+		: downloadFileName;
+
+	const fileExtension = fileNameValue.split(".")[1].toLowerCase();
 
 	if (fileExtension === "" || fileExtension === undefined) {
 		return <div className="error">StaticDownload Component Error: Missing file extension!</div>;
 	}
 
-	if (fileName === "" || fileName === undefined) {
+	if (fileNameValue === "" || fileNameValue === undefined) {
 		return <div className="error">StaticDownload Component Error: Missing filename!</div>;
 	}
 
@@ -43,7 +52,7 @@ const StaticDownload: React.FC<Props> = ({ relativePath, text, sizePercentage = 
 
 	return (
 		<div>
-			<a href={relativePath} download={fileName}>
+			<a href={relativePath} download={fileNameValue}>
 				{
 					imgExtensions.includes(fileExtension)
 						? <img src={relativePath} style={{ width: sizePercentageStr }} alt={text} title={text}></img>
@@ -53,5 +62,3 @@ const StaticDownload: React.FC<Props> = ({ relativePath, text, sizePercentage = 
 		</div>
 	);
 };
-
-export default StaticDownload;

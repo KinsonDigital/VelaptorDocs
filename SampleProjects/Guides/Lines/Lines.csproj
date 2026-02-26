@@ -7,6 +7,8 @@
         <Nullable>enable</Nullable>
         <AssemblyName>Lines</AssemblyName>
         <RootNamespace>Lines</RootNamespace>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

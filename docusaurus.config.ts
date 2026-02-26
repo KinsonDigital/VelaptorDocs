@@ -2,6 +2,9 @@ import { themes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import tailwindPlugin from './plugins/tailwind-config.cjs';
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 const config: Config = {
 	title: 'Velaptor',
 	tagline: 'The easy and fun to use 2D game development framework',
@@ -19,7 +22,7 @@ const config: Config = {
 	// Used for creating diagrams
 	markdown: {
 		mermaid: true,
-        hooks: {
+		hooks: {
 			onBrokenMarkdownLinks: (link) => {
 				console.warn("Broken markdown link found:");
 				console.warn(`\n\tURL: ${link.url}`);
@@ -44,14 +47,25 @@ const config: Config = {
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
 					editUrl: 'https://github.com/KinsonDigital/Velaptor',
-					includeCurrentVersion: true
+					includeCurrentVersion: true,
+					remarkPlugins: [remarkMath],
+					rehypePlugins: [rehypeKatex]
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
-                blog: false,
+				blog: false,
 			} satisfies Preset.Options,
 		],
+	],
+	stylesheets: [
+		{
+			href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+			type: 'text/css',
+			integrity:
+				'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+			crossorigin: 'anonymous',
+		},
 	],
 	themeConfig:
 		{

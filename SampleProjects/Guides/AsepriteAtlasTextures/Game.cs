@@ -1,42 +1,39 @@
-﻿// <copyright file="Game.cs" company="KinsonDigital">
-// Copyright (c) KinsonDigital. All rights reserved.
+﻿// <copyright file="Game.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace AtlasTextures;
+namespace AsepriteAtlasTextures;
 
 using System.Drawing;
-using System.Numerics;
-using Velaptor.Graphics;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
+using Velaptor.Content.Exceptions;
 using Velaptor.Factories;
+using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
+using VelaptorAseprite;
+using VelaptorAseprite.Data;
 
 /// <summary>
 /// The main game class.
 /// </summary>
 public class Game : Window
 {
-    private const int FullSizeStartFrame = 8;
     private readonly ITextureRenderer textureRenderer;
     private readonly IContentManager contentManager;
     private readonly IBatcher batcher;
     private readonly Random random = new ();
-    private IAtlasData? atlasData;
-    private AtlasSubTextureData[]? subTextureData;
     private RenderEffects renderEffects;
-    private float elapsedMs;
-    private int currentFrame;
-    private bool isFullSize;
+    private IAsepriteAtlas? atlasData;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
     /// </summary>
     public Game()
     {
-        Title = "Atlas Textures";
+        Title = "Aseprite Atlas Textures";
         Width = 500;
         Height = 500;
 
@@ -52,8 +49,20 @@ public class Game : Window
     protected override void OnLoad()
     {
         // Loads the atlas.png and atlas.json file
-        this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
-        this.subTextureData = this.atlasData.GetFrames("flame");
+        this.atlasData = this.contentManager.LoadAsepriteAtlas("fire-atlas", "grow");
+        this.atlasData.Enabled = true;
+        this.atlasData.OnFrameChange = (_, _) =>
+        {
+            // Randomly choose to have the flame flipped horizontally or not flipped at all
+            this.renderEffects = this.random.Next(0, 2) == 0
+                ? RenderEffects.FlipHorizontally
+                : RenderEffects.None;
+        };
+        this.atlasData.OnCycleComplete = (_) =>
+        {
+            this.atlasData.Play("burn");
+        };
+        this.atlasData.Play();
 
         base.OnLoad();
     }
@@ -65,7 +74,7 @@ public class Game : Window
     {
         if (this.atlasData is not null)
         {
-            this.contentManager.Unload(this.atlasData);
+            this.contentManager.UnloadAsepriteAtlas(this.atlasData);
         }
 
         base.OnUnload();
@@ -77,36 +86,12 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
-        this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
-
-        // Move to the next frame every 124ms
-        if (this.elapsedMs >= 124)
+        if (this.atlasData is null)
         {
-            // If the current frame is one of the frames after
-            // the flame has grown to full size.
-            if (this.currentFrame >= FullSizeStartFrame)
-            {
-                this.isFullSize = true;
-            }
-
-            // Get the starting frame index based on if the flame has
-            // grown to full size or not.
-            var startFrame = this.isFullSize ? FullSizeStartFrame : 0;
-
-            // If the last frame has been reached, reset to the starting frame
-            this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
-                ? startFrame
-                : this.currentFrame + 1;
-
-            // Reset the elapsed time so we can wait for another
-            // 124ms before moving to the next frame
-            this.elapsedMs = 0;
-
-            // Randomly choose to have the flame flipped horizontally or not flipped at all
-            this.renderEffects = this.random.Next(0, 2) == 0
-                ? RenderEffects.FlipHorizontally
-                : RenderEffects.None;
+            return;
         }
+
+        this.atlasData.Update(frameTime);
 
         base.OnUpdate(frameTime);
     }
@@ -118,20 +103,29 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnDraw(FrameTime frameTime)
     {
+        if (this.atlasData is null)
+        {
+            throw new LoadContentException("The atlas data has not been loaded");
+        }
+
         // Start the batch
         this.batcher.Begin();
 
-        var pos = new Vector2(Width / 2f, Height / 2f);
+        var frame = this.atlasData.GetCurrentFrame();
 
-        // Render only the sub-texture in the atlas at the center of the window
-        this.textureRenderer.Render(this.atlasData,
-            "flame",
-            pos,
+        var srcRect = frame.Bounds;
+        var destX = (int)(Width / 2);
+        var destY = (int)(Height / 2);
+        var destRect = new Rectangle(destX, destY, (int)this.atlasData.Texture.Width, (int)this.atlasData.Texture.Height);
+
+        this.textureRenderer.Render(
+            this.atlasData.Texture,
+            srcRect,
+            destRect,
+            1f,
             0f,
-            0.25f,
             Color.White,
-            this.renderEffects,
-            this.currentFrame);
+            this.renderEffects);
 
         // End the batch to render the entire batch
         this.batcher.End();

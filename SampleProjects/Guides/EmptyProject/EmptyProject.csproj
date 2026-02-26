@@ -9,6 +9,8 @@
         <AssemblyName>EmptyProject</AssemblyName>
         <RootNamespace>EmptyProject</RootNamespace>
         <NoWarn>CA1852,CS8602,CS8604</NoWarn>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

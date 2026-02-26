@@ -10,6 +10,7 @@ using Velaptor.Graphics;
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Content;
+using Velaptor.Content.Exceptions;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
@@ -77,6 +78,11 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
+        if (this.subTextureData is null)
+        {
+            throw new LoadContentException("The atlas data has not been loaded");
+        }
+
         this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
 
         // Move to the next frame every 124ms

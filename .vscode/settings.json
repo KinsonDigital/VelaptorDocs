@@ -7,6 +7,7 @@
 	"deno.config": "deno.json",
 	"files.eol": "\n",
 	"cSpell.words": [
+		"aseprite",
 		"Atlasdata",
 		"brinstar",
 		"BSOGKY",
@@ -23,6 +24,7 @@
 		"gamedevelopment",
 		"indianred",
 		"Infima",
+		"Katex",
 		"Kinson",
 		"kinsondigital",
 		"KXVA",

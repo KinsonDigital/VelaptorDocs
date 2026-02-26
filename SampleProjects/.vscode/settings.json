@@ -17,5 +17,6 @@
         "**/bin": true,
         "**/obj": true,
         "*.sln.DotSettings.user": true
-    }
+    },
+    "dotnet.defaultSolution": "SampleProjects.sln"
 }

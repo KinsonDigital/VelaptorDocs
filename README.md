@@ -54,7 +54,7 @@ Use the command `pnpm i` or `pnpm install` to install all of the project's depen
 
 ### **Local Development Server**
 
-Use the command `pnpm start` to starts a local development server. Most changes are reflected HMR(Hot Module Replacement) without having to restart the server.
+Use the command `pnpm dev` to starts a local development server. Most changes are reflected HMR(Hot Module Replacement) without having to restart the server.
 
 ### **Build**
 

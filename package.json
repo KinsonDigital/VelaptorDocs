@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "docusaurus": "docusaurus",
-        "start": "pnpm i && docusaurus start",
+        "dev": "pnpm i && docusaurus start",
         "build": "pnpm i && docusaurus build",
         "swizzle": "docusaurus swizzle",
         "deploy": "docusaurus deploy",

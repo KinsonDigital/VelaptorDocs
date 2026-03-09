@@ -1,0 +1,110 @@
+---
+sidebar_position: 5
+---
+
+import GuideLink from "@site/src/components/GuideLink";
+
+# Rendering Your First Sprite
+
+Let's bring the mascot to life! In this step, we'll load the image we added in the previous step and render it to the screen.
+
+:::note Guide Source Code
+Go to the <GuideLink projectName="RenderingTextures" /> guide project to see the source code for a fully working example of this guide.
+:::
+
+## <span className="color-step">Step 1: Add class fields</span>
+
+Open your `Game` class and add the following fields. These are the objects we'll need to load and render a texture.
+
+```csharp
+using Velaptor;
+using Velaptor.Batching;
+using Velaptor.Content;
+using Velaptor.Factories;
+using Velaptor.Graphics.Renderers;
+using Velaptor.UI;
+
+public class Game : Window
+{
+    private readonly IBatcher batcher;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly IContentManager contentManager;
+    private ITexture? mascotTexture;
+}
+```
+
+## <span className="color-step">Step 2: Set up the constructor</span>
+
+In the constructor, configure the window and create the objects needed for rendering.
+
+```csharp
+public Game()
+{
+    Title = "Quick Start";
+    Width = 800;
+    Height = 800;
+
+    this.contentManager = ContentManager.Create();
+    this.batcher = RendererFactory.CreateBatcher();
+    this.textureRenderer = RendererFactory.CreateTextureRenderer();
+}
+```
+
+## <span className="color-step">Step 3: Load the texture</span>
+
+Override the `OnLoad()` method to load the mascot image. Velaptor uses the file name without the extension, relative to the `Content/Graphics` folder.
+
+```csharp
+protected override void OnLoad()
+{
+    this.mascotTexture = this.contentManager.Load<ITexture>("velaptor-mascot");
+
+    base.OnLoad();
+}
+```
+
+## <span className="color-step">Step 4: Unload the texture</span>
+
+Override the `OnUnload()` method to clean up the texture when the game shuts down.
+
+```csharp
+protected override void OnUnload()
+{
+    if (this.mascotTexture is not null)
+    {
+        this.contentManager.Unload(this.mascotTexture);
+    }
+
+    base.OnUnload();
+}
+```
+
+## <span className="color-step">Step 5: Render the texture</span>
+
+Override the `OnDraw()` method to render the mascot image in the center of the window.
+
+All rendering must happen between a `batcher.Begin()` and `batcher.End()` call.
+
+```csharp
+protected override void OnDraw(FrameTime frameTime)
+{
+    this.batcher.Begin();
+
+    var x = (int)(Width / 2);
+    var y = (int)(Height / 2);
+
+    this.textureRenderer.Render(this.mascotTexture, x, y);
+
+    this.batcher.End();
+
+    base.OnDraw(frameTime);
+}
+```
+
+## <span className="color-step">Step 6: Run it</span>
+
+Run the application. You should see the Velaptor mascot rendered in the center of the window!
+
+<img style={{width: '50%'}} src={require('@site/static/img/guides/rendering-textures/render-textures-complete.png').default} alt="Rendered mascot texture"/>
+
+Now let's make it interactive — continue to the next page to add keyboard input!

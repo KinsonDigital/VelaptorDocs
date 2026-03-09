@@ -81,7 +81,7 @@ What we are doing is making **Velaptor** aware that we will be rendering a bunch
 that all of the textures will be sent to the GPU and rendered all together as a group.  Once we are done **rendering**, we then
 tell **Velaptor** that we are finished creating our batch and it can now be rendered to the screen.
 
-This is what the `IBatcher` object is used for!!
+This is what the `IBatcher` object is used for!
 
 We tell **Velaptor** that we are ready to start batching by invoking the `IBatcher.Begin()` method.  We then tell **Velaptor** that
 we are done batching by invoking the `IBatcher.End()` method.
@@ -93,14 +93,14 @@ Just remember the steps:
 2. Invoke all `Render()` methods for the current frame
 3. Invoke the `IBatcher.End()` method
 
-That's it!!
+That's it!
 </details>
 :::
 
 
 ## <span className="color-step">Step 3: Loading and unload content</span>
 
-Loading and unloading of content is very important!!  The content is what will be rendered
+Loading and unloading of content is very important!  The content is what will be rendered
 to the screen, played as sound, or event contain data that will be used by the game.
 
 ### <span className="color-sub-step">3.1: Load the font</span>
@@ -119,7 +119,7 @@ protected override void OnLoad()
 }
 ```
 :::caution Warning
-Since the name of the content to load is based on the name of the file, renaming the file will break your application!!
+Since the name of the content to load is based on the name of the file, renaming the file will break your application!
 :::
 
 :::tip content name
@@ -209,24 +209,24 @@ Some game engines and frameworks use the top left corner of an object when rende
 the entire text or texture content.
 
 What this means is if you render the text at position _**(0,0)**_, you would only be able to see the bottom right quadrant of the text because
-the other 3 quadrants would be rendered off-screen!!  Make sure to take this into account when it comes to text and object render positioning.
+the other 3 quadrants would be rendered off-screen!  Make sure to take this into account when it comes to text and object render positioning.
 <img style={{width: '75%'}} src={require('@site/static/img/guides/rendering-text/text-origin.png').default} alt="Example banner"/>
 </details>
 :::
 
 :::caution NOT USING THE BATCHER
 If you call a render method with any renderer before the `Begin()` method or after the `End()` method,
-you will get an exception!! This is a good thing because you want to know when you are not batching correctly.
+you will get an exception! This is a good thing because you want to know when you are not batching correctly.
 :::
 
 ### <span className="color-sub-step">4.2: Run it!</span>
 
-Now for the best part!! Let's see the fruits of your labor and run the application.
-You should see the result below!! 🥳
+Now for the best part! Let's see the fruits of your labor and run the application.
+You should see the result below! 🥳
 <img style={{width: '75%'}} src={require('@site/static/img/guides/rendering-text/rendering-text-window.png').default} alt="Example banner"/>
 
 
-## <span className="color-step">Step 5: Bonus!!!</span>
+## <span className="color-step">Step 5: Bonus!!</span>
 
 Now it's time to add some polish to what we just did.  Let's add some color to the text and make it move around the screen.
 Better yet, let's move the text around the screen and have it bounce off of the edges of the screen.
@@ -407,7 +407,7 @@ private void ProcessCollision()
 
 ### <span className="color-sub-step">5.6: Finishing up</span>
 
-Now the exciting part!!  Let's update the `OnDraw()` method to use our `position` and `textColor` class fields.
+Now the exciting part!  Let's update the `OnDraw()` method to use our `position` and `textColor` class fields.
 No point in doing all of this hard work if we can see it.
 
 
@@ -427,6 +427,6 @@ protected override void OnDraw(FrameTime frameTime)
 The only change to this method is the `Render()` call itself.  We just swapped out our hard-coded text,
 X and Y position, and color with the class fields we created.
 
-Now run the application!!
+Now run the application!
 
 You should see the text bouncing off the edges of the window and with each bounce, the color should change.

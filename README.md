@@ -14,7 +14,7 @@
 
 </span>
 
-Hello!!  This repository is for the documentation website for [Velaptor](https://github.com/KinsonDigital/Velaptor) and contains Velaptor tutorials and API documentation.
+Hello!  This repository is for the documentation website for [Velaptor](https://github.com/KinsonDigital/Velaptor) and contains Velaptor tutorials and API documentation.
 
 <span align="center">
 
@@ -36,7 +36,7 @@ Below are simple steps you will need when contributing.
 4. Create pull request. Please use [Early Pull Requests](https://medium.com/practical-blend/pull-request-first-f6bb667a9b6)
     - The first commit should be an empty commit with the message of `Start work for issue #<issue-number>`.
     - Please create the pull request in draft. 😀
-5. Perform your work.  Make sure to test locally!!
+5. Perform your work.  Make sure to test locally!
 6. Take the PR out of draft which will request a review.  
     - Let a maintainer know that it is ready for review!
 

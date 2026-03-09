@@ -3,7 +3,7 @@
     "isRoot": true,
     "tools": {
         "defaultdocumentation.console": {
-            "version": "1.2.3",
+            "version": "1.2.4",
             "commands": [
                 "defaultdocumentation"
             ]

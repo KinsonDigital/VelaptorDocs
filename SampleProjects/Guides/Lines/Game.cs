@@ -40,7 +40,7 @@ public class Game : Window
         Color.Black,
     ];
     private IFont? font;
-    private string instructions;
+    private string instructions = string.Empty;
     private KeyboardState prevKeyState;
     private MouseState prevMouseState;
     private Line line;

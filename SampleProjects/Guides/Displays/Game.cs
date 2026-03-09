@@ -77,17 +77,6 @@ public class Game : Window
     }
 
     /// <summary>
-    /// Add game logic here.
-    /// </summary>
-    /// <param name="frameTime">The amount of time that passed for the current game loop frame.</param>
-    protected override void OnUpdate(FrameTime frameTime)
-    {
-        ArgumentNullException.ThrowIfNull(this.font);
-
-        base.OnUpdate(frameTime);
-    }
-
-    /// <summary>
     /// Render graphics here.
     /// </summary>
     /// <param name="frameTime">The amount of time that passed for the current game loop frame.</param>
@@ -102,9 +91,8 @@ public class Game : Window
 
         foreach (var line in this.info)
         {
-            posY += lineHeight + LineSpacing;
-
             this.fontRenderer.Render(this.font, line, this.winCenterX, posY);
+            posY += lineHeight + LineSpacing;
         }
 
         this.batcher.End();

@@ -6,7 +6,8 @@
     <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release</Configurations>
+    <NoWarn>CA1852,CS8602,CS8604</NoWarn>
+    <Configurations>Release;Debug</Configurations>
     <Platforms>x64</Platforms>
   </PropertyGroup>
 

@@ -146,13 +146,5 @@ Global
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Console Win) .run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Linux).run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Win).run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug Linux).run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug Win).run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug-Console Linux).run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Debug-Console Win).run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Release Console Linux) .run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Release Console Win) .run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Release Linux).run.xml
-		File = ..\.github\cicd\RepoSrc\.run\Publish VelaptorTesting (Release Win).run.xml
 	EndGlobalSection
 EndGlobal

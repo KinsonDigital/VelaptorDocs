@@ -1,0 +1,200 @@
+---
+sidebar_position: 11
+---
+
+import GuideLink from "@site/src/components/GuideLink";
+
+# System Displays
+
+This guide will show you how to retrieve and display information about the system's displays (monitors) using **Velaptor**.
+This can be useful for adapting your game to different screen sizes, DPI settings, and multi-monitor setups.
+
+:::note Guide Source Code
+Go to the <GuideLink projectName="Displays"/> guide project to see the source code for a fully working example of this guide.
+:::
+
+
+## <span className="color-step">Step 1: Project setup</span>
+
+Create a basic **Velaptor** application.
+
+:::note Refer To Guide
+For more info, refer to the [Project Setup](./project-setup/project-template-setup) guide.
+:::
+
+
+## <span className="color-step">Step 2: Create class fields</span>
+
+We need fields for the batcher, font renderer, content manager, and to store display information.
+The `HardwareFactory` class provides static methods to retrieve display data, so we'll gather that in the constructor.
+
+```csharp
+public class Game : Window
+{
+    private const int LineSpacing = 20;
+    private readonly IContentManager contentManager;
+    private readonly IFontRenderer fontRenderer;
+    private readonly IBatcher batcher;
+    private readonly SystemDisplay mainDisplay;
+    private readonly List<string> info = [];
+    private readonly int totalDisplays;
+    private IFont? font;
+    private int winCenterX;
+    private int textStartY;
+    ...
+}
+```
+
+Let's break down what each field is for:
+
+| Field | Purpose |
+|---|---|
+| `LineSpacing` | The vertical spacing between each line of text. |
+| `contentManager` | Loads content such as fonts. |
+| `fontRenderer` | Renders text to the screen using a font. |
+| `batcher` | Manages the rendering batch cycle. |
+| `mainDisplay` | Holds information about the system's primary display. |
+| `info` | A list of strings that will hold the display information to render. |
+| `totalDisplays` | The total number of displays detected on the system. |
+| `font` | The font used to render the display information text. |
+| `winCenterX` | The horizontal center of the window, used to center the text. |
+| `textStartY` | The vertical starting position for the first line of text. |
+
+
+## <span className="color-step">Step 3: Setup constructor</span>
+
+In the constructor, we create the batcher, font renderer, and content manager.
+We also use `HardwareFactory` to get display information.
+
+```csharp
+public Game()
+{
+    this.batcher = RendererFactory.CreateBatcher();
+    this.fontRenderer = RendererFactory.CreateFontRenderer();
+    this.contentManager = ContentManager.Create();
+    this.mainDisplay = HardwareFactory.GetMainDisplay();
+    this.totalDisplays = HardwareFactory.GetDisplays().Length;
+}
+```
+
+There are two key methods on `HardwareFactory` used here:
+
+- `HardwareFactory.GetMainDisplay()` — Returns a `SystemDisplay` struct representing the primary display.
+- `HardwareFactory.GetDisplays()` — Returns an `ImmutableArray<SystemDisplay>` containing all displays in the system. We use its `Length` to get the total count.
+
+:::info SystemDisplay
+The `SystemDisplay` struct is a readonly record struct that holds information about a single display. It includes properties
+for the display's center position, dimensions, DPI, scale, refresh rate, bit depths, and whether it is the main display.
+:::
+
+
+## <span className="color-step">Step 4: Load and unload content</span>
+
+### <span className="color-sub-step">4.1: Load the font and build display info</span>
+
+In the `OnLoad()` method, we load a font and then build a list of strings containing the display information
+we want to show. We also calculate the center of the window and a starting Y position for the text.
+
+```csharp
+protected override void OnLoad()
+{
+    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 12);
+
+    this.winCenterX = (int)Width / 2;
+    this.textStartY = (int)Height / 4;
+
+    this.info.Add($"Total Displays: {this.totalDisplays}");
+    this.info.Add($"Main Display Center: {this.mainDisplay.Center.X} x {this.mainDisplay.Center.Y}");
+    this.info.Add($"Horizontal Scale: {this.mainDisplay.HorizontalScale}");
+    this.info.Add($"Horizontal DPI: {this.mainDisplay.HorizontalDPI}");
+    this.info.Add($"Vertical Scale: {this.mainDisplay.VerticalScale}");
+    this.info.Add($"Vertical DPI: {this.mainDisplay.VerticalDPI}");
+    this.info.Add($"Red Bit Depth: {this.mainDisplay.RedBitDepth}");
+    this.info.Add($"Green Bit Depth: {this.mainDisplay.GreenBitDepth}");
+    this.info.Add($"Blue Bit Depth: {this.mainDisplay.BlueBitDepth}");
+
+    base.OnLoad();
+}
+```
+
+Here's what each piece of display information means:
+
+| Property | Description |
+|---|---|
+| `Center` | The center location of the display as a `Vector2` (X, Y). |
+| `HorizontalScale` | The horizontal DPI scale factor (e.g., 1.5 means 150% scaling). |
+| `HorizontalDPI` | The approximate horizontal DPI of the display. |
+| `VerticalScale` | The vertical DPI scale factor. |
+| `VerticalDPI` | The approximate vertical DPI of the display. |
+| `RedBitDepth` | The bit depth of the red color channel. |
+| `GreenBitDepth` | The bit depth of the green color channel. |
+| `BlueBitDepth` | The bit depth of the blue color channel. |
+
+:::tip Additional Properties
+The `SystemDisplay` struct also has `Width`, `Height`, `RefreshRate`, and `IsMain` properties
+that you can use to get even more information about the display.
+:::
+
+### <span className="color-sub-step">4.2: Unload the font</span>
+
+We need to unload the font when the window is closed to clean up resources.
+
+```csharp
+protected override void OnUnload()
+{
+    if (this.font is not null)
+    {
+        this.contentManager.Unload(this.font);
+    }
+
+    base.OnUnload();
+}
+```
+
+
+## <span className="color-step">Step 5: Render the display information</span>
+
+Now we render each line of display information to the screen. We loop through the `info` list
+and render each string, incrementing the Y position for each line.
+
+```csharp
+protected override void OnDraw(FrameTime frameTime)
+{
+    ArgumentNullException.ThrowIfNull(this.font);
+
+    this.batcher.Begin();
+
+    const int lineHeight = 20;
+    var posY = this.textStartY;
+
+    foreach (var line in this.info)
+    {
+        posY += lineHeight + LineSpacing;
+
+        this.fontRenderer.Render(this.font, line, this.winCenterX, posY);
+    }
+
+    this.batcher.End();
+
+    base.OnDraw(frameTime);
+}
+```
+
+Each line is rendered at the horizontal center of the window, with each subsequent line offset
+down by the `lineHeight` plus `LineSpacing` values.
+
+:::caution NOT USING THE BATCHER
+If you call a render method with any renderer before the `Begin()` method or after the `End()` method,
+you will get an exception.
+:::
+
+
+## <span className="color-step">Step 6: Run it!</span>
+
+Run the application and you should see a window displaying information about your primary system display.
+The values shown will vary depending on your monitor's resolution, DPI settings, and color bit depth.
+
+:::info Multi-Monitor Setup
+If you have multiple monitors, the `HardwareFactory.GetDisplays()` method will return information about all of them.
+You could extend this example to iterate over all displays and show information for each one.
+:::

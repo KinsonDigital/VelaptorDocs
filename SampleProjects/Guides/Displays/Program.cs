@@ -2,6 +2,5 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-// Create a new game instance and run it to start the game
-var game = new EmptyProject.Game();
+var game = new Displays.Game();
 game.Show();

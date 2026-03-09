@@ -65,10 +65,7 @@ public class Game : Window
     {
         var currKeyState = this.keyboard.GetState();
 
-        bool IsPressed(KeyCode key)
-        {
-            return this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
-        }
+        bool IsPressed(KeyCode key) => this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
 
         if (IsPressed(KeyCode.Space))
         {

@@ -13,7 +13,7 @@ Go to the <GuideLink projectName="AtlasTextures" /> guide project to see the sou
 :::
 
 Another way to render textures is by using an atlas texture. This guide is a little more
-in-depth and longer than the previous guides. Stick with it though, it will be worth it!!
+in-depth and longer than the previous guides. Stick with it though, it will be worth it!
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
@@ -64,7 +64,7 @@ Keep your needs into account as you develop your game and do not worry about per
 
 :::info Atlas Texture Scenario
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 Let's consider a 2D space shooter game with lots of bullets and enemies. In this type of game, there may be a large
 number of sprites for the player, the enemies, and the projectiles.
@@ -88,7 +88,7 @@ Overall, using atlas textures in a game can improve performance, reduce file siz
 </details>
 :::
 
-Enough explanation!!  Let's get our hands dirty and build something!!
+Enough explanation!  Let's get our hands dirty and build something!
 
 For this tutorial, we are going to build a simple game that will show a blue animating flame.
 This flame will be rendered in the center of the window and will animate in a loop indefinitely.
@@ -202,7 +202,7 @@ it is not required and there is no need to load the _**.png**_ and _**.json**_ f
 :::info metadata format
 
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 Let's go over the JSON data that is contained in the metadata file.
 
@@ -295,7 +295,7 @@ public class Game : Window
 
 :::info WHY?
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 Think of a <Url href="www.youtube.com/watch?v=Un-BdBSOGKY" text="flip book" openInNewTab="true"/>.
 If you were to flip through the pages of a flip book, you would see the animation.
@@ -350,7 +350,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 This code will check if 124ms has passed. If it has, then it will move to the next frame of
 the animation. If the last frame has been reached, then it will reset to the first frame.
-Now we have our flip book!!
+Now we have our flip book!
 
 The `startFrame` is the frame where the animation starts, which will be either 0 or 8. If the flame has not grown to
 full size, frames 0-7 will be used. If the flame has grown to full size, frames 8-15 will be used.
@@ -367,7 +367,7 @@ to make something happen every 16ms to obtain that frame rate.
 
 :::info What is FPS?
 <details>
-	<summary>Expand me for more info!!</summary>
+	<summary>Expand me for more info!</summary>
 
 FPS stands for frames per second, which, as the name implies, is the number of frames that are rendered every second.
 The game loop of a game consists of the two most important methods: `OnUpdate()` and `OnRender()`.
@@ -433,7 +433,7 @@ The animation will be much smoother than what is shown here.
 ![Flame Animation](@site/static/img/guides/rendering-atlas-textures/flame.gif)
 
 
-## <span className="color-step">Step 10: Bonus!!</span>
+## <span className="color-step">Step 10: Bonus!</span>
 
 You do not have to do this step of course, but what is game development without a little
 bit of extra fun?  Let's improve the randomness of the flame animation.
@@ -483,4 +483,4 @@ protected override void OnUpdate(FrameTime frameTime)
 ### <span className="color-sub-step">10.3: Run it</span>
 
 Now run your game again and the flame will be a little bit more realistic to the randomness of
-the orientation of the flame!!
+the orientation of the flame!

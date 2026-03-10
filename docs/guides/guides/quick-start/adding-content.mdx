@@ -1,0 +1,68 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Url from "@site/src/components/Url";
+
+# Adding Content To Your Project
+
+Now that you have a Velaptor project, let's add an image that we'll render to the screen in the next step.
+
+## <span className="color-step">Step 1: Download the mascot image</span>
+
+We'll use the Velaptor mascot image for this quick start. Download the `velaptor-mascot.png` image from the
+<Url href="https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects/Guides/RenderingTextures/Content/Graphics" text="RenderingTextures sample project" openInNewTab="true"/>
+and save it somewhere accessible.
+
+## <span className="color-step">Step 2: Create the content folder</span>
+
+In your project, create a folder named _**Content**_ at the root of the project, then create a subfolder named _**Graphics**_ inside it.
+Copy the `velaptor-mascot.png` image into the _**Content/Graphics**_ folder.
+
+<Tabs groupId="ide">
+    <TabItem value="vs" label="Visual Studio" default>
+        <img style={{width: '70%'}} src={require('@site/static/img/guides/rendering-textures/add-texture-vs.gif').default} alt="Adding texture in Visual Studio"/>
+    </TabItem>
+    <TabItem value="rider" label="JetBrains Rider">
+        <img style={{width: '70%'}} src={require('@site/static/img/guides/rendering-textures/add-texture-rider.gif').default} alt="Adding texture in JetBrains Rider"/>
+    </TabItem>
+    <TabItem value="vscode" label="VSCode (C# Dev Kit)">
+        Add the file using your preferred file explorer.
+        <img style={{width: '70%'}} src={require('@site/static/img/guides/rendering-textures/add-texture-vscode.gif').default} alt="Adding texture in VSCode"/>
+    </TabItem>
+</Tabs>
+
+:::info Content Folder Structure
+Velaptor expects content in specific subfolders under `Content/`:
+- _**Graphics:**_ `Content/Graphics` — for PNG images
+- _**Audio:**_ `Content/Audio` — for OGG and MP3 files
+- _**Fonts:**_ `Content/Fonts` — for TTF font files
+:::
+
+## <span className="color-step">Step 3: Set the image to copy on build</span>
+
+We need to tell the IDE to copy the image file to the build output directory so Velaptor can find it at runtime.
+
+<Tabs groupId="ide">
+    <TabItem value="vs" label="Visual Studio" default>
+        <img style={{width: '70%'}} src={require('@site/static/img/guides/rendering-textures/texture-properties-vs.gif').default} alt="Setting texture properties in Visual Studio"/>
+    </TabItem>
+    <TabItem value="rider" label="JetBrains Rider">
+        <img style={{width: '70%'}} src={require('@site/static/img/guides/rendering-textures/texture-properties-rider.gif').default} alt="Setting texture properties in JetBrains Rider"/>
+    </TabItem>
+    <TabItem value="vscode" label="VSCode">
+        Open the `.csproj` file and add the following XML inside the `<Project>` element to include the image as content and copy it on build:
+        ```xml
+        <ItemGroup>
+            <None Update="Content\Graphics\velaptor-mascot.png">
+                <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            </None>
+        </ItemGroup>
+        ```
+    </TabItem>
+
+</Tabs>
+
+Your content is now ready to be loaded and rendered!

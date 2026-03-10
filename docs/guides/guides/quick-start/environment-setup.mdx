@@ -1,0 +1,112 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Url from "@site/src/components/Url";
+
+# Environment Setup
+
+Before creating a Velaptor project, you'll need two things: the .NET SDK and an IDE (Integrated Development Environment).
+This page will walk you through installing both.
+
+:::info
+Velaptor does not run on macOS as of yet. Velaptor projects are currently supported only on Windows and Linux.
+
+Plans to support macOS are in the works, but no timeline has been set for when support will be added.
+:::
+
+## <span className="color-step">Step 1: Install the .NET SDK</span>
+
+Velaptor is built on .NET, so you'll need the .NET SDK installed. The SDK includes the `dotnet` CLI tool used to create, build, and run projects.
+
+Download the latest .NET SDK from the <Url href="https://dotnet.microsoft.com/en-us/download/dotnet/9.0" text="official .NET download page" openInNewTab="true"/>.
+
+<Tabs>
+    <TabItem value="windows" label="Windows" default>
+        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
+            <li>Download the .NET SDK installer for Windows from the link above.</li>
+            <li>Run the installer and follow the prompts.</li>
+            <li>Once complete, open a terminal (Command Prompt or PowerShell) and verify the installation:</li>
+        </ol>
+
+        ```bash
+        dotnet --version
+        ```
+
+        You should see the installed SDK version printed to the console.
+    </TabItem>
+    <TabItem value="linux" label="Linux">
+        
+        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
+            <li><Url href="https://learn.microsoft.com/en-us/dotnet/core/install/linux" text="Open the official Linux installation guide" openInNewTab="true"/></li>
+            <li>Choose your Linux distribution and follow those exact steps.</li>
+            <li>After installation, open a terminal and verify the installation:</li>
+        </ol>
+
+        ```bash
+        dotnet --version
+        ```
+
+        You should see the installed SDK version printed to the console.
+    </TabItem>
+</Tabs>
+
+## <span className="color-step">Step 2: Install an IDE</span>
+
+Choose one of the following IDEs to write and run your Velaptor project. All three are excellent choices — pick whichever you're most comfortable with.
+
+<Tabs>
+    <TabItem value="vs" label="Visual Studio Community" default>
+        <Url href="https://visualstudio.microsoft.com/vs/community/" text="Visual Studio Community" openInNewTab="true"/> is a free,
+        full-featured IDE from Microsoft for Windows.
+
+        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
+            <li>Download Visual Studio Community from the link above.</li>
+            <li>Run the installer.</li>
+            <li>In the <strong>Workloads</strong> tab, select <em><strong>.NET desktop development</strong></em>.</li>
+            <li>Click <strong>Install</strong> and wait for installation to complete.</li>
+            <li>Launch Visual Studio and sign in with a Microsoft account (free).</li>
+        </ol>
+
+:::tip
+Visual Studio Community includes built-in NuGet package management, debugging, and project templates — all of which
+you'll use throughout this quick start.
+:::
+    </TabItem>
+    <TabItem value="rider" label="JetBrains Rider">
+        <Url href="https://www.jetbrains.com/rider/" text="JetBrains Rider" openInNewTab="true"/> is a cross-platform .NET IDE
+        available on Windows, Linux, and macOS.
+
+        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
+            <li>Download Rider from the link above.</li>
+            <li>Run the installer and follow the setup wizard.</li>
+            <li>On first launch, Rider will detect your installed .NET SDK automatically.</li>
+        </ol>
+
+:::note
+Rider requires a license after the free trial period. JetBrains offers free licenses for students and open-source contributors.
+:::
+    </TabItem>
+    <TabItem value="vscode" label="Visual Studio Code">
+        <Url href="https://code.visualstudio.com/" text="Visual Studio Code" openInNewTab="true"/> is a free, lightweight editor
+        available on Windows, Linux, and macOS.
+
+        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
+            <li>Download VS Code from the link above.</li>
+            <li>Run the installer and follow the prompts.</li>
+            <li>
+                Open VS Code and install the <strong>C# Dev Kit</strong> extension:
+                <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem' }}>
+                    <li>Open the Extensions view (<code>Ctrl+Shift+X</code>).</li>
+                    <li>Search for <strong>C# Dev Kit</strong> and click <strong>Install</strong>.</li>
+                </ul>
+            </li>
+        </ol>
+
+        The C# Dev Kit extension provides project management, IntelliSense, debugging, and NuGet package management for .NET projects.
+    </TabItem>
+</Tabs>
+
+You're all set! Continue to the next page to create your Velaptor project.

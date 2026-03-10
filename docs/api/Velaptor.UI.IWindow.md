@@ -43,7 +43,7 @@ use or invoke the [Clear\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IB
 Set to the value of `false` if you want more control when
 the back buffers will be cleared.
 
-WARNING!! - To prevent performance issues, do not manually clear the
+WARNING! - To prevent performance issues, do not manually clear the
 buffer with the [Clear\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Clear() 'Velaptor\.Batching\.IBatcher\.Clear\(\)')() method
 and set this property to true.  That would be a waste of resources.
 

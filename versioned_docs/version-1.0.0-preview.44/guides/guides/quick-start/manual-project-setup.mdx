@@ -1,41 +1,43 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 
-# Manually Setup Project
+# Manual Project Setup
 
-This guide will show you how to manually create a Velaptor application.
+This is an alternative to the template setup. If you prefer to set up your project manually or want to understand the project structure in more detail, this guide will walk you through creating a Velaptor application from scratch.
+
+:::info Optional Step
+If you are new to programming, you can skip this page and continue with the template-based quick start path.
+:::
 
 :::note Guide Source Code
-There are plans in the future to create a project template for <Url href="visualstudio.microsoft.com/" text="Visual Studio" openInNewTab="true"/> and
-<Url href="www.jetbrains.com/rider/" text="JetBrains Rider" openInNewTab="true"/> users to easily create a basic Velaptor application.
+There are plans in the future to create a project template for <Url href="https://visualstudio.microsoft.com/" text="Visual Studio" openInNewTab="true"/> and
+<Url href="https://www.jetbrains.com/rider/" text="JetBrains Rider" openInNewTab="true"/> users to easily create a basic Velaptor application.
 :::
 
 First things first. You have to create a project with your preferred IDE!
 
 ## <span className="color-step">Step 1: Create the application</span>
 
-Create a new C# console application using dotnet version specified in the `EmptyProject.csproj`, look for the `<TargetFramework></TargetFramework>` XML tag.
+Create a new C# console application that targets the same .NET version as the guide samples (currently `net9.0`).
 
 
 ## <span className="color-step">Step 2: Add Velaptor to the project</span>
 
-Add the Velaptor <Url href="www.nuget.org/packages/KinsonDigital.Velaptor" text="NuGet package" openInNewTab="true"/> to the project.
+Add the Velaptor <Url href="https://www.nuget.org/packages/KinsonDigital.Velaptor" text="NuGet package" openInNewTab="true"/> to the project.
    - Make sure to click the preview check box in your IDE of choice. Since Velaptor is currently in preview, clicking the checkbox will allow you to see the NuGet package.
     <Tabs>
        <TabItem value="vs" label="Visual Studio" default>
             <img src={require('@site/static/img/guides/rendering-text/nuget-vs.jpg').default} alt="Example banner"/>
         </TabItem>
-        <TabItem value="banana" label="JetBrains Rider">
+        <TabItem value="rider" label="JetBrains Rider">
             <img src={require('@site/static/img/guides/rendering-text/nuget-rider.jpg').default} alt="Example banner"/>
         </TabItem>
     </Tabs>
-
 
 ## <span className="color-step">Step 3: Create main classes</span>
 
@@ -58,7 +60,7 @@ public class Game : Window
 :::tip Top Level Statements
 Top-level statements are a newer feature added in C#10 that enables you to avoid the extra ceremony of creating the `main` entry point method
 in a class.
-Click <Url href="learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements" text="here" openInNewTab="true"/> to learn more!
+Click <Url href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/top-level-statements" text="here" openInNewTab="true"/> to learn more!
 :::
 
 
@@ -69,7 +71,7 @@ all C# applications, the entry point is the `main` method in the `Program` class
 features and use top-level statements.  Create a new `Program.cs` file and add the following code:
 
 ```csharp
-var game = new EmptyProject.Game();
+var game = new HelloVelaptor.Game();
 game.Show();
 ```
 
@@ -101,9 +103,9 @@ flowchart LR
 
 ### <span className="color-sub-step">4.1: Create `OnLoad()` method</span>
 Once the game class file has been created, we need a way to load content. We can load sounds, textures, fonts, atlas textures and atlas data, or any
-kind of content your game needs. This method will be invoked once time as the application loads up.
+kind of content your game needs. This method is invoked one time when the application starts.
 
-Create a method override of the `Window.Load()` method in the `Game` class as shown below:
+Create an override of the `Window.OnLoad()` method in the `Game` class as shown below:
 
 ```csharp
 protected override void OnLoad()

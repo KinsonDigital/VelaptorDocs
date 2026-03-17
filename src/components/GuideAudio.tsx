@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
+import { useDocsVersion } from "@docusaurus/plugin-content-docs/client";
 import Audio from "@site/src/components/Audio";
 
 /**
- * The properties for the {@link GuidImg} component.
+ * The properties for the {@link GuideAudio} component.
  */
 interface Props {
 	/**
@@ -12,7 +12,7 @@ interface Props {
 	guideName: string,
 
 	/**
-	 * The name of the image file.
+	 * The name of the audio file.
 	 */
 	audioFileName: string,
 

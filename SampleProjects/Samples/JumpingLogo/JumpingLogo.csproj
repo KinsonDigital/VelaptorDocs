@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include=".template.config\template.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="stylecop.json" />
     <AdditionalFiles Include="stylecop.json" />
     <None Update="Content\Audio\jump.mp3">

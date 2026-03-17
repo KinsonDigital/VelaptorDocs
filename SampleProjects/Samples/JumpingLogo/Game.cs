@@ -5,7 +5,6 @@
 namespace JumpingLogo;
 
 using System.Drawing;
-using Velaptor.Input;
 using System.Numerics;
 using Velaptor;
 using Velaptor.Batching;
@@ -13,6 +12,7 @@ using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
+using Velaptor.Input;
 using Velaptor.UI;
 
 /// <summary>
@@ -21,7 +21,8 @@ using Velaptor.UI;
 public class Game : Window
 {
     private const float MaxVel = 350;
-    private const float VelocityX = 50f;
+    private const float VelocityX = 450f;
+    private const float Gravity = 980;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly ILineRenderer lineRenderer;
@@ -141,30 +142,6 @@ public class Game : Window
     }
 
     /// <summary>
-    /// Processes the movement of mr. velaptor.
-    /// </summary>
-    /// <param name="currentKeyState">The current state of the keyboard.</param>
-    /// <param name="dt">The delta time for the current frame compared to the previous frame.</param>
-    private void ProcessMovement(KeyboardState currentKeyState, float dt)
-    {
-        // Check if movement is or is not happening.
-        var isNotMovingHorizontally = currentKeyState.IsKeyUp(KeyCode.Right) && currentKeyState.IsKeyUp(KeyCode.Left);
-
-        // Increase velocity in each direction based on which keys are pressed.
-        this.velocity.X -= this.leftKeyDown ? VelocityX : 0;
-        this.velocity.X += this.rightKeyDown ? VelocityX : 0;
-
-        // Stop moving if the left or right key is no longer being pressed.
-        this.velocity.X = isNotMovingHorizontally ? 0 : this.velocity.X;
-
-        // Limit the maximum velocity in any direction.
-        this.velocity = Vector2.Clamp(this.velocity, this.minVelocity, this.maxVelocity);
-
-        // Move the logo using horizontal input velocity and vertical jump/gravity velocity.
-        this.position += new Vector2(this.velocity.X * dt, this.velocityY * dt);
-    }
-
-    /// <summary>
     /// Render graphics here.
     /// </summary>
     /// <param name="frameTime">The amount of time that passed for the current game loop frame.</param>
@@ -191,6 +168,30 @@ public class Game : Window
     }
 
     /// <summary>
+    /// Processes the movement of mr. velaptor.
+    /// </summary>
+    /// <param name="currentKeyState">The current state of the keyboard.</param>
+    /// <param name="dt">The delta time for the current frame compared to the previous frame.</param>
+    private void ProcessMovement(KeyboardState currentKeyState, float dt)
+    {
+        // Check if movement is or is not happening.
+        var isNotMovingHorizontally = currentKeyState.IsKeyUp(KeyCode.Right) && currentKeyState.IsKeyUp(KeyCode.Left);
+
+        // Increase velocity in each direction based on which keys are pressed.
+        this.velocity.X -= this.leftKeyDown ? VelocityX * dt : 0;
+        this.velocity.X += this.rightKeyDown ? VelocityX * dt : 0;
+
+        // Stop moving if the left or right key is no longer being pressed.
+        this.velocity.X = isNotMovingHorizontally ? 0 : this.velocity.X;
+
+        // Limit the maximum velocity in any direction.
+        this.velocity = Vector2.Clamp(this.velocity, this.minVelocity, this.maxVelocity);
+
+        // Move the logo using horizontal input velocity and vertical jump/gravity velocity.
+        this.position += new Vector2(this.velocity.X * dt, this.velocityY * dt);
+    }
+
+    /// <summary>
     /// Process the jump.
     /// </summary>
     /// <param name="currentKeyState">The current state of the keyboard.</param>
@@ -205,7 +206,10 @@ public class Game : Window
             this.jumpSound?.Play();
         }
 
-        this.velocityY += 980 * dt;
+        if (!this.isGrounded)
+        {
+            this.velocityY += Gravity * dt;
+        }
     }
 
     /// <summary>

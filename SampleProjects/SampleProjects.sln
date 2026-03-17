@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsepriteAtlasTextures", "Gu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Displays", "Guides\Displays\Displays.csproj", "{200D5DB4-5B31-46B4-89F8-397940B93C9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpingLogo", "Samples\JumpingLogo\JumpingLogo.csproj", "{8F920A76-5D6E-4D6C-BD82-8F28AB225FB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -114,6 +116,10 @@ Global
 		{200D5DB4-5B31-46B4-89F8-397940B93C9C}.Debug|x64.Build.0 = Debug|x64
 		{200D5DB4-5B31-46B4-89F8-397940B93C9C}.Release|x64.ActiveCfg = Release|x64
 		{200D5DB4-5B31-46B4-89F8-397940B93C9C}.Release|x64.Build.0 = Release|x64
+		{8F920A76-5D6E-4D6C-BD82-8F28AB225FB4}.Debug|x64.ActiveCfg = Debug|x64
+		{8F920A76-5D6E-4D6C-BD82-8F28AB225FB4}.Debug|x64.Build.0 = Debug|x64
+		{8F920A76-5D6E-4D6C-BD82-8F28AB225FB4}.Release|x64.ActiveCfg = Release|x64
+		{8F920A76-5D6E-4D6C-BD82-8F28AB225FB4}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,8 +142,10 @@ Global
 		{C17CCB2E-29D0-49B7-8A7A-82E1719513C4} = {02B09EF2-D131-4628-BAD5-602A3BD9188E}
 		{74927D89-8D32-4739-B526-31F8B816C42C} = {02B09EF2-D131-4628-BAD5-602A3BD9188E}
 		{200D5DB4-5B31-46B4-89F8-397940B93C9C} = {02B09EF2-D131-4628-BAD5-602A3BD9188E}
+		{8F920A76-5D6E-4D6C-BD82-8F28AB225FB4} = {BFFC67C9-73D5-45F1-B05E-8DA2E0DA9011}
 	EndGlobalSection
 	GlobalSection(RiderSharedRunConfigurations) = postSolution
+		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Win).run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug Linux).run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug Win).run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Debug-Console Linux).run.xml
@@ -145,6 +153,5 @@ Global
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Console Linux) .run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Console Win) .run.xml
 		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Linux).run.xml
-		File = ..\RepoSrc\.run\Publish VelaptorTesting (Release Win).run.xml
 	EndGlobalSection
 EndGlobal

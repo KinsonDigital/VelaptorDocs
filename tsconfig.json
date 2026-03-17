@@ -7,6 +7,9 @@
 		"paths": {
 			"@site/*": [
 				"./*"
+			],
+			"@docusaurus/plugin-content-docs/client": [
+				"./node_modules/@docusaurus/plugin-content-docs/lib/client/index"
 			]
 		}
 	}

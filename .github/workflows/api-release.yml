@@ -1,5 +1,5 @@
-name: 🚀Production API Release
-run-name: 🚀Production API Release (Velaptor ${{ inputs.api-version }}) ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
+name: 🚀Production Full Docs Release
+run-name: 🚀Production Full Docs Release (Velaptor ${{ inputs.api-version }}) ${{ inputs.dry-run == true && '(Dry Run)' || '' }}
 
 defaults:
   run:
@@ -13,6 +13,11 @@ on:
         description: "The version of API docs to release."
         required: true
         type: string
+      executed-externally:
+        description: "Indicates if the workflow was executed externally."
+        required: false
+        default: false
+        type: boolean
       dry-run:
         description: Dry Run - Check to run the workflow without creating a release.
         required: false
@@ -20,6 +25,17 @@ on:
         type: boolean
 
 jobs:
+  wait_for_velaptor_release:
+    name: Wait For Velaptor Release
+    runs-on: ubuntu-latest
+    if: ${{ inputs.executed-externally == 'true' }}
+    steps:
+      - name: Waiting For Release
+        env:
+          PACKAGE_NAME: "KinsonDigital.Velaptor"
+          NUGET_VERSION: "1.0.0-preview.44"
+        run: deno run -EN "${{ github.workspace }}/.github/cicd/scripts/nuget-pkg-exists.ts";
+
   validate_branch:
     name: Validate Branch
     runs-on: ubuntu-latest

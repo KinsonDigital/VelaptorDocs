@@ -1,5 +1,4 @@
 import { walkSync } from "@std/fs";
-import { Guard } from "../Guard.ts";
 import { VersionSideBarService } from "./VersionSidebarService.ts";
 import { VersionsFileService } from "./VersionsFileService.ts";
 import { Utils } from "../Utils.ts";
@@ -28,7 +27,9 @@ export class DeleteAPIVersionService {
 	 * @param {string} version The version of the API docs to delete.
 	 */
 	public deleteDocs(version: string): void {
-		Guard.isNotUndefinedOrEmpty(version, "version");
+		if (Utils.isNothing(version)) {
+			throw new Error("The 'version' parameter must not be undefined, null, or an empty string.");
+		}
 
 		version = version.startsWith("v") ? version.replace("v", "") : version;
 

@@ -1,4 +1,3 @@
-import { Guard } from "../Guard.ts";
 import { Utils } from "../Utils.ts";
 
 export class MarkdownService {
@@ -27,8 +26,13 @@ export class MarkdownService {
 	}
 
 	public createLink(text: string, url: string): string {
-		Guard.isNotUndefinedOrEmpty(text);
-		Guard.isNotUndefinedOrEmpty(url);
+		if (Utils.isNothing(text)) {
+			throw new Error("The 'text' parameter must not be undefined, null, or an empty string.");
+		}
+
+		if (Utils.isNothing(url)) {
+			throw new Error("The 'url' parameter must not be undefined, null, or an empty string.");
+		}
 
 		// TODO: The URL link is going to have to change somehow
 		// once we start having versions. Maybe bring in a version parameter somehow
@@ -111,7 +115,9 @@ export class MarkdownService {
 	}
 
 	public insertAfterHeader(name: string, contentLines: string[], linesToAdd: string[]): string {
-		Guard.isNotUndefinedOrEmpty(name);
+		if (Utils.isNothing(name)) {
+			throw new Error("The 'name' parameter must not be undefined, null, or an empty string.");
+		}
 
 		const noContentLines: boolean = contentLines === undefined || contentLines.length <= 0;
 		const hasContentLines = !noContentLines;

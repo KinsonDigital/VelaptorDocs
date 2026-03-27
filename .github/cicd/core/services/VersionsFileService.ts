@@ -1,6 +1,5 @@
 import { basename, extname } from "@std/path";
 import { walkSync } from "@std/fs";
-import { Guard } from "../Guard.ts";
 import { Utils } from "../Utils.ts";
 
 /**
@@ -41,7 +40,9 @@ export class VersionsFileService {
 	 * @param {string} version The version to delete from the versions file.
 	 */
 	public deleteVersion(version: string): void {
-		Guard.isNotUndefinedOrEmpty(version, "version");
+		if (Utils.isNothing(version)) {
+			throw new Error("The 'version' parameter must not be undefined, null, or an empty string.");
+		}
 
 		// If the version begins with a 'v', remove it
 		version = version.startsWith("v") ? version.replace("v", "") : version;

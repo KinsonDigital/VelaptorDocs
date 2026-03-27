@@ -235,5 +235,33 @@
 			"attachSimplePort": 9229,
 			"console": "integratedTerminal"
 		},
+		{ // NUGET PKG EXISTS
+			"name": "NuGet Package Exists",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/.github/cicd/scripts/nuget-pkg-exists.ts",
+			"cwd": "${workspaceFolder}/.github/cicd/scripts",
+			"env": {
+				"PACKAGE_NAME": "KinsonDigital.Velaptor",
+				"NUGET_VERSION": "1.0.0-preview.44",
+			},
+			"windows": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno.exe",
+			},
+			"linux": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"osx": {
+				"runtimeExecutable": "${userHome}/.deno/bin/deno",
+			},
+			"runtimeArgs": [
+				"run",
+				"--allow-run",
+				"-EN",
+				"--inspect-wait",
+			],
+			"attachSimplePort": 9229,
+			"console": "integratedTerminal"
+		},
     ]
 }

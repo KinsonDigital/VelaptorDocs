@@ -83,6 +83,7 @@
     "@kinsondigital/kd-clients@1.0.0-preview.15": {
       "integrity": "c06ccf539262b5cfa66f64c2c3359b2d3acdbfb268db5c7d5d51461bfc40372b",
       "dependencies": [
+        "jsr:@nexterias/twitter-api-fetch",
         "jsr:@std/encoding@1.0.5",
         "jsr:@std/fs@1.0.5",
         "jsr:@std/path@1.0.7"

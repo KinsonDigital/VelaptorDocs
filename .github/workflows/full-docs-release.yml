@@ -28,7 +28,7 @@ jobs:
   wait_for_velaptor_release:
     name: Wait For Velaptor Release
     runs-on: ubuntu-latest
-    if: ${{ inputs.executed-externally == 'true' }}
+    if: ${{ inputs.dry-run == false && inputs.executed-externally == true }}
     steps:
       - name: Waiting For Release
         env:
@@ -152,7 +152,6 @@ jobs:
       - name: Setup PNPM (${{ vars.PNPM_VERSION }})
         uses: pnpm/action-setup@v4
         with:
-          
           version: ${{ vars.PNPM_VERSION }}
 
       - name: Update CSharp Project Files

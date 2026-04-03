@@ -5,12 +5,12 @@ const pkgName = (Deno.env.get("PACKAGE_NAME") ?? "").trim();
 const nugetVersion = (Deno.env.get("NUGET_VERSION") ?? "").trim();
 
 if (Utils.isNothing(pkgName)) {
-	console.log("%cThe 'PACKAGE_NAME' environment variable must is missing.", "color:indianred");
+	console.log("%cThe 'PACKAGE_NAME' environment variable is missing.", "color:indianred");
 	Deno.exit(1);
 }
 
 if (Utils.isNothing(nugetVersion)) {
-	console.log("%cThe 'NUGET_VERSION' environment variable must is missing.", "color:indianred");
+	console.log("%cThe 'NUGET_VERSION' environment variable is missing.", "color:indianred");
 	Deno.exit(1);
 }
 
@@ -26,7 +26,7 @@ let pkgExists = false;
 // Total amount of time possible to wait is 20 minutes (40 retries * 30 seconds wait time).
 // The reason for multiple checks for 20 minutes is to wait for the Nuget package to become
 // fully available after a Velaptor release.
-while(currentRetryCount <= totalRetries) {
+while(currentRetryCount < totalRetries) {
 	console.log(`%cChecking nuget package '${pkgName}' version '${nugetVersion}' attempt ${currentRetryCount + 1}.`, "color:cornflowerblue");
 	pkgExists = await nugetClient.exists(pkgName, nugetVersion);
 	currentRetryCount += 1;
@@ -41,6 +41,6 @@ while(currentRetryCount <= totalRetries) {
 }
 
 if (!pkgExists) {
-	console.log(`%cAttempted to find the package '${totalRetries}' times without success.  Stopping check process.`, "color:indianred");
-	Deno.exit();
+	console.log(`%cAttempted to find the package '${pkgName}' version '${nugetVersion}' ${totalRetries} times without success.  Stopping check process.`, "color:indianred");
+	Deno.exit(1);
 }

@@ -1,5 +1,4 @@
 import { existsSync, walkSync } from "@std/fs";
-import { Guard } from "../Guard.ts";
 import { Utils } from "../Utils.ts";
 
 /**
@@ -17,7 +16,9 @@ export class VersionSideBarService {
 	 * @param version The version of the sidebar JSON file to delete.
 	 */
 	public deleteSideBar(version: string): void {
-		Guard.isNotUndefinedOrEmpty(version, "version");
+		if (Utils.isNothing(version)) {
+			throw new Error("The 'version' parameter must not be undefined, null, or an empty string.");
+		}
 
 		const foundDirEntries = walkSync(Deno.cwd(), {
 			includeDirs: true,

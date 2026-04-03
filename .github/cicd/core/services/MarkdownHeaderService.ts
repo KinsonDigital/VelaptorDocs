@@ -1,4 +1,3 @@
-import { Guard } from "../Guard.ts";
 import { Utils } from "../Utils.ts";
 
 /**
@@ -44,7 +43,9 @@ export class MarkdownHeaderService {
 	 * @param fileContent The file content to process.
 	 */
 	public processHeaders(fileContent: string): string {
-		Guard.isNotUndefinedOrEmpty(fileContent);
+		if (Utils.isNothing(fileContent)) {
+			throw new Error("The 'fileContent' parameter must not be undefined, null, or an empty string.");
+		}
 
 		const lines: string[] = fileContent.split(this.newLine);
 
@@ -104,7 +105,9 @@ export class MarkdownHeaderService {
 	 * @returns The header with the increased size.
 	 */
 	private increaseHeaderSize(header: string, increaseBy: number): string {
-		Guard.isNotUndefinedOrEmpty(header);
+		if (Utils.isNothing(header)) {
+			throw new Error("The 'header' parameter must not be undefined, null, or an empty string.");
+		}
 
 		increaseBy = increaseBy < 0 ? 0 : increaseBy;
 		increaseBy = increaseBy > 6 ? 6 : increaseBy;
@@ -135,7 +138,9 @@ export class MarkdownHeaderService {
 	 * @returns The header with the decreased size.
 	 */
 	private decreaseHeaderSize(header: string, decreaseBy: number): string {
-		Guard.isNotUndefinedOrEmpty(header);
+		if (Utils.isNothing(header)) {
+			throw new Error("The 'header' parameter must not be undefined, null, or an empty string.");
+		}
 
 		decreaseBy = decreaseBy < 0 ? 0 : decreaseBy;
 		decreaseBy = decreaseBy > 6 ? 6 : decreaseBy;
@@ -164,7 +169,9 @@ export class MarkdownHeaderService {
 	 * @returns The header with the class name stripped.
 	 */
 	private stripClassFromHeader(header: string): string {
-		Guard.isNotUndefinedOrEmpty(header);
+		if (Utils.isNothing(header)) {
+			throw new Error("The 'header' parameter must not be undefined, null, or an empty string.");
+		}
 
 		if (header.indexOf(".") === -1) {
 			return header;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import OpenNewTab from "@site/static/img/new-tab.svg";
 import Link from "@docusaurus/Link";
 
@@ -19,7 +19,7 @@ interface Props {
 	/**
 	 * If true, then the link will open in a new tab.
 	 */
-	openInNewTab?: string;
+	openInNewTab?: boolean;
 }
 
 /**
@@ -27,14 +27,17 @@ interface Props {
  * @param params The parameters for the component.
  * @returns The component.
  */
-const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
+export default function Url(props: Props): ReactNode {
+	let { href, text } = props;
+	const { openInNewTab } = props;
+
 	href = href.startsWith("https://")
 		? href
 		: `https://${href}`;
 
 	text = text === undefined || text === "" ? href : text;
 
-	const shouldUseNewTab = openInNewTab?.toLowerCase() === "true";
+	const shouldUseNewTab = openInNewTab === undefined || openInNewTab === false ? false : true;
 	const target = shouldUseNewTab ? "_blank" : "";
 
 	return (
@@ -42,13 +45,10 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 			<Link to={href} target={target} className={"link"}>{text}</Link>
 			<span>
 				{
-					shouldUseNewTab
-						? <OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }}/>
-						: <div></div>
+					shouldUseNewTab === true &&
+						<OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} />
 				}
 			</span>
 		</span>
 	);
 }
-
-export default Url;

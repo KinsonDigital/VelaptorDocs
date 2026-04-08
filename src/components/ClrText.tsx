@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 
 interface Props {
 	text: string,
@@ -5,10 +6,8 @@ interface Props {
 	backColor?: string,
 }
 
-const ClrText: React.FC<Props> = ({ text, foreColor: foreColor, backColor }) => {
-	const colorValue = `color: ${foreColor}`;
+export default function ClrText(props: Props): ReactNode {
+	const { text, foreColor, backColor } = props;
 
 	return <span style={{ color: foreColor, backgroundColor: backColor }}>{text}</span>;
 };
-
-export default ClrText;

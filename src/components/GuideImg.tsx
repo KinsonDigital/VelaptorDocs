@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import GitHubImg from "@site/src/components/GitHubImg";
 
 /**
- * The properties for the {@link GuidImg} component.
+ * The properties for the {@link GuideImg} component.
  */
 interface Props {
 	/**
@@ -45,7 +45,10 @@ interface Props {
  * @param param The component properties.
  * @returns The component.
  */
-const GuidImg: React.FC<Props> = ({ apiVersion, guideName, imgFileName, sizePercentage = 100, useTestMode = "false", testBranchOrTag = "" }: Props) => {
+export default function GuideImg(props: Props): ReactNode {
+	let { apiVersion } = props;
+	const { guideName, imgFileName, sizePercentage = 100, useTestMode = "false", testBranchOrTag = "" } = props;
+
 	const versionRegex = /\s*v([1-9]\d*|0)\.([1-9]\d*|0)\.([1-9]\d*|0)(-preview\.([1-9]\d*))?\s*/gm;
 	const invalidGuideProjName = guideName === undefined || guideName === "";
 	const invalidFileName = imgFileName === undefined || imgFileName === "";
@@ -82,5 +85,3 @@ const GuidImg: React.FC<Props> = ({ apiVersion, guideName, imgFileName, sizePerc
 		</div>
 	);
 }
-
-export default GuidImg;

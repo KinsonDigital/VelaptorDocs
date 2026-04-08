@@ -35,7 +35,7 @@ export default function StaticDownload(props: Props): ReactNode {
 	const { relativePath, text, sizePercentage = 100, downloadFileName } = props;
 	const imgExtensions = ["png", "jpg", "jpeg", "gif", "svg"];
 	const fileNameValue = downloadFileName === undefined
-		? relativePath.split("/").pop()
+		? relativePath.split("/").pop() ?? ""
 		: downloadFileName;
 
 	const fileExtension = fileNameValue.split(".")[1].toLowerCase();

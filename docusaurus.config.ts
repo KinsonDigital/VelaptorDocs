@@ -54,7 +54,11 @@ const config: Config = {
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
-				blog: false,
+				blog: {
+					showReadingTime: true,
+					blogSidebarTitle: 'All Our Posts',
+					blogSidebarCount: 10,
+				},
 			} satisfies Preset.Options,
 		],
 	],
@@ -158,6 +162,18 @@ const config: Config = {
 						docId: 'api/Namespaces',
 						position: 'left',
 						label: 'API',
+					},
+					{
+						to: 'blog',
+						label: 'Blog',
+						position: 'left',
+						items: [
+							{ to: '/blog', label: 'All Our Posts' },
+							{ to: '/blog/tags', label: 'Browse by Tag' },
+							{ to: '/blog/tags/velaptor', label: 'Velaptor' },
+							{ to: '/blog/tags/velaptor-aseprite', label: 'VelaptorAseprite' },
+							{ to: '/blog/tags/velaptor-templates', label: 'VelaptorTemplates' },
+						],
 					},
 					// </flag>
 					{

@@ -1,0 +1,185 @@
+---
+slug: velaptor-release-v1.0.0-preview.32
+title: Velaptor Release v1.0.0-preview.32
+authors: kinson
+tags: [releases, velaptor]
+---
+
+import JoinComm from "@site/src/components/JoinComm";
+import ReleaseNotes from "@site/src/components/ReleaseNotes";
+import GitHubProject from "@site/src/components/GitHubProject";
+import Image from "@site/src/components/Image";
+
+Hello and welcome to another _**Velaptor**_ release!!
+
+This release brings you some small performance improvements,
+the start of your mocking library migration, some API deprecations, and some bug fixes.
+
+:::info Release notes
+Check out the <ReleaseNotes projName="Velaptor" version="v1.0.0-preview.32"/>
+:::
+
+A quick thanks to the following contributors for their contributions to this release:
+- [@AndreBonda](https://github.com/AndreBonda)
+
+{/*truncate*/}
+
+
+## <span className="color-section">Quick Overview</span>
+
+This release of **Velaptor** brings you the following:
+
+1. Small performance improvements related to fonts and rendering text.
+2. Small performance improvement to OpenGL buffering.
+3. The start of the mocking library migration process.
+4. Removal of internal use of deprecated _**Velaptor UI Control API**_.
+5. A small bug fix was discovered during development.
+6. Internal dependency updates.
+
+
+## <span className="color-section">Perf Improvements</span>
+
+<Image url="https://media.giphy.com/media/fBEMsUeGHdpsClFsxM/giphy.gif"/>
+
+In the realm of game development, performance is a perpetual pursuit. We’re constantly on the
+lookout for opportunities to boost the performance of Velaptor. This time, we’ve made a couple of minor enhancements.
+
+
+While these modifications might seem small, they were straightforward to implement and have contributed
+to the overall performance improvement. Specifically, we’ve optimized the way we interact with
+OpenGL and transitioned the `FontStats` struct to a `readonly` struct, resulting in more efficient operations.
+
+Please note that even the smallest performance improvements can accumulate over time, leading to
+a significantly smoother and faster gaming experience. Stay tuned as we will as we continue to
+enhance _**Velaptor’s**_ performance!
+
+## <span className="color-section">Mocking Library Migration</span>
+
+This is not going to affect any users of **Velaptor**, but this will affect contributors and maintainers.
+
+### <span className="color-sub-section">Migration Details</span>
+
+This is related to refactoring all of our unit test code from using the <GitHubProject owner="devlooped" projName="moq"/>
+library to the [NSubstitute](https://nsubstitute.github.io/) library. This is going to take a while but all of
+the issues related to this are created and ready to go. We will be working on releasing at least one of these issues or more per release.
+
+### <span className="color-sub-section">Rationale Behind the Migration</span>
+
+
+The decision to migrate from _**Moq**_ to _**NSubstitute**_ is influenced by several factors.
+Like many .NET developers, I’ve used the _**Moq**_ library for mocking for a considerable period and
+have found it to be a reliable tool.
+
+However, as _**Velaptor**_ has grown in complexity, so too have
+the verbosity and intricacy of the unit tests. While this is not inherently negative, it does
+pose challenges in terms of maintenance and comprehension.
+
+Over time, I began exploring _**NSubstitute**_ and found it to be a promising alternative as well
+as not as verbose and more readable. A recent incident within the _**Moq**_ community was the
+catalyst to finally deciding to make the switch.
+
+For those interested in the specifics of this incident, you can [read about it here](https://medium.com/checkmarx-security/popular-nuget-package-moq-silently-exfiltrates-user-data-to-cloud-service-d1888867406d)
+and [watch it here](https://www.youtube.com/watch?v=A06nNjBKV7I).
+
+While I have my personal views on this matter, I choose to keep them private. I firmly believe in the
+inherent fallibility of people and do not think it was intentional.
+
+However, it’s important to note that the decision to switch was not solely based on this incident.
+There are multiple reasons, all aimed at improving the quality and maintainability of _**Velaptor**_. 
+
+
+## <span className="color-section">Deprecated UI Usage Removal</span>
+
+We deprecated the _**Velaptor UI Control API**_ in the last release which was version _**v1.0.0-preview.31**_.
+
+In our last release, version v1.0.0-preview.31, we deprecated the _**Velaptor**_ UI Control API. This change doesn’t
+imply the removal of the deprecated API from _**Velaptor**_ itself, but rather its usage within our internal codebase,
+specifically in projects used for manual testing of _**Velaptor**_.
+
+We have an internal project named _**VelaptorTesting**_ that is part of the codebase. This project, which is part
+of the main codebase, was utilizing the deprecated UI API to provide a user interface for testing _**Velaptor**_.
+
+:::note NOTE
+Changes to this project do not affect
+_**Velaptor**_ in any way.
+:::
+
+To replace the UI in the _**VelaptorTesting**_ project, we decided to use the <GitHubProject owner="ImGuiNET" projName="ImGui.NET"/>
+library. This library is a popular and battle-tested solution that has been around for a long time, making it an obvious choice for our needs.
+With the replacement of the UI API with ImGui.NET in the _**VelaptorTesting**_ project, we are now in a position to fully
+remove the deprecated control UI API from the _**Velaptor**_ codebase when the time is right.
+
+
+### <span className="color-sub-section">Reasons for deprecation</span>
+
+The decision to deprecate the _**Velaptor**_ UI Control API was a significant one that I’ve been contemplating for some time.
+This API, which enables the creation of UI controls like buttons and text boxes, proved to be quite labor-intensive during its development.
+As I delved deeper into the API, I realized the enormity of the task at hand. Maintaining a UI library for a game framework,
+where there is no consistent UI design across games, seemed daunting. The complexity and diversity of game UIs made the prospect
+of a universal solution increasingly challenging.
+
+Initially, I envisioned _**Velaptor**_ as a tool not just for games, but also for creating cross-platform UI apps. While this is
+technically feasible, it requires a substantial amount of work. I didn’t want to compromise the quality of the rest of the
+library, which is primarily geared towards game development.
+
+Given these considerations, I decided it would be best to deprecate the UI Control API before we reach v1.0.0 and solidify the API.
+This decision allows us to focus on enhancing the core functionalities of Velaptor.
+However, this doesn’t rule out the possibility of revisiting this direction in the future.
+
+### <span className="color-sub-section">Timeline for full removal?</span>
+
+While the Velaptor UI Control API is currently deprecated, it remains functional. As you continue to use the API,
+you’ll notice deprecation warnings in your preferred IDE or text editor.
+
+If we were beyond v1.0.0 and the API had a substantial user base, we would delay its removal. However, given that
+we’re still in the preview phase and the user base is relatively small, we plan to remove it in an upcoming release.
+The exact release for this removal is yet to be determined.
+
+The removal could happen as soon as two releases from now, or it might be delayed until ten releases later.
+Given that the API is not primarily used for game UI but for UI apps, the likelihood of it being actively used is quite low.
+
+:::danger Recommendation
+We recommend updating your code as soon as possible.
+:::
+
+
+## <span className="color-section">Bug Squashing!!</span>
+
+Let’s be honest, there’s a certain satisfaction in squashing bugs, especially during development.
+It’s like getting a bonus when you discover a bug while working on something else.
+This is precisely what happened in our case.
+
+<Image url="https://media.giphy.com/media/EmSCxtcjQCmXK/giphy.gif"/>
+
+Then comes the realization that the bug has been lurking there for a while, making you wonder how it slipped
+past you or why no one has reported it. But no matter how minor or improbable the bug, We are always ready to tackle it head-on!
+
+This particular bug was quite unlikely to occur. It was related to an incorrect null reference exception that
+would occur if you invoked the `Window.Show()` or `Window.ShowAsync()` method to start your game after you had disposed
+of the game object using the `Window.Dispose()` method. One might wonder, why would anyone do that? Regardless,
+the bug is now fixed. If you attempt to do this, you will receive a proper `ObjectDisposedException` message.
+
+
+## <span className="color-section">Dependency Updates</span>
+
+We keep our dependencies up to date as much as possible. This release is no different.
+
+1. SimpleInjector updated from _**v5.4.3**_ to _**v5.4.4**_.
+    - This is used for all of our dependency injection needs.
+2. SixLabors.ImageSharp updated from _**v3.1.1**_ to _**v3.1.2**_.
+    - This is used for loading image data from disk before being uploaded to the GPU.
+
+## <span className="color-section">Wrap Up!!</span>
+
+Well, that is it for the release!! If you want to know more details of the changes of any release,
+it is all public and open source!!
+
+If you are interested in contributing to the project, please check out the
+project on GitHub or join the [Discord](https://discord.gg/qewu6fNgv7) server and say hi!!
+We would love to hear from you.
+
+Until the next release!!
+
+<Image url="https://media.giphy.com/media/rHR8qP1mC5V3G/giphy.gif"/>
+
+<JoinComm />

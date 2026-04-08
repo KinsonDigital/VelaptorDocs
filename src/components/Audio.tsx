@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 /**
  * The properties for the {@link Audio} component.
@@ -20,7 +20,8 @@ interface Props {
  * @param params The component properties.
  * @returns The component.
  */
-const Audio: React.FC<Props> = ({ url, name }: Props) => {
+export default function Audio(props: Props): ReactNode {
+	const { url, name } = props;
 	const invalidUrl = url === undefined || url === null || url === '';
 	const hasNoName = name === undefined || name === null || name === '';
 
@@ -45,5 +46,3 @@ const Audio: React.FC<Props> = ({ url, name }: Props) => {
 		</div>
 	);
 }
-
-export default Audio;

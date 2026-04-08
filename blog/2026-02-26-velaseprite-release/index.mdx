@@ -1,0 +1,172 @@
+---
+slug: velaptor-aseprite-release-v1.0.0-preview.1
+title: Introducing VelaptorAseprite - Aseprite Meets Velaptor 🎮
+authors: kinson
+tags: [releases, velaptor-aseprite]
+---
+
+import JoinComm from "@site/src/components/JoinComm";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Hey everyone! 👋
+
+I'm super excited to announce the first preview release of **VelaptorAseprite** — `v1.0.0-preview.1`!
+Velaptor (and everything related to it) has been a passion project of mine, and I'm thrilled to finally
+get Aseprite integration into your hands.
+
+If you've ever wanted to take your pixel art straight from [Aseprite](https://www.aseprite.org/) and drop it into a [Velaptor](https://github.com/KinsonDigital/Velaptor) game with minimal friction, this is the library for you. 🚀
+
+{/* truncate */}
+
+## What Is VelaptorAseprite?
+
+**[Velaptor](https://docs.velaptor.io)** is a NuGet package that adds native Aseprite sprite sheet support to Velaptor 2D games.
+
+Export your sprite sheet and JSON data from Aseprite, load them with a single line of code, and you’ve got fully animated
+sprites with playback control, looping, speed adjustments, and more — all out of the box.
+
+No more hand-rolling animation frame logic. No more manually parsing JSON atlas data. Just export, load, and play. ✨
+
+## Getting Started
+
+Install the package from NuGet:
+
+<Tabs>
+  <TabItem value="cli" label=".NET CLI" default>
+
+```bash
+dotnet add package KinsonDigital.VelaptorAseprite --version 1.0.0-preview.1
+```
+
+  </TabItem>
+  <TabItem value="pm" label="Package Manager">
+
+```powershell
+Install-Package KinsonDigital.VelaptorAseprite -Version 1.0.0-preview.1
+```
+
+  </TabItem>
+</Tabs>
+
+:::note
+This preview currently targets **.NET 9.0** and Velaptor **v1.0.0-preview.44**.
+:::
+
+## Key Features
+
+Here's what you get right out of the gate with this first preview:
+
+- **🎨 Direct Aseprite Integration** — Load sprite sheets exported from Aseprite along with their JSON metadata. Just drop both files into your content directory and go.
+- **▶️ Full Animation Control** — Play, pause, stop, and reset animations with simple method calls.
+- **🔁 Flexible Looping** — Infinite loops, single play-through, or a specific number of loops — your choice.
+- **⏪ Directional Playback** — Run animations forward _or_ backward.
+- **⏩ Speed Control** — Override Aseprite's exported frame durations to speed up or slow down animations dynamically.
+- **🏷️ Tag-Based Animations** — Use Aseprite's tag system to define named animations (e.g., "walk", "idle", "jump") and switch between them at runtime.
+    - This means you can have multiple animation sequences in a single sprite sheet and easily control which one is playing without extra code.
+- **📡 Event Callbacks** — Hook into `OnCycleComplete` and `OnFrameChange` delegates for animation-driven game logic.
+- **🧩 Simple API** — Extension methods on Velaptor's `IContentManager` mean loading feels just like loading any other Velaptor content.
+
+## Quick Example
+
+Here's how simple it is to get an animated sprite on screen:
+
+### 1. Export from Aseprite
+
+In Aseprite, go to **File → Export Sprite Sheet**, choose **JSON Data** output, and save both the `.png` and `.json` files to your Velaptor content directory.
+
+### 2. Load & Play
+
+```csharp
+using VelaptorAseprite;
+
+public class MyScene : SceneBase
+{
+    private IContentManager contentManager;
+    private IAsepriteAtlas? atlas; // From the VelaptorAseprite package
+
+    public override void LoadContent()
+    {
+        this.contentManager = ContentManager.Create();
+
+        // One line to load your Aseprite atlas!
+        this.atlas = this.contentManager.LoadAsepriteAtlas("my-character");
+        this.atlas.LoopingBehavior = LoopingBehavior.Infinite;
+        this.atlas.Play();
+    }
+
+    public override void Update(FrameTime frameTime)
+    {
+        this.atlas?.Update(frameTime);
+    }
+
+    public override void Render()
+    {
+        if (this.atlas is null) return;
+
+        // This gives you the current frame's texture and source rectangle
+        var frame = this.atlas.GetCurrentFrame();
+
+        // Use frame.Bounds as your source rectangle for rendering!
+    }
+
+    public override void UnloadContent()
+    {
+        if (this.atlas is not null)
+        {
+            this.contentManager.UnloadAsepriteAtlas(this.atlas); // From the VelaptorAseprite package
+        }
+    }
+}
+```
+
+That's it. Seriously. 😄
+
+## Switching Animations at Runtime
+
+If you've set up tags in Aseprite (and you should — they're awesome!), switching between animations is a breeze:
+
+```csharp
+// Player is moving
+atlas.AnimationName = "walk";
+atlas.LoopingBehavior = LoopingBehavior.Infinite;
+
+// Player jumps
+atlas.AnimationName = "jump";
+atlas.LoopingBehavior = LoopingBehavior.None; // Play once
+
+// Player is standing still
+atlas.AnimationName = "idle";
+atlas.LoopingBehavior = LoopingBehavior.Infinite;
+```
+
+## Reacting to Animation Events
+
+Want to trigger something when an animation cycle finishes? Hook into the delegates:
+
+```csharp
+atlas.OnCycleComplete = (animationName) =>
+{
+    Console.WriteLine($"Animation '{animationName}' completed a cycle!");
+};
+
+atlas.OnFrameChange = (previousFrame, currentFrame) =>
+{
+    // Perfect for triggering footstep sounds, particle effects, etc.
+};
+```
+
+## What's Next?
+
+This is just the beginning! As a preview release, I'd love to hear your feedback, bug reports, and feature requests. Your input is incredibly valuable in shaping where this project goes from here. 🙏
+
+- **GitHub**: [KinsonDigital/VelaptorAseprite](https://github.com/KinsonDigital/VelaptorAseprite)
+- **NuGet**: [KinsonDigital.VelaptorAseprite](https://www.nuget.org/packages/KinsonDigital.VelaptorAseprite)
+
+If you run into any issues or have ideas, please [open an issue](https://github.com/KinsonDigital/VelaptorAseprite/issues) on GitHub. Every bit of feedback helps!
+
+## Thanks!
+
+A huge thank you to everyone in the Velaptor and indie gamedev community. Building tools that help developers bring their creative visions to life is what this is all about. Now go make something cool! 🚀
+
+<JoinComm />

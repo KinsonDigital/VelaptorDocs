@@ -46,7 +46,7 @@ const config: Config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: 'https://github.com/KinsonDigital/Velaptor',
+					editUrl: 'https://github.com/KinsonDigital/VelaptorDocs/edit/main/',
 					includeCurrentVersion: true,
 					remarkPlugins: [remarkMath],
 					rehypePlugins: [rehypeKatex]
@@ -190,6 +190,16 @@ const config: Config = {
 						href: 'https://discord.gg/qewu6fNgv7',
 						position: 'right',
 						className: "header-discord-link"
+					},
+					{
+						href: 'https://x.com/KDCoder',
+						position: 'right',
+						className: "header-x-link"
+					},
+					{
+						href: 'https://bsky.app/profile/kdcoder.bsky.social',
+						position: 'right',
+						className: "header-bluesky-link"
 					},
 				],
 			},

@@ -191,6 +191,16 @@ const config: Config = {
 						position: 'right',
 						className: "header-discord-link"
 					},
+					{
+						href: 'https://x.com/KDCoder',
+						position: 'right',
+						className: "header-x-link"
+					},
+					{
+						href: 'https://bsky.app/profile/kdcoder.bsky.social',
+						position: 'right',
+						className: "header-bluesky-link"
+					},
 				],
 			},
 			footer: {

@@ -89,29 +89,6 @@
     font-weight: bold;
 }
 
-/* Discord Logo for navbar link */
-.header-discord-link:hover:after {
-    opacity: 0.6;
-}
-
-.header-discord-link:after {
-    /* transition: opacity 0.2s; */
-    content: "";
-    width: 48px;
-    height: 48px;
-    display: flex;
-    background-image: url("../../static/img/discord.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-right: 12px;
-}
-
-.header-discord-link:after,
-.header-discord-link:after {
-    border-style: none !important;
-    margin-left: -5px !important;
-}
-
 .error {
     color: #ca6c6c;
 }
@@ -130,35 +107,58 @@
     background-image: url("../../static/img/github-dark-mode.svg");
     background-repeat: no-repeat;
     background-position: center;
-    margin-right: 5px;
+    margin-right: -10px;
 }
 
-[data-theme='dark'] .header-github-link:after,
-.header-github-link:after {
-    border-style: none !important;
-    margin-left: 5px !important;
-}
-
-
-/* Github Logo (light mode) for navbar link */
-[data-theme='light'] .header-github-link:hover:after {
+/* Discord Logo for navbar link */
+.header-discord-link:hover:after {
     opacity: 0.6;
 }
 
-[data-theme='light'] .header-github-link:after {
+.header-discord-link:after {
     /* transition: opacity 0.2s; */
     content: "";
     width: 36px;
     height: 36px;
     display: flex;
-    background-image: url("../../static/img/github-light-mode.svg");
+    background-image: url("../../static/img/discord.svg");
     background-repeat: no-repeat;
     background-position: center;
-    margin-right: 5px;
+    margin-right: -10px;
 }
 
-[data-theme='light'] .header-github-link:after,
-.header-github-link:after {
-    border-style: none !important;
-    margin-left: -5px !important;
+/* Bluesky Logo for navbar link */
+.header-bluesky-link:hover:after {
+    opacity: 0.6;
+}
+
+/* Bluesky Logo for navbar link */ 
+[data-theme='dark'] .header-bluesky-link:after {
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 36px;
+    height: 36px;
+    display: flex;
+    background-image: url("../../static/img/bluesky-logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: -10px;
+}
+
+/* X Logo for navbar link */
+.header-x-link:hover:after {
+    opacity: 0.6;
+}
+
+/* X Logo for navbar link */ 
+[data-theme='dark'] .header-x-link:after {
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 36px;
+    height: 36px;
+    display: flex;
+    background-image: url("../../static/img/x-logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: -15px;
 }

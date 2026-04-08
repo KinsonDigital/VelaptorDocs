@@ -44,7 +44,7 @@ jobs:
 
     - name: Setup PNPM (10.2.1)
       if: steps.detect_fork.outputs.is_fork == 'true'
-      uses: pnpm/action-setup@v4
+      uses: pnpm/action-setup@v5
       with:
         version: 10.32.0
 

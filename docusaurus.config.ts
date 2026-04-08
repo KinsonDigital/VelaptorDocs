@@ -175,7 +175,6 @@ const config: Config = {
 							{ to: '/blog/tags/velaptor-templates', label: 'VelaptorTemplates' },
 						],
 					},
-					// </flag>
 					{
 						type: 'docsVersionDropdown',
 						position: 'right',
@@ -232,6 +231,9 @@ const config: Config = {
 							{
 								html: `<a href='https://x.com/KDCoder' target='_blank'>X (Twitter)</a>`,
 							},
+							{
+								html: `<a href='https://bsky.app/profile/kdcoder.bsky.social' target='_blank'>Bluesky</a>`,
+							},
 						],
 					},
 				],
@@ -283,4 +285,5 @@ const config: Config = {
 		tailwindPlugin,
 	]
 };
+
 module.exports = config;

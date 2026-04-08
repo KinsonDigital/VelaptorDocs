@@ -124,19 +124,19 @@
 [data-theme='dark'] .header-github-link:after {
     /* transition: opacity 0.2s; */
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     background-image: url("../../static/img/github-dark-mode.svg");
     background-repeat: no-repeat;
     background-position: center;
-    margin-right: 12px;
+    margin-right: 5px;
 }
 
 [data-theme='dark'] .header-github-link:after,
 .header-github-link:after {
     border-style: none !important;
-    margin-left: -5px !important;
+    margin-left: 5px !important;
 }
 
 
@@ -148,13 +148,13 @@
 [data-theme='light'] .header-github-link:after {
     /* transition: opacity 0.2s; */
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     background-image: url("../../static/img/github-light-mode.svg");
     background-repeat: no-repeat;
     background-position: center;
-    margin-right: 12px;
+    margin-right: 5px;
 }
 
 [data-theme='light'] .header-github-link:after,

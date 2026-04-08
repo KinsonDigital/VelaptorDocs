@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import OpenNewTab from "@site/static/img/new-tab.svg";
 import Link from "@docusaurus/Link";
 
@@ -27,7 +27,10 @@ interface Props {
  * @param params The parameters for the component.
  * @returns The component.
  */
-const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
+export default function Url(props: Props): ReactNode {
+	let { href, text } = props;
+	const { openInNewTab } = props;
+
 	href = href.startsWith("https://")
 		? href
 		: `https://${href}`;
@@ -43,12 +46,10 @@ const Url: React.FC<Props> = ({ href, text, openInNewTab }: Props) => {
 			<span>
 				{
 					shouldUseNewTab
-						? <OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }}/>
+						? <OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} />
 						: <div></div>
 				}
 			</span>
 		</span>
 	);
 }
-
-export default Url;

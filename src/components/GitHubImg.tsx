@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 /**
  * The properties for the {@link GitHubImg} component.
@@ -50,7 +50,10 @@ interface Props {
  * @param param The component properties.
  * @returns The component.
  */
-const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relativeImgPath, sizePercentage = 100, useTestMode = "false", testBranchOrTag = "" }: Props) => {
+export default function GitHubImg(props: Props): ReactNode {
+	let { branchOrTag } = props;
+	const { repoOwner, repoName, relativeImgPath, sizePercentage = 100, useTestMode = "false", testBranchOrTag = "" } = props;
+
 	const invalidRepoOwner = repoOwner === undefined || repoOwner === "";
 	const invalidRepoName = repoName === undefined || repoName === "";
 	const invalidBranchOrTag = branchOrTag === undefined || branchOrTag === "";
@@ -85,5 +88,3 @@ const GitHubImg: React.FC<Props> = ({ repoOwner, repoName, branchOrTag, relative
 		</div>
 	);
 }
-
-export default GitHubImg;

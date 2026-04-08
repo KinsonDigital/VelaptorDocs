@@ -31,7 +31,6 @@ export default function GuideLink({ projectName, tagName }: Props): ReactNode {
 	const version = activeVersion.version === "current"
 		? "main"
 		: `api-v${activeVersion.version}`;
-	const versionText = version.replace("api-", "");
 	const url = `https://github.com/KinsonDigital/VelaptorDocs/tree/${version}/SampleProjects/Guides/${projectName}`;
 
 	return (

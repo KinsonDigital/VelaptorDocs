@@ -821,13 +821,13 @@
     ],
     "packageJson": {
       "dependencies": [
-        "npm:@docusaurus/core@3.9.2",
+        "npm:@docusaurus/core@3.10.0",
         "npm:@docusaurus/module-type-aliases@^3.2.1",
-        "npm:@docusaurus/plugin-content-docs@^3.9.2",
-        "npm:@docusaurus/preset-classic@3.9.2",
-        "npm:@docusaurus/theme-mermaid@3.9.2",
+        "npm:@docusaurus/plugin-content-docs@^3.10.0",
+        "npm:@docusaurus/preset-classic@3.10.0",
+        "npm:@docusaurus/theme-mermaid@3.10.0",
         "npm:@docusaurus/tsconfig@^3.2.1",
-        "npm:@docusaurus/types@3.9.2",
+        "npm:@docusaurus/types@3.10.0",
         "npm:@mdx-js/react@3",
         "npm:@tailwindcss/postcss@^4.1.17",
         "npm:@types/react@^18.2.42",

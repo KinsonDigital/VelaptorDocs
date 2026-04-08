@@ -64,14 +64,14 @@ There had to be a better way—and now there is!
 
 ## <span className="color-section">The New Way</span>
 
-Say goodbye to factories and multiple loaders. No you use the new `ContentManager` class!
+Say goodbye to factories and multiple loaders. Now you use the new `ContentManager` class!
 
 Create a single `ContentManager` instance (it's a singleton, so feel free to instantiate it anywhere with zero performance cost), and use it to load any content type. Simple, clean, and consistent.
 
 **Loading Textures:**
 ```csharp showLineNumbers
 // Create anywhere!
-var contentManager = ContentManager().Create();
+var contentManager = ContentManager.Create();
 
 // Textures
 var myTexture = contentManager.Load<ITexture>("path/to/my-texture.png");

@@ -21,17 +21,18 @@ interface Params {
  * @param params The parameters for the component.
  * @returns The component.
  */
-export default function GitHubProject({ owner, projName }: Params): ReactNode {
-	const forgotOwnerAttr = owner === undefined || owner === "";
-	const forgotProjNameAttr = projName === undefined || projName === "";
+export default function GitHubProject(props: Params): ReactNode {
+	const { owner, projName } = props;
+	const noOwnerAttr = owner === "";
+	const noProjNameAttr = projName === "";
 
 	const url = `https://github.com/${owner}/${projName}`;
 
-	if (forgotOwnerAttr) {
+	if (noOwnerAttr) {
 		return (
 			<span style={{ color: 'red' }}>'missing-owner-attribute'</span>
 		);
-	} else if (forgotProjNameAttr) {
+	} else if (noProjNameAttr) {
 		return (
 			<span style={{ color: 'red' }}>'missing-projName-attribute'</span>
 		);

@@ -19,7 +19,7 @@ interface Props {
 	/**
 	 * If true, then the link will open in a new tab.
 	 */
-	openInNewTab?: string;
+	openInNewTab?: boolean;
 }
 
 /**
@@ -37,7 +37,7 @@ export default function Url(props: Props): ReactNode {
 
 	text = text === undefined || text === "" ? href : text;
 
-	const shouldUseNewTab = openInNewTab?.toLowerCase() === "true";
+	const shouldUseNewTab = openInNewTab === undefined || openInNewTab === false ? false : true;
 	const target = shouldUseNewTab ? "_blank" : "";
 
 	return (
@@ -45,9 +45,8 @@ export default function Url(props: Props): ReactNode {
 			<Link to={href} target={target} className={"link"}>{text}</Link>
 			<span>
 				{
-					shouldUseNewTab
-						? <OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} />
-						: <div></div>
+					shouldUseNewTab === true &&
+						<OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} />
 				}
 			</span>
 		</span>

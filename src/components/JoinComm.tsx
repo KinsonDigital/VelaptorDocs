@@ -2,9 +2,8 @@ import React, { ReactNode } from "react";
 import JoinCommunity from "../join-comm.mdx";
 
 /**
- * Creates a link with an open new tab icon.
- * @param params The parameters for the component.
- * @returns The component.
+ * Renders the Join Our Community section and its MDX content.
+ * @returns The Join Community component.
  */
 export default function MarkdownComp(): ReactNode {
 	return (

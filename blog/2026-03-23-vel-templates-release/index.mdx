@@ -1,0 +1,71 @@
+---
+slug: velaptor-templates-release-v1.0.1
+title: Velaptor Templates Release v1.0.1
+authors: kinson
+tags: [releases, velaptor-templates]
+---
+
+import JoinComm from "@site/src/components/JoinComm";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Quick release today! 🎉
+
+**VelaptorTemplates v1.0.1** is out, and it brings the templates up to date with the latest version of Velaptor.
+
+:::info Release Notes
+You can view the full release notes [here](https://github.com/KinsonDigital/VelaptorTemplates/releases/tag/1.0.1).
+:::
+
+## <span className="color-section">What Changed?</span>
+
+This is a maintenance release. The templates have been updated to target **Velaptor v1.0.0-preview.44** — the latest and greatest version of the engine.
+
+{/* truncate */}
+
+If you've been building Velaptor games with the project templates, updating ensures you're starting from a fresh, up-to-date baseline using all the latest APIs and improvements introduced in Velaptor `v1.0.0-preview.44`.
+
+To read more about what's new in Velaptor `v1.0.0-preview.44`, check out the [Velaptor release post](/news/velaptor-release-v1.0.0-preview.44).
+
+## <span className="color-section">Installing / Updating the Templates</span>
+
+Install or update the templates via the .NET CLI:
+
+<Tabs>
+  <TabItem value="install" label="Install" default>
+
+```bash
+# To install specific version:
+dotnet new install KinsonDigital.VelaptorTemplates::1.0.1
+
+# To install latest version:
+dotnet new install KinsonDigital.VelaptorTemplates::1.0.1
+```
+
+  </TabItem>
+  <TabItem value="update" label="Update">
+
+```bash
+dotnet new update
+```
+
+  </TabItem>
+</Tabs>
+
+Once installed, the templates will be available in the `dotnet new` command as usual.
+
+:::note
+The templates require **.NET 9.0** or later.
+:::
+
+## <span className="color-section">Resources</span>
+
+- 📦 [NuGet Package](https://www.nuget.org/packages/KinsonDigital.VelaptorTemplates/1.0.1)
+- 🐙 [GitHub Repository](https://github.com/KinsonDigital/VelaptorTemplates)
+- 📋 [Release Notes](https://github.com/KinsonDigital/VelaptorTemplates/releases/tag/1.0.1)
+
+That's all for this one — short and sweet!
+
+Cheers, and happy coding!
+
+<JoinComm />

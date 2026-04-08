@@ -1,0 +1,59 @@
+---
+slug: velaptor-release-v1.0.0-preview.36
+title: Velaptor Release v1.0.0-preview.36
+authors: kinson
+tags: [releases, velaptor]
+---
+
+import URL from "@site/src/components/Url";
+import JoinComm from "@site/src/components/JoinComm";
+
+Another release!! 🎉
+
+This time, it is a minor release but necessary, as all releases are.
+
+:::info RELEASE Notes
+You can view the release notes [here](https://github.com/KinsonDigital/Velaptor/releases/tag/v1.0.0-preview.36).
+
+Quick shout out to the following contributors for their support:
+- Thanks <URL href="https://github.com/AndreBonda" text="@AndreBonda"/> for his contribution with <URL href="https://github.com/KinsonDigital/Velaptor/issues/103" text="issue #103"/>!
+:::
+
+## <span className="color-section">Intro</span>
+
+This release includes updates to various dependencies, a bug fix, and more.
+Other changes that do not directly affect the user include code refactorings and more mocking code migrations from Moq to NSubstitute.
+
+Let's dive in!
+
+{/*truncate*/}
+
+## <span className="color-section">Bug fixes</span>
+
+We've successfully addressed a bug that was causing the unloading content to be invoked twice. This issue was affecting the `Game` class and all scenes that overrode the `SceneBase.UnloadContent()` method.
+
+The bug causes issues because the user expects _**Velaptor**_ to unload the content only once.  More importantly, it would
+could cause crashes due to attempting to unload already unloaded content.
+
+The user could easily work around this issue with a `boolean` flag, which could be used to track whether the content is unloaded.
+This is not ideal because the user has to manually add it to every `UnloadContent()` method in every scene.
+
+Manual unload tracking is not the best developer experience; we do not expect the user to do this. So it has been fixed!!
+
+## <span className="color-section">Dependency updates</span>
+
+There are no groundbreaking dependencies updates in this release.  Updates include unit testing dependencies, **GitHub** checkout action, and, more importantly, we moved from _**silk.dotnet**_ version _**v2.20.0**_ to _**v2.21.0**_.  The _**silk.dotnet**_ update fixed various bugs as well
+as added support for various architectures and more.
+
+If you want more information on the release details of _**silk.dotnet**_, you can view the release notes [here](https://github.com/dotnet/Silk.NET/releases/tag/v2.21.0).
+
+## <span className="color-section">Other internal changes</span>
+
+We always have internal changes, such as improving the grammar and spelling of code docs, making code more readable, and improving unit tests. These changes are part of our continuous improvement efforts to enhance the quality and maintainability of the software. They also reflect our commitment to best coding practices and standards.
+You can always check out the updates in more detail by visiting the project's GitHub repository and viewing the commit history.
+
+That is all for this release!
+
+Cheers, and happy coding!
+
+<JoinComm />

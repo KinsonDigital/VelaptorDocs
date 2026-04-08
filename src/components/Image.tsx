@@ -17,7 +17,7 @@ export default function Image(props: Params): ReactNode {
 	return (
 		<div className={classValue}>
 			{
-				<img src={url} width="80%"></img>
+				<img src={url} alt="an image" width="80%"></img>
 			}
 		</div>
 	);

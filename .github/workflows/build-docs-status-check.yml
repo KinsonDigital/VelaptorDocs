@@ -40,7 +40,7 @@ jobs:
 
       - name: Setup PNPM (${{ vars.PNPM_VERSION }})
         if: steps.detect_fork.outputs.is_not_fork == 'true'
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           version: ${{ vars.PNPM_VERSION }}
 

@@ -5,6 +5,17 @@ import tailwindPlugin from './plugins/tailwind-config.cjs';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
+const isProduction = (process.env.NODE_ENV || "production").trim() === "production";
+const umamiWebsiteId = (process.env.UMAMI_WEBSITE_ID ?? "").trim();
+
+if (isProduction) {
+	if (umamiWebsiteId === "") {
+		console.log("::warning::Umami web analytics is NOT included in the build. The 'UMAMI_WEBSITE_ID' environment variable is not set or is empty. Please set this variable to include Umami analytics in the production build.");
+	} else {
+		console.log("::notice::Umami web analytics is included in the build using the website ID from the 'UMAMI_WEBSITE_ID' environment variable.");
+	}
+}
+
 const config: Config = {
 	title: 'Velaptor',
 	tagline: 'The easy and fun to use 2D game development framework',
@@ -38,6 +49,14 @@ const config: Config = {
 		defaultLocale: 'en',
 		locales: ['en'],
 	},
+	scripts: isProduction ? [
+		// Umami web analytics script
+		{
+			src: "https://cloud.umami.is/script.js",
+			defer: true,
+			"data-website-id": umamiWebsiteId
+		}
+	] : [],
 	presets: [
 		[
 			'classic',

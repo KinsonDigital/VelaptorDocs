@@ -197,7 +197,9 @@ jobs:
           deno run -ERW "${{ github.workspace }}/.github/cicd/scripts/update-website-version.ts" "$outputFilePath";
 
       - name: Build Site
-        run: pnpm docusaurus build
+        env:
+          UMAMI_WEBSITE_ID: ${{ secrets.UMAMI_WEBSITE_ID }}
+        run: pnpm docusaurus build;
 
       - name: Setup Pages
         if: ${{ inputs.dry-run == false }}

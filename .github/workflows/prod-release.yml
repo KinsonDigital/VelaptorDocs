@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           token: ${{ secrets.CICD_TOKEN }}
-          persist-credentials: true
+          set-safe-directory: true
 
       - name: Set Up Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v2
@@ -103,7 +103,9 @@ jobs:
             "$outputFilePath";
 
       - name: Build Site
-        run: pnpm docusaurus build
+        env:
+          UMAMI_WEBSITE_ID: ${{ secrets.UMAMI_WEBSITE_ID }}
+        run: pnpm docusaurus build;
 
       - name: Setup Pages
         if: ${{ inputs.dry-run == false }}

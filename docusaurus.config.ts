@@ -49,7 +49,7 @@ const config: Config = {
 		defaultLocale: 'en',
 		locales: ['en'],
 	},
-	scripts: isProduction ? [
+	scripts: isProduction && umamiWebsiteId !== "" ? [
 		// Umami web analytics script
 		{
 			src: "https://cloud.umami.is/script.js",

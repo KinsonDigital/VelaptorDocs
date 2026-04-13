@@ -56,10 +56,10 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.CICD_TOKEN }}
-          set-safe-directory: true
+          persist-credentials: true
 
       - name: Set Up Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v2

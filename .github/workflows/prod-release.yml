@@ -57,9 +57,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.CICD_TOKEN }}
-          persist-credentials: true
 
       - name: Set Up Deno (${{ vars.DENO_VERSION }})
         uses: denoland/setup-deno@v2

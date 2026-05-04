@@ -53,6 +53,8 @@ Specifically, no PII data is collected. The following are examples of PII data:
   <li>File paths or directory structures from your machine</li>
   <li>IP address or geographic location (beyond OS language/locale)</li>
   <li>Any game content, assets, or user-generated data</li>
+  <li>We do not use device-specific IDs to track you across different machines.</li>
+  <li>Does not scan or store the contents of any local files or environment variables except for the `VELAPTOR_OPT_IN_TELEMETRY` variable</li>
 </ul>
 
 ---
@@ -97,7 +99,9 @@ are plenty of resources online that can show you how to do that for your specifi
 
 <Tabs>
     <TabItem value="rider" label="JetBrains Rider">
-        <img src={require("@site/src/pages/images/rider-env-vars.gif").default} alt="Example banner"/>
+        <video autoPlay loop muted playsInline loading="lazy">
+            <source src={require("@site/src/pages/videos/rider-env-vars.mp4").default} type="video/mp4" />
+        </video>
     </TabItem>
 
     <TabItem value="vscode" label="VSCode" default>
@@ -107,7 +111,9 @@ are plenty of resources online that can show you how to do that for your specifi
                 If you run a launch config from the `launch.json` file, the environment variables defined in that
                 launch config will take precedence over the `launchSettings.json` file.
                 :::
-                <img src={require("@site/src/pages/images/vscode-launch-settings.gif").default} alt="Example banner"/>
+                <video autoPlay loop muted playsInline loading="lazy">
+                    <source src={require("@site/src/pages/videos/vscode-launch-settings.mp4").default} type="video/mp4" />
+                </video>
             </TabItem>
 
             <TabItem value="launch-settings" label="Launch Settings JSON file">
@@ -115,13 +121,17 @@ are plenty of resources online that can show you how to do that for your specifi
                 This is a .NET-specific settings file supported by [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit).
                 When using this approach, you need to run your application using the built-in C# Dev Kit functionality, such as using
                 the `C#: Launch Startup Project` item in the `RUN AND DEBUG` dropdown.
-                <img src={require("@site/src/pages/images/vscode-launch-config.gif").default} alt="Example banner"/>
+                <video autoPlay loop muted playsInline loading="lazy">
+                    <source src={require("@site/src/pages/videos/vscode-launch-config.mp4").default} type="video/mp4" />
+                </video>
             </TabItem>
         </Tabs>
     </TabItem>
   
     <TabItem value="visual-studio" label="Visual Studio">
-        <img src={require("@site/src/pages/images/vs-studio-env-vars.gif").default} alt="Example banner"/>
+        <video autoPlay loop muted playsInline loading="lazy">
+            <source src={require("@site/src/pages/videos/vs-studio-env-vars.mp4").default} type="video/mp4" />
+        </video>
 
         <br/>
 
@@ -257,12 +267,13 @@ Data is not sent when **any** of the following conditions are true:
 
 ## Open Source & Transparency
 
-Velaptor is a fully open-source project. All telemetry-related code is located in the <Url href="https://github.com/KinsonDigital/Velaptor/tree/preview/Velaptor/Telemetry" openInNewTab={true} text="Velaptor.Telemetry Namespace" /> inside the <Url href="https://github.com/KinsonDigital/Velaptor" openInNewTab={true} text="Velaptor GitHub Repository" /> and is publicly visible.
+Velaptor is a fully open-source project. All telemetry-related code is publicly visible in the <Url href="https://github.com/KinsonDigital/Velaptor" openInNewTab={true} text="Velaptor GitHub Repository" />. To audit the code for the version you have installed, review the matching release tag in <Url href="https://github.com/KinsonDigital/Velaptor/tags" openInNewTab={true} text="Velaptor tags" /> and inspect the `Velaptor/Telemetry` directory for that version.
+
 
 You are encouraged to read and audit the code:
 
 - **`TelemetryService`** — controls opt-in/opt-out logic, developer environment detection, and what data is serialized.
-- **`TelemetryClient`** — handles the HTTP call that sends the data to the remote endpoint.
+- **`TelemetryClient`** — handles the HTTPS call that sends the data to the remote endpoint.
 - **`TelemetryData`** — the exact data model (record type) that defines every field sent over the wire.
 
 :::info Note
@@ -282,3 +293,42 @@ Velaptor is an independent, community-driven open-source project. The anonymous 
 - **Improve performance and catch issues** by understanding real-world usage patterns.
 
 No data is ever sold, shared with third parties, or used for advertising purposes.
+
+---
+
+## Frequently Asked Questions
+
+**Will sending telemetry slow down my game?**
+
+No. Telemetry is sent in a fire-and-forget, asynchronous, non-blocking way. Your game never pauses or waits for the data to be delivered — it is dispatched silently in the background and has no measurable impact on frame rate or performance.
+
+---
+
+**Is anything installed on my machine?**
+
+No. Velaptor does not install any background agent, service, or daemon on your machine. Nothing runs when your game is not running. The only action taken is a single HTTPS request sent at the moment a lifecycle event occurs inside your running game.
+
+---
+
+**Can the telemetry call fail silently and affect my game?**
+
+Yes, silently — but intentionally so. If the network is unavailable or the request fails for any reason, the error is swallowed and your game continues unaffected. Telemetry is designed to never throw or surface errors to your application.
+
+---
+
+**Does telemetry run in unit tests or CI pipelines?**
+
+No. Because telemetry only fires when the application is detected as running in a development environment (i.e., the executable path contains `bin/Debug/` or `bin/Release/`, `.csproj`, `.sln`, or `.slnx` files are found nearby), it will not send data in typical CI or automated test contexts where those conditions are not met.
+
+---
+
+**Is telemetry sent every time my game runs?**
+
+Only on specific lifecycle events (such as app start). It is not a continuous stream of data — a small payload is sent at defined points during the application's lifetime.
+Lifecycle events will never send out data on every game loop iteration or in a way that could impact performance.
+
+---
+
+**Can I verify that no personal data is being sent?**
+
+Yes. Velaptor is fully open source. You can inspect the exact data model in `TelemetryData`, the sending logic in `TelemetryClient`, and the opt-in/environment detection logic in `TelemetryService`, all inside the <Url href="https://github.com/KinsonDigital/Velaptor/tree/preview/Velaptor/Telemetry" openInNewTab={true} text="Velaptor.Telemetry Namespace" />. You can also use a network proxy tool (e.g., Fiddler, Wireshark) to inspect the outgoing request yourself.

@@ -1,0 +1,284 @@
+---
+title: Telemetry
+description: Learn about the anonymous usage data Velaptor collects, what is collected, how to opt in or out, and how to view the open-source telemetry code.
+---
+
+import Url from "@site/src/components/Url";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Telemetry
+
+Velaptor collects **anonymous, non-personal usage data** to help the team understand how the framework is being used, prioritize improvements, and catch performance issues before they reach your players.
+
+Velaptor telemetry never collects personal data (no names, emails, project names, content, or file paths).
+It only collects anonymous technical metadata about your environment and how Velaptor is used.
+
+This page explains what is collected, why it is collected, and how to control it.
+
+## Quick Overview
+
+| Question | Answer |
+|---|---|
+| Is telemetry enabled by default? | **No** — it is 100% opt-in. Data is never sent unless you explicitly enable it. |
+| Is any personal information collected? | **No** — No personally identifiable information of any kind such as project names, game content, or user data is ever collected. |
+| Is telemetry sent in published games? | **No** — Data is **only** sent when running your game from a development environment (i.e., your IDE or build output). Compiled/published games distributed to players will **never** send telemetry. |
+| Can I audit the telemetry code? | **Yes** — Velaptor is fully open source. All telemetry code lives in the <Url href="https://github.com/KinsonDigital/Velaptor/tree/preview/Velaptor/Telemetry" openInNewTab={true} text="Velaptor.Telemetry Namespace" /> and can be audited publicly at any time. |
+| How do I opt in? | Set the `VELAPTOR_OPT_IN_TELEMETRY` environment variable to `1` or `true` and restart your IDE |
+| How do I opt out? | Remove the variable or set it to `0` or `false`, then restart your IDE |
+
+---
+
+## What Data Is Collected
+
+When telemetry is enabled and all conditions are met, the following anonymous technical data is sent:
+
+| Field | Description |
+|---|---|
+| `lifeCycleEvent` | The framework lifecycle event (e.g., `app-start`) |
+| `featureArea` | The Velaptor feature area involved (if applicable) |
+| `featureName` | The specific Velaptor feature involved (if applicable) |
+| `version` | The version of Velaptor being used |
+| `dotnetVersion` | The version of the .NET runtime |
+| `language` | The UI language of the operating system |
+| `osName` | The operating system name (Windows, Linux, or macOS, etc.) |
+| `osArchitecture` | The OS CPU architecture (e.g., `x64`, `arm64`) |
+| `hardwareSpecs` | CPU, GPU, RAM, etc. (if applicable) |
+
+Specifically, no PII data is collected. The following are examples of PII data:
+
+<ul style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
+  <li>Your name, email, or any account information</li>
+  <li>Your project name, game title, or source code</li>
+  <li>File paths or directory structures from your machine</li>
+  <li>IP address or geographic location (beyond OS language/locale)</li>
+  <li>Any game content, assets, or user-generated data</li>
+</ul>
+
+---
+
+## Opting in & out
+
+### How to create an environment variable
+
+Setting and/or creating environment variables varies across operating systems.
+You can set the environment variable in the following ways:
+
+<ol style={{listStyleType: "decimal", paddingLeft: "2rem"}}>
+    <li>
+        In shell configuration files such as `~/.bashrc` or `~/.zshrc` (Linux/macOS), or via Windows Environment Variables settings.
+        <ul style={{listStyleType: "disc"}}>
+            <li>This works when you are executing the application from the terminal.</li>
+        </ul>
+    </li>
+    <li>
+        Permanently in the operating system's environment variable settings.
+        <ul style={{listStyleType: "disc"}}>
+            <li>On Windows, you can set it in the System Properties → Environment Variables.</li>
+            <li>On Linux, you can add it to a `~/.config/environment.d/velaptor.conf` file for `systemd` to pick up.</li>
+        </ul>
+    </li>
+    <li>
+        In your IDE's run/debug configuration environment variables settings.
+        <ul style={{listStyleType: "disc"}}>
+            <li>This works when you are executing the application from the IDE's run/debug commands.</li>
+            <li>How you do this will depend on the IDE/editor you are using (e.g., Visual Studio, Rider, VS Code).</li>
+        </ul>
+    </li>
+</ol>
+
+The following examples show how to set up your IDE/editor to include the environment variable, as this is the most straightforward approach.
+If you want to set up the variable permanently or in a profile that can be used in a terminal, there
+are plenty of resources online that can show you how to do that for your specific operating system and shell.
+
+:::info IDE vs OS
+**Visual Studio** only runs on **Windows**, but **JetBrains Rider** and **VS Code** run on **Windows, Linux, and macOS**.
+:::
+
+<Tabs>
+    <TabItem value="rider" label="JetBrains Rider">
+        <img src={require("@site/src/pages/images/rider-env-vars.gif").default} alt="Example banner"/>
+    </TabItem>
+
+    <TabItem value="vscode" label="VSCode" default>
+        <Tabs>
+            <TabItem value="C# dev kit" label="C# Dev Kit" default>
+                :::note Setting precedence
+                If you run a launch config from the `launch.json` file, the environment variables defined in that
+                launch config will take precedence over the `launchSettings.json` file.
+                :::
+                <img src={require("@site/src/pages/images/vscode-launch-settings.gif").default} alt="Example banner"/>
+            </TabItem>
+
+            <TabItem value="launch-settings" label="Launch Settings JSON file">
+                You can also use a `launchSettings.json` file to set the environment variable for your project.
+                This is a .NET-specific settings file supported by [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit).
+                When using this approach, you need to run your application using the built-in C# Dev Kit functionality, such as using
+                the `C#: Launch Startup Project` item in the `RUN AND DEBUG` dropdown.
+                <img src={require("@site/src/pages/images/vscode-launch-config.gif").default} alt="Example banner"/>
+            </TabItem>
+        </Tabs>
+    </TabItem>
+  
+    <TabItem value="visual-studio" label="Visual Studio">
+        <img src={require("@site/src/pages/images/vs-studio-env-vars.gif").default} alt="Example banner"/>
+
+        <br/>
+
+        :::tip Launch Settings
+        You can also use the `launchSettings.json` file in **Visual Studio** and **JetBrains Rider**.
+        :::
+    </TabItem>
+</Tabs>
+
+### How to opt in
+
+Telemetry is **disabled by default**. To enable it, set the following environment variable on your development machine:
+
+```
+VELAPTOR_OPT_IN_TELEMETRY=1
+or
+VELAPTOR_OPT_IN_TELEMETRY=true
+```
+
+:::note IDE Restart Required
+After setting the environment variable, you must **fully close and restart your IDE** (e.g., Visual Studio, Rider, VS Code) for the change to take effect. The IDE reads environment variables at startup and will not pick up the new value until it is relaunched.
+:::
+
+When telemetry is enabled, a message similar to the following will appear in your Debug console output when your application starts.
+
+<details>
+<summary>Enabled telemetry console message</summary>
+```
+Velaptor Telemetry: Enabled
+───────────────────────────────────────────────────────────────────────────────────
+You have opted in to telemetry, and Velaptor is collecting
+anonymous usage data to help us understand how the framework
+is being used to improve future versions.
+
+What is being collected:
+    • Various game lifecycle events
+    • Velaptor features
+    • Velaptor version
+    • .NET runtime version
+    • Language
+    • Operating system
+    • Operating system architecture
+    • Hardware specs (CPU, GPU, RAM, etc.)
+
+No personal information, project names, or game content is ever collected.
+Data is only collected from the developers that use Velaptor.
+Data is NOT collected in built/compiled games!
+
+Learn more: https://docs.velaptor.io/telemetry
+
+To opt out, set this environment variable:
+        VELAPTOR_OPT_IN_TELEMETRY=0 or VELAPTOR_OPT_IN_TELEMETRY=false 
+───────────────────────────────────────────────────────────────────────────────────
+```
+</details>
+
+Telemetry is sent **only** when **all** of the following conditions are true:
+
+<ul style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
+    <li>You have explicitly opted in by setting the `VELAPTOR_OPT_IN_TELEMETRY` environment variable to a case insensitive value of `1` or `true`.</li>
+    <li>Your consuming application (your game) is executing in a development environment.</li>
+</ul>
+
+
+:::note Development Environment Detection
+Specifically, Velaptor checks whether the executable path contains `bin/Debug/` or `bin/Release/`,
+or detects that `.csproj` or `.sln` files exist in the directory tree of the running executable, in that order.
+:::
+
+---
+
+### How to opt out
+
+To disable telemetry, set the environment variable to a case insensitive value of `0` or `false`:
+
+```
+VELAPTOR_OPT_IN_TELEMETRY=0
+or
+VELAPTOR_OPT_IN_TELEMETRY=false
+```
+
+You can also simply remove or unset the `VELAPTOR_OPT_IN_TELEMETRY` environment variable entirely — if the variable is not present, telemetry is treated as disabled.
+
+:::note IDE Restart Required
+After changing or removing the environment variable, **fully restart your IDE** to ensure the change takes effect.
+:::
+
+When telemetry is disabled, a message similar to the following will appear in your Debug console output to let you know you could opt in:
+
+<details>
+<summary>Disabled telemetry console message</summary>
+```
+Velaptor Telemetry: Disabled
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+Help us improve and evolve Velaptor!
+
+Velaptor is an open-source community-driven and independent project.
+Would you be willing to share anonymous technical telemetry and usage data?
+
+What would be collected:
+    • Various game lifecycle events
+    • Velaptor features
+    • Velaptor version
+    • .NET runtime version
+    • Language
+    • Operating system
+    • Operating system architecture
+    • Hardware specs (CPU, GPU, RAM, etc.)
+
+Why? It helps us improve Velaptor by understanding what features are used, prioritize optimizations
+and catch TDR/lag issues before they hit your players.
+
+Privacy: No PII, no project names, no tracking. Just usage and hardware spec data.
+Transparency: You can audit the telemetry code in the Velaptor.Telemetry namespace.
+Ownership: This is 100% Opt-In.
+
+To opt in, add the environment variable VELAPTOR_OPT_IN_TELEMETRY=1 or VELAPTOR_OPT_IN_TELEMETRY=true.
+
+Learn more: https://docs.velaptor.io/telemetry
+────────────────────────────────────────────────────────────────────────────────────────────────────────
+```
+</details>
+
+Data is not sent when **any** of the following conditions are true:
+
+<ul style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
+  <li>Your game has been **published and distributed** to players.</li>
+  <li>Your application is executing outside of a development environment.</li>
+  <li>The opt-in environment variable does not exist, or exists and is set to `0` or `false`.</li>
+</ul>
+
+---
+
+## Open Source & Transparency
+
+Velaptor is a fully open-source project. All telemetry-related code is located in the <Url href="https://github.com/KinsonDigital/Velaptor/tree/preview/Velaptor/Telemetry" openInNewTab={true} text="Velaptor.Telemetry Namespace" /> inside the <Url href="https://github.com/KinsonDigital/Velaptor" openInNewTab={true} text="Velaptor GitHub Repository" /> and is publicly visible.
+
+You are encouraged to read and audit the code:
+
+- **`TelemetryService`** — controls opt-in/opt-out logic, developer environment detection, and what data is serialized.
+- **`TelemetryClient`** — handles the HTTP call that sends the data to the remote endpoint.
+- **`TelemetryData`** — the exact data model (record type) that defines every field sent over the wire.
+
+:::info Note
+Telemetry is sent via HTTPS to a Kinson Digital controlled server (currently hosted in Chicago, IL, USA and Amsterdam, Netherlands).
+No third-party analytics providers are involved.
+Data is stored securely in West EU (Ireland)
+:::
+
+---
+
+## Why We Collect This Data
+
+Velaptor is an independent, community-driven open-source project. The anonymous usage data helps us:
+
+- **Understand which .NET versions and operating systems** are most common among our users, so we can prioritize platform support.
+- **Track framework adoption and version uptake** across the developer community.
+- **Improve performance and catch issues** by understanding real-world usage patterns.
+
+No data is ever sold, shared with third parties, or used for advertising purposes.

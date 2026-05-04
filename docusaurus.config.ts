@@ -236,6 +236,9 @@ const config: Config = {
 							{
 								html: "<a href='https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects' target='_blank'>Sample Projects</a>",
 							},
+							{
+								html: "<a href='/telemetry' target='_blank'>Telemetry</a>",
+							},
 						],
 					},
 					{

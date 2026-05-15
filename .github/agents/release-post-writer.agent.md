@@ -1,4 +1,5 @@
 ---
+name: Release Blog Post Writer
 description: "Use when: writing a Velaptor release blog post MDX file, creating the news post file for a Velaptor release, drafting MDX content for a KinsonDigital release announcement. Reads existing posts for style, then creates the new index.mdx file."
 model: Gemini 3.1 Pro (Preview) (copilot)
 tools: [vscode/memory, vscode/askQuestions, read/readFile, edit, search/fileSearch, search/textSearch]

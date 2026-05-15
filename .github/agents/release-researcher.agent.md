@@ -1,4 +1,5 @@
 ---
+name: Release Researcher
 description: "Use when: fetching Velaptor release data from GitHub, collecting PR list and contributor info for a Velaptor release, researching a KinsonDigital GitHub release page. Returns a structured report for the release-post-orchestrator agent."
 model: Gemini 3.1 Pro (Preview) (copilot)
 tools: [read/readFile, search, web]

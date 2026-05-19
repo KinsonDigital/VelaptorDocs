@@ -28,7 +28,7 @@ interface Params {
 	owner?: string;
 
 	/**
-	 * The text to display for the link. If not provided, it defaults to "{repoName}(PR #{issueOrPrNumber})".
+	 * The text to display for the link. If not provided, it defaults to "{repoName}(Issue|PR #{issueOrPrNumber})".
 	 */
 	urlText?: string;
 }

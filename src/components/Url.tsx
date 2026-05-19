@@ -29,7 +29,7 @@ interface Props {
  */
 export default function Url(props: Props): ReactNode {
 	let { href, text } = props;
-	const { openInNewTab } = props;
+	const { openInNewTab = false } = props;
 
 	href = href.startsWith("https://")
 		? href
@@ -37,15 +37,14 @@ export default function Url(props: Props): ReactNode {
 
 	text = text === undefined || text === "" ? href : text;
 
-	const shouldUseNewTab = openInNewTab === undefined || openInNewTab === false ? false : true;
-	const target = shouldUseNewTab ? "_blank" : "";
+	const target = openInNewTab ? "_blank" : "";
 
 	return (
 		<span className="inline-flex items-center">
 			<Link to={href} target={target} className={"link"}>{text}</Link>
 			<span>
 				{
-					shouldUseNewTab === true &&
+					openInNewTab === true &&
 						<OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} />
 				}
 			</span>

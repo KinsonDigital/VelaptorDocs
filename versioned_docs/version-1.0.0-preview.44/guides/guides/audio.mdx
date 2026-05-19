@@ -95,7 +95,9 @@ Currently, the supported audio formats are _**.mp3**_ and _**.ogg**_.
 You can provide whatever audio file you want, but if you don't have one, you can download one of these from the audio guide project,
 or from the mini audio players on this page.
 
-<img style={{width: '35%'}} src={require('@site/static/img/guides/audio/download-audio.gif').default} alt="Example banner"/>
+<video style={{width: '35%'}} autoPlay loop muted playsInline loading="lazy">
+    <source src={require("@site/static/img/guides/audio/download-audio.mp4").default} type="video/mp4" />
+</video>
 
 ### <span className="color-sub-step">4.2: Setup file as content</span>
 
@@ -320,7 +322,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 Run the game, and let's play some music!  You should see the following window:
 
-<img style={{ width: '75%' }} src={require('@site/static/img/guides/audio/audio-window.png').default} alt="Example banner" />
+<img style={{ width: '75%' }} src={require("@site/static/img/guides/audio/audio-window.png").default} alt="Example banner" />
 
 As the instructions in the title bar state, do the following to test out your game:
 1. Press the space bar to play and pause the audio.

@@ -14,8 +14,9 @@ import JoinComm from '@site/src/components/JoinComm';
 Welcome to another exciting update for **Velaptor**! 🎉
 
 I'm thrilled to roll out this next preview release. We've been working hard on some internal plumbing that will
-tremendously help us understand how Velaptor is being used out in the wild. This release is all about returning
-better insights to help us build a better engine.
+tremendously help us understand how Velaptor is being used out in the wild, while also squashing some elusive bugs,
+beefing up thread safety on our OpenGL resources, and making file paths much friendlier across different platforms.
+This release is all about returning better insights to help us build a better framework—and making it more robust along the way.
 
 :::info Release Notes
 Check out the <ReleaseNotes projName="Velaptor" version="v1.0.0-preview.45"/>
@@ -28,19 +29,20 @@ A big thanks to the following contributors for their work on this release! 🎉
 
 {/*truncate*/}
 
-## <span className="color-section">Quick Overview</span>
+## <span className="color-step">Quick Overview</span>
 
 In this release, we're introducing a brand new, non-blocking telemetry feature to Velaptor. This system tracks framework
-usage and hardware information (specifically CPU and GPU data) so we can prioritize bug fixes and engine optimizations moving forward. 
+usage and hardware information (specifically CPU and GPU data) so we can prioritize bug fixes and framework optimizations moving forward. 
+But that's not all! We also tackled an aggravating keyboard input bug caused by fancy media knobs, brought cross-platform sanity to file paths with built-in path normalization, and hardened our disposal logic to prevent race conditions during framework teardown.
 
 We know the word "telemetry" can sometimes raise eyebrows, so I want to be completely transparent: this data contains
 **zero PII**, does absolutely **no source code scanning**, and uses **no hardware fingerprinting**. Moreover, it's
 disabled in your shipped release builds. In fact, it will never be enabled in any release builds of a game built
 with Velaptor. It's strictly for our internal use to understand the usage and hardware landscape during development.
 
-## <span className="color-section">Why Add Telemetry?</span>
+## <span className="color-step">Why Add Telemetry?</span>
 
-Building a cross-platform game engine is tough when you're flying blind. We need to know what kind of hardware developers
+Building a cross-platform game framework is tough when you're flying blind. We need to know what kind of hardware developers
 are actually using. Are most users on older discrete graphics cards, or running newer integrated GPUs? Does macOS need
 more specific attention on ARM chips? 
 
@@ -50,7 +52,7 @@ we're fixing bugs that actually affect you and your players.
 
 <IssueOrPr repoName="Velaptor" issueOrPrNumber="1215" owner="KinsonDigital" urlText="View changes Read more on issue #1215"/>
 
-## <span className="color-section">Zero Performance Impact</span>
+## <span className="color-step">Zero Performance Impact</span>
 
 When we set out to build this, our absolute top priority was to ensure it wouldn't step on your frame rates. 
 
@@ -66,9 +68,9 @@ cache instead of re-collecting hardware info every time.
 We also brought in a new `hardware.info` NuGet package and specifically set up custom interop for macOS to get reliable CPU
 and GPU reporting across all our supported platforms!
 
-## <span className="color-section">Privacy First & Fully Opt-out</span>
+## <span className="color-step">Privacy First & Fully Opt-out</span>
 
-Giving you control over this matters to me. So, here are the rules we enforce inside the engine to protect your privacy and
+Giving you control over this matters to me. So, here are the rules we enforce inside the framework to protect your privacy and
 reduce noise:
 
 - **Easy Opt-Out**: Telemetry is opted out as default.  This means you have to explicitly opt-in for us to collect data if you want to participate.
@@ -78,12 +80,44 @@ You don't have to worry about your end players accidentally pinging our servers.
 - **Development Environment Only**: Telemetry is only collected when you're developing your game in an IDE. If you run your game outside of an IDE, telemetry won't run.
 This follows the principle that the `user` is the game developer, not the game player.
 
-## <span className="color-section">New Telemetry Docs</span>
+## <span className="color-step">New Telemetry Docs</span>
 
 We've updated the docs to make all of this transparent. You can now visit the new
 <URL href='https://docs.velaptor.io/telemetry' text='Telemetry' openInNewTab={true} /> page,
 which elaborates on exactly what we monitor and walks you through the opt-in/opt-out processes via various IDE user configurations.
 
-That's all for this one! Until the next release! 🚀
+## <span className="color-step">No More Peripheral Panics</span>
+
+If you've ever adjusted your volume using a fancy keyboard knob right in the middle of a gaming session and watched your Velaptor game completely crash—I feel your pain. 
+
+So what happened here? It turned out our input library under the hood (`Silk.NET`) would emit an "unknown" key enum value when interacting with these non-standard peripheral media keys. Since we weren't expecting a mapping for those, it tripped a `NotImplementedException`, bringing the whole application down. Definitely not ideal! We've patched this up so that any `Silk.NET.Input.Key.Unknown` bindings are simply and gracefully ignored. Play on!
+
+<IssueOrPr repoName="Velaptor" issueOrPrNumber="1062" owner="KinsonDigital" urlText="View changes Read more on issue #1062"/>
+
+## <span className="color-step">Cross-Platform Path Normalization</span>
+
+We've all been there: you write a path with backslashes on Windows `\`, push your code, and suddenly your POSIX environments crash because they expect forward slashes `/`. It's a tale as old as time.
+
+To save everyone from OS-related path crashes, we've baked path normalization directly into the entire content system. Velaptor will now dynamically transition paths to match the runtime environment, meaning you can comfortably use either Windows-style or POSIX-style paths and the framework handles the rest. Better yet, we implemented this leaning heavily on `Span<T>`, keeping those allocations super low so we're not constantly triggering garbage collection just to fix slashes.
+
+<IssueOrPr repoName="Velaptor" issueOrPrNumber="1164" owner="KinsonDigital" urlText="View changes Read more on issue #1164"/>
+
+## <span className="color-step">Thread-Safe Resource Disposal</span>
+
+A few areas of the framework got some overdue hardening, specifically around how we clean up resources. There was a subtle race condition lurking where OpenGL resources (like textures or shaders) were being disposed. Because finalizers run on a completely different thread than explicit `Unload()` or `Dispose()` calls, two different threads could attempt to clean up the exact same native resource at the identical moment.
+
+We locked this down by upgrading the `isDisposed` flag in classes like `AtlasLoader`, `Texture`, and `ShaderProgram` from a simple `bool` to an `int`. Now, we use `Interlocked.Exchange()` to perform a perfectly atomic check-and-set during teardown. Now, the first thread to start the teardown reliably takes ownership, keeping your cleanup logic safe and crash-free.
+
+<IssueOrPr repoName="Velaptor" issueOrPrNumber="1179" owner="KinsonDigital" urlText="View changes Read more on issue #1179"/>
+
+## <span className="color-step">Untangling Preprocessor Directives</span>
+
+Lastly, we ran into an annoying testing issue tied to our `OpenGLService`. We were putting `IGLInvoker` debug method calls inside `DEBUG` and `DEBUG_CONSOLE` preprocessor directives for performance reasons. Makes sense, right? But this meant that if you ran unit tests on a release build configuration, those methods straight up didn't exist, and the tests would fail.
+
+We fixed this tech-debt by yanking those preprocessor directives out of `OpenGLService` entirely and moving them right down into the `GLInvoker` implementation itself. We also spun up some helper methods so our tests can accurately reflect the active build configuration without randomly falling over in production pipelines. It's a small internal win, but it makes CI/CD that much happier.
+
+<IssueOrPr repoName="Velaptor" issueOrPrNumber="1197" owner="KinsonDigital" urlText="View changes Read more on issue #1197"/>
+
+<p style={{marginTop: '1.5rem'}}>That's all for this one! Until the next release! 🚀</p>
 
 <JoinComm />

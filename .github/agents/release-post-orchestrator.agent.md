@@ -2,7 +2,7 @@
 name: "Release Post Orchestrator"
 description: "Use when: creating a release announcement blog post for Velaptor, VelaptorAseprite, or VelaptorTemplates. 
 Orchestrates the release-researcher and release-post-writer sub-agents to produce a fully structured MDX post."
-model: Claude Opus 4.6 (copilot)
+model: Claude Sonnet 4.6 (copilot)
 tools: [vscode/memory, execute/runInTerminal, agent, todo]
 argument-hint: "Project name and version, e.g. 'Velaptor v1.0.0-preview.32' or 'VelaptorAseprite v1.0.0-preview.2'"
 ---

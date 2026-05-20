@@ -2,8 +2,6 @@
 // Copyright (c) KinsonDigital. All rights reserved.
 // </copyright>
 
-using JumpingLogo;
-
 // Create a new game instance and run it to start the game
-var game = new Game();
+var game = new JumpingLogo.Game();
 game.Show();

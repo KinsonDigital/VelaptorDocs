@@ -1,0 +1,108 @@
+---
+sidebar_position: 6
+---
+
+# Adding Keyboard Input
+
+Your mascot is on screen — now let's make it move! In this final quick start step, we'll use the keyboard to move the sprite around the window.
+
+## <span className="color-step">Step 1: Add input fields</span>
+
+Add the following fields to your `Game` class for tracking keyboard state and sprite position.
+
+```csharp
+using System.Numerics;
+using Velaptor.Hardware;
+using Velaptor.Input;
+```
+
+```csharp
+public class Game : Window
+{
+    private const float Speed = 300f;
+    private readonly IAppInput<KeyboardState> keyboard;
+    private Vector2 spritePosition;
+
+    // ... existing fields from the previous step
+}
+```
+
+## <span className="color-step">Step 2: Create the keyboard object</span>
+
+In the constructor, create a keyboard input object using `HardwareFactory` and set the sprite's starting position to the center of the window.
+
+```csharp
+public Game()
+{
+    // ... existing constructor code
+
+    this.keyboard = HardwareFactory.GetKeyboard();
+    this.spritePosition = new Vector2(Width / 2f, Height / 2f);
+}
+```
+
+## <span className="color-step">Step 3: Update sprite position</span>
+
+Override the `OnUpdate()` method to read keyboard input and move the sprite. We multiply by
+`ElapsedTime.TotalSeconds` so the sprite moves at a consistent speed regardless of frame rate.
+
+```csharp
+protected override void OnUpdate(FrameTime frameTime)
+{
+    var keyState = this.keyboard.GetState();
+    var velocity = Vector2.Zero;
+
+    if (keyState.IsKeyDown(KeyCode.Left))
+    {
+        velocity.X = -Speed;
+    }
+
+    if (keyState.IsKeyDown(KeyCode.Right))
+    {
+        velocity.X = Speed;
+    }
+
+    if (keyState.IsKeyDown(KeyCode.Up))
+    {
+        velocity.Y = -Speed;
+    }
+
+    if (keyState.IsKeyDown(KeyCode.Down))
+    {
+        velocity.Y = Speed;
+    }
+
+    this.spritePosition += velocity * (float)frameTime.ElapsedTime.TotalSeconds;
+
+    base.OnUpdate(frameTime);
+}
+```
+
+## <span className="color-step">Step 4: Update rendering to use the position</span>
+
+Modify the `OnDraw()` method to render the sprite at the updated position instead of the fixed center.
+
+```csharp
+protected override void OnDraw(FrameTime frameTime)
+{
+    this.batcher.Begin();
+
+    this.textureRenderer.Render(
+        this.mascotTexture,
+        (int)this.spritePosition.X,
+        (int)this.spritePosition.Y);
+
+    this.batcher.End();
+
+    base.OnDraw(frameTime);
+}
+```
+
+## <span className="color-step">Step 5: Run it</span>
+
+Run the application and use the arrow keys to move the mascot around the window.
+
+Congratulations — you've completed the Velaptor quick start! 🎉 You now have a working game window with a
+rendered sprite that responds to keyboard input.
+
+From here, explore the rest of the guides to learn about rendering text, playing audio, using scenes, and more!

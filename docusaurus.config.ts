@@ -4,10 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 import tailwindPlugin from './plugins/tailwind-config.cjs';
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-
 const isProduction = (process.env.NODE_ENV || "production").trim() === "production";
 const umamiWebsiteId = (process.env.UMAMI_WEBSITE_ID ?? "").trim();
-
 if (isProduction) {
 	if (umamiWebsiteId === "") {
 		console.log("::warning::Umami web analytics is NOT included in the build. The 'UMAMI_WEBSITE_ID' environment variable is not set or is empty. Please set this variable to include Umami analytics in the production build.");
@@ -15,7 +13,6 @@ if (isProduction) {
 		console.log("::notice::Umami web analytics is included in the build using the website ID from the 'UMAMI_WEBSITE_ID' environment variable.");
 	}
 }
-
 const config: Config = {
 	title: 'Velaptor',
 	tagline: 'The easy and fun to use 2D game development framework',
@@ -264,7 +261,7 @@ const config: Config = {
 					src: 'img/kinson-digital-logo.png',
 					href: 'https://github.com/KinsonDigital',
 				},
-				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2025.02.07.175011)`,
+				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2026.05.23.073925)`,
 			},
 			prism: {
 				/* We disabled the default magic comments and added custom ones to support better naming and colors
@@ -307,5 +304,4 @@ const config: Config = {
 		tailwindPlugin,
 	]
 };
-
 module.exports = config;

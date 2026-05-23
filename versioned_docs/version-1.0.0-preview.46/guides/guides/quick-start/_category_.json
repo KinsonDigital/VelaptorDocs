@@ -1,0 +1,8 @@
+{
+    "label": "Quick Start",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "description": "Get up and running with Velaptor! Follow these steps to create a project, load content, render a sprite, and add keyboard input."
+    }
+}

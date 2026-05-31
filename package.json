@@ -18,10 +18,10 @@
         "create-pr": "deno run -c ./deno.json --node-modules-dir=false -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR"
     },
     "dependencies": {
-        "@docusaurus/core": "3.10.0",
+        "@docusaurus/core": "3.10.1",
         "@docusaurus/plugin-content-docs": "^3.10.0",
-        "@docusaurus/preset-classic": "3.10.0",
-        "@docusaurus/theme-mermaid": "3.10.0",
+        "@docusaurus/preset-classic": "3.10.1",
+        "@docusaurus/theme-mermaid": "3.10.1",
         "@mdx-js/react": "^3.0.0",
         "autoprefixer": "^10.4.19",
         "clsx": "2.1.1",
@@ -35,7 +35,7 @@
     "devDependencies": {
         "@docusaurus/module-type-aliases": "^3.2.1",
         "@docusaurus/tsconfig": "^3.2.1",
-        "@docusaurus/types": "3.10.0",
+        "@docusaurus/types": "3.10.1",
         "@tailwindcss/postcss": "^4.1.17",
         "@types/react": "^18.2.42",
         "tailwindcss": "^4.1.17",

@@ -239,6 +239,23 @@ const config: Config = {
 						],
 					},
 					{
+						title: 'Community',
+						items: [
+							{
+								html: "<a href='/community' target='_blank'>Contribute</a>",
+							},
+							{
+								html: "<a href='https://github.com/sponsors/KinsonDigital' target='_blank'>Sponsor Us</a>",
+							},
+							{
+								html: "<a href='https://github.com/KinsonDigital/.github/blob/main/docs/CONTRIBUTING.md' target='_blank'>Contributing Guidelines</a>",
+							},
+							{
+								html: "<a href='https://github.com/KinsonDigital/.github/blob/main/docs/code_of_conduct.md' target='_blank'>Code of Conduct</a>",
+							}
+						]
+					},
+					{
 						title: 'Find Us',
 						items: [
 							{

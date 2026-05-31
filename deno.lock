@@ -17,6 +17,7 @@
     "jsr:@std/encoding@1.0.5": "1.0.5",
     "jsr:@std/encoding@^1.0.10": "1.0.10",
     "jsr:@std/encoding@~0.219.1": "0.219.1",
+<<<<<<< HEAD
     "jsr:@std/fmt@^1.0.9": "1.0.10",
     "jsr:@std/fs@1.0.19": "1.0.19",
     "jsr:@std/fs@1.0.23": "1.0.23",
@@ -25,9 +26,20 @@
     "jsr:@std/internal@^1.0.12": "1.0.14",
     "jsr:@std/internal@^1.0.14": "1.0.14",
     "jsr:@std/internal@^1.0.9": "1.0.14",
+=======
+    "jsr:@std/fmt@^1.0.9": "1.0.9",
+    "jsr:@std/fs@1.0.19": "1.0.19",
+    "jsr:@std/fs@1.0.23": "1.0.23",
+    "jsr:@std/fs@1.0.5": "1.0.5",
+    "jsr:@std/fs@^1.0.23": "1.0.23",
+    "jsr:@std/internal@^1.0.10": "1.0.12",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/internal@^1.0.9": "1.0.12",
+>>>>>>> main
     "jsr:@std/io@~0.225.3": "0.225.3",
     "jsr:@std/path@1.0.7": "1.0.7",
     "jsr:@std/path@1.1.4": "1.1.4",
+<<<<<<< HEAD
     "jsr:@std/path@1.1.5": "1.1.5",
     "jsr:@std/path@^1.0.7": "1.1.5",
     "jsr:@std/path@^1.1.1": "1.1.5",
@@ -35,6 +47,13 @@
     "jsr:@std/path@^1.1.5": "1.1.5",
     "jsr:@std/streams@1.0.17": "1.0.17",
     "jsr:@std/text@^1.0.17": "1.0.19",
+=======
+    "jsr:@std/path@^1.0.7": "1.1.4",
+    "jsr:@std/path@^1.1.1": "1.1.4",
+    "jsr:@std/path@^1.1.4": "1.1.4",
+    "jsr:@std/streams@1.0.17": "1.0.17",
+    "jsr:@std/text@^1.0.17": "1.0.17",
+>>>>>>> main
     "npm:@docusaurus/core@3.10.0": "3.10.0_@mdx-js+react@3.1.1__@types+react@18.3.29__react@18.3.1_react@18.3.1_react-dom@18.3.1__react@18.3.1_@types+react@18.3.29_typescript@5.6.3",
     "npm:@docusaurus/module-type-aliases@^3.2.1": "3.10.0_react@18.3.1_react-dom@18.3.1__react@18.3.1",
     "npm:@docusaurus/plugin-content-docs@^3.10.0": "3.10.0_react@18.3.1_react-dom@18.3.1__react@18.3.1_@mdx-js+react@3.1.1__@types+react@18.3.29__react@18.3.1_@types+react@18.3.29_typescript@5.6.3",
@@ -59,7 +78,11 @@
     "npm:tailwindcss@^4.1.17": "4.3.0",
     "npm:twitter-api-v2@1.15.0": "1.15.0",
     "npm:typescript@5.6": "5.6.3",
+<<<<<<< HEAD
     "npm:zod@^4.3.6": "4.4.3"
+=======
+    "npm:zod@^4.3.6": "4.3.6"
+>>>>>>> main
   },
   "jsr": {
     "@cliffy/ansi@1.0.0": {
@@ -195,6 +218,9 @@
     "@std/io@0.225.3": {
       "integrity": "27b07b591384d12d7b568f39e61dff966b8230559122df1e9fd11cc068f7ddd1"
     },
+    "@std/io@0.225.3": {
+      "integrity": "27b07b591384d12d7b568f39e61dff966b8230559122df1e9fd11cc068f7ddd1"
+    },
     "@std/path@1.0.7": {
       "integrity": "76a689e07f0e15dcc6002ec39d0866797e7156629212b28f27179b8a5c3b33a1"
     },
@@ -204,20 +230,28 @@
         "jsr:@std/internal@^1.0.12"
       ]
     },
+<<<<<<< HEAD
     "@std/path@1.1.5": {
       "integrity": "ccea00982ea28c36becaf6e62f855406c76a8c32d462f66f415bbb7d83a271bc",
       "dependencies": [
         "jsr:@std/internal@^1.0.14"
       ]
     },
+=======
+>>>>>>> main
     "@std/streams@1.0.17": {
       "integrity": "7859f3d9deed83cf4b41f19223d4a67661b3d3819e9fc117698f493bf5992140",
       "dependencies": [
         "jsr:@std/bytes"
       ]
     },
+<<<<<<< HEAD
     "@std/text@1.0.19": {
       "integrity": "003a0e032d360e8c3a4e0410fb792c77a66bd6553fee9d60c6ec1bce30d29223"
+=======
+    "@std/text@1.0.17": {
+      "integrity": "4b2c4ef67ae5b6c1dfd447c81c83a43718f52e3c7e748d8b33f694aba9895f95"
+>>>>>>> main
     }
   },
   "npm": {
@@ -9159,8 +9193,13 @@
     "yocto-queue@1.2.2": {
       "integrity": "sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ=="
     },
+<<<<<<< HEAD
     "zod@4.4.3": {
       "integrity": "sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ=="
+=======
+    "zod@4.3.6": {
+      "integrity": "sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg=="
+>>>>>>> main
     },
     "zwitch@2.0.4": {
       "integrity": "sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A=="

@@ -3,14 +3,18 @@
   "specifiers": {
     "jsr:@cliffy/ansi@1.0.0": "1.0.0",
     "jsr:@cliffy/ansi@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/ansi@1.1.1": "1.1.1",
     "jsr:@cliffy/command@1.0.0": "1.0.0",
     "jsr:@cliffy/flags@1.0.0": "1.0.0",
     "jsr:@cliffy/internal@1.0.0": "1.0.0",
     "jsr:@cliffy/internal@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/internal@1.1.1": "1.1.1",
     "jsr:@cliffy/keycode@1.0.0": "1.0.0",
     "jsr:@cliffy/keycode@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/keycode@1.1.1": "1.1.1",
     "jsr:@cliffy/prompt@1.0.0": "1.0.0",
     "jsr:@cliffy/prompt@1.0.0-rc.8": "1.0.0-rc.8",
+    "jsr:@cliffy/prompt@1.1.1": "1.1.1",
     "jsr:@cliffy/table@1.0.0": "1.0.0",
     "jsr:@kinsondigital/kd-clients@1.0.0-preview.15": "1.0.0-preview.15",
     "jsr:@kinsondigital/sprocket@2.1.0": "2.1.0",
@@ -18,6 +22,7 @@
     "jsr:@kinsondigital/sprocket@3.0.0": "3.0.0",
     "jsr:@nexterias/twitter-api-fetch@3.0.1": "3.0.1",
     "jsr:@std/assert@^1.0.18": "1.0.19",
+    "jsr:@std/assert@^1.0.19": "1.0.19",
     "jsr:@std/assert@~1.0.6": "1.0.19",
     "jsr:@std/async@1.0.15": "1.0.15",
     "jsr:@std/async@1.4.0": "1.4.0",
@@ -26,7 +31,7 @@
     "jsr:@std/encoding@1.0.5": "1.0.5",
     "jsr:@std/encoding@^1.0.10": "1.0.10",
     "jsr:@std/encoding@~0.219.1": "0.219.1",
-    "jsr:@std/encoding@~1.0.5": "1.0.5",
+    "jsr:@std/encoding@~1.0.5": "1.0.10",
     "jsr:@std/fmt@^1.0.9": "1.0.10",
     "jsr:@std/fmt@~1.0.2": "1.0.10",
     "jsr:@std/fs@1.0.19": "1.0.19",
@@ -47,7 +52,7 @@
     "jsr:@std/path@^1.1.1": "1.1.5",
     "jsr:@std/path@^1.1.4": "1.1.5",
     "jsr:@std/path@^1.1.5": "1.1.5",
-    "jsr:@std/path@~1.0.6": "1.0.9",
+    "jsr:@std/path@~1.0.6": "1.0.7",
     "jsr:@std/streams@1.0.17": "1.0.17",
     "jsr:@std/text@^1.0.17": "1.0.19",
     "jsr:@std/text@~1.0.7": "1.0.19",
@@ -91,6 +96,14 @@
         "jsr:@std/io@~0.225.3"
       ]
     },
+    "@cliffy/ansi@1.1.1": {
+      "integrity": "9b4a5c5b7720261460fa527cc795e6db41de1ea7e567f58be702461023b4bdbf",
+      "dependencies": [
+        "jsr:@cliffy/internal@1.1.1",
+        "jsr:@std/encoding@^1.0.10",
+        "jsr:@std/io@~0.225.3"
+      ]
+    },
     "@cliffy/command@1.0.0": {
       "integrity": "c52a241ea68857fcdaff4f3173eb404f8017d7bc35553b6f533c592b89dde7d2",
       "dependencies": [
@@ -114,11 +127,17 @@
     "@cliffy/internal@1.0.0": {
       "integrity": "1e17ccbcd5420093c0a93e5b3827bbdc9abac5195bacf187edc44665e54bdde6"
     },
+    "@cliffy/internal@1.1.1": {
+      "integrity": "a658c9ec5ac30819b8c25e6bff0250f57eec90c5047a8c8b19109b54a16bb89b"
+    },
     "@cliffy/keycode@1.0.0-rc.8": {
       "integrity": "76dbf85a67ec0aea2e29ca049b8507b6b3f62a2a971bd744d8d3fc447c177cd9"
     },
     "@cliffy/keycode@1.0.0": {
       "integrity": "755dbf007be110dcb5625f87eb61b362b6a0ca6835453af03ebd3b34d399cf14"
+    },
+    "@cliffy/keycode@1.1.1": {
+      "integrity": "c1ced8c854d839b394734b34da3b42b1ebcb97ef0487bc74a994f394654325b5"
     },
     "@cliffy/prompt@1.0.0-rc.8": {
       "integrity": "eba403ea1d47b9971bf2210fa35f4dc7ebd2aba87beec9540ae47552806e2f25",
@@ -140,6 +159,19 @@
         "jsr:@cliffy/internal@1.0.0",
         "jsr:@cliffy/keycode@1.0.0",
         "jsr:@std/assert@^1.0.18",
+        "jsr:@std/fmt@^1.0.9",
+        "jsr:@std/io@~0.225.3",
+        "jsr:@std/path@^1.1.4",
+        "jsr:@std/text@^1.0.17"
+      ]
+    },
+    "@cliffy/prompt@1.1.1": {
+      "integrity": "05a41908647f2f61e1ef05e32400ea82c28fa0d740c738a1dcbabdd0234a81ed",
+      "dependencies": [
+        "jsr:@cliffy/ansi@1.1.1",
+        "jsr:@cliffy/internal@1.1.1",
+        "jsr:@cliffy/keycode@1.1.1",
+        "jsr:@std/assert@^1.0.19",
         "jsr:@std/fmt@^1.0.9",
         "jsr:@std/io@~0.225.3",
         "jsr:@std/path@^1.1.4",
@@ -260,9 +292,6 @@
     },
     "@std/path@1.0.7": {
       "integrity": "76a689e07f0e15dcc6002ec39d0866797e7156629212b28f27179b8a5c3b33a1"
-    },
-    "@std/path@1.0.9": {
-      "integrity": "260a49f11edd3db93dd38350bf9cd1b4d1366afa98e81b86167b4e3dd750129e"
     },
     "@std/path@1.1.2": {
       "integrity": "c0b13b97dfe06546d5e16bf3966b1cadf92e1cc83e56ba5476ad8b498d9e3038",
@@ -9230,7 +9259,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@cliffy/prompt@1.0.0",
+      "jsr:@cliffy/prompt@1.1.1",
       "jsr:@kinsondigital/kd-clients@1.0.0-preview.15",
       "jsr:@kinsondigital/sprocket@3.0.0",
       "jsr:@std/async@1.4.0",

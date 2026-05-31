@@ -4,7 +4,7 @@
         "fmt": "deno fmt ./.github/cicd/",
         "lint": "deno lint ./.github/cicd/",
         "check": "deno check ./.github/cicd/",
-        "reload-cache": "deno cache -r ./.github/cicd/",
+        "reload-cache": "deno cache -r ./.github/cicd/ ; deno cache -r dev-tools/",
         "create-pr": "deno run -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR",
         "create-nuget-pkg": "deno run -ERWSN --allow-run ./dev-scripts/create-local-nuget.ts"
     },

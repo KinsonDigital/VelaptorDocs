@@ -96,7 +96,6 @@ Include these imports at the top of the file if required.
 - `import ReleaseNotes from '@site/src/components/ReleaseNotes';`
 - `import GHUrl from '@site/src/components/GHUrl';`
 - `import PR from '@site/src/components/PR';`
-- `import JoinComm from '@site/src/components/JoinComm';`
 - `import Image from '@site/src/components/Image';` — for GIFs or screenshots
 - `import GitHubProject from '@site/src/components/GitHubProject';` — for project links
 - `import Details from '@site/src/components/Details';` — for collapsible sections

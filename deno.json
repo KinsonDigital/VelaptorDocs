@@ -79,7 +79,7 @@
         "@std/fs": "jsr:@std/fs@^1.0.23",
         "@std/async": "jsr:@std/async@1.4.0",
         "@std/path": "jsr:@std/path@1.1.5",
-        "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0",
+        "@cliffy/prompt": "jsr:@cliffy/prompt@1.1.1",
         "@kd-clients/github": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/github",
         "@kd-clients/packaging": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/packaging",
         "@kd-clients": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15",

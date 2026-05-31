@@ -4,7 +4,7 @@
         "fmt": "deno fmt ./.github/cicd/",
         "lint": "deno lint ./.github/cicd/",
         "check": "deno check ./.github/cicd/",
-        "reload-cache": "deno cache -r ./.github/cicd/",
+        "reload-cache": "deno cache -r ./.github/cicd/ ; deno cache -r dev-tools/",
         "create-pr": "deno run -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR",
         "create-nuget-pkg": "deno run -ERWSN --allow-run ./dev-scripts/create-local-nuget.ts"
     },
@@ -78,7 +78,7 @@
     "imports": {
         "@std/fs": "jsr:@std/fs@^1.0.23",
         "@std/async": "jsr:@std/async@1.2.0",
-        "@std/path": "jsr:@std/path@1.1.2",
+        "@std/path": "jsr:@std/path@1.1.5",
         "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0",
         "@kd-clients/github": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/github",
         "@kd-clients/packaging": "jsr:@kinsondigital/kd-clients@1.0.0-preview.15/packaging",

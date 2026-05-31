@@ -45,7 +45,7 @@ export default function Url(props: Props): ReactNode {
 			<span>
 				{
 					openInNewTab === true &&
-						<OpenNewTab style={{ paddingTop: '5px', paddingLeft: '15%', width: '100%' }} />
+						<OpenNewTab style={{ paddingTop: "5px", paddingLeft: "15%", marginTop: "-5px", width: "100%" }} />
 				}
 			</span>
 		</span>

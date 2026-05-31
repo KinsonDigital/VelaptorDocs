@@ -1,11 +1,13 @@
-import { themes } from 'prism-react-renderer';
-import type { Config } from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
-import tailwindPlugin from './plugins/tailwind-config.cjs';
+import { themes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
+import tailwindPlugin from "./plugins/tailwind-config.cjs";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+
 const isProduction = (process.env.NODE_ENV || "production").trim() === "production";
 const umamiWebsiteId = (process.env.UMAMI_WEBSITE_ID ?? "").trim();
+
 if (isProduction) {
 	if (umamiWebsiteId === "") {
 		console.log("::warning::Umami web analytics is NOT included in the build. The 'UMAMI_WEBSITE_ID' environment variable is not set or is empty. Please set this variable to include Umami analytics in the production build.");
@@ -13,20 +15,21 @@ if (isProduction) {
 		console.log("::notice::Umami web analytics is included in the build using the website ID from the 'UMAMI_WEBSITE_ID' environment variable.");
 	}
 }
+
 const config: Config = {
-	title: 'Velaptor',
-	tagline: 'The easy and fun to use 2D game development framework',
-	favicon: 'img/favicon.ico',
+	title: "Velaptor",
+	tagline: "The easy and fun to use 2D game development framework",
+	favicon: "img/favicon.ico",
 	// Set the production url of your site here
-	url: 'https://docs.veleptor.io',
+	url: "https://docs.velaptor.io",
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
-	baseUrl: '/',
+	baseUrl: "/",
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
-	organizationName: 'KinsonDigital', // Usually your GitHub org/user name.
-	projectName: 'Velaptor', // Usually your repo name.
-	onBrokenLinks: 'throw',
+	organizationName: "KinsonDigital", // Usually your GitHub org/user name.
+	projectName: "Velaptor", // Usually your repo name.
+	onBrokenLinks: "throw",
 	// Used for creating diagrams
 	markdown: {
 		mermaid: true,
@@ -38,13 +41,13 @@ const config: Config = {
 			}
 		}
 	},
-	themes: ['@docusaurus/theme-mermaid'],
+	themes: ["@docusaurus/theme-mermaid"],
 	// Even if you don't use internalization, you can use this field to set useful
 	// metadata like html lang. For example, if your site is Chinese, you may want
 	// to replace "en" with "zh-Hans".
 	i18n: {
-		defaultLocale: 'en',
-		locales: ['en'],
+		defaultLocale: "en",
+		locales: ["en"],
 	},
 	scripts: isProduction && umamiWebsiteId !== "" ? [
 		// Umami web analytics script
@@ -56,23 +59,23 @@ const config: Config = {
 	] : [],
 	presets: [
 		[
-			'classic',
+			"classic",
 			{
 				docs: {
-					sidebarPath: require.resolve('./sidebars.js'),
+					sidebarPath: require.resolve("./sidebars.js"),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: 'https://github.com/KinsonDigital/VelaptorDocs/edit/main/',
+					editUrl: "https://github.com/KinsonDigital/VelaptorDocs/edit/main/",
 					includeCurrentVersion: true,
 					remarkPlugins: [remarkMath],
 					rehypePlugins: [rehypeKatex]
 				},
 				theme: {
-					customCss: require.resolve('./src/css/custom.css'),
+					customCss: require.resolve("./src/css/custom.css"),
 				},
 				blog: {
 					showReadingTime: true,
-					blogSidebarTitle: 'All Our Posts',
+					blogSidebarTitle: "All Our Posts",
 					blogSidebarCount: 10,
 				},
 			} satisfies Preset.Options,
@@ -80,11 +83,11 @@ const config: Config = {
 	],
 	stylesheets: [
 		{
-			href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-			type: 'text/css',
+			href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+			type: "text/css",
 			integrity:
-				'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-			crossorigin: 'anonymous',
+				"sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+			crossorigin: "anonymous",
 		},
 	],
 	themeConfig:
@@ -95,14 +98,14 @@ const config: Config = {
 			},
 			algolia: {
 				// The application ID provided by Algolia
-				appId: 'QM2KXVA7OT',
+				appId: "QM2KXVA7OT",
 				// Public API key: it is safe to commit it
-				apiKey: '686ddf12415268524bcc00627597fdc9',
-				indexName: 'velaptor',
+				apiKey: "686ddf12415268524bcc00627597fdc9",
+				indexName: "velaptor",
 				// Optional: see doc section below
 				contextualSearch: true,
 				// Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-				externalUrlRegex: 'external\\.com|domain\\.com',
+				externalUrlRegex: "external\\.com|domain\\.com",
 				// Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
 				// replaceSearchResultPathname: {
 				//   from: '/docs/', // or as RegExp: /\/docs\//
@@ -111,7 +114,7 @@ const config: Config = {
 				// Optional: Algolia search parameters
 				searchParameters: {},
 				// Optional: path for search page that enabled by default (`false` to disable it)
-				searchPagePath: 'search',
+				searchPagePath: "search",
 				//... other Algolia params
 			},
 			metadata: [
@@ -119,164 +122,164 @@ const config: Config = {
 					name: "keywords", content: "Velaptor, 2D, Game, Game Dev, Game Development, Framework, Cross Platform, C#, .NET, OpenGL, KinsonDigital, Kinson Digital"
 				},
 				{
-					name: 'twitter:card',
-					content: 'summary'
+					name: "twitter:card",
+					content: "summary"
 				},
 				{
-					name: 'twitter:title',
-					content: 'Velaptor',
+					name: "twitter:title",
+					content: "Velaptor",
 				},
 				{
-					name: 'twitter:description',
-					content: 'Game development with C# made easy and fun!'
+					name: "twitter:description",
+					content: "Game development with C# made easy and fun!"
 				},
 				{
-					name: 'twitter:image',
-					content: 'https://docs.velaptor.io/img/meta-image.jpg'
+					name: "twitter:image",
+					content: "https://docs.velaptor.io/img/meta-image.jpg"
 				},
 				{
-					name: 'twitter:image:alt',
-					content: 'Combining the power of KinsonDigital, SILK, and dotnet to create 2D games.'
+					name: "twitter:image:alt",
+					content: "Combining the power of KinsonDigital, SILK, and dotnet to create 2D games."
 				},
 				{
-					name: 'twitter:site',
-					content: '@KDCoder'
+					name: "twitter:site",
+					content: "@KDCoder"
 				},
 				{
-					name: 'twitter:creator',
-					content: '@KDCoder'
+					name: "twitter:creator",
+					content: "@KDCoder"
 				},
 				{
-					name: 'keywords',
-					content: 'Velaptor, 2D, Game, Game Development, Framework, Cross Platform, C#, .NET, OpenGL'
+					name: "keywords",
+					content: "Velaptor, 2D, Game, Game Development, Framework, Cross Platform, C#, .NET, OpenGL"
 				}
 			],
 			colorMode: {
-				defaultMode: 'dark',
+				defaultMode: "dark",
 				disableSwitch: true,
 				respectPrefersColorScheme: false
 			},
 			// Replace with your project's social card
-			image: 'img/meta-image.jpg',
+			image: "img/meta-image.jpg",
 			navbar: {
-				title: 'Velaptor',
+				title: "Velaptor",
 				logo: {
-					alt: 'Velaptor Logo',
-					src: 'img/logo.svg',
+					alt: "Velaptor Logo",
+					src: "img/logo.svg",
 					width: 32,
 					height: 32
 				},
 				items: [
 					{
-						type: 'doc',
-						docId: 'guides/intro',
-						position: 'left',
-						label: 'Guides',
+						type: "doc",
+						docId: "guides/intro",
+						position: "left",
+						label: "Guides",
 					},
 					{
-						type: 'doc',
-						docId: 'api/Namespaces',
-						position: 'left',
-						label: 'API',
+						type: "doc",
+						docId: "api/Namespaces",
+						position: "left",
+						label: "API",
 					},
 					{
-						to: 'blog',
-						label: 'Blog',
-						position: 'left',
+						to: "blog",
+						label: "Blog",
+						position: "left",
 						items: [
-							{ to: '/blog', label: 'All Our Posts' },
-							{ to: '/blog/tags', label: 'Browse by Tag' },
-							{ to: '/blog/tags/velaptor', label: 'Velaptor' },
-							{ to: '/blog/tags/velaptor-aseprite', label: 'VelaptorAseprite' },
-							{ to: '/blog/tags/velaptor-templates', label: 'VelaptorTemplates' },
+							{ to: "/blog", label: "All Our Posts" },
+							{ to: "/blog/tags", label: "Browse by Tag" },
+							{ to: "/blog/tags/velaptor", label: "Velaptor" },
+							{ to: "/blog/tags/velaptor-aseprite", label: "VelaptorAseprite" },
+							{ to: "/blog/tags/velaptor-templates", label: "VelaptorTemplates" },
 						],
 					},
 					{
-						type: 'docsVersionDropdown',
-						position: 'right',
+						type: "docsVersionDropdown",
+						position: "right",
 						dropdownActiveClassDisabled: true,
 					},
 					{
-						href: 'https://github.com/KinsonDigital/Velaptor',
-						position: 'right',
+						href: "https://github.com/KinsonDigital/Velaptor",
+						position: "right",
 						className: "header-github-link"
 					},
 					{
-						href: 'https://discord.gg/qewu6fNgv7',
-						position: 'right',
+						href: "https://discord.gg/qewu6fNgv7",
+						position: "right",
 						className: "header-discord-link"
 					},
 					{
-						href: 'https://x.com/KDCoder',
-						position: 'right',
+						href: "https://x.com/KDCoder",
+						position: "right",
 						className: "header-x-link"
 					},
 					{
-						href: 'https://bsky.app/profile/kdcoder.bsky.social',
-						position: 'right',
+						href: "https://bsky.app/profile/kdcoder.bsky.social",
+						position: "right",
 						className: "header-bluesky-link"
 					},
 				],
 			},
 			footer: {
-				style: 'dark',
+				style: "dark",
 				links: [
 					{
-						title: 'Docs',
+						title: "Docs",
 						items: [
 							{
-								html: "<a href='/docs/guides/intro' target='_blank'>Guides</a>",
+								html: `<a href="/docs/guides/intro" target="_blank">Guides</a>`,
 							},
 							{
-								html: "<a href='/docs/api/Namespaces' target='_blank'>Latest API Docs</a>",
+								html: `<a href="/docs/api/Namespaces" target="_blank">Latest API Docs</a>`,
 							},
 							{
-								html: "<a href='https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects' target='_blank'>Sample Projects</a>",
+								html: `<a href="https://github.com/KinsonDigital/VelaptorDocs/tree/main/SampleProjects" target="_blank">Sample Projects</a>`,
 							},
 							{
-								html: "<a href='/telemetry' target='_blank'>Telemetry</a>",
+								html: `<a href="/telemetry" target="_blank">Telemetry</a>`,
 							},
 						],
 					},
 					{
-						title: 'Community',
+						title: "Community",
 						items: [
 							{
-								html: "<a href='/community' target='_blank'>Contribute</a>",
+								html: `<a href="/community" target="_blank">Contribute</a>`,
 							},
 							{
-								html: "<a href='https://github.com/sponsors/KinsonDigital' target='_blank'>Sponsor Us</a>",
+								html: `<a href="https://github.com/sponsors/KinsonDigital" target="_blank">Sponsor Us</a>`,
 							},
 							{
-								html: "<a href='https://github.com/KinsonDigital/.github/blob/main/docs/CONTRIBUTING.md' target='_blank'>Contributing Guidelines</a>",
+								html: `<a href="https://github.com/KinsonDigital/.github/blob/main/docs/CONTRIBUTING.md" target="_blank">Contributing Guidelines</a>`,
 							},
 							{
-								html: "<a href='https://github.com/KinsonDigital/.github/blob/main/docs/code_of_conduct.md' target='_blank'>Code of Conduct</a>",
+								html: `<a href="https://github.com/KinsonDigital/.github/blob/main/docs/code_of_conduct.md" target="_blank">Code of Conduct</a>`,
 							}
 						]
 					},
 					{
-						title: 'Find Us',
+						title: "Find Us",
 						items: [
 							{
-								html: `<a href='https://github.com/KinsonDigital/Velaptor' target='_blank'>GitHub</a>`,
+								html: `<a href="https://github.com/KinsonDigital/Velaptor" target="_blank">GitHub</a>`,
 							},
 							{
-								html: `<a href='https://discord.gg/qewu6fNgv7' target='_blank'>Discord</a>`,
+								html: `<a href="https://discord.gg/qewu6fNgv7" target="_blank">Discord</a>`,
 							},
 							{
-								html: `<a href='https://x.com/KDCoder' target='_blank'>X (Twitter)</a>`,
+								html: `<a href="https://x.com/KDCoder" target="_blank">X (Twitter)</a>`,
 							},
 							{
-								html: `<a href='https://bsky.app/profile/kdcoder.bsky.social' target='_blank'>Bluesky</a>`,
+								html: `<a href="https://bsky.app/profile/kdcoder.bsky.social" target="_blank">Bluesky</a>`,
 							},
 						],
 					},
 				],
 				logo: {
-					alt: 'Kinson Digital Logo',
-					src: 'img/kinson-digital-logo.png',
-					href: 'https://github.com/KinsonDigital',
+					alt: "Kinson Digital Logo",
+					src: "img/kinson-digital-logo.png",
+					href: "https://github.com/KinsonDigital",
 				},
 				copyright: `Copyright © ${new Date().getFullYear()} Velaptor Docs (v2026.05.23.101447)`,
 			},
@@ -296,16 +299,16 @@ const config: Config = {
 					// 	block: { start: 'highlight-start', end: 'highlight-end' },
 					// },
 					{
-						className: 'code-block-highlight-add-line',
-						line: 'highlight-add-next-line',
+						className: "code-block-highlight-add-line",
+						line: "highlight-add-next-line",
 						block: {
 							start: "highlight-add-start",
 							end: "highlight-add-end",
 						}
 					},
 					{
-						className: 'code-block-highlight-remove-line',
-						line: 'highlight-remove-next-line',
+						className: "code-block-highlight-remove-line",
+						line: "highlight-remove-next-line",
 						block: {
 							start: "highlight-remove-start",
 							end: "highlight-remove-end",
@@ -314,11 +317,12 @@ const config: Config = {
 				],
 				theme: themes.github,
 				darkTheme: themes.vsDark,
-				additionalLanguages: ['csharp'],
+				additionalLanguages: ["csharp"],
 			},
 		} satisfies Preset.ThemeConfig,
 	plugins: [
 		tailwindPlugin,
 	]
 };
+
 module.exports = config;

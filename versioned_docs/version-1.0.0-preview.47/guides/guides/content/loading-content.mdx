@@ -1,0 +1,212 @@
+---
+sidebar_position: 2
+---
+
+# Loading Content
+
+Loading game content—assets like images, sounds, and fonts—is a crucial part of any game's **performance** and **memory management**. The goal is to load assets into memory *before* they are needed and to unload them promptly when a level or section is finished. This proactive approach prevents in-game stuttering and keeps your game's memory footprint low.
+
+
+## <span className="color-step">Types of Content</span>
+
+Velaptor abstracts content loading into strongly-typed C# interfaces, allowing you to easily work with different asset types.
+
+| Content Type | Format Types | Resulting Interface |
+|:--------:|:-----------------------------------:|:---------------------:|
+| Textures | .png                                | `ITexture`            |
+| Audio    | .ogg, .mp3                          | `IAudio`              |
+| Atlas    | .png with .json                     | `IAtlasData`          |
+| Fonts    | .ttf                                | `IFont`               |
+
+These common formats are supported by default. Velaptor is designed to be extensible, and more formats will be added as needed by the community.
+
+
+## <span className="color-step">Content Caching for Performance</span>
+
+**Content caching is done automatically in Velaptor** and is a powerful feature for performance optimization.
+
+When you call a `Load<T>()` method, Velaptor first checks a content cache. It uses the file's **fully qualified path** as the unique identifier.
+- If the content is **already loaded and in the cache**, Velaptor immediately returns the cached instance. The file is not re-read/loaded from disk
+or re-processed by the GPU/Audio system. This is an **extremely fast** operation.
+- If the content is **not cached**, it is loaded, processed, and then stored in the cache for future use.
+
+:::tip Best Practice
+You, the game developer, are responsible for deciding when content is no longer needed. **Do not unload** content that might be used again in the near future, such as a player sprite texture that is visible in every level.
+:::
+
+
+## <span className="color-step">Content Paths: Relative vs. Absolute</span>
+
+Velaptor simplifies cross-platform content access by enforcing a clear **Content Root** structure.
+
+### <span className="color-sub-step">Relative Paths (Recommended)</span>
+
+By default, Velaptor looks for content relative to your **application's content root folder**, which is typically the `<proj-path>/Content` directory.
+
+Velaptor then uses sub-directories based on the content type:
+
+| Content Type | Default Content Path (Relative to `<proj-path>`) |
+|:--------:|:----------------------------------------------------:|
+| Graphics | `<proj-path>/Content/Graphics`                       |
+| Audio    | `<proj-path>/Content/Audio`                          |
+| Atlas    | `<proj-path>/Content/Atlas`                          |
+| Fonts    | `<proj-path>/Content/Fonts`                          |
+
+When using relative paths, you only need to specify the path *relative* to the asset's specific content folder and **exclude the file extension**.
+
+For example, to load a texture named `velaptor-logo.png` located at `Content/Graphics/velaptor-logo.png`:
+
+```csharp showLineNumbers
+// 1. Create the content manager instance
+var contentManager = ContentManager.Create();
+
+// 2. Load the texture
+// The path "velaptor-logo" is relative to "Content/Graphics"
+ITexture logoTexture = contentManager.Load<ITexture>("velaptor-logo");
+````
+
+:::tip Best Practice: Relative Paths
+**Always** strive to use relative file paths. They leverage Velaptor's built-in path resolution and ensure your game's assets load correctly on **Windows, Linux, and MacOS** without modification.
+:::
+
+### <span className="color-sub-step">Absolute Paths (Advanced Use)</span>
+
+You can use absolute paths to load content from *any* location on the user's file system (e.g., outside the game's executable directory).
+
+While this gives you maximum control, you lose Velaptor's automatic content directory resolution. If you choose this route, you must implement your own robust, **cross-platform path resolution** logic, typically using the dotnet `System.IO.Path` class.
+
+### <span className="color-sub-step">File Extensions and Fallback Loading</span>
+
+You can generally **omit the file extension** when using relative paths.
+
+When the extension is omitted, Velaptor will look for files with the supported formats in a specific order until one is found.
+
+  * **Audio Example:** If you load the path `"ice-beam"`, Velaptor will first look for `ice-beam.ogg`. If that file does not exist, it will look for `ice-beam.mp3`. If neither is found, an exception is thrown.
+
+:::tip Unique Base Names
+The only content type requiring some forethought into multiple formats is **audio**. Using unique base file names across different format types (e.g., `explosion-1-ogg` and `explosion-1-mp3`) eliminates the need to specify file extensions, as Velaptor uses the base name for caching.
+:::
+
+
+## <span className="color-step">Loading Content with `ContentManager`</span>
+
+The `ContentManager` is the primary way for loading content.
+
+```csharp showLineNumbers
+// Best Practice: Declare the ContentManager as a field in your Window or Scene
+// to manage content loading and unloading.
+
+private IContentManager? contentManager;
+private ITexture? texture;
+private IAudio? audio;
+private IAtlasData? atlas;
+private IFont? font;
+
+public class MainWindow: Window
+{
+    private readonly IContentManager contentManager;
+
+    public MainWindow()
+    {
+        // Instantiate the content manager
+        this.contentManager = ContentManager.Create();
+    }
+
+    // ...other code
+
+    // Load and store references to your assets
+    protected override void OnLoad()
+    {
+        // Loading textures (.png) -> ITexture
+        this.texture = this.contentManager.Load<ITexture>("velaptor-logo");
+
+        // Loading audio (.ogg or .mp3) -> IAudio
+        this.audio = this.contentManager.Load<IAudio>("ice-beam");
+
+        // Loading atlas data (.png/.json) -> IAtlasData
+        this.atlas = this.contentManager.Load<IAtlasData>("level-1-atlas");
+
+        // Loading fonts (.ttf) -> IFont
+        this.font = this.contentManager.Load<IFont>("game-throne");
+
+        base.OnUnload();
+    }
+    // ...other code
+}
+```
+
+### <span className="color-sub-step">Loading Audio Buffer Types</span>
+
+Velaptor provides two main ways to load audio, primarily affecting memory and playback characteristics:
+
+- **`AudioBuffer.Full` (Default):** Loads the entire audio file into memory. Ideal for short sound effects (SFX) that need **instantaneous playback** and are frequently repeated. This is the default when using `Load<IAudio>()`.
+    - Most common for sound effects.
+- **`AudioBuffer.Stream`:** Only loads small chunks of the audio into memory as it plays. Ideal for **long tracks** like background music, as it minimizes memory usage but may have slightly higher latency on playback.
+    - Most common for background music, and large sound files.
+
+To use the streaming buffer:
+
+```csharp showLineNumbers
+var contentManager = ContentManager.Create();
+// Explicitly use LoadAudio() to specify the buffer type
+var streamedAudio = contentManager.LoadAudio("background-music", AudioBuffer.Stream); 
+```
+
+:::tip Font Size vs Render Size
+You can load a font at a specific point size, and then render it at a different render size!
+If you need dynamic font sizing or many different font sizes, consider choosing a base font size
+when loading the content that is between the smallest and largest sizes you will need.
+:::
+
+
+### <span className="color-sub-step">Loading Different Font Sizes</span>
+
+When loading fonts, the **point size** is crucial. By default, `Load<IFont>()` loads a font at **12 points**.
+
+If you need a different size, you must use the specific `LoadFont()` method:
+
+```csharp showLineNumbers
+var contentManager = ContentManager.Create();
+// Load the font at 16 points for clearer game text
+var largeFont = contentManager.LoadFont("game-font", 16); 
+```
+
+
+## <span className="color-step">Unloading Content and Memory Management</span>
+
+To maintain low memory usage, you must **explicitly unload** content when it's no longer necessary. This is especially important when transitioning between large levels or scenes.
+
+Unload your content in the `OnUnload()` method of your derived `Window` class or the `UnloadContent()` method of your derived `SceneBase` class. This is where the importance of storing the `ContentManager` instance as a class field becomes apparent.
+
+```csharp showLineNumbers
+// ...other code
+protected override void OnUnload()
+{
+    // Unload all assets using the ContentManager field instance
+    this.contentManager.Unload(texture);
+    this.contentManager.Unload(audio);
+    this.contentManager.Unload(atlas);
+    this.contentManager.Unload(font);
+}
+// ...other code
+```
+
+:::note Unloading Content's Effect
+When you unload content, you are not only freeing up memory allocated to the asset but also **removing it from the cache**. If you load the exact same content later, it will have to be fully loaded from disk again, which is a slower operation than using a cached item. Manage the tradeoff\!
+:::
+
+
+## <span className="color-step">Cross-Platform Path Features</span>
+
+Velaptor is designed to be cross-platform, handling file path differences between operating systems automatically.
+
+  * **Windows** supports both backslashes (`\`) and forward slashes (`/`).
+  * **POSIX** systems (Linux, MacOS) use only forward slashes (`/`).
+
+Velaptor will correctly convert paths (e.g., Windows-style backslashes to POSIX-style forward slashes) when processing relative paths.
+
+:::caution Path Best Practice
+For maximum compatibility and ease of use, **always use the built-in relative path conventions**.
+
+If you **must** use a fully qualified path, use the built-in dotnet `System.IO.Path` class to construct it, as it correctly handles path separators (`/` or `\`) for the operating system your game is currently running on. Avoid hard-coding path separators\!
+:::

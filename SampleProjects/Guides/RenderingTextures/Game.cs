@@ -40,7 +40,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.mascotTexture = this.contentManager.Load<ITexture>("velaptor-mascot");
+        this.mascotTexture = this.contentManager.Load<ITexture>("velaptor-logo");
 
         base.OnLoad();
     }

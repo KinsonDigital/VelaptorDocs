@@ -28,7 +28,7 @@ For more info, refer to the [Project Setup](./project-setup/project-template-set
 
 ### <span className="color-sub-step">2.1: Create class fields</span>
 
-Create the class fields shown below. These will be used to render the Velaptor mascot texture to the screen.
+Create the class fields shown below. These will be used to render the Velaptor logo texture to the screen.
 
 ```csharp
 public class Game : Window
@@ -36,7 +36,7 @@ public class Game : Window
     private readonly IBatcher batcher; // Used to control batching
     private readonly ITextureRenderer textureRenderer; // Renders textures
     private ILoader<ITexture>? textureLoader; // Used to load textures
-    private ITexture? mascotTexture; // The texture to render
+    private ITexture? logoTexture; // The texture to render
     ...
 }
 ```
@@ -79,10 +79,10 @@ when it is not needed or used anymore.  In the next couple of steps, we will set
 
 Download or create any _**.png**_ file you want.
 
-:::info Velaptor Mascot Image
+:::info Velaptor Logo Image
 Click the image below to download the file.
 
-<StaticDownload relativePath="/img/velaptor.png" sizePercentage={12}/>
+<StaticDownload relativePath="/img/velaptor-logo.png" sizePercentage={12}/>
 :::
 
 ### <span className="color-sub-step">3.2: Add the content</span>
@@ -102,7 +102,7 @@ To do this, override the `OnLoad()` method and add the following code to load th
 ```csharp
 protected override void OnLoad()
 {
-    this.mascotTexture = this.textureLoader.Load("velaptor-mascot");
+    this.logoTexture = this.textureLoader.Load("velaptor-logo");
 
     base.OnLoad();
 }
@@ -132,7 +132,7 @@ Now we can override the `OnUnload()` method and unload the font.
 ```csharp
 protected override void OnUnload()
 {
-    this.textureLoader.Unload(this.mascotTexture);
+    this.textureLoader.Unload(this.logoTexture);
     base.OnUnload();
 }
 
@@ -150,8 +150,8 @@ protected override void OnDraw(FrameTime frameTime)
     var x = (int)(Width / 2); // Center of the window horizontally
     var y = (int)(Height / 2); // Center of the window vertically
 
-    // Render the mascot image in the center of the window
-    this.textureRenderer.Render(this.mascotTexture, x, y);
+    // Render the logo image in the center of the window
+    this.textureRenderer.Render(this.logoTexture, x, y);
 
     IBatcher.End();
 

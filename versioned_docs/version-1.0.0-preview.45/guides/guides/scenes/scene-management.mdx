@@ -70,7 +70,7 @@ You can download the images below by clicking them and the audio player by click
     </div>
 
     <div className="w-1/3">
-        <StaticDownload relativePath="/img/velaptor.png" sizePercentage={55} text="Click to download velaptor logo."/>
+        <StaticDownload relativePath="/img/velaptor-logo.png" sizePercentage={55} text="Click to download velaptor logo."/>
     </div>
 
     <div className="w-1/3">
@@ -507,7 +507,7 @@ public override void LoadContent()
     // highlight-remove-next-line
     this.logoTexture = this.textureLoader.Load("kd-logo");
     // highlight-add-next-line
-    this.logoTexture = this.textureLoader.Load("velaptor-mascot");
+    this.logoTexture = this.textureLoader.Load("velaptor-logo");
     this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
     // highlight-add-start
     this.audio = this.audioLoader.Load("mario-jump", AudioBuffer.Full);
@@ -739,8 +739,8 @@ As you can see, the code for managing the scenes is straightforward and minimal.
 Run the application!  You should see the two scenes shown below.
 
 <div className="flex justify-center">
-    <div className="inline-flex justify-center border-5 border-solid rounded border-[#a99789]">
-        <video autoPlay loop muted playsInline loading="lazy">
+    <div className="w-1/2 border border-solid rounded border-[#39393A]">
+        <video autoPlay loop muted playsInline loading="lazy" className="w-full">
             <source src={require("@site/static/img/guides/scenes/scene-manage.mp4").default} type="video/mp4" />
         </video>
     </div>

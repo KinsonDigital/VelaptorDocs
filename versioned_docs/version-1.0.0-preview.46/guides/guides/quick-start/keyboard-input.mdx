@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Adding Keyboard Input
 
-Your mascot is on screen — now let's make it move! In this final quick start step, we'll use the keyboard to move the sprite around the window.
+Your logo is on screen — now let's make it move! In this final quick start step, we'll use the keyboard to move the sprite around the window.
 
 ## <span className="color-step">Step 1: Add input fields</span>
 
@@ -88,7 +88,7 @@ protected override void OnDraw(FrameTime frameTime)
     this.batcher.Begin();
 
     this.textureRenderer.Render(
-        this.mascotTexture,
+        this.logoTexture,
         (int)this.spritePosition.X,
         (int)this.spritePosition.Y);
 
@@ -100,7 +100,7 @@ protected override void OnDraw(FrameTime frameTime)
 
 ## <span className="color-step">Step 5: Run it</span>
 
-Run the application and use the arrow keys to move the mascot around the window.
+Run the application and use the arrow keys to move the logo around the window.
 
 Congratulations — you've completed the Velaptor quick start! 🎉 You now have a working game window with a
 rendered sprite that responds to keyboard input.

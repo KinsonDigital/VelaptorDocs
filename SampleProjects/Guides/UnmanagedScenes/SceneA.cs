@@ -54,7 +54,7 @@ public class SceneA : SceneBase
     }
 
     /// <summary>
-    /// Unloades the scenes content.
+    /// Unloads the scenes content.
     /// </summary>
     public override void UnloadContent()
     {

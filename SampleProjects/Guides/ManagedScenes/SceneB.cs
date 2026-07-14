@@ -50,7 +50,7 @@ public class SceneB : SceneBase
     /// </summary>
     public override void LoadContent()
     {
-        this.logoTexture = this.contentManager.Load<ITexture>("velaptor-mascot");
+        this.logoTexture = this.contentManager.Load<ITexture>("velaptor-logo");
         this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 12);
         this.audio = this.contentManager.LoadAudio("mario-jump", AudioBuffer.Full);
 
@@ -61,7 +61,7 @@ public class SceneB : SceneBase
     }
 
     /// <summary>
-    /// Unloades the scenes content.
+    /// Unloads the scenes content.
     /// </summary>
     public override void UnloadContent()
     {

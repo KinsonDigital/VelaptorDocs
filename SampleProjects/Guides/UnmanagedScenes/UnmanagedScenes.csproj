@@ -38,7 +38,7 @@
     <None Update="Content\Graphics\kd-logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Content\Graphics\velaptor-mascot.png">
+    <None Update="Content\Graphics\velaptor-logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -16,7 +16,7 @@ if (isProduction) {
 const config: Config = {
 	title: "Velaptor",
 	tagline: "The easy and fun to use 2D game development framework",
-	favicon: "img/favicon.ico",
+	favicon: "img/velaptor-logo.svg",
 	// Set the production url of your site here
 	url: "https://docs.velaptor.io",
 	// Set the /<baseUrl>/ pathname under which your site is served
@@ -162,7 +162,7 @@ const config: Config = {
 				title: "Velaptor",
 				logo: {
 					alt: "Velaptor Logo",
-					src: "img/logo.svg",
+					src: "img/velaptor-logo.svg",
 					width: 32,
 					height: 32
 				},

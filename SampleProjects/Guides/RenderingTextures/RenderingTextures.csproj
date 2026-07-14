@@ -33,7 +33,7 @@
 
   <ItemGroup>
     <None Remove="bin\**" />
-    <None Update="Content\Graphics\velaptor-mascot.png">
+    <None Update="Content\Graphics\velaptor-logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -19,7 +19,7 @@ public class Game : Window
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly IContentManager contentManager;
-    private ITexture? mascotTexture;
+    private ITexture? logoTexture;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Game"/> class.
@@ -40,7 +40,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.mascotTexture = this.contentManager.Load<ITexture>("velaptor-logo");
+        this.logoTexture = this.contentManager.Load<ITexture>("velaptor-logo");
 
         base.OnLoad();
     }
@@ -50,9 +50,9 @@ public class Game : Window
     /// </summary>
     protected override void OnUnload()
     {
-        if (this.mascotTexture is not null)
+        if (this.logoTexture is not null)
         {
-            this.contentManager.Unload(this.mascotTexture);
+            this.contentManager.Unload(this.logoTexture);
         }
 
         base.OnUnload();
@@ -70,8 +70,8 @@ public class Game : Window
         var x = (int)(Width / 2); // Center of the window horizontally
         var y = (int)(Height / 2); // Center of the window vertically
 
-        // Render the mascot image in the center of the window
-        this.textureRenderer.Render(this.mascotTexture, x, y);
+        // Render the logo image in the center of the window
+        this.textureRenderer.Render(this.logoTexture, x, y);
 
         this.batcher.End();
 

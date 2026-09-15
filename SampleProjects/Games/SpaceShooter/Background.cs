@@ -4,6 +4,8 @@
 
 namespace SpaceShooter;
 
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using Carbonate.Fluent;
@@ -16,6 +18,7 @@ using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The background graphics.

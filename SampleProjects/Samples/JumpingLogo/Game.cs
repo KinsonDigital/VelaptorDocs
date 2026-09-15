@@ -14,6 +14,7 @@ using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.
@@ -25,9 +26,9 @@ public class Game : Window
     private const float Gravity = 980;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILineRenderer lineRenderer;
     private readonly IContentManager contentManager;
     private readonly IAppInput<KeyboardState> keyboard;
+    private readonly IShapeRenderer shapeRenderer;
     private readonly Vector2 minVelocity = new (-MaxVel, -MaxVel);
     private readonly Vector2 maxVelocity = new (MaxVel, MaxVel);
     private ITexture? logo;
@@ -56,7 +57,7 @@ public class Game : Window
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
 
         // Used for rendering the ground
-        this.lineRenderer = RendererFactory.CreateLineRenderer();
+        this.shapeRenderer = RendererFactory.CreateShapeRenderer();
 
         // Used for loading textures.
         this.contentManager = ContentManager.Create();
@@ -159,7 +160,7 @@ public class Game : Window
         this.textureRenderer.Render(this.logo, this.position, this.facingDirection);
 
         // Render the ground
-        this.lineRenderer.Render(new Line(new Vector2(0, this.groundPosY), new Vector2(Width, this.groundPosY), Color.White));
+        this.shapeRenderer.Render(new Line(new Vector2(0, this.groundPosY), new Vector2(Width, this.groundPosY), Color.White));
 
         // This must be called for the batch of render calls to be rendered.
         this.batcher.End();

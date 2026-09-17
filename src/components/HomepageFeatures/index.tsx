@@ -16,17 +16,18 @@ export default function HomepageFeatures(): JSX.Element {
 				<div className="flex flex-row items-start">
 					<div className='flex flex-col'>
 						{/* <CodeSnippetSvg width={"100%"} className='self-center'/> */}
-						<img src={codeSnippet} width={"72.7%"} className='self-center' />
-						<h3 className='self-center'>Easy to Use . . .</h3>
+						<img src={codeSnippet} width={"1000%"} className='self-center' />
+						<h3 style={{ marginTop: 85 }} className='self-center'>Easy to Use . . .</h3>
+
 						<div className='self-center'>
-							<p>Velaptor is designed to be easy to start with and to get your 2D</p>
-							<p>game or application up and running quickly.</p>
+							<p>Velaptor is designed to be easy to start with and to get your 2D game or application up and running quickly.</p>
 						</div>
 					</div>
 					<div className='flex flex-col ml-5 mr-5'>
 						{/* <SpaceInvadersSvg width={"100%"} className='self-center'/> */}
 						<img src={spaceInvaders} width={"70%"} className='self-center' />
-						<h3 className='self-center'>Focus on What Matters . . .</h3>
+						<h3 style={{ marginTop: 50 }} className='self-center'>Focus on What Matters . . .</h3>
+
 						<div className='self-center'>
 							<p>Velaptor lets you focus on developing your game so you don't have to worry about the low level details.</p>
 						</div>
@@ -34,7 +35,8 @@ export default function HomepageFeatures(): JSX.Element {
 					<div className='flex flex-col'>
 						{/* <KdSilkLogosSvg width={"100%"} className='self-center p-400'/> */}
 						<img src={kdSilkLogos} width={"100%"} className='self-center' />
-						<h3 className='self-center'>Powered by . . .</h3>
+						<h3 style={{ marginTop: 149 }} className='self-center'>Powered by . . .</h3>
+
 						<div className='self-center'>
 							<a href="https://dotnet.microsoft.com/en-us/languages/csharp">C#</a>, <a href="https://github.com/KinsonDigital">KinsonDigital</a> technologies, and <a href="https://github.com/dotnet/Silk.NET">SILK.NET</a>
 						</div>

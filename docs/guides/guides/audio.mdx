@@ -6,6 +6,7 @@ import Audio from "@site/src/components/Audio";
 import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 import GuideAudio from "@site/src/components/GuideAudio";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Audio
 
@@ -133,8 +134,10 @@ What is an audio buffer?  An audio buffer is just a container that holds the aud
 "audio buffer", think of "audio data".  There are two types of audio buffers, each with its use cases.
 
 The two types of audio buffers are:
-1. `AudioBuffer.Full` - This buffer type means that _**ALL**_ of the audio data will be loaded into memory.
-2. `AudioBuffer.Stream` - This buffer type means that _**ONLY**_ a small portion of the audio data will be loaded into memory at a time.
+<NumberedList items={[
+    <><code>AudioBuffer.Full</code> - This buffer type means that <strong><em>ALL</em></strong> of the audio data will be loaded into memory.</>,
+    <><code>AudioBuffer.Stream</code> - This buffer type means that <strong><em>ONLY</em></strong> a small portion of the audio data will be loaded into memory at a time</>,
+]} />
 
 Using `AudioBuffer.Full` is better for short audio clips such as sound effects, while `AudioBuffer.Stream` is better for longer audio clips such as music.
 You can use either buffer type for short or long audio content, but the buffer type you choose will affect your game's memory usage and performance.
@@ -325,11 +328,13 @@ Run the game, and let's play some music!  You should see the following window:
 <img style={{ width: '75%' }} src={require("@site/static/img/guides/audio/audio-window.png").default} alt="Example banner" />
 
 As the instructions in the title bar state, do the following to test out your game:
-1. Press the space bar to play and pause the audio.
-2. Press the escape key to stop or restart the audio.
-3. Press the left arrow key to rewind 5 seconds.
-4. Press the right arrow key to fast forward 5 seconds.
-5. Press the up arrow key to increase the volume.
-6. Press the down arrow key to decrease the volume.
+<NumberedList items={[
+    "Press the space bar to play and pause the audio.",
+    "Press the escape key to stop or restart the audio.",
+    "Press the left arrow key to rewind 5 seconds.",
+    "Press the right arrow key to fast forward 5 seconds.",
+    "Press the up arrow key to increase the volume.",
+    "Press the down arrow key to decrease the volume."
+]} />
 
 Not bad right?!  Now you can add sound effects and/or music to your games!

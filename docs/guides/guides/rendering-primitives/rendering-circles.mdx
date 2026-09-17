@@ -5,6 +5,7 @@ sidebar_position: 3
 import GuideLink from "@site/src/components/GuideLink";
 import Link from "@docusaurus/Link";
 import ClrText from "@site/src/components/ClrText";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Rendering Circles
 
@@ -130,12 +131,13 @@ Remember, the `Diameter` of a circle is twice the size of the `Radius`.
 ## <span className="color-step">Circle Position</span>
 
 Dealing with the position of the circle is straightforward.  You can set the position of the circle by using the following properties:
-
-1. `Position`
-2. `Top`
-3. `Bottom`
-4. `Left`
-5. `Right`
+<NumberedList items={[
+    <><code>Position</code></>,
+    <><code>Top</code></>,
+    <><code>Bottom</code></>,
+    <><code>Left</code></>,
+    <><code>Right</code></>,
+]} />
 
 Changing the values of the properties above will affect the other property values.
 For example, let's say your circle was at the position of (10, 20) and the size was (100, 200).

@@ -7,6 +7,7 @@ import TabItem from '@theme/TabItem';
 import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 import StaticDownload from "@site/src/components/StaticDownload";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Rendering With An Atlas Texture
 
@@ -38,9 +39,11 @@ Stick with it, though; it will be worth it!
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
-1. <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openInNewTab={true} />
-2. <Url href="gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openInNewTab={true} />
-3. <Url href="www.pinterest.com/pin/676877018967605282/" text="Examples" openInNewTab={true} />
+<NumberedList items={[
+    <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openInNewTab={true} />,
+    <Url href="gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openInNewTab={true} />,
+    <Url href="www.pinterest.com/pin/676877018967605282/" text="Examples" openInNewTab={true} />
+]}/>
 :::
 
 An atlas texture is a large image with multiple sub-images packed into a single image. With this single image, you use another file

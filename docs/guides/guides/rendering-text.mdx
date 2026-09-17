@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 import GuideLink from "@site/src/components/GuideLink";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Rendering Text
 
@@ -89,9 +90,11 @@ we are done batching by invoking the `IBatcher.End()` method.
 All of the rendering calls using any of the renderers should go between the `Begin()` and `End()` method calls.
 
 Just remember the steps:
-1. Invoke `IBatcher.Begin()` method
-2. Invoke all `Render()` methods for the current frame
-3. Invoke the `IBatcher.End()` method
+<NumberedList items={[
+    <>Invoke <code>IBatcher.Begin()</code> method</>,
+    <>Invoke all <code>Render()</code> methods for the current frame</>,
+    <>Invoke the <code>IBatcher.End()</code> method</>
+]} />
 
 That's it!
 </details>

@@ -445,35 +445,6 @@ game.Show();
 // code here will not execute until the window is closed
 ```
 
-### <span className="color-sub-step">ShowAsync()</span>
-
-The `ShowAsync()` method opens the window and runs the game loop on a separate thread. This is useful
-when you need to perform additional work after the window starts, or when integrating with async workflows.
-
-It accepts two optional callbacks:
-- `afterStart` — Invoked after the window has started.
-- `afterUnload` — Invoked after the window has been unloaded.
-
-```csharp
-var game = new Game();
-await game.ShowAsync(
-    afterStart: () => Console.WriteLine("Game started!"),
-    afterUnload: () => Console.WriteLine("Game closed!")
-);
-```
-
-:::tip
-Using `await` with `ShowAsync()` ensures the calling context waits until the window is closed, similar to how `Show()` blocks.
-The game loop itself runs on a separate thread, which is useful when integrating with async workflows.
-Just be mindful of thread safety when accessing shared resources between the game loop and other threads.
-
-If you call `ShowAsync()` **without** `await`, the code after the call will continue executing immediately while the game runs.
-In that case, you need to ensure the main thread stays alive for the duration of the game. One trick is to use
-`Console.ReadLine()` after the `ShowAsync()` call to block the main thread, or have your own loop that performs
-background tasks while the game is running.
-:::
-
-
 ### <span className="color-sub-step">Close()</span>
 
 The `Close()` method shuts down the game window. This triggers the `OnUnload()` lifecycle method, which

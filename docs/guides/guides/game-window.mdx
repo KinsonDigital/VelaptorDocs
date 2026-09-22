@@ -462,24 +462,6 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span className="color-sub-step">Dispose()</span>
-
-The `Dispose()` method releases all resources held by the window. Since `Window` implements `IDisposable`, you
-can also use a `using` statement to ensure proper cleanup:
-
-```csharp
-using var game = new Game();
-game.Show();
-```
-
-You do not need to call `Dispose()` directly when using a `using` statement,
-since it will automatically call `Dispose()` when the game object goes out of scope.
-
-:::tip Best practice
-Using the `using` statement ensures that `Dispose()` is called automatically when the game object goes out of scope,
-even if an exception occurs. This is the recommended pattern for most applications.
-:::
-
 
 ## <span className="color-step">Putting It All Together</span>
 

@@ -1,5 +1,5 @@
 import { Input, Select } from "@cliffy/prompt";
-import { TagClient } from "@kd-clients/github";
+import { TagClient, GitClient } from "@kd-clients/github";
 import { DocProcessor } from "../core/DocProcessor.ts";
 import { Utils } from "../core/Utils.ts";
 
@@ -7,28 +7,20 @@ console.clear();
 
 type GenerateSrcType = "api version" | "branch";
 
-const generateOutputDirPath: string = (Deno.env.get("OUTPUT_DIR_PATH") ?? "").trim();
+const generateOutputDirPath: string = (Deno.env.get("OUTPUT_DIR_PATH") ??
+	`${Deno.cwd()}/docs/api`).trim();
 
-if (generateOutputDirPath === "") {
-	Utils.printGitHubError("The environment variable 'OUTPUT_DIR_PATH' does not exist.");
-	Deno.exit(1);
-}
+let tagOrBranch = (Deno.env.get("TAG_OR_BRANCH") ?? "no-value").trim().toLowerCase();
 
-let tagOrBranch = (Deno.env.get("TAG_OR_BRANCH") ?? "").trim().toLowerCase();
-
-if (tagOrBranch === "") {
-	Utils.printGitHubError("The environment variable 'TAG_OR_BRANCH' does not exist.");
-	Deno.exit(1);
-}
-
-const token = (Deno.env.get("GITHUB_TOKEN") ?? "").trim();
+const token = (Deno.env.get("GITHUB_TOKEN") ?? Deno.env.get("CICD_TOKEN")).trim();
 
 if (token === "") {
 	Utils.printGitHubError("The environment variable 'GITHUB_TOKEN' does not exist.");
+	Deno.exit(1);
 }
 
 // Optional env variable
-const isInteractive = (Deno.env.get("IS_INTERACTIVE") ?? "").trim().toLowerCase() === "true";
+const isInteractive = (Deno.env.get("IS_INTERACTIVE") ?? "true").trim().toLowerCase() === "true";
 
 Utils.printGitHubNotice(`Generate Output Dir Path: ${generateOutputDirPath}`);
 
@@ -51,8 +43,13 @@ if (isInteractive) {
 	}));
 
 	if (generateSrcType === "branch") {
-		tagOrBranch = await Input.prompt({
-			message: "Enter the branch name",
+		const gitClient = new GitClient("KinsonDigital", "Velaptor", token);
+		const allBranches = (await gitClient.getAllBranches()).map(b => b.name);
+		
+		tagOrBranch = await Select.prompt({
+			message: "Choose a branch.",
+			options: allBranches,
+			search: true
 		});
 	} else if (generateSrcType === "api version") {
 		const token = Deno.env.get("CICD_TOKEN");

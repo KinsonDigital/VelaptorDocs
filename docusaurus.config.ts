@@ -216,6 +216,11 @@ const config: Config = {
 						position: "right",
 						className: "header-bluesky-link"
 					},
+					{
+						href: "https://github.com/sponsors/KinsonDigital",
+						position: "right",
+						className: "header-github-sponsors-link"
+					}
 				],
 			},
 			footer: {

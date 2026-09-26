@@ -11,47 +11,17 @@ import Url from "@site/src/components/Url";
 Before creating a Velaptor project, you'll need two things: the .NET SDK and an IDE (Integrated Development Environment).
 This page will walk you through installing both.
 
-:::info
-Velaptor does not run on macOS as of yet. Velaptor projects are currently supported only on Windows and Linux.
-
-Plans to support macOS are in the works, but no timeline has been set for when support will be added.
-:::
-
 ## <span className="color-step">Step 1: Install the .NET SDK</span>
 
 Velaptor is built on .NET, so you'll need the .NET SDK installed. The SDK includes the `dotnet` CLI tool used to create, build, and run projects.
 
-Download the latest .NET SDK from the <Url href="https://dotnet.microsoft.com/en-us/download/dotnet/9.0" text="official .NET download page" openInNewTab={true} />.
+Install instructions of the SDK are provided for each operating system from the official <Url href="https://dotnet.microsoft.com/en-us/download/dotnet/9.0" text="SDK download page" openInNewTab={true} />.
+Use the provided links to install the SDK for your chosen operating system.
 
-<Tabs>
-    <TabItem value="windows" label="Windows" default>
-        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
-            <li>Download the .NET SDK installer for Windows from the link above.</li>
-            <li>Run the installer and follow the prompts.</li>
-            <li>Once complete, open a terminal (Command Prompt or PowerShell) and verify the installation:</li>
-        </ol>
-
-        ```bash
-        dotnet --version
-        ```
-
-        You should see the installed SDK version printed to the console.
-    </TabItem>
-    <TabItem value="linux" label="Linux">
-        
-        <ol style={{ listStyleType: 'decimal', paddingLeft: '1.5rem' }}>
-            <li><Url href="https://learn.microsoft.com/en-us/dotnet/core/install/linux" text="Open the official Linux installation guide" openInNewTab={true} /></li>
-            <li>Choose your Linux distribution and follow those exact steps.</li>
-            <li>After installation, open a terminal and verify the installation:</li>
-        </ol>
-
-        ```bash
-        dotnet --version
-        ```
-
-        You should see the installed SDK version printed to the console.
-    </TabItem>
-</Tabs>
+Once complete, open the terminal for your operating system and verify the installation using the following command:
+```bash
+dotnet --version
+```
 
 ## <span className="color-step">Step 2: Install an IDE</span>
 

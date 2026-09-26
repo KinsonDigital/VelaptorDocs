@@ -5,6 +5,7 @@ sidebar_position: 1
 import GuideLink from "@site/src/components/GuideLink";
 import Link from "@docusaurus/Link";
 import ClrText from "@site/src/components/ClrText";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Rendering Rectangles
 
@@ -116,12 +117,13 @@ This should give you a rectangle that looks like the image below.
 ## <span className="color-step">Rectangle Position</span>
 
 Dealing with the position of the rectangle is straightforward.  You can set the position of the rectangle by using the following properties:
-
-1. `Position`
-2. `Top`
-3. `Bottom`
-4. `Left`
-5. `Right`
+<NumberedList items={[
+    <><code>Position</code></>,
+    <><code>Top</code></>,
+    <><code>Bottom</code></>,
+    <><code>Left</code></>,
+    <><code>Right</code></>,
+]} />
 
 Changing the values of the properties above will affect the other property values.
 For example, let's say your rectangle was at the position of (10, 20) and the size was (100, 200).
@@ -306,8 +308,10 @@ isEmpty = rect.CornerRadius.IsEmpty; // True
 
 One thing to note is that there are internal limits to the radius values, which are as follows:
 
-1. The minimum value is **0**.  Any values below **0** will be set to **0**.
-2. The maximum value is always limited to half of the smallest width or height of the rectangle that the radius is affecting.
+<NumberedList items={[
+    <>The minimum value is <strong>0</strong>.  Any values below <strong>0</strong> will be set to <strong>0</strong>.</>,
+    <>The maximum value is always limited to half of the smallest width or height of the rectangle that the radius is affecting.</>,
+]} />
 
 :::info VALUES LARGER THEN THE maximum
 Using values larger than the smallest half-width or height or values smaller than 0 is okay.  

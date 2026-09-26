@@ -5,22 +5,25 @@ sidebar_position: 2
 import GuideLink from "@site/src/components/GuideLink";
 import Link from "@docusaurus/Link";
 import ClrText from "@site/src/components/ClrText";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Rendering Lines
 
 :::note Guide Source Code
 Go to the <GuideLink projectName="Lines" /> guide project to see the source code for a fully working example of this guide.
 
-This guide will show you only some steps relative to the guide project.  
-It will only show you the essential information related to rendering lines.  
+This guide will show you only some steps relative to the guide project.
+It will only show you the essential information related to rendering lines. 
 The guide project uses most of the concepts discussed in the previous guides.
 :::
 
 Creating lines is very easy! There are only four settings that you need to worry about, and they are:
-1. The starting point
-2. The ending point
-3. The color of the line
-4. The line thickness.
+<NumberedList items={[
+    "The starting point.",
+    "The ending point.",
+    "The color of the line.",
+    "The line thickness.",
+]} />
 
 ## <span className="color-step">Creating & Rendering Lines </span>
 
@@ -53,14 +56,14 @@ line.P2 = new Vector2(200, 200);
 
 ### <span className="color-sub-step">Rendering The Line</span>
 
-To render the line, we must create an `ILineRenderer` renderer.
+To render the line, we must create an `IShapeRenderer` renderer.
 
 ```csharp showLineNumbers
 public Game()
 {
     // If you are rendering from a `Game` class, make sure you have a batcher
     this.batcher = RendererFactory.CreateBatcher();
-    this.lineRenderer = RendererFactory.CreateLineRenderer();
+    this.shapeRenderer = RendererFactory.CreateShapeRenderer();
 }
 ```
 
@@ -72,7 +75,7 @@ protected void OnDraw(FrameTime frameTime)
 {
     IBatcher.Begin();
 
-    this.lineRenderer.Render(line);
+    this.shapeRenderer.Render(line);
 
     IBatcher.End();
 }
@@ -89,22 +92,22 @@ If you created what was described above, you should end up with a line that look
 <br/>
 
 You can also render a line without creating a `Line` object.  It requires using one
-of the `ILineRenderer.RenderLine` method overloads.
+of the `IShapeRenderer.RenderLine` method overloads.
 
 ```csharp showLineNumbers
-this.lineRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40));
+this.shapeRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40));
 
 // or
 
-this.lineRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), 14);
+this.shapeRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), 14);
 
 // or
 
-this.lineRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), Color.MediumSeaGreen);
+this.shapeRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), Color.MediumSeaGreen);
 
 // or
 
-this.lineRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), Color.MediumSeaGreen, 14);
+this.shapeRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), Color.MediumSeaGreen, 14);
 ```
 
 

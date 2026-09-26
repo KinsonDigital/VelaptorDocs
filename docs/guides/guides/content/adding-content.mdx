@@ -2,9 +2,10 @@
 sidebar_position: 1
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 import Url from "@site/src/components/Url";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Adding Content
 
@@ -60,9 +61,11 @@ Once this is complete, download the Velaptor logo image and put it into the _**.
 :::info IMPORTANT
 In the same location as the running application, the _**Content/Graphics**_ folder is _**required**_ for Velaptor's default content location for graphics file content.  
 The default folder names for each type of content are:
-1. _**Graphics:**_ _Content/Graphics_
-2. _**Texture Atlas:**_ _Content/Atlas_
-3. _**Audio:**_ _Content/Audio_
+<NumberedList items={[
+    <><strong><em>Graphics:</em></strong> <em>Content/Graphics</em></>,
+    <><strong><em>Texture Atlas:</em></strong> <em>Content/Atlas</em></>,
+    <><strong><em>Audio:</em></strong> <em>Content/Audio</em></>
+]} />
 :::
 
 

@@ -15,7 +15,9 @@
         "clean": "docusaurus clear && deno eval \"Deno.removeSync('./node_modules', { recursive: true });\"",
         "reinstall-deps": "pnpm clear && pnpm clean && pnpm install",
         "preinstall": "npx only-allow pnpm",
-        "create-pr": "deno run -c ./deno.json --node-modules-dir=false -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR"
+        "create-pr": "deno run -c ./deno.json --node-modules-dir=false -A jsr:@kinsondigital/sprocket@3.0.0 run-job ./dev-tools/sprocket-config.ts --job-name Create-PR",
+        "create-doc-version": "deno run -E --allow-run ./.github/cicd/scripts/create-docusaurus-version.ts",
+        "generate-new-api-docs": "deno run -ERWNS --allow-run ./.github/cicd/scripts/generate-new-api-docs.ts"
     },
     "dependencies": {
         "@docusaurus/core": "3.10.0",

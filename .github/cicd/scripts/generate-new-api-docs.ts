@@ -1,4 +1,4 @@
-import { Input, Select } from "@cliffy/prompt";
+import { Select } from "@cliffy/prompt";
 import { TagClient, GitClient } from "@kd-clients/github";
 import { DocProcessor } from "../core/DocProcessor.ts";
 import { Utils } from "../core/Utils.ts";

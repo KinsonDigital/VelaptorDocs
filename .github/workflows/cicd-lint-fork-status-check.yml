@@ -24,7 +24,7 @@ jobs:
           }
 
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         if: steps.detect_fork.outputs.is_fork == 'true'
 
       - name: Setup Deno (v2.1.x)

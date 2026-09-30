@@ -4,6 +4,8 @@
 
 namespace SpaceShooter;
 
+using System.Collections.Generic;
+
 /// <summary>
 /// Provides a bag of values that can be shuffled and then retrieved in a random order.
 /// </summary>

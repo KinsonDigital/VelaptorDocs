@@ -4,6 +4,7 @@
 
 namespace SpaceShooter;
 
+using System;
 using System.Security.Cryptography;
 
 /// <summary>

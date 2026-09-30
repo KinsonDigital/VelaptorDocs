@@ -10,6 +10,7 @@ using Velaptor.Factories;
 using Velaptor.Input;
 using Velaptor.Scene;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.

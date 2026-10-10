@@ -75,13 +75,13 @@ Now that we have the renderer, we can render the circle to the screen.
 Add the code below to an `OnDraw()` lifecycle method in your `Game` or scene class.
 
 ```csharp showLineNumbers
-protected void OnDraw(FrameTime frameTime)
+protected override void OnDraw(FrameTime frameTime)
 {
-    IBatcher.Begin();
+    this.batcher.Begin();
 
     this.shapeRenderer.Render(circle);
 
-    IBatcher.End();
+    this.batcher.End();
 }
 ```
 
@@ -93,7 +93,7 @@ You should end up with a circle that looks like the image below.
     </div>
 </div>
 
-## <span className="color-step">Rectangle Color</span>
+## <span className="color-step">Circle Color</span>
 
 Setting the color of the circle involves setting the `Color` property. This uses the `System.Drawing.Color` struct that is built
 right into dotnet.
@@ -142,8 +142,8 @@ Dealing with the position of the circle is straightforward.  You can set the pos
 Changing the values of the properties above will affect the other property values.
 For example, let's say your circle was at the position of (10, 20) and the size was (100, 200).
 
-If you were to move the circle to the right by **30** pixels using the 'Left' property, then
-the value of the `Right` property would be **130**.
+If you were to move the circle to the right by **30** pixels using the `Left` property, then
+the value of the `Right` property would be **90**.
 
 The result is that it makes circle positioning easy to work with.  Your code will also be more readable and maintainable because
 you can use the property that makes the most sense for the situation and the rest of your code.
@@ -164,28 +164,31 @@ circle.Position = new Vector2(100, 200);
  * Bottom: 205
 */
 
+// Move to the right 2 pixels
 circle.Left += 2;
 
-/* Positions After Moving Left:
+/* Positions After Moving Right From Position 100,200:
  * Left: 97
  * Right: 107
- * Top: 190
- * Bottom: 210
+ * Top: 195
+ * Bottom: 205
 */
 
+// Move down 2 pixels
 circle.Top += 2;
 
-/* Positions After Moving Down:
+/* Positions After Moving Down From Position 100,200:
  * Left: 95
  * Right: 105
  * Top: 197
  * Bottom: 207
 */
 
+// Increase width and height by 10 pixels
 circle.Radius += 10;
 
-/* Positions After Increasing Radius (or diameter by 5):
- * Left: 985
+/* Positions After Increasing Radius From 5:
+ * Left: 85
  * Right: 115
  * Top: 185
  * Bottom: 215
@@ -243,7 +246,7 @@ Using the settings above, this is what your circle would look like.
 ## <span className="color-step">Color Gradients</span>
 
 You can apply color gradients to the circle, which can come in two types.
-Apply the gradient type by setting the `GradientType` property to either `GradientType.Horizontal` or `GradientType.Vertical`.
+Apply the gradient type by setting the `GradientType` property to either `ColorGradient.Horizontal` or `ColorGradient.Vertical`.
 
 These gradients will transition from one color to another using the `GradientStart` and `GradientStop` properties.
 
@@ -254,13 +257,13 @@ and a vertical color gradient that would transition from <ClrText text="Color.Te
 ```csharp showLineNumbers
 var hGradCircle = new CircleShape();
 // Horizontal gradient circle
-hGradCircle.GradientType = GradientType.Horizontal;
+hGradCircle.GradientType = ColorGradient.Horizontal;
 hGradCircle.GradientStart = Color.MediumSeaGreen;
 hGradCircle.GradientStop = Color.MediumPurple;
 
 // Vertical gradient circle
 var vGradCircle = new CircleShape();
-vGradCircle.GradientType = GradientType.Vertical;
+vGradCircle.GradientType = ColorGradient.Vertical;
 vGradCircle.GradientStart = Color.Teal;
 vGradCircle.GradientStop = Color.DarkOrange;
 ```
@@ -275,6 +278,6 @@ This would end with the result shown below.
 </div>
 
 :::note GRADIENTS WHEN SET TO NONE
-Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `GradientType.None`,
+Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `ColorGradient.None`,
 the gradient will not be rendered, and the circle will be rendered using the `Color` property.
 :::

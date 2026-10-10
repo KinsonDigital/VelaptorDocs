@@ -31,7 +31,7 @@ While this may seem simple, it is a crucial skill for any game developer to mast
 
 To get started, create a new Velaptor application.
 :::note Refer To Guide
-For more info, refer to the [Project Setup](../project-setup/project-template-setup) guide.
+For more info, refer to the [Quick Start](../quick-start/quick-project-setup) guide.
 :::
 
 The only game loop method required for this tutorial will be the `OnUpdate()` method, which we
@@ -42,20 +42,30 @@ will be used to update the game state and resize and move the window respectivel
 
 We need to create some class fields to hold onto the state of the game. Let's do this now.
 
-### <span className="color-sub-step">2.1: Creating the class fields</span>
-
+### <span className="color-sub-step">2.1: Add usings and class fields</span>
 
 Create some class fields that will be useful for things such as getting keyboard state, saving keyboard state,
 and some variables for holding information for moving the window.
 
 ```csharp
+
+// highlight-add-start
+using System.Numerics;
+using Velaptor;
+using Velaptor.Factories;
+using Velaptor.Input;
+using Velaptor.UI;
+// highlight-add-end
+
 public class Game : Window
 {
+    // highlight-add-start
     private const float VelocityXAndY = 300f;
     private readonly IAppInput<KeyboardState> keyboard;
     private KeyboardState currKeyState;
     private KeyboardState prevKeyState;
     private Vector2 velocity = Vector2.Zero;
+    // highlight-add-end
 }
 ```
 
@@ -198,6 +208,8 @@ protected override void OnUpdate(FrameTime frameTime)
 {
     this.currKeyState = this.keyboard.GetState();
     this.prevKeyState = this.currKeyState;
+
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -212,7 +224,9 @@ In between the _**current**_ and _**previous**_ keyboard state lines of code, ad
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-    ...
+    this.currKeyState = this.keyboard.GetState();
+    // highlight-add-start
+
     // If the left or right control key is pressed, move the window.
     if (this.currKeyState.AnyCtrlKeysDown())
     {
@@ -225,7 +239,11 @@ protected override void OnUpdate(FrameTime frameTime)
     }
 
     this.velocity = Vector2.Zero;
-    ...
+
+    // highlight-add-end
+    this.prevKeyState = this.currKeyState;
+
+    base.OnUpdate(frameTime);
 }
 ```
 

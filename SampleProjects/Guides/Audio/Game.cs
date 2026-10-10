@@ -38,7 +38,7 @@ public class Game : Window
     /// </summary>
     protected override void OnLoad()
     {
-        this.music = this.contentManager.LoadAudio("deep-consistency", AudioBuffer.Full);
+        this.music = this.contentManager.LoadAudio("brinstar-music", AudioBuffer.Stream);
 
         base.OnLoad();
     }
@@ -65,9 +65,9 @@ public class Game : Window
     {
         var currKeyState = this.keyboard.GetState();
 
-        bool IsPressed(KeyCode key) => this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
+        bool WasKeyReleased(KeyCode key) => this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
 
-        if (IsPressed(KeyCode.Space))
+        if (WasKeyReleased(KeyCode.Space))
         {
             if (this.music.IsPaused || this.music.IsStopped)
             {
@@ -78,23 +78,23 @@ public class Game : Window
                 this.music.Pause();
             }
         }
-        else if (IsPressed(KeyCode.Escape))
+        else if (WasKeyReleased(KeyCode.Escape))
         {
             this.music.Stop();
         }
-        else if (IsPressed(KeyCode.Left))
+        else if (WasKeyReleased(KeyCode.Left))
         {
             this.music.Rewind(5);
         }
-        else if (IsPressed(KeyCode.Right))
+        else if (WasKeyReleased(KeyCode.Right))
         {
             this.music.FastForward(5);
         }
-        else if (IsPressed(KeyCode.Up))
+        else if (WasKeyReleased(KeyCode.Up))
         {
             this.music.Volume += 10;
         }
-        else if (IsPressed(KeyCode.Down))
+        else if (WasKeyReleased(KeyCode.Down))
         {
             this.music.Volume -= 10;
         }

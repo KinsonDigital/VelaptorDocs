@@ -19,9 +19,9 @@ In any scene that inherits from the `SceneBase` class, you can access a property
 Here is a simple example of using the property to get the center of the window.
 
 ```csharp showLineNumbers
-protected override void OnUpdate(FrameTime frameTime)
+public override void Update(FrameTime frameTime)
 {
-    var center = new Vector2(WindowSize.Width / 2f, WindowSize.Height / 2f);
+this.center = new Vector2(WindowSize.Width / 2f, WindowSize.Height / 2f);scene-window-size
 
     base.OnUpdate(frameTime);
 }
@@ -43,7 +43,8 @@ public override void Resize(SizeU size)
 
 :::info
 The method `Resize()` override will not be invoked unless you use _**Velaptor's**_ built-in scene management.
-The method will not be invoked unless you add the scene to the `SceneManager`.
+Also, the method will not be invoked unless you add the scene to the `SceneManager` and the scenes 
+`WindowSize` property will always reflect the current size of the window.
 
 If you are manually managing your scenes, that is ok.  Manually invoke the `Resize()` method for each scene
 in your `Game` class. Utilize the `OnResize()` method override to invoke your scene's `Resize()` method.

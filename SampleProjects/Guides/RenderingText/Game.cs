@@ -12,7 +12,7 @@ using Velaptor.Content.Fonts;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 
 /// <summary>
 /// The main game class.

@@ -25,7 +25,7 @@ These common formats are supported by default. Velaptor is designed to be extens
 
 **Content caching is done automatically in Velaptor** and is a powerful feature for performance optimization.
 
-When you call a `Load<T>()` method, Velaptor first checks a content cache. It uses the file's **fully qualified path** as the unique identifier.
+When you call a `Load<T>()` method, Velaptor first checks a content cache. It uses the file's **fully qualified path** and the **type of buffer used** as the unique identifier.
 - If the content is **already loaded and in the cache**, Velaptor immediately returns the cached instance. The file is not re-read/loaded from disk
 or re-processed by the GPU/Audio system. This is an **extremely fast** operation.
 - If the content is **not cached**, it is loaded, processed, and then stored in the cache for future use.
@@ -96,17 +96,25 @@ The `ContentManager` is the primary way for loading content.
 // Best Practice: Declare the ContentManager as a field in your Window or Scene
 // to manage content loading and unloading.
 
+using Velaptor.Content;
+using Velaptor.Content.Fonts;
+using Velaptor.UI;
+
 private IContentManager? contentManager;
 private ITexture? texture;
 private IAudio? audio;
 private IAtlasData? atlas;
 private IFont? font;
 
-public class MainWindow: Window
+public class Game: Window
 {
     private readonly IContentManager contentManager;
+    private ITexture texture;
+    private IAudio audio;
+    private IAtlasData atlas;
+    private IFont font;
 
-    public MainWindow()
+    public Game()
     {
         // Instantiate the content manager
         this.contentManager = ContentManager.Create();
@@ -129,8 +137,9 @@ public class MainWindow: Window
         // Loading fonts (.ttf) -> IFont
         this.font = this.contentManager.Load<IFont>("game-throne");
 
-        base.OnUnload();
+        base.OnLoad();
     }
+
     // ...other code
 }
 ```

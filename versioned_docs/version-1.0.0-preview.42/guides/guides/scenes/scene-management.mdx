@@ -14,7 +14,10 @@ import StaticDownload from "@site/src/components/StaticDownload";
 :::note Guide Source Code
 Go to the following links for the source code for fully working examples of managed and unmanaged scenes.
 
+Managed scenes sample (this guide):
 - <GuideLink projectName="ManagedScenes" />
+
+Unmanaged scenes sample (not in this guide):
 - <GuideLink projectName="UnmanagedScenes" />
 :::
 
@@ -29,7 +32,6 @@ Here is a list of the tasks the scene manager handles:
 - Life cycle method for updating
 - Life cycle method for rendering
 - Scene transition
-- Texture batching
 
 What does this mean?  Regarding the life cycle methods, this means that the standard loading and unloading of content,
 updating, and rendering are invoked for you by _**Velaptor**_. You can use these methods if your scene inherits from the `SceneBase` class.
@@ -297,7 +299,7 @@ public override void Update(FrameTime frameTime)
 {
     // highlight-add-start
     var currentMouseState = this.mouse.GetState();
-    this.logoPosition = mouseState.GetPosition();
+    this.logoPosition = currentMouseState.GetPosition();
     // highlight-add-end
     
     base.Update(frameTime);
@@ -660,7 +662,7 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">4.3: Create the scenes</span>
+### <span className="color-sub-step">4.3: Instantiate the scenes</span>
 
 Now, we can create instances of the scenes we made earlier in the guide and add them to the scene manager.
 

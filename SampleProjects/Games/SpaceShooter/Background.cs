@@ -15,7 +15,7 @@ using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 
 /// <summary>
 /// The background graphics.

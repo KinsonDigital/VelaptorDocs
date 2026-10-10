@@ -42,20 +42,30 @@ will be used to update the game state and resize and move the window respectivel
 
 We need to create some class fields to hold onto the state of the game. Let's do this now.
 
-### <span className="color-sub-step">2.1: Creating the class fields</span>
-
+### <span className="color-sub-step">2.1: Add usings and class fields</span>
 
 Create some class fields that will be useful for things such as getting keyboard state, saving keyboard state,
 and some variables for holding information for moving the window.
 
 ```csharp
+
+// highlight-add-start
+using System.Numerics;
+using Velaptor;
+using Velaptor.Factories;
+using Velaptor.Input;
+using Velaptor.UI;
+// highlight-add-end
+
 public class Game : Window
 {
+    // highlight-add-start
     private const float VelocityXAndY = 300f;
     private readonly IAppInput<KeyboardState> keyboard;
     private KeyboardState currKeyState;
     private KeyboardState prevKeyState;
     private Vector2 velocity = Vector2.Zero;
+    // highlight-add-end
 }
 ```
 
@@ -82,10 +92,10 @@ easier to understand. This is good practice no matter what kind of software you 
 
 ### <span className="color-sub-step">3.1: Key pressed detection</span>
 
-Create a private method in the `Game` class with the name `IsPressed()` which will check if a keyboard key has been pressed.
+Create a private method in the `Game` class with the name `WasKeyReleased()` which will check if a keyboard key has been pressed.
 
 ```csharp
-private bool IsPressed(KeyCode key) => this.currKeyState.IsKeyUp(key) && this.prevKeyState.IsKeyDown(key);
+private bool WasKeyReleased(KeyCode key) => this.currKeyState.IsKeyUp(key) && this.prevKeyState.IsKeyDown(key);
 ```
 
 This method will check if the _**current**_ state of the key is in the up position, and if the state of the same key was in the down
@@ -154,22 +164,22 @@ to change the size of the window using the keyboard.
 ```csharp
 private void ChangeWinSize()
 {
-    if (IsPressed(KeyCode.Right))
+    if (WasKeyReleased(KeyCode.Right))
     {
         Width += 50; // Increase the width of the window
     }
 
-    if (IsPressed(KeyCode.Left))
+    if (WasKeyReleased(KeyCode.Left))
     {
         Width -= 50; // Decrease the width of the window
     }
 
-    if (IsPressed(KeyCode.Up))
+    if (WasKeyReleased(KeyCode.Up))
     {
         Height -= 50; // Decrease the height of the window
     }
 
-    if (IsPressed(KeyCode.Down))
+    if (WasKeyReleased(KeyCode.Down))
     {
         Height += 50; // Increase the height of the window
     }
@@ -198,6 +208,8 @@ protected override void OnUpdate(FrameTime frameTime)
 {
     this.currKeyState = this.keyboard.GetState();
     this.prevKeyState = this.currKeyState;
+
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -212,7 +224,9 @@ In between the _**current**_ and _**previous**_ keyboard state lines of code, ad
 ```csharp
 protected override void OnUpdate(FrameTime frameTime)
 {
-    ...
+    this.currKeyState = this.keyboard.GetState();
+    // highlight-add-start
+
     // If the left or right control key is pressed, move the window.
     if (this.currKeyState.AnyCtrlKeysDown())
     {
@@ -225,7 +239,11 @@ protected override void OnUpdate(FrameTime frameTime)
     }
 
     this.velocity = Vector2.Zero;
-    ...
+
+    // highlight-add-end
+    this.prevKeyState = this.currKeyState;
+
+    base.OnUpdate(frameTime);
 }
 ```
 

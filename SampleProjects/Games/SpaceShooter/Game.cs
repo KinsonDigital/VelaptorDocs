@@ -14,7 +14,7 @@ using Velaptor;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 using IAudio = Velaptor.Content.IAudio;
 
 /// <summary>

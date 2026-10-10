@@ -12,7 +12,7 @@ using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 using VelaptorAseprite;
 using VelaptorAseprite.Data;
 

@@ -154,7 +154,7 @@ For more info, refer to the [Quick Start](./quick-start/quick-project-setup) gui
     <TabItem value="built-in" label="Built In Atlas Loader" default>
         Download the atlas texture files below:
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/built-in-atlas.png"
-            downloadFileName="atlas.png"
+            downloadFileName="fire-atlas.png"
             sizePercentage={25}
             text="Click to download the texture atlas."/>
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/built-in-atlas.json"
@@ -163,7 +163,7 @@ For more info, refer to the [Quick Start](./quick-start/quick-project-setup) gui
     </TabItem>
     <TabItem value="aseprite" label="Aseprite Loader">
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/aseprite-atlas.png"
-            downloadFileName="atlas.png"
+            downloadFileName="fire-atlas.png"
             sizePercentage={25}
             text="Click to download the texture atlas."/>
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/aseprite-atlas.json"
@@ -395,7 +395,11 @@ it is not required and there is no need to load the _**.png**_ and _**.json**_ f
         ```csharp showLineNumbers
         protected override void OnUnload()
         {
-            this.contentManager.Unload(this.atlasData);
+            if (this.atlasData is not null)
+            {
+                this.contentManager.Unload(this.atlasData);
+            }
+
             base.OnUnload();
         }
         ```

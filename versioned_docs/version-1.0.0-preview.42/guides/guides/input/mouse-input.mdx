@@ -87,7 +87,7 @@ protected override void OnUpdate(FrameTime frameTime)
 Next, between the two mouse states in the `OnUpdate()` method, change the width of the window by adding the code below:
 
 ```csharp
-private void OnUpdate(FrameTime frameTime)
+protected void OnUpdate(FrameTime frameTime)
 {
     ...
     // If the left mouse button is currently being held in the down position
@@ -122,7 +122,7 @@ Now we can add the code to change the height of the window as we scroll the mous
 Below the `if` block we added in the previous step, add the following code:
 
 ```csharp
-private void OnUpdate(FrameTime frameTime)
+protected void OnUpdate(FrameTime frameTime)
 {
     ...
     // Get the current value of the mouse scroll wheel

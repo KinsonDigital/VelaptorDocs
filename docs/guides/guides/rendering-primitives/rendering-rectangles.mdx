@@ -76,13 +76,13 @@ Now that we have the renderer, we can render the rectangle to the screen.
 Add the code below to an `OnDraw()` lifecycle method in your `Game` or scene class.
 
 ```csharp showLineNumbers
-protected void OnDraw(FrameTime frameTime)
+protected override void OnDraw(FrameTime frameTime)
 {
-    IBatcher.Begin();
+    this.batcher.Begin();
 
     this.shapeRenderer.Render(rect);
 
-    IBatcher.End();
+    this.batcher.End();
 }
 ```
 
@@ -129,7 +129,7 @@ Changing the values of the properties above will affect the other property value
 For example, let's say your rectangle was at the position of (10, 20) and the size was (100, 200).
 
 If you were to move the rectangle to the right by **30** pixels to using the `Left` property, then
-the value of the `Right` property would be **130**.
+the value of the `Right` property would be **90**.
 
 The result is that it makes rectangle positioning easy to work with.  Your code will also be more readable and maintainable because
 you can use the property that makes the most sense for the situation and the rest of your code.
@@ -152,7 +152,7 @@ rect.Position = new Vector2(100, 200);
 
 rect.Left += 2;
 
-/* Positions After Moving Left:
+/* Positions After Moving Right From Position 100,200:
  * Left: 97
  * Right: 107
  * Top: 190
@@ -161,7 +161,7 @@ rect.Left += 2;
 
 rect.Top += 2;
 
-/* Positions After Moving Down:
+/* Positions After Moving Down From Position 100,200:
  * Left: 95
  * Right: 105
  * Top: 192
@@ -170,20 +170,20 @@ rect.Top += 2;
 
 rect.Width += 10;
 
-/* Positions After Increasing Width:
- * Left: 92
- * Right: 112
- * Top: 192
- * Bottom: 212
+/* Positions After Increasing Width From Size 10,20:
+ * Left: 90
+ * Right: 110
+ * Top: 190
+ * Bottom: 210
 */
 
 rect.Height += 20;
 
-/* Positions After Increasing Width:
- * Left: 92
- * Right: 112
- * Top: 182
- * Bottom: 222
+/* Positions After Increasing Height From Size 10,20:
+ * Left: 95
+ * Right: 105
+ * Top: 180
+ * Bottom: 220
 */
 ```
 
@@ -195,7 +195,7 @@ Not the top left corner.
 Did you notice that the `Width` and `Height` properties changed the values of the `Left`, `Right`, `Top`, and `Bottom` properties?
 
 Since the position of the rectangle is relative to the center of the rectangle, changing the value of the `Width` and `Height` of the
-rectangle will affect the position of the sides of the rectangle.
+rectangle will affect the `Left`, `Right`, `Top`, and `Bottom` values of the rectangle.
 
 
 ## <span className="color-step">Solid & Empty Rectangles</span>
@@ -290,18 +290,18 @@ rect.CornerRadius = CornerRadius.SetBottomLeft(rect.CornerRadius, 40);
 
 ### <span className="color-sub-step">Empty Radius</span>
 
-If you want to empty the `CornerRaduis` or check if the `CornerRaduis` is empty.
+If you want to empty the `CornerRadius` or check if the `CornerRadius` is empty.
 
 ```csharp showLineNumbers
 var rect = new RectShape();
 rect.CornerRadius = new CornerRadius(100);
 
-var isEmpty = rect.CornerRadius.IsEmpty; // False
+var isEmpty = rect.CornerRadius.IsEmpty(); // False
 
 // NOTE: The 'Empty' method does not empty the current instance.  It just creates a new empty instance.
 rect.CornerRadius = CornerRadius.Empty();
 
-isEmpty = rect.CornerRadius.IsEmpty; // True
+isEmpty = rect.CornerRadius.IsEmpty(); // True
 ```
 
 ### <span className="color-sub-step">Radius Limits</span>
@@ -328,7 +328,7 @@ you have to implement this on your own.
 ## <span className="color-step">Color Gradients</span>
 
 You can apply color gradients to the rectangle, which can come in two types.
-Apply the gradient type by setting the `GradientType` property to either `GradientType.Horizontal` or `GradientType.Vertical`.
+Apply the gradient type by setting the `GradientType` property to either `ColorGradient.Horizontal` or `ColorGradient.Vertical`.
 
 These gradients will transition from one color to another using the `GradientStart` and `GradientStop` properties.
 
@@ -339,13 +339,13 @@ and a vertical color gradient that would transition from <ClrText text="Color.Te
 ```csharp showLineNumbers
 var hGradRect = new RectShape();
 // Horizontal gradient rectangle
-hGradRect.GradientType = GradientType.Horizontal;
+hGradRect.GradientType = ColorGradient.Horizontal;
 hGradRect.GradientStart = Color.MediumSeaGreen;
 hGradRect.GradientStop = Color.MediumPurple;
 
 // Vertical gradient rectangle
 var vGradRect = new RectShape();
-vGradRect.GradientType = GradientType.Vertical;
+vGradRect.GradientType = ColorGradient.Vertical;
 vGradRect.GradientStart = Color.Teal;
 vGradRect.GradientStop = Color.DarkOrange;
 ```
@@ -360,7 +360,7 @@ This would end with the result shown below.
 </div>
 
 :::note GRADIENTS WHEN SET TO NONE
-Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `GradientType.None`,
+Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `ColorGradient.None`,
 the gradient will not be rendered, and the rectangle will be rendered using the `Color` property.
 :::
 

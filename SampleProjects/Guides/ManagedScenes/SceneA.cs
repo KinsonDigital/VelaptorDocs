@@ -26,7 +26,7 @@ public class SceneA : SceneBase
     private readonly ITextRenderer textRenderer;
     private readonly IAppInput<MouseState> mouse;
     private ITexture? logoTexture;
-    private PointF logoPosition;
+    private Point logoPosition;
     private IFont? font;
 
     /// <summary>
@@ -91,7 +91,7 @@ public class SceneA : SceneBase
         ArgumentNullException.ThrowIfNull(this.logoTexture);
         ArgumentNullException.ThrowIfNull(this.font);
 
-        // Convert the `PointF` to a `Vector2`
+        // Convert the `Point` to a `Vector2`
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
 
         // Render the image

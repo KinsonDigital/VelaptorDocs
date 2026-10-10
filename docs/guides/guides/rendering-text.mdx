@@ -35,7 +35,7 @@ rendering text, and rendering in a batch.
 ```csharp
 private IContentManager contentManager; // Loads various types of content
 private IFont? font; // Holds the font
-private IFontRenderer? fontRenderer; // Renders text using the font
+private ITextRenderer? textRenderer; // Renders text using the font
 private IBatcher? batcher; // Renders the text in a batch
 ```
 
@@ -54,7 +54,7 @@ public Game()
 
 ### <span className="color-sub-step">2.3: Content & rendering objects</span>
 
-Now we can create the content manager, font renderer, and a batcher.  These will be used to
+Now we can create the content manager, text renderer, and a batcher.  These will be used to
 load the font, render the text, and render the content in a single batch.
 
 Add the following code to the constructor create the class field instances.
@@ -64,7 +64,7 @@ public Game()
 {
     ...
     this.contentManager = ContentManager.Create();
-    this.fontRenderer = RendererFactory.CreateFontRenderer();
+    this.textRenderer = RendererFactory.CreateTextRenderer();
     this.batcher = RendererFactory.CreateBatcher();
 }
 ```
@@ -116,7 +116,7 @@ Add the following code to the `OnLoad()` method to load the font.
 ```csharp
 protected override void OnLoad()
 {
-    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 24);
+    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 22);
 
     base.OnLoad();
 }
@@ -157,7 +157,11 @@ and release resources when shutting down the game or when switching to a new sce
 ```csharp
 protected override void OnUnload()
 {
-    this.contentManager.Unload(this.font);
+    if (this.font is not null)
+    {
+        this.contentManager.Unload(this.font);
+    }
+
     base.OnUnload();
 }
 ```
@@ -174,7 +178,7 @@ If you want to take advantage of this caching mechanism in the next scene, do no
 
 ### <span className="color-sub-step">4.1: Setup batcher and renderer</span>
 
-Now that we have a text renderer and a font to render text, we need to use the font renderer to render
+Now that we have a text renderer and a font to render text, we need to use the text renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
 this.
 
@@ -188,7 +192,7 @@ protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
 
-    this.fontRenderer.Render(this.font, "Hello Velaptor!", 400, 400, Color.White);
+    this.textRenderer.Render(this.font, "Hello Velaptor!", 400, 400, Color.White);
 
     this.batcher.End();
 
@@ -245,7 +249,7 @@ public class Game : Window
 {
     ...
     private const string Text = "Hello Velaptor!";
-    private Vector2 velocity = new (100, 100);
+    private Vector2 velocity = new (200, 200);
     private Vector2 position = new (400, 400);
     ...
 }
@@ -372,7 +376,7 @@ Now that we have our little helper method, we can use it in the `ProcessCollisio
 Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
 
 ```csharp
-private void ProcessCollision()
+private void ProcessCollisionAndColor()
 {
     ...
     if (leftSide <= 0)
@@ -412,7 +416,7 @@ protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
 
-    this.fontRenderer.Render(this.font, Text, (int)this.position.X, (int)this.position.Y, this.textColor);
+    this.textRenderer.Render(this.font, Text, (int)this.position.X, (int)this.position.Y, this.textColor);
 
     this.batcher.End();
 

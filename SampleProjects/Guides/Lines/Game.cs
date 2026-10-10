@@ -6,9 +6,7 @@ namespace Lines;
 
 using System.Drawing;
 using System.Numerics;
-using Carbonate.Fluent;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
 using Velaptor.Factories;
@@ -16,6 +14,7 @@ using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.
@@ -25,8 +24,8 @@ public class Game : Window
     private const float Speed = 300;
     private readonly IContentManager contentManager;
     private readonly IBatcher batcher;
-    private readonly ILineRenderer lineRenderer;
-    private readonly IFontRenderer fontRenderer;
+    private readonly IShapeRenderer shapeRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IAppInput<MouseState> mouse;
     private readonly IAppInput<KeyboardState> keyboard;
     private readonly Color[] colors =
@@ -60,8 +59,8 @@ public class Game : Window
         this.contentManager = ContentManager.Create();
 
         this.batcher = RendererFactory.CreateBatcher();
-        this.lineRenderer = RendererFactory.CreateLineRenderer();
-        this.fontRenderer = RendererFactory.CreateFontRenderer();
+        this.shapeRenderer = RendererFactory.CreateShapeRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
 
         this.mouse = HardwareFactory.GetMouse();
         this.keyboard = HardwareFactory.GetKeyboard();
@@ -131,12 +130,12 @@ public class Game : Window
 
         this.batcher.Begin();
 
-        this.lineRenderer.Render(this.line);
+        this.shapeRenderer.Render(this.line);
 
         const int topMargin = 25;
         var textPos = new Vector2(1500f / 2f, (this.textSize.Height / 2f) + topMargin);
 
-        this.fontRenderer.Render(this.font, this.instructions, textPos);
+        this.textRenderer.Render(this.font, this.instructions, textPos);
 
         this.batcher.End();
 

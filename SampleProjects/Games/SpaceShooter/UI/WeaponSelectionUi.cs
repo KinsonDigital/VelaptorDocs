@@ -132,9 +132,9 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
     /// </exception>
     public void Render()
     {
-        if (this.atlasData is null)
+        if (this.atlasData is null || this.atlasData.Texture is null)
         {
-            throw new Exception("The atlas data is null.");
+            throw new Exception("The atlas data or texture is null.");
         }
 
         // Render the colored lazer options
@@ -175,9 +175,9 @@ public sealed class WeaponSelectionUi : IContentLoadable, IUpdatable, IDrawable
     /// <param name="color">The color of the weapon.</param>
     private void RenderWeaponTypes(Vector2 pos, Color color)
     {
-        if (this.atlasData is null)
+        if (this.atlasData is null || this.atlasData.Texture is null)
         {
-            throw new Exception("The atlas data is null.");
+            throw new Exception("The atlas data or texture is null.");
         }
 
         var destRect = new Rectangle(

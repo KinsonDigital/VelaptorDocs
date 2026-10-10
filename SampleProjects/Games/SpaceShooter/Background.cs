@@ -11,11 +11,11 @@ using Signals;
 using Signals.Data;
 using Signals.Interfaces;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The background graphics.

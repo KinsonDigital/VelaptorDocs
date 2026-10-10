@@ -9,7 +9,6 @@ namespace Circles;
 using System.Drawing;
 using System.Numerics;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
 using Velaptor.Factories;
@@ -17,6 +16,7 @@ using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.
@@ -28,7 +28,7 @@ public class Game : Window
     private readonly IAppInput<MouseState> mouse;
     private readonly IBatcher batcher;
     private readonly IShapeRenderer shapeRenderer;
-    private readonly IFontRenderer fontRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IContentManager contentManager;
     private readonly (string Text, SizeF Size)[] circleText =
     [
@@ -68,7 +68,7 @@ public class Game : Window
 
         this.batcher = RendererFactory.CreateBatcher();
         this.shapeRenderer = RendererFactory.CreateShapeRenderer();
-        this.fontRenderer = RendererFactory.CreateFontRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
     }
 
     /// <summary>
@@ -160,10 +160,10 @@ public class Game : Window
             var renderPos = new Vector2((size.Width / 2) + 20, startPos.Y + ((size.Height + 10) * i));
 
             var chosenFont = i == selectedIndex ? this.boldFont : this.regularFont;
-            this.fontRenderer.Render(chosenFont, text, renderPos, color);
+            this.textRenderer.Render(chosenFont, text, renderPos, color);
         }
 
-        this.fontRenderer.Render(this.regularFont, CtrlText, new Vector2(Width / 2f, 50), Color.White);
+        this.textRenderer.Render(this.regularFont, CtrlText, new Vector2(Width / 2f, 50), Color.White);
 
         this.batcher.End();
 

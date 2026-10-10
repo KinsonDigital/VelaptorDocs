@@ -7,13 +7,13 @@ namespace CirclePrison;
 using System.Drawing;
 using System.Numerics;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.
@@ -22,7 +22,6 @@ public class Game : Window
 {
     private readonly IBatcher batcher;
     private readonly IShapeRenderer shapeRenderer;
-    private readonly ILineRenderer lineRenderer;
     private readonly IContentManager contentManager;
     private readonly IAppInput<MouseState> mouse;
     private readonly Random random = new ();
@@ -46,7 +45,6 @@ public class Game : Window
 
         this.batcher = RendererFactory.CreateBatcher();
         this.shapeRenderer = RendererFactory.CreateShapeRenderer();
-        this.lineRenderer = RendererFactory.CreateLineRenderer();
 
         this.contentManager = ContentManager.Create();
 
@@ -144,7 +142,7 @@ public class Game : Window
         this.batcher.Begin();
 
         this.shapeRenderer.Render(this.prison);
-        this.lineRenderer.Render(this.line, 10);
+        this.shapeRenderer.Render(this.line, 10);
         this.shapeRenderer.Render(this.prisoner, 20);
 
         this.batcher.End();

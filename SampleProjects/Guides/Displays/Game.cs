@@ -5,13 +5,13 @@
 namespace Displays;
 
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Hardware;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.
@@ -20,7 +20,7 @@ public class Game : Window
 {
     private const int LineSpacing = 20;
     private readonly IContentManager contentManager;
-    private readonly IFontRenderer fontRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IBatcher batcher;
     private readonly SystemDisplay mainDisplay;
     private readonly List<string> info = [];
@@ -35,7 +35,7 @@ public class Game : Window
     public Game()
     {
         this.batcher = RendererFactory.CreateBatcher();
-        this.fontRenderer = RendererFactory.CreateFontRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
         this.contentManager = ContentManager.Create();
         this.mainDisplay = HardwareFactory.GetMainDisplay();
         this.totalDisplays = HardwareFactory.GetDisplays().Length;
@@ -91,7 +91,7 @@ public class Game : Window
 
         foreach (var line in this.info)
         {
-            this.fontRenderer.Render(this.font, line, this.winCenterX, posY);
+            this.textRenderer.Render(this.font, line, this.winCenterX, posY);
             posY += lineHeight + LineSpacing;
         }
 

@@ -7,13 +7,13 @@ namespace JumpingLogo;
 using System.Drawing;
 using System.Numerics;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 using Velaptor.UI;
+using Velaptor.WebGpu.Batching;
 
 /// <summary>
 /// The main game class.
@@ -25,7 +25,7 @@ public class Game : Window
     private const float Gravity = 980;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
-    private readonly ILineRenderer lineRenderer;
+    private readonly IShapeRenderer lineRenderer;
     private readonly IContentManager contentManager;
     private readonly IAppInput<KeyboardState> keyboard;
     private readonly Vector2 minVelocity = new (-MaxVel, -MaxVel);
@@ -56,7 +56,7 @@ public class Game : Window
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
 
         // Used for rendering the ground
-        this.lineRenderer = RendererFactory.CreateLineRenderer();
+        this.lineRenderer = RendererFactory.CreateShapeRenderer();
 
         // Used for loading textures.
         this.contentManager = ContentManager.Create();

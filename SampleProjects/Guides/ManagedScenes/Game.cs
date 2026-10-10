@@ -55,6 +55,7 @@ public class Game : Window
         }
 
         this.prevKeyState = currentKeyState;
+
         base.OnUpdate(frameTime);
     }
 }

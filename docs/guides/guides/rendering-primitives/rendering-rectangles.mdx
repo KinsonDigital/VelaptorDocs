@@ -76,13 +76,13 @@ Now that we have the renderer, we can render the rectangle to the screen.
 Add the code below to an `OnDraw()` lifecycle method in your `Game` or scene class.
 
 ```csharp showLineNumbers
-protected void OnDraw(FrameTime frameTime)
+protected override void OnDraw(FrameTime frameTime)
 {
-    IBatcher.Begin();
+    this.batcher.Begin();
 
     this.shapeRenderer.Render(rect);
 
-    IBatcher.End();
+    this.batcher.End();
 }
 ```
 
@@ -296,12 +296,12 @@ If you want to empty the `CornerRaduis` or check if the `CornerRaduis` is empty.
 var rect = new RectShape();
 rect.CornerRadius = new CornerRadius(100);
 
-var isEmpty = rect.CornerRadius.IsEmpty; // False
+var isEmpty = rect.CornerRadius.IsEmpty(); // False
 
 // NOTE: The 'Empty' method does not empty the current instance.  It just creates a new empty instance.
 rect.CornerRadius = CornerRadius.Empty();
 
-isEmpty = rect.CornerRadius.IsEmpty; // True
+isEmpty = rect.CornerRadius.IsEmpty(); // True
 ```
 
 ### <span className="color-sub-step">Radius Limits</span>
@@ -328,7 +328,7 @@ you have to implement this on your own.
 ## <span className="color-step">Color Gradients</span>
 
 You can apply color gradients to the rectangle, which can come in two types.
-Apply the gradient type by setting the `GradientType` property to either `GradientType.Horizontal` or `GradientType.Vertical`.
+Apply the gradient type by setting the `GradientType` property to either `ColorGradient.Horizontal` or `ColorGradient.Vertical`.
 
 These gradients will transition from one color to another using the `GradientStart` and `GradientStop` properties.
 
@@ -339,13 +339,13 @@ and a vertical color gradient that would transition from <ClrText text="Color.Te
 ```csharp showLineNumbers
 var hGradRect = new RectShape();
 // Horizontal gradient rectangle
-hGradRect.GradientType = GradientType.Horizontal;
+hGradRect.GradientType = ColorGradient.Horizontal;
 hGradRect.GradientStart = Color.MediumSeaGreen;
 hGradRect.GradientStop = Color.MediumPurple;
 
 // Vertical gradient rectangle
 var vGradRect = new RectShape();
-vGradRect.GradientType = GradientType.Vertical;
+vGradRect.GradientType = ColorGradient.Vertical;
 vGradRect.GradientStart = Color.Teal;
 vGradRect.GradientStop = Color.DarkOrange;
 ```
@@ -360,7 +360,7 @@ This would end with the result shown below.
 </div>
 
 :::note GRADIENTS WHEN SET TO NONE
-Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `GradientType.None`,
+Even if you have the `GradientStart` and `GradientStop` properties set, if the `GradientType` is set to `ColorGradient.None`,
 the gradient will not be rendered, and the rectangle will be rendered using the `Color` property.
 :::
 

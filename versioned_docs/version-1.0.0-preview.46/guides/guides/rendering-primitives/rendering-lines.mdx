@@ -68,13 +68,13 @@ Now that we have the renderer, we can render the line to the screen.
 Add the code below to an `OnDraw()` lifecycle method in your `Game` or scene class.
 
 ```csharp showLineNumbers
-protected void OnDraw(FrameTime frameTime)
+protected override void OnDraw(FrameTime frameTime)
 {
-    IBatcher.Begin();
+    this.batcher.Begin();
 
     this.lineRenderer.Render(line);
 
-    IBatcher.End();
+    this.batcher.End();
 }
 ```
 
@@ -108,7 +108,7 @@ this.lineRenderer.RenderLine(new Vector2(10, 20), new Vector2(30, 40), Color.Med
 ```
 
 
-## <span className="color-step">Rectangle Color</span>
+## <span className="color-step">Line Color</span>
 
 To set the color of the line, set the `Color` property to the desired color.
 

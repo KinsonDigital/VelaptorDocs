@@ -145,7 +145,7 @@ Finally, we can now render our image.  Create the the `OnDraw()` method with the
 ```csharp
 protected override void OnDraw(FrameTime frameTime)
 {
-    IBatcher.Begin();
+    this.batcher.Begin();
 
     var x = (int)(Width / 2); // Center of the window horizontally
     var y = (int)(Height / 2); // Center of the window vertically
@@ -153,7 +153,7 @@ protected override void OnDraw(FrameTime frameTime)
     // Render the logo image in the center of the window
     this.textureRenderer.Render(this.logoTexture, x, y);
 
-    IBatcher.End();
+    this.batcher.End();
 
     base.OnDraw(frameTime);
 }

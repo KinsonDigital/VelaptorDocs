@@ -297,7 +297,7 @@ public override void Update(FrameTime frameTime)
 {
     // highlight-add-start
     var currentMouseState = this.mouse.GetState();
-    this.logoPosition = mouseState.GetPosition();
+    this.logoPosition = currentMouseState.GetPosition();
     // highlight-add-end
     
     base.Update(frameTime);

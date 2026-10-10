@@ -19,7 +19,7 @@ In any scene that inherits from the `SceneBase` class, you can access a property
 Here is a simple example of using the property to get the center of the window.
 
 ```csharp showLineNumbers
-protected override void OnUpdate(FrameTime frameTime)
+public override void Update(FrameTime frameTime)
 {
     var center = new Vector2(WindowSize.Width / 2f, WindowSize.Height / 2f);
 

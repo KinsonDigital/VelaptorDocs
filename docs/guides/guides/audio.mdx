@@ -53,10 +53,12 @@ state for each loop iteration, and load the music audio content.
 ```csharp showLineNumbers
 public class Game : Window
 {
+    // highlight-add-start
     private readonly IContentManager contentManager;
     private readonly IAppInput<KeyboardState> keyboard;
     private IAudio? music;
     private KeyboardState prevKeyState;
+    // highlight-add-end
     ...
 }
 ```
@@ -68,14 +70,19 @@ Let's set up our window to a smaller size, create an object to detect keyboard i
 Create a `Game()` constructor and add the following code:
 
 ```csharp showLineNumbers
-public Game()
+public class Game : Window
 {
-    Title = "Sounds";
-    Width = 1210;
-    Height = 600;
+    public Game()
+    {
+        // highlight-add-start
+        Title = "Sounds";
+        Width = 1210;
+        Height = 600;
 
-    this.keyboard = HardwareFactory.GetKeyboard();
-    this.contentManager = ContentManager.Create();
+        this.keyboard = HardwareFactory.GetKeyboard();
+        this.contentManager = ContentManager.Create();
+        // highlight-add-end
+    }
 }
 ```
 
@@ -119,8 +126,10 @@ audio content and the type of audio buffer to use.
 ```csharp showLineNumbers
 protected override void OnLoad()
 {
+    // highlight-add-start
     this.music = this.contentManager.LoadAudio("brinstar-music", AudioBuffer.Stream);
 
+    // highlight-add-end
     base.OnLoad();
 }
 ```
@@ -154,7 +163,10 @@ Create the `OnUnload()` method and add the following code to unload the audio co
 ```csharp showLineNumbers
 protected override void OnUnload()
 {
+    // highlight-add-start
     this.contentManager.Unload(this.music);
+
+    // highlight-add-end
     base.OnUnload();
 }
 ```
@@ -177,22 +189,27 @@ We'll create a method that displays the information we want in the title bar.  C
 method and add some code to get a string representing the current state of the audio file.
 
 ```csharp showLineNumbers
-private void UpdateTitle()
+public class Game : Window
 {
-    var state = string.Empty;
+    // highlight-add-start
+    private void UpdateTitle()
+    {
+        var state = string.Empty;
 
-    if (this.music.IsStopped)
-    {
-        state = "Stopped";
+        if (this.music.IsStopped)
+        {
+            state = "Stopped";
+        }
+        else if (this.music.IsPlaying)
+        {
+            state = "Playing";
+        }
+        else if (this.music.IsPaused)
+        {
+            state = "Paused";
+        }
     }
-    else if (this.music.IsPlaying)
-    {
-        state = "Playing";
-    }
-    else if (this.music.IsPaused)
-    {
-        state = "Paused";
-    }
+    // highlight-add-end
 }
 ```
 
@@ -256,21 +273,20 @@ To get the current state of the keyboard and to check if any key has been fully 
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
+    // highlight-add-start
     var currKeyState = this.keyboard.GetState();
 
     bool IsPressed(KeyCode key) => this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
+    // highlight-add-end
 }
 ```
 
 :::tip Local Functions
-This code snippet uses a local function to check whether or not a key is pressed, which is a new feature in C# 7.0.  If you are not
+This code snippet uses a local function to check whether or not a key is pressed.  If you are not
 familiar with local functions, you can read more about them <Url href="docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions" text="here" openInNewTab={true} />.
 ```csharp showLineNumbers
 // This is a local function
-bool IsPressed(KeyCode key) 
-{
-    return this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
-}
+bool IsPressed(KeyCode key) => this.prevKeyState.IsKeyDown(key) && currKeyState.IsKeyUp(key);
 ```
 :::
 

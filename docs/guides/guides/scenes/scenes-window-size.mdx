@@ -21,6 +21,7 @@ Here is a simple example of using the property to get the center of the window.
 ```csharp showLineNumbers
 public override void Update(FrameTime frameTime)
 {
+    // highlight-add-next-line
     this.center = new Vector2(WindowSize.Width / 2f, WindowSize.Height / 2f);
 
     base.OnUpdate(frameTime);
@@ -35,6 +36,7 @@ changes. The parameter `size` will contain the new size of the window.
 ```csharp showLineNumbers
 public override void Resize(SizeU size)
 {
+    // highlight-add-next-line
     this.center = new Vector2(size.Width / 2f, size.Height / 2f);
 
     base.Resize(size);

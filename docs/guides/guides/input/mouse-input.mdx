@@ -41,9 +41,11 @@ window.
 ```csharp showLineNumbers
 public class Game : Window
 {
+    // highlight-add-start
     private const int HeightChangeAmount = 50;
     private readonly IAppInput<MouseState> mouse;
     private MouseState prevMouseState;
+    // highlight-add-end
 }
 ```
 
@@ -56,7 +58,14 @@ You can create a new mouse object quickly and easily using Velaptor's `HardwareF
 Use the factory to create the mouse object in the `Game` constructor.
 
 ```csharp showLineNumbers
-public Game() => this.mouse = HardwareFactory.GetMouse();
+public class Game : Window
+{
+    // ... other class code
+    // highlight-add-start
+
+    public Game() => this.mouse = HardwareFactory.GetMouse();
+    // highlight-add-end
+}
 ```
 
 
@@ -74,10 +83,11 @@ if there are differences between the two states to detect if a button has been p
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
+    // highlight-add-start
     var currMouseState = this.mouse.GetState();
-
     this.prevMouseState = currMouseState;
 
+    // highlight-add-end
     base.OnUpdate(frameTime);
 }
 ```
@@ -89,7 +99,9 @@ Next, between the two mouse states in the `OnUpdate()` method, change the width 
 ```csharp showLineNumbers
 protected void OnUpdate(FrameTime frameTime)
 {
-    ...
+    var currMouseState = this.mouse.GetState();
+    // highlight-add-start
+
     // If the left mouse button is currently being held in the down position
     if (currMouseState.GetButtonState(MouseButton.LeftButton))
     {
@@ -103,6 +115,7 @@ protected void OnUpdate(FrameTime frameTime)
         Width += (uint)(currMousePos.X - prevMousePos.X);
     }
 
+    // highlight-add-end
     this.prevMouseState = currMouseState;
 
     base.OnUpdate(frameTime);
@@ -124,7 +137,22 @@ Below the `if` block we added in the previous step, add the following code:
 ```csharp showLineNumbers
 protected void OnUpdate(FrameTime frameTime)
 {
-    ...
+    var currMouseState = this.mouse.GetState();
+
+    // If the left mouse button is currently being held in the down position
+    if (currMouseState.GetButtonState(MouseButton.LeftButton))
+    {
+        // The position of the mouse for the current frame
+        var currMousePos = currMouseState.GetPosition();
+
+        // The position of the mouse in the previous frame
+        var prevMousePos = this.prevMouseState.GetPosition();
+
+        // Add the mouse movement amount to the current width of the window
+        Width += (uint)(currMousePos.X - prevMousePos.X);
+    }
+
+    // highlight-add-start
     // Get the current value of the mouse scroll wheel
     var wheelValue = currMouseState.GetScrollWheelValue();
 
@@ -141,6 +169,7 @@ protected void OnUpdate(FrameTime frameTime)
             : Height + HeightChangeAmount;
     }
 
+    // highlight-add-end
     this.prevMouseState = currMouseState;
 
     base.OnUpdate(frameTime);
@@ -176,7 +205,10 @@ In the `Game` class, add the method shown below:
 ```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
+    // highlight-add-startea
     Title = $"Window Size: W: {Width} H: {Height}";
+    // highlight-add-end
+
     base.OnResize(size);
 }
 ```

@@ -51,6 +51,7 @@ public class Game : Window
         // Loads the atlas.png and atlas.json file
         this.atlasData = this.contentManager.LoadAsepriteAtlas("fire-atlas", "grow");
         this.atlasData.Enabled = true;
+
         this.atlasData.OnFrameChange = (_, _) =>
         {
             // Randomly choose to have the flame flipped horizontally or not flipped at all
@@ -58,10 +59,14 @@ public class Game : Window
                 ? RenderEffects.FlipHorizontally
                 : RenderEffects.None;
         };
+
+        // Executes once the 'grow' animation cycle has completed,
+        // and then transitions to the 'burn' animation cycle.
         this.atlasData.OnCycleComplete = (_) =>
         {
-            this.atlasData.Play("burn");
+            this.atlasData.Play("burn"); // Play a different animation
         };
+
         this.atlasData.Play();
 
         base.OnLoad();
@@ -114,8 +119,8 @@ public class Game : Window
         var frame = this.atlasData.GetCurrentFrame();
 
         var srcRect = frame.Bounds;
-        var destX = (int)(Width / 2);
-        var destY = (int)(Height / 2);
+        var destX = (int)(Width / 2); // Center horizontally
+        var destY = (int)(Height / 2); // Center vertically
         var destRect = new Rectangle(destX, destY, (int)this.atlasData.Texture.Width, (int)this.atlasData.Texture.Height);
 
         this.textureRenderer.Render(

@@ -60,7 +60,7 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
-        ProcessCollision();
+        ProcessCollisionAndColor();
         var displacement = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
         this.position += displacement;
 
@@ -96,7 +96,7 @@ public class Game : Window
         base.OnUnload();
     }
 
-    private void ProcessCollision()
+    private void ProcessCollisionAndColor()
     {
         var textSize = this.font.Measure(Text);
         var halfWidth = textSize.Width / 2;

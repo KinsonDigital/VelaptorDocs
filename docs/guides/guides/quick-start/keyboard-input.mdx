@@ -57,6 +57,7 @@ Override the `OnUpdate()` method to read keyboard input and move the sprite. We 
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
+    // highlight-add-start
     var keyState = this.keyboard.GetState();
     var velocity = Vector2.Zero;
 
@@ -83,6 +84,7 @@ protected override void OnUpdate(FrameTime frameTime)
     this.spritePosition += velocity * (float)frameTime.ElapsedTime.TotalSeconds;
 
     base.OnUpdate(frameTime);
+    // highlight-add-end
 }
 ```
 

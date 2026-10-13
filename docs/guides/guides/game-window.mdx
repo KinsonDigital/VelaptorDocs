@@ -93,7 +93,7 @@ This is useful for debugging and performance monitoring.
 
 :::tip
 Press `Ctrl + Shift + Alt + S` in a running **Velaptor** application to toggle the stats window overlay,
-which displays the current FPS.
+which displays the current FPS. The FPS value will be displayed in the bottom left corner of the window.
 :::
 
 ### <span className="color-sub-step">Mouse cursor visibility</span>
@@ -115,8 +115,8 @@ and rendering of scenes for you. These settings are all `true` by default.
 
 | Property | Description |
 |---|---|
-| `AutoSceneLoading` | Automatically loads scenes when they are added or activated. |
-| `AutoSceneUnloading` | Automatically unloads scenes when they are removed or deactivated. |
+| `AutoSceneLoading` | Automatically loads scenes that have been added to the `SceneManager` and has been activated. |
+| `AutoSceneUnloading` | Automatically unloads scenes that have been added to the `SceneManager` and has been removed from the `SceneManager` or deactivated. |
 | `AutoSceneUpdating` | Automatically calls the update logic for the active scene each frame. |
 | `AutoSceneRendering` | Automatically calls the render logic for the active scene each frame. |
 

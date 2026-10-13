@@ -168,17 +168,18 @@ public class SceneA: SceneBase
 Create a constructor and add the following code to set the loaders and renderers.
 
 ```csharp showLineNumbers
-// highlight-add-start
-public SceneA()
+public class SceneA : SceneBase
 {
-    this.contentManager = ContentManager.Create();
+    // highlight-add-start
+    public SceneA()
+    {
+        this.contentManager = ContentManager.Create();
 
-    this.textureRenderer = RendererFactory.CreateTextureRenderer();
-    this.textRenderer = RendererFactory.CreateTextRenderer();
-
-    this.mouse = HardwareFactory.GetMouse();
+        this.textureRenderer = RendererFactory.CreateTextureRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
+    }
+    // highlight-add-end
 }
-// highlight-add-end
 ```
 
 ### <span className="color-sub-step">2.4: Load the scene content</span>
@@ -192,7 +193,9 @@ Add the following class fields to hold the texture and font.
 ```csharp showLineNumbers
 public class SceneA : SceneBase
 {
-    ...
+    private readonly IContentManager contentManager;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly ITextRenderer textRenderer;
     // highlight-add-start
     private ITexture? logoTexture;
     private IFont? font;
@@ -210,6 +213,7 @@ public override void LoadContent()
     // highlight-add-start
     this.logoTexture = this.textureLoader.Load("kd-logo");
     this.font = this.fontLoader.Load("TimesNewRoman-Regular", 12);
+
     // highlight-add-end
     base.LoadContent();
 }
@@ -239,8 +243,8 @@ public override void UnloadContent()
     {
         this.contentManager.Unload(this.font);
     }
-    // highlight-add-end
 
+    // highlight-add-end
     base.UnloadContent();
 }
 ```
@@ -335,8 +339,8 @@ public override void Render()
 
     // Render the text
     this.textRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 20));
-    // highlight-add-end
 
+    // highlight-add-end
     base.Render();
 }
 ```
@@ -463,6 +467,9 @@ public class SceneB : SceneBase
     private const int WindowWidth = 1000;
     // highlight-add-next-line
     private const int WindowHeight = 1000;
+    // highlight-remove-next-line
+    private const string Instructions = "Left & right arrow keys to navigate to scenes.";
+    // highlight-add-next-line
     private const string Instructions = "Left & right arrow keys to navigate to scenes.\nClick anywhere in the window.";
     private readonly IContentManager contentManager;
     private readonly ITextureRenderer textureRenderer;
@@ -610,12 +617,15 @@ You should have created the `Game` class in step [Step 1.1](./scene-management.m
 Set the title and the window size in the constructor.
 
 ```csharp showLineNumbers
-public Game()
+public class Game : Window
 {
     // highlight-add-start
-    Title = "Managed Scenes";
-    Width = 1000;
-    Height = 1000;
+    public Game()
+    {
+        Title = "Managed Scenes";
+        Width = 1000;
+        Height = 1000;
+    }
     // highlight-add-end
 }
 ```
@@ -635,7 +645,13 @@ public class Game : Window
     private readonly IAppInput<KeyboardState> keyboard;
     private KeyboardState prevKeyState;
     // highlight-add-end
-    ...
+
+    public Game()
+    {
+        Title = "Managed Scenes";
+        Width = 1000;
+        Height = 1000;
+    }
 }
 ```
 
@@ -721,8 +737,8 @@ protected override void OnUpdate(FrameTime frameTime)
 
     this.prevKeyState = currentKeyState;
 
-    base.OnUpdate(frameTime);
     // highlight-add-end
+    base.OnUpdate(frameTime);
 }
 ```
 

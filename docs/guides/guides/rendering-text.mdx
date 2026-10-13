@@ -33,10 +33,16 @@ Create some class fields at the top of the class. These will be used for loading
 rendering text, and rendering in a batch.
 
 ```csharp showLineNumbers
+// highlight-add-start
 private IContentManager contentManager; // Loads various types of content
 private IFont? font; // Holds the font
 private ITextRenderer? textRenderer; // Renders text using the font
 private IBatcher? batcher; // Renders the text in a batch
+// highlight-add-end
+
+public class Game : Window
+{
+}
 ```
 
 ### <span className="color-sub-step">2.2: Setup window</span>
@@ -44,11 +50,16 @@ private IBatcher? batcher; // Renders the text in a batch
 Set the window title and size in the `Game` constructor.  This is self explanatory.
 
 ```csharp showLineNumbers
-public Game()
+public class Game : Window
 {
-    Title = "Render Text Guide";
-    Width = 800;
-    Height = 800;
+    public Game()
+    {
+        // highlight-add-start
+        Title = "Render Text Guide";
+        Width = 800;
+        Height = 800;
+        // highlight-add-end
+    }
 }
 ```
 
@@ -60,12 +71,20 @@ load the font, render the text, and render the content in a single batch.
 Add the following code to the constructor create the class field instances.
 
 ```csharp showLineNumbers
-public Game()
+public class Game : Window
 {
-    ...
-    this.contentManager = ContentManager.Create();
-    this.textRenderer = RendererFactory.CreateTextRenderer();
-    this.batcher = RendererFactory.CreateBatcher();
+    public Game()
+    {
+        Title = "Render Text Guide";
+        Width = 800;
+        Height = 800;
+        // highlight-add-start
+
+        this.contentManager = ContentManager.Create();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
+        this.batcher = RendererFactory.CreateBatcher();
+        // highlight-add-end
+    }
 }
 ```
 
@@ -116,7 +135,9 @@ Add the following code to the `OnLoad()` method to load the font.
 ```csharp showLineNumbers
 protected override void OnLoad()
 {
+    // highlight-add-start
     this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 22);
+    // highlight-add-end
 
     base.OnLoad();
 }
@@ -157,10 +178,12 @@ and release resources when shutting down the game or when switching to a new sce
 ```csharp showLineNumbers
 protected override void OnUnload()
 {
+    // highlight-add-start
     if (this.font is not null)
     {
         this.contentManager.Unload(this.font);
     }
+    // highlight-add-end
 
     base.OnUnload();
 }
@@ -190,11 +213,13 @@ The X and Y values are set to 400, 400 which is the center of the window.
 ```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
+    // highlight-add-start
     this.batcher.Begin();
 
     this.textRenderer.Render(this.font, "Hello Velaptor!", 400, 400, Color.White);
 
     this.batcher.End();
+    // highlight-add-end
 
     base.OnDraw(frameTime);
 }

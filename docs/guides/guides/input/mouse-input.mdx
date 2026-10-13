@@ -38,7 +38,7 @@ Let's create some class fields to help us control the window size.
 Create some class fields that can hold the state of the mouse and the amount that will be applied to the height of the
 window.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     private const int HeightChangeAmount = 50;
@@ -55,7 +55,7 @@ You can create a new mouse object quickly and easily using Velaptor's `HardwareF
 
 Use the factory to create the mouse object in the `Game` constructor.
 
-```csharp
+```csharp showLineNumbers
 public Game() => this.mouse = HardwareFactory.GetMouse();
 ```
 
@@ -71,7 +71,7 @@ use the `mouse` object to get the current state of the mouse.  Also, save the cu
 This way, when the next frame is executed, we can compare the current mouse state to the previous mouse state to see 
 if there are differences between the two states to detect if a button has been pressed or the mouse has moved.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     var currMouseState = this.mouse.GetState();
@@ -86,7 +86,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 Next, between the two mouse states in the `OnUpdate()` method, change the width of the window by adding the code below:
 
-```csharp
+```csharp showLineNumbers
 protected void OnUpdate(FrameTime frameTime)
 {
     ...
@@ -121,7 +121,7 @@ and previous mouse states, there is something to compare to know if the mouse ha
 Now we can add the code to change the height of the window as we scroll the mouse wheel.
 Below the `if` block we added in the previous step, add the following code:
 
-```csharp
+```csharp showLineNumbers
 protected void OnUpdate(FrameTime frameTime)
 {
     ...
@@ -173,7 +173,7 @@ and update the window's title with the new size.
 
 In the `Game` class, add the method shown below:
 
-```csharp
+```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
     Title = $"Window Size: W: {Width} H: {Height}";

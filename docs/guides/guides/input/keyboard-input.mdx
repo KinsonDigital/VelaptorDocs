@@ -47,7 +47,7 @@ We need to create some class fields to hold onto the state of the game. Let's do
 Create some class fields that will be useful for things such as getting keyboard state, saving keyboard state,
 and some variables for holding information for moving the window.
 
-```csharp
+```csharp showLineNumbers
 
 // highlight-add-start
 using System.Numerics;
@@ -75,7 +75,7 @@ To enable keyboard input in your Velaptor game, you'll need to create a new inst
 which will be set to the class field `keyboard`. This will provide access to the current state of the keyboard.
 You can create a new keyboard object quickly and easily using Velaptor's `HardwareFactory` class.
 
-```csharp
+```csharp showLineNumbers
 public Game() => this.keyboard = HardwareFactory.GetKeyboard();
 ```
 
@@ -94,7 +94,7 @@ easier to understand. This is good practice no matter what kind of software you 
 
 Create a private method in the `Game` class with the name `WasKeyReleased()` which will check if a keyboard key has been pressed.
 
-```csharp
+```csharp showLineNumbers
 private bool WasKeyReleased(KeyCode key) => this.currKeyState.IsKeyUp(key) && this.prevKeyState.IsKeyDown(key);
 ```
 
@@ -109,7 +109,7 @@ This will make more sense when we create our `Update()` method logic.
 When we press the arrow keys on the keyboard, we want to move the window around. To do this, create the `MoveWindow()`
 below with the following code.
 
-```csharp
+```csharp showLineNumbers
 private void MoveWindow(FrameTime frameTime)
 {
     if (this.currKeyState.IsKeyDown(KeyCode.Right))
@@ -161,7 +161,7 @@ their code to achieve consistent results.
 The window size will be changed when we press the arrow keys. Create the `ChangeWinSize()` method with the code below
 to change the size of the window using the keyboard.
 
-```csharp
+```csharp showLineNumbers
 private void ChangeWinSize()
 {
     if (WasKeyReleased(KeyCode.Right))
@@ -203,7 +203,7 @@ information, you can make decisions about what actions to take based on the stat
 
 First, set the _**current**_ and _**previous**_ state of the keyboard.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     this.currKeyState = this.keyboard.GetState();
@@ -221,7 +221,7 @@ accurate detection of a _**full**_ key press.
 
 In between the _**current**_ and _**previous**_ keyboard state lines of code, add the logic to the `OnUpdate()` method below:
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     this.currKeyState = this.keyboard.GetState();
@@ -267,7 +267,7 @@ and update the window's title with the new size and position.
 
 Add the method below in the `Game` class.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
     Title = $"Window Size: W: {Width} H: {Height} | Window Position: X: {Position.X} Y: {Position.Y}";

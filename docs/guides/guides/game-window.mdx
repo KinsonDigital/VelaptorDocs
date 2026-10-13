@@ -12,7 +12,7 @@ you control over the appearance, behavior, and lifecycle of your game.
 
 When you create a game with **Velaptor**, you inherit from the `Window` class to create your own game class.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
 }
@@ -32,7 +32,7 @@ These can be set in the constructor of your game class or changed at any time du
 
 The `Title` property sets the text displayed in the title bar of the window. This is typically the name of your game.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "My Awesome Game";
@@ -44,7 +44,7 @@ public Game()
 You can control where the window appears on the screen using the `Position` property. This is a `Vector2`
 that represents the X and Y coordinates of the top-left corner of the window.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Position = new System.Numerics.Vector2(100, 100);
@@ -52,7 +52,7 @@ public Game()
 ```
 
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     WindowState = StateOfWindow.Normal;
@@ -69,7 +69,7 @@ The `TypeOfBorder` property determines the type of border the window has. It use
 | `Fixed` | The window border is fixed and can only be resized programmatically. |
 | `Hidden` | The window has no visible border and can only be resized programmatically. |
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     TypeOfBorder = WindowBorder.Resizable;
@@ -81,7 +81,7 @@ public Game()
 The `UpdateFrequency` property controls how often the update and render calls are invoked, measured in hertz (Hz).
 The default value is `60`, which means the game loop runs 60 times per second.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     UpdateFrequency = 60; // 60 frames per second
@@ -101,7 +101,7 @@ which displays the current FPS.
 The `MouseCursorVisible` property controls whether the system mouse cursor is visible when hovering over the game window.
 You might want to hide it if your game uses a custom cursor or if the cursor is not needed.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     MouseCursorVisible = false; // Hide the system cursor
@@ -122,7 +122,7 @@ and rendering of scenes for you. These settings are all `true` by default.
 
 If you want full manual control over the scene lifecycle, you can disable any of these:
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     AutoSceneLoading = false;
@@ -151,7 +151,7 @@ For most games, the default auto settings work well. Only disable them when you 
 
 In practice, you will typically set multiple properties together in the constructor of your game class:
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "My Awesome Game";
@@ -224,7 +224,7 @@ flowchart LR
 The `OnLoad()` method is invoked **once** when the window first starts up. This is where you load content such as
 textures, fonts, sounds, and any other resources your game needs.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     // Load your content here
@@ -248,7 +248,7 @@ The `FrameTime` parameter provides timing information:
 - `ElapsedTime` — The time that has passed for the current frame.
 - `TotalTime` — The total time the application has been running.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     // Update game logic here
@@ -263,7 +263,7 @@ protected override void OnUpdate(FrameTime frameTime)
 The `OnDraw()` method is invoked **every frame** and always **after** `OnUpdate()`. This is **only** for rendering
 content to the screen. Keep game logic out of this method.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
@@ -286,7 +286,7 @@ All rendering calls must be placed between `Begin()` and `End()`.
 The `OnUnload()` method is invoked **once** when the window is closed. This is where you clean up resources,
 unload content, and free memory.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
     this.contentManager.Unload(this.myTexture);
@@ -306,7 +306,7 @@ Remember, if `AutoSceneUnloading` is disabled, you must manually unload scenes i
 The `OnResize()` method is invoked any time the window's size changes. This includes minimizing, maximizing,
 restoring, and manually resizing the window. The `SizeU` parameter contains the new `Width` and `Height` of the window.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
     // React to window size changes
@@ -360,7 +360,7 @@ control over the window dimensions and the ability to react to size changes.
 
 The `Width` and `Height` properties control the dimensions of the game window in pixels. Both are of type `uint`.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Width = 1280;
@@ -370,7 +370,7 @@ public Game()
 
 You can also read or change these values at runtime:
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     // Dynamically resize the window
@@ -391,7 +391,7 @@ the `OnResize()` method is invoked with a `SizeU` value containing the new dimen
 
 You can also use the `WinResize` delegate when working with `IWindow` directly:
 
-```csharp
+```csharp showLineNumbers
 myWindow.WinResize = (SizeU newSize) =>
 {
     // React to the new size
@@ -417,7 +417,7 @@ The scene manager handles scene transitions, content loading, unloading, updatin
 
 Scenes are a powerful way to organize your game into logical sections such as menus, levels, cutscenes, and more.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     SceneManager.AddScene(new MainMenuScene(), true);
@@ -441,7 +441,7 @@ Once your game class is ready, you need to show the window to start the game loo
 The `Show()` method opens the window and starts the game loop on the current thread. This is the simplest
 way to run your game and the most common. The call blocks until the window is closed.
 
-```csharp
+```csharp showLineNumbers
 var game = new Game();
 game.Show();
 
@@ -453,7 +453,7 @@ game.Show();
 The `Close()` method shuts down the game window. This triggers the `OnUnload()` lifecycle method, which
 allows you to clean up resources before the window is destroyed.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     if (shouldQuit)
@@ -470,7 +470,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 Here is a complete example that demonstrates many of the features covered in this guide:
 
-```csharp
+```csharp showLineNumbers
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Factories;
@@ -531,7 +531,7 @@ public class Game : Window
 
 And the entry point:
 
-```csharp
+```csharp showLineNumbers
 using var game = new Game();
 game.Show();
 ```

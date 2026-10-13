@@ -10,7 +10,7 @@ Your logo is on screen — now let's make it move! In this final quick start ste
 
 Add the following fields to your `Game` class for tracking keyboard state and sprite position.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     // highlight-add-start
@@ -31,7 +31,7 @@ public class Game : Window
 
 In the constructor, create a keyboard input object using `HardwareFactory` and set the sprite's starting position to the center of the window.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "Quick Start";
@@ -54,7 +54,7 @@ public Game()
 Override the `OnUpdate()` method to read keyboard input and move the sprite. We multiply by
 `ElapsedTime.TotalSeconds` so the sprite moves at a consistent speed regardless of frame rate.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     var keyState = this.keyboard.GetState();
@@ -90,7 +90,7 @@ protected override void OnUpdate(FrameTime frameTime)
 
 Modify the `OnDraw()` method to render the sprite at the updated position instead of the fixed center.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();

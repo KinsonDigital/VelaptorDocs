@@ -50,7 +50,7 @@ You only need the `OnLoad()`, `OnUnload()`, and `OnUpdate()` methods.
 Create the required class fields that will be used to read keyboard input, store the previous keyboard
 state for each loop iteration, and load the music audio content.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     private readonly IContentManager contentManager;
@@ -67,7 +67,7 @@ Let's set up our window to a smaller size, create an object to detect keyboard i
 
 Create a `Game()` constructor and add the following code:
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "Sounds";
@@ -116,7 +116,7 @@ Add the following code to the `OnLoad()` method to load the sound.  All that is 
 audio content and the type of audio buffer to use.
 
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     this.music = this.contentManager.LoadAudio("brinstar-music", AudioBuffer.Stream);
@@ -151,7 +151,7 @@ We also need to unload the audio content when the window is closed.  Add the fol
 
 Create the `OnUnload()` method and add the following code to unload the audio content.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
     this.contentManager.Unload(this.music);
@@ -176,7 +176,7 @@ You could display the information in the window itself by rendering text.
 We'll create a method that displays the information we want in the title bar.  Create the following `UpdateTitle()`
 method and add some code to get a string representing the current state of the audio file.
 
-```csharp
+```csharp showLineNumbers
 private void UpdateTitle()
 {
     var state = string.Empty;
@@ -202,7 +202,7 @@ Now, add the following code below what you previously added.  This code will get
 playback in the correct 2-digit format as well as the instructions for the user on how to play, pause, fast forward,
 and rewind the audio.
 
-```csharp
+```csharp showLineNumbers
 private void UpdateTitle()
 {
     var state = string.Empty;
@@ -253,7 +253,7 @@ to see which key is being pressed.
 To get the current state of the keyboard and to check if any key has been fully pressed, add the code below to the
 `OnUpdate()` method. 
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     var currKeyState = this.keyboard.GetState();
@@ -265,7 +265,7 @@ protected override void OnUpdate(FrameTime frameTime)
 :::tip Local Functions
 This code snippet uses a local function to check whether or not a key is pressed, which is a new feature in C# 7.0.  If you are not
 familiar with local functions, you can read more about them <Url href="docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/local-functions" text="here" openInNewTab={true} />.
-```csharp
+```csharp showLineNumbers
 // This is a local function
 bool IsPressed(KeyCode key) 
 {
@@ -279,7 +279,7 @@ bool IsPressed(KeyCode key)
 This tutorial would be pretty useless if we didn't provide control over the audio for demo and learning purposes, right?😉  
 You can make that happen by adding the following code after the local function in the `OnUpdate()` method.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     var currKeyState = this.keyboard.GetState();
@@ -332,7 +332,7 @@ This approach enables us to discern whether a key has moved from a pressed _**do
 
 To implement this, simply insert the following code snippet after the `OnUpdate()` method.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     var currKeyState = this.keyboard.GetState();

@@ -12,7 +12,7 @@ Let's bring the logo to life! In this step, we'll load the image we added in the
 
 Open your `Game` class and add the following usings and class fields. These are the objects we'll need to load and render a texture.
 
-```csharp
+```csharp showLineNumbers
 // highlight-add-start
 using Velaptor;
 using Velaptor.Content;
@@ -39,7 +39,7 @@ public class Game : Window
 
 In the constructor, configure the window and create the objects needed for rendering.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "Quick Start";
@@ -56,7 +56,7 @@ public Game()
 
 Override the `OnLoad()` method to load the logo image. Velaptor uses the file name without the extension, relative to the `Content/Graphics` folder.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     this.logoTexture = this.contentManager.Load<ITexture>("velaptor-logo");
@@ -69,7 +69,7 @@ protected override void OnLoad()
 
 Override the `OnUnload()` method to clean up the texture when the game shuts down.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
     if (this.logoTexture is not null)
@@ -87,7 +87,7 @@ Override the `OnDraw()` method to render the logo image in the center of the win
 
 All rendering must happen between a `batcher.Begin()` and `batcher.End()` call.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();

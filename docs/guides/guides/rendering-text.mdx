@@ -32,7 +32,7 @@ loading content, and perform batching during rendering.
 Create some class fields at the top of the class. These will be used for loading the font,
 rendering text, and rendering in a batch.
 
-```csharp
+```csharp showLineNumbers
 private IContentManager contentManager; // Loads various types of content
 private IFont? font; // Holds the font
 private ITextRenderer? textRenderer; // Renders text using the font
@@ -43,7 +43,7 @@ private IBatcher? batcher; // Renders the text in a batch
 
 Set the window title and size in the `Game` constructor.  This is self explanatory.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "Render Text Guide";
@@ -59,7 +59,7 @@ load the font, render the text, and render the content in a single batch.
 
 Add the following code to the constructor create the class field instances.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     ...
@@ -113,7 +113,7 @@ This can be created using the `ContentManager.Create()` method.
 
 Add the following code to the `OnLoad()` method to load the font.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 22);
@@ -154,7 +154,7 @@ and send in the `IFont` class field we created earlier.
 Let's override the `OnUnload()` method and unload the font.  It is always a good idea to unload
 and release resources when shutting down the game or when switching to a new scene.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
     if (this.font is not null)
@@ -187,7 +187,7 @@ any renderers and then invoke the `IBatcher.End()` when we are finished with all
 
 The X and Y values are set to 400, 400 which is the center of the window.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
@@ -244,7 +244,7 @@ The velocity is what directly influences the movement of the text. The velocity 
 the direction and magnitude of the text's movement.  The position is the current position of the text on the screen.
 
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     ...
@@ -272,7 +272,7 @@ Font objects have a `Measure()` method that returns a `SizeF` type that represen
 To process all of this information, create a method with the name `ProcessCollisionAndColor()`.  This method will perform both the collision
 detection as well as updating the new color of the text on collision.
 
-```csharp
+```csharp showLineNumbers
 private void ProcessCollisionAndColor()
 {
     var textSize = this.font.Measure(Text);
@@ -320,7 +320,7 @@ Now all we have to do is process the collision and update the position of the te
 
 In the `OnUpdate()` method, add the following.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     ProcessCollisionAndColor();
@@ -346,7 +346,7 @@ If the number is negative, it will move in the opposite direction of the positiv
 To change the color, we can use the `Random` class to generate a random color.  
 Create 2 more class fields.  One for creating random numbers and one for holding the color of the text.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     ...
@@ -358,7 +358,7 @@ public class Game : Window
 
 Let's make a method with the name `RandomizeColor()` that will take care of this so we don't have to duplicate so much code. 😉
 
-```csharp
+```csharp showLineNumbers
 private void RandomizeColor()
 {
     var red = this.random.Next(0, 255); // Create a random red value
@@ -375,7 +375,7 @@ private void RandomizeColor()
 Now that we have our little helper method, we can use it in the `ProcessCollisionAndColor()` method.
 Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
 
-```csharp
+```csharp showLineNumbers
 private void ProcessCollisionAndColor()
 {
     ...
@@ -411,7 +411,7 @@ Now the exciting part!  Let's update the `OnDraw()` method to use our `position`
 No point in doing all of this hard work if we can see it.
 
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();

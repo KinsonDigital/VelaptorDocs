@@ -262,22 +262,48 @@ letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
 
 In the `Game` class, add the following code to the constructor to set up the window and instantiate the objects mentioned before.
 
-```csharp showLineNumbers
-public class Game : Window
-{
-    ...
-    public Game()
-    {
-        Title = "Atlas Textures";
-        Width = 500;
-        Height = 500;
+<Tabs groupId="atlas-tool">
+    <TabItem value="built-in" label="Built In Atlas Loader" default>
+        ```csharp showLineNumbers
+        public class Game : Window
+        {
+            ...
+            public Game()
+            {
+                Title = "Built In Atlas Textures";
+                Width = 500;
+                Height = 500;
 
-        this.contentManager = ContentManager.Create();
-        this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.batcher = RendererFactory.CreateBatcher();
-    }
-}
-```
+                this.contentManager = ContentManager.Create();
+                this.textureRenderer = RendererFactory.CreateTextureRenderer();
+                this.batcher = RendererFactory.CreateBatcher();
+            }
+        }
+        ```
+    </TabItem>
+
+    <TabItem value="aseprite" label="Aseprite Loader">
+        ```csharp showLineNumbers
+        public class Game : Window
+        {
+            ...
+            public Game()
+            {
+                Title = "Aseprite Atlas Textures";
+                Width = 500;
+                Height = 500;
+
+                this.contentManager = ContentManager.Create();
+                this.textureRenderer = RendererFactory.CreateTextureRenderer();
+                this.batcher = RendererFactory.CreateBatcher();
+            }
+        }
+        ```
+
+    </TabItem>
+</Tabs>
+
+
 
 
 ## <span className="color-step">Step 6: Load and unload the content</span>

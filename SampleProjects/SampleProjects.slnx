@@ -1,0 +1,74 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Games/">
+    <Project Path="Games/SpaceShooter/SpaceShooter.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/Guides/">
+    <Project Path="Guides/AsepriteAtlasTextures/AsepriteAtlasTextures.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/Audio/Audio.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/BuiltInAtlasTextures/BuiltInAtlasTextures.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/Camera/Camera.csproj" />
+    <Project Path="Guides/Circles/Circles.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/Displays/Displays.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/EmptyProject/EmptyProject.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/KeyboardInput/KeyboardInput.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/Lines/Lines.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/ManagedScenes/ManagedScenes.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/MouseInput/MouseInput.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/QuickStart/QuickStart.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/Rectangles/Rectangles.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/RenderingText/RenderingText.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/RenderingTextures/RenderingTextures.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/RotatingTextures/RotatingTextures.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Guides/UnmanagedScenes/UnmanagedScenes.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/CirclePrison/CirclePrison.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+    <Project Path="Samples/JumpingLogo/JumpingLogo.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+    </Project>
+  </Folder>
+  <Properties Name="RiderSharedRunConfigurations" Scope="PostLoad">
+    <Property Name="File" Value="..\RepoSrc\.run\Publish VelaptorTesting (Release Linux).run.xml" />
+  </Properties>
+</Solution>

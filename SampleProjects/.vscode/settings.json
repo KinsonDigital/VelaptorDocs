@@ -25,4 +25,9 @@
         "*.sln.DotSettings.user": true
     },
     "dotnet.defaultSolution": "SampleProjects.slnx",
+    "[csharp]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false
+    }
 }

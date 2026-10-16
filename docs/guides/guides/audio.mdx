@@ -7,6 +7,7 @@ import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 import GuideAudio from "@site/src/components/GuideAudio";
 import NumberedList from "@site/src/components/NumberedList";
+import Video from "@site/src/components/Video"
 
 # Audio
 
@@ -59,7 +60,6 @@ public class Game : Window
     private IAudio? music;
     private KeyboardState prevKeyState;
     // highlight-add-end
-    ...
 }
 ```
 
@@ -103,9 +103,9 @@ Currently, the supported audio formats are _**.mp3**_ and _**.ogg**_.
 You can provide whatever audio file you want, but if you don't have one, you can download one of these from the audio guide project,
 or from the mini audio players on this page.
 
-<video autoPlay loop muted playsInline loading="lazy">
-    <source src={require("@site/static/img/guides/audio/download-audio.mp4").default} type="video/mp4" />
-</video>
+<div className="flex justify-center">
+    <Video relativePath="video/guides/audio/download-audio.mp4"/>
+</div>
 
 ### <span className="color-sub-step">4.2: Setup file as content</span>
 

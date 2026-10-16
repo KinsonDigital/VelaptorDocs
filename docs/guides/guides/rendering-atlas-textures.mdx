@@ -8,6 +8,7 @@ import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 import StaticDownload from "@site/src/components/StaticDownload";
 import NumberedList from "@site/src/components/NumberedList";
+import Video from "@site/src/components/Video"
 
 # Rendering With An Atlas Texture
 
@@ -674,10 +675,9 @@ animating in the center of the window as shown below.
 The animation will be much smoother than what is shown here.
 :::
 
-<video autoPlay loop muted playsInline loading="lazy">
-    <source src={require("@site/static/video/guides/rendering-atlas-textures/flame.mp4").default} type="video/mp4" />
-</video>
-
+<div className="flex justify-center">
+    <Video relativePath="video/guides/rendering-atlas-textures/flame.mp4"/>
+</div>
 
 ## <span className="color-step">Step 10: Bonus!</span>
 

@@ -8,6 +8,7 @@ import GuideImg from "@site/src/components/GuideImg";
 import GuideAudio from "@site/src/components/GuideAudio";
 import Url from "@site/src/components/Url";
 import StaticDownload from "@site/src/components/StaticDownload";
+import Video from "@site/src/components/Video"
 
 # Scene Management
 
@@ -751,9 +752,5 @@ As you can see, the code for managing the scenes is straightforward and minimal.
 Run the application!  You should see the two scenes shown below.
 
 <div className="flex justify-center">
-    <div className="w-1/2 border border-solid rounded border-[#39393A]">
-        <video autoPlay loop muted playsInline loading="lazy" className="w-full">
-            <source src={require("@site/static/img/guides/scenes/scene-manage.mp4").default} type="video/mp4" />
-        </video>
-    </div>
+    <Video relativePath="video/guides/scenes/scene-manage.mp4"/>
 </div>

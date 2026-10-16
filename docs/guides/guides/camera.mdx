@@ -29,6 +29,9 @@ What a 2D camera usually provides:
 
 _**The key difference:**_ moving something on screen via the camera vs. moving the object itself.
 
+<details>
+    <summary>Explanation</summary>
+
 Here's a concrete example. Say Mario's screen X position is _**100**_. If you pan the camera left, Mario
 appears to move right on screen — but his world X position never changed; it's still _**100**_.
 
@@ -48,9 +51,13 @@ the camera's world position is increasing to follow him.
 This is the key difference: moving the camera makes everything on screen shift, but it
 doesn't change where anything actually is in the game world.
 
+<img style={{width: '75%'}} src={require("@site/static/img/guides/camera/camera-illustration.png").default} alt="Example banner"/>
+
+</details>
+
 Let's get to it!
 
-## <span className="color-step">Step 1: Create Class Fields</span>
+## <span className="color-step">Step 1: Add Usings & Create Class Fields</span>
 
 ### <span className="color-sub-step">Step 1.1: Create Zoom Limit Fields</span>
 
@@ -58,6 +65,20 @@ We need to put some limits on our camera when it comes to zooming. Create some f
 the minimum and maximum zoom level as well as the zoom speed.
 
 ```csharp showLineNumbers
+// highlight-add-start
+using System;
+using System.Drawing;
+using System.Numerics;
+using Velaptor;
+using Velaptor.Batching;
+using Velaptor.Content;
+using Velaptor.Content.Fonts;
+using Velaptor.Factories;
+using Velaptor.Graphics.Renderers;
+using Velaptor.Input;
+using Velaptor.UI;
+
+// highlight-add-end
 public class Game : Window
 {
     // highlight-add-start
@@ -70,7 +91,7 @@ public class Game : Window
 
 ### <span className="color-sub-step">Step 1.2: Setup Rendering</span>
 
-Of course, we need to show something on the screen.  Create some fields that will help us render the the
+Of course, we need to show something on the screen.  Create some fields that will help us render the
 world map of <Url href="https://metroid.nintendo.com/" text="Metroid" openInNewTab={true} />.
 
 ```csharp showLineNumbers
@@ -78,20 +99,19 @@ public class Game : Window
 {
     private const float MaxZoom = 2.0f;
     private const float MinZoom = 0.40f;
-    private const float CamZoomSpeed = 2.0f;
+    private const float CamZoomSpeed = 4.0f;
     // highlight-add-start
     private readonly IBatcher batcher; // Groups draw calls for better performance
     private readonly ITextureRenderer textureRenderer; // Draws images/textures to the screen
     private readonly ITextRenderer textRenderer; // Draws text to the screen
     private readonly IContentManager contentManager; // Loads and unloads game assets (textures, fonts, etc.)
-    private readonly IAppInput<MouseState> mouse; // Used to pan and zoom the camera
     // highlight-add-end
 }
 ```
 
 ### <span className="color-sub-step">Step 1.3: Camera & Controls</span>
 
-Let's add the ability to add some controls for the camera itself.
+Add the ability to control the camera itself.
 
 #### <span className="color-sub-step-item">Step 1.3a: Creating a camera</span>
 
@@ -100,12 +120,11 @@ public class Game : Window
 {
     private const float MaxZoom = 2.0f;
     private const float MinZoom = 0.40f;
-    private const float CamZoomSpeed = 2.0f;
+    private const float CamZoomSpeed = 4.0f;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly ITextRenderer textRenderer;
     private readonly IContentManager contentManager;
-    private readonly IAppInput<MouseState> mouse;
     // highlight-add-start
     private readonly ICamera2D camera; // The actual 2D camera
     // highlight-add-end
@@ -121,13 +140,12 @@ public class Game : Window
 {
     private const float MaxZoom = 2.0f;
     private const float MinZoom = 0.40f;
-    private const float CamZoomSpeed = 2.0f;
+    private const float CamZoomSpeed = 4.0f;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly ITextRenderer textRenderer;
     private readonly IContentManager contentManager;
-    private readonly IAppInput<MouseState> mouse;
-    private readonly ICamera2D camera; // The actual 2D camera
+    private readonly ICamera2D camera;
     // highlight-add-start
     private readonly IAppInput<MouseState> mouse; // Used to pan and zoom the camera
     // highlight-add-end
@@ -144,14 +162,13 @@ public class Game : Window
 {
     private const float MaxZoom = 2.0f;
     private const float MinZoom = 0.40f;
-    private const float CamZoomSpeed = 2.0f;
+    private const float CamZoomSpeed = 4.0f;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly ITextRenderer textRenderer;
     private readonly IContentManager contentManager;
+    private readonly ICamera2D camera;
     private readonly IAppInput<MouseState> mouse;
-    private readonly ICamera2D camera; // The actual 2D camera
-    private readonly IAppInput<MouseState> mouse; // Used to pan and zoom the camera
     // highlight-add-start
     private readonly string instructionsText; // Text shown on screen explaining the controls
     // highlight-add-end
@@ -165,7 +182,7 @@ Now that we have those class fields created, we can add a constructor to the `Ga
 which will do the following:
 
 <NumberedList items={[
-    "Set the width and height of the window to match the size of the map when it is zoomed out at it's maximum",
+    "Set the width and height of the window to match the size of the map when it is zoomed out at its maximum",
     "Create necessary rendering items such as the batcher, texture renderer, and text renderer.",
     "Create the content manager.",
     "Create the camera with various zoom settings.",
@@ -181,7 +198,7 @@ public class Game : Window
     public Game()
     {
         // Size the window to show the entire map at minimum zoom
-        // The map is 2500×2052 pixels. At 40% zoom, that fits in a 1000×820 window
+        // The map is 2500 x 2052 pixels. At 40% zoom, that fits in a 1000 x 820 window
         const int mapWidth = 2500;
         const int mapHeight = 2052;
         Width = (uint)(mapWidth * MinZoom);
@@ -234,7 +251,7 @@ public class Game : Window
 {
     private const float MaxZoom = 2.0f;
     private const float MinZoom = 0.40f;
-    private const float CamZoomSpeed = 2.0f;
+    private const float CamZoomSpeed = 4.0f;
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly ITextRenderer textRenderer;
@@ -244,13 +261,32 @@ public class Game : Window
     private readonly string instructionsText;
     // highlight-add-start
     private ITexture? metroidMapTexture; // The actual texture of the map
-    private Vector2 mapWorldPos; // The world position of the map in WORLD coordinates.
+    private Vector2 mapWorldPos; // The world position of the map in WORLD coordinates
     // highlight-add-end
     // ... other code
 }
 ```
 
 ### <span className="color-sub-step">Step 4.2: Load map texture and font</span>
+
+#### <span className="color-sub-step-item">Step 4.2a: Create the font class field</span>
+
+Create a class field which will be the font used to render the instruction text.
+
+```csharp showLineNumbers
+public class Game : Window
+{
+    // ... other code
+    private ITexture? metroidMapTexture; // The actual texture of the map
+    private Vector2 mapWorldPos; // The world position of the map in WORLD coordinates
+    // highlight-add-start
+    private IFont? font; // Used to render the instruction text
+    // highlight-add-end
+    // ... other code
+}
+```
+
+#### <span className="color-sub-step-item">Step 4.2b: Load content</span>
 
 Create the `OnLoad()` method override, and add the following code to load the map texture, the font to
 use for rendering the instructions text, and set the map world position to the default value of the
@@ -310,9 +346,9 @@ public class Game : Window
 
 ## <span className="color-step">Step 6: Camera Control Behavior</span>
 
-Now to control the camera, we are going to use the mouse. So this means we need to get the current state
-of the mouse so we can inspect it and make decisions on what to do with the map.  We will use the mouse
-to pan and zoom the camera.
+Now to control the camera, we are going to use the mouse to pan and zoom the camera. We'll start by
+adding the `OnUpdate()` method to calculate a frame-rate-independent zoom speed. In the next step,
+we'll read the mouse state and use it to zoom the camera.
 
 ```csharp showLineNumbers
 public class Game : Window
@@ -326,9 +362,6 @@ public class Game : Window
         var camZoomVelocityIn = (float)frameTime.ElapsedTime.TotalSeconds * CamZoomSpeed;
         var camZoomVelocityOut = (float)frameTime.ElapsedTime.TotalSeconds * CamZoomSpeed;
 
-        // Get the current state of the mouse (position, buttons, scroll wheel)
-        var currentMouseState = this.mouse.GetState();
-
         base.OnUpdate(frameTime);
     }
     // highlight-add-end
@@ -337,9 +370,8 @@ public class Game : Window
 
 ### <span className="color-sub-step">Step 6.1: Zooming In & Out</span>
 
-Now that we have the current state of the mouse, add more code to the `OnUpdate()` method to
-use the state of the mouse to check which direction the user is scrolling the mouse wheel.
-If the user is scrolling the mouse wheel, we will zoom in and out.
+Get the current state of the mouse and use it to check which direction the user is scrolling the
+mouse wheel. If the user is scrolling the mouse wheel, we will zoom in and out.
 
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
@@ -348,9 +380,6 @@ protected override void OnUpdate(FrameTime frameTime)
     // Multiplying by elapsed time makes zoom speed consistent regardless of frame rate.
     var camZoomVelocityIn = (float)frameTime.ElapsedTime.TotalSeconds * CamZoomSpeed;
     var camZoomVelocityOut = (float)frameTime.ElapsedTime.TotalSeconds * CamZoomSpeed;
-
-    // Get the current state of the mouse (position, buttons, scroll wheel)
-    var currentMouseState = this.mouse.GetState();
     // highlight-add-start
 
     // Get the current state of the mouse (position, buttons, scroll wheel)
@@ -377,28 +406,78 @@ protected override void OnUpdate(FrameTime frameTime)
 
 ### <span className="color-sub-step">Step 6.2: Panning Camera</span>
 
+The next steps will setup class fields and the `OnUpdate()` method to the
+behavior to pan the camera.
+
+<details>
+    <summary>ℹ️ A note about camera position and perceived movement</summary>
+
+When moving a cameras position by doing the following:
+```csharp showLineNumbers
+// Move the camera to the right 4 pixels
+this.camera.Position += new Vector2(4, 0);
+```
+
+The camera will indeed move to the right, but the rest of the items in the scene will look like
+they are moving to the left.  This can cause confusion to people new to camera systems and game
+development. 
+
+Take a real world example.  If you were holding a camera looking at your friend who is standing still,
+and you starting stepping to the right, which is moving the camera to the right, your fiend standing
+still would look like they are moving left inside the camera.  This is the same thing that is happening
+here!
+
+Remember, there is a difference between objects moving in a scene vs the camera moving.
+
+</details>
+
+#### <span className="color-sub-step-item">Step 6.2a: Add panning tracking fields</span>
+
+Create fields that will help hold the state of the mouse dragging the camera around,
+the mouse position when the mouse button was clicked, and the position of the camera
+when the mouse was clicked.
+
+```csharp showLineNumbers
+public class Game : Window
+{
+    // ... other code
+    private Vector2 mapWorldPos;
+    private IFont? font; // Used to render the instruction text
+    // highlight-add-start
+    private bool isDragging; // True while the left mouse button is held down
+    private Point dragStartMousePos; // Mouse position (in screen pixels) when the drag started
+    private Vector2 dragStartCameraPos; // Camera position (in world units) when the drag started
+    // highlight-add-end
+    // ... other code
+}
+```
+
+#### <span className="color-sub-step-item">Step 6.2b: Add behavior to pan the camera</span>
+
 Now for the panning of the camera. If the map is zoomed out 100%, then we can see the entire map,
 so panning the camera has no real use. But what if we are zoomed into the map and we cannot see
-the entire map?  This is where panning, (moving the camera's position) comes in.
+the entire map?  This is where panning (moving the camera's position) comes in.
 
 Add code to the `OnUpdate()` method to check if the left mouse button is being held down.
 If so, we can then see if the mouse is dragging, which it is not when we first press
-down the mouse button. At this point, we set the mouse state into dragging mode, record
+down the mouse button. At this point, we set a dragging flag, record
 the starting position, and the camera position.
 
 We will then calculate the difference (delta) between the current mouse's position and the
 position of the mouse when we pressed the button.  This difference will then be used to
 calculate the new position for the camera.
 
-:::info Delta?
-The reason we need the delta is because the position of the map is relative to it's center.
-This means if we click the mouse anywhere else on the screen that is not the center, the map
-will teleport to the mouse every time we click the mouse button.  The delta represents
-the distance between the center of the map which it's position vs where we clicked. 
+<details>
+    <summary>ℹ️ Why do we need delta?</summary>
 
-Essentially, this let's us drag the camera based on where we clicked instead of the center
-of the map.
-:::
+The delta tracks how far the mouse has moved since the drag started. Without it, the camera
+would teleport to wherever you clicked, because `camera.Position` is the world coordinate shown
+at the center of the screen — not the point under your cursor.
+
+Essentially, the delta lets us drag the camera based on where we clicked instead of the center
+of the screen.
+
+</details>
 
 ```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
@@ -488,7 +567,12 @@ public class Game : Window
             throw new InvalidOperationException("Font was not loaded.");
         }
 
-        // Transform the map's WORLD position to a SCREEN position
+        if (this.metroidMapTexture is null)
+        {
+            throw new InvalidOperationException("Map texture was not loaded.");
+        }
+
+        // Transform the maps WORLD position to a SCREEN position
         // This applies the camera's pan (Position) and zoom, converting where the map
         // exists in the world to where it should be drawn on the screen
         var mapPos = this.camera.TransformPosition(this.mapWorldPos);
@@ -498,7 +582,7 @@ public class Game : Window
         var textureScale = this.camera.TransformSize(1f);
 
         // Show the current zoom level in the window title
-        Title = $"Camera Guide | Zoom: {this.camera.Zoom}";
+        Title = $"Camera Guide | Zoom: {this.camera.Zoom:0.00}";
 
         base.OnDraw(frameTime);
     }
@@ -509,8 +593,7 @@ public class Game : Window
 ### <span className="color-sub-step">Step 7.2: Render Map & Instructions</span>
 
 Now that we have our position and size in screen space, we can use those values to render the map texture.
-Add the following code to the `OnDraw()` method to do this. We also will render the instruction text to
-to screen as well.
+Add the following code to the `OnDraw()` method to do this. We also will render the instruction text to screen as well.
 
 ```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)

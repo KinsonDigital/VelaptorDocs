@@ -215,6 +215,11 @@ public class Game : Window
             throw new InvalidOperationException("Font was not loaded.");
         }
 
+        if (this.metroidMapTexture is null)
+        {
+            throw new InvalidOperationException("Texture not loaded");
+        }
+
         // Transform the map's WORLD position to a SCREEN position
         // This applies the camera's pan (Position) and zoom, converting where the map
         // exists in the world to where it should be drawn on the screen

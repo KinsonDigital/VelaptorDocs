@@ -4,6 +4,8 @@
 
 namespace SpaceShooter.Signals;
 
+using System;
+
 /// <summary>
 /// Various identifiers for signals.
 /// </summary>

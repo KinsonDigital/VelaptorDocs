@@ -4,6 +4,7 @@
 
 namespace SpaceShooter.UI;
 
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using Carbonate.Fluent;

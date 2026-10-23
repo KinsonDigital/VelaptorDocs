@@ -16,7 +16,7 @@ public struct Line
 
 <a name='Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2)'></a>
 
-### Line\(Vector2, Vector2\) Constructor
+### Line\(Vector2, Vector2\) Constructor \{#Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2)}
 
 Initializes a new instance of the [Line](Velaptor.Graphics.Line.md 'Velaptor\.Graphics\.Line') struct\.
 
@@ -39,7 +39,7 @@ The ending point of the line\.
 
 <a name='Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2,float)'></a>
 
-### Line\(Vector2, Vector2, float\) Constructor
+### Line\(Vector2, Vector2, float\) Constructor \{#Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2,float)}
 
 Initializes a new instance of the [Line](Velaptor.Graphics.Line.md 'Velaptor\.Graphics\.Line') struct\.
 
@@ -68,7 +68,7 @@ The thickness of the line\.
 
 <a name='Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color)'></a>
 
-### Line\(Vector2, Vector2, Color\) Constructor
+### Line\(Vector2, Vector2, Color\) Constructor \{#Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color)}
 
 Initializes a new instance of the [Line](Velaptor.Graphics.Line.md 'Velaptor\.Graphics\.Line') struct\.
 
@@ -97,7 +97,7 @@ The color of the line\.
 
 <a name='Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,float)'></a>
 
-### Line\(Vector2, Vector2, Color, float\) Constructor
+### Line\(Vector2, Vector2, Color, float\) Constructor \{#Velaptor.Graphics.Line.Line(System.Numerics.Vector2,System.Numerics.Vector2,System.Drawing.Color,float)}
 
 Initializes a new instance of the [Line](Velaptor.Graphics.Line.md 'Velaptor\.Graphics\.Line') struct\.
 
@@ -133,7 +133,7 @@ The thickness of the line\.
 
 <a name='Velaptor.Graphics.Line.Color'></a>
 
-### Color 
+### Color \{#Velaptor.Graphics.Line.Color}
 
 Gets or sets the color of the line\.
 
@@ -146,7 +146,7 @@ public System.Drawing.Color Color { get; set; }
 
 <a name='Velaptor.Graphics.Line.P1'></a>
 
-### P1 
+### P1 \{#Velaptor.Graphics.Line.P1}
 
 Gets or sets the starting point of the line\.
 
@@ -159,7 +159,7 @@ public System.Numerics.Vector2 P1 { get; set; }
 
 <a name='Velaptor.Graphics.Line.P2'></a>
 
-### P2 
+### P2 \{#Velaptor.Graphics.Line.P2}
 
 Gets or sets the ending point of the line\.
 
@@ -172,7 +172,7 @@ public System.Numerics.Vector2 P2 { get; set; }
 
 <a name='Velaptor.Graphics.Line.Thickness'></a>
 
-### Thickness 
+### Thickness \{#Velaptor.Graphics.Line.Thickness}
 
 Gets or sets the thickness of the line\.
 

@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Exceptions.AtlasException.AtlasException()'></a>
 
-### AtlasException() Constructor
+### AtlasException() Constructor \{#Velaptor.Exceptions.AtlasException.AtlasException()}
 
 Initializes a new instance of the [AtlasException](Velaptor.Exceptions.AtlasException.md 'Velaptor.Exceptions.AtlasException') class.
 
@@ -28,7 +28,7 @@ public AtlasException();
 
 <a name='Velaptor.Exceptions.AtlasException.AtlasException(string,System.Exception)'></a>
 
-### AtlasException(string, Exception) Constructor
+### AtlasException(string, Exception) Constructor \{#Velaptor.Exceptions.AtlasException.AtlasException(string,System.Exception)}
 
 Initializes a new instance of the [AtlasException](Velaptor.Exceptions.AtlasException.md 'Velaptor.Exceptions.AtlasException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.AtlasException.AtlasException(string)'></a>
 
-### AtlasException(string) Constructor
+### AtlasException(string) Constructor \{#Velaptor.Exceptions.AtlasException.AtlasException(string)}
 
 Initializes a new instance of the [AtlasException](Velaptor.Exceptions.AtlasException.md 'Velaptor.Exceptions.AtlasException') class.
 

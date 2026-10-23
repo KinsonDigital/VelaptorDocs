@@ -18,7 +18,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 
 <a name='Velaptor.FrameTime.ElapsedTime'></a>
 
-### ElapsedTime 
+### ElapsedTime \{#Velaptor.FrameTime.ElapsedTime}
 
 Gets the total time that has passed for the current frame\.
 
@@ -31,7 +31,7 @@ public System.TimeSpan ElapsedTime { get; init; }
 
 <a name='Velaptor.FrameTime.TotalTime'></a>
 
-### TotalTime 
+### TotalTime \{#Velaptor.FrameTime.TotalTime}
 
 Gets the total time that the entire application has been running\.
 

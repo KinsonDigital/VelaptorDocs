@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Content.Exceptions.LoadAudioException.LoadAudioException()'></a>
 
-### LoadAudioException() Constructor
+### LoadAudioException() Constructor \{#Velaptor.Content.Exceptions.LoadAudioException.LoadAudioException()}
 
 Initializes a new instance of the [LoadAudioException](Velaptor.Content.Exceptions.LoadAudioException.md 'Velaptor.Content.Exceptions.LoadAudioException') class.
 
@@ -28,7 +28,7 @@ public LoadAudioException();
 
 <a name='Velaptor.Content.Exceptions.LoadAudioException.LoadAudioException(string,System.Exception)'></a>
 
-### LoadAudioException(string, Exception) Constructor
+### LoadAudioException(string, Exception) Constructor \{#Velaptor.Content.Exceptions.LoadAudioException.LoadAudioException(string,System.Exception)}
 
 Initializes a new instance of the [LoadAudioException](Velaptor.Content.Exceptions.LoadAudioException.md 'Velaptor.Content.Exceptions.LoadAudioException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.LoadAudioException.LoadAudioException(string)'></a>
 
-### LoadAudioException(string) Constructor
+### LoadAudioException(string) Constructor \{#Velaptor.Content.Exceptions.LoadAudioException.LoadAudioException(string)}
 
 Initializes a new instance of the [LoadAudioException](Velaptor.Content.Exceptions.LoadAudioException.md 'Velaptor.Content.Exceptions.LoadAudioException') class.
 

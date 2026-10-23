@@ -26,7 +26,7 @@ Derived
 
 <a name='Velaptor.Content.IContent.FilePath'></a>
 
-### FilePath 
+### FilePath \{#Velaptor.Content.IContent.FilePath}
 
 Gets the path to the content\.
 
@@ -39,7 +39,7 @@ string FilePath { get; }
 
 <a name='Velaptor.Content.IContent.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Content.IContent.Name}
 
 Gets the name of the content\.
 

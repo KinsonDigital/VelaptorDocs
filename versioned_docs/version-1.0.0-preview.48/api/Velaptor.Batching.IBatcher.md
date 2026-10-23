@@ -16,7 +16,7 @@ public interface IBatcher
 
 <a name='Velaptor.Batching.IBatcher.ClearColor'></a>
 
-### ClearColor 
+### ClearColor \{#Velaptor.Batching.IBatcher.ClearColor}
 
 Gets or sets the color of the back buffer when cleared\.
 
@@ -29,7 +29,7 @@ System.Drawing.Color ClearColor { get; set; }
 
 <a name='Velaptor.Batching.IBatcher.HasBegun'></a>
 
-### HasBegun 
+### HasBegun \{#Velaptor.Batching.IBatcher.HasBegun}
 
 Gets a value indicating whether the batch process has begun\.
 
@@ -43,7 +43,7 @@ bool HasBegun { get; }
 
 <a name='Velaptor.Batching.IBatcher.Begin()'></a>
 
-### Begin\(\) 
+### Begin\(\) \{#Velaptor.Batching.IBatcher.Begin()}
 
 Starts the batch rendering process\.  Must be called before invoking any render methods\.
 
@@ -53,7 +53,7 @@ void Begin();
 
 <a name='Velaptor.Batching.IBatcher.End()'></a>
 
-### End\(\) 
+### End\(\) \{#Velaptor.Batching.IBatcher.End()}
 
 Ends the batch process\.  Calling this will perform the actual GPU render process\.
 

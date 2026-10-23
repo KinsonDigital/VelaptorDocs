@@ -20,7 +20,7 @@ Implements [ITextureIdGenerator](Velaptor.Content.ITextureIdGenerator.md 'Velapt
 
 <a name='Velaptor.Content.TextureIdGenerator.GenerateNextId()'></a>
 
-### GenerateNextId\(\) 
+### GenerateNextId\(\) \{#Velaptor.Content.TextureIdGenerator.GenerateNextId()}
 
 Generates unique, only used once per texture, ID value\.
 

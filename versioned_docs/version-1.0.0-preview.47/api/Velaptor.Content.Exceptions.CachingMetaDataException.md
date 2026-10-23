@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException()'></a>
 
-### CachingMetaDataException\(\) Constructor
+### CachingMetaDataException\(\) Constructor \{#Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException()}
 
 Initializes a new instance of the [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor\.Content\.Exceptions\.CachingMetaDataException') class\.
 
@@ -28,7 +28,7 @@ public CachingMetaDataException();
 
 <a name='Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException(string)'></a>
 
-### CachingMetaDataException\(string\) Constructor
+### CachingMetaDataException\(string\) Constructor \{#Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException(string)}
 
 Initializes a new instance of the [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor\.Content\.Exceptions\.CachingMetaDataException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException(string,System.Exception)'></a>
 
-### CachingMetaDataException\(string, Exception\) Constructor
+### CachingMetaDataException\(string, Exception\) Constructor \{#Velaptor.Content.Exceptions.CachingMetaDataException.CachingMetaDataException(string,System.Exception)}
 
 Initializes a new instance of the [CachingMetaDataException](Velaptor.Content.Exceptions.CachingMetaDataException.md 'Velaptor\.Content\.Exceptions\.CachingMetaDataException') class\.
 

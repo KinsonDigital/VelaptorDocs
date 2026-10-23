@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException()'></a>
 
-### LoadAtlasException\(\) Constructor
+### LoadAtlasException\(\) Constructor \{#Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException()}
 
 Initializes a new instance of the [LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor\.Content\.Exceptions\.LoadAtlasException') class\.
 
@@ -28,7 +28,7 @@ public LoadAtlasException();
 
 <a name='Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException(string)'></a>
 
-### LoadAtlasException\(string\) Constructor
+### LoadAtlasException\(string\) Constructor \{#Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException(string)}
 
 Initializes a new instance of the [LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor\.Content\.Exceptions\.LoadAtlasException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException(string,System.Exception)'></a>
 
-### LoadAtlasException\(string, Exception\) Constructor
+### LoadAtlasException\(string, Exception\) Constructor \{#Velaptor.Content.Exceptions.LoadAtlasException.LoadAtlasException(string,System.Exception)}
 
 Initializes a new instance of the [LoadAtlasException](Velaptor.Content.Exceptions.LoadAtlasException.md 'Velaptor\.Content\.Exceptions\.LoadAtlasException') class\.
 

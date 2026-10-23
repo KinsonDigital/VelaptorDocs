@@ -20,7 +20,7 @@ Implements [IAtlasData](Velaptor.Content.IAtlasData.md 'Velaptor\.Content\.IAtla
 
 <a name='Velaptor.Content.AtlasData.AtlasDataFilePath'></a>
 
-### AtlasDataFilePath 
+### AtlasDataFilePath \{#Velaptor.Content.AtlasData.AtlasDataFilePath}
 
 Gets the file path to the atlas data\.
 
@@ -28,14 +28,14 @@ Gets the file path to the atlas data\.
 public string AtlasDataFilePath { get; }
 ```
 
-Implements [AtlasDataFilePath](Velaptor.Content.IAtlasData.md#atlasdatafilepath 'Velaptor\.Content\.IAtlasData\.AtlasDataFilePath')
+Implements [AtlasDataFilePath](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.AtlasDataFilePath 'Velaptor\.Content\.IAtlasData\.AtlasDataFilePath')
 
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Content.AtlasData.FilePath'></a>
 
-### FilePath 
+### FilePath \{#Velaptor.Content.AtlasData.FilePath}
 
 Gets the path to the texture\.
 
@@ -43,14 +43,14 @@ Gets the path to the texture\.
 public string FilePath { get; }
 ```
 
-Implements [FilePath](Velaptor.Content.IContent.md#filepath 'Velaptor\.Content\.IContent\.FilePath')
+Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor\.Content\.IContent\.FilePath')
 
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Content.AtlasData.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Content.AtlasData.Name}
 
 Gets the name of the atlas\.
 
@@ -58,14 +58,14 @@ Gets the name of the atlas\.
 public string Name { get; }
 ```
 
-Implements [Name](Velaptor.Content.IContent.md#name 'Velaptor\.Content\.IContent\.Name')
+Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor\.Content\.IContent\.Name')
 
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Content.AtlasData.SubTextureNames'></a>
 
-### SubTextureNames 
+### SubTextureNames \{#Velaptor.Content.AtlasData.SubTextureNames}
 
 Gets a list of unique sub texture names\.
 
@@ -73,7 +73,7 @@ Gets a list of unique sub texture names\.
 public System.Collections.Generic.IReadOnlyCollection<string> SubTextureNames { get; }
 ```
 
-Implements [SubTextureNames](Velaptor.Content.IAtlasData.md#subtexturenames 'Velaptor\.Content\.IAtlasData\.SubTextureNames')
+Implements [SubTextureNames](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.SubTextureNames 'Velaptor\.Content\.IAtlasData\.SubTextureNames')
 
 #### Property Value
 [System\.Collections\.Generic\.IReadOnlyCollection&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1 'System\.Collections\.Generic\.IReadOnlyCollection\`1')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1 'System\.Collections\.Generic\.IReadOnlyCollection\`1')
@@ -84,7 +84,7 @@ Animating sub textures will have identical names\.
 
 <a name='Velaptor.Content.AtlasData.Texture'></a>
 
-### Texture 
+### Texture \{#Velaptor.Content.AtlasData.Texture}
 
 Gets the texture of the atlas\.
 
@@ -92,14 +92,14 @@ Gets the texture of the atlas\.
 public Velaptor.Content.ITexture? Texture { get; }
 ```
 
-Implements [Texture](Velaptor.Content.IAtlasData.md#texture 'Velaptor\.Content\.IAtlasData\.Texture')
+Implements [Texture](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.Texture 'Velaptor\.Content\.IAtlasData\.Texture')
 
 #### Property Value
 [ITexture](Velaptor.Content.ITexture.md 'Velaptor\.Content\.ITexture')
 
 <a name='Velaptor.Content.AtlasData.this[int]'></a>
 
-### this\[int\] 
+### this\[int\] \{#Velaptor.Content.AtlasData.this[int]}
 
 The iterator for the atlas sub texture data\.
 
@@ -114,7 +114,7 @@ public Velaptor.Graphics.AtlasSubTextureData this[int index] { get; }
 
 The index of the item to retrieve\.
 
-Implements [this\[int\](Velaptor.Content.IAtlasData.md#this[int] 'Velaptor\.Content\.IAtlasData\.this\[int\]')
+Implements [this\[int\]](Velaptor.Content.IAtlasData.md#Velaptor.Content.IAtlasData.this[int] 'Velaptor\.Content\.IAtlasData\.this\[int\]')
 
 #### Property Value
 [AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor\.Graphics\.AtlasSubTextureData')
@@ -122,7 +122,7 @@ Implements [this\[int\](Velaptor.Content.IAtlasData.md#this[int] 'Velaptor\.Cont
 
 <a name='Velaptor.Content.AtlasData.GetFrames(string)'></a>
 
-### GetFrames\(string\) 
+### GetFrames\(string\) \{#Velaptor.Content.AtlasData.GetFrames(string)}
 
 Gets the all the frames that have the given sub texture id\.
 

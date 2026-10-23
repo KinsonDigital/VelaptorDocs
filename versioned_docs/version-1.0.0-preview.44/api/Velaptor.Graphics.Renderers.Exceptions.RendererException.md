@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException()'></a>
 
-### RendererException() Constructor
+### RendererException() Constructor \{#Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException()}
 
 Initializes a new instance of the [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') class.
 
@@ -28,7 +28,7 @@ public RendererException();
 
 <a name='Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException(string,System.Exception)'></a>
 
-### RendererException(string, Exception) Constructor
+### RendererException(string, Exception) Constructor \{#Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException(string,System.Exception)}
 
 Initializes a new instance of the [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException(string)'></a>
 
-### RendererException(string) Constructor
+### RendererException(string) Constructor \{#Velaptor.Graphics.Renderers.Exceptions.RendererException.RendererException(string)}
 
 Initializes a new instance of the [RendererException](Velaptor.Graphics.Renderers.Exceptions.RendererException.md 'Velaptor.Graphics.Renderers.Exceptions.RendererException') class.
 

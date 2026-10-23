@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException()'></a>
 
-### CachingException\(\) Constructor
+### CachingException\(\) Constructor \{#Velaptor.Content.Exceptions.CachingException.CachingException()}
 
 Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor\.Content\.Exceptions\.CachingException') class\.
 
@@ -28,7 +28,7 @@ public CachingException();
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException(string)'></a>
 
-### CachingException\(string\) Constructor
+### CachingException\(string\) Constructor \{#Velaptor.Content.Exceptions.CachingException.CachingException(string)}
 
 Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor\.Content\.Exceptions\.CachingException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception)'></a>
 
-### CachingException\(string, Exception\) Constructor
+### CachingException\(string, Exception\) Constructor \{#Velaptor.Content.Exceptions.CachingException.CachingException(string,System.Exception)}
 
 Initializes a new instance of the [CachingException](Velaptor.Content.Exceptions.CachingException.md 'Velaptor\.Content\.Exceptions\.CachingException') class\.
 

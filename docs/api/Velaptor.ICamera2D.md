@@ -20,7 +20,7 @@ Derived
 #### Remarks
 
 Works in screen pixel coordinates: top-left origin, Y increases downward.
-[Position](Velaptor.ICamera2D.md#position 'Velaptor\.ICamera2D\.Position') is a pan offset — positive X shifts the view right, which
+[Position](Velaptor.ICamera2D.md#Velaptor.ICamera2D.Position 'Velaptor\.ICamera2D\.Position') is a pan offset — positive X shifts the view right, which
 makes scene content appear to move left (standard game-camera convention).
 
 Unlike GPU-uniform cameras, transforms are applied entirely on the CPU
@@ -34,7 +34,7 @@ before vertex data is submitted. Call [TransformPosition\(Vector2\)](Velaptor.IC
 
 <a name='Velaptor.ICamera2D.Position'></a>
 
-### Position 
+### Position \{#Velaptor.ICamera2D.Position}
 
 Gets or sets the camera pan offset in screen pixel units\.
 Moving the camera right \(positive X\) shifts all scene content leftward\.
@@ -49,7 +49,7 @@ System.Numerics.Vector2 Position { get; set; }
 
 <a name='Velaptor.ICamera2D.Rotation'></a>
 
-### Rotation 
+### Rotation \{#Velaptor.ICamera2D.Rotation}
 
 Gets or sets the camera rotation in degrees\. Positive values rotate the view
 clockwise\. Default is `0` \(no rotation\)\. Rotation is applied around the
@@ -64,7 +64,7 @@ float Rotation { get; set; }
 
 <a name='Velaptor.ICamera2D.WindowSize'></a>
 
-### WindowSize 
+### WindowSize \{#Velaptor.ICamera2D.WindowSize}
 
 Gets the current window size in pixels\. Used to locate the screen center for
 zoom calculations\. Updated automatically on window resize\.
@@ -78,7 +78,7 @@ Velaptor.SizeU WindowSize { get; }
 
 <a name='Velaptor.ICamera2D.WorldBounds'></a>
 
-### WorldBounds 
+### WorldBounds \{#Velaptor.ICamera2D.WorldBounds}
 
 Gets the axis\-aligned bounds of the visible world area in world pixel coordinates\.
 When the camera is rotated, this is the bounding box of the rotated view frustum\.
@@ -92,7 +92,7 @@ System.Drawing.RectangleF WorldBounds { get; }
 
 <a name='Velaptor.ICamera2D.Zoom'></a>
 
-### Zoom 
+### Zoom \{#Velaptor.ICamera2D.Zoom}
 
 Gets or sets the zoom factor\. `1.0` = native pixel size\.
 Values above `1.0` magnify; values below shrink\. Default is `1.0`\.
@@ -106,7 +106,7 @@ float Zoom { get; set; }
 
 <a name='Velaptor.ICamera2D.ZoomMax'></a>
 
-### ZoomMax 
+### ZoomMax \{#Velaptor.ICamera2D.ZoomMax}
 
 Gets or sets the maximum zoom level\. Default is `4.0`\.
 
@@ -119,7 +119,7 @@ float ZoomMax { get; set; }
 
 <a name='Velaptor.ICamera2D.ZoomMin'></a>
 
-### ZoomMin 
+### ZoomMin \{#Velaptor.ICamera2D.ZoomMin}
 
 Gets or sets the minimum zoom level\. Default is `0.1`\.
 
@@ -133,7 +133,7 @@ float ZoomMin { get; set; }
 
 <a name='Velaptor.ICamera2D.IsVisible(System.Numerics.Vector2)'></a>
 
-### IsVisible\(Vector2\) 
+### IsVisible\(Vector2\) \{#Velaptor.ICamera2D.IsVisible(System.Numerics.Vector2)}
 
 Determines whether a world\-space point is visible on the screen\.
 
@@ -154,7 +154,7 @@ The position in world pixel coordinates\.
 
 <a name='Velaptor.ICamera2D.IsVisible(System.Numerics.Vector2,System.Numerics.Vector2)'></a>
 
-### IsVisible\(Vector2, Vector2\) 
+### IsVisible\(Vector2, Vector2\) \{#Velaptor.ICamera2D.IsVisible(System.Numerics.Vector2,System.Numerics.Vector2)}
 
 Determines whether a world\-space rectangle intersects the visible screen area\.
 Use this for culling objects with size \(sprites, tiles, etc\.\)\.
@@ -182,7 +182,7 @@ The size of the object in world pixels\.
 
 <a name='Velaptor.ICamera2D.TransformPosition(System.Numerics.Vector2)'></a>
 
-### TransformPosition\(Vector2\) 
+### TransformPosition\(Vector2\) \{#Velaptor.ICamera2D.TransformPosition(System.Numerics.Vector2)}
 
 Transforms a world\-space pixel position into a screen render position,
 accounting for camera pan and zoom\.
@@ -204,7 +204,7 @@ The position in screen pixel coordinates\.
 
 <a name='Velaptor.ICamera2D.TransformRotation(float)'></a>
 
-### TransformRotation\(float\) 
+### TransformRotation\(float\) \{#Velaptor.ICamera2D.TransformRotation(float)}
 
 Transforms a world\-space rotation angle \(in degrees\) into a screen\-space
 rotation angle, accounting for camera rotation\. Rotation is additive:
@@ -227,7 +227,7 @@ The rotation angle in screen space, in degrees\.
 
 <a name='Velaptor.ICamera2D.TransformSize(float)'></a>
 
-### TransformSize\(float\) 
+### TransformSize\(float\) \{#Velaptor.ICamera2D.TransformSize(float)}
 
 Scales a size value by the current zoom level\.
 Use this for width, height, radius, and other size\-related values\.

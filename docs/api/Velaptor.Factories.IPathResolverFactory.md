@@ -19,7 +19,7 @@ Derived
 
 <a name='Velaptor.Factories.IPathResolverFactory.CreateAtlasPathResolver()'></a>
 
-### CreateAtlasPathResolver\(\) 
+### CreateAtlasPathResolver\(\) \{#Velaptor.Factories.IPathResolverFactory.CreateAtlasPathResolver()}
 
 Creates a path resolver that resolves paths to texture atlas textures\.
 
@@ -33,7 +33,7 @@ The resolver to texture content\.
 
 <a name='Velaptor.Factories.IPathResolverFactory.CreateAudioPathResolver()'></a>
 
-### CreateAudioPathResolver\(\) 
+### CreateAudioPathResolver\(\) \{#Velaptor.Factories.IPathResolverFactory.CreateAudioPathResolver()}
 
 Creates a path resolver that resolves paths to audio content\.
 
@@ -47,7 +47,7 @@ The resolver to audio content\.
 
 <a name='Velaptor.Factories.IPathResolverFactory.CreateFontPathResolver()'></a>
 
-### CreateFontPathResolver\(\) 
+### CreateFontPathResolver\(\) \{#Velaptor.Factories.IPathResolverFactory.CreateFontPathResolver()}
 
 Creates a path resolver that resolves paths to font content\.
 
@@ -61,7 +61,7 @@ The resolver to atlas content\.
 
 <a name='Velaptor.Factories.IPathResolverFactory.CreateTexturePathResolver()'></a>
 
-### CreateTexturePathResolver\(\) 
+### CreateTexturePathResolver\(\) \{#Velaptor.Factories.IPathResolverFactory.CreateTexturePathResolver()}
 
 Creates a path resolver that resolves paths to texture content\.
 

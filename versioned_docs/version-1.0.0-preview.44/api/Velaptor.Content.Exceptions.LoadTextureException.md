@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Content.Exceptions.LoadTextureException.LoadTextureException()'></a>
 
-### LoadTextureException() Constructor
+### LoadTextureException() Constructor \{#Velaptor.Content.Exceptions.LoadTextureException.LoadTextureException()}
 
 Initializes a new instance of the [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException') class.
 
@@ -28,7 +28,7 @@ public LoadTextureException();
 
 <a name='Velaptor.Content.Exceptions.LoadTextureException.LoadTextureException(string,System.Exception)'></a>
 
-### LoadTextureException(string, Exception) Constructor
+### LoadTextureException(string, Exception) Constructor \{#Velaptor.Content.Exceptions.LoadTextureException.LoadTextureException(string,System.Exception)}
 
 Initializes a new instance of the [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.LoadTextureException.LoadTextureException(string)'></a>
 
-### LoadTextureException(string) Constructor
+### LoadTextureException(string) Constructor \{#Velaptor.Content.Exceptions.LoadTextureException.LoadTextureException(string)}
 
 Initializes a new instance of the [LoadTextureException](Velaptor.Content.Exceptions.LoadTextureException.md 'Velaptor.Content.Exceptions.LoadTextureException') class.
 

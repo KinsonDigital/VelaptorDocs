@@ -18,7 +18,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 
 <a name='Velaptor.Input.KeyboardState.KeyboardState()'></a>
 
-### KeyboardState\(\) Constructor
+### KeyboardState\(\) Constructor \{#Velaptor.Input.KeyboardState.KeyboardState()}
 
 Initializes a new instance of the [KeyboardState](Velaptor.Input.KeyboardState.md 'Velaptor\.Input\.KeyboardState') struct\.
 
@@ -29,7 +29,7 @@ public KeyboardState();
 
 <a name='Velaptor.Input.KeyboardState.AnyAltKeysDown()'></a>
 
-### AnyAltKeysDown\(\) 
+### AnyAltKeysDown\(\) \{#Velaptor.Input.KeyboardState.AnyAltKeysDown()}
 
 Returns a value indicating whether any of the alt keys are in the down position\.
 
@@ -43,7 +43,7 @@ public bool AnyAltKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyCtrlKeysDown()'></a>
 
-### AnyCtrlKeysDown\(\) 
+### AnyCtrlKeysDown\(\) \{#Velaptor.Input.KeyboardState.AnyCtrlKeysDown()}
 
 Returns a value indicating whether any of the control keys are in the down position\.
 
@@ -57,7 +57,7 @@ public bool AnyCtrlKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyNumpadNumberKeysDown()'></a>
 
-### AnyNumpadNumberKeysDown\(\) 
+### AnyNumpadNumberKeysDown\(\) \{#Velaptor.Input.KeyboardState.AnyNumpadNumberKeysDown()}
 
 Returns a value indicating whether any of the numpad number keys
 are in the down position\.
@@ -72,7 +72,7 @@ public bool AnyNumpadNumberKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyShiftKeysDown()'></a>
 
-### AnyShiftKeysDown\(\) 
+### AnyShiftKeysDown\(\) \{#Velaptor.Input.KeyboardState.AnyShiftKeysDown()}
 
 Returns a value indicating whether any of the shift keys are in the down position\.
 
@@ -86,7 +86,7 @@ public bool AnyShiftKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.AnyStandardNumberKeysDown()'></a>
 
-### AnyStandardNumberKeysDown\(\) 
+### AnyStandardNumberKeysDown\(\) \{#Velaptor.Input.KeyboardState.AnyStandardNumberKeysDown()}
 
 Returns a value indicating whether any of the standard number keys,
 above the letter keys, are in the down position\.
@@ -101,7 +101,7 @@ public bool AnyStandardNumberKeysDown();
 
 <a name='Velaptor.Input.KeyboardState.GetDownKeys()'></a>
 
-### GetDownKeys\(\) 
+### GetDownKeys\(\) \{#Velaptor.Input.KeyboardState.GetDownKeys()}
 
 Returns all the keys that are in the down position\.
 
@@ -115,9 +115,9 @@ A list of the keys that are currently in the down position\.
 
 <a name='Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode)'></a>
 
-### IsKeyDown\(KeyCode\) 
+### IsKeyDown\(KeyCode\) \{#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode)}
 
-Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor\.Input\.KeyboardState\.IsKeyDown\(Velaptor\.Input\.KeyCode\)\.key') is in the down position\.
+Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode) 'Velaptor\.Input\.KeyboardState\.IsKeyDown\(Velaptor\.Input\.KeyCode\)\.key') is in the down position\.
 
 ```csharp
 public bool IsKeyDown(Velaptor.Input.KeyCode key);
@@ -132,13 +132,13 @@ The key to check\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-`true` if the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor\.Input\.KeyboardState\.IsKeyDown\(Velaptor\.Input\.KeyCode\)\.key') is in the down position\.
+`true` if the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyDown(Velaptor.Input.KeyCode) 'Velaptor\.Input\.KeyboardState\.IsKeyDown\(Velaptor\.Input\.KeyCode\)\.key') is in the down position\.
 
 <a name='Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode)'></a>
 
-### IsKeyUp\(KeyCode\) 
+### IsKeyUp\(KeyCode\) \{#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode)}
 
-Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor\.Input\.KeyboardState\.IsKeyUp\(Velaptor\.Input\.KeyCode\)\.key') is in the up position\.
+Returns a value indicating whether the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode) 'Velaptor\.Input\.KeyboardState\.IsKeyUp\(Velaptor\.Input\.KeyCode\)\.key') is in the up position\.
 
 ```csharp
 public bool IsKeyUp(Velaptor.Input.KeyCode key);
@@ -153,11 +153,11 @@ The key to check\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-`true` if the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor\.Input\.KeyboardState\.IsKeyUp\(Velaptor\.Input\.KeyCode\)\.key') is in the up position\.
+`true` if the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.IsKeyUp(Velaptor.Input.KeyCode) 'Velaptor\.Input\.KeyboardState\.IsKeyUp\(Velaptor\.Input\.KeyCode\)\.key') is in the up position\.
 
 <a name='Velaptor.Input.KeyboardState.IsLeftAltKeyDown()'></a>
 
-### IsLeftAltKeyDown\(\) 
+### IsLeftAltKeyDown\(\) \{#Velaptor.Input.KeyboardState.IsLeftAltKeyDown()}
 
 Gets a value indicating whether the left alt key is in the down position\.
 
@@ -171,7 +171,7 @@ public bool IsLeftAltKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsLeftCtrlKeyDown()'></a>
 
-### IsLeftCtrlKeyDown\(\) 
+### IsLeftCtrlKeyDown\(\) \{#Velaptor.Input.KeyboardState.IsLeftCtrlKeyDown()}
 
 Gets a value indicating whether the left control key is in the down position\.
 
@@ -185,7 +185,7 @@ public bool IsLeftCtrlKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsLeftShiftKeyDown()'></a>
 
-### IsLeftShiftKeyDown\(\) 
+### IsLeftShiftKeyDown\(\) \{#Velaptor.Input.KeyboardState.IsLeftShiftKeyDown()}
 
 Gets a value indicating whether the left shift key is in the down position\.
 
@@ -199,7 +199,7 @@ public bool IsLeftShiftKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsRightAltKeyDown()'></a>
 
-### IsRightAltKeyDown\(\) 
+### IsRightAltKeyDown\(\) \{#Velaptor.Input.KeyboardState.IsRightAltKeyDown()}
 
 Gets a value indicating whether the right alt key is in the down position\.
 
@@ -213,7 +213,7 @@ public bool IsRightAltKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsRightCtrlKeyDown()'></a>
 
-### IsRightCtrlKeyDown\(\) 
+### IsRightCtrlKeyDown\(\) \{#Velaptor.Input.KeyboardState.IsRightCtrlKeyDown()}
 
 Gets a value indicating whether the right control key is in the down position\.
 
@@ -227,7 +227,7 @@ public bool IsRightCtrlKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.IsRightShiftKeyDown()'></a>
 
-### IsRightShiftKeyDown\(\) 
+### IsRightShiftKeyDown\(\) \{#Velaptor.Input.KeyboardState.IsRightShiftKeyDown()}
 
 Gets a value indicating whether the right shift key is in the down position\.
 
@@ -241,7 +241,7 @@ public bool IsRightShiftKeyDown();
 
 <a name='Velaptor.Input.KeyboardState.KeyToChar(Velaptor.Input.KeyCode)'></a>
 
-### KeyToChar\(KeyCode\) 
+### KeyToChar\(KeyCode\) \{#Velaptor.Input.KeyboardState.KeyToChar(Velaptor.Input.KeyCode)}
 
 Returns the character equivalent of the given key if it is
 a letter, number or symbol key\.  The value of 0 will be returned
@@ -264,9 +264,9 @@ The character that matches the given key\.
 
 <a name='Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool)'></a>
 
-### SetKeyState\(KeyCode, bool\) 
+### SetKeyState\(KeyCode, bool\) \{#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool)}
 
-Sets the state of the given [key](Velaptor.Input.KeyboardState.md#key 'Velaptor\.Input\.KeyboardState\.SetKeyState\(Velaptor\.Input\.KeyCode, bool\)\.key') to the given [state](Velaptor.Input.KeyboardState.md#state 'Velaptor\.Input\.KeyboardState\.SetKeyState\(Velaptor\.Input\.KeyCode, bool\)\.state') value\.
+Sets the state of the given [key](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool) 'Velaptor\.Input\.KeyboardState\.SetKeyState\(Velaptor\.Input\.KeyCode, bool\)\.key') to the given [state](Velaptor.Input.KeyboardState.md#Velaptor.Input.KeyboardState.SetKeyState(Velaptor.Input.KeyCode,bool) 'Velaptor\.Input\.KeyboardState\.SetKeyState\(Velaptor\.Input\.KeyCode, bool\)\.state') value\.
 
 ```csharp
 public void SetKeyState(Velaptor.Input.KeyCode key, bool state);

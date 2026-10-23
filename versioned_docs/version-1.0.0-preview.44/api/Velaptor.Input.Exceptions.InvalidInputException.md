@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException()'></a>
 
-### InvalidInputException() Constructor
+### InvalidInputException() Constructor \{#Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException()}
 
 Initializes a new instance of the [InvalidInputException](Velaptor.Input.Exceptions.InvalidInputException.md 'Velaptor.Input.Exceptions.InvalidInputException') class.
 
@@ -28,7 +28,7 @@ public InvalidInputException();
 
 <a name='Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException(string,System.Exception)'></a>
 
-### InvalidInputException(string, Exception) Constructor
+### InvalidInputException(string, Exception) Constructor \{#Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException(string,System.Exception)}
 
 Initializes a new instance of the [InvalidInputException](Velaptor.Input.Exceptions.InvalidInputException.md 'Velaptor.Input.Exceptions.InvalidInputException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException(string)'></a>
 
-### InvalidInputException(string) Constructor
+### InvalidInputException(string) Constructor \{#Velaptor.Input.Exceptions.InvalidInputException.InvalidInputException(string)}
 
 Initializes a new instance of the [InvalidInputException](Velaptor.Input.Exceptions.InvalidInputException.md 'Velaptor.Input.Exceptions.InvalidInputException') class.
 

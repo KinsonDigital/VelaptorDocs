@@ -16,9 +16,9 @@ public interface IShapeRenderer
 
 <a name='Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.CircleShape,int)'></a>
 
-### Render\(CircleShape, int\) 
+### Render\(CircleShape, int\) \{#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.CircleShape,int)}
 
-Renders the given [circle](Velaptor.Graphics.Renderers.IShapeRenderer.md#circle 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.circle')\.
+Renders the given [circle](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.CircleShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.circle')\.
 
 ```csharp
 void Render(Velaptor.Graphics.CircleShape circle, int layer=0);
@@ -44,8 +44,8 @@ Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatch
 
 #### Remarks
 
-Lower [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#layer 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.layer') values will render before higher [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#layer 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.layer') values.
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#layer 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.layer') value, they will
+Lower [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.CircleShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.layer') values will render before higher [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.CircleShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.layer') values.
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.CircleShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.CircleShape, int\)\.layer') value, they will
 render in the order that the method was invoked.
 
 Example below:\<b\>Render Method Invoked Order:\</b\>
@@ -65,9 +65,9 @@ Example below:\<b\>Render Method Invoked Order:\</b\>
 
 <a name='Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.RectShape,int)'></a>
 
-### Render\(RectShape, int\) 
+### Render\(RectShape, int\) \{#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.RectShape,int)}
 
-Renders the given [rect](Velaptor.Graphics.Renderers.IShapeRenderer.md#rect 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.rect')\.
+Renders the given [rect](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.RectShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.rect')\.
 
 ```csharp
 void Render(Velaptor.Graphics.RectShape rect, int layer=0);
@@ -93,8 +93,8 @@ Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatch
 
 #### Remarks
 
-Lower [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#layer 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.layer') values will render before higher [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#layer 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.layer') values.
-If two separate textures have the same [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#layer 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.layer') value, they will
+Lower [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.RectShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.layer') values will render before higher [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.RectShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.layer') values.
+If two separate textures have the same [layer](Velaptor.Graphics.Renderers.IShapeRenderer.md#Velaptor.Graphics.Renderers.IShapeRenderer.Render(Velaptor.Graphics.RectShape,int) 'Velaptor\.Graphics\.Renderers\.IShapeRenderer\.Render\(Velaptor\.Graphics\.RectShape, int\)\.layer') value, they will
 render in the order that the method was invoked.
 
 Example below:\<b\>Render Method Invoked Order:\</b\>

@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException()'></a>
 
-### LoadContentException() Constructor
+### LoadContentException() Constructor \{#Velaptor.Content.Exceptions.LoadContentException.LoadContentException()}
 
 Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') class.
 
@@ -28,7 +28,7 @@ public LoadContentException();
 
 <a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception)'></a>
 
-### LoadContentException(string, Exception) Constructor
+### LoadContentException(string, Exception) Constructor \{#Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string,System.Exception)}
 
 Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string)'></a>
 
-### LoadContentException(string) Constructor
+### LoadContentException(string) Constructor \{#Velaptor.Content.Exceptions.LoadContentException.LoadContentException(string)}
 
 Initializes a new instance of the [LoadContentException](Velaptor.Content.Exceptions.LoadContentException.md 'Velaptor.Content.Exceptions.LoadContentException') class.
 

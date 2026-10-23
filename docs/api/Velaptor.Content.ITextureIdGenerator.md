@@ -19,7 +19,7 @@ Derived
 
 <a name='Velaptor.Content.ITextureIdGenerator.GenerateNextId()'></a>
 
-### GenerateNextId\(\) 
+### GenerateNextId\(\) \{#Velaptor.Content.ITextureIdGenerator.GenerateNextId()}
 
 Generates unique, only used once per texture, ID value\.
 

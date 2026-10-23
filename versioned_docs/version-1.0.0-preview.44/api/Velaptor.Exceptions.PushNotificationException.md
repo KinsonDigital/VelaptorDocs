@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException()'></a>
 
-### PushNotificationException() Constructor
+### PushNotificationException() Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException()}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 
@@ -28,7 +28,7 @@ public PushNotificationException();
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Exception)'></a>
 
-### PushNotificationException(string, Exception) Constructor
+### PushNotificationException(string, Exception) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Exception)}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Guid)'></a>
 
-### PushNotificationException(string, Guid) Constructor
+### PushNotificationException(string, Guid) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Guid)}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 
@@ -74,7 +74,7 @@ The subscription ID.
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string)'></a>
 
-### PushNotificationException(string) Constructor
+### PushNotificationException(string) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException(string)}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor.Exceptions.PushNotificationException') class.
 

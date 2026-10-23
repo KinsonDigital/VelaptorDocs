@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Factories.CameraFactory.CreateCamera()'></a>
 
-### CreateCamera\(\) 
+### CreateCamera\(\) \{#Velaptor.Factories.CameraFactory.CreateCamera()}
 
 Creates a 2\-D camera instance that applies pan and zoom transforms on the CPU\.
 

@@ -51,20 +51,6 @@ Starts the batch rendering process\.  Must be called before invoking any render 
 void Begin();
 ```
 
-<a name='Velaptor.Batching.IBatcher.Clear()'></a>
-
-### Clear\(\) 
-
-Clears the buffers\.
-
-```csharp
-void Clear();
-```
-
-#### Remarks
-It is best to clear the buffer before rendering all the textures\.
-This is to make sure smearing does not occur during texture movement or animation\.
-
 <a name='Velaptor.Batching.IBatcher.End()'></a>
 
 ### End\(\) 

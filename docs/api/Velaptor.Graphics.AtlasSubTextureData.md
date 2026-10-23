@@ -10,8 +10,10 @@ title: Velaptor.Graphics.AtlasSubTextureData
 Holds data about a texture atlas sub texture\.
 
 ```csharp
-public readonly struct AtlasSubTextureData
+public readonly record struct AtlasSubTextureData : System.IEquatable<Velaptor.Graphics.AtlasSubTextureData>
 ```
+
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor\.Graphics\.AtlasSubTextureData')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 ## Properties
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.Bounds'></a>

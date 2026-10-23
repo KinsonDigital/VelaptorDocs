@@ -52,7 +52,7 @@ System.Collections.Generic.IReadOnlyCollection<string> SubTextureNames { get; }
 Gets the texture of the atlas\.
 
 ```csharp
-Velaptor.Content.ITexture Texture { get; }
+Velaptor.Content.ITexture? Texture { get; }
 ```
 
 #### Property Value

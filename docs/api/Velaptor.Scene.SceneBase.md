@@ -10,12 +10,12 @@ title: Velaptor.Scene.SceneBase
 A base scene to be used for creating new custom scenes\.
 
 ```csharp
-public abstract class SceneBase : Velaptor.Scene.IScene, Velaptor.IUpdatable, Velaptor.IDrawable, System.IDisposable
+public abstract class SceneBase : Velaptor.Scene.IScene, Velaptor.IUpdatable, Velaptor.IDrawable
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → SceneBase
 
-Implements [IScene](Velaptor.Scene.IScene.md 'Velaptor\.Scene\.IScene'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable'), [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
+Implements [IScene](Velaptor.Scene.IScene.md 'Velaptor\.Scene\.IScene'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable')
 ## Properties
 
 <a name='Velaptor.Scene.SceneBase.Id'></a>
@@ -93,16 +93,6 @@ Implements [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor\.Scene\.IS
 #### Property Value
 [SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')
 ## Methods
-
-<a name='Velaptor.Scene.SceneBase.Dispose()'></a>
-
-### Dispose\(\) 
-
-```csharp
-public void Dispose();
-```
-
-Implements [Dispose\(\)](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable.dispose 'System\.IDisposable\.Dispose')
 
 <a name='Velaptor.Scene.SceneBase.LoadContent()'></a>
 

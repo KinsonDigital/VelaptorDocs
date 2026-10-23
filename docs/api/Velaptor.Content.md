@@ -12,6 +12,7 @@ title: Velaptor.Content
 | [Audio](Velaptor.Content.Audio.md 'Velaptor\.Content\.Audio') | A single audio that can be played, paused etc\. |
 | [ContentManager](Velaptor.Content.ContentManager.md 'Velaptor\.Content\.ContentManager') | Loads various types of content\. |
 | [Texture](Velaptor.Content.Texture.md 'Velaptor\.Content\.Texture') | The texture to render to a screen\. |
+| [TextureIdGenerator](Velaptor.Content.TextureIdGenerator.md 'Velaptor\.Content\.TextureIdGenerator') | Generates texture ID values\. |
 
 | Interfaces | |
 | :--- | :--- |
@@ -22,6 +23,7 @@ title: Velaptor.Content
 | [IContentManager](Velaptor.Content.IContentManager.md 'Velaptor\.Content\.IContentManager') | Loads various types of content\. |
 | [IContentPathResolver](Velaptor.Content.IContentPathResolver.md 'Velaptor\.Content\.IContentPathResolver') | Resolves file paths\. |
 | [ITexture](Velaptor.Content.ITexture.md 'Velaptor\.Content\.ITexture') | The texture to render to a screen\. |
+| [ITextureIdGenerator](Velaptor.Content.ITextureIdGenerator.md 'Velaptor\.Content\.ITextureIdGenerator') | Generates texture ID values\. |
 
 | Enums | |
 | :--- | :--- |

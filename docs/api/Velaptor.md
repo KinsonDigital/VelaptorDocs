@@ -8,8 +8,8 @@ title: Velaptor
 
 | Classes | |
 | :--- | :--- |
-| [App](Velaptor.App.md 'Velaptor\.App') | Represents a Velaptor application\. |
 | [AppStats](Velaptor.AppStats.md 'Velaptor\.AppStats') | Records and retrieves information about the running application\. |
+| [Camera2D](Velaptor.Camera2D.md 'Velaptor\.Camera2D') | A simple 2\-D camera that applies pan, zoom, and rotation transforms on the CPU for world\-to\-screen coordinate conversion\. |
 | [GameHelpers](Velaptor.GameHelpers.md 'Velaptor\.GameHelpers') | Provides extension helper methods for common game related operations\. |
 | [Platform](Velaptor.Platform.md 'Velaptor\.Platform') | Represents the current platform\. |
 
@@ -20,6 +20,7 @@ title: Velaptor
 
 | Interfaces | |
 | :--- | :--- |
+| [ICamera2D](Velaptor.ICamera2D.md 'Velaptor\.ICamera2D') | A simple 2\-D camera that applies pan, zoom, and rotation transforms on the CPU for world\-to\-screen coordinate conversion\. |
 | [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable') | Provides the ability for an object to be rendered\. |
 | [IPlatform](Velaptor.IPlatform.md 'Velaptor\.IPlatform') | Represents the current platform\. |
 | [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable') | Provides the ability for an object to be updated\. |

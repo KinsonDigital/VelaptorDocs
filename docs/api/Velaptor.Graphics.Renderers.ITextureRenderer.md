@@ -10,8 +10,10 @@ title: Velaptor.Graphics.Renderers.ITextureRenderer
 Renders textures to the screen\.
 
 ```csharp
-public interface ITextureRenderer
+public interface ITextureRenderer : System.IDisposable
 ```
+
+Implements [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
 ## Methods
 
 <a name='Velaptor.Graphics.Renderers.ITextureRenderer.Render(Velaptor.Content.IAtlasData,string,System.Numerics.Vector2,float,float,int,int)'></a>
@@ -70,7 +72,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -155,7 +157,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -246,7 +248,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -319,7 +321,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -398,7 +400,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -465,7 +467,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -538,7 +540,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -612,7 +614,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -694,7 +696,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -763,7 +765,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -826,7 +828,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -895,7 +897,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -970,7 +972,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1039,7 +1041,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1126,7 +1128,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1196,7 +1198,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1272,7 +1274,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1335,7 +1337,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1392,7 +1394,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1455,7 +1457,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1524,7 +1526,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 
@@ -1587,7 +1589,7 @@ The layer to render the texture\.
 #### Exceptions
 
 [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception')  
-Thrown if the [Begin\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Begin() 'Velaptor\.Batching\.IBatcher\.Begin\(\)') method has not been called\.
+Thrown if the [IBatcher\.Begin](https://learn.microsoft.com/en-us/dotnet/api/ibatcher.begin 'IBatcher\.Begin') method has not been called\.
 
 #### Remarks
 

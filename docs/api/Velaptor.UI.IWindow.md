@@ -12,40 +12,12 @@ window behaves, its state and the ability to be used in various types
 of applications\.
 
 ```csharp
-public interface IWindow : System.IDisposable
+public interface IWindow
 ```
 
 Derived  
 &#8627; [Window](Velaptor.UI.Window.md 'Velaptor\.UI\.Window')
-
-Implements [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
 ## Properties
-
-<a name='Velaptor.UI.IWindow.AutoClearBuffer'></a>
-
-### AutoClearBuffer 
-
-Gets or sets a value indicating whether the buffers should
-be automatically cleared before rendering any textures\.
-
-```csharp
-bool AutoClearBuffer { get; set; }
-```
-
-#### Property Value
-[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
-
-#### Remarks
-
-If this is set to true, it means you do not have to
-use or invoke the [Clear\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Clear() 'Velaptor\.Batching\.IBatcher\.Clear\(\)')() method.
-
-Set to the value of `false` if you want more control when
-the back buffers will be cleared.
-
-WARNING!! - To prevent performance issues, do not manually clear the
-buffer with the [Clear\(\)](Velaptor.Batching.IBatcher.md#Velaptor.Batching.IBatcher.Clear() 'Velaptor\.Batching\.IBatcher\.Clear\(\)')() method
-and set this property to true.  That would be a waste of resources.
 
 <a name='Velaptor.UI.IWindow.AutoSceneLoading'></a>
 
@@ -327,30 +299,3 @@ Shows the window\.
 ```csharp
 void Show();
 ```
-
-<a name='Velaptor.UI.IWindow.ShowAsync(System.Action,System.Action)'></a>
-
-### ShowAsync\(Action, Action\) 
-
-Shows the window asynchronously\.
-
-```csharp
-System.Threading.Tasks.Task ShowAsync(System.Action? afterStart=null, System.Action? afterUnload=null);
-```
-#### Parameters
-
-<a name='Velaptor.UI.IWindow.ShowAsync(System.Action,System.Action).afterStart'></a>
-
-`afterStart` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
-
-Executed after the application starts asynchronously\.
-
-<a name='Velaptor.UI.IWindow.ShowAsync(System.Action,System.Action).afterUnload'></a>
-
-`afterUnload` [System\.Action](https://learn.microsoft.com/en-us/dotnet/api/system.action 'System\.Action')
-
-Executed after the window has been unloaded\.
-
-#### Returns
-[System\.Threading\.Tasks\.Task](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task 'System\.Threading\.Tasks\.Task')  
-A [System\.Threading\.Tasks\.Task](https://learn.microsoft.com/en-us/dotnet/api/system.threading.tasks.task 'System\.Threading\.Tasks\.Task') representing the result of the asynchronous operation\.

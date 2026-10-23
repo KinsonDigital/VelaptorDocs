@@ -10,13 +10,13 @@ title: Velaptor.Scene.IScene
 Represents a single scene that can be rendered to the screen\.
 
 ```csharp
-public interface IScene : Velaptor.IUpdatable, Velaptor.IDrawable, System.IDisposable
+public interface IScene : Velaptor.IUpdatable, Velaptor.IDrawable
 ```
 
 Derived  
 &#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor\.Scene\.SceneBase')
 
-Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable'), [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
+Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable')
 ## Properties
 
 <a name='Velaptor.Scene.IScene.Id'></a>

@@ -89,7 +89,7 @@ Animating sub textures will have identical names\.
 Gets the texture of the atlas\.
 
 ```csharp
-public Velaptor.Content.ITexture Texture { get; }
+public Velaptor.Content.ITexture? Texture { get; }
 ```
 
 Implements [Texture](Velaptor.Content.IAtlasData.md#texture 'Velaptor\.Content\.IAtlasData\.Texture')

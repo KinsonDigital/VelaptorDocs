@@ -18,7 +18,7 @@ public enum FontSource
 
 `Unknown` 0
 
-Loaded from another location other then the system or application's font content directory\.
+Loaded from another location other than the system or application's font content directory\.
 
 <a name='Velaptor.Content.Fonts.FontSource.AppContent'></a>
 

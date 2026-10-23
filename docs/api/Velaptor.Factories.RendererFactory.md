@@ -30,34 +30,6 @@ public static Velaptor.Batching.IBatcher CreateBatcher();
 [IBatcher](Velaptor.Batching.IBatcher.md 'Velaptor\.Batching\.IBatcher')  
 The batcher instance\.
 
-<a name='Velaptor.Factories.RendererFactory.CreateFontRenderer()'></a>
-
-### CreateFontRenderer\(\) 
-
-Creates an instance of the [IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor\.Graphics\.Renderers\.IFontRenderer')\.
-
-```csharp
-public static Velaptor.Graphics.Renderers.IFontRenderer CreateFontRenderer();
-```
-
-#### Returns
-[IFontRenderer](Velaptor.Graphics.Renderers.IFontRenderer.md 'Velaptor\.Graphics\.Renderers\.IFontRenderer')  
-The font renderer\.
-
-<a name='Velaptor.Factories.RendererFactory.CreateLineRenderer()'></a>
-
-### CreateLineRenderer\(\) 
-
-Creates an instance of the [ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor\.Graphics\.Renderers\.ILineRenderer')\.
-
-```csharp
-public static Velaptor.Graphics.Renderers.ILineRenderer CreateLineRenderer();
-```
-
-#### Returns
-[ILineRenderer](Velaptor.Graphics.Renderers.ILineRenderer.md 'Velaptor\.Graphics\.Renderers\.ILineRenderer')  
-The line renderer\.
-
 <a name='Velaptor.Factories.RendererFactory.CreateShapeRenderer()'></a>
 
 ### CreateShapeRenderer\(\) 
@@ -71,6 +43,20 @@ public static Velaptor.Graphics.Renderers.IShapeRenderer CreateShapeRenderer();
 #### Returns
 [IShapeRenderer](Velaptor.Graphics.Renderers.IShapeRenderer.md 'Velaptor\.Graphics\.Renderers\.IShapeRenderer')  
 The rectangle renderer\.
+
+<a name='Velaptor.Factories.RendererFactory.CreateTextRenderer()'></a>
+
+### CreateTextRenderer\(\) 
+
+Creates an instance of the [ITextRenderer](Velaptor.Graphics.Renderers.ITextRenderer.md 'Velaptor\.Graphics\.Renderers\.ITextRenderer')\.
+
+```csharp
+public static Velaptor.Graphics.Renderers.ITextRenderer CreateTextRenderer();
+```
+
+#### Returns
+[ITextRenderer](Velaptor.Graphics.Renderers.ITextRenderer.md 'Velaptor\.Graphics\.Renderers\.ITextRenderer')  
+The text renderer\.
 
 <a name='Velaptor.Factories.RendererFactory.CreateTextureRenderer()'></a>
 

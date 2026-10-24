@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException()'></a>
 
-### BufferNotInitializedException\(\) Constructor
+### BufferNotInitializedException\(\) Constructor \{#Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException()}
 
 Initializes a new instance of the [BufferNotInitializedException](Velaptor.OpenGL.Exceptions.BufferNotInitializedException.md 'Velaptor\.OpenGL\.Exceptions\.BufferNotInitializedException') class\.
 
@@ -28,7 +28,7 @@ public BufferNotInitializedException();
 
 <a name='Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException(string,string)'></a>
 
-### BufferNotInitializedException\(string, string\) Constructor
+### BufferNotInitializedException\(string, string\) Constructor \{#Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException(string,string)}
 
 Initializes a new instance of the [BufferNotInitializedException](Velaptor.OpenGL.Exceptions.BufferNotInitializedException.md 'Velaptor\.OpenGL\.Exceptions\.BufferNotInitializedException') class\.
 
@@ -51,7 +51,7 @@ The name of the buffer\.
 
 <a name='Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException(string,System.Exception)'></a>
 
-### BufferNotInitializedException\(string, Exception\) Constructor
+### BufferNotInitializedException\(string, Exception\) Constructor \{#Velaptor.OpenGL.Exceptions.BufferNotInitializedException.BufferNotInitializedException(string,System.Exception)}
 
 Initializes a new instance of the [BufferNotInitializedException](Velaptor.OpenGL.Exceptions.BufferNotInitializedException.md 'Velaptor\.OpenGL\.Exceptions\.BufferNotInitializedException') class\.
 

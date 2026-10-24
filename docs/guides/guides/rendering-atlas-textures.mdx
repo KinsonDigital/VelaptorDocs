@@ -7,6 +7,8 @@ import TabItem from '@theme/TabItem';
 import GuideLink from "@site/src/components/GuideLink";
 import Url from "@site/src/components/Url";
 import StaticDownload from "@site/src/components/StaticDownload";
+import NumberedList from "@site/src/components/NumberedList";
+import Video from "@site/src/components/Video"
 
 # Rendering With An Atlas Texture
 
@@ -14,10 +16,6 @@ When it comes to rendering atlas textures, you have some choices. You can use Ve
 use the Aseprite loader integration, or you can build your own custom atlas texture loader.
 
 Click either the _**Built In Atlas Loader**_ or _**Aseprite Loader**_ tab below to see the guide for that particular atlas texture loading method.
-
-:::note Aseprite
-To learn more about Aseprite, refer to the <Url href='https://www.aseprite.org/' text='Aseprite Website' />
-:::
 
 <Tabs groupId="atlas-tool">
     <TabItem value="built-in" label="Built In Atlas Loader" default>
@@ -28,6 +26,8 @@ Go to the <GuideLink projectName="BuiltInAtlasTextures" /> guide project to see 
     <TabItem value="aseprite" label="Aseprite Loader">
 :::note Guide Source Code
 Go to the <GuideLink projectName="AsepriteAtlasTextures" /> guide project to see the source code for a fully working example of this guide.
+
+To learn more about Aseprite, refer to the <Url href='https://www.aseprite.org/' text='Aseprite Website' />
 :::
     </TabItem>
 </Tabs>
@@ -38,9 +38,11 @@ Stick with it, though; it will be worth it!
 
 :::info Atlas Texture?
 Want more detail about what an atlas texture is? Refer to the links below:
-1. <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openInNewTab={true} />
-2. <Url href="gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openInNewTab={true} />
-3. <Url href="www.pinterest.com/pin/676877018967605282/" text="Examples" openInNewTab={true} />
+<NumberedList items={[
+    <Url href="https://en.wikipedia.org/wiki/Texture_atlas" text="Wikipedia" openInNewTab={true} />,
+    <Url href="gamedevelopment.tutsplus.com/articles/using-texture-atlas-in-order-to-optimize-your-game--cms-26783" text="Game Dev Tuts Plus" openInNewTab={true} />,
+    <Url href="www.pinterest.com/pin/676877018967605282/" text="Examples" openInNewTab={true} />
+]}/>
 :::
 
 An atlas texture is a large image with multiple sub-images packed into a single image. With this single image, you use another file
@@ -154,7 +156,7 @@ For more info, refer to the [Quick Start](./quick-start/quick-project-setup) gui
     <TabItem value="built-in" label="Built In Atlas Loader" default>
         Download the atlas texture files below:
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/built-in-atlas.png"
-            downloadFileName="atlas.png"
+            downloadFileName="fire-atlas.png"
             sizePercentage={25}
             text="Click to download the texture atlas."/>
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/built-in-atlas.json"
@@ -163,7 +165,7 @@ For more info, refer to the [Quick Start](./quick-start/quick-project-setup) gui
     </TabItem>
     <TabItem value="aseprite" label="Aseprite Loader">
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/aseprite-atlas.png"
-            downloadFileName="atlas.png"
+            downloadFileName="fire-atlas.png"
             sizePercentage={25}
             text="Click to download the texture atlas."/>
         <StaticDownload relativePath="/img/guides/rendering-atlas-textures/aseprite-atlas.json"
@@ -205,6 +207,7 @@ letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
         ```csharp showLineNumbers
         public class Game : Window
         {
+            // highlight-add-start
             private const int FullSizeStartFrame = 8; // The frame index where the flame has grown to full size
             private readonly ITextureRenderer textureRenderer; // Renders textures
             private readonly IContentManager contentManager; // Loads various types of content
@@ -214,6 +217,7 @@ letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
             private float elapsedMs; // Milliseconds elapsed since the last animation frame change
             private int currentFrame; // The current frame of the animation
             private bool isFullSize; // Whether or not the flame has grown to full size
+            // highlight-add-end
         }
         ```
 
@@ -239,10 +243,12 @@ letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
         ```csharp showLineNumbers
         public class Game : Window
         {
+            // highlight-add-start
             private readonly ITextureRenderer textureRenderer; // Renders textures
             private readonly IContentManager contentManager; // Loads various types of content
             private readonly IBatcher batcher; // Batches the rendering of textures
             private IAsepriteAtlas? atlasData;  // Reference to the loaded atlas (texture + metadata)
+            // highlight-add-end
         }
         ```
 
@@ -259,22 +265,53 @@ letting you know that _**one**_, the _**other**_, or _**both**_ are missing.
 
 In the `Game` class, add the following code to the constructor to set up the window and instantiate the objects mentioned before.
 
-```csharp showLineNumbers
-public class Game : Window
-{
-    ...
-    public Game()
-    {
-        Title = "Atlas Textures";
-        Width = 500;
-        Height = 500;
+<Tabs groupId="atlas-tool">
+    <TabItem value="built-in" label="Built In Atlas Loader" default>
+        ```csharp showLineNumbers
+        public class Game : Window
+        {
+            // ... class fields here
 
-        this.contentManager = ContentManager.Create();
-        this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.batcher = RendererFactory.CreateBatcher();
-    }
-}
-```
+            public Game()
+            {
+                // highlight-add-start
+                Title = "Built In Atlas Textures";
+                Width = 500;
+                Height = 500;
+
+                this.contentManager = ContentManager.Create();
+                this.textureRenderer = RendererFactory.CreateTextureRenderer();
+                this.batcher = RendererFactory.CreateBatcher();
+                // highlight-add-end
+            }
+        }
+        ```
+    </TabItem>
+
+    <TabItem value="aseprite" label="Aseprite Loader">
+        ```csharp showLineNumbers
+        public class Game : Window
+        {
+            // ... class fields here
+            public Game()
+            {
+                // highlight-add-start
+                Title = "Aseprite Atlas Textures";
+                Width = 500;
+                Height = 500;
+
+                this.contentManager = ContentManager.Create();
+                this.textureRenderer = RendererFactory.CreateTextureRenderer();
+                this.batcher = RendererFactory.CreateBatcher();
+                // highlight-add-end
+            }
+        }
+        ```
+
+    </TabItem>
+</Tabs>
+
+
 
 
 ## <span className="color-step">Step 6: Load and unload the content</span>
@@ -288,11 +325,13 @@ Next, let's create the `OnLoad()` override method and add code to the method to 
         ```csharp showLineNumbers
         protected override void OnLoad()
         {
+            // highlight-add-start
             // Loads the atlas.png and atlas.json files
             this.atlasData = this.contentManager.Load<IAtlasData>("atlas");
 
             // The string "flame" must match the frame name used in your atlas metadata.
             this.subTextureData = this.atlasData.GetFrames("flame");
+            // highlight-add-end
 
             base.OnLoad();
         }
@@ -302,6 +341,7 @@ Next, let's create the `OnLoad()` override method and add code to the method to 
         ```csharp showLineNumbers
         protected override void OnLoad()
         {
+            // highlight-add-start
             // Loads the atlas.png and atlas.json files
             this.atlasData = this.contentManager.LoadAsepriteAtlas("atlas", "grow");
             this.atlasData.Enabled = true;
@@ -312,7 +352,9 @@ Next, let's create the `OnLoad()` override method and add code to the method to 
             {
                 this.atlasData.Play("burn"); // Play a different animation
             };
+
             this.atlasData.Play();
+            // highlight-add-end
 
             base.OnLoad();
         }
@@ -395,7 +437,13 @@ it is not required and there is no need to load the _**.png**_ and _**.json**_ f
         ```csharp showLineNumbers
         protected override void OnUnload()
         {
-            this.contentManager.Unload(this.atlasData);
+            // highlight-add-start
+            if (this.atlasData is not null)
+            {
+                this.contentManager.Unload(this.atlasData);
+            }
+            // highlight-add-end
+
             base.OnUnload();
         }
         ```
@@ -411,10 +459,12 @@ it is not required and there is no need to load the _**.png**_ and _**.json**_ f
         ```csharp showLineNumbers
         protected override void OnUnload()
         {
+            // highlight-add-start
             if (this.atlasData is not null)
             {
                 this.contentManager.UnloadAsepriteAtlas(this.atlasData);
             }
+            // highlight-add-end
 
             base.OnUnload();
         }
@@ -437,6 +487,7 @@ Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` 
         ```csharp showLineNumbers
         protected override void OnUpdate(FrameTime frameTime)
         {
+            // highlight-add-start
             if (this.subTextureData is null)
             {
                 throw new LoadContentException("The atlas data has not been loaded");
@@ -467,6 +518,7 @@ Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` 
                 // 124ms before moving to the next frame
                 this.elapsedMs = 0;
             }
+            // highlight-add-end
 
             base.OnUpdate(frameTime);
         }
@@ -484,6 +536,7 @@ Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` 
         ```csharp showLineNumbers
         protected override void OnUpdate(FrameTime frameTime)
         {
+            // highlight-add-start
             if (this.atlasData is null)
             {
                 return;
@@ -491,6 +544,7 @@ Now that we have loaded the atlas data, let's add some code to the `OnUpdate()` 
 
             // Update the animation in the atlas data
             this.atlasData.Update(frameTime);
+            // highlight-add-end
 
             base.OnUpdate(frameTime);
         }
@@ -544,6 +598,7 @@ Now we can finally render the animation to the screen. Add the following code to
         ```csharp showLineNumbers
         protected override void OnDraw(FrameTime frameTime)
         {
+            // highlight-add-start
             // Start the batch
             this.batcher.Begin();
 
@@ -564,6 +619,7 @@ Now we can finally render the animation to the screen. Add the following code to
             this.batcher.End();
 
             base.OnDraw(frameTime);
+            // highlight-add-end
         }
         ```
 
@@ -575,6 +631,7 @@ Now we can finally render the animation to the screen. Add the following code to
         ```csharp showLineNumbers
         protected override void OnDraw(FrameTime frameTime)
         {
+            // highlight-add-start
             if (this.atlasData is null)
             {
                 throw new LoadContentException("The atlas data has not been loaded");
@@ -601,6 +658,7 @@ Now we can finally render the animation to the screen. Add the following code to
 
             // End the batch to render the entire batch
             this.batcher.End();
+            // highlight-add-end
 
             base.OnDraw(frameTime);
         }
@@ -617,10 +675,9 @@ animating in the center of the window as shown below.
 The animation will be much smoother than what is shown here.
 :::
 
-<video autoPlay loop muted playsInline loading="lazy">
-    <source src={require("@site/static/img/guides/rendering-atlas-textures/flame.mp4").default} type="video/mp4" />
-</video>
-
+<div className="flex justify-center">
+    <Video relativePath="video/guides/rendering-atlas-textures/flame.mp4"/>
+</div>
 
 ## <span className="color-step">Step 10: Bonus!</span>
 
@@ -632,15 +689,52 @@ Let's improve the randomness of the flame animation.
 Add two more class fields to the `Game` class. The `random` field will be used to randomly choose between a horizontal
 or non-horizontal orientation. The `renderEffects` field will be the layout setting at the time of rendering.
 
-```csharp showLineNumbers
-public class Game: Window
-{
-    ...
-    private readonly Random random = new (); // Chooses random numbers
-    private RenderEffects renderEffects; // The horizontal orientation to render flame
-    ...
-}
-```
+<Tabs groupId="atlas-tool">
+    <TabItem value="built-in" label="Built In Atlas Loader" default>
+    ```csharp showLineNumbers
+    public class Game: Window
+    {
+        private const int FullSizeStartFrame = 8;
+        private readonly ITextureRenderer textureRenderer;
+        private readonly IContentManager contentManager;
+        private readonly IBatcher batcher;
+        // highlight-add-start
+        private readonly Random random = new (); // Chooses random numbers
+        // highlight-add-end
+        private IAtlasData? atlasData;
+        private AtlasSubTextureData[]? subTextureData;
+        // highlight-add-start
+        private RenderEffects renderEffects; // The horizontal orientation to render flame
+        // highlight-add-end
+        private float elapsedMs;
+        private int currentFrame;
+        private bool isFullSize;
+
+        // ... rest of class code below
+    }
+    ```
+
+    </TabItem>
+
+    <TabItem value="aseprite" label="Aseprite Loader">
+
+    ```csharp showLineNumbers
+    public class Game: Window
+    {
+        private readonly ITextureRenderer textureRenderer;
+        private readonly IContentManager contentManager;
+        private readonly IBatcher batcher;
+        // highlight-add-start
+        private readonly Random random = new (); // Chooses random numbers
+        private RenderEffects renderEffects; // The horizontal orientation to render flame
+        // highlight-add-end
+        private IAsepriteAtlas? atlasData;
+
+        // ... rest of class code below
+    }
+    ```
+    </TabItem>
+</Tabs>
 
 
 ### <span className="color-sub-step">10.2: Add flip behavior</span>
@@ -656,18 +750,43 @@ public class Game: Window
         ```csharp showLineNumbers
         protected override void OnUpdate(FrameTime frameTime)
         {
-            ...
+            if (this.subTextureData is null)
+            {
+                throw new LoadContentException("The atlas data has not been loaded");
+            }
+
+            this.elapsedMs += (float)frameTime.ElapsedTime.TotalMilliseconds;
+
             // Move to the next frame every 124ms
             if (this.elapsedMs >= 124)
             {
-                ...
+                // If the current frame is one of the frames after
+                // the flame has grown to full size.
+                if (this.currentFrame >= FullSizeStartFrame)
+                {
+                    this.isFullSize = true;
+                }
+
+                // Get the starting frame index based on if the flame has
+                // grown to full size or not.
+                var startFrame = this.isFullSize ? FullSizeStartFrame : 0;
+
+                // If the last frame has been reached, reset to the starting frame
+                this.currentFrame = this.currentFrame >= this.subTextureData.Length - 1
+                    ? startFrame
+                    : this.currentFrame + 1;
+
+                // Reset the elapsed time so we can wait for another
+                // 124ms before moving to the next frame
+                this.elapsedMs = 0;
+                // highlight-add-start
+
                 // Randomly choose to have the flame flipped horizontally or not flipped at all
                 this.renderEffects = this.random.Next(0, 2) == 0
                     ? RenderEffects.FlipHorizontally
                     : RenderEffects.None;
-                ...
+                // highlight-add-end
             }
-            ...
         }
         ```
 
@@ -676,16 +795,30 @@ public class Game: Window
         ```csharp showLineNumbers
         protected override void OnDraw(FrameTime frameTime)
         {
-            ...
+            // Start the batch
+            this.batcher.Begin();
+
+            var pos = new Vector2(Width / 2f, Height / 2f);
+
+            // Render only the sub-texture in the atlas at the center of the window
             this.textureRenderer.Render(this.atlasData,
                 "flame",
                 pos,
                 0f,
                 0.25f,
                 Color.White,
+                // highlight-remove-start
+                RenderEffects.None,
+                // highlight-remove-end
+                // highlight-add-start
                 this.renderEffects,
+                // highlight-add-end
                 this.currentFrame);
-            ...
+
+            // End the batch to render the entire batch
+            this.batcher.End();
+
+            base.OnDraw(frameTime);
         }
         ```
     </TabItem>
@@ -697,7 +830,11 @@ public class Game: Window
         ```csharp showLineNumbers
         protected override void OnLoad()
         {
-            ...
+            // Loads the atlas.png and atlas.json files
+            this.atlasData = this.contentManager.LoadAsepriteAtlas("atlas", "grow");
+            this.atlasData.Enabled = true;
+
+            // highlight-add-start
             this.atlasData.OnFrameChange = (_, _) =>
             {
                 // Randomly choose to have the flame flipped horizontally or not flipped at all
@@ -705,7 +842,17 @@ public class Game: Window
                     ? RenderEffects.FlipHorizontally
                     : RenderEffects.None;
             };
-            ...
+            // highlight-add-end
+
+            // Executes once the 'grow' animation cycle has completed,
+            // and then transitions to the 'burn' animation cycle.
+            this.atlasData.OnCycleComplete = (_) => 
+            {
+                this.atlasData.Play("burn"); // Play a different animation
+            };
+
+            this.atlasData.Play();
+
             base.OnLoad();
         }
         ```
@@ -715,7 +862,21 @@ public class Game: Window
         ```csharp showLineNumbers
         protected override void OnDraw(FrameTime frameTime)
         {
-            ...
+            if (this.atlasData is null)
+            {
+                throw new LoadContentException("The atlas data has not been loaded");
+            }
+
+            // Start the batch
+            this.batcher.Begin();
+
+            var frame = this.atlasData.GetCurrentFrame();
+
+            var srcRect = frame.Bounds;
+            var destX = (int)(Width / 2); // Center horizontally
+            var destY = (int)(Height / 2); // Center vertically
+            var destRect = new Rectangle(destX, destY, (int)this.atlasData.Texture.Width, (int)this.atlasData.Texture.Height);
+
             this.textureRenderer.Render(
                 this.atlasData.Texture,
                 srcRect,
@@ -723,8 +884,17 @@ public class Game: Window
                 1f,
                 0f,
                 Color.White,
+                // highlight-remove-start
+                RenderEffects.None);
+                // highlight-remove-end
+                // highlight-add-start
                 this.renderEffects);
-            ...
+                // highlight-add-end
+
+            // End the batch to render the entire batch
+            this.batcher.End();
+
+            base.OnDraw(frameTime);
         }
         ```
     </TabItem>

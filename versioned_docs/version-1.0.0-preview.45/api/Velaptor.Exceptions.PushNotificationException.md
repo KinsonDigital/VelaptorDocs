@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException()'></a>
 
-### PushNotificationException\(\) Constructor
+### PushNotificationException\(\) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException()}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor\.Exceptions\.PushNotificationException') class\.
 
@@ -28,7 +28,7 @@ public PushNotificationException();
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string)'></a>
 
-### PushNotificationException\(string\) Constructor
+### PushNotificationException\(string\) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException(string)}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor\.Exceptions\.PushNotificationException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Exception)'></a>
 
-### PushNotificationException\(string, Exception\) Constructor
+### PushNotificationException\(string, Exception\) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Exception)}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor\.Exceptions\.PushNotificationException') class\.
 
@@ -68,7 +68,7 @@ The [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exce
 
 <a name='Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Guid)'></a>
 
-### PushNotificationException\(string, Guid\) Constructor
+### PushNotificationException\(string, Guid\) Constructor \{#Velaptor.Exceptions.PushNotificationException.PushNotificationException(string,System.Guid)}
 
 Initializes a new instance of the [PushNotificationException](Velaptor.Exceptions.PushNotificationException.md 'Velaptor\.Exceptions\.PushNotificationException') class\.
 

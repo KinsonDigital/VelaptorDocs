@@ -19,7 +19,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 <a name='Velaptor.Hardware.SystemDisplay.SystemDisplay()'></a>
 
-### SystemDisplay() Constructor
+### SystemDisplay() Constructor \{#Velaptor.Hardware.SystemDisplay.SystemDisplay()}
 
 Initializes a new instance of the [SystemDisplay](Velaptor.Hardware.SystemDisplay.md 'Velaptor.Hardware.SystemDisplay') class.
 
@@ -30,7 +30,7 @@ public SystemDisplay();
 
 <a name='Velaptor.Hardware.SystemDisplay.BlueBitDepth'></a>
 
-### BlueBitDepth 
+### BlueBitDepth \{#Velaptor.Hardware.SystemDisplay.BlueBitDepth}
 
 Gets the bit depth of the blue color channel in the current video mode.
 
@@ -43,7 +43,7 @@ public int BlueBitDepth { get; set; }
 
 <a name='Velaptor.Hardware.SystemDisplay.Center'></a>
 
-### Center 
+### Center \{#Velaptor.Hardware.SystemDisplay.Center}
 
 Gets the center location of the display.
 
@@ -56,7 +56,7 @@ public System.Numerics.Vector2 Center { get; }
 
 <a name='Velaptor.Hardware.SystemDisplay.GreenBitDepth'></a>
 
-### GreenBitDepth 
+### GreenBitDepth \{#Velaptor.Hardware.SystemDisplay.GreenBitDepth}
 
 Gets the bit depth of the green color channel in the current video mode.
 
@@ -69,7 +69,7 @@ public int GreenBitDepth { get; set; }
 
 <a name='Velaptor.Hardware.SystemDisplay.Height'></a>
 
-### Height 
+### Height \{#Velaptor.Hardware.SystemDisplay.Height}
 
 Gets the height in screen coordinates in the current video mode.
 
@@ -82,7 +82,7 @@ public int Height { get; set; }
 
 <a name='Velaptor.Hardware.SystemDisplay.HorizontalDPI'></a>
 
-### HorizontalDPI 
+### HorizontalDPI \{#Velaptor.Hardware.SystemDisplay.HorizontalDPI}
 
 Gets the approximate dpi of the display on the horizontal axis.
 
@@ -95,7 +95,7 @@ public float HorizontalDPI { get; }
 
 <a name='Velaptor.Hardware.SystemDisplay.HorizontalScale'></a>
 
-### HorizontalScale 
+### HorizontalScale \{#Velaptor.Hardware.SystemDisplay.HorizontalScale}
 
 Gets the scale of the display on the horizontal axis.
 
@@ -111,7 +111,7 @@ If the display was set to a scale of 150%, this value of 1.5 should be used.
 
 <a name='Velaptor.Hardware.SystemDisplay.IsMain'></a>
 
-### IsMain 
+### IsMain \{#Velaptor.Hardware.SystemDisplay.IsMain}
 
 Gets a value indicating whether the display is the primary display in the system.
 
@@ -124,7 +124,7 @@ public bool IsMain { get; set; }
 
 <a name='Velaptor.Hardware.SystemDisplay.RedBitDepth'></a>
 
-### RedBitDepth 
+### RedBitDepth \{#Velaptor.Hardware.SystemDisplay.RedBitDepth}
 
 Gets the bit depth of the red color channel in the current video mode.
 
@@ -137,7 +137,7 @@ public int RedBitDepth { get; set; }
 
 <a name='Velaptor.Hardware.SystemDisplay.RefreshRate'></a>
 
-### RefreshRate 
+### RefreshRate \{#Velaptor.Hardware.SystemDisplay.RefreshRate}
 
 Gets the refresh rate in Hz in the current video mode.
 
@@ -150,7 +150,7 @@ public int RefreshRate { get; set; }
 
 <a name='Velaptor.Hardware.SystemDisplay.VerticalDPI'></a>
 
-### VerticalDPI 
+### VerticalDPI \{#Velaptor.Hardware.SystemDisplay.VerticalDPI}
 
 Gets the approximate dpi of the display on the vertical axis.
 
@@ -163,7 +163,7 @@ public float VerticalDPI { get; }
 
 <a name='Velaptor.Hardware.SystemDisplay.VerticalScale'></a>
 
-### VerticalScale 
+### VerticalScale \{#Velaptor.Hardware.SystemDisplay.VerticalScale}
 
 Gets the scale of the display on the vertical axis.
 
@@ -179,7 +179,7 @@ If the display was set to a scale of 150%, this value of 1.5 should be used.
 
 <a name='Velaptor.Hardware.SystemDisplay.Width'></a>
 
-### Width 
+### Width \{#Velaptor.Hardware.SystemDisplay.Width}
 
 Gets the width in screen coordinates in the current video mode.
 

@@ -24,7 +24,7 @@ Implements [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/Syst
 
 <a name='Velaptor.UI.IWindow.AutoClearBuffer'></a>
 
-### AutoClearBuffer 
+### AutoClearBuffer \{#Velaptor.UI.IWindow.AutoClearBuffer}
 
 Gets or sets a value indicating whether the buffers should  
 be automatically cleared before rendering any textures.
@@ -50,7 +50,7 @@ and set this property to true.  That would be a waste of resources.
 
 <a name='Velaptor.UI.IWindow.AutoSceneLoading'></a>
 
-### AutoSceneLoading 
+### AutoSceneLoading \{#Velaptor.UI.IWindow.AutoSceneLoading}
 
 Gets or sets a value indicating whether the scenes should be automatically loaded.
 
@@ -63,7 +63,7 @@ bool AutoSceneLoading { get; set; }
 
 <a name='Velaptor.UI.IWindow.AutoSceneRendering'></a>
 
-### AutoSceneRendering 
+### AutoSceneRendering \{#Velaptor.UI.IWindow.AutoSceneRendering}
 
 Gets or sets a value indicating whether the scenes should be automatically rendered.
 
@@ -76,7 +76,7 @@ bool AutoSceneRendering { get; set; }
 
 <a name='Velaptor.UI.IWindow.AutoSceneUnloading'></a>
 
-### AutoSceneUnloading 
+### AutoSceneUnloading \{#Velaptor.UI.IWindow.AutoSceneUnloading}
 
 Gets or sets a value indicating whether the scenes should be automatically unloaded.
 
@@ -89,7 +89,7 @@ bool AutoSceneUnloading { get; set; }
 
 <a name='Velaptor.UI.IWindow.AutoSceneUpdating'></a>
 
-### AutoSceneUpdating 
+### AutoSceneUpdating \{#Velaptor.UI.IWindow.AutoSceneUpdating}
 
 Gets or sets a value indicating whether the scenes should be automatically updated.
 
@@ -102,7 +102,7 @@ bool AutoSceneUpdating { get; set; }
 
 <a name='Velaptor.UI.IWindow.Draw'></a>
 
-### Draw 
+### Draw \{#Velaptor.UI.IWindow.Draw}
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked per frame for rendering.
 
@@ -115,7 +115,7 @@ System.Action<Velaptor.FrameTime>? Draw { get; set; }
 
 <a name='Velaptor.UI.IWindow.Fps'></a>
 
-### Fps 
+### Fps \{#Velaptor.UI.IWindow.Fps}
 
 Gets the frames per second that the main loop is running at.
 
@@ -128,7 +128,7 @@ float Fps { get; }
 
 <a name='Velaptor.UI.IWindow.Height'></a>
 
-### Height 
+### Height \{#Velaptor.UI.IWindow.Height}
 
 Gets or sets the height of the window.
 
@@ -141,7 +141,7 @@ uint Height { get; set; }
 
 <a name='Velaptor.UI.IWindow.Initialize'></a>
 
-### Initialize 
+### Initialize \{#Velaptor.UI.IWindow.Initialize}
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate to be invoked one time to initialize the window.
 
@@ -154,7 +154,7 @@ System.Action? Initialize { get; set; }
 
 <a name='Velaptor.UI.IWindow.Initialized'></a>
 
-### Initialized 
+### Initialized \{#Velaptor.UI.IWindow.Initialized}
 
 Gets a value indicating whether the window has been initialized.
 
@@ -167,7 +167,7 @@ bool Initialized { get; }
 
 <a name='Velaptor.UI.IWindow.MouseCursorVisible'></a>
 
-### MouseCursorVisible 
+### MouseCursorVisible \{#Velaptor.UI.IWindow.MouseCursorVisible}
 
 Gets or sets a value indicating whether the mouse cursor is visible.
 
@@ -180,7 +180,7 @@ bool MouseCursorVisible { get; set; }
 
 <a name='Velaptor.UI.IWindow.Position'></a>
 
-### Position 
+### Position \{#Velaptor.UI.IWindow.Position}
 
 Gets or sets the position of the window.
 
@@ -193,7 +193,7 @@ System.Numerics.Vector2 Position { get; set; }
 
 <a name='Velaptor.UI.IWindow.SceneManager'></a>
 
-### SceneManager 
+### SceneManager \{#Velaptor.UI.IWindow.SceneManager}
 
 Gets the scene manager.
 
@@ -206,7 +206,7 @@ Velaptor.Scene.ISceneManager SceneManager { get; }
 
 <a name='Velaptor.UI.IWindow.Title'></a>
 
-### Title 
+### Title \{#Velaptor.UI.IWindow.Title}
 
 Gets or sets the title of the window.
 
@@ -219,7 +219,7 @@ string Title { get; set; }
 
 <a name='Velaptor.UI.IWindow.TypeOfBorder'></a>
 
-### TypeOfBorder 
+### TypeOfBorder \{#Velaptor.UI.IWindow.TypeOfBorder}
 
 Gets or sets the type of border that the [IWindow](Velaptor.UI.IWindow.md 'Velaptor.UI.IWindow') will have.
 
@@ -232,7 +232,7 @@ Velaptor.WindowBorder TypeOfBorder { get; set; }
 
 <a name='Velaptor.UI.IWindow.Uninitialize'></a>
 
-### Uninitialize 
+### Uninitialize \{#Velaptor.UI.IWindow.Uninitialize}
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate to be invoked one time to uninitialize the window.
 
@@ -245,7 +245,7 @@ System.Action? Uninitialize { get; set; }
 
 <a name='Velaptor.UI.IWindow.Update'></a>
 
-### Update 
+### Update \{#Velaptor.UI.IWindow.Update}
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked per frame for updating.
 
@@ -258,7 +258,7 @@ System.Action<Velaptor.FrameTime>? Update { get; set; }
 
 <a name='Velaptor.UI.IWindow.UpdateFrequency'></a>
 
-### UpdateFrequency 
+### UpdateFrequency \{#Velaptor.UI.IWindow.UpdateFrequency}
 
 Gets or sets the value of how often the update and render calls are invoked in the value of hertz.
 
@@ -271,7 +271,7 @@ int UpdateFrequency { get; set; }
 
 <a name='Velaptor.UI.IWindow.Width'></a>
 
-### Width 
+### Width \{#Velaptor.UI.IWindow.Width}
 
 Gets or sets the width of the window.
 
@@ -284,7 +284,7 @@ uint Width { get; set; }
 
 <a name='Velaptor.UI.IWindow.WindowState'></a>
 
-### WindowState 
+### WindowState \{#Velaptor.UI.IWindow.WindowState}
 
 Gets or sets the state of the window.
 
@@ -297,7 +297,7 @@ Velaptor.StateOfWindow WindowState { get; set; }
 
 <a name='Velaptor.UI.IWindow.WinResize'></a>
 
-### WinResize 
+### WinResize \{#Velaptor.UI.IWindow.WinResize}
 
 Gets or sets the [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action') delegate that is invoked every time the window is resized.
 
@@ -311,7 +311,7 @@ System.Action<Velaptor.SizeU>? WinResize { get; set; }
 
 <a name='Velaptor.UI.IWindow.Close()'></a>
 
-### Close() 
+### Close() \{#Velaptor.UI.IWindow.Close()}
 
 Closes the window.
 
@@ -321,7 +321,7 @@ void Close();
 
 <a name='Velaptor.UI.IWindow.Show()'></a>
 
-### Show() 
+### Show() \{#Velaptor.UI.IWindow.Show()}
 
 Shows the window.
 
@@ -331,7 +331,7 @@ void Show();
 
 <a name='Velaptor.UI.IWindow.ShowAsync(System.Action,System.Action)'></a>
 
-### ShowAsync(Action, Action) 
+### ShowAsync(Action, Action) \{#Velaptor.UI.IWindow.ShowAsync(System.Action,System.Action)}
 
 Shows the window asynchronously.
 

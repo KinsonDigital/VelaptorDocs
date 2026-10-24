@@ -5,12 +5,11 @@
 namespace UnmanagedScenes;
 
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Factories;
 using Velaptor.Input;
 using Velaptor.Scene;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 
 /// <summary>
 /// The main game class.

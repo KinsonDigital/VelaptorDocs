@@ -35,7 +35,7 @@ public class Game : Window
 {
     private readonly IBatcher batcher; // Used to control batching
     private readonly ITextureRenderer textureRenderer; // Renders textures
-    private IContentManager contentManager; // Used to load content
+    private readonly IContentManager contentManager; // Used to load content
     private ITexture? logoTexture; // The texture to render
     ...
 }
@@ -120,7 +120,11 @@ and release resources when shutting down the game or when switching to a new sce
 ```csharp
 protected override void OnUnload()
 {
-    this.contentManager.Unload(this.logoTexture);
+    if (this.logoTexture is not null)
+    {
+        this.contentManager.Unload(this.logoTexture);
+    }
+
     base.OnUnload();
 }
 ```

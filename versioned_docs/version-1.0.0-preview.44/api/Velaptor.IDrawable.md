@@ -21,7 +21,7 @@ Derived
 
 <a name='Velaptor.IDrawable.Render()'></a>
 
-### Render() 
+### Render() \{#Velaptor.IDrawable.Render()}
 
 Renders the object.
 

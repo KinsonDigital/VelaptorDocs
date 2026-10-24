@@ -1,0 +1,123 @@
+---
+title: Velaptor.Scene.IScene
+---
+
+#### [Velaptor](Namespaces.md 'Velaptor Namespaces')
+### [Velaptor\.Scene](Velaptor.Scene.md 'Velaptor\.Scene')
+
+#### IScene Interface
+
+Represents a single scene that can be rendered to the screen\.
+
+```csharp
+public interface IScene : Velaptor.IUpdatable, Velaptor.IDrawable
+```
+
+Derived  
+&#8627; [SceneBase](Velaptor.Scene.SceneBase.md 'Velaptor\.Scene\.SceneBase')
+
+Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable')
+## Properties
+
+<a name='Velaptor.Scene.IScene.Id'></a>
+
+### Id \{#Velaptor.Scene.IScene.Id}
+
+Gets the unique ID of the scene\.
+
+```csharp
+System.Guid Id { get; }
+```
+
+#### Property Value
+[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+<a name='Velaptor.Scene.IScene.IsLoaded'></a>
+
+### IsLoaded \{#Velaptor.Scene.IScene.IsLoaded}
+
+Gets a value indicating whether the scene has been loaded\.
+
+```csharp
+bool IsLoaded { get; }
+```
+
+#### Property Value
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+<a name='Velaptor.Scene.IScene.Name'></a>
+
+### Name \{#Velaptor.Scene.IScene.Name}
+
+Gets the name of the scene\.
+
+```csharp
+string Name { get; }
+```
+
+#### Property Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='Velaptor.Scene.IScene.WindowCenter'></a>
+
+### WindowCenter \{#Velaptor.Scene.IScene.WindowCenter}
+
+Gets the center of the window\.
+
+```csharp
+System.Drawing.Point WindowCenter { get; }
+```
+
+#### Property Value
+[System\.Drawing\.Point](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point 'System\.Drawing\.Point')
+
+<a name='Velaptor.Scene.IScene.WindowSize'></a>
+
+### WindowSize \{#Velaptor.Scene.IScene.WindowSize}
+
+Gets the size of the window\.
+
+```csharp
+Velaptor.SizeU WindowSize { get; }
+```
+
+#### Property Value
+[SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')
+## Methods
+
+<a name='Velaptor.Scene.IScene.LoadContent()'></a>
+
+### LoadContent\(\) \{#Velaptor.Scene.IScene.LoadContent()}
+
+Loads the scene content\.
+
+```csharp
+void LoadContent();
+```
+
+<a name='Velaptor.Scene.IScene.Resize(Velaptor.SizeU)'></a>
+
+### Resize\(SizeU\) \{#Velaptor.Scene.IScene.Resize(Velaptor.SizeU)}
+
+Updates the [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor\.Scene\.IScene\.WindowSize')\.
+
+```csharp
+void Resize(Velaptor.SizeU size);
+```
+#### Parameters
+
+<a name='Velaptor.Scene.IScene.Resize(Velaptor.SizeU).size'></a>
+
+`size` [SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')
+
+The new size\.
+
+<a name='Velaptor.Scene.IScene.UnloadContent()'></a>
+
+### UnloadContent\(\) \{#Velaptor.Scene.IScene.UnloadContent()}
+
+Unloads the scene's content\.
+
+```csharp
+void UnloadContent();
+```

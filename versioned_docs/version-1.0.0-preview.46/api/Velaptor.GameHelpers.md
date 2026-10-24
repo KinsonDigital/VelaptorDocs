@@ -18,9 +18,9 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.GameHelpers.ApplySize(thisfloat,float)'></a>
 
-### ApplySize\(this float, float\) 
+### ApplySize\(this float, float\) \{#Velaptor.GameHelpers.ApplySize(thisfloat,float)}
 
-Returns the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.value') with the given [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.size') applied\.
+Returns the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisfloat,float) 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.value') with the given [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisfloat,float) 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.size') applied\.
 
 ```csharp
 public static float ApplySize(this float value, float size);
@@ -47,15 +47,15 @@ The value after the size has been applied\.
 If the value was 3 and the size was 2, then the result would be 6\.
 
 #### Remarks
-A [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.size') value of 1 represents 100% or the unchanged normal size of the value\.
-If the value of [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.size') is 2, then the result would be the given
-[value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.value') that is doubled\.
+A [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisfloat,float) 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.size') value of 1 represents 100% or the unchanged normal size of the value\.
+If the value of [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisfloat,float) 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.size') is 2, then the result would be the given
+[value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisfloat,float) 'Velaptor\.GameHelpers\.ApplySize\(this float, float\)\.value') that is doubled\.
 
 <a name='Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.RectangleF,float)'></a>
 
-### ApplySize\(this RectangleF, float\) 
+### ApplySize\(this RectangleF, float\) \{#Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.RectangleF,float)}
 
-Returns the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.RectangleF, float\)\.value') with the given [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.RectangleF, float\)\.size') applied\.
+Returns the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.RectangleF,float) 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.RectangleF, float\)\.value') with the given [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.RectangleF,float) 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.RectangleF, float\)\.size') applied\.
 
 ```csharp
 public static System.Drawing.RectangleF ApplySize(this System.Drawing.RectangleF value, float size);
@@ -87,9 +87,9 @@ The size will be applied to the following:
 
 <a name='Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.SizeF,float)'></a>
 
-### ApplySize\(this SizeF, float\) 
+### ApplySize\(this SizeF, float\) \{#Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.SizeF,float)}
 
-Returns the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.SizeF, float\)\.value') with the given [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.SizeF, float\)\.size') applied\.
+Returns the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.SizeF,float) 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.SizeF, float\)\.value') with the given [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisSystem.Drawing.SizeF,float) 'Velaptor\.GameHelpers\.ApplySize\(this System\.Drawing\.SizeF, float\)\.size') applied\.
 
 ```csharp
 public static System.Drawing.SizeF ApplySize(this System.Drawing.SizeF value, float size);
@@ -119,9 +119,9 @@ The size will be applied to the following:
 
 <a name='Velaptor.GameHelpers.ApplySize(thisuint,float)'></a>
 
-### ApplySize\(this uint, float\) 
+### ApplySize\(this uint, float\) \{#Velaptor.GameHelpers.ApplySize(thisuint,float)}
 
-Returns the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.value') with the given [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.size') applied\.
+Returns the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisuint,float) 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.value') with the given [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisuint,float) 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.size') applied\.
 
 ```csharp
 public static float ApplySize(this uint value, float size);
@@ -148,15 +148,15 @@ The value after the size has been applied\.
 If the value was 3 and the size was 2, then the result would be 6\.
 
 #### Remarks
-A [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.size') value of 1 represents 100% or the unchanged normal size of the value\.
-If the value of [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.size') is 2, then the result would be the given
-[value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.value') that is doubled\.
+A [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisuint,float) 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.size') value of 1 represents 100% or the unchanged normal size of the value\.
+If the value of [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisuint,float) 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.size') is 2, then the result would be the given
+[value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisuint,float) 'Velaptor\.GameHelpers\.ApplySize\(this uint, float\)\.value') that is doubled\.
 
 <a name='Velaptor.GameHelpers.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float)'></a>
 
-### ApplySize\(this GlyphMetrics, float\) 
+### ApplySize\(this GlyphMetrics, float\) \{#Velaptor.GameHelpers.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float)}
 
-Returns the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.ApplySize\(this Velaptor\.Graphics\.GlyphMetrics, float\)\.value') with the given [size](Velaptor.GameHelpers.md#size 'Velaptor\.GameHelpers\.ApplySize\(this Velaptor\.Graphics\.GlyphMetrics, float\)\.size') applied\.
+Returns the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float) 'Velaptor\.GameHelpers\.ApplySize\(this Velaptor\.Graphics\.GlyphMetrics, float\)\.value') with the given [size](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ApplySize(thisVelaptor.Graphics.GlyphMetrics,float) 'Velaptor\.GameHelpers\.ApplySize\(this Velaptor\.Graphics\.GlyphMetrics, float\)\.size') applied\.
 
 ```csharp
 public static Velaptor.Graphics.GlyphMetrics ApplySize(this Velaptor.Graphics.GlyphMetrics value, float size);
@@ -181,29 +181,29 @@ The result after the size has been applied\.
 
 #### Remarks
 The size will be applied to the following:
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[GlyphBounds](Velaptor.Graphics.GlyphMetrics.md#glyphbounds 'Velaptor\.Graphics\.GlyphMetrics\.GlyphBounds')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[Ascender](Velaptor.Graphics.GlyphMetrics.md#ascender 'Velaptor\.Graphics\.GlyphMetrics\.Ascender')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[Descender](Velaptor.Graphics.GlyphMetrics.md#descender 'Velaptor\.Graphics\.GlyphMetrics\.Descender')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[HorizontalAdvance](Velaptor.Graphics.GlyphMetrics.md#horizontaladvance 'Velaptor\.Graphics\.GlyphMetrics\.HorizontalAdvance')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[HoriBearingX](Velaptor.Graphics.GlyphMetrics.md#horibearingx 'Velaptor\.Graphics\.GlyphMetrics\.HoriBearingX')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[HoriBearingY](Velaptor.Graphics.GlyphMetrics.md#horibearingy 'Velaptor\.Graphics\.GlyphMetrics\.HoriBearingY')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[GlyphWidth](Velaptor.Graphics.GlyphMetrics.md#glyphwidth 'Velaptor\.Graphics\.GlyphMetrics\.GlyphWidth')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[GlyphHeight](Velaptor.Graphics.GlyphMetrics.md#glyphheight 'Velaptor\.Graphics\.GlyphMetrics\.GlyphHeight')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[XMin](Velaptor.Graphics.GlyphMetrics.md#xmin 'Velaptor\.Graphics\.GlyphMetrics\.XMin')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[XMax](Velaptor.Graphics.GlyphMetrics.md#xmax 'Velaptor\.Graphics\.GlyphMetrics\.XMax')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[YMin](Velaptor.Graphics.GlyphMetrics.md#ymin 'Velaptor\.Graphics\.GlyphMetrics\.YMin')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[YMax](Velaptor.Graphics.GlyphMetrics.md#ymax 'Velaptor\.Graphics\.GlyphMetrics\.YMax')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[GlyphBounds](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.GlyphBounds 'Velaptor\.Graphics\.GlyphMetrics\.GlyphBounds')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[Ascender](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Ascender 'Velaptor\.Graphics\.GlyphMetrics\.Ascender')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[Descender](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Descender 'Velaptor\.Graphics\.GlyphMetrics\.Descender')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[HorizontalAdvance](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.HorizontalAdvance 'Velaptor\.Graphics\.GlyphMetrics\.HorizontalAdvance')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[HoriBearingX](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.HoriBearingX 'Velaptor\.Graphics\.GlyphMetrics\.HoriBearingX')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[HoriBearingY](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.HoriBearingY 'Velaptor\.Graphics\.GlyphMetrics\.HoriBearingY')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[GlyphWidth](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.GlyphWidth 'Velaptor\.Graphics\.GlyphMetrics\.GlyphWidth')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[GlyphHeight](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.GlyphHeight 'Velaptor\.Graphics\.GlyphMetrics\.GlyphHeight')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[XMin](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.XMin 'Velaptor\.Graphics\.GlyphMetrics\.XMin')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[XMax](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.XMax 'Velaptor\.Graphics\.GlyphMetrics\.XMax')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[YMin](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.YMin 'Velaptor\.Graphics\.GlyphMetrics\.YMin')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[YMax](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.YMax 'Velaptor\.Graphics\.GlyphMetrics\.YMax')
 
 
 The size will NOT be applied to the following:
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[Glyph](Velaptor.Graphics.GlyphMetrics.md#glyph 'Velaptor\.Graphics\.GlyphMetrics\.Glyph')
-- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[CharIndex](Velaptor.Graphics.GlyphMetrics.md#charindex 'Velaptor\.Graphics\.GlyphMetrics\.CharIndex')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[Glyph](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Glyph 'Velaptor\.Graphics\.GlyphMetrics\.Glyph')
+- [GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics').[CharIndex](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.CharIndex 'Velaptor\.Graphics\.GlyphMetrics\.CharIndex')
 
 <a name='Velaptor.GameHelpers.DecreaseBrightness(thisSystem.Drawing.Color,float)'></a>
 
-### DecreaseBrightness\(this Color, float\) 
+### DecreaseBrightness\(this Color, float\) \{#Velaptor.GameHelpers.DecreaseBrightness(thisSystem.Drawing.Color,float)}
 
-Decreases the brightness of the color using the given [brightness](Velaptor.GameHelpers.md#brightness 'Velaptor\.GameHelpers\.DecreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value\.
+Decreases the brightness of the color using the given [brightness](Velaptor.GameHelpers.md#Velaptor.GameHelpers.DecreaseBrightness(thisSystem.Drawing.Color,float) 'Velaptor\.GameHelpers\.DecreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value\.
 
 ```csharp
 public static System.Drawing.Color DecreaseBrightness(this System.Drawing.Color clr, float brightness);
@@ -244,18 +244,18 @@ In the example above, the values would equal the results below:
 
 #### Remarks
 
-The [brightness](Velaptor.GameHelpers.md#brightness 'Velaptor\.GameHelpers\.DecreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value must be a value between 0.0 and 1.0.
+The [brightness](Velaptor.GameHelpers.md#Velaptor.GameHelpers.DecreaseBrightness(thisSystem.Drawing.Color,float) 'Velaptor\.GameHelpers\.DecreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value must be a value between 0.0 and 1.0.
 
 If a value lower than 0.0 or greater than 1.0, the brightness will automatically
 be adjusted within the range of 0.0 to 1.0.
 
-Think of the [brightness](Velaptor.GameHelpers.md#brightness 'Velaptor\.GameHelpers\.DecreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value as a percentage between 0% and 100%.
+Think of the [brightness](Velaptor.GameHelpers.md#Velaptor.GameHelpers.DecreaseBrightness(thisSystem.Drawing.Color,float) 'Velaptor\.GameHelpers\.DecreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value as a percentage between 0% and 100%.
 
 The [System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color').[System\.Drawing\.Color\.A](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color.a 'System\.Drawing\.Color\.A') color component is not effected.
 
 <a name='Velaptor.GameHelpers.DoesNotContain(thisstring,char)'></a>
 
-### DoesNotContain\(this string, char\) 
+### DoesNotContain\(this string, char\) \{#Velaptor.GameHelpers.DoesNotContain(thisstring,char)}
 
 Returns a value indicating whether a specified character occurs within this string\.
 
@@ -268,7 +268,7 @@ public static bool DoesNotContain(this string stringToSearchIn, char value);
 
 `stringToSearchIn` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The string to search that may or may not contain the [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.DoesNotContain\(this string, char\)\.value')\.
+The string to search that may or may not contain the [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.DoesNotContain(thisstring,char) 'Velaptor\.GameHelpers\.DoesNotContain\(this string, char\)\.value')\.
 
 <a name='Velaptor.GameHelpers.DoesNotContain(thisstring,char).value'></a>
 
@@ -282,7 +282,7 @@ The character to seek\.
 
 <a name='Velaptor.GameHelpers.DoesNotContain(thisstring,string)'></a>
 
-### DoesNotContain\(this string, string\) 
+### DoesNotContain\(this string, string\) \{#Velaptor.GameHelpers.DoesNotContain(thisstring,string)}
 
 Returns a value indicating whether a specified substring occurs within this string\.
 
@@ -295,7 +295,7 @@ public static bool DoesNotContain(this string stringToSearchIn, string value);
 
 `stringToSearchIn` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The string to search that may or may not contain the [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.DoesNotContain\(this string, string\)\.value')\.
+The string to search that may or may not contain the [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.DoesNotContain(thisstring,string) 'Velaptor\.GameHelpers\.DoesNotContain\(this string, string\)\.value')\.
 
 <a name='Velaptor.GameHelpers.DoesNotContain(thisstring,string).value'></a>
 
@@ -309,7 +309,7 @@ The string to seek\.
 
 <a name='Velaptor.GameHelpers.DoesNotOnlyContainsLetters(thisstring)'></a>
 
-### DoesNotOnlyContainsLetters\(this string\) 
+### DoesNotOnlyContainsLetters\(this string\) \{#Velaptor.GameHelpers.DoesNotOnlyContainsLetters(thisstring)}
 
 Returns a value indicating whether this string does not only contain letters\.
 
@@ -330,7 +330,7 @@ The string to check\.
 
 <a name='Velaptor.GameHelpers.ForceNegative(thisfloat)'></a>
 
-### ForceNegative\(this float\) 
+### ForceNegative\(this float\) \{#Velaptor.GameHelpers.ForceNegative(thisfloat)}
 
 Sets the value to negative if it's positive\.
 
@@ -351,7 +351,7 @@ The value as a negative number\.
 
 <a name='Velaptor.GameHelpers.ForcePositive(thisfloat)'></a>
 
-### ForcePositive\(this float\) 
+### ForcePositive\(this float\) \{#Velaptor.GameHelpers.ForcePositive(thisfloat)}
 
 Sets the value to positive if it's negative\.
 
@@ -372,9 +372,9 @@ The value as a positive number\.
 
 <a name='Velaptor.GameHelpers.GetPosition(thisSystem.Drawing.RectangleF)'></a>
 
-### GetPosition\(this RectangleF\) 
+### GetPosition\(this RectangleF\) \{#Velaptor.GameHelpers.GetPosition(thisSystem.Drawing.RectangleF)}
 
-Returns the position in the given [rect](Velaptor.GameHelpers.md#rect 'Velaptor\.GameHelpers\.GetPosition\(this System\.Drawing\.RectangleF\)\.rect') as a [System\.Numerics\.Vector2](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2 'System\.Numerics\.Vector2')\.
+Returns the position in the given [rect](Velaptor.GameHelpers.md#Velaptor.GameHelpers.GetPosition(thisSystem.Drawing.RectangleF) 'Velaptor\.GameHelpers\.GetPosition\(this System\.Drawing\.RectangleF\)\.rect') as a [System\.Numerics\.Vector2](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2 'System\.Numerics\.Vector2')\.
 
 ```csharp
 public static System.Numerics.Vector2 GetPosition(this System.Drawing.RectangleF rect);
@@ -393,9 +393,9 @@ The [System\.Drawing\.RectangleF](https://learn.microsoft.com/en-us/dotnet/api/s
 
 <a name='Velaptor.GameHelpers.IncreaseBrightness(thisSystem.Drawing.Color,float)'></a>
 
-### IncreaseBrightness\(this Color, float\) 
+### IncreaseBrightness\(this Color, float\) \{#Velaptor.GameHelpers.IncreaseBrightness(thisSystem.Drawing.Color,float)}
 
-Increases the brightness of the color using the given [brightness](Velaptor.GameHelpers.md#brightness 'Velaptor\.GameHelpers\.IncreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value\.
+Increases the brightness of the color using the given [brightness](Velaptor.GameHelpers.md#Velaptor.GameHelpers.IncreaseBrightness(thisSystem.Drawing.Color,float) 'Velaptor\.GameHelpers\.IncreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value\.
 
 ```csharp
 public static System.Drawing.Color IncreaseBrightness(this System.Drawing.Color clr, float brightness);
@@ -436,18 +436,18 @@ In the example above, the values would equal the results below:
 
 #### Remarks
 
-The [brightness](Velaptor.GameHelpers.md#brightness 'Velaptor\.GameHelpers\.IncreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value must be a value between 0.0 and 1.0.
+The [brightness](Velaptor.GameHelpers.md#Velaptor.GameHelpers.IncreaseBrightness(thisSystem.Drawing.Color,float) 'Velaptor\.GameHelpers\.IncreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value must be a value between 0.0 and 1.0.
 
 If a value lower than 0.0 or greater than 1.0, the brightness will automatically
 be adjusted within the range of 0.0 to 1.0.
 
-Think of the [brightness](Velaptor.GameHelpers.md#brightness 'Velaptor\.GameHelpers\.IncreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value as a percentage between 0% and 100%.
+Think of the [brightness](Velaptor.GameHelpers.md#Velaptor.GameHelpers.IncreaseBrightness(thisSystem.Drawing.Color,float) 'Velaptor\.GameHelpers\.IncreaseBrightness\(this System\.Drawing\.Color, float\)\.brightness') value as a percentage between 0% and 100%.
 
 The [System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color').[System\.Drawing\.Color\.A](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color.a 'System\.Drawing\.Color\.A') color component is not effected.
 
 <a name='Velaptor.GameHelpers.IsLetter(thischar)'></a>
 
-### IsLetter\(this char\) 
+### IsLetter\(this char\) \{#Velaptor.GameHelpers.IsLetter(thischar)}
 
 Returns a value indicating whether the character is a letter\.
 
@@ -468,7 +468,7 @@ True if the character is an upper or lower case letter\.
 
 <a name='Velaptor.GameHelpers.IsNotLetter(thischar)'></a>
 
-### IsNotLetter\(this char\) 
+### IsNotLetter\(this char\) \{#Velaptor.GameHelpers.IsNotLetter(thischar)}
 
 Returns a value indicating whether the character is not a letter\.
 
@@ -489,9 +489,9 @@ True if the character is not an upper or lower case letter\.
 
 <a name='Velaptor.GameHelpers.MapValue(thisbyte,byte,byte,byte,byte)'></a>
 
-### MapValue\(this byte, byte, byte, byte, byte\) 
+### MapValue\(this byte, byte, byte, byte, byte\) \{#Velaptor.GameHelpers.MapValue(thisbyte,byte,byte,byte,byte)}
 
-Maps the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.MapValue\(this byte, byte, byte, byte, byte\)\.value') from one range to another\.
+Maps the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisbyte,byte,byte,byte,byte) 'Velaptor\.GameHelpers\.MapValue\(this byte, byte, byte, byte, byte\)\.value') from one range to another\.
 
 ```csharp
 public static byte MapValue(this byte value, byte fromStart, byte fromStop, byte toStart, byte toStop);
@@ -530,7 +530,7 @@ The ending value of the end range\.
 
 #### Returns
 [System\.Byte](https://learn.microsoft.com/en-us/dotnet/api/system.byte 'System\.Byte')  
-A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#tostart 'Velaptor\.GameHelpers\.MapValue\(this byte, byte, byte, byte, byte\)\.toStart') and [toStop](Velaptor.GameHelpers.md#tostop 'Velaptor\.GameHelpers\.MapValue\(this byte, byte, byte, byte, byte\)\.toStop')\.
+A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisbyte,byte,byte,byte,byte) 'Velaptor\.GameHelpers\.MapValue\(this byte, byte, byte, byte, byte\)\.toStart') and [toStop](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisbyte,byte,byte,byte,byte) 'Velaptor\.GameHelpers\.MapValue\(this byte, byte, byte, byte, byte\)\.toStop')\.
 
 #### Remarks
 Be careful when restricting the 'to' values to a value between 0 and 1\.  This will always return a value
@@ -542,9 +542,9 @@ is between the values of 0 and 1, use the method overload [MapValue\(this int, f
 
 <a name='Velaptor.GameHelpers.MapValue(thisbyte,float,float,float,float)'></a>
 
-### MapValue\(this byte, float, float, float, float\) 
+### MapValue\(this byte, float, float, float, float\) \{#Velaptor.GameHelpers.MapValue(thisbyte,float,float,float,float)}
 
-Maps the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.MapValue\(this byte, float, float, float, float\)\.value') from one range to another\.
+Maps the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisbyte,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this byte, float, float, float, float\)\.value') from one range to another\.
 
 ```csharp
 public static float MapValue(this byte value, float fromStart, float fromStop, float toStart, float toStop);
@@ -583,13 +583,13 @@ The ending value of the end range\.
 
 #### Returns
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')  
-A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#tostart 'Velaptor\.GameHelpers\.MapValue\(this byte, float, float, float, float\)\.toStart') and [toStop](Velaptor.GameHelpers.md#tostop 'Velaptor\.GameHelpers\.MapValue\(this byte, float, float, float, float\)\.toStop')\.
+A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisbyte,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this byte, float, float, float, float\)\.toStart') and [toStop](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisbyte,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this byte, float, float, float, float\)\.toStop')\.
 
 <a name='Velaptor.GameHelpers.MapValue(thisfloat,float,float,float,float)'></a>
 
-### MapValue\(this float, float, float, float, float\) 
+### MapValue\(this float, float, float, float, float\) \{#Velaptor.GameHelpers.MapValue(thisfloat,float,float,float,float)}
 
-Maps the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.MapValue\(this float, float, float, float, float\)\.value') from one range to another\.
+Maps the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisfloat,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this float, float, float, float, float\)\.value') from one range to another\.
 
 ```csharp
 public static float MapValue(this float value, float fromStart, float fromStop, float toStart, float toStop);
@@ -628,13 +628,13 @@ The ending value of the end range\.
 
 #### Returns
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')  
-A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#tostart 'Velaptor\.GameHelpers\.MapValue\(this float, float, float, float, float\)\.toStart') and [toStop](Velaptor.GameHelpers.md#tostop 'Velaptor\.GameHelpers\.MapValue\(this float, float, float, float, float\)\.toStop')\.
+A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisfloat,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this float, float, float, float, float\)\.toStart') and [toStop](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisfloat,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this float, float, float, float, float\)\.toStop')\.
 
 <a name='Velaptor.GameHelpers.MapValue(thisint,float,float,float,float)'></a>
 
-### MapValue\(this int, float, float, float, float\) 
+### MapValue\(this int, float, float, float, float\) \{#Velaptor.GameHelpers.MapValue(thisint,float,float,float,float)}
 
-Maps the given [value](Velaptor.GameHelpers.md#value 'Velaptor\.GameHelpers\.MapValue\(this int, float, float, float, float\)\.value') from one range to another\.
+Maps the given [value](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisint,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this int, float, float, float, float\)\.value') from one range to another\.
 
 ```csharp
 public static float MapValue(this int value, float fromStart, float fromStop, float toStart, float toStop);
@@ -673,11 +673,11 @@ The ending value of the end range\.
 
 #### Returns
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')  
-A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#tostart 'Velaptor\.GameHelpers\.MapValue\(this int, float, float, float, float\)\.toStart') and [toStop](Velaptor.GameHelpers.md#tostop 'Velaptor\.GameHelpers\.MapValue\(this int, float, float, float, float\)\.toStop')\.
+A value that has been mapped to a range between [toStart](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisint,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this int, float, float, float, float\)\.toStart') and [toStop](Velaptor.GameHelpers.md#Velaptor.GameHelpers.MapValue(thisint,float,float,float,float) 'Velaptor\.GameHelpers\.MapValue\(this int, float, float, float, float\)\.toStop')\.
 
 <a name='Velaptor.GameHelpers.OnlyContainsLetters(thisstring)'></a>
 
-### OnlyContainsLetters\(this string\) 
+### OnlyContainsLetters\(this string\) \{#Velaptor.GameHelpers.OnlyContainsLetters(thisstring)}
 
 Returns a value indicating whether this string only contains letters\.
 
@@ -698,9 +698,9 @@ The string to check\.
 
 <a name='Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool)'></a>
 
-### RotateAround\(this Vector2, Vector2, float, bool\) 
+### RotateAround\(this Vector2, Vector2, float, bool\) \{#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool)}
 
-Rotates the [vector](Velaptor.GameHelpers.md#vector 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') around the [origin](Velaptor.GameHelpers.md#origin 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.origin') at the given [angle](Velaptor.GameHelpers.md#angle 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.angle')\.
+Rotates the [vector](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') around the [origin](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.origin') at the given [angle](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.angle')\.
 
 ```csharp
 public static System.Numerics.Vector2 RotateAround(this System.Numerics.Vector2 vector, System.Numerics.Vector2 origin, float angle, bool clockWise=true);
@@ -717,29 +717,29 @@ The vector to rotate\.
 
 `origin` [System\.Numerics\.Vector2](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2 'System\.Numerics\.Vector2')
 
-The origin to rotate the [vector](Velaptor.GameHelpers.md#vector 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') around\.
+The origin to rotate the [vector](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') around\.
 
 <a name='Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool).angle'></a>
 
 `angle` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
-The angle in degrees to rotate [vector](Velaptor.GameHelpers.md#vector 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector')\.  Value must be positive\.
+The angle in degrees to rotate [vector](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector')\.  Value must be positive\.
 
 <a name='Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool).clockWise'></a>
 
 `clockWise` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-Determines the direction the given [vector](Velaptor.GameHelpers.md#vector 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') should rotate around the [origin](Velaptor.GameHelpers.md#origin 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.origin')\.
+Determines the direction the given [vector](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') should rotate around the [origin](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.origin')\.
 
 #### Returns
 [System\.Numerics\.Vector2](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2 'System\.Numerics\.Vector2')  
-The [vector](Velaptor.GameHelpers.md#vector 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') rotated around the [origin](Velaptor.GameHelpers.md#origin 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.origin')\.
+The [vector](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.vector') rotated around the [origin](Velaptor.GameHelpers.md#Velaptor.GameHelpers.RotateAround(thisSystem.Numerics.Vector2,System.Numerics.Vector2,float,bool) 'Velaptor\.GameHelpers\.RotateAround\(this System\.Numerics\.Vector2, System\.Numerics\.Vector2, float, bool\)\.origin')\.
 
 <a name='Velaptor.GameHelpers.ToDegrees(thisfloat)'></a>
 
-### ToDegrees\(this float\) 
+### ToDegrees\(this float\) \{#Velaptor.GameHelpers.ToDegrees(thisfloat)}
 
-Converts the given [radians](Velaptor.GameHelpers.md#radians 'Velaptor\.GameHelpers\.ToDegrees\(this float\)\.radians') value into degrees\.
+Converts the given [radians](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ToDegrees(thisfloat) 'Velaptor\.GameHelpers\.ToDegrees\(this float\)\.radians') value into degrees\.
 
 ```csharp
 public static float ToDegrees(this float radians);
@@ -758,9 +758,9 @@ The radians converted into degrees\.
 
 <a name='Velaptor.GameHelpers.ToRadians(thisfloat)'></a>
 
-### ToRadians\(this float\) 
+### ToRadians\(this float\) \{#Velaptor.GameHelpers.ToRadians(thisfloat)}
 
-Converts the given [degrees](Velaptor.GameHelpers.md#degrees 'Velaptor\.GameHelpers\.ToRadians\(this float\)\.degrees') value into radians\.
+Converts the given [degrees](Velaptor.GameHelpers.md#Velaptor.GameHelpers.ToRadians(thisfloat) 'Velaptor\.GameHelpers\.ToRadians\(this float\)\.degrees') value into radians\.
 
 ```csharp
 public static float ToRadians(this float degrees);
@@ -779,7 +779,7 @@ The degrees converted into radians\.
 
 <a name='Velaptor.GameHelpers.ToVector4(thisSystem.Drawing.Color)'></a>
 
-### ToVector4\(this Color\) 
+### ToVector4\(this Color\) \{#Velaptor.GameHelpers.ToVector4(thisSystem.Drawing.Color)}
 
 Converts the given [System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color') to a [System\.Numerics\.Vector4](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector4 'System\.Numerics\.Vector4')
 with each component holding the color component values\.

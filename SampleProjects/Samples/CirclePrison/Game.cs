@@ -7,14 +7,13 @@ namespace CirclePrison;
 using System.Drawing;
 using System.Numerics;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
 using Velaptor.Input;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 
 /// <summary>
 /// The main game class.

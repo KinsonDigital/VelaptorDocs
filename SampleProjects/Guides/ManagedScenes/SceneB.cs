@@ -24,10 +24,10 @@ public class SceneB : SceneBase
     private const string Instructions = "Left & right arrow keys to navigate to scenes.\nClick anywhere in the window.";
     private readonly IContentManager contentManager;
     private readonly ITextureRenderer textureRenderer;
-    private readonly IFontRenderer fontRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IAppInput<MouseState> mouse;
     private ITexture? logoTexture;
-    private PointF logoPosition;
+    private Point logoPosition;
     private IFont? font;
     private IAudio? audio;
     private MouseState prevMouseState;
@@ -40,7 +40,7 @@ public class SceneB : SceneBase
         this.contentManager = ContentManager.Create();
 
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.fontRenderer = RendererFactory.CreateFontRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
 
         this.mouse = HardwareFactory.GetMouse();
     }
@@ -112,14 +112,14 @@ public class SceneB : SceneBase
         ArgumentNullException.ThrowIfNull(this.logoTexture);
         ArgumentNullException.ThrowIfNull(this.font);
 
-        // Convert the `PointF` to a `Vector2`
+        // Convert the `Point` to a `Vector2`
         var logoPos = new Vector2(this.logoPosition.X, this.logoPosition.Y);
 
         // Render the image
         this.textureRenderer.Render(this.logoTexture, logoPos);
 
         // Render the text
-        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
+        this.textRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
 
         base.Render();
     }

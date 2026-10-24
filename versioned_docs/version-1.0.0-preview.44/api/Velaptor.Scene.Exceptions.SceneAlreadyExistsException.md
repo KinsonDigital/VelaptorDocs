@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException()'></a>
 
-### SceneAlreadyExistsException() Constructor
+### SceneAlreadyExistsException() Constructor \{#Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException()}
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Scene.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Scene.Exceptions.SceneAlreadyExistsException') class.
 
@@ -28,7 +28,7 @@ public SceneAlreadyExistsException();
 
 <a name='Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string,System.Exception)'></a>
 
-### SceneAlreadyExistsException(string, Exception) Constructor
+### SceneAlreadyExistsException(string, Exception) Constructor \{#Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string,System.Exception)}
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Scene.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Scene.Exceptions.SceneAlreadyExistsException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string,System.Guid)'></a>
 
-### SceneAlreadyExistsException(string, Guid) Constructor
+### SceneAlreadyExistsException(string, Guid) Constructor \{#Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string,System.Guid)}
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Scene.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Scene.Exceptions.SceneAlreadyExistsException') class.
 
@@ -74,7 +74,7 @@ The scene ID.
 
 <a name='Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string)'></a>
 
-### SceneAlreadyExistsException(string) Constructor
+### SceneAlreadyExistsException(string) Constructor \{#Velaptor.Scene.Exceptions.SceneAlreadyExistsException.SceneAlreadyExistsException(string)}
 
 Initializes a new instance of the [SceneAlreadyExistsException](Velaptor.Scene.Exceptions.SceneAlreadyExistsException.md 'Velaptor.Scene.Exceptions.SceneAlreadyExistsException') class.
 

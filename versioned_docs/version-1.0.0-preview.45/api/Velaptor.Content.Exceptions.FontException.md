@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Content.Exceptions.FontException.FontException()'></a>
 
-### FontException\(\) Constructor
+### FontException\(\) Constructor \{#Velaptor.Content.Exceptions.FontException.FontException()}
 
 Initializes a new instance of the [FontException](Velaptor.Content.Exceptions.FontException.md 'Velaptor\.Content\.Exceptions\.FontException') class\.
 
@@ -28,7 +28,7 @@ public FontException();
 
 <a name='Velaptor.Content.Exceptions.FontException.FontException(string)'></a>
 
-### FontException\(string\) Constructor
+### FontException\(string\) Constructor \{#Velaptor.Content.Exceptions.FontException.FontException(string)}
 
 Initializes a new instance of the [FontException](Velaptor.Content.Exceptions.FontException.md 'Velaptor\.Content\.Exceptions\.FontException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Content.Exceptions.FontException.FontException(string,System.Exception)'></a>
 
-### FontException\(string, Exception\) Constructor
+### FontException\(string, Exception\) Constructor \{#Velaptor.Content.Exceptions.FontException.FontException(string,System.Exception)}
 
 Initializes a new instance of the [FontException](Velaptor.Content.Exceptions.FontException.md 'Velaptor\.Content\.Exceptions\.FontException') class\.
 

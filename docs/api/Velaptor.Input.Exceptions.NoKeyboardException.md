@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Input.Exceptions.NoKeyboardException.NoKeyboardException()'></a>
 
-### NoKeyboardException\(\) Constructor
+### NoKeyboardException\(\) Constructor \{#Velaptor.Input.Exceptions.NoKeyboardException.NoKeyboardException()}
 
 Initializes a new instance of the [NoKeyboardException](Velaptor.Input.Exceptions.NoKeyboardException.md 'Velaptor\.Input\.Exceptions\.NoKeyboardException') class\.
 
@@ -28,7 +28,7 @@ public NoKeyboardException();
 
 <a name='Velaptor.Input.Exceptions.NoKeyboardException.NoKeyboardException(string)'></a>
 
-### NoKeyboardException\(string\) Constructor
+### NoKeyboardException\(string\) Constructor \{#Velaptor.Input.Exceptions.NoKeyboardException.NoKeyboardException(string)}
 
 Initializes a new instance of the [NoKeyboardException](Velaptor.Input.Exceptions.NoKeyboardException.md 'Velaptor\.Input\.Exceptions\.NoKeyboardException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Input.Exceptions.NoKeyboardException.NoKeyboardException(string,System.Exception)'></a>
 
-### NoKeyboardException\(string, Exception\) Constructor
+### NoKeyboardException\(string, Exception\) Constructor \{#Velaptor.Input.Exceptions.NoKeyboardException.NoKeyboardException(string,System.Exception)}
 
 Initializes a new instance of the [NoKeyboardException](Velaptor.Input.Exceptions.NoKeyboardException.md 'Velaptor\.Input\.Exceptions\.NoKeyboardException') class\.
 

@@ -21,7 +21,7 @@ Derived
 
 <a name='Velaptor.IUpdatable.Update(Velaptor.FrameTime)'></a>
 
-### Update\(FrameTime\) 
+### Update\(FrameTime\) \{#Velaptor.IUpdatable.Update(Velaptor.FrameTime)}
 
 Updates the object\.
 

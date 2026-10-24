@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException()'></a>
 
-### AppSettingsException() Constructor
+### AppSettingsException() Constructor \{#Velaptor.Exceptions.AppSettingsException.AppSettingsException()}
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor.Exceptions.AppSettingsException') class.
 
@@ -28,7 +28,7 @@ public AppSettingsException();
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException(string,System.Exception)'></a>
 
-### AppSettingsException(string, Exception) Constructor
+### AppSettingsException(string, Exception) Constructor \{#Velaptor.Exceptions.AppSettingsException.AppSettingsException(string,System.Exception)}
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor.Exceptions.AppSettingsException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException(string)'></a>
 
-### AppSettingsException(string) Constructor
+### AppSettingsException(string) Constructor \{#Velaptor.Exceptions.AppSettingsException.AppSettingsException(string)}
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor.Exceptions.AppSettingsException') class.
 

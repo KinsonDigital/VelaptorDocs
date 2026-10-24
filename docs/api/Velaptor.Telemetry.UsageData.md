@@ -20,7 +20,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 
 <a name='Velaptor.Telemetry.UsageData.UsageData()'></a>
 
-### UsageData\(\) Constructor
+### UsageData\(\) Constructor \{#Velaptor.Telemetry.UsageData.UsageData()}
 
 ```csharp
 public UsageData();
@@ -29,7 +29,7 @@ public UsageData();
 
 <a name='Velaptor.Telemetry.UsageData.DotnetVersion'></a>
 
-### DotnetVersion 
+### DotnetVersion \{#Velaptor.Telemetry.UsageData.DotnetVersion}
 
 Gets or sets the version of the \.NET runtime\.
 
@@ -42,7 +42,7 @@ public string DotnetVersion { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.FeatureArea'></a>
 
-### FeatureArea 
+### FeatureArea \{#Velaptor.Telemetry.UsageData.FeatureArea}
 
 Gets or sets the feature area\.
 
@@ -55,7 +55,7 @@ public string? FeatureArea { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.FeatureName'></a>
 
-### FeatureName 
+### FeatureName \{#Velaptor.Telemetry.UsageData.FeatureName}
 
 Gets or sets the name of the feature\.
 
@@ -68,7 +68,7 @@ public string? FeatureName { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.Language'></a>
 
-### Language 
+### Language \{#Velaptor.Telemetry.UsageData.Language}
 
 Gets or sets the language\.
 
@@ -81,7 +81,7 @@ public string Language { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.LifeCycleEvent'></a>
 
-### LifeCycleEvent 
+### LifeCycleEvent \{#Velaptor.Telemetry.UsageData.LifeCycleEvent}
 
 Gets or sets the name of the life cycle event\.
 
@@ -94,7 +94,7 @@ public string? LifeCycleEvent { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.OsArchitecture'></a>
 
-### OsArchitecture 
+### OsArchitecture \{#Velaptor.Telemetry.UsageData.OsArchitecture}
 
 Gets or sets the operating system architecture\.
 
@@ -107,7 +107,7 @@ public string OsArchitecture { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.OsName'></a>
 
-### OsName 
+### OsName \{#Velaptor.Telemetry.UsageData.OsName}
 
 Gets or sets the operating system for which the runtime was built \(or on which an app is running\)\.
 
@@ -120,7 +120,7 @@ public string OsName { get; set; }
 
 <a name='Velaptor.Telemetry.UsageData.Version'></a>
 
-### Version 
+### Version \{#Velaptor.Telemetry.UsageData.Version}
 
 Gets or sets the version of the application\.
 

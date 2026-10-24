@@ -20,7 +20,7 @@ Implements [IImGuiInvoker](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md 'Velapt
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.ArrowButton(string,ImGuiNET.ImGuiDir)'></a>
 
-### ArrowButton\(string, ImGuiDir\) 
+### ArrowButton\(string, ImGuiDir\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.ArrowButton(string,ImGuiNET.ImGuiDir)}
 
 Creates an arrow button\.
 
@@ -49,7 +49,7 @@ True if the button has been clicked\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.Begin(string,ImGuiNET.ImGuiWindowFlags)'></a>
 
-### Begin\(string, ImGuiWindowFlags\) 
+### Begin\(string, ImGuiWindowFlags\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Begin(string,ImGuiNET.ImGuiWindowFlags)}
 
 Creates a new window\.
 
@@ -81,7 +81,7 @@ Make sure to invoke the [End\(\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.BeginCombo(string,string,ImGuiNET.ImGuiComboFlags)'></a>
 
-### BeginCombo\(string, string, ImGuiComboFlags\) 
+### BeginCombo\(string, string, ImGuiComboFlags\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.BeginCombo(string,string,ImGuiNET.ImGuiComboFlags)}
 
 Creates a combo box control\.
 
@@ -116,9 +116,9 @@ True if an item was chosen\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.Button(string)'></a>
 
-### Button\(string\) 
+### Button\(string\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Button(string)}
 
-Creates a button with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#label 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Button\(string\)\.label')\.
+Creates a button with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Button(string) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Button\(string\)\.label')\.
 
 ```csharp
 public void Button(string label);
@@ -135,9 +135,9 @@ Implements [Button\(string\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Vela
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.CalcTextSize(string)'></a>
 
-### CalcTextSize\(string\) 
+### CalcTextSize\(string\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.CalcTextSize(string)}
 
-Calculates the size of the given [text](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#text 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.CalcTextSize\(string\)\.text')\.
+Calculates the size of the given [text](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.CalcTextSize(string) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.CalcTextSize\(string\)\.text')\.
 
 ```csharp
 public System.Numerics.Vector2 CalcTextSize(string text);
@@ -158,9 +158,9 @@ The size of the text described by the X representing the width and the Y represe
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.Checkbox(string,bool)'></a>
 
-### Checkbox\(string, bool\) 
+### Checkbox\(string, bool\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Checkbox(string,bool)}
 
-Creates a checkbox with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#label 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Checkbox\(string, bool\)\.label')\.
+Creates a checkbox with the given [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Checkbox(string,bool) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Checkbox\(string, bool\)\.label')\.
 
 ```csharp
 public bool Checkbox(string label, ref bool v);
@@ -187,7 +187,7 @@ True if the checkbox state was changed\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.End()'></a>
 
-### End\(\) 
+### End\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.End()}
 
 Signifies the end of the creation of a window\.
 
@@ -199,7 +199,7 @@ Implements [End\(\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velaptor.Nati
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.EndCombo()'></a>
 
-### EndCombo\(\) 
+### EndCombo\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.EndCombo()}
 
 Signifies the end of the creation of a combo box\.
 
@@ -214,7 +214,7 @@ This method should be called after [BeginCombo\(string, string, ImGuiComboFlags\
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetCursorPos()'></a>
 
-### GetCursorPos\(\) 
+### GetCursorPos\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetCursorPos()}
 
 Gets the current position of the cursor\.
 
@@ -230,7 +230,7 @@ The cursor position\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetFrameHeightWithSpacing()'></a>
 
-### GetFrameHeightWithSpacing\(\) 
+### GetFrameHeightWithSpacing\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetFrameHeightWithSpacing()}
 
 Gets the current frame height with spacing\.
 
@@ -246,7 +246,7 @@ The frame height\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetIO()'></a>
 
-### GetIO\(\) 
+### GetIO\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetIO()}
 
 Gets the IO object for system and [ImGuiNET\.ImGui](https://learn.microsoft.com/en-us/dotnet/api/imguinet.imgui 'ImGuiNET\.ImGui') related settings and information\.
 
@@ -262,7 +262,7 @@ The config/settings/info object\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetStyle()'></a>
 
-### GetStyle\(\) 
+### GetStyle\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetStyle()}
 
 Gets the style object for ImGui\.
 
@@ -278,7 +278,7 @@ The style object\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetWindowPos()'></a>
 
-### GetWindowPos\(\) 
+### GetWindowPos\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetWindowPos()}
 
 Gets the position of a window\.
 
@@ -294,7 +294,7 @@ The window position\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetWindowSize()'></a>
 
-### GetWindowSize\(\) 
+### GetWindowSize\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.GetWindowSize()}
 
 Gets the size of a window\.
 
@@ -313,7 +313,7 @@ The size of the text described by the X representing the width and the Y represe
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsItemHovered()'></a>
 
-### IsItemHovered\(\) 
+### IsItemHovered\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsItemHovered()}
 
 Returns a value indicating whether the mouse is hovering over an item\.
 
@@ -329,9 +329,9 @@ True if the mouse is hovering over the item\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDown(ImGuiNET.ImGuiMouseButton)'></a>
 
-### IsMouseDown\(ImGuiMouseButton\) 
+### IsMouseDown\(ImGuiMouseButton\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDown(ImGuiNET.ImGuiMouseButton)}
 
-Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#button 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.IsMouseDown\(ImGuiNET\.ImGuiMouseButton\)\.button') is in the down state\.
+Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDown(ImGuiNET.ImGuiMouseButton) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.IsMouseDown\(ImGuiNET\.ImGuiMouseButton\)\.button') is in the down state\.
 
 ```csharp
 public bool IsMouseDown(ImGuiNET.ImGuiMouseButton button);
@@ -352,9 +352,9 @@ True if the mouse is in the down state\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDragging(ImGuiNET.ImGuiMouseButton)'></a>
 
-### IsMouseDragging\(ImGuiMouseButton\) 
+### IsMouseDragging\(ImGuiMouseButton\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDragging(ImGuiNET.ImGuiMouseButton)}
 
-Gets a value indicating whether a window is being dragged by the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#button 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.IsMouseDragging\(ImGuiNET\.ImGuiMouseButton\)\.button')\.
+Gets a value indicating whether a window is being dragged by the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseDragging(ImGuiNET.ImGuiMouseButton) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.IsMouseDragging\(ImGuiNET\.ImGuiMouseButton\)\.button')\.
 
 ```csharp
 public bool IsMouseDragging(ImGuiNET.ImGuiMouseButton button);
@@ -375,9 +375,9 @@ True if the window is being dragged\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseReleased(ImGuiNET.ImGuiMouseButton)'></a>
 
-### IsMouseReleased\(ImGuiMouseButton\) 
+### IsMouseReleased\(ImGuiMouseButton\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseReleased(ImGuiNET.ImGuiMouseButton)}
 
-Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#button 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.IsMouseReleased\(ImGuiNET\.ImGuiMouseButton\)\.button') is in the released state\.
+Returns a value indicating whether the given mouse [button](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsMouseReleased(ImGuiNET.ImGuiMouseButton) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.IsMouseReleased\(ImGuiNET\.ImGuiMouseButton\)\.button') is in the released state\.
 
 ```csharp
 public bool IsMouseReleased(ImGuiNET.ImGuiMouseButton button);
@@ -398,7 +398,7 @@ True if the mouse is in the up state\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsWindowFocused()'></a>
 
-### IsWindowFocused\(\) 
+### IsWindowFocused\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.IsWindowFocused()}
 
 Gets a value indicating whether a window is focused\.
 
@@ -414,7 +414,7 @@ True if the window is in focus\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopButtonRepeat()'></a>
 
-### PopButtonRepeat\(\) 
+### PopButtonRepeat\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopButtonRepeat()}
 
 Stops the button from firing repeatedly when held down\.
 
@@ -426,7 +426,7 @@ Implements [PopButtonRepeat\(\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#V
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopID()'></a>
 
-### PopID\(\) 
+### PopID\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopID()}
 
 Ends the current scoped ID\.
 
@@ -438,7 +438,7 @@ Implements [PopID\(\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velaptor.Na
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor()'></a>
 
-### PopStyleColor\(\) 
+### PopStyleColor\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor()}
 
 Pops the most recent style color\.
 
@@ -450,9 +450,9 @@ Implements [PopStyleColor\(\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Vel
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor(int)'></a>
 
-### PopStyleColor\(int\) 
+### PopStyleColor\(int\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor(int)}
 
-Pops the most recent style colors a total number of times by the given [count](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#count 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PopStyleColor\(int\)\.count')\.
+Pops the most recent style colors a total number of times by the given [count](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleColor(int) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PopStyleColor\(int\)\.count')\.
 
 ```csharp
 public void PopStyleColor(int count);
@@ -469,7 +469,7 @@ Implements [PopStyleColor\(int\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleVar(int)'></a>
 
-### PopStyleVar\(int\) 
+### PopStyleVar\(int\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PopStyleVar(int)}
 
 Restores previous updated styles back to their original values\.
 
@@ -488,7 +488,7 @@ Implements [PopStyleVar\(int\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Ve
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushButtonRepeat(bool)'></a>
 
-### PushButtonRepeat\(bool\) 
+### PushButtonRepeat\(bool\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushButtonRepeat(bool)}
 
 Sets up a button to fire repeatedly when held down\.
 
@@ -507,7 +507,7 @@ Implements [PushButtonRepeat\(bool\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushID(string)'></a>
 
-### PushID\(string\) 
+### PushID\(string\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushID(string)}
 
 Creates a new scoped ID for further control operations\.
 
@@ -526,9 +526,9 @@ Implements [PushID\(string\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Vela
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol,System.Numerics.Vector4)'></a>
 
-### PushStyleColor\(ImGuiCol, Vector4\) 
+### PushStyleColor\(ImGuiCol, Vector4\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol,System.Numerics.Vector4)}
 
-Pushes the color using the given [col](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#col 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleColor\(ImGuiNET\.ImGuiCol, System\.Numerics\.Vector4\)\.col') to the current style described by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#idx 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleColor\(ImGuiNET\.ImGuiCol, System\.Numerics\.Vector4\)\.idx')\.
+Pushes the color using the given [col](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol,System.Numerics.Vector4) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleColor\(ImGuiNET\.ImGuiCol, System\.Numerics\.Vector4\)\.col') to the current style described by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleColor(ImGuiNET.ImGuiCol,System.Numerics.Vector4) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleColor\(ImGuiNET\.ImGuiCol, System\.Numerics\.Vector4\)\.idx')\.
 
 ```csharp
 public void PushStyleColor(ImGuiNET.ImGuiCol idx, System.Numerics.Vector4 col);
@@ -551,10 +551,10 @@ Implements [PushStyleColor\(ImGuiCol, Vector4\)](Velaptor.NativeInterop.ImGui.II
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar,float)'></a>
 
-### PushStyleVar\(ImGuiStyleVar, float\) 
+### PushStyleVar\(ImGuiStyleVar, float\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar,float)}
 
 Temporarily modifies the style of [ImGuiNET\.ImGui](https://learn.microsoft.com/en-us/dotnet/api/imguinet.imgui 'ImGuiNET\.ImGui') by applying a style to a part of
-the GUI dictated by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#idx 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleVar\(ImGuiNET\.ImGuiStyleVar, float\)\.idx') with the given [val](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#val 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleVar\(ImGuiNET\.ImGuiStyleVar, float\)\.val')\.
+the GUI dictated by the given [idx](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar,float) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleVar\(ImGuiNET\.ImGuiStyleVar, float\)\.idx') with the given [val](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.PushStyleVar(ImGuiNET.ImGuiStyleVar,float) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.PushStyleVar\(ImGuiNET\.ImGuiStyleVar, float\)\.val')\.
 
 ```csharp
 public void PushStyleVar(ImGuiNET.ImGuiStyleVar idx, float val);
@@ -580,7 +580,7 @@ Remains in effect until the [PopStyleVar\(int\)](Velaptor.NativeInterop.ImGui.II
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SameLine()'></a>
 
-### SameLine\(\) 
+### SameLine\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SameLine()}
 
 Sets the next control to be on the same line as the previous control\.
 
@@ -592,7 +592,7 @@ Implements [SameLine\(\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velaptor
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SameLine(float,float)'></a>
 
-### SameLine\(float, float\) 
+### SameLine\(float, float\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SameLine(float,float)}
 
 Sets the next control to be on the same line as the previous control\.
 
@@ -617,9 +617,9 @@ Implements [SameLine\(float, float\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.Selectable(string,bool)'></a>
 
-### Selectable\(string, bool\) 
+### Selectable\(string, bool\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Selectable(string,bool)}
 
-Returns a value indicating whether the given item [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#label 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Selectable\(string, bool\)\.label') is selectable\.
+Returns a value indicating whether the given item [label](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Selectable(string,bool) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Selectable\(string, bool\)\.label') is selectable\.
 
 ```csharp
 public bool Selectable(string label, bool selected);
@@ -646,7 +646,7 @@ True if the item is selected\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetCursorPos(System.Numerics.Vector2)'></a>
 
-### SetCursorPos\(Vector2\) 
+### SetCursorPos\(Vector2\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetCursorPos(System.Numerics.Vector2)}
 
 Sets the position of the cursor\.
 
@@ -665,7 +665,7 @@ Implements [SetCursorPos\(Vector2\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetItemDefaultFocus()'></a>
 
-### SetItemDefaultFocus\(\) 
+### SetItemDefaultFocus\(\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetItemDefaultFocus()}
 
 Sets the default keyboard focus to the item that was previously added\.
 
@@ -680,7 +680,7 @@ This method is typically used in conjunction with combo boxes or list boxes\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetNextItemWidth(float)'></a>
 
-### SetNextItemWidth\(float\) 
+### SetNextItemWidth\(float\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetNextItemWidth(float)}
 
 Sets the width of the next item\.
 
@@ -699,7 +699,7 @@ Implements [SetNextItemWidth\(float\)](Velaptor.NativeInterop.ImGui.IImGuiInvoke
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetWindowPos(System.Numerics.Vector2)'></a>
 
-### SetWindowPos\(Vector2\) 
+### SetWindowPos\(Vector2\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetWindowPos(System.Numerics.Vector2)}
 
 Sets the position of the window\.
 
@@ -718,7 +718,7 @@ Implements [SetWindowPos\(Vector2\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetWindowSize(System.Numerics.Vector2)'></a>
 
-### SetWindowSize\(Vector2\) 
+### SetWindowSize\(Vector2\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SetWindowSize(System.Numerics.Vector2)}
 
 Sets the size of the window\.
 
@@ -740,7 +740,7 @@ The size of the text described by the X representing the width and the Y represe
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.SliderFloat(string,float,float,float)'></a>
 
-### SliderFloat\(string, float, float, float\) 
+### SliderFloat\(string, float, float, float\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.SliderFloat(string,float,float,float)}
 
 Creates a slider scope with a float value\.
 
@@ -781,7 +781,7 @@ True if the button has been clicked\.
 
 <a name='Velaptor.NativeInterop.ImGui.ImGuiInvoker.Text(string)'></a>
 
-### Text\(string\) 
+### Text\(string\) \{#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Text(string)}
 
 Creates a test control\.
 
@@ -799,7 +799,7 @@ The text to display\.
 Implements [Text\(string\)](Velaptor.NativeInterop.ImGui.IImGuiInvoker.md#Velaptor.NativeInterop.ImGui.IImGuiInvoker.Text(string) 'Velaptor\.NativeInterop\.ImGui\.IImGuiInvoker\.Text\(string\)')
 
 #### Remarks
-The [fmt](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#fmt 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Text\(string\)\.fmt') can take syntax for formatting values such as:
+The [fmt](Velaptor.NativeInterop.ImGui.ImGuiInvoker.md#Velaptor.NativeInterop.ImGui.ImGuiInvoker.Text(string) 'Velaptor\.NativeInterop\.ImGui\.ImGuiInvoker\.Text\(string\)\.fmt') can take syntax for formatting values such as:
 - Numerical Formatting
   You can control how numeric values are displayed, including the number of decimal places,
   whether to use scientific notation, whether to include a thousand separator, and more.

@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException()'></a>
 
-### GLException\(\) Constructor
+### GLException\(\) Constructor \{#Velaptor.OpenGL.Exceptions.GLException.GLException()}
 
 Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor\.OpenGL\.Exceptions\.GLException') class\.
 
@@ -28,7 +28,7 @@ public GLException();
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,string)'></a>
 
-### GLException\(string, string\) Constructor
+### GLException\(string, string\) Constructor \{#Velaptor.OpenGL.Exceptions.GLException.GLException(string,string)}
 
 Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor\.OpenGL\.Exceptions\.GLException') class\.
 
@@ -51,7 +51,7 @@ The name of the buffer\.
 
 <a name='Velaptor.OpenGL.Exceptions.GLException.GLException(string,System.Exception)'></a>
 
-### GLException\(string, Exception\) Constructor
+### GLException\(string, Exception\) Constructor \{#Velaptor.OpenGL.Exceptions.GLException.GLException(string,System.Exception)}
 
 Initializes a new instance of the [GLException](Velaptor.OpenGL.Exceptions.GLException.md 'Velaptor\.OpenGL\.Exceptions\.GLException') class\.
 

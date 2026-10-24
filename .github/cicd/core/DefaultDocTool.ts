@@ -76,49 +76,23 @@ export class DefaultDocTool {
 			"--ConfigurationFilePath",
 			`${configFilePath}`,
 		];
+		
+		const appPath = Deno.build.os === "windows"
+			? "defaultdocumentation"
+			: `${Deno.env.get("HOME")}/.dotnet/tools/defaultdocumentation`
 
-		const command = `defaultdocumentation ${args.join(" ")}`;
-		const commandResult = await this.runAsync(command);
+		const child = Deno.spawn(appPath, { args: args, stdout: "piped", stderr: "piped" });
 
-		if (commandResult instanceof Error) {
-			Utils.printGitHubError(commandResult.message);
+		const output = await child.stdout.text();
+
+		Utils.printGitHubNotice(output);
+
+		const status = await child.status;
+
+		if (!status.success) {
+			const errorOutput = await child.stderr.text();
+			Utils.printGitHubError(errorOutput);
 			Deno.exit(1);
-		}
-
-		console.log(commandResult);
-	}
-
-	/**
-	 * Runs the following CLI {@link command}.
-	 * @param command The command to run.
-	 * @returns The output of the command if successful, otherwise an error.
-	 */
-	public async runAsync(command: string): Promise<string | Error> {
-		if (command === undefined || command === null || command === "") {
-			const errorMsg = "The command parameter cannot be null or empty.";
-			console.log(errorMsg);
-			Deno.exit(1);
-		}
-
-		if (!command.includes(" ")) {
-			const errorMsg = "The command parameter must include a space.";
-			console.log(errorMsg);
-			Deno.exit(1);
-		}
-
-		const sections: string[] = command.split(" ");
-
-		const app = sections[0];
-		const args = sections.slice(1);
-
-		const cmd = new Deno.Command(app, { args: args });
-
-		const { code, stdout, stderr } = await cmd.output();
-
-		if (code === 0) {
-			return new TextDecoder().decode(stdout);
-		} else {
-			return new Error(new TextDecoder().decode(stderr));
 		}
 	}
 }

@@ -10,13 +10,15 @@ title: Velaptor.Graphics.AtlasSubTextureData
 Holds data about a texture atlas sub texture\.
 
 ```csharp
-public readonly struct AtlasSubTextureData
+public readonly record struct AtlasSubTextureData : System.IEquatable<Velaptor.Graphics.AtlasSubTextureData>
 ```
+
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[AtlasSubTextureData](Velaptor.Graphics.AtlasSubTextureData.md 'Velaptor\.Graphics\.AtlasSubTextureData')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 ## Properties
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.Bounds'></a>
 
-### Bounds 
+### Bounds \{#Velaptor.Graphics.AtlasSubTextureData.Bounds}
 
 Gets the bounds of the sub texture data\.
 
@@ -29,7 +31,7 @@ public System.Drawing.Rectangle Bounds { get; init; }
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.FrameIndex'></a>
 
-### FrameIndex 
+### FrameIndex \{#Velaptor.Graphics.AtlasSubTextureData.FrameIndex}
 
 Gets the index of the sub texture frame\.
 
@@ -46,7 +48,7 @@ whether the sub texture is part of any animation frames\.
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Graphics.AtlasSubTextureData.Name}
 
 Gets the name of the sub texture\.
 

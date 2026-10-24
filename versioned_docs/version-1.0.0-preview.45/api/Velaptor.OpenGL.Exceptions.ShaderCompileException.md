@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderCompileException.ShaderCompileException()'></a>
 
-### ShaderCompileException\(\) Constructor
+### ShaderCompileException\(\) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderCompileException.ShaderCompileException()}
 
 Initializes a new instance of the [ShaderCompileException](Velaptor.OpenGL.Exceptions.ShaderCompileException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderCompileException') class\.
 
@@ -28,7 +28,7 @@ public ShaderCompileException();
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderCompileException.ShaderCompileException(string,string)'></a>
 
-### ShaderCompileException\(string, string\) Constructor
+### ShaderCompileException\(string, string\) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderCompileException.ShaderCompileException(string,string)}
 
 Initializes a new instance of the [ShaderCompileException](Velaptor.OpenGL.Exceptions.ShaderCompileException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderCompileException') class\.
 
@@ -51,7 +51,7 @@ The name of the buffer\.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderCompileException.ShaderCompileException(string,System.Exception)'></a>
 
-### ShaderCompileException\(string, Exception\) Constructor
+### ShaderCompileException\(string, Exception\) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderCompileException.ShaderCompileException(string,System.Exception)}
 
 Initializes a new instance of the [ShaderCompileException](Velaptor.OpenGL.Exceptions.ShaderCompileException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderCompileException') class\.
 

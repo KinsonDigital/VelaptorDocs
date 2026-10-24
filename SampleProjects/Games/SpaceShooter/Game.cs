@@ -4,8 +4,6 @@
 
 namespace SpaceShooter;
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using Signals;
@@ -13,11 +11,10 @@ using Signals.Data;
 using Signals.Interfaces;
 using UI;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 using IAudio = Velaptor.Content.IAudio;
 
 /// <summary>

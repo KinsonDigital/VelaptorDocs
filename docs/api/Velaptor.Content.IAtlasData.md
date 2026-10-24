@@ -21,7 +21,7 @@ Implements [IContent](Velaptor.Content.IContent.md 'Velaptor\.Content\.IContent'
 
 <a name='Velaptor.Content.IAtlasData.AtlasDataFilePath'></a>
 
-### AtlasDataFilePath 
+### AtlasDataFilePath \{#Velaptor.Content.IAtlasData.AtlasDataFilePath}
 
 Gets the file path to the atlas data\.
 
@@ -34,7 +34,7 @@ string AtlasDataFilePath { get; }
 
 <a name='Velaptor.Content.IAtlasData.SubTextureNames'></a>
 
-### SubTextureNames 
+### SubTextureNames \{#Velaptor.Content.IAtlasData.SubTextureNames}
 
 Gets the list of frame names\.
 
@@ -47,12 +47,12 @@ System.Collections.Generic.IReadOnlyCollection<string> SubTextureNames { get; }
 
 <a name='Velaptor.Content.IAtlasData.Texture'></a>
 
-### Texture 
+### Texture \{#Velaptor.Content.IAtlasData.Texture}
 
 Gets the texture of the atlas\.
 
 ```csharp
-Velaptor.Content.ITexture Texture { get; }
+Velaptor.Content.ITexture? Texture { get; }
 ```
 
 #### Property Value
@@ -60,7 +60,7 @@ Velaptor.Content.ITexture Texture { get; }
 
 <a name='Velaptor.Content.IAtlasData.this[int]'></a>
 
-### this\[int\] 
+### this\[int\] \{#Velaptor.Content.IAtlasData.this[int]}
 
 The iterator for the atlas sub texture data\.
 
@@ -81,7 +81,7 @@ The index of the item to retrieve\.
 
 <a name='Velaptor.Content.IAtlasData.GetFrames(string)'></a>
 
-### GetFrames\(string\) 
+### GetFrames\(string\) \{#Velaptor.Content.IAtlasData.GetFrames(string)}
 
 Gets the all the frames that have the given sub texture id\.
 

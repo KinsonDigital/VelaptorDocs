@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 import GuideLink from "@site/src/components/GuideLink";
+import NumberedList from "@site/src/components/NumberedList";
 
 # Rendering Text
 
@@ -31,40 +32,59 @@ loading content, and perform batching during rendering.
 Create some class fields at the top of the class. These will be used for loading the font,
 rendering text, and rendering in a batch.
 
-```csharp
+```csharp showLineNumbers
+// highlight-add-start
 private IContentManager contentManager; // Loads various types of content
 private IFont? font; // Holds the font
-private IFontRenderer? fontRenderer; // Renders text using the font
+private ITextRenderer? textRenderer; // Renders text using the font
 private IBatcher? batcher; // Renders the text in a batch
+// highlight-add-end
+
+public class Game : Window
+{
+}
 ```
 
 ### <span className="color-sub-step">2.2: Setup window</span>
 
 Set the window title and size in the `Game` constructor.  This is self explanatory.
 
-```csharp
-public Game()
+```csharp showLineNumbers
+public class Game : Window
 {
-    Title = "Render Text Guide";
-    Width = 800;
-    Height = 800;
+    public Game()
+    {
+        // highlight-add-start
+        Title = "Render Text Guide";
+        Width = 800;
+        Height = 800;
+        // highlight-add-end
+    }
 }
 ```
 
 ### <span className="color-sub-step">2.3: Content & rendering objects</span>
 
-Now we can create the content manager, font renderer, and a batcher.  These will be used to
+Now we can create the content manager, text renderer, and a batcher.  These will be used to
 load the font, render the text, and render the content in a single batch.
 
 Add the following code to the constructor create the class field instances.
 
-```csharp
-public Game()
+```csharp showLineNumbers
+public class Game : Window
 {
-    ...
-    this.contentManager = ContentManager.Create();
-    this.fontRenderer = RendererFactory.CreateFontRenderer();
-    this.batcher = RendererFactory.CreateBatcher();
+    public Game()
+    {
+        Title = "Render Text Guide";
+        Width = 800;
+        Height = 800;
+        // highlight-add-start
+
+        this.contentManager = ContentManager.Create();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
+        this.batcher = RendererFactory.CreateBatcher();
+        // highlight-add-end
+    }
 }
 ```
 
@@ -89,9 +109,11 @@ we are done batching by invoking the `IBatcher.End()` method.
 All of the rendering calls using any of the renderers should go between the `Begin()` and `End()` method calls.
 
 Just remember the steps:
-1. Invoke `IBatcher.Begin()` method
-2. Invoke all `Render()` methods for the current frame
-3. Invoke the `IBatcher.End()` method
+<NumberedList items={[
+    <>Invoke <code>IBatcher.Begin()</code> method</>,
+    <>Invoke all <code>Render()</code> methods for the current frame</>,
+    <>Invoke the <code>IBatcher.End()</code> method</>
+]} />
 
 That's it!
 </details>
@@ -110,10 +132,12 @@ This can be created using the `ContentManager.Create()` method.
 
 Add the following code to the `OnLoad()` method to load the font.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
-    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 24);
+    // highlight-add-start
+    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 22);
+    // highlight-add-end
 
     base.OnLoad();
 }
@@ -151,10 +175,16 @@ and send in the `IFont` class field we created earlier.
 Let's override the `OnUnload()` method and unload the font.  It is always a good idea to unload
 and release resources when shutting down the game or when switching to a new scene.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
-    this.contentManager.Unload(this.font);
+    // highlight-add-start
+    if (this.font is not null)
+    {
+        this.contentManager.Unload(this.font);
+    }
+    // highlight-add-end
+
     base.OnUnload();
 }
 ```
@@ -171,7 +201,7 @@ If you want to take advantage of this caching mechanism in the next scene, do no
 
 ### <span className="color-sub-step">4.1: Setup batcher and renderer</span>
 
-Now that we have a text renderer and a font to render text, we need to use the font renderer to render
+Now that we have a text renderer and a font to render text, we need to use the text renderer to render
 some text to the screen using our font. Add the code below to the `OnDraw()` method to accomplish
 this.
 
@@ -180,14 +210,16 @@ any renderers and then invoke the `IBatcher.End()` when we are finished with all
 
 The X and Y values are set to 400, 400 which is the center of the window.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
+    // highlight-add-start
     this.batcher.Begin();
 
-    this.fontRenderer.Render(this.font, "Hello Velaptor!", 400, 400, Color.White);
+    this.textRenderer.Render(this.font, "Hello Velaptor!", 400, 400, Color.White);
 
     this.batcher.End();
+    // highlight-add-end
 
     base.OnDraw(frameTime);
 }
@@ -237,12 +269,12 @@ The velocity is what directly influences the movement of the text. The velocity 
 the direction and magnitude of the text's movement.  The position is the current position of the text on the screen.
 
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     ...
     private const string Text = "Hello Velaptor!";
-    private Vector2 velocity = new (100, 100);
+    private Vector2 velocity = new (200, 200);
     private Vector2 position = new (400, 400);
     ...
 }
@@ -265,7 +297,7 @@ Font objects have a `Measure()` method that returns a `SizeF` type that represen
 To process all of this information, create a method with the name `ProcessCollisionAndColor()`.  This method will perform both the collision
 detection as well as updating the new color of the text on collision.
 
-```csharp
+```csharp showLineNumbers
 private void ProcessCollisionAndColor()
 {
     var textSize = this.font.Measure(Text);
@@ -313,7 +345,7 @@ Now all we have to do is process the collision and update the position of the te
 
 In the `OnUpdate()` method, add the following.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     ProcessCollisionAndColor();
@@ -339,7 +371,7 @@ If the number is negative, it will move in the opposite direction of the positiv
 To change the color, we can use the `Random` class to generate a random color.  
 Create 2 more class fields.  One for creating random numbers and one for holding the color of the text.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
     ...
@@ -351,7 +383,7 @@ public class Game : Window
 
 Let's make a method with the name `RandomizeColor()` that will take care of this so we don't have to duplicate so much code. 😉
 
-```csharp
+```csharp showLineNumbers
 private void RandomizeColor()
 {
     var red = this.random.Next(0, 255); // Create a random red value
@@ -368,8 +400,8 @@ private void RandomizeColor()
 Now that we have our little helper method, we can use it in the `ProcessCollisionAndColor()` method.
 Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
 
-```csharp
-private void ProcessCollision()
+```csharp showLineNumbers
+private void ProcessCollisionAndColor()
 {
     ...
     if (leftSide <= 0)
@@ -404,12 +436,12 @@ Now the exciting part!  Let's update the `OnDraw()` method to use our `position`
 No point in doing all of this hard work if we can see it.
 
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
 
-    this.fontRenderer.Render(this.font, Text, (int)this.position.X, (int)this.position.Y, this.textColor);
+    this.textRenderer.Render(this.font, Text, (int)this.position.X, (int)this.position.Y, this.textColor);
 
     this.batcher.End();
 

@@ -169,9 +169,8 @@ protected override void OnDraw(FrameTime frameTime)
 
     foreach (var line in this.info)
     {
-        posY += lineHeight + LineSpacing;
-
         this.fontRenderer.Render(this.font, line, this.winCenterX, posY);
+        posY += lineHeight + LineSpacing;
     }
 
     this.batcher.End();

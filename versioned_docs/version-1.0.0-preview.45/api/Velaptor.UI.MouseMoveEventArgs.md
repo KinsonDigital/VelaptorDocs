@@ -18,7 +18,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 
 <a name='Velaptor.UI.MouseMoveEventArgs.MouseMoveEventArgs(System.Drawing.Point,System.Drawing.Point)'></a>
 
-### MouseMoveEventArgs\(Point, Point\) Constructor
+### MouseMoveEventArgs\(Point, Point\) Constructor \{#Velaptor.UI.MouseMoveEventArgs.MouseMoveEventArgs(System.Drawing.Point,System.Drawing.Point)}
 
 Initializes a new instance of the [MouseMoveEventArgs](Velaptor.UI.MouseMoveEventArgs.md 'Velaptor\.UI\.MouseMoveEventArgs') struct\.
 
@@ -42,7 +42,7 @@ The local position of the mouse\.
 
 <a name='Velaptor.UI.MouseMoveEventArgs.GlobalPos'></a>
 
-### GlobalPos 
+### GlobalPos \{#Velaptor.UI.MouseMoveEventArgs.GlobalPos}
 
 Gets the position of the mouse relative to the top left corner of the window\.
 
@@ -55,7 +55,7 @@ public System.Drawing.Point GlobalPos { get; }
 
 <a name='Velaptor.UI.MouseMoveEventArgs.LocalPos'></a>
 
-### LocalPos 
+### LocalPos \{#Velaptor.UI.MouseMoveEventArgs.LocalPos}
 
 Gets the position of the mouse relative to the top left corner of the control\.
 

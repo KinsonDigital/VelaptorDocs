@@ -9,6 +9,11 @@ interface Props {
 	 * @example "video/guides/scenes/scene-manage.mp4"
 	 */
 	relativePath: string;
+
+	/**
+	 * The size of the videos with and height.
+	 */
+	size?: number;
 }
 
 /**
@@ -18,13 +23,17 @@ interface Props {
  */
 export default function Video(props: Props): ReactNode {
 	const { relativePath } = props;
+	let { size } = props;
+
+	size = size === undefined ? 300 : size;
 
 	// Files in the 'static/' folder are served at the site root.
 	// Ensure the path starts with '/' for proper URL resolution.
 	const src = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
 
 	return (
-		<video className="w-full h-full" autoPlay loop muted playsInline>
+		// <video className="w-full h-full" autoPlay loop muted playsInline width={50}>
+		<video autoPlay loop muted playsInline width={size} >
 			<source src={src} type="video/mp4" />
 		</video>
 	);

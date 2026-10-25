@@ -42,6 +42,15 @@ The entire rendering backend has been rewritten. All of the OpenGL code—`GLInv
 VAO/VBO/EBO GPU buffer types—has been deleted and replaced with a WebGPU implementation built on WGSL shaders, render
 pipelines, bind groups, and vertex/index buffers.
 
+Diagram showing the Velaptor rendering stack before and after the WebGPU migration: the game and public API above are unchanged,
+while the OpenGL stack below was replaced with the WebGPU stack.
+
+<a href="/img/blog/2026-10-24-vel-release/render-swap.svg" target="_blank" rel="noopener noreferrer">
+
+![Velaptor rendering stack before and after the WebGPU migration](/img/blog/2026-10-24-vel-release/render-swap.svg)
+
+</a>
+
 What does this mean for you? Your drawing code (`IBatcher`, renderers, `IContentManager`) keeps the same shape, but the
 rendering underneath is completely new. This does mean Velaptor now requires WebGPU's native libraries (`wgpu-native`)—but
 more on that below; we handle that part for you automatically.

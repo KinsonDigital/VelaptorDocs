@@ -16,6 +16,7 @@ using Velaptor.Factories;
 using Velaptor.UI;
 using Velaptor.Batching;
 using IAudio = Velaptor.Content.IAudio;
+using Velaptor.Input;
 
 /// <summary>
 /// The main game class.
@@ -26,7 +27,9 @@ public class Game : Window
     private readonly IContentManager contentManager;
     private readonly IWorldSignal worldSignal;
     private readonly Ship ship;
-    private readonly List<Enemy> enemies = new ();
+    private readonly IAppInput<KeyboardState> keyboard;
+    private readonly IAppInput<MouseState> mouse;
+    private readonly List<Enemy> enemies = [];
     private readonly WeaponSelectionUi weaponSelectionUi;
     private readonly RandomNumGenerator random = new ();
     private readonly Background background;
@@ -49,6 +52,8 @@ public class Game : Window
         this.batcher = RendererFactory.CreateBatcher();
         this.contentManager = ContentManager.Create();
         this.ship = App.Factory.GetInstance<Ship>();
+        this.keyboard = HardwareFactory.GetKeyboard();
+        this.mouse = HardwareFactory.GetMouse();
 
         for (var i = 0; i < 10; i++)
         {
@@ -64,6 +69,17 @@ public class Game : Window
         this.background = new Background(this.worldSignal);
         this.score = new Score(scoreSignal);
     }
+
+    /// <summary>
+    /// Gets the global camera to use for the entire game.
+    /// </summary>
+    public static Camera2D Camera { get; private set; } = new Camera2D
+    {
+        Zoom = 1f,
+        ZoomMin = 0.25f,
+        ZoomMax = 2f,
+        Rotation = 0f,
+    };
 
     /// <summary>
     /// Loads game content.
@@ -127,6 +143,8 @@ public class Game : Window
 
         this.elapsedTime += frameTime.ElapsedTime.TotalMilliseconds;
 
+        ProcessInput();
+
         if (this.elapsedTime >= this.spawnInterval)
         {
             SpawnNewEnemy();
@@ -179,6 +197,29 @@ public class Game : Window
         this.batcher.End();
 
         base.OnDraw(frameTime);
+    }
+
+    /// <summary>
+    /// Processes and manages keyboard and mouse input.
+    /// </summary>
+    private void ProcessInput()
+    {
+        var currentKeyState = this.keyboard.GetState();
+        var currentMouseState = this.mouse.GetState();
+
+        if (currentKeyState.AnyShiftKeysDown())
+        {
+            var scrollDirection = currentMouseState.GetScrollDirection();
+
+            if (scrollDirection == MouseScrollDirection.ScrollUp)
+            {
+                Camera.Zoom += 0.1f;
+            }
+            else if (scrollDirection == MouseScrollDirection.ScrollDown)
+            {
+                Camera.Zoom -= 0.1f;
+            }
+        }
     }
 
     /// <summary>

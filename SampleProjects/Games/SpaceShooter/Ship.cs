@@ -181,7 +181,7 @@ public class Ship : IUpdatable, IDrawable, IContentLoadable
             this.atlasData.Texture,
             this.srcRect,
             destRect,
-            1,
+            Game.Camera.Zoom,
             0,
             Color.White,
             RenderEffects.None);

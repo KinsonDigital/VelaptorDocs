@@ -7,8 +7,13 @@
         "contentfiles",
         "Kinson",
         "lazer",
+        "Lerp",
         "metroid",
+        "Reactable",
+        "Respawn",
+        "Respawns",
         "stylecop",
+        "Unsubscriber",
         "Velaptor"
     ],
     "files.exclude": {

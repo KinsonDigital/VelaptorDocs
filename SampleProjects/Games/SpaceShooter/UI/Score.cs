@@ -62,7 +62,7 @@ public class Score : IContentLoadable, IUpdatable, IDrawable
             return;
         }
 
-        this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 24);
+        this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 20);
 
         IsLoaded = true;
     }

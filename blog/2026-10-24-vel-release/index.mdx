@@ -9,6 +9,7 @@ import URL from "@site/src/components/Url";
 import ReleaseNotes from '@site/src/components/ReleaseNotes';
 import GHUrl from '@site/src/components/GHUrl';
 import IssueOrPr from '@site/src/components/IssueOrPr';
+import Video from "@site/src/components/Video"
 
 Welcome to the biggest release in Velaptor's history! 🎉
 
@@ -134,11 +135,21 @@ A brand new `ICamera2D` interface (with the `Camera2D` implementation) gives you
 in screen-pixel coordinates with a top-left origin, exposes `Position` (pan) and `Zoom` (with `ZoomMin` / `ZoomMax` limits),
 `Rotation`, and includes `TransformPosition(...)`, `TransformSize(...)`, and `TransformRotation(...)` helpers to convert world coordinates into screen positions.
 
+This shows zooming in and out using the camera system.
+
+<div className="flex justify-center">
+    <Video relativePath="video/blog/2026-10-24-vel-release/camera-zoom-demo-new.mp4" />
+</div>
+
 ### <span className="color-sub-step">Built-In FPS Counter</span>
 
 The `Window` now renders its own FPS counter in the bottom-left corner, and you can pick the text color with the new
 `FpsDisplayColor` property (a `System.Drawing.Color`, defaulting to white). The counter is toggled with the keyboard
 shortcut **Ctrl + Alt + Shift + S**.
+
+<div className="flex justify-center">
+    <Video relativePath="video/blog/2026-10-24-vel-release/fps-demo.mp4" />
+</div>
 
 ### <span className="color-sub-step">Smarter FPS Metrics</span>
 

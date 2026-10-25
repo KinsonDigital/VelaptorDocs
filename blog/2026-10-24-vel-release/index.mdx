@@ -54,6 +54,9 @@ completed on Windows, Linux, and macOS, both from the IDE and from compiled bina
 With a change this large, some API churn is unavoidable. Velaptor is still in preview so this is to be expected. We've kept the breaking list as tight as possible, and each item
 below includes what changed and what you need to do.
 
+If you hit any snags while upgrading, please let me know in the
+<URL href='https://github.com/KinsonDigital/Velaptor/discussions/1304' text='release discussion' openInNewTab={true} />.
+
 ### <span className="color-sub-step">1: Scenes No Longer Implement `IDisposable`</span>
 
 `IDisposable` was removed from the `IScene` interface, and the `Dispose()` / `Dispose(bool)` methods along with the

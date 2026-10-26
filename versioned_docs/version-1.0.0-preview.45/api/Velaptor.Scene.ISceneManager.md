@@ -18,7 +18,7 @@ Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawab
 
 <a name='Velaptor.Scene.ISceneManager.CurrentScene'></a>
 
-### CurrentScene 
+### CurrentScene \{#Velaptor.Scene.ISceneManager.CurrentScene}
 
 Gets the current scene\.
 
@@ -31,7 +31,7 @@ Velaptor.Scene.IScene? CurrentScene { get; }
 
 <a name='Velaptor.Scene.ISceneManager.CurrentSceneIndex'></a>
 
-### CurrentSceneIndex 
+### CurrentSceneIndex \{#Velaptor.Scene.ISceneManager.CurrentSceneIndex}
 
 Gets the index of the current scene\.
 
@@ -44,7 +44,7 @@ int CurrentSceneIndex { get; }
 
 <a name='Velaptor.Scene.ISceneManager.InActiveScenes'></a>
 
-### InActiveScenes 
+### InActiveScenes \{#Velaptor.Scene.ISceneManager.InActiveScenes}
 
 Gets a list of all the [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')'s for the scenes that are inactive\.
 
@@ -57,7 +57,7 @@ System.Collections.Generic.IReadOnlyCollection<System.Guid> InActiveScenes { get
 
 <a name='Velaptor.Scene.ISceneManager.IsLoaded'></a>
 
-### IsLoaded 
+### IsLoaded \{#Velaptor.Scene.ISceneManager.IsLoaded}
 
 Gets a value indicating whether the scene manager has been loaded\.
 
@@ -73,7 +73,7 @@ This does not mean that the content in the individual scenes have been loaded\.
 
 <a name='Velaptor.Scene.ISceneManager.TotalScenes'></a>
 
-### TotalScenes 
+### TotalScenes \{#Velaptor.Scene.ISceneManager.TotalScenes}
 
 Gets the total number of scenes\.
 
@@ -86,7 +86,7 @@ int TotalScenes { get; }
 
 <a name='Velaptor.Scene.ISceneManager.UsesNavigationWrapping'></a>
 
-### UsesNavigationWrapping 
+### UsesNavigationWrapping \{#Velaptor.Scene.ISceneManager.UsesNavigationWrapping}
 
 Gets or sets a value indicating whether navigation wrapping is used when navigating past the first or last scenes\.
 
@@ -100,7 +100,7 @@ bool UsesNavigationWrapping { get; set; }
 
 <a name='Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene)'></a>
 
-### AddScene\(IScene\) 
+### AddScene\(IScene\) \{#Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene)}
 
 Adds the given scene\.
 
@@ -120,7 +120,7 @@ The scene will not be activated when added using this method\.
 
 <a name='Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene,bool)'></a>
 
-### AddScene\(IScene, bool\) 
+### AddScene\(IScene, bool\) \{#Velaptor.Scene.ISceneManager.AddScene(Velaptor.Scene.IScene,bool)}
 
 Adds the given scene and sets it as active or inactive\.
 
@@ -144,7 +144,7 @@ all other scenes will bet set to inactive\.
 
 <a name='Velaptor.Scene.ISceneManager.LoadContent()'></a>
 
-### LoadContent\(\) 
+### LoadContent\(\) \{#Velaptor.Scene.ISceneManager.LoadContent()}
 
 Loads the content for the manager and the current scene\.
 
@@ -154,7 +154,7 @@ void LoadContent();
 
 <a name='Velaptor.Scene.ISceneManager.NextScene()'></a>
 
-### NextScene\(\) 
+### NextScene\(\) \{#Velaptor.Scene.ISceneManager.NextScene()}
 
 Moves to the next scene\.
 
@@ -164,7 +164,7 @@ void NextScene();
 
 <a name='Velaptor.Scene.ISceneManager.PreviousScene()'></a>
 
-### PreviousScene\(\) 
+### PreviousScene\(\) \{#Velaptor.Scene.ISceneManager.PreviousScene()}
 
 Moves to the previous scene\.
 
@@ -174,9 +174,9 @@ void PreviousScene();
 
 <a name='Velaptor.Scene.ISceneManager.RemoveScene(System.Guid)'></a>
 
-### RemoveScene\(Guid\) 
+### RemoveScene\(Guid\) \{#Velaptor.Scene.ISceneManager.RemoveScene(System.Guid)}
 
-Removes the scene that matches the given [sceneId](Velaptor.Scene.ISceneManager.md#sceneid 'Velaptor\.Scene\.ISceneManager\.RemoveScene\(System\.Guid\)\.sceneId')\.
+Removes the scene that matches the given [sceneId](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.RemoveScene(System.Guid) 'Velaptor\.Scene\.ISceneManager\.RemoveScene\(System\.Guid\)\.sceneId')\.
 
 ```csharp
 void RemoveScene(System.Guid sceneId);
@@ -191,7 +191,7 @@ The ID of the scene to remove\.
 
 <a name='Velaptor.Scene.ISceneManager.Resize(Velaptor.SizeU)'></a>
 
-### Resize\(SizeU\) 
+### Resize\(SizeU\) \{#Velaptor.Scene.ISceneManager.Resize(Velaptor.SizeU)}
 
 Updates the size of the window for each scene\.
 
@@ -208,9 +208,9 @@ The new size\.
 
 <a name='Velaptor.Scene.ISceneManager.SceneExists(System.Guid)'></a>
 
-### SceneExists\(Guid\) 
+### SceneExists\(Guid\) \{#Velaptor.Scene.ISceneManager.SceneExists(System.Guid)}
 
-Returns a value indicating whether a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#id 'Velaptor\.Scene\.ISceneManager\.SceneExists\(System\.Guid\)\.id')\.
+Returns a value indicating whether a scene exists that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SceneExists(System.Guid) 'Velaptor\.Scene\.ISceneManager\.SceneExists\(System\.Guid\)\.id')\.
 
 ```csharp
 bool SceneExists(System.Guid id);
@@ -229,9 +229,9 @@ The ID of the scene\.
 
 <a name='Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid)'></a>
 
-### SetSceneAsActive\(Guid\) 
+### SetSceneAsActive\(Guid\) \{#Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid)}
 
-Sets a scene that matches the given [id](Velaptor.Scene.ISceneManager.md#id 'Velaptor\.Scene\.ISceneManager\.SetSceneAsActive\(System\.Guid\)\.id') to be the active scene\.
+Sets a scene that matches the given [id](Velaptor.Scene.ISceneManager.md#Velaptor.Scene.ISceneManager.SetSceneAsActive(System.Guid) 'Velaptor\.Scene\.ISceneManager\.SetSceneAsActive\(System\.Guid\)\.id') to be the active scene\.
 
 ```csharp
 void SetSceneAsActive(System.Guid id);
@@ -249,7 +249,7 @@ This will set all the other scenes to inactive\.
 
 <a name='Velaptor.Scene.ISceneManager.UnloadContent()'></a>
 
-### UnloadContent\(\) 
+### UnloadContent\(\) \{#Velaptor.Scene.ISceneManager.UnloadContent()}
 
 Unloads the scene manager content and added scenes\.
 

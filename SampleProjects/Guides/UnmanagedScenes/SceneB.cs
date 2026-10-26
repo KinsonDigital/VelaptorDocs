@@ -24,7 +24,7 @@ public class SceneB : SceneBase
     private const string Instructions = "Left & right arrow keys to navigate to scenes.\nClick anywhere in the window.";
     private readonly ITextureRenderer textureRenderer;
     private readonly IContentManager contentManager;
-    private readonly IFontRenderer fontRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IAppInput<MouseState> mouse;
     private PointF logoPosition;
     private MouseState prevMouseState;
@@ -40,7 +40,7 @@ public class SceneB : SceneBase
         this.contentManager = ContentManager.Create();
 
         this.textureRenderer = RendererFactory.CreateTextureRenderer();
-        this.fontRenderer = RendererFactory.CreateFontRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
 
         this.mouse = HardwareFactory.GetMouse();
     }
@@ -119,7 +119,7 @@ public class SceneB : SceneBase
         this.textureRenderer.Render(this.logoTexture, logoPos);
 
         // Render the text
-        this.fontRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
+        this.textRenderer.Render(this.font, Instructions, new Vector2(WindowWidth / 2f, 30));
 
         base.Render();
     }

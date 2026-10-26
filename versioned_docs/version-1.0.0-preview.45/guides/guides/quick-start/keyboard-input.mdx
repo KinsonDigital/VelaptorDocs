@@ -11,19 +11,19 @@ Your logo is on screen — now let's make it move! In this final quick start ste
 Add the following fields to your `Game` class for tracking keyboard state and sprite position.
 
 ```csharp
-using System.Numerics;
-using Velaptor.Hardware;
-using Velaptor.Input;
-```
-
-```csharp
 public class Game : Window
 {
+    // highlight-add-start
     private const float Speed = 300f;
     private readonly IAppInput<KeyboardState> keyboard;
+    // highlight-add-end
+    private readonly IBatcher batcher;
+    private readonly ITextureRenderer textureRenderer;
+    private readonly IContentManager contentManager;
+    // highlight-add-start
     private Vector2 spritePosition;
-
-    // ... existing fields from the previous step
+    // highlight-add-end
+    private ITexture? logoTexture;
 }
 ```
 
@@ -34,10 +34,18 @@ In the constructor, create a keyboard input object using `HardwareFactory` and s
 ```csharp
 public Game()
 {
-    // ... existing constructor code
+    Title = "Quick Start";
+    Width = 800;
+    Height = 800;
 
+    this.contentManager = ContentManager.Create();
+    this.batcher = RendererFactory.CreateBatcher();
+    this.textureRenderer = RendererFactory.CreateTextureRenderer();
+
+    // highlight-add-start
     this.keyboard = HardwareFactory.GetKeyboard();
     this.spritePosition = new Vector2(Width / 2f, Height / 2f);
+    // highlight-add-end
 }
 ```
 
@@ -87,10 +95,20 @@ protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
 
+    // highlight-remove-start
+    var x = (int)(Width / 2); // Center of the window horizontally
+    var y = (int)(Height / 2); // Center of the window vertically
+
+    // Render the logo image in the center of the window
+    this.textureRenderer.Render(this.logoTexture, x, y);
+    // highlight-remove-end
+
+    // highlight-add-start
     this.textureRenderer.Render(
         this.logoTexture,
         (int)this.spritePosition.X,
         (int)this.spritePosition.Y);
+    // highlight-add-end
 
     this.batcher.End();
 

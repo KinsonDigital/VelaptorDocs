@@ -19,7 +19,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 <a name='Velaptor.Graphics.GlyphMetrics.Ascender'></a>
 
-### Ascender 
+### Ascender \{#Velaptor.Graphics.GlyphMetrics.Ascender}
 
 Gets the vertical distance from the horizontal baseline to the highest 'character'  
 coordinate in a font face.
@@ -39,7 +39,7 @@ other formats define it as being equal to Y max value of the global bounding box
 
 <a name='Velaptor.Graphics.GlyphMetrics.CharIndex'></a>
 
-### CharIndex 
+### CharIndex \{#Velaptor.Graphics.GlyphMetrics.CharIndex}
 
 Gets the glyph index.
 
@@ -55,7 +55,7 @@ The value of 0 means ‘undefined character code’.
 
 <a name='Velaptor.Graphics.GlyphMetrics.Descender'></a>
 
-### Descender 
+### Descender \{#Velaptor.Graphics.GlyphMetrics.Descender}
 
 Gets the vertical distance from the horizontal baseline to the lowest ‘character’ coordinate in a font face.
 
@@ -74,7 +74,7 @@ to the Y min value of the global bounding box. This field is negative for values
 
 <a name='Velaptor.Graphics.GlyphMetrics.Glyph'></a>
 
-### Glyph 
+### Glyph \{#Velaptor.Graphics.GlyphMetrics.Glyph}
 
 Gets the glyph character.
 
@@ -87,10 +87,10 @@ public char Glyph { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.GlyphBounds'></a>
 
-### GlyphBounds 
+### GlyphBounds \{#Velaptor.Graphics.GlyphMetrics.GlyphBounds}
 
 Gets the rectangular bounds of where in a font texture  
-atlas the given [Glyph](Velaptor.Graphics.GlyphMetrics.md#glyph 'Velaptor.Graphics.GlyphMetrics.Glyph') resides.
+atlas the given [Glyph](Velaptor.Graphics.GlyphMetrics.md#Velaptor.Graphics.GlyphMetrics.Glyph 'Velaptor.Graphics.GlyphMetrics.Glyph') resides.
 
 ```csharp
 public System.Drawing.RectangleF GlyphBounds { get; set; }
@@ -101,7 +101,7 @@ public System.Drawing.RectangleF GlyphBounds { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.GlyphHeight'></a>
 
-### GlyphHeight 
+### GlyphHeight \{#Velaptor.Graphics.GlyphMetrics.GlyphHeight}
 
 Gets the glyph's height.
 
@@ -114,7 +114,7 @@ public float GlyphHeight { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.GlyphWidth'></a>
 
-### GlyphWidth 
+### GlyphWidth \{#Velaptor.Graphics.GlyphMetrics.GlyphWidth}
 
 Gets the glyph's width.
 
@@ -127,7 +127,7 @@ public float GlyphWidth { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.HoriBearingX'></a>
 
-### HoriBearingX 
+### HoriBearingX \{#Velaptor.Graphics.GlyphMetrics.HoriBearingX}
 
 Gets the horizontal distance from the current cursor position to  
 the leftmost border of the glyph image's bounding box.
@@ -141,7 +141,7 @@ public float HoriBearingX { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.HoriBearingY'></a>
 
-### HoriBearingY 
+### HoriBearingY \{#Velaptor.Graphics.GlyphMetrics.HoriBearingY}
 
 Gets the vertical distance from the current cursor position  
 (on the baseline) to the top most border of the glyph image's bounding box.
@@ -155,7 +155,7 @@ public float HoriBearingY { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.HorizontalAdvance'></a>
 
-### HorizontalAdvance 
+### HorizontalAdvance \{#Velaptor.Graphics.GlyphMetrics.HorizontalAdvance}
 
 Gets the horizontal distance to increment the pen position when the glyph  
 is drawn as part of a string of text.
@@ -169,7 +169,7 @@ public float HorizontalAdvance { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.XMax'></a>
 
-### XMax 
+### XMax \{#Velaptor.Graphics.GlyphMetrics.XMax}
 
 Gets the horizontal maximum (right-most).
 
@@ -182,7 +182,7 @@ public float XMax { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.XMin'></a>
 
-### XMin 
+### XMin \{#Velaptor.Graphics.GlyphMetrics.XMin}
 
 Gets the horizontal minimum (left-most).
 
@@ -195,7 +195,7 @@ public float XMin { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.YMax'></a>
 
-### YMax 
+### YMax \{#Velaptor.Graphics.GlyphMetrics.YMax}
 
 Gets the vertical maximum (top-most).
 
@@ -208,7 +208,7 @@ public float YMax { get; set; }
 
 <a name='Velaptor.Graphics.GlyphMetrics.YMin'></a>
 
-### YMin 
+### YMin \{#Velaptor.Graphics.GlyphMetrics.YMin}
 
 Gets the vertical minimum (bottom-most).
 

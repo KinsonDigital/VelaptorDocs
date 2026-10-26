@@ -22,7 +22,7 @@ Implements [ITexture](Velaptor.Content.ITexture.md 'Velaptor.Content.ITexture'),
 
 <a name='Velaptor.Content.Texture.FilePath'></a>
 
-### FilePath 
+### FilePath \{#Velaptor.Content.Texture.FilePath}
 
 Gets the path to the content.
 
@@ -30,14 +30,14 @@ Gets the path to the content.
 public string FilePath { get; }
 ```
 
-Implements [FilePath](Velaptor.Content.IContent.md#filepath 'Velaptor.Content.IContent.FilePath')
+Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor.Content.IContent.FilePath')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='Velaptor.Content.Texture.Height'></a>
 
-### Height 
+### Height \{#Velaptor.Content.Texture.Height}
 
 Gets the height of the texture.
 
@@ -45,14 +45,14 @@ Gets the height of the texture.
 public uint Height { get; set; }
 ```
 
-Implements [Height](Velaptor.Content.ITexture.md#height 'Velaptor.Content.ITexture.Height')
+Implements [Height](Velaptor.Content.ITexture.md#Velaptor.Content.ITexture.Height 'Velaptor.Content.ITexture.Height')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
 <a name='Velaptor.Content.Texture.Id'></a>
 
-### Id 
+### Id \{#Velaptor.Content.Texture.Id}
 
 Gets the ID of the texture.
 
@@ -60,14 +60,14 @@ Gets the ID of the texture.
 public uint Id { get; set; }
 ```
 
-Implements [Id](Velaptor.Content.ITexture.md#id 'Velaptor.Content.ITexture.Id')
+Implements [Id](Velaptor.Content.ITexture.md#Velaptor.Content.ITexture.Id 'Velaptor.Content.ITexture.Id')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')
 
 <a name='Velaptor.Content.Texture.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Content.Texture.Name}
 
 Gets the name of the content.
 
@@ -75,14 +75,14 @@ Gets the name of the content.
 public string Name { get; set; }
 ```
 
-Implements [Name](Velaptor.Content.IContent.md#name 'Velaptor.Content.IContent.Name')
+Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor.Content.IContent.Name')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 <a name='Velaptor.Content.Texture.Width'></a>
 
-### Width 
+### Width \{#Velaptor.Content.Texture.Width}
 
 Gets the width of the texture.
 
@@ -90,7 +90,7 @@ Gets the width of the texture.
 public uint Width { get; set; }
 ```
 
-Implements [Width](Velaptor.Content.ITexture.md#width 'Velaptor.Content.ITexture.Width')
+Implements [Width](Velaptor.Content.ITexture.md#Velaptor.Content.ITexture.Width 'Velaptor.Content.ITexture.Width')
 
 #### Property Value
 [System.UInt32](https://docs.microsoft.com/en-us/dotnet/api/System.UInt32 'System.UInt32')

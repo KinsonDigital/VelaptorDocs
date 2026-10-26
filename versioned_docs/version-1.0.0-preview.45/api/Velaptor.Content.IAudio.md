@@ -21,7 +21,7 @@ Implements [IContent](Velaptor.Content.IContent.md 'Velaptor\.Content\.IContent'
 
 <a name='Velaptor.Content.IAudio.BufferType'></a>
 
-### BufferType 
+### BufferType \{#Velaptor.Content.IAudio.BufferType}
 
 Gets the type of buffer\.
 
@@ -34,7 +34,7 @@ Velaptor.Content.AudioBuffer BufferType { get; }
 
 <a name='Velaptor.Content.IAudio.FilePath'></a>
 
-### FilePath 
+### FilePath \{#Velaptor.Content.IAudio.FilePath}
 
 Gets the fully qualified path to the content file\.
 
@@ -42,14 +42,14 @@ Gets the fully qualified path to the content file\.
 string FilePath { get; }
 ```
 
-Implements [FilePath](Velaptor.Content.IContent.md#filepath 'Velaptor\.Content\.IContent\.FilePath')
+Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor\.Content\.IContent\.FilePath')
 
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Content.IAudio.Id'></a>
 
-### Id 
+### Id \{#Velaptor.Content.IAudio.Id}
 
 Gets the unique ID of the audio\.
 
@@ -62,7 +62,7 @@ uint Id { get; }
 
 <a name='Velaptor.Content.IAudio.IsLooping'></a>
 
-### IsLooping 
+### IsLooping \{#Velaptor.Content.IAudio.IsLooping}
 
 Gets or sets a value indicating whether the audio loops back to the beginning once the end has been reached\.
 
@@ -75,7 +75,7 @@ bool IsLooping { get; set; }
 
 <a name='Velaptor.Content.IAudio.IsPaused'></a>
 
-### IsPaused 
+### IsPaused \{#Velaptor.Content.IAudio.IsPaused}
 
 Gets a value indicating whether the audio is paused\.
 
@@ -88,7 +88,7 @@ bool IsPaused { get; }
 
 <a name='Velaptor.Content.IAudio.IsPlaying'></a>
 
-### IsPlaying 
+### IsPlaying \{#Velaptor.Content.IAudio.IsPlaying}
 
 Gets a value indicating whether the audio is playing\.
 
@@ -101,7 +101,7 @@ bool IsPlaying { get; }
 
 <a name='Velaptor.Content.IAudio.IsStopped'></a>
 
-### IsStopped 
+### IsStopped \{#Velaptor.Content.IAudio.IsStopped}
 
 Gets a value indicating whether the audio is stopped\.
 
@@ -114,7 +114,7 @@ bool IsStopped { get; }
 
 <a name='Velaptor.Content.IAudio.Length'></a>
 
-### Length 
+### Length \{#Velaptor.Content.IAudio.Length}
 
 Gets the length of the song\.
 
@@ -127,7 +127,7 @@ System.TimeSpan Length { get; }
 
 <a name='Velaptor.Content.IAudio.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Content.IAudio.Name}
 
 Gets the name of the content\.
 
@@ -135,14 +135,14 @@ Gets the name of the content\.
 string Name { get; }
 ```
 
-Implements [Name](Velaptor.Content.IContent.md#name 'Velaptor\.Content\.IContent\.Name')
+Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor\.Content\.IContent\.Name')
 
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Content.IAudio.PlaySpeed'></a>
 
-### PlaySpeed 
+### PlaySpeed \{#Velaptor.Content.IAudio.PlaySpeed}
 
 Gets or sets the play speed to the given value\.
 
@@ -160,7 +160,7 @@ with a value greater then 2\.0 defaulting to 2\.0\.
 
 <a name='Velaptor.Content.IAudio.Position'></a>
 
-### Position 
+### Position \{#Velaptor.Content.IAudio.Position}
 
 Gets the current time position of the audio\.
 
@@ -173,7 +173,7 @@ System.TimeSpan Position { get; }
 
 <a name='Velaptor.Content.IAudio.Volume'></a>
 
-### Volume 
+### Volume \{#Velaptor.Content.IAudio.Volume}
 
 Gets or sets the volume of the audio\.
 
@@ -191,9 +191,9 @@ this range is used, it will be set within that range\.
 
 <a name='Velaptor.Content.IAudio.FastForward(float)'></a>
 
-### FastForward\(float\) 
+### FastForward\(float\) \{#Velaptor.Content.IAudio.FastForward(float)}
 
-Fast forwards the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#seconds 'Velaptor\.Content\.IAudio\.FastForward\(float\)\.seconds')\.
+Fast forwards the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.FastForward(float) 'Velaptor\.Content\.IAudio\.FastForward\(float\)\.seconds')\.
 
 ```csharp
 void FastForward(float seconds);
@@ -208,7 +208,7 @@ The amount of seconds to fast\-forward the song\.
 
 <a name='Velaptor.Content.IAudio.Pause()'></a>
 
-### Pause\(\) 
+### Pause\(\) \{#Velaptor.Content.IAudio.Pause()}
 
 Pauses the audio\.
 
@@ -218,7 +218,7 @@ void Pause();
 
 <a name='Velaptor.Content.IAudio.Play()'></a>
 
-### Play\(\) 
+### Play\(\) \{#Velaptor.Content.IAudio.Play()}
 
 Plays the audio\.
 
@@ -228,9 +228,9 @@ void Play();
 
 <a name='Velaptor.Content.IAudio.Rewind(float)'></a>
 
-### Rewind\(float\) 
+### Rewind\(float\) \{#Velaptor.Content.IAudio.Rewind(float)}
 
-Rewinds the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#seconds 'Velaptor\.Content\.IAudio\.Rewind\(float\)\.seconds')\.
+Rewinds the audio by the given amount of [seconds](Velaptor.Content.IAudio.md#Velaptor.Content.IAudio.Rewind(float) 'Velaptor\.Content\.IAudio\.Rewind\(float\)\.seconds')\.
 
 ```csharp
 void Rewind(float seconds);
@@ -245,7 +245,7 @@ The amount of seconds to rewind the song\.
 
 <a name='Velaptor.Content.IAudio.SetTimePosition(float)'></a>
 
-### SetTimePosition\(float\) 
+### SetTimePosition\(float\) \{#Velaptor.Content.IAudio.SetTimePosition(float)}
 
 Sets the time position of the audio to the given value\.
 
@@ -262,7 +262,7 @@ The time position in seconds of where to set the audio\.
 
 <a name='Velaptor.Content.IAudio.Stop()'></a>
 
-### Stop\(\) 
+### Stop\(\) \{#Velaptor.Content.IAudio.Stop()}
 
 Stops the audio playback and resets back to the beginning\.
 

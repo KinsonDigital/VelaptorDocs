@@ -51,14 +51,6 @@ public Game()
 }
 ```
 
-The `WindowState` property controls the state of the window. It uses the `StateOfWindow` enum, which has the following values:
-
-| Value | Description |
-|---|---|
-| `Normal` | The window is in its normal state. |
-| `Minimized` | The window is minimized to the taskbar. |
-| `Maximized` | The window covers the entire working area (excluding the taskbar). |
-| `FullScreen` | The window covers the entire screen including the taskbar. |
 
 ```csharp
 public Game()
@@ -116,23 +108,6 @@ public Game()
 }
 ```
 
-### <span className="color-sub-step">Auto buffer clearing</span>
-
-The `AutoClearBuffer` property determines whether the rendering buffers are automatically cleared before each frame.
-When set to `true`, you do not need to manually invoke `IBatcher.Clear()`.
-
-```csharp
-public Game()
-{
-    AutoClearBuffer = true;
-}
-```
-
-:::caution Warning
-Do not manually clear the buffer **and** set `AutoClearBuffer` to `true` at the same time.
-Doing both wastes resources since the buffer would be cleared twice per frame.
-:::
-
 ### <span className="color-sub-step">Auto scene settings</span>
 
 When using the built-in scene manager, **Velaptor** can automatically handle loading, unloading, updating,
@@ -188,6 +163,35 @@ public Game()
 }
 ```
 
+
+:::info Default Window Settings
+
+<details>
+	<summary>Expand me to learn more!</summary>
+
+The following table shows the default settings for the window.
+
+| Window Property | Default Value |
+|---|---|
+| `Title` | Velaptor Application |
+| `Position` | Center of the screen |
+| `Width` | 1280px |
+| `Height` | 780px |
+| `MouseCursorVisible` | true |
+| `WindowState` | Normal (Not minimized or maximized) |
+| `TypeOfBorder` | Resizable |
+| `AutoSceneLoading` | true |
+| `AutoSceneUnloading` | true |
+| `AutoSceneUpdating` | true |
+| `AutoSceneRendering` | true |
+| `UpdateFrequency` | 60fps |
+| `FpsDisplayColor` | White |
+
+💡 To show the FPS, use the key combination `Ctrl+Alt+Shift+S`
+
+</details>
+
+:::
 
 ## <span className="color-step">Game Loop Lifecycle</span>
 
@@ -430,8 +434,7 @@ manage, and transition between scenes, refer to the [Scene Management](./scenes/
 
 ## <span className="color-step">Showing and Closing the Window</span>
 
-Once your game class is ready, you need to show the window to start the game loop. **Velaptor** provides
-multiple ways to do this.
+Once your game class is ready, you need to show the window to start the game loop.
 
 ### <span className="color-sub-step">Show()</span>
 
@@ -444,35 +447,6 @@ game.Show();
 
 // code here will not execute until the window is closed
 ```
-
-### <span className="color-sub-step">ShowAsync()</span>
-
-The `ShowAsync()` method opens the window and runs the game loop on a separate thread. This is useful
-when you need to perform additional work after the window starts, or when integrating with async workflows.
-
-It accepts two optional callbacks:
-- `afterStart` — Invoked after the window has started.
-- `afterUnload` — Invoked after the window has been unloaded.
-
-```csharp
-var game = new Game();
-await game.ShowAsync(
-    afterStart: () => Console.WriteLine("Game started!"),
-    afterUnload: () => Console.WriteLine("Game closed!")
-);
-```
-
-:::tip
-Using `await` with `ShowAsync()` ensures the calling context waits until the window is closed, similar to how `Show()` blocks.
-The game loop itself runs on a separate thread, which is useful when integrating with async workflows.
-Just be mindful of thread safety when accessing shared resources between the game loop and other threads.
-
-If you call `ShowAsync()` **without** `await`, the code after the call will continue executing immediately while the game runs.
-In that case, you need to ensure the main thread stays alive for the duration of the game. One trick is to use
-`Console.ReadLine()` after the `ShowAsync()` call to block the main thread, or have your own loop that performs
-background tasks while the game is running.
-:::
-
 
 ### <span className="color-sub-step">Close()</span>
 
@@ -490,24 +464,6 @@ protected override void OnUpdate(FrameTime frameTime)
     base.OnUpdate(frameTime);
 }
 ```
-
-### <span className="color-sub-step">Dispose()</span>
-
-The `Dispose()` method releases all resources held by the window. Since `Window` implements `IDisposable`, you
-can also use a `using` statement to ensure proper cleanup:
-
-```csharp
-using var game = new Game();
-game.Show();
-```
-
-You do not need to call `Dispose()` directly when using a `using` statement,
-since it will automatically call `Dispose()` when the game object goes out of scope.
-
-:::tip Best practice
-Using the `using` statement ensures that `Dispose()` is called automatically when the game object goes out of scope,
-even if an exception occurs. This is the recommended pattern for most applications.
-:::
 
 
 ## <span className="color-step">Putting It All Together</span>
@@ -529,9 +485,6 @@ public class Game : Window
         Title = "Game Window Guide";
         Width = 800;
         Height = 600;
-        UpdateFrequency = 60;
-        TypeOfBorder = WindowBorder.Resizable;
-        MouseCursorVisible = true;
 
         this.batcher = RendererFactory.CreateBatcher();
     }

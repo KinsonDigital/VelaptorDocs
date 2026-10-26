@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException()'></a>
 
-### AppSettingsException\(\) Constructor
+### AppSettingsException\(\) Constructor \{#Velaptor.Exceptions.AppSettingsException.AppSettingsException()}
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor\.Exceptions\.AppSettingsException') class\.
 
@@ -28,7 +28,7 @@ public AppSettingsException();
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException(string)'></a>
 
-### AppSettingsException\(string\) Constructor
+### AppSettingsException\(string\) Constructor \{#Velaptor.Exceptions.AppSettingsException.AppSettingsException(string)}
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor\.Exceptions\.AppSettingsException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Exceptions.AppSettingsException.AppSettingsException(string,System.Exception)'></a>
 
-### AppSettingsException\(string, Exception\) Constructor
+### AppSettingsException\(string, Exception\) Constructor \{#Velaptor.Exceptions.AppSettingsException.AppSettingsException(string,System.Exception)}
 
 Initializes a new instance of the [AppSettingsException](Velaptor.Exceptions.AppSettingsException.md 'Velaptor\.Exceptions\.AppSettingsException') class\.
 

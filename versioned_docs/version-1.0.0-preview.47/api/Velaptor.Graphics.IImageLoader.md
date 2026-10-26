@@ -19,7 +19,7 @@ Derived
 
 <a name='Velaptor.Graphics.IImageLoader.LoadImage(string)'></a>
 
-### LoadImage\(string\) 
+### LoadImage\(string\) \{#Velaptor.Graphics.IImageLoader.LoadImage(string)}
 
 Loads an image from the specified file path\.
 

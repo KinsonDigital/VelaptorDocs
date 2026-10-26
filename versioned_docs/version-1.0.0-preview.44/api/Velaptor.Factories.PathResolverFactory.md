@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateAtlasPathResolver()'></a>
 
-### CreateAtlasPathResolver() 
+### CreateAtlasPathResolver() \{#Velaptor.Factories.PathResolverFactory.CreateAtlasPathResolver()}
 
 Creates a path resolver that resolves paths to texture atlas textures.
 
@@ -32,7 +32,7 @@ The resolver to texture content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateAudioPathResolver()'></a>
 
-### CreateAudioPathResolver() 
+### CreateAudioPathResolver() \{#Velaptor.Factories.PathResolverFactory.CreateAudioPathResolver()}
 
 Creates a path resolver that resolves paths to audio content.
 
@@ -46,7 +46,7 @@ The resolver to audio content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateFontPathResolver()'></a>
 
-### CreateFontPathResolver() 
+### CreateFontPathResolver() \{#Velaptor.Factories.PathResolverFactory.CreateFontPathResolver()}
 
 Creates a path resolver that resolves paths to font content.
 
@@ -60,7 +60,7 @@ The resolver to atlas content.
 
 <a name='Velaptor.Factories.PathResolverFactory.CreateTexturePathResolver()'></a>
 
-### CreateTexturePathResolver() 
+### CreateTexturePathResolver() \{#Velaptor.Factories.PathResolverFactory.CreateTexturePathResolver()}
 
 Creates a path resolver that resolves paths to texture content.
 

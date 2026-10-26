@@ -198,7 +198,7 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
                     this.atlasData.Texture,
                     this.srcRect,
                     destRect,
-                    1,
+                    Game.Camera.Zoom,
                     0,
                     bulletClr,
                     RenderEffects.None);
@@ -297,9 +297,9 @@ public class Weapon : IUpdatable, IDrawable, IContentLoadable
         bullet.IsVisible = true;
 
         const int bulletVerticalOffset = 15;
-        var shipHalfHeight = this.shipSize.Width / 2f;
+        var shipHalfHeight = this.shipSize.Height * Game.Camera.Zoom / 2f;
         var shipTop = this.shipPos.Y - shipHalfHeight;
-        var bulletHalfHeight = this.srcRect.Height / 2f;
+        var bulletHalfHeight = this.srcRect.Height * Game.Camera.Zoom / 2f;
         var bulletPosY = shipTop - bulletHalfHeight + bulletVerticalOffset;
         var bulletPos = this.shipPos with { Y = bulletPosY };
 

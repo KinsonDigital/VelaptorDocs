@@ -44,7 +44,7 @@
 		"scope": "mdx",
 		"prefix": "step",
 		"body": [
-			"## <span className=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n$3"
+			"## <span className=\"color-step\">Step ${1: step #}: ${2: description}</span>\n\n"
 		],
 		"description": "Tutorial Step"
 	},
@@ -52,7 +52,7 @@
 		"scope": "mdx",
 		"prefix": "sub-step",
 		"body": [
-			"### <span className=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n$3"
+			"### <span className=\"color-sub-step\">Step ${1: sub step #}: ${2: description}</span>\n\n"
 		],
 		"description": "Tutorial Sub Step"
 	},
@@ -60,10 +60,26 @@
 		"scope": "mdx",
 		"prefix": "sub-step-item",
 		"body": [
-			"#### <span className=\"color-sub-step-item\">Step ${1: sub step #}${2: letter}: ${3: description}</span>\n\n$4"
+			"#### <span className=\"color-sub-step-item\">Step ${1: sub step #}${2: letter}: ${3: description}</span>\n\n"
 		],
 		"description": "Tutorial Sub Step Item"
 	},
+    "Hightlight Add Start": {
+        "scope": "csharp",
+        "prefix": "hl-a-s",
+        "body": [
+            "// highlight-add-start$1"
+        ],
+        "description": "Adds a highlight code block start indicator."
+    },
+    "Hightlight Add End": {
+        "scope": "csharp",
+        "prefix": "hl-a-e",
+        "body": [
+            "// highlight-add-end$1"
+        ],
+        "description": "Adds a highlight code block end indicator."
+    },
 	"Note Admonition": {
 		"scope": "mdx",
 		"prefix": "note-admonition",
@@ -84,7 +100,7 @@
 		],
 		"description": "Tip Admonition"
 	},
-	"info Admonition": {
+	"Info Admonition": {
 		"scope": "mdx",
 		"prefix": "info-admonition",
 		"body": [

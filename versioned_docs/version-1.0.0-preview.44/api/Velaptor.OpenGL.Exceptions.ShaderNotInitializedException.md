@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException()'></a>
 
-### ShaderNotInitializedException() Constructor
+### ShaderNotInitializedException() Constructor \{#Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException()}
 
 Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
 
@@ -28,7 +28,7 @@ public ShaderNotInitializedException();
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,string)'></a>
 
-### ShaderNotInitializedException(string, string) Constructor
+### ShaderNotInitializedException(string, string) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,string)}
 
 Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
 
@@ -51,7 +51,7 @@ The name of the shader.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,System.Exception)'></a>
 
-### ShaderNotInitializedException(string, Exception) Constructor
+### ShaderNotInitializedException(string, Exception) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.ShaderNotInitializedException(string,System.Exception)}
 
 Initializes a new instance of the [ShaderNotInitializedException](Velaptor.OpenGL.Exceptions.ShaderNotInitializedException.md 'Velaptor.OpenGL.Exceptions.ShaderNotInitializedException') class.
 

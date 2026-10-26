@@ -7,8 +7,13 @@
         "contentfiles",
         "Kinson",
         "lazer",
+        "Lerp",
         "metroid",
+        "Reactable",
+        "Respawn",
+        "Respawns",
         "stylecop",
+        "Unsubscriber",
         "Velaptor"
     ],
     "files.exclude": {
@@ -24,5 +29,10 @@
         "**/obj": true,
         "*.sln.DotSettings.user": true
     },
-    "dotnet.defaultSolution": "SampleProjects.sln"
+    "dotnet.defaultSolution": "SampleProjects.slnx",
+    "[csharp]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false
+    }
 }

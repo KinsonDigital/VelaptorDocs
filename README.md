@@ -1,8 +1,6 @@
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
 
-asdfasdf
-
 <span align="center">
 
 # 📃 Velaptor Documentation Website 📃

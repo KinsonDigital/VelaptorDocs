@@ -24,7 +24,7 @@ Implements [IUpdatable](Velaptor.IUpdatable.md 'Velaptor.IUpdatable'), [IDrawabl
 
 <a name='Velaptor.Scene.IScene.Id'></a>
 
-### Id 
+### Id \{#Velaptor.Scene.IScene.Id}
 
 Gets the unique ID of the scene.
 
@@ -37,7 +37,7 @@ System.Guid Id { get; }
 
 <a name='Velaptor.Scene.IScene.IsLoaded'></a>
 
-### IsLoaded 
+### IsLoaded \{#Velaptor.Scene.IScene.IsLoaded}
 
 Gets a value indicating whether the scene has been loaded.
 
@@ -50,7 +50,7 @@ bool IsLoaded { get; }
 
 <a name='Velaptor.Scene.IScene.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Scene.IScene.Name}
 
 Gets the name of the scene.
 
@@ -63,7 +63,7 @@ string Name { get; }
 
 <a name='Velaptor.Scene.IScene.WindowCenter'></a>
 
-### WindowCenter 
+### WindowCenter \{#Velaptor.Scene.IScene.WindowCenter}
 
 Gets the center of the window.
 
@@ -76,7 +76,7 @@ System.Drawing.Point WindowCenter { get; }
 
 <a name='Velaptor.Scene.IScene.WindowSize'></a>
 
-### WindowSize 
+### WindowSize \{#Velaptor.Scene.IScene.WindowSize}
 
 Gets the size of the window.
 
@@ -90,7 +90,7 @@ Velaptor.SizeU WindowSize { get; }
 
 <a name='Velaptor.Scene.IScene.LoadContent()'></a>
 
-### LoadContent() 
+### LoadContent() \{#Velaptor.Scene.IScene.LoadContent()}
 
 Loads the scene content.
 
@@ -100,9 +100,9 @@ void LoadContent();
 
 <a name='Velaptor.Scene.IScene.Resize(Velaptor.SizeU)'></a>
 
-### Resize(SizeU) 
+### Resize(SizeU) \{#Velaptor.Scene.IScene.Resize(Velaptor.SizeU)}
 
-Updates the [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor.Scene.IScene.WindowSize').
+Updates the [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor.Scene.IScene.WindowSize').
 
 ```csharp
 void Resize(Velaptor.SizeU size);
@@ -117,7 +117,7 @@ The new size.
 
 <a name='Velaptor.Scene.IScene.UnloadContent()'></a>
 
-### UnloadContent() 
+### UnloadContent() \{#Velaptor.Scene.IScene.UnloadContent()}
 
 Unloads the scene's content.
 

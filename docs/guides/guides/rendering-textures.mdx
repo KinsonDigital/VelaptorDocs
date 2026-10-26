@@ -30,14 +30,15 @@ For more info, refer to the [Quick Start](./quick-start/quick-project-setup) gui
 
 Create the class fields shown below. These will be used to render the Velaptor logo texture to the screen.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
+    // highlight-add-start
     private readonly IBatcher batcher; // Used to control batching
     private readonly ITextureRenderer textureRenderer; // Renders textures
-    private IContentManager contentManager; // Used to load content
+    private readonly IContentManager contentManager; // Used to load content
     private ITexture? logoTexture; // The texture to render
-    ...
+    // highlight-add-end
 }
 ```
 
@@ -45,12 +46,14 @@ public class Game : Window
 
 Add code to the constructor to setup the window to have a title as well as a smaller size.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
+    // highlight-add-start
     Title = "Render Textures"; // Set the title of the window
     Width = 800; // Set the width of the window
     Height = 800; // Set the height of the window
+    // highlight-add-end
 }
 ```
 
@@ -59,13 +62,18 @@ public Game()
 In the constructor, create the `contentManager`, `batcher`, and `textureRenderer` objects.
 This is done by using various factories that make it easy to create these often used types.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
-    ...
+    Title = "Render Textures"; // Set the title of the window
+    Width = 800; // Set the width of the window
+    Height = 800; // Set the height of the window
+    // highlight-add-start
+
     this.contentManager = ContentManager.Create();
     this.batcher = RendererFactory.CreateBatcher();
     this.textureRenderer = RendererFactory.CreateTextureRenderer();
+    // highlight-add-end
 }
 ```
 
@@ -99,10 +107,12 @@ that can be used to load different kinds of content.
 To do this, override the `OnLoad()` method and add the following code to load the texture.
 
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
+    // highlight-add-start    
     this.logoTexture = this.contentManager.Load<ITexture>("velaptor-logo");
+    // highlight-add-end    
 
     base.OnLoad();
 }
@@ -117,10 +127,16 @@ and send in the texture object we loaded earlier.
 Let's override the `OnUnload()` method and unload the texture.  It is always a good idea to unload
 and release resources when shutting down the game or when switching to a new scene.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
-    this.contentManager.Unload(this.logoTexture);
+    // highlight-add-start
+    if (this.logoTexture is not null)
+    {
+        this.contentManager.Unload(this.logoTexture);
+    }
+    // highlight-add-end
+
     base.OnUnload();
 }
 ```
@@ -129,9 +145,10 @@ protected override void OnUnload()
 
 Finally, we can now render our image.  Create the the `OnDraw()` method with the following code to render the texture.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
+    // highlight-add-start
     this.batcher.Begin();
 
     var x = (int)(Width / 2); // Center of the window horizontally
@@ -141,6 +158,7 @@ protected override void OnDraw(FrameTime frameTime)
     this.textureRenderer.Render(this.logoTexture, x, y);
 
     this.batcher.End();
+    // highlight-add-end
 
     base.OnDraw(frameTime);
 }

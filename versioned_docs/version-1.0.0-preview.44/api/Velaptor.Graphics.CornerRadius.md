@@ -19,7 +19,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 <a name='Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float)'></a>
 
-### CornerRadius(float, float, float, float) Constructor
+### CornerRadius(float, float, float, float) Constructor \{#Velaptor.Graphics.CornerRadius.CornerRadius(float,float,float,float)}
 
 Initializes a new instance of the [CornerRadius](Velaptor.Graphics.CornerRadius.md 'Velaptor.Graphics.CornerRadius') struct.
 
@@ -54,7 +54,7 @@ The bottom left corner radius.
 
 <a name='Velaptor.Graphics.CornerRadius.CornerRadius(float)'></a>
 
-### CornerRadius(float) Constructor
+### CornerRadius(float) Constructor \{#Velaptor.Graphics.CornerRadius.CornerRadius(float)}
 
 Initializes a new instance of the [CornerRadius](Velaptor.Graphics.CornerRadius.md 'Velaptor.Graphics.CornerRadius') struct.
 
@@ -72,7 +72,7 @@ The value to set all corner radius values.
 
 <a name='Velaptor.Graphics.CornerRadius.BottomLeft'></a>
 
-### BottomLeft 
+### BottomLeft \{#Velaptor.Graphics.CornerRadius.BottomLeft}
 
 Gets the bottom left corner radius.
 
@@ -85,7 +85,7 @@ public float BottomLeft { get; set; }
 
 <a name='Velaptor.Graphics.CornerRadius.BottomRight'></a>
 
-### BottomRight 
+### BottomRight \{#Velaptor.Graphics.CornerRadius.BottomRight}
 
 Gets the bottom right corner radius.
 
@@ -98,7 +98,7 @@ public float BottomRight { get; set; }
 
 <a name='Velaptor.Graphics.CornerRadius.TopLeft'></a>
 
-### TopLeft 
+### TopLeft \{#Velaptor.Graphics.CornerRadius.TopLeft}
 
 Gets the top left corner radius.
 
@@ -111,7 +111,7 @@ public float TopLeft { get; set; }
 
 <a name='Velaptor.Graphics.CornerRadius.TopRight'></a>
 
-### TopRight 
+### TopRight \{#Velaptor.Graphics.CornerRadius.TopRight}
 
 Gets the top right corner radius.
 
@@ -125,7 +125,7 @@ public float TopRight { get; set; }
 
 <a name='Velaptor.Graphics.CornerRadius.Empty()'></a>
 
-### Empty() 
+### Empty() \{#Velaptor.Graphics.CornerRadius.Empty()}
 
 Returns an empty [CornerRadius](Velaptor.Graphics.CornerRadius.md 'Velaptor.Graphics.CornerRadius') instance.
 
@@ -139,7 +139,7 @@ The empty instance.
 
 <a name='Velaptor.Graphics.CornerRadius.IsEmpty()'></a>
 
-### IsEmpty() 
+### IsEmpty() \{#Velaptor.Graphics.CornerRadius.IsEmpty()}
 
 Returns a value indicating if the [CornerRadius](Velaptor.Graphics.CornerRadius.md 'Velaptor.Graphics.CornerRadius') is empty.
 
@@ -153,9 +153,9 @@ True if empty.
 
 <a name='Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius,float)'></a>
 
-### SetBottomLeft(CornerRadius, float) 
+### SetBottomLeft(CornerRadius, float) \{#Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius,float)}
 
-Sets the bottom left corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#cornerradius 'Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#value 'Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius, float).value').
+Sets the bottom left corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetBottomLeft(Velaptor.Graphics.CornerRadius, float).value').
 
 ```csharp
 public static Velaptor.Graphics.CornerRadius SetBottomLeft(Velaptor.Graphics.CornerRadius cornerRadius, float value);
@@ -180,9 +180,9 @@ The corner radius with the updated value.
 
 <a name='Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius,float)'></a>
 
-### SetBottomRight(CornerRadius, float) 
+### SetBottomRight(CornerRadius, float) \{#Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius,float)}
 
-Sets the bottom right corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#cornerradius 'Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#value 'Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius, float).value').
+Sets the bottom right corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetBottomRight(Velaptor.Graphics.CornerRadius, float).value').
 
 ```csharp
 public static Velaptor.Graphics.CornerRadius SetBottomRight(Velaptor.Graphics.CornerRadius cornerRadius, float value);
@@ -207,9 +207,9 @@ The corner radius with the updated value.
 
 <a name='Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius,float)'></a>
 
-### SetTopLeft(CornerRadius, float) 
+### SetTopLeft(CornerRadius, float) \{#Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius,float)}
 
-Sets the top left corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#cornerradius 'Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#value 'Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius, float).value').
+Sets the top left corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetTopLeft(Velaptor.Graphics.CornerRadius, float).value').
 
 ```csharp
 public static Velaptor.Graphics.CornerRadius SetTopLeft(Velaptor.Graphics.CornerRadius cornerRadius, float value);
@@ -234,9 +234,9 @@ The corner radius with the updated value.
 
 <a name='Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius,float)'></a>
 
-### SetTopRight(CornerRadius, float) 
+### SetTopRight(CornerRadius, float) \{#Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius,float)}
 
-Sets the top right corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#cornerradius 'Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#value 'Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius, float).value').
+Sets the top right corner value of the given [cornerRadius](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius, float).cornerRadius') to the given [value](Velaptor.Graphics.CornerRadius.md#Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius,float) 'Velaptor.Graphics.CornerRadius.SetTopRight(Velaptor.Graphics.CornerRadius, float).value').
 
 ```csharp
 public static Velaptor.Graphics.CornerRadius SetTopRight(Velaptor.Graphics.CornerRadius cornerRadius, float value);

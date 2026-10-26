@@ -16,7 +16,7 @@ public readonly struct AtlasSubTextureData
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.Bounds'></a>
 
-### Bounds 
+### Bounds \{#Velaptor.Graphics.AtlasSubTextureData.Bounds}
 
 Gets the bounds of the sub texture data.
 
@@ -29,7 +29,7 @@ public System.Drawing.Rectangle Bounds { get; set; }
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.FrameIndex'></a>
 
-### FrameIndex 
+### FrameIndex \{#Velaptor.Graphics.AtlasSubTextureData.FrameIndex}
 
 Gets the index of the sub texture frame.
 
@@ -46,7 +46,7 @@ whether the sub texture is part of any animation frames.
 
 <a name='Velaptor.Graphics.AtlasSubTextureData.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Graphics.AtlasSubTextureData.Name}
 
 Gets the name of the sub texture.
 

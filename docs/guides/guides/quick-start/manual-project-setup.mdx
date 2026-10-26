@@ -49,8 +49,11 @@ the load and unload content methods and more.
 Create a new class file named `Game`. This will be necessary to take advantage of the game-related methods of Velaptor. These methods
 are used for things such as loading and unloading content, updating your game objects, and rendering graphics to the screen.
 
-```csharp
+```csharp showLineNumbers
 namespace HelloVelaptor;
+
+using Velaptor;
+using Velaptor.UI;
 
 public class Game : Window
 {
@@ -70,7 +73,7 @@ All applications need some kind of entry point.  This is the starting point of y
 all C# applications, the entry point is the `main` method in the `Program` class.  Let's take advantage of the latest C#
 features and use top-level statements.  Create a new `Program.cs` file and add the following code:
 
-```csharp
+```csharp showLineNumbers
 var game = new HelloVelaptor.Game();
 game.Show();
 ```
@@ -107,7 +110,7 @@ kind of content your game needs. This method is invoked one time when the applic
 
 Create an override of the `Window.OnLoad()` method in the `Game` class as shown below:
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     base.OnLoad();
@@ -120,7 +123,7 @@ The next method to create is the `OnUpdate()` method. This method will be invoke
 invoked. This is where you should add your game logic and update your game state. The point of
 this method is to add _**behavior**_ to your game. Think of it as the brains of your game.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     base.OnUpdate(frameTime);
@@ -133,7 +136,7 @@ Now that we have a way to update our game state, we need to create a method to r
 The `OnDraw()` method is invoked once every frame and always after the `OnUpdate()` method is invoked.
 The point of this method is only for rendering your game to the screen.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     base.OnDraw(frameTime);
@@ -147,7 +150,7 @@ The `OnResize()` method is invoked anytime the window's size is changed, includi
 This is a great location to run game logic that can do anything your game needs. One good example is to pause your game automatically
 when minimized and to unpause when the window is maximized or restored.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
     base.OnResize(size);
@@ -160,7 +163,7 @@ We need a way to unload our content. This can be performed by creating a method 
 The `OnUnload()` method is invoked one time when the window is closed. This is to free resources and content from your game on
 the CPU side as well as loaded textures from the GPU. This is also where scene management unloading can be performed.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
     base.OnUnload();

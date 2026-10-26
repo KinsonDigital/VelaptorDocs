@@ -7,7 +7,7 @@ title: Velaptor.SizeU
 
 #### SizeU Struct
 
-Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#height 'Velaptor.SizeU.Height').
+Stores an ordered pair of [unsigned](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/unsigned') integers, which specify a [Width](Velaptor.SizeU.md#Velaptor.SizeU.Width 'Velaptor.SizeU.Width') and [Height](Velaptor.SizeU.md#Velaptor.SizeU.Height 'Velaptor.SizeU.Height').
 
 ```csharp
 public readonly struct SizeU :
@@ -19,7 +19,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 <a name='Velaptor.SizeU.SizeU(uint,uint)'></a>
 
-### SizeU(uint, uint) Constructor
+### SizeU(uint, uint) Constructor \{#Velaptor.SizeU.SizeU(uint,uint)}
 
 Initializes a new instance of the [SizeU](Velaptor.SizeU.md 'Velaptor.SizeU') struct.
 
@@ -43,7 +43,7 @@ The height of the size.
 
 <a name='Velaptor.SizeU.Height'></a>
 
-### Height 
+### Height \{#Velaptor.SizeU.Height}
 
 Gets the height of the size.
 
@@ -56,7 +56,7 @@ public uint Height { get; set; }
 
 <a name='Velaptor.SizeU.Width'></a>
 
-### Width 
+### Width \{#Velaptor.SizeU.Width}
 
 Gets the width of the size.
 

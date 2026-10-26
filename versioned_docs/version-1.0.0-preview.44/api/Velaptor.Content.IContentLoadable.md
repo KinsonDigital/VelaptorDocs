@@ -16,7 +16,7 @@ public interface IContentLoadable
 
 <a name='Velaptor.Content.IContentLoadable.IsLoaded'></a>
 
-### IsLoaded 
+### IsLoaded \{#Velaptor.Content.IContentLoadable.IsLoaded}
 
 Gets a value indicating whether the content for an object is loaded.
 
@@ -30,7 +30,7 @@ bool IsLoaded { get; }
 
 <a name='Velaptor.Content.IContentLoadable.LoadContent()'></a>
 
-### LoadContent() 
+### LoadContent() \{#Velaptor.Content.IContentLoadable.LoadContent()}
 
 Loads the content for an object.
 
@@ -40,7 +40,7 @@ void LoadContent();
 
 <a name='Velaptor.Content.IContentLoadable.UnloadContent()'></a>
 
-### UnloadContent() 
+### UnloadContent() \{#Velaptor.Content.IContentLoadable.UnloadContent()}
 
 Unloads the content for an object.
 

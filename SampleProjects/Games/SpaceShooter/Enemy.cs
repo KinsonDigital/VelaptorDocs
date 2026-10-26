@@ -122,7 +122,9 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
         }
 
         var displacement = (float)(AngularVelocity * frameTime.ElapsedTime.TotalSeconds);
-        this.angle = this.rotateCw ? this.angle + displacement : this.angle - displacement;
+        this.angle = this.rotateCw
+            ? this.angle + displacement
+            : this.angle - displacement;
 
         this.multiPath.Update(frameTime);
 
@@ -170,7 +172,7 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
             this.atlasData.Texture,
             this.srcRect,
             destRect,
-            1,
+            Game.Camera.Zoom,
             this.angle,
             Color.White,
             RenderEffects.None);
@@ -220,8 +222,7 @@ public class Enemy : IUpdatable, IDrawable, IContentLoadable
     private Vector2[] GeneratePathPoints()
     {
         var startPos = CreateRandomPointFrom(this.unsetVector);
-        var pathPoints = new List<Vector2>();
-        pathPoints.Add(startPos);
+        var pathPoints = new List<Vector2> { startPos };
 
         // Generate new points until past the bottom of the window
         while (true)

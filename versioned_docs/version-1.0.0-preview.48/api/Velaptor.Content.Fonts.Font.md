@@ -1,0 +1,385 @@
+---
+title: Velaptor.Content.Fonts.Font
+---
+
+#### [Velaptor](Namespaces.md 'Velaptor Namespaces')
+### [Velaptor\.Content\.Fonts](Velaptor.Content.Fonts.md 'Velaptor\.Content\.Fonts')
+
+#### Font Class
+
+Represents a font with a set size and style that can be used to render text to the screen\.
+
+```csharp
+public sealed class Font : Velaptor.Content.Fonts.IFont, Velaptor.Content.IContent
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Font
+
+Implements [IFont](Velaptor.Content.Fonts.IFont.md 'Velaptor\.Content\.Fonts\.IFont'), [IContent](Velaptor.Content.IContent.md 'Velaptor\.Content\.IContent')
+## Properties
+
+<a name='Velaptor.Content.Fonts.Font.Atlas'></a>
+
+### Atlas \{#Velaptor.Content.Fonts.Font.Atlas}
+
+Gets the font atlas texture that contains all the bitmap data for all available glyphs for the font\.
+
+```csharp
+public Velaptor.Content.ITexture Atlas { get; }
+```
+
+Implements [Atlas](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Atlas 'Velaptor\.Content\.Fonts\.IFont\.Atlas')
+
+#### Property Value
+[ITexture](Velaptor.Content.ITexture.md 'Velaptor\.Content\.ITexture')
+
+<a name='Velaptor.Content.Fonts.Font.AvailableStylesForFamily'></a>
+
+### AvailableStylesForFamily \{#Velaptor.Content.Fonts.Font.AvailableStylesForFamily}
+
+Gets a list of all the available font styles for the current font [FamilyName](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.FamilyName 'Velaptor\.Content\.Fonts\.IFont\.FamilyName')\.
+
+```csharp
+public System.Collections.Generic.IEnumerable<Velaptor.Content.Fonts.FontStyle> AvailableStylesForFamily { get; }
+```
+
+Implements [AvailableStylesForFamily](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.AvailableStylesForFamily 'Velaptor\.Content\.Fonts\.IFont\.AvailableStylesForFamily')
+
+#### Property Value
+[System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[FontStyle](Velaptor.Content.Fonts.FontStyle.md 'Velaptor\.Content\.Fonts\.FontStyle')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+<a name='Velaptor.Content.Fonts.Font.CacheEnabled'></a>
+
+### CacheEnabled \{#Velaptor.Content.Fonts.Font.CacheEnabled}
+
+Gets or sets a value indicating whether to cache the measurements of the text\.
+
+```csharp
+public bool CacheEnabled { get; set; }
+```
+
+Implements [CacheEnabled](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.CacheEnabled 'Velaptor\.Content\.Fonts\.IFont\.CacheEnabled')
+
+#### Property Value
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+<a name='Velaptor.Content.Fonts.Font.CurrentMeasureCacheSize'></a>
+
+### CurrentMeasureCacheSize \{#Velaptor.Content.Fonts.Font.CurrentMeasureCacheSize}
+
+Gets the total number of text size measurements that are cached\.
+
+```csharp
+public int CurrentMeasureCacheSize { get; }
+```
+
+Implements [CurrentMeasureCacheSize](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.CurrentMeasureCacheSize 'Velaptor\.Content\.Fonts\.IFont\.CurrentMeasureCacheSize')
+
+#### Property Value
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='Velaptor.Content.Fonts.Font.FamilyName'></a>
+
+### FamilyName \{#Velaptor.Content.Fonts.Font.FamilyName}
+
+Gets the name of the font family\.
+
+```csharp
+public string FamilyName { get; }
+```
+
+Implements [FamilyName](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.FamilyName 'Velaptor\.Content\.Fonts\.IFont\.FamilyName')
+
+#### Property Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='Velaptor.Content.Fonts.Font.FilePath'></a>
+
+### FilePath \{#Velaptor.Content.Fonts.Font.FilePath}
+
+Gets the path to the content\.
+
+```csharp
+public string FilePath { get; }
+```
+
+Implements [FilePath](Velaptor.Content.IContent.md#Velaptor.Content.IContent.FilePath 'Velaptor\.Content\.IContent\.FilePath')
+
+#### Property Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='Velaptor.Content.Fonts.Font.HasKerning'></a>
+
+### HasKerning \{#Velaptor.Content.Fonts.Font.HasKerning}
+
+Gets a value indicating whether the font has kerning for text rendering layout\.
+
+```csharp
+public bool HasKerning { get; }
+```
+
+Implements [HasKerning](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.HasKerning 'Velaptor\.Content\.Fonts\.IFont\.HasKerning')
+
+#### Property Value
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+<a name='Velaptor.Content.Fonts.Font.IsDefaultFont'></a>
+
+### IsDefaultFont \{#Velaptor.Content.Fonts.Font.IsDefaultFont}
+
+Gets a value indicating whether the font is a default font\.
+
+```csharp
+public bool IsDefaultFont { get; }
+```
+
+Implements [IsDefaultFont](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.IsDefaultFont 'Velaptor\.Content\.Fonts\.IFont\.IsDefaultFont')
+
+#### Property Value
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+<a name='Velaptor.Content.Fonts.Font.LineSpacing'></a>
+
+### LineSpacing \{#Velaptor.Content.Fonts.Font.LineSpacing}
+
+Gets the spacing between lines of text in pixels\.
+
+```csharp
+public float LineSpacing { get; }
+```
+
+Implements [LineSpacing](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.LineSpacing 'Velaptor\.Content\.Fonts\.IFont\.LineSpacing')
+
+#### Property Value
+[System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
+
+<a name='Velaptor.Content.Fonts.Font.MaxMeasureCacheSize'></a>
+
+### MaxMeasureCacheSize \{#Velaptor.Content.Fonts.Font.MaxMeasureCacheSize}
+
+Gets or sets the maximum number of text measurements to cache\.
+
+```csharp
+public int MaxMeasureCacheSize { get; set; }
+```
+
+Implements [MaxMeasureCacheSize](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.MaxMeasureCacheSize 'Velaptor\.Content\.Fonts\.IFont\.MaxMeasureCacheSize')
+
+#### Property Value
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='Velaptor.Content.Fonts.Font.Metrics'></a>
+
+### Metrics \{#Velaptor.Content.Fonts.Font.Metrics}
+
+Gets the list of metrics for all the glyphs supported by the font\.
+
+```csharp
+public System.Collections.Generic.IReadOnlyCollection<Velaptor.Graphics.GlyphMetrics> Metrics { get; }
+```
+
+Implements [Metrics](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Metrics 'Velaptor\.Content\.Fonts\.IFont\.Metrics')
+
+#### Property Value
+[System\.Collections\.Generic\.IReadOnlyCollection&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1 'System\.Collections\.Generic\.IReadOnlyCollection\`1')[GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlycollection-1 'System\.Collections\.Generic\.IReadOnlyCollection\`1')
+
+<a name='Velaptor.Content.Fonts.Font.Name'></a>
+
+### Name \{#Velaptor.Content.Fonts.Font.Name}
+
+Gets the name of the content\.
+
+```csharp
+public string Name { get; }
+```
+
+Implements [Name](Velaptor.Content.IContent.md#Velaptor.Content.IContent.Name 'Velaptor\.Content\.IContent\.Name')
+
+#### Property Value
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+<a name='Velaptor.Content.Fonts.Font.Size'></a>
+
+### Size \{#Velaptor.Content.Fonts.Font.Size}
+
+Gets the size of the font in points\.
+
+```csharp
+public uint Size { get; }
+```
+
+Implements [Size](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Size 'Velaptor\.Content\.Fonts\.IFont\.Size')
+
+#### Property Value
+[System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')
+
+<a name='Velaptor.Content.Fonts.Font.Source'></a>
+
+### Source \{#Velaptor.Content.Fonts.Font.Source}
+
+Gets the source of where the font was loaded\.
+
+```csharp
+public Velaptor.Content.Fonts.FontSource Source { get; }
+```
+
+Implements [Source](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Source 'Velaptor\.Content\.Fonts\.IFont\.Source')
+
+#### Property Value
+[FontSource](Velaptor.Content.Fonts.FontSource.md 'Velaptor\.Content\.Fonts\.FontSource')
+
+<a name='Velaptor.Content.Fonts.Font.Style'></a>
+
+### Style \{#Velaptor.Content.Fonts.Font.Style}
+
+Gets the style of the font\.
+
+```csharp
+public Velaptor.Content.Fonts.FontStyle Style { get; }
+```
+
+Implements [Style](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Style 'Velaptor\.Content\.Fonts\.IFont\.Style')
+
+#### Property Value
+[FontStyle](Velaptor.Content.Fonts.FontStyle.md 'Velaptor\.Content\.Fonts\.FontStyle')
+## Methods
+
+<a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2)'></a>
+
+### GetCharacterBounds\(string, Vector2\) \{#Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2)}
+
+Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2) 'Velaptor\.Content\.Fonts\.Font\.GetCharacterBounds\(string, System\.Numerics\.Vector2\)\.text') based on the
+given [textPos](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2) 'Velaptor\.Content\.Fonts\.Font\.GetCharacterBounds\(string, System\.Numerics\.Vector2\)\.textPos')\.
+
+```csharp
+public System.Collections.Generic.IEnumerable<(char character,System.Drawing.RectangleF bounds)> GetCharacterBounds(string text, System.Numerics.Vector2 textPos);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2).text'></a>
+
+`text` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The text to get the bounds' data\.
+
+<a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(string,System.Numerics.Vector2).textPos'></a>
+
+`textPos` [System\.Numerics\.Vector2](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2 'System\.Numerics\.Vector2')
+
+The position of the text as a whole\.
+
+Implements [GetCharacterBounds\(string, Vector2\)](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetCharacterBounds(string,System.Numerics.Vector2) 'Velaptor\.Content\.Fonts\.IFont\.GetCharacterBounds\(string, System\.Numerics\.Vector2\)')
+
+#### Returns
+[System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Char](https://learn.microsoft.com/en-us/dotnet/api/system.char 'System\.Char')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Drawing\.RectangleF](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.rectanglef 'System\.Drawing\.RectangleF')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
+The bounds for each character\.
+
+<a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2)'></a>
+
+### GetCharacterBounds\(StringBuilder, Vector2\) \{#Velaptor.Content.Fonts.Font.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2)}
+
+Returns the bounds of each character in the given [text](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2) 'Velaptor\.Content\.Fonts\.Font\.GetCharacterBounds\(System\.Text\.StringBuilder, System\.Numerics\.Vector2\)\.text') based on the
+given [textPos](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2) 'Velaptor\.Content\.Fonts\.Font\.GetCharacterBounds\(System\.Text\.StringBuilder, System\.Numerics\.Vector2\)\.textPos')\.
+
+```csharp
+public System.Collections.Generic.IEnumerable<(char character,System.Drawing.RectangleF bounds)> GetCharacterBounds(System.Text.StringBuilder text, System.Numerics.Vector2 textPos);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2).text'></a>
+
+`text` [System\.Text\.StringBuilder](https://learn.microsoft.com/en-us/dotnet/api/system.text.stringbuilder 'System\.Text\.StringBuilder')
+
+The text to get the bounds' data\.
+
+<a name='Velaptor.Content.Fonts.Font.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2).textPos'></a>
+
+`textPos` [System\.Numerics\.Vector2](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.vector2 'System\.Numerics\.Vector2')
+
+The position of the text as a whole\.
+
+Implements [GetCharacterBounds\(StringBuilder, Vector2\)](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetCharacterBounds(System.Text.StringBuilder,System.Numerics.Vector2) 'Velaptor\.Content\.Fonts\.IFont\.GetCharacterBounds\(System\.Text\.StringBuilder, System\.Numerics\.Vector2\)')
+
+#### Returns
+[System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Char](https://learn.microsoft.com/en-us/dotnet/api/system.char 'System\.Char')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Drawing\.RectangleF](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.rectanglef 'System\.Drawing\.RectangleF')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
+The bounds for each character\.
+
+<a name='Velaptor.Content.Fonts.Font.GetKerning(uint,uint)'></a>
+
+### GetKerning\(uint, uint\) \{#Velaptor.Content.Fonts.Font.GetKerning(uint,uint)}
+
+Gets the kerning value between two glyphs\.
+
+```csharp
+public float GetKerning(uint leftGlyphIndex, uint rightGlyphIndex);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Fonts.Font.GetKerning(uint,uint).leftGlyphIndex'></a>
+
+`leftGlyphIndex` [System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')
+
+The character index of the glyph to the left of the right glyph\.
+
+<a name='Velaptor.Content.Fonts.Font.GetKerning(uint,uint).rightGlyphIndex'></a>
+
+`rightGlyphIndex` [System\.UInt32](https://learn.microsoft.com/en-us/dotnet/api/system.uint32 'System\.UInt32')
+
+The character index of the glyph to the right of the left glyph\.
+
+Implements [GetKerning\(uint, uint\)](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.GetKerning(uint,uint) 'Velaptor\.Content\.Fonts\.IFont\.GetKerning\(uint, uint\)')
+
+#### Returns
+[System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')  
+The kerning \(horizontal spacing\) between the glyphs\.
+
+#### Remarks
+Refer to the URL below for more info\.
+
+https://freetype.org/freetype2/docs/glyphs/glyphs-4.html#section-1.
+
+<a name='Velaptor.Content.Fonts.Font.Measure(string)'></a>
+
+### Measure\(string\) \{#Velaptor.Content.Fonts.Font.Measure(string)}
+
+Measures the width and height bounds of the given [text](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.Measure(string) 'Velaptor\.Content\.Fonts\.Font\.Measure\(string\)\.text')\.
+
+```csharp
+public System.Drawing.SizeF Measure(string text);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Fonts.Font.Measure(string).text'></a>
+
+`text` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The text to measure\.
+
+Implements [Measure\(string\)](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.Measure(string) 'Velaptor\.Content\.Fonts\.IFont\.Measure\(string\)')
+
+#### Returns
+[System\.Drawing\.SizeF](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.sizef 'System\.Drawing\.SizeF')  
+The width and height of the text in pixels\.
+
+<a name='Velaptor.Content.Fonts.Font.ToGlyphMetrics(string)'></a>
+
+### ToGlyphMetrics\(string\) \{#Velaptor.Content.Fonts.Font.ToGlyphMetrics(string)}
+
+Returns all the glyph metrics for the given text\.
+
+```csharp
+public Velaptor.Graphics.GlyphMetrics[] ToGlyphMetrics(string text);
+```
+#### Parameters
+
+<a name='Velaptor.Content.Fonts.Font.ToGlyphMetrics(string).text'></a>
+
+`text` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The text to convert to glyph metrics\.
+
+Implements [ToGlyphMetrics\(string\)](Velaptor.Content.Fonts.IFont.md#Velaptor.Content.Fonts.IFont.ToGlyphMetrics(string) 'Velaptor\.Content\.Fonts\.IFont\.ToGlyphMetrics\(string\)')
+
+#### Returns
+[GlyphMetrics](Velaptor.Graphics.GlyphMetrics.md 'Velaptor\.Graphics\.GlyphMetrics')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
+The list of glyph metrics of the given [text](Velaptor.Content.Fonts.Font.md#Velaptor.Content.Fonts.Font.ToGlyphMetrics(string) 'Velaptor\.Content\.Fonts\.Font\.ToGlyphMetrics\(string\)\.text')\.

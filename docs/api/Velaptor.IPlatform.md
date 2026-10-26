@@ -19,7 +19,7 @@ Derived
 
 <a name='Velaptor.IPlatform.CurrentPlatform'></a>
 
-### CurrentPlatform 
+### CurrentPlatform \{#Velaptor.IPlatform.CurrentPlatform}
 
 Gets the current platform of the system\.
 
@@ -32,7 +32,7 @@ System.Runtime.InteropServices.OSPlatform CurrentPlatform { get; }
 
 <a name='Velaptor.IPlatform.Is32BitProcess'></a>
 
-### Is32BitProcess 
+### Is32BitProcess \{#Velaptor.IPlatform.Is32BitProcess}
 
 Gets a value indicating whether the system is a 32 bit process\.
 
@@ -45,7 +45,7 @@ bool Is32BitProcess { get; }
 
 <a name='Velaptor.IPlatform.Is64BitProcess'></a>
 
-### Is64BitProcess 
+### Is64BitProcess \{#Velaptor.IPlatform.Is64BitProcess}
 
 Gets a value indicating whether the system is a 64 bit process\.
 

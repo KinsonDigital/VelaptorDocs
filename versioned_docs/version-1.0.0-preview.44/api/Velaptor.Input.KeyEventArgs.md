@@ -19,7 +19,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 <a name='Velaptor.Input.KeyEventArgs.KeyEventArgs(Velaptor.Input.KeyCode)'></a>
 
-### KeyEventArgs(KeyCode) Constructor
+### KeyEventArgs(KeyCode) Constructor \{#Velaptor.Input.KeyEventArgs.KeyEventArgs(Velaptor.Input.KeyCode)}
 
 Initializes a new instance of the [KeyEventArgs](Velaptor.Input.KeyEventArgs.md 'Velaptor.Input.KeyEventArgs') struct.
 
@@ -37,7 +37,7 @@ The keyboard key related to the event.
 
 <a name='Velaptor.Input.KeyEventArgs.Key'></a>
 
-### Key 
+### Key \{#Velaptor.Input.KeyEventArgs.Key}
 
 Gets the key that was pushed into the down position or lifted into the up position.
 

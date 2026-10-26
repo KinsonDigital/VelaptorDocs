@@ -6,6 +6,21 @@
  * work well for content-centric websites.
  */
 
+/*
+ * Restore list markers (numbers/bullets) and indentation that Tailwind's
+ * preflight reset removes from `ol`/`ul`. Docusaurus renders doc content
+ * inside a `.markdown` container.
+ */
+.markdown ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+}
+
+.markdown ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
 @font-face {
     font-family: 'PlayMeGames';
     src: url('/static/PlaymegamesReguler-2OOee.woff2') format('woff2');
@@ -124,6 +139,24 @@
     display: flex;
     background-size: contain;
     background-image: url("../../static/img/discord.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: -10px;
+}
+
+/* GitHub Sponsor Logo for navbar link */
+.header-github-sponsors-link:hover:after {
+    opacity: 0.6;
+}
+
+.header-github-sponsors-link:after {
+    /* transition: opacity 0.2s; */
+    content: "";
+    width: 26px;
+    height: 26px;
+    display: flex;
+    background-size: contain;
+    background-image: url("../../static/img/github-sponsors.svg");
     background-repeat: no-repeat;
     background-position: center;
     margin-right: -10px;

@@ -4,8 +4,6 @@
 
 namespace SpaceShooter;
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using Carbonate.Fluent;
@@ -13,12 +11,11 @@ using Signals;
 using Signals.Data;
 using Signals.Interfaces;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics;
 using Velaptor.Graphics.Renderers;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 
 /// <summary>
 /// The background graphics.

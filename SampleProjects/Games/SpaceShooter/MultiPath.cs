@@ -115,9 +115,12 @@ public class MultiPath : IUpdatable
             var start = points[i];
             var stop = points[i + 1];
 
-            var newPath = new StraightPath(start, stop);
-            newPath.IsPaused = i != 0;
-            newPath.IsLooping = false;
+            var newPath = new StraightPath(start, stop)
+            {
+                IsPaused = i != 0,
+                IsLooping = false,
+            };
+
             this.paths.Add(newPath);
         }
     }
@@ -149,6 +152,14 @@ public class MultiPath : IUpdatable
                 Direction.Reverse => subPathComplete ? this.activePathIndex - 1 : this.activePathIndex,
                 _ => throw new InvalidEnumArgumentException("Direction", (int)Direction, typeof(Direction)),
             };
+
+            this.activePathIndex = this.activePathIndex > this.paths.Count - 1
+                ? 0
+                : this.activePathIndex;
+
+            this.activePathIndex = this.activePathIndex < 0
+                ? this.paths.Count - 1
+                : this.activePathIndex;
         }
 
         // Set the next path to un-paused & enabled

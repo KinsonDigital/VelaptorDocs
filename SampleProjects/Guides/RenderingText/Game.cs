@@ -7,13 +7,12 @@ namespace RenderingText;
 using System.Drawing;
 using System.Numerics;
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Content.Fonts;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
-using Velaptor.WebGpu.Batching;
+using Velaptor.Batching;
 
 /// <summary>
 /// The main game class.
@@ -23,7 +22,7 @@ public class Game : Window
     private const string Text = "Hello Velaptor!";
     private readonly Random random = new ();
     private readonly IContentManager contentManager;
-    private readonly IFontRenderer fontRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IBatcher batcher;
     private IFont? font;
     private Vector2 velocity = new (200, 200);
@@ -41,7 +40,7 @@ public class Game : Window
 
         this.contentManager = ContentManager.Create();
         this.batcher = RendererFactory.CreateBatcher();
-        this.fontRenderer = RendererFactory.CreateFontRenderer();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
     }
 
     /// <summary>
@@ -61,7 +60,7 @@ public class Game : Window
     /// <param name="frameTime">The amount of time that has passed for the current frame.</param>
     protected override void OnUpdate(FrameTime frameTime)
     {
-        ProcessCollision();
+        ProcessCollisionAndColor();
         var displacement = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
         this.position += displacement;
 
@@ -77,7 +76,7 @@ public class Game : Window
     {
         this.batcher.Begin();
 
-        this.fontRenderer.Render(this.font, Text, (int)this.position.X, (int)this.position.Y, this.textColor);
+        this.textRenderer.Render(this.font, Text, (int)this.position.X, (int)this.position.Y, this.textColor);
 
         this.batcher.End();
 
@@ -97,7 +96,7 @@ public class Game : Window
         base.OnUnload();
     }
 
-    private void ProcessCollision()
+    private void ProcessCollisionAndColor()
     {
         var textSize = this.font.Measure(Text);
         var halfWidth = textSize.Width / 2;

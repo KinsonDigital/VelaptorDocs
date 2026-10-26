@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 import GuideLink from "@site/src/components/GuideLink";
@@ -25,15 +25,16 @@ For more info, refer to the [Quick Start](./quick-start/quick-project-setup) gui
 
 ## <span className="color-step">Step 2: Create class fields</span>
 
-We need fields for the batcher, font renderer, content manager, and to store display information.
+We need fields for the batcher, text renderer, content manager, and to store display information.
 The `HardwareFactory` class provides static methods to retrieve display data, so we'll gather that in the constructor.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
+    // highlight-add-start
     private const int LineSpacing = 20;
     private readonly IContentManager contentManager;
-    private readonly IFontRenderer fontRenderer;
+    private readonly ITextRenderer textRenderer;
     private readonly IBatcher batcher;
     private readonly SystemDisplay mainDisplay;
     private readonly List<string> info = [];
@@ -41,7 +42,7 @@ public class Game : Window
     private IFont? font;
     private int winCenterX;
     private int textStartY;
-    ...
+    // highlight-add-end
 }
 ```
 
@@ -51,7 +52,7 @@ Let's break down what each field is for:
 |---|---|
 | `LineSpacing` | The vertical spacing between each line of text. |
 | `contentManager` | Loads content such as fonts. |
-| `fontRenderer` | Renders text to the screen using a font. |
+| `textRenderer` | Renders text to the screen using a font. |
 | `batcher` | Manages the rendering batch cycle. |
 | `mainDisplay` | Holds information about the system's primary display. |
 | `info` | A list of strings that will hold the display information to render. |
@@ -63,17 +64,23 @@ Let's break down what each field is for:
 
 ## <span className="color-step">Step 3: Setup constructor</span>
 
-In the constructor, we create the batcher, font renderer, and content manager.
+Add a constructor to create the batcher, text renderer, and content manager.
 We also use `HardwareFactory` to get display information.
 
-```csharp
-public Game()
+```csharp showLineNumbers
+public class Game : Window
 {
-    this.batcher = RendererFactory.CreateBatcher();
-    this.fontRenderer = RendererFactory.CreateFontRenderer();
-    this.contentManager = ContentManager.Create();
-    this.mainDisplay = HardwareFactory.GetMainDisplay();
-    this.totalDisplays = HardwareFactory.GetDisplays().Length;
+    // ... class fields here
+    // highlight-add-start
+    public Game()
+    {
+        this.batcher = RendererFactory.CreateBatcher();
+        this.textRenderer = RendererFactory.CreateTextRenderer();
+        this.contentManager = ContentManager.Create();
+        this.mainDisplay = HardwareFactory.GetMainDisplay();
+        this.totalDisplays = HardwareFactory.GetDisplays().Length;
+    }
+    // highlight-add-end
 }
 ```
 
@@ -95,9 +102,10 @@ for the display's center position, dimensions, DPI, scale, refresh rate, bit dep
 In the `OnLoad()` method, we load a font and then build a list of strings containing the display information
 we want to show. We also calculate the center of the window and a starting Y position for the text.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
+    // highlight-add-start
     this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 12);
 
     this.winCenterX = (int)Width / 2;
@@ -113,6 +121,7 @@ protected override void OnLoad()
     this.info.Add($"Green Bit Depth: {this.mainDisplay.GreenBitDepth}");
     this.info.Add($"Blue Bit Depth: {this.mainDisplay.BlueBitDepth}");
 
+    // highlight-add-end
     base.OnLoad();
 }
 ```
@@ -139,14 +148,16 @@ that you can use to get even more information about the display.
 
 We need to unload the font when the window is closed to clean up resources.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
+    // highlight-add-start
     if (this.font is not null)
     {
         this.contentManager.Unload(this.font);
     }
 
+    // highlight-add-end
     base.OnUnload();
 }
 ```
@@ -157,9 +168,10 @@ protected override void OnUnload()
 Now we render each line of display information to the screen. We loop through the `info` list
 and render each string, incrementing the Y position for each line.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
+    // highlight-add-start
     ArgumentNullException.ThrowIfNull(this.font);
 
     this.batcher.Begin();
@@ -169,13 +181,13 @@ protected override void OnDraw(FrameTime frameTime)
 
     foreach (var line in this.info)
     {
+        this.textRenderer.Render(this.font, line, this.winCenterX, posY);
         posY += lineHeight + LineSpacing;
-
-        this.fontRenderer.Render(this.font, line, this.winCenterX, posY);
     }
 
     this.batcher.End();
 
+    // highlight-add-end
     base.OnDraw(frameTime);
 }
 ```

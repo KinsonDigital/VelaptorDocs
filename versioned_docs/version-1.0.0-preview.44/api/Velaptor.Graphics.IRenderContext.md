@@ -16,7 +16,7 @@ public interface IRenderContext
 
 <a name='Velaptor.Graphics.IRenderContext.GetRenderAreaSize()'></a>
 
-### GetRenderAreaSize() 
+### GetRenderAreaSize() \{#Velaptor.Graphics.IRenderContext.GetRenderAreaSize()}
 
 Gets the current size of the rendering area.
 
@@ -33,7 +33,7 @@ This is synonymous with the OpenGL viewport.
 
 <a name='Velaptor.Graphics.IRenderContext.SetRenderAreaSize(int,int)'></a>
 
-### SetRenderAreaSize(int, int) 
+### SetRenderAreaSize(int, int) \{#Velaptor.Graphics.IRenderContext.SetRenderAreaSize(int,int)}
 
 Sets the size of the rendering area.
 

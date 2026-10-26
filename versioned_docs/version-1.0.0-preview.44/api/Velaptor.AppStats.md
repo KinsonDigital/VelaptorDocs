@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.AppStats.GetFontGlyphRenderingData()'></a>
 
-### GetFontGlyphRenderingData() 
+### GetFontGlyphRenderingData() \{#Velaptor.AppStats.GetFontGlyphRenderingData()}
 
 Gets all the rendered textures for the last two frames in `string` format.
 
@@ -32,7 +32,7 @@ The recorded frame information.
 
 <a name='Velaptor.AppStats.GetLoadedFonts()'></a>
 
-### GetLoadedFonts() 
+### GetLoadedFonts() \{#Velaptor.AppStats.GetLoadedFonts()}
 
 Returns all the loaded fonts.
 
@@ -46,7 +46,7 @@ The string result of all the loaded fonts.
 
 <a name='Velaptor.AppStats.GetLoadedTextures()'></a>
 
-### GetLoadedTextures() 
+### GetLoadedTextures() \{#Velaptor.AppStats.GetLoadedTextures()}
 
 Returns all the loaded textures.
 

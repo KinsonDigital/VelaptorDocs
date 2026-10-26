@@ -8,28 +8,30 @@ import GuideLink from "@site/src/components/GuideLink";
 
 Let's bring the logo to life! In this step, we'll load the image we added in the previous step and render it to the screen.
 
-:::note Guide Source Code
-Go to the <GuideLink projectName="RenderingTextures" /> guide project to see the source code for a fully working example of this guide.
-:::
-
 ## <span className="color-step">Step 1: Add class fields</span>
 
-Open your `Game` class and add the following fields. These are the objects we'll need to load and render a texture.
+Open your `Game` class and add the following usings and class fields. These are the objects we'll need to load and render a texture.
 
-```csharp
+```csharp showLineNumbers
+// highlight-add-start
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
+using Velaptor.Batching;
+using Velaptor.Input;
+using System.Numerics;
+// highlight-add-end
 
 public class Game : Window
 {
+    // highlight-add-start
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly IContentManager contentManager;
     private ITexture? logoTexture;
+    // highlight-add-end
 }
 ```
 
@@ -37,9 +39,10 @@ public class Game : Window
 
 In the constructor, configure the window and create the objects needed for rendering.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
+    // highlight-add-start
     Title = "Quick Start";
     Width = 800;
     Height = 800;
@@ -47,6 +50,7 @@ public Game()
     this.contentManager = ContentManager.Create();
     this.batcher = RendererFactory.CreateBatcher();
     this.textureRenderer = RendererFactory.CreateTextureRenderer();
+    // highlight-add-end
 }
 ```
 
@@ -54,12 +58,14 @@ public Game()
 
 Override the `OnLoad()` method to load the logo image. Velaptor uses the file name without the extension, relative to the `Content/Graphics` folder.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
+    // highlight-add-start
     this.logoTexture = this.contentManager.Load<ITexture>("velaptor-logo");
 
     base.OnLoad();
+    // highlight-add-end
 }
 ```
 
@@ -67,15 +73,17 @@ protected override void OnLoad()
 
 Override the `OnUnload()` method to clean up the texture when the game shuts down.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
+    // highlight-add-start
     if (this.logoTexture is not null)
     {
         this.contentManager.Unload(this.logoTexture);
     }
 
     base.OnUnload();
+    // highlight-add-end
 }
 ```
 
@@ -85,9 +93,10 @@ Override the `OnDraw()` method to render the logo image in the center of the win
 
 All rendering must happen between a `batcher.Begin()` and `batcher.End()` call.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
+    // highlight-add-start
     this.batcher.Begin();
 
     var x = (int)(Width / 2);
@@ -98,6 +107,7 @@ protected override void OnDraw(FrameTime frameTime)
     this.batcher.End();
 
     base.OnDraw(frameTime);
+    // highlight-add-end
 }
 ```
 

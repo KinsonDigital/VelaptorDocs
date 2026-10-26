@@ -10,17 +10,17 @@ title: Velaptor.Scene.SceneBase
 A base scene to be used for creating new custom scenes\.
 
 ```csharp
-public abstract class SceneBase : Velaptor.Scene.IScene, Velaptor.IUpdatable, Velaptor.IDrawable, System.IDisposable
+public abstract class SceneBase : Velaptor.Scene.IScene, Velaptor.IUpdatable, Velaptor.IDrawable
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → SceneBase
 
-Implements [IScene](Velaptor.Scene.IScene.md 'Velaptor\.Scene\.IScene'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable'), [System\.IDisposable](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable 'System\.IDisposable')
+Implements [IScene](Velaptor.Scene.IScene.md 'Velaptor\.Scene\.IScene'), [IUpdatable](Velaptor.IUpdatable.md 'Velaptor\.IUpdatable'), [IDrawable](Velaptor.IDrawable.md 'Velaptor\.IDrawable')
 ## Properties
 
 <a name='Velaptor.Scene.SceneBase.Id'></a>
 
-### Id 
+### Id \{#Velaptor.Scene.SceneBase.Id}
 
 Gets the unique ID of the scene\.
 
@@ -28,14 +28,14 @@ Gets the unique ID of the scene\.
 public System.Guid Id { get; }
 ```
 
-Implements [Id](Velaptor.Scene.IScene.md#id 'Velaptor\.Scene\.IScene\.Id')
+Implements [Id](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Id 'Velaptor\.Scene\.IScene\.Id')
 
 #### Property Value
 [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
 
 <a name='Velaptor.Scene.SceneBase.IsLoaded'></a>
 
-### IsLoaded 
+### IsLoaded \{#Velaptor.Scene.SceneBase.IsLoaded}
 
 Gets the name of the scene\.
 
@@ -43,14 +43,14 @@ Gets the name of the scene\.
 public bool IsLoaded { get; }
 ```
 
-Implements [IsLoaded](Velaptor.Scene.IScene.md#isloaded 'Velaptor\.Scene\.IScene\.IsLoaded')
+Implements [IsLoaded](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.IsLoaded 'Velaptor\.Scene\.IScene\.IsLoaded')
 
 #### Property Value
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
 <a name='Velaptor.Scene.SceneBase.Name'></a>
 
-### Name 
+### Name \{#Velaptor.Scene.SceneBase.Name}
 
 Gets the name of the scene\.
 
@@ -58,14 +58,14 @@ Gets the name of the scene\.
 public string Name { get; init; }
 ```
 
-Implements [Name](Velaptor.Scene.IScene.md#name 'Velaptor\.Scene\.IScene\.Name')
+Implements [Name](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Name 'Velaptor\.Scene\.IScene\.Name')
 
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='Velaptor.Scene.SceneBase.WindowCenter'></a>
 
-### WindowCenter 
+### WindowCenter \{#Velaptor.Scene.SceneBase.WindowCenter}
 
 Gets the center of the window\.
 
@@ -73,14 +73,14 @@ Gets the center of the window\.
 public System.Drawing.Point WindowCenter { get; }
 ```
 
-Implements [WindowCenter](Velaptor.Scene.IScene.md#windowcenter 'Velaptor\.Scene\.IScene\.WindowCenter')
+Implements [WindowCenter](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowCenter 'Velaptor\.Scene\.IScene\.WindowCenter')
 
 #### Property Value
 [System\.Drawing\.Point](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.point 'System\.Drawing\.Point')
 
 <a name='Velaptor.Scene.SceneBase.WindowSize'></a>
 
-### WindowSize 
+### WindowSize \{#Velaptor.Scene.SceneBase.WindowSize}
 
 Gets the size of the window\.
 
@@ -88,25 +88,15 @@ Gets the size of the window\.
 public Velaptor.SizeU WindowSize { get; }
 ```
 
-Implements [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor\.Scene\.IScene\.WindowSize')
+Implements [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor\.Scene\.IScene\.WindowSize')
 
 #### Property Value
 [SizeU](Velaptor.SizeU.md 'Velaptor\.SizeU')
 ## Methods
 
-<a name='Velaptor.Scene.SceneBase.Dispose()'></a>
-
-### Dispose\(\) 
-
-```csharp
-public void Dispose();
-```
-
-Implements [Dispose\(\)](https://learn.microsoft.com/en-us/dotnet/api/system.idisposable.dispose 'System\.IDisposable\.Dispose')
-
 <a name='Velaptor.Scene.SceneBase.LoadContent()'></a>
 
-### LoadContent\(\) 
+### LoadContent\(\) \{#Velaptor.Scene.SceneBase.LoadContent()}
 
 Loads the scene content\.
 
@@ -118,7 +108,7 @@ Implements [LoadContent\(\)](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Load
 
 <a name='Velaptor.Scene.SceneBase.Render()'></a>
 
-### Render\(\) 
+### Render\(\) \{#Velaptor.Scene.SceneBase.Render()}
 
 Renders the object\.
 
@@ -130,9 +120,9 @@ Implements [Render\(\)](Velaptor.IDrawable.md#Velaptor.IDrawable.Render() 'Velap
 
 <a name='Velaptor.Scene.SceneBase.Resize(Velaptor.SizeU)'></a>
 
-### Resize\(SizeU\) 
+### Resize\(SizeU\) \{#Velaptor.Scene.SceneBase.Resize(Velaptor.SizeU)}
 
-Updates the [WindowSize](Velaptor.Scene.IScene.md#windowsize 'Velaptor\.Scene\.IScene\.WindowSize')\.
+Updates the [WindowSize](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.WindowSize 'Velaptor\.Scene\.IScene\.WindowSize')\.
 
 ```csharp
 public virtual void Resize(Velaptor.SizeU size);
@@ -149,7 +139,7 @@ Implements [Resize\(SizeU\)](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Resi
 
 <a name='Velaptor.Scene.SceneBase.UnloadContent()'></a>
 
-### UnloadContent\(\) 
+### UnloadContent\(\) \{#Velaptor.Scene.SceneBase.UnloadContent()}
 
 Unloads the scene's content\.
 
@@ -161,7 +151,7 @@ Implements [UnloadContent\(\)](Velaptor.Scene.IScene.md#Velaptor.Scene.IScene.Un
 
 <a name='Velaptor.Scene.SceneBase.Update(Velaptor.FrameTime)'></a>
 
-### Update\(FrameTime\) 
+### Update\(FrameTime\) \{#Velaptor.Scene.SceneBase.Update(Velaptor.FrameTime)}
 
 Updates the object\.
 

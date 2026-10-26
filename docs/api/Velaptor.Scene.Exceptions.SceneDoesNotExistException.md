@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException()'></a>
 
-### SceneDoesNotExistException\(\) Constructor
+### SceneDoesNotExistException\(\) Constructor \{#Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException()}
 
 Initializes a new instance of the [SceneDoesNotExistException](Velaptor.Scene.Exceptions.SceneDoesNotExistException.md 'Velaptor\.Scene\.Exceptions\.SceneDoesNotExistException') class\.
 
@@ -28,7 +28,7 @@ public SceneDoesNotExistException();
 
 <a name='Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException(string)'></a>
 
-### SceneDoesNotExistException\(string\) Constructor
+### SceneDoesNotExistException\(string\) Constructor \{#Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException(string)}
 
 Initializes a new instance of the [SceneDoesNotExistException](Velaptor.Scene.Exceptions.SceneDoesNotExistException.md 'Velaptor\.Scene\.Exceptions\.SceneDoesNotExistException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException(string,System.Exception)'></a>
 
-### SceneDoesNotExistException\(string, Exception\) Constructor
+### SceneDoesNotExistException\(string, Exception\) Constructor \{#Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException(string,System.Exception)}
 
 Initializes a new instance of the [SceneDoesNotExistException](Velaptor.Scene.Exceptions.SceneDoesNotExistException.md 'Velaptor\.Scene\.Exceptions\.SceneDoesNotExistException') class\.
 
@@ -68,7 +68,7 @@ The [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exce
 
 <a name='Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException(System.Guid)'></a>
 
-### SceneDoesNotExistException\(Guid\) Constructor
+### SceneDoesNotExistException\(Guid\) Constructor \{#Velaptor.Scene.Exceptions.SceneDoesNotExistException.SceneDoesNotExistException(System.Guid)}
 
 Initializes a new instance of the [SceneDoesNotExistException](Velaptor.Scene.Exceptions.SceneDoesNotExistException.md 'Velaptor\.Scene\.Exceptions\.SceneDoesNotExistException') class\.
 

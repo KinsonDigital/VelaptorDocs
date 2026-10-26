@@ -8,28 +8,30 @@ import GuideLink from "@site/src/components/GuideLink";
 
 Let's bring the logo to life! In this step, we'll load the image we added in the previous step and render it to the screen.
 
-:::note Guide Source Code
-Go to the <GuideLink projectName="RenderingTextures" /> guide project to see the source code for a fully working example of this guide.
-:::
-
 ## <span className="color-step">Step 1: Add class fields</span>
 
-Open your `Game` class and add the following fields. These are the objects we'll need to load and render a texture.
+Open your `Game` class and add the following usings and class fields. These are the objects we'll need to load and render a texture.
 
 ```csharp
+// highlight-add-start
 using Velaptor;
-using Velaptor.Batching;
 using Velaptor.Content;
 using Velaptor.Factories;
 using Velaptor.Graphics.Renderers;
 using Velaptor.UI;
+using Velaptor.Batching;
+using Velaptor.Input;
+using System.Numerics;
+// highlight-add-end
 
 public class Game : Window
 {
+    // highlight-add-start
     private readonly IBatcher batcher;
     private readonly ITextureRenderer textureRenderer;
     private readonly IContentManager contentManager;
     private ITexture? logoTexture;
+    // highlight-add-end
 }
 ```
 

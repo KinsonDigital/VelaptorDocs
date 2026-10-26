@@ -23,7 +23,6 @@ title: Velaptor.Graphics
 | Interfaces | |
 | :--- | :--- |
 | [IImageLoader](Velaptor.Graphics.IImageLoader.md 'Velaptor\.Graphics\.IImageLoader') | Loads images from disk\. |
-| [IRenderContext](Velaptor.Graphics.IRenderContext.md 'Velaptor\.Graphics\.IRenderContext') | Represents where and how rendering will occur\. |
 | [IRenderMediator](Velaptor.Graphics.IRenderMediator.md 'Velaptor\.Graphics\.IRenderMediator') | Manages rendering between the different renderers\. |
 
 | Enums | |

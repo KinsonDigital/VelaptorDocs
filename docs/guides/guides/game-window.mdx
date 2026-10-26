@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 import Url from "@site/src/components/Url";
@@ -12,7 +12,7 @@ you control over the appearance, behavior, and lifecycle of your game.
 
 When you create a game with **Velaptor**, you inherit from the `Window` class to create your own game class.
 
-```csharp
+```csharp showLineNumbers
 public class Game : Window
 {
 }
@@ -32,7 +32,7 @@ These can be set in the constructor of your game class or changed at any time du
 
 The `Title` property sets the text displayed in the title bar of the window. This is typically the name of your game.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "My Awesome Game";
@@ -44,23 +44,15 @@ public Game()
 You can control where the window appears on the screen using the `Position` property. This is a `Vector2`
 that represents the X and Y coordinates of the top-left corner of the window.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Position = new System.Numerics.Vector2(100, 100);
 }
 ```
 
-The `WindowState` property controls the state of the window. It uses the `StateOfWindow` enum, which has the following values:
 
-| Value | Description |
-|---|---|
-| `Normal` | The window is in its normal state. |
-| `Minimized` | The window is minimized to the taskbar. |
-| `Maximized` | The window covers the entire working area (excluding the taskbar). |
-| `FullScreen` | The window covers the entire screen including the taskbar. |
-
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     WindowState = StateOfWindow.Normal;
@@ -77,7 +69,7 @@ The `TypeOfBorder` property determines the type of border the window has. It use
 | `Fixed` | The window border is fixed and can only be resized programmatically. |
 | `Hidden` | The window has no visible border and can only be resized programmatically. |
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     TypeOfBorder = WindowBorder.Resizable;
@@ -89,7 +81,7 @@ public Game()
 The `UpdateFrequency` property controls how often the update and render calls are invoked, measured in hertz (Hz).
 The default value is `60`, which means the game loop runs 60 times per second.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     UpdateFrequency = 60; // 60 frames per second
@@ -101,7 +93,7 @@ This is useful for debugging and performance monitoring.
 
 :::tip
 Press `Ctrl + Shift + Alt + S` in a running **Velaptor** application to toggle the stats window overlay,
-which displays the current FPS.
+which displays the current FPS. The FPS value will be displayed in the bottom left corner of the window.
 :::
 
 ### <span className="color-sub-step">Mouse cursor visibility</span>
@@ -109,29 +101,12 @@ which displays the current FPS.
 The `MouseCursorVisible` property controls whether the system mouse cursor is visible when hovering over the game window.
 You might want to hide it if your game uses a custom cursor or if the cursor is not needed.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     MouseCursorVisible = false; // Hide the system cursor
 }
 ```
-
-### <span className="color-sub-step">Auto buffer clearing</span>
-
-The `AutoClearBuffer` property determines whether the rendering buffers are automatically cleared before each frame.
-When set to `true`, you do not need to manually invoke `IBatcher.Clear()`.
-
-```csharp
-public Game()
-{
-    AutoClearBuffer = true;
-}
-```
-
-:::caution Warning
-Do not manually clear the buffer **and** set `AutoClearBuffer` to `true` at the same time.
-Doing both wastes resources since the buffer would be cleared twice per frame.
-:::
 
 ### <span className="color-sub-step">Auto scene settings</span>
 
@@ -140,14 +115,14 @@ and rendering of scenes for you. These settings are all `true` by default.
 
 | Property | Description |
 |---|---|
-| `AutoSceneLoading` | Automatically loads scenes when they are added or activated. |
-| `AutoSceneUnloading` | Automatically unloads scenes when they are removed or deactivated. |
+| `AutoSceneLoading` | Automatically loads scenes that have been added to the `SceneManager` and has been activated. |
+| `AutoSceneUnloading` | Automatically unloads scenes that have been added to the `SceneManager` and has been removed from the `SceneManager` or deactivated. |
 | `AutoSceneUpdating` | Automatically calls the update logic for the active scene each frame. |
 | `AutoSceneRendering` | Automatically calls the render logic for the active scene each frame. |
 
 If you want full manual control over the scene lifecycle, you can disable any of these:
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     AutoSceneLoading = false;
@@ -176,7 +151,7 @@ For most games, the default auto settings work well. Only disable them when you 
 
 In practice, you will typically set multiple properties together in the constructor of your game class:
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Title = "My Awesome Game";
@@ -188,6 +163,35 @@ public Game()
 }
 ```
 
+
+:::info Default Window Settings
+
+<details>
+	<summary>Expand me to learn more!</summary>
+
+The following table shows the default settings for the window.
+
+| Window Property | Default Value |
+|---|---|
+| `Title` | Velaptor Application |
+| `Position` | Center of the screen |
+| `Width` | 1280px |
+| `Height` | 780px |
+| `MouseCursorVisible` | true |
+| `WindowState` | Normal (Not minimized or maximized) |
+| `TypeOfBorder` | Resizable |
+| `AutoSceneLoading` | true |
+| `AutoSceneUnloading` | true |
+| `AutoSceneUpdating` | true |
+| `AutoSceneRendering` | true |
+| `UpdateFrequency` | 60fps |
+| `FpsDisplayColor` | White |
+
+💡 To show the FPS, use the key combination `Ctrl+Alt+Shift+S`
+
+</details>
+
+:::
 
 ## <span className="color-step">Game Loop Lifecycle</span>
 
@@ -220,7 +224,7 @@ flowchart LR
 The `OnLoad()` method is invoked **once** when the window first starts up. This is where you load content such as
 textures, fonts, sounds, and any other resources your game needs.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     // Load your content here
@@ -244,7 +248,7 @@ The `FrameTime` parameter provides timing information:
 - `ElapsedTime` — The time that has passed for the current frame.
 - `TotalTime` — The total time the application has been running.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     // Update game logic here
@@ -259,7 +263,7 @@ protected override void OnUpdate(FrameTime frameTime)
 The `OnDraw()` method is invoked **every frame** and always **after** `OnUpdate()`. This is **only** for rendering
 content to the screen. Keep game logic out of this method.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnDraw(FrameTime frameTime)
 {
     this.batcher.Begin();
@@ -282,7 +286,7 @@ All rendering calls must be placed between `Begin()` and `End()`.
 The `OnUnload()` method is invoked **once** when the window is closed. This is where you clean up resources,
 unload content, and free memory.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUnload()
 {
     this.contentManager.Unload(this.myTexture);
@@ -302,7 +306,7 @@ Remember, if `AutoSceneUnloading` is disabled, you must manually unload scenes i
 The `OnResize()` method is invoked any time the window's size changes. This includes minimizing, maximizing,
 restoring, and manually resizing the window. The `SizeU` parameter contains the new `Width` and `Height` of the window.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
     // React to window size changes
@@ -356,7 +360,7 @@ control over the window dimensions and the ability to react to size changes.
 
 The `Width` and `Height` properties control the dimensions of the game window in pixels. Both are of type `uint`.
 
-```csharp
+```csharp showLineNumbers
 public Game()
 {
     Width = 1280;
@@ -366,7 +370,7 @@ public Game()
 
 You can also read or change these values at runtime:
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     // Dynamically resize the window
@@ -387,7 +391,7 @@ the `OnResize()` method is invoked with a `SizeU` value containing the new dimen
 
 You can also use the `WinResize` delegate when working with `IWindow` directly:
 
-```csharp
+```csharp showLineNumbers
 myWindow.WinResize = (SizeU newSize) =>
 {
     // React to the new size
@@ -413,7 +417,7 @@ The scene manager handles scene transitions, content loading, unloading, updatin
 
 Scenes are a powerful way to organize your game into logical sections such as menus, levels, cutscenes, and more.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnLoad()
 {
     SceneManager.AddScene(new MainMenuScene(), true);
@@ -430,56 +434,26 @@ manage, and transition between scenes, refer to the [Scene Management](./scenes/
 
 ## <span className="color-step">Showing and Closing the Window</span>
 
-Once your game class is ready, you need to show the window to start the game loop. **Velaptor** provides
-multiple ways to do this.
+Once your game class is ready, you need to show the window to start the game loop.
 
 ### <span className="color-sub-step">Show()</span>
 
 The `Show()` method opens the window and starts the game loop on the current thread. This is the simplest
 way to run your game and the most common. The call blocks until the window is closed.
 
-```csharp
+```csharp showLineNumbers
 var game = new Game();
 game.Show();
 
 // code here will not execute until the window is closed
 ```
 
-### <span className="color-sub-step">ShowAsync()</span>
-
-The `ShowAsync()` method opens the window and runs the game loop on a separate thread. This is useful
-when you need to perform additional work after the window starts, or when integrating with async workflows.
-
-It accepts two optional callbacks:
-- `afterStart` — Invoked after the window has started.
-- `afterUnload` — Invoked after the window has been unloaded.
-
-```csharp
-var game = new Game();
-await game.ShowAsync(
-    afterStart: () => Console.WriteLine("Game started!"),
-    afterUnload: () => Console.WriteLine("Game closed!")
-);
-```
-
-:::tip
-Using `await` with `ShowAsync()` ensures the calling context waits until the window is closed, similar to how `Show()` blocks.
-The game loop itself runs on a separate thread, which is useful when integrating with async workflows.
-Just be mindful of thread safety when accessing shared resources between the game loop and other threads.
-
-If you call `ShowAsync()` **without** `await`, the code after the call will continue executing immediately while the game runs.
-In that case, you need to ensure the main thread stays alive for the duration of the game. One trick is to use
-`Console.ReadLine()` after the `ShowAsync()` call to block the main thread, or have your own loop that performs
-background tasks while the game is running.
-:::
-
-
 ### <span className="color-sub-step">Close()</span>
 
 The `Close()` method shuts down the game window. This triggers the `OnUnload()` lifecycle method, which
 allows you to clean up resources before the window is destroyed.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
     if (shouldQuit)
@@ -491,30 +465,12 @@ protected override void OnUpdate(FrameTime frameTime)
 }
 ```
 
-### <span className="color-sub-step">Dispose()</span>
-
-The `Dispose()` method releases all resources held by the window. Since `Window` implements `IDisposable`, you
-can also use a `using` statement to ensure proper cleanup:
-
-```csharp
-using var game = new Game();
-game.Show();
-```
-
-You do not need to call `Dispose()` directly when using a `using` statement,
-since it will automatically call `Dispose()` when the game object goes out of scope.
-
-:::tip Best practice
-Using the `using` statement ensures that `Dispose()` is called automatically when the game object goes out of scope,
-even if an exception occurs. This is the recommended pattern for most applications.
-:::
-
 
 ## <span className="color-step">Putting It All Together</span>
 
 Here is a complete example that demonstrates many of the features covered in this guide:
 
-```csharp
+```csharp showLineNumbers
 using Velaptor;
 using Velaptor.Batching;
 using Velaptor.Factories;
@@ -575,7 +531,7 @@ public class Game : Window
 
 And the entry point:
 
-```csharp
+```csharp showLineNumbers
 using var game = new Game();
 game.Show();
 ```

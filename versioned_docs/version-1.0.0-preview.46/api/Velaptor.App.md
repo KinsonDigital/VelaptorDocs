@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.App.UseAvaloniaRenderContext(Silk.NET.OpenGL.GL,uint,uint)'></a>
 
-### UseAvaloniaRenderContext\(GL, uint, uint\) 
+### UseAvaloniaRenderContext\(GL, uint, uint\) \{#Velaptor.App.UseAvaloniaRenderContext(Silk.NET.OpenGL.GL,uint,uint)}
 
 Sets Velaptor to render to an Avalonia control\.
 

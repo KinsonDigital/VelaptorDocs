@@ -22,7 +22,7 @@ Implements [IContent](Velaptor.Content.IContent.md 'Velaptor.Content.IContent')
 
 <a name='Velaptor.Content.ITexture.Height'></a>
 
-### Height 
+### Height \{#Velaptor.Content.ITexture.Height}
 
 Gets the height of the texture.
 
@@ -35,7 +35,7 @@ uint Height { get; }
 
 <a name='Velaptor.Content.ITexture.Id'></a>
 
-### Id 
+### Id \{#Velaptor.Content.ITexture.Id}
 
 Gets the ID of the texture.
 
@@ -48,7 +48,7 @@ uint Id { get; }
 
 <a name='Velaptor.Content.ITexture.Width'></a>
 
-### Width 
+### Width \{#Velaptor.Content.ITexture.Width}
 
 Gets the width of the texture.
 

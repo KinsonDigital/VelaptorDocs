@@ -18,7 +18,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 
 <a name='Velaptor.Graphics.CircleShape.CircleShape()'></a>
 
-### CircleShape\(\) Constructor
+### CircleShape\(\) Constructor \{#Velaptor.Graphics.CircleShape.CircleShape()}
 
 Initializes a new instance of the [CircleShape](Velaptor.Graphics.CircleShape.md 'Velaptor\.Graphics\.CircleShape') struct\.
 
@@ -29,7 +29,7 @@ public CircleShape();
 
 <a name='Velaptor.Graphics.CircleShape.BorderThickness'></a>
 
-### BorderThickness 
+### BorderThickness \{#Velaptor.Graphics.CircleShape.BorderThickness}
 
 Gets or sets the thickness of the circle's border\.
 
@@ -42,13 +42,13 @@ public float BorderThickness { get; set; }
 
 #### Remarks
 
-Only visible if the [IsSolid](Velaptor.Graphics.CircleShape.md#issolid 'Velaptor\.Graphics\.CircleShape\.IsSolid') property is set to `false`.
+Only visible if the [IsSolid](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.IsSolid 'Velaptor\.Graphics\.CircleShape\.IsSolid') property is set to `false`.
 <br/>
-The border thickness is automatically restricted to a value no greater than the [Radius](Velaptor.Graphics.CircleShape.md#radius 'Velaptor\.Graphics\.CircleShape\.Radius').
+The border thickness is automatically restricted to a value no greater than the [Radius](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Radius 'Velaptor\.Graphics\.CircleShape\.Radius').
 
 <a name='Velaptor.Graphics.CircleShape.Bottom'></a>
 
-### Bottom 
+### Bottom \{#Velaptor.Graphics.CircleShape.Bottom}
 
 Gets or sets the bottom location of the bottom of the circle on the Y axis\.
 
@@ -60,11 +60,11 @@ public float Bottom { get; set; }
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
+Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
 
 <a name='Velaptor.Graphics.CircleShape.Color'></a>
 
-### Color 
+### Color \{#Velaptor.Graphics.CircleShape.Color}
 
 Gets or sets the color of the circle\.
 
@@ -76,11 +76,11 @@ public System.Drawing.Color Color { get; set; }
 [System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color')
 
 #### Remarks
-Ignored if the [GradientType](Velaptor.Graphics.CircleShape.md#gradienttype 'Velaptor\.Graphics\.CircleShape\.GradientType') is set to any value other than [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor\.Graphics\.ColorGradient\.None')\.
+Ignored if the [GradientType](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientType 'Velaptor\.Graphics\.CircleShape\.GradientType') is set to any value other than [None](Velaptor.Graphics.ColorGradient.md 'Velaptor\.Graphics\.ColorGradient\.None')\.
 
 <a name='Velaptor.Graphics.CircleShape.Diameter'></a>
 
-### Diameter 
+### Diameter \{#Velaptor.Graphics.CircleShape.Diameter}
 
 Gets or sets the diameter of the circle\.
 
@@ -96,7 +96,7 @@ The diameter is restricted to a minimum value of one\.
 
 <a name='Velaptor.Graphics.CircleShape.GradientStart'></a>
 
-### GradientStart 
+### GradientStart \{#Velaptor.Graphics.CircleShape.GradientStart}
 
 Gets or sets the starting color of the gradient\.
 
@@ -108,11 +108,11 @@ public System.Drawing.Color GradientStart { get; set; }
 [System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color')
 
 #### Remarks
-This property is ignored if the [GradientType](Velaptor.Graphics.CircleShape.md#gradienttype 'Velaptor\.Graphics\.CircleShape\.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor\.Graphics\.ColorGradient\.None')\.
+This property is ignored if the [GradientType](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientType 'Velaptor\.Graphics\.CircleShape\.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md 'Velaptor\.Graphics\.ColorGradient\.None')\.
 
 <a name='Velaptor.Graphics.CircleShape.GradientStop'></a>
 
-### GradientStop 
+### GradientStop \{#Velaptor.Graphics.CircleShape.GradientStop}
 
 Gets or sets the ending color of the gradient\.
 
@@ -124,11 +124,11 @@ public System.Drawing.Color GradientStop { get; set; }
 [System\.Drawing\.Color](https://learn.microsoft.com/en-us/dotnet/api/system.drawing.color 'System\.Drawing\.Color')
 
 #### Remarks
-This property is ignored if the [GradientType](Velaptor.Graphics.CircleShape.md#gradienttype 'Velaptor\.Graphics\.CircleShape\.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor\.Graphics\.ColorGradient\.None')\.
+This property is ignored if the [GradientType](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientType 'Velaptor\.Graphics\.CircleShape\.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md 'Velaptor\.Graphics\.ColorGradient\.None')\.
 
 <a name='Velaptor.Graphics.CircleShape.GradientType'></a>
 
-### GradientType 
+### GradientType \{#Velaptor.Graphics.CircleShape.GradientType}
 
 Gets or sets the type of color gradient that will be applied to the circle\.
 
@@ -141,22 +141,22 @@ public Velaptor.Graphics.ColorGradient GradientType { get; set; }
 
 #### Remarks
 
-A value of [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor\.Graphics\.ColorGradient\.None') will use the [Color](Velaptor.Graphics.CircleShape.md#color 'Velaptor\.Graphics\.CircleShape\.Color')
+A value of [None](Velaptor.Graphics.ColorGradient.md 'Velaptor\.Graphics\.ColorGradient\.None') will use the [Color](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Color 'Velaptor\.Graphics\.CircleShape\.Color')
 property and render the circle with a solid color.
 
-A value of [Horizontal](Velaptor.Graphics.ColorGradient.md#horizontal 'Velaptor\.Graphics\.ColorGradient\.Horizontal') will ignore the [Color](Velaptor.Graphics.CircleShape.md#color 'Velaptor\.Graphics\.CircleShape\.Color')
-property and use the [GradientStart](Velaptor.Graphics.CircleShape.md#gradientstart 'Velaptor\.Graphics\.CircleShape\.GradientStart')[GradientStop](Velaptor.Graphics.CircleShape.md#gradientstop 'Velaptor\.Graphics\.CircleShape\.GradientStop') properties.
-This will render the circle with [GradientStart](Velaptor.Graphics.CircleShape.md#gradientstart 'Velaptor\.Graphics\.CircleShape\.GradientStart') color on the left side and gradually
-render it to the right side as the [GradientStop](Velaptor.Graphics.CircleShape.md#gradientstop 'Velaptor\.Graphics\.CircleShape\.GradientStop') color.
+A value of [Horizontal](Velaptor.Graphics.ColorGradient.md 'Velaptor\.Graphics\.ColorGradient\.Horizontal') will ignore the [Color](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Color 'Velaptor\.Graphics\.CircleShape\.Color')
+property and use the [GradientStart](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStart 'Velaptor\.Graphics\.CircleShape\.GradientStart')[GradientStop](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStop 'Velaptor\.Graphics\.CircleShape\.GradientStop') properties.
+This will render the circle with [GradientStart](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStart 'Velaptor\.Graphics\.CircleShape\.GradientStart') color on the left side and gradually
+render it to the right side as the [GradientStop](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStop 'Velaptor\.Graphics\.CircleShape\.GradientStop') color.
 
-A value of [Vertical](Velaptor.Graphics.ColorGradient.md#vertical 'Velaptor\.Graphics\.ColorGradient\.Vertical') will ignore the [Color](Velaptor.Graphics.CircleShape.md#color 'Velaptor\.Graphics\.CircleShape\.Color')
-property and use the [GradientStart](Velaptor.Graphics.CircleShape.md#gradientstart 'Velaptor\.Graphics\.CircleShape\.GradientStart') and [GradientStop](Velaptor.Graphics.CircleShape.md#gradientstop 'Velaptor\.Graphics\.CircleShape\.GradientStop') properties.
-This will render the circle with [GradientStart](Velaptor.Graphics.CircleShape.md#gradientstart 'Velaptor\.Graphics\.CircleShape\.GradientStart') color on the top and gradually
-render it to the bottom as the [GradientStop](Velaptor.Graphics.CircleShape.md#gradientstop 'Velaptor\.Graphics\.CircleShape\.GradientStop') color.
+A value of [Vertical](Velaptor.Graphics.ColorGradient.md 'Velaptor\.Graphics\.ColorGradient\.Vertical') will ignore the [Color](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Color 'Velaptor\.Graphics\.CircleShape\.Color')
+property and use the [GradientStart](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStart 'Velaptor\.Graphics\.CircleShape\.GradientStart') and [GradientStop](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStop 'Velaptor\.Graphics\.CircleShape\.GradientStop') properties.
+This will render the circle with [GradientStart](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStart 'Velaptor\.Graphics\.CircleShape\.GradientStart') color on the top and gradually
+render it to the bottom as the [GradientStop](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.GradientStop 'Velaptor\.Graphics\.CircleShape\.GradientStop') color.
 
 <a name='Velaptor.Graphics.CircleShape.IsSolid'></a>
 
-### IsSolid 
+### IsSolid \{#Velaptor.Graphics.CircleShape.IsSolid}
 
 Gets or sets a value indicating whether the circle is solid\.
 
@@ -169,7 +169,7 @@ public bool IsSolid { get; set; }
 
 <a name='Velaptor.Graphics.CircleShape.Left'></a>
 
-### Left 
+### Left \{#Velaptor.Graphics.CircleShape.Left}
 
 Gets or sets the location of the left side of the circle on the X axis\.
 
@@ -181,11 +181,11 @@ public float Left { get; set; }
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
+Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
 
 <a name='Velaptor.Graphics.CircleShape.Position'></a>
 
-### Position 
+### Position \{#Velaptor.Graphics.CircleShape.Position}
 
 Gets or sets the position of the circle\.
 
@@ -201,7 +201,7 @@ This position is relative to the center of the circle\.
 
 <a name='Velaptor.Graphics.CircleShape.Radius'></a>
 
-### Radius 
+### Radius \{#Velaptor.Graphics.CircleShape.Radius}
 
 Gets or sets the radius of the circle\.
 
@@ -213,13 +213,13 @@ public float Radius { get; set; }
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
 #### Remarks
-This is half of the [Diameter](Velaptor.Graphics.CircleShape.md#diameter 'Velaptor\.Graphics\.CircleShape\.Diameter')\.
+This is half of the [Diameter](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Diameter 'Velaptor\.Graphics\.CircleShape\.Diameter')\.
 <br/>
-Changing the radius will automatically update the [Diameter](Velaptor.Graphics.CircleShape.md#diameter 'Velaptor\.Graphics\.CircleShape\.Diameter')\.
+Changing the radius will automatically update the [Diameter](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Diameter 'Velaptor\.Graphics\.CircleShape\.Diameter')\.
 
 <a name='Velaptor.Graphics.CircleShape.Right'></a>
 
-### Right 
+### Right \{#Velaptor.Graphics.CircleShape.Right}
 
 Gets or sets the location of the right side of the circle on the X axis\.
 
@@ -231,11 +231,11 @@ public float Right { get; set; }
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
+Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
 
 <a name='Velaptor.Graphics.CircleShape.Top'></a>
 
-### Top 
+### Top \{#Velaptor.Graphics.CircleShape.Top}
 
 Gets or sets the top location of the top of the circle on the Y axis\.
 
@@ -247,14 +247,14 @@ public float Top { get; set; }
 [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
+Will automatically update the [Position](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Position 'Velaptor\.Graphics\.CircleShape\.Position') of the circle\.
 ## Methods
 
 <a name='Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2)'></a>
 
-### Contains\(Vector2\) 
+### Contains\(Vector2\) \{#Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2)}
 
-Returns a value indicating whether the circle contains the given [vector](Velaptor.Graphics.CircleShape.md#vector 'Velaptor\.Graphics\.CircleShape\.Contains\(System\.Numerics\.Vector2\)\.vector')\.
+Returns a value indicating whether the circle contains the given [vector](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2) 'Velaptor\.Graphics\.CircleShape\.Contains\(System\.Numerics\.Vector2\)\.vector')\.
 
 ```csharp
 public bool Contains(System.Numerics.Vector2 vector);
@@ -269,11 +269,11 @@ The possibly contained [System\.Numerics\.Vector2](https://learn.microsoft.com/e
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-`true` if the [vector](Velaptor.Graphics.CircleShape.md#vector 'Velaptor\.Graphics\.CircleShape\.Contains\(System\.Numerics\.Vector2\)\.vector') is contained\.
+`true` if the [vector](Velaptor.Graphics.CircleShape.md#Velaptor.Graphics.CircleShape.Contains(System.Numerics.Vector2) 'Velaptor\.Graphics\.CircleShape\.Contains\(System\.Numerics\.Vector2\)\.vector') is contained\.
 
 <a name='Velaptor.Graphics.CircleShape.Empty()'></a>
 
-### Empty\(\) 
+### Empty\(\) \{#Velaptor.Graphics.CircleShape.Empty()}
 
 Empties the struct\.
 
@@ -283,7 +283,7 @@ public void Empty();
 
 <a name='Velaptor.Graphics.CircleShape.IsEmpty()'></a>
 
-### IsEmpty\(\) 
+### IsEmpty\(\) \{#Velaptor.Graphics.CircleShape.IsEmpty()}
 
 Returns a value indicating whether the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor\.Graphics\.RectShape') struct is empty\.
 

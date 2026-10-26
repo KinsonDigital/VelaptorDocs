@@ -42,20 +42,30 @@ will be used to update the game state and resize and move the window respectivel
 
 We need to create some class fields to hold onto the state of the game. Let's do this now.
 
-### <span className="color-sub-step">2.1: Creating the class fields</span>
-
+### <span className="color-sub-step">2.1: Add usings and class fields</span>
 
 Create some class fields that will be useful for things such as getting keyboard state, saving keyboard state,
 and some variables for holding information for moving the window.
 
-```csharp
+```csharp showLineNumbers
+
+// highlight-add-start
+using System.Numerics;
+using Velaptor;
+using Velaptor.Factories;
+using Velaptor.Input;
+using Velaptor.UI;
+// highlight-add-end
+
 public class Game : Window
 {
+    // highlight-add-start
     private const float VelocityXAndY = 300f;
     private readonly IAppInput<KeyboardState> keyboard;
     private KeyboardState currKeyState;
     private KeyboardState prevKeyState;
     private Vector2 velocity = Vector2.Zero;
+    // highlight-add-end
 }
 ```
 
@@ -65,8 +75,19 @@ To enable keyboard input in your Velaptor game, you'll need to create a new inst
 which will be set to the class field `keyboard`. This will provide access to the current state of the keyboard.
 You can create a new keyboard object quickly and easily using Velaptor's `HardwareFactory` class.
 
-```csharp
-public Game() => this.keyboard = HardwareFactory.GetKeyboard();
+```csharp showLineNumbers
+public class Game : Window
+{
+    private const float VelocityXAndY = 300f;
+    private readonly IAppInput<KeyboardState> keyboard;
+    private KeyboardState currKeyState;
+    private KeyboardState prevKeyState;
+    private Vector2 velocity = Vector2.Zero;
+    // highlight-add-start
+
+    public Game() => this.keyboard = HardwareFactory.GetKeyboard();
+    // highlight-add-end
+}
 ```
 
 :::info What is this _**Factory**_ thing?
@@ -82,10 +103,18 @@ easier to understand. This is good practice no matter what kind of software you 
 
 ### <span className="color-sub-step">3.1: Key pressed detection</span>
 
-Create a private method in the `Game` class with the name `IsPressed()` which will check if a keyboard key has been pressed.
+Create a private method in the `Game` class with the name `WasKeyReleased()` which will check if a keyboard key has been pressed.
 
-```csharp
-private bool IsPressed(KeyCode key) => this.currKeyState.IsKeyUp(key) && this.prevKeyState.IsKeyDown(key);
+```csharp showLineNumbers
+public class Game : Window
+{
+    // ... other class code
+    // highlight-add-start
+
+    private bool WasKeyReleased(KeyCode key) => this.currKeyState.IsKeyUp(key) &&
+                                                this.prevKeyState.IsKeyDown(key);
+    // highlight-add-end
+}
 ```
 
 This method will check if the _**current**_ state of the key is in the up position, and if the state of the same key was in the down
@@ -99,32 +128,39 @@ This will make more sense when we create our `Update()` method logic.
 When we press the arrow keys on the keyboard, we want to move the window around. To do this, create the `MoveWindow()`
 below with the following code.
 
-```csharp
-private void MoveWindow(FrameTime frameTime)
+```csharp showLineNumbers
+public class Game : Window
 {
-    if (this.currKeyState.IsKeyDown(KeyCode.Right))
+    // ... other class code
+    // highlight-add-start
+
+    private void MoveWindow(FrameTime frameTime)
     {
-        this.velocity.X = VelocityXAndY;
+        if (this.currKeyState.IsKeyDown(KeyCode.Right))
+        {
+            this.velocity.X = VelocityXAndY;
+        }
+
+        if (this.currKeyState.IsKeyDown(KeyCode.Left))
+        {
+            this.velocity.X = -VelocityXAndY; // Negate the velocity to move left
+        }
+
+        if (this.currKeyState.IsKeyDown(KeyCode.Up))
+        {
+            this.velocity.Y = -VelocityXAndY; // Negate the velocity to move up
+        }
+
+        if (this.currKeyState.IsKeyDown(KeyCode.Down))
+        {
+            this.velocity.Y = VelocityXAndY;
+        }
+
+        var displacement = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
+
+        Position += displacement;
     }
-
-    if (this.currKeyState.IsKeyDown(KeyCode.Left))
-    {
-        this.velocity.X = -VelocityXAndY; // Negate the velocity to move left
-    }
-
-    if (this.currKeyState.IsKeyDown(KeyCode.Up))
-    {
-        this.velocity.Y = -VelocityXAndY; // Negate the velocity to move up
-    }
-
-    if (this.currKeyState.IsKeyDown(KeyCode.Down))
-    {
-        this.velocity.Y = VelocityXAndY;
-    }
-
-    var displacement = this.velocity * (float)frameTime.ElapsedTime.TotalSeconds;
-
-    Position += displacement;
+    // highlight-add-end
 }
 ```
 
@@ -151,28 +187,35 @@ their code to achieve consistent results.
 The window size will be changed when we press the arrow keys. Create the `ChangeWinSize()` method with the code below
 to change the size of the window using the keyboard.
 
-```csharp
-private void ChangeWinSize()
+```csharp showLineNumbers
+public class Game : Window
 {
-    if (IsPressed(KeyCode.Right))
-    {
-        Width += 50; // Increase the width of the window
-    }
+    // ... other class code
+    // highlight-add-start
 
-    if (IsPressed(KeyCode.Left))
+    private void ChangeWinSize()
     {
-        Width -= 50; // Decrease the width of the window
-    }
+        if (WasKeyReleased(KeyCode.Right))
+        {
+            Width += 50; // Increase the width of the window
+        }
 
-    if (IsPressed(KeyCode.Up))
-    {
-        Height -= 50; // Decrease the height of the window
-    }
+        if (WasKeyReleased(KeyCode.Left))
+        {
+            Width -= 50; // Decrease the width of the window
+        }
 
-    if (IsPressed(KeyCode.Down))
-    {
-        Height += 50; // Increase the height of the window
+        if (WasKeyReleased(KeyCode.Up))
+        {
+            Height -= 50; // Decrease the height of the window
+        }
+
+        if (WasKeyReleased(KeyCode.Down))
+        {
+            Height += 50; // Increase the height of the window
+        }
     }
+    // highlight-add-end
 }
 ```
 
@@ -193,11 +236,15 @@ information, you can make decisions about what actions to take based on the stat
 
 First, set the _**current**_ and _**previous**_ state of the keyboard.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
+    // highlight-add-start
     this.currKeyState = this.keyboard.GetState();
     this.prevKeyState = this.currKeyState;
+    // highlight-add-end
+
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -209,10 +256,12 @@ accurate detection of a _**full**_ key press.
 
 In between the _**current**_ and _**previous**_ keyboard state lines of code, add the logic to the `OnUpdate()` method below:
 
-```csharp
+```csharp showLineNumbers
 protected override void OnUpdate(FrameTime frameTime)
 {
-    ...
+    this.currKeyState = this.keyboard.GetState();
+    // highlight-add-start
+
     // If the left or right control key is pressed, move the window.
     if (this.currKeyState.AnyCtrlKeysDown())
     {
@@ -225,7 +274,11 @@ protected override void OnUpdate(FrameTime frameTime)
     }
 
     this.velocity = Vector2.Zero;
-    ...
+
+    // highlight-add-end
+    this.prevKeyState = this.currKeyState;
+
+    base.OnUpdate(frameTime);
 }
 ```
 
@@ -249,10 +302,13 @@ and update the window's title with the new size and position.
 
 Add the method below in the `Game` class.
 
-```csharp
+```csharp showLineNumbers
 protected override void OnResize(SizeU size)
 {
+    // highlight-add-start
     Title = $"Window Size: W: {Width} H: {Height} | Window Position: X: {Position.X} Y: {Position.Y}";
+
+    // highlight-add-end
     base.OnResize(size);
 }
 ```

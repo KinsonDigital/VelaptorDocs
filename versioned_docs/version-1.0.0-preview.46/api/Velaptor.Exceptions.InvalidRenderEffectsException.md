@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.Exceptions.InvalidRenderEffectsException.InvalidRenderEffectsException()'></a>
 
-### InvalidRenderEffectsException\(\) Constructor
+### InvalidRenderEffectsException\(\) Constructor \{#Velaptor.Exceptions.InvalidRenderEffectsException.InvalidRenderEffectsException()}
 
 Initializes a new instance of the [InvalidRenderEffectsException](Velaptor.Exceptions.InvalidRenderEffectsException.md 'Velaptor\.Exceptions\.InvalidRenderEffectsException') class\.
 
@@ -28,7 +28,7 @@ public InvalidRenderEffectsException();
 
 <a name='Velaptor.Exceptions.InvalidRenderEffectsException.InvalidRenderEffectsException(string)'></a>
 
-### InvalidRenderEffectsException\(string\) Constructor
+### InvalidRenderEffectsException\(string\) Constructor \{#Velaptor.Exceptions.InvalidRenderEffectsException.InvalidRenderEffectsException(string)}
 
 Initializes a new instance of the [InvalidRenderEffectsException](Velaptor.Exceptions.InvalidRenderEffectsException.md 'Velaptor\.Exceptions\.InvalidRenderEffectsException') class\.
 
@@ -45,7 +45,7 @@ The message that describes the error\.
 
 <a name='Velaptor.Exceptions.InvalidRenderEffectsException.InvalidRenderEffectsException(string,System.Exception)'></a>
 
-### InvalidRenderEffectsException\(string, Exception\) Constructor
+### InvalidRenderEffectsException\(string, Exception\) Constructor \{#Velaptor.Exceptions.InvalidRenderEffectsException.InvalidRenderEffectsException(string,System.Exception)}
 
 Initializes a new instance of the [InvalidRenderEffectsException](Velaptor.Exceptions.InvalidRenderEffectsException.md 'Velaptor\.Exceptions\.InvalidRenderEffectsException') class\.
 

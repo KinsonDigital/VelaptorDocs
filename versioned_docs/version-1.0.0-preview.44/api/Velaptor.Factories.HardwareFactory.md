@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Factories.HardwareFactory.GetDisplays()'></a>
 
-### GetDisplays() 
+### GetDisplays() \{#Velaptor.Factories.HardwareFactory.GetDisplays()}
 
 Gets all the displays in the system.
 
@@ -32,7 +32,7 @@ The list of displays.
 
 <a name='Velaptor.Factories.HardwareFactory.GetKeyboard()'></a>
 
-### GetKeyboard() 
+### GetKeyboard() \{#Velaptor.Factories.HardwareFactory.GetKeyboard()}
 
 Gets a keyboard object.
 
@@ -46,7 +46,7 @@ The keyboard singleton object.
 
 <a name='Velaptor.Factories.HardwareFactory.GetMainDisplay()'></a>
 
-### GetMainDisplay() 
+### GetMainDisplay() \{#Velaptor.Factories.HardwareFactory.GetMainDisplay()}
 
 Gets the primary display in the system.
 
@@ -60,7 +60,7 @@ The system's primary display.
 
 <a name='Velaptor.Factories.HardwareFactory.GetMouse()'></a>
 
-### GetMouse() 
+### GetMouse() \{#Velaptor.Factories.HardwareFactory.GetMouse()}
 
 Gets a mouse object.
 

@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Input.Exceptions.NoMouseException.NoMouseException()'></a>
 
-### NoMouseException() Constructor
+### NoMouseException() Constructor \{#Velaptor.Input.Exceptions.NoMouseException.NoMouseException()}
 
 Initializes a new instance of the [NoMouseException](Velaptor.Input.Exceptions.NoMouseException.md 'Velaptor.Input.Exceptions.NoMouseException') class.
 
@@ -28,7 +28,7 @@ public NoMouseException();
 
 <a name='Velaptor.Input.Exceptions.NoMouseException.NoMouseException(string,System.Exception)'></a>
 
-### NoMouseException(string, Exception) Constructor
+### NoMouseException(string, Exception) Constructor \{#Velaptor.Input.Exceptions.NoMouseException.NoMouseException(string,System.Exception)}
 
 Initializes a new instance of the [NoMouseException](Velaptor.Input.Exceptions.NoMouseException.md 'Velaptor.Input.Exceptions.NoMouseException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Input.Exceptions.NoMouseException.NoMouseException(string)'></a>
 
-### NoMouseException(string) Constructor
+### NoMouseException(string) Constructor \{#Velaptor.Input.Exceptions.NoMouseException.NoMouseException(string)}
 
 Initializes a new instance of the [NoMouseException](Velaptor.Input.Exceptions.NoMouseException.md 'Velaptor.Input.Exceptions.NoMouseException') class.
 

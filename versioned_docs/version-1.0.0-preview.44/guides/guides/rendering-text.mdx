@@ -113,7 +113,7 @@ Add the following code to the `OnLoad()` method to load the font.
 ```csharp
 protected override void OnLoad()
 {
-    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 24);
+    this.font = this.contentManager.LoadFont("TimesNewRoman-Regular", 22);
 
     base.OnLoad();
 }
@@ -154,7 +154,11 @@ and release resources when shutting down the game or when switching to a new sce
 ```csharp
 protected override void OnUnload()
 {
-    this.contentManager.Unload(this.font);
+    if (this.font is not null)
+    {
+        this.contentManager.Unload(this.font);
+    }
+
     base.OnUnload();
 }
 ```
@@ -242,7 +246,7 @@ public class Game : Window
 {
     ...
     private const string Text = "Hello Velaptor!";
-    private Vector2 velocity = new (100, 100);
+    private Vector2 velocity = new (200, 200);
     private Vector2 position = new (400, 400);
     ...
 }
@@ -369,7 +373,7 @@ Now that we have our little helper method, we can use it in the `ProcessCollisio
 Add a call to the `RandomizeColor()` method in each of the `if` statements that check for a collision.
 
 ```csharp
-private void ProcessCollision()
+private void ProcessCollisionAndColor()
 {
     ...
     if (leftSide <= 0)

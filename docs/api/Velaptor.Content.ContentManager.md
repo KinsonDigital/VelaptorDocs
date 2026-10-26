@@ -20,7 +20,7 @@ Implements [IContentManager](Velaptor.Content.IContentManager.md 'Velaptor\.Cont
 
 <a name='Velaptor.Content.ContentManager.Create()'></a>
 
-### Create\(\) 
+### Create\(\) \{#Velaptor.Content.ContentManager.Create()}
 
 Creates a singleton instance of the [IContentManager](Velaptor.Content.IContentManager.md 'Velaptor\.Content\.IContentManager')\.
 
@@ -34,9 +34,9 @@ The singleton instance of the [IContentManager](Velaptor.Content.IContentManager
 
 <a name='Velaptor.Content.ContentManager.Load<T>(string)'></a>
 
-### Load\&lt;T\&gt;\(string\) 
+### Load\&lt;T\&gt;\(string\) \{#Velaptor.Content.ContentManager.Load_T_(string)}
 
-Loads the specified [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.pathOrName') for the given type [T](Velaptor.Content.ContentManager.md#t 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.T')\.
+Loads the specified [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Load_T_(string) 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.pathOrName') for the given type [T](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Load_T_(string) 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.T')\.
 
 ```csharp
 public T Load<T>(string pathOrName)
@@ -60,19 +60,19 @@ The content file path or name\.
 Implements [Load&lt;T&gt;\(string\)](Velaptor.Content.IContentManager.md#Velaptor.Content.IContentManager.Load_T_(string) 'Velaptor\.Content\.IContentManager\.Load\<T\>\(string\)')
 
 #### Returns
-[T](Velaptor.Content.ContentManager.md#t 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.T')  
+[T](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Load_T_(string) 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.T')  
 The content object\.
 
 #### Remarks
 
-When loading audio content, the default [Full](Velaptor.Content.AudioBuffer.md#full 'Velaptor\.Content\.AudioBuffer\.Full') used will be used.
+When loading audio content, the default [Full](Velaptor.Content.AudioBuffer.md 'Velaptor\.Content\.AudioBuffer\.Full') used will be used.
 To specify a different buffer type, use the [LoadAudio\(string, AudioBuffer\)](Velaptor.Content.IContentManager.md#Velaptor.Content.IContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer) 'Velaptor\.Content\.IContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)') method.
 
 When loading font content, the default size of `12` will be used.
 To specify a different size, use the [LoadFont\(string, uint\)](Velaptor.Content.IContentManager.md#Velaptor.Content.IContentManager.LoadFont(string,uint) 'Velaptor\.Content\.IContentManager\.LoadFont\(string, uint\)') method.
 
-If the [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.pathOrName') is a fully qualified file path, an attempt will be made to load the content
-using the file path directly.  If the [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.pathOrName') is just the name of the content item,
+If the [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Load_T_(string) 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.pathOrName') is a fully qualified file path, an attempt will be made to load the content
+using the file path directly.  If the [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Load_T_(string) 'Velaptor\.Content\.ContentManager\.Load\<T\>\(string\)\.pathOrName') is just the name of the content item,
 the content manager system will try to find and resolve the location of the content item automatically.
 
 Only loads the following built in [IContent](Velaptor.Content.IContent.md 'Velaptor\.Content\.IContent') types.
@@ -83,9 +83,9 @@ Only loads the following built in [IContent](Velaptor.Content.IContent.md 'Velap
 
 <a name='Velaptor.Content.ContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer)'></a>
 
-### LoadAudio\(string, AudioBuffer\) 
+### LoadAudio\(string, AudioBuffer\) \{#Velaptor.Content.ContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer)}
 
-Loads a font with the given [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.pathOrName') and [bufferType](Velaptor.Content.ContentManager.md#buffertype 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.bufferType')\.
+Loads a font with the given [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer) 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.pathOrName') and [bufferType](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer) 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.bufferType')\.
 
 ```csharp
 public Velaptor.Content.IAudio LoadAudio(string pathOrName, Velaptor.Content.AudioBuffer bufferType);
@@ -111,15 +111,15 @@ Implements [LoadAudio\(string, AudioBuffer\)](Velaptor.Content.IContentManager.m
 The loaded audio\.
 
 #### Remarks
-If the [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.pathOrName') is a fully qualified file path, an attempt will be made to load the content
-using the file path directly\.  If the [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.pathOrName') is just the name of the content item,
+If the [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer) 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.pathOrName') is a fully qualified file path, an attempt will be made to load the content
+using the file path directly\.  If the [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadAudio(string,Velaptor.Content.AudioBuffer) 'Velaptor\.Content\.ContentManager\.LoadAudio\(string, Velaptor\.Content\.AudioBuffer\)\.pathOrName') is just the name of the content item,
 the content manager system will try to find and resolve the location of the content item automatically\.
 
 <a name='Velaptor.Content.ContentManager.LoadFont(string,uint)'></a>
 
-### LoadFont\(string, uint\) 
+### LoadFont\(string, uint\) \{#Velaptor.Content.ContentManager.LoadFont(string,uint)}
 
-Loads a font with the given [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.pathOrName') and [size](Velaptor.Content.ContentManager.md#size 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.size')\.
+Loads a font with the given [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadFont(string,uint) 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.pathOrName') and [size](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadFont(string,uint) 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.size')\.
 
 ```csharp
 public Velaptor.Content.Fonts.IFont LoadFont(string pathOrName, uint size);
@@ -145,15 +145,15 @@ Implements [LoadFont\(string, uint\)](Velaptor.Content.IContentManager.md#Velapt
 The loaded font\.
 
 #### Remarks
-If the [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.pathOrName') is a fully qualified file path, an attempt will be made to load the content
-using the file path directly\.  If the [pathOrName](Velaptor.Content.ContentManager.md#pathorname 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.pathOrName') is just the name of the content item,
+If the [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadFont(string,uint) 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.pathOrName') is a fully qualified file path, an attempt will be made to load the content
+using the file path directly\.  If the [pathOrName](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.LoadFont(string,uint) 'Velaptor\.Content\.ContentManager\.LoadFont\(string, uint\)\.pathOrName') is just the name of the content item,
 the content manager system will try to find and resolve the location of the content item automatically\.
 
 <a name='Velaptor.Content.ContentManager.Unload<T>(T)'></a>
 
-### Unload\&lt;T\&gt;\(T\) 
+### Unload\&lt;T\&gt;\(T\) \{#Velaptor.Content.ContentManager.Unload_T_(T)}
 
-Unloads the given [item](Velaptor.Content.ContentManager.md#item 'Velaptor\.Content\.ContentManager\.Unload\<T\>\(T\)\.item')\.
+Unloads the given [item](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Unload_T_(T) 'Velaptor\.Content\.ContentManager\.Unload\<T\>\(T\)\.item')\.
 
 ```csharp
 public void Unload<T>(T? item)
@@ -170,7 +170,7 @@ The type of content item to unload\.
 
 <a name='Velaptor.Content.ContentManager.Unload<T>(T).item'></a>
 
-`item` [T](Velaptor.Content.ContentManager.md#t 'Velaptor\.Content\.ContentManager\.Unload\<T\>\(T\)\.T')
+`item` [T](Velaptor.Content.ContentManager.md#Velaptor.Content.ContentManager.Unload_T_(T) 'Velaptor\.Content\.ContentManager\.Unload\<T\>\(T\)\.T')
 
 The content item\.
 

@@ -8,6 +8,7 @@ tags: [releases, velaptor]
 import ReleaseNotes from "@site/src/components/ReleaseNotes";
 import GitHubProject from "@site/src/components/GitHubProject";
 import Image from "@site/src/components/Image";
+import NumberedList from "@site/src/components/NumberedList";
 
 Hello and welcome to another _**Velaptor**_ release!!
 
@@ -28,12 +29,14 @@ A quick thanks to the following contributors for their contributions to this rel
 
 This release of **Velaptor** brings you the following:
 
-1. Small performance improvements related to fonts and rendering text.
-2. Small performance improvement to OpenGL buffering.
-3. The start of the mocking library migration process.
-4. Removal of internal use of deprecated _**Velaptor UI Control API**_.
-5. A small bug fix was discovered during development.
-6. Internal dependency updates.
+<NumberedList items={[
+    <>Small performance improvements related to fonts and rendering text.</>,
+    <>Small performance improvement to OpenGL buffering.</>,
+    <>The start of the mocking library migration process.</>,
+    <>Removal of internal use of deprecated <strong><em>Velaptor UI Control API</em></strong>.</>,
+    <>A small bug fix was discovered during development.</>,
+    <>Internal dependency updates.</>,
+]} />
 
 
 ## <span className="color-section">Perf Improvements</span>
@@ -163,10 +166,20 @@ the bug is now fixed. If you attempt to do this, you will receive a proper `Obje
 
 We keep our dependencies up to date as much as possible. This release is no different.
 
-1. SimpleInjector updated from _**v5.4.3**_ to _**v5.4.4**_.
-    - This is used for all of our dependency injection needs.
-2. SixLabors.ImageSharp updated from _**v3.1.1**_ to _**v3.1.2**_.
-    - This is used for loading image data from disk before being uploaded to the GPU.
+<NumberedList items={[
+    <>
+        SimpleInjector updated from <strong><em>v5.4.3</em></strong> to <strong><em>v5.4.4</em></strong>.
+        <ul>
+            This is used for all of our dependency injection needs.
+        </ul>
+    </>,
+    <>
+        SixLabors.ImageSharp updated from <strong><em>v3.1.1</em></strong> to <strong><em>v3.1.2</em></strong>.
+        <ul>
+            This is used for loading image data from disk before being uploaded to the GPU.
+        </ul>
+    </>
+]} />
 
 ## <span className="color-section">Wrap Up!!</span>
 

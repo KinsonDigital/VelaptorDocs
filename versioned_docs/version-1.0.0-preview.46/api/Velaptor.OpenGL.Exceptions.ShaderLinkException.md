@@ -18,7 +18,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderLinkException.ShaderLinkException()'></a>
 
-### ShaderLinkException\(\) Constructor
+### ShaderLinkException\(\) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderLinkException.ShaderLinkException()}
 
 Initializes a new instance of the [ShaderLinkException](Velaptor.OpenGL.Exceptions.ShaderLinkException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderLinkException') class\.
 
@@ -28,7 +28,7 @@ public ShaderLinkException();
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderLinkException.ShaderLinkException(string,string)'></a>
 
-### ShaderLinkException\(string, string\) Constructor
+### ShaderLinkException\(string, string\) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderLinkException.ShaderLinkException(string,string)}
 
 Initializes a new instance of the [ShaderLinkException](Velaptor.OpenGL.Exceptions.ShaderLinkException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderLinkException') class\.
 
@@ -51,7 +51,7 @@ The name of the buffer\.
 
 <a name='Velaptor.OpenGL.Exceptions.ShaderLinkException.ShaderLinkException(string,System.Exception)'></a>
 
-### ShaderLinkException\(string, Exception\) Constructor
+### ShaderLinkException\(string, Exception\) Constructor \{#Velaptor.OpenGL.Exceptions.ShaderLinkException.ShaderLinkException(string,System.Exception)}
 
 Initializes a new instance of the [ShaderLinkException](Velaptor.OpenGL.Exceptions.ShaderLinkException.md 'Velaptor\.OpenGL\.Exceptions\.ShaderLinkException') class\.
 

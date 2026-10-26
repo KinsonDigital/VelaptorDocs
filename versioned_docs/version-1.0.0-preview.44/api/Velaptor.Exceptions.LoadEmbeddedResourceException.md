@@ -18,7 +18,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 <a name='Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException()'></a>
 
-### LoadEmbeddedResourceException() Constructor
+### LoadEmbeddedResourceException() Constructor \{#Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException()}
 
 Initializes a new instance of the [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') class.
 
@@ -28,7 +28,7 @@ public LoadEmbeddedResourceException();
 
 <a name='Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException(string,System.Exception)'></a>
 
-### LoadEmbeddedResourceException(string, Exception) Constructor
+### LoadEmbeddedResourceException(string, Exception) Constructor \{#Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException(string,System.Exception)}
 
 Initializes a new instance of the [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') class.
 
@@ -51,7 +51,7 @@ The [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Except
 
 <a name='Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException(string)'></a>
 
-### LoadEmbeddedResourceException(string) Constructor
+### LoadEmbeddedResourceException(string) Constructor \{#Velaptor.Exceptions.LoadEmbeddedResourceException.LoadEmbeddedResourceException(string)}
 
 Initializes a new instance of the [LoadEmbeddedResourceException](Velaptor.Exceptions.LoadEmbeddedResourceException.md 'Velaptor.Exceptions.LoadEmbeddedResourceException') class.
 

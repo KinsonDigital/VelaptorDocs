@@ -19,7 +19,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 <a name='Velaptor.Graphics.RectShape.RectShape()'></a>
 
-### RectShape() Constructor
+### RectShape() Constructor \{#Velaptor.Graphics.RectShape.RectShape()}
 
 Initializes a new instance of the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor.Graphics.RectShape') struct.
 
@@ -30,7 +30,7 @@ public RectShape();
 
 <a name='Velaptor.Graphics.RectShape.BorderThickness'></a>
 
-### BorderThickness 
+### BorderThickness \{#Velaptor.Graphics.RectShape.BorderThickness}
 
 Gets or sets the thickness of the rectangle's border.
 
@@ -43,13 +43,13 @@ public float BorderThickness { get; set; }
 
 #### Remarks
   
-Ignored if the [IsSolid](Velaptor.Graphics.RectShape.md#issolid 'Velaptor.Graphics.RectShape.IsSolid') property is set to `true`.  
+Ignored if the [IsSolid](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.IsSolid 'Velaptor.Graphics.RectShape.IsSolid') property is set to `true`.  
   
-The value of a corner will never be larger than the smallest half [Width](Velaptor.Graphics.RectShape.md#width 'Velaptor.Graphics.RectShape.Width') or half [Height](Velaptor.Graphics.RectShape.md#height 'Velaptor.Graphics.RectShape.Height').
+The value of a corner will never be larger than the smallest half [Width](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Width 'Velaptor.Graphics.RectShape.Width') or half [Height](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Height 'Velaptor.Graphics.RectShape.Height').
 
 <a name='Velaptor.Graphics.RectShape.Bottom'></a>
 
-### Bottom 
+### Bottom \{#Velaptor.Graphics.RectShape.Bottom}
 
 Gets or sets the location of the bottom of the rectangle on the Y axis.
 
@@ -61,11 +61,11 @@ public float Bottom { get; set; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.RectShape.md#position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
+Will automatically update the [Position](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
 
 <a name='Velaptor.Graphics.RectShape.Color'></a>
 
-### Color 
+### Color \{#Velaptor.Graphics.RectShape.Color}
 
 Gets or sets the color of the rectangle.
 
@@ -77,11 +77,11 @@ public System.Drawing.Color Color { get; set; }
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')
 
 #### Remarks
-Ignored if the [GradientType](Velaptor.Graphics.RectShape.md#gradienttype 'Velaptor.Graphics.RectShape.GradientType') is set to any value other than [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor.Graphics.ColorGradient.None').
+Ignored if the [GradientType](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientType 'Velaptor.Graphics.RectShape.GradientType') is set to any value other than [None](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient.None').
 
 <a name='Velaptor.Graphics.RectShape.CornerRadius'></a>
 
-### CornerRadius 
+### CornerRadius \{#Velaptor.Graphics.RectShape.CornerRadius}
 
 Gets or sets the radius of each corner of the rectangle.
 
@@ -93,11 +93,11 @@ public Velaptor.Graphics.CornerRadius CornerRadius { get; set; }
 [CornerRadius](Velaptor.Graphics.CornerRadius.md 'Velaptor.Graphics.CornerRadius')
 
 #### Remarks
-The value of a corner will never be larger than the smallest half [Width](Velaptor.Graphics.RectShape.md#width 'Velaptor.Graphics.RectShape.Width') or half [Height](Velaptor.Graphics.RectShape.md#height 'Velaptor.Graphics.RectShape.Height').
+The value of a corner will never be larger than the smallest half [Width](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Width 'Velaptor.Graphics.RectShape.Width') or half [Height](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Height 'Velaptor.Graphics.RectShape.Height').
 
 <a name='Velaptor.Graphics.RectShape.GradientStart'></a>
 
-### GradientStart 
+### GradientStart \{#Velaptor.Graphics.RectShape.GradientStart}
 
 Gets or sets the starting color of the gradient.
 
@@ -109,11 +109,11 @@ public System.Drawing.Color GradientStart { get; set; }
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')
 
 #### Remarks
-This property is ignored if the [GradientType](Velaptor.Graphics.RectShape.md#gradienttype 'Velaptor.Graphics.RectShape.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor.Graphics.ColorGradient.None').
+This property is ignored if the [GradientType](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientType 'Velaptor.Graphics.RectShape.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient.None').
 
 <a name='Velaptor.Graphics.RectShape.GradientStop'></a>
 
-### GradientStop 
+### GradientStop \{#Velaptor.Graphics.RectShape.GradientStop}
 
 Gets or sets the ending color of the gradient.
 
@@ -125,11 +125,11 @@ public System.Drawing.Color GradientStop { get; set; }
 [System.Drawing.Color](https://docs.microsoft.com/en-us/dotnet/api/System.Drawing.Color 'System.Drawing.Color')
 
 #### Remarks
-This property is ignored if the [GradientType](Velaptor.Graphics.RectShape.md#gradienttype 'Velaptor.Graphics.RectShape.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor.Graphics.ColorGradient.None').
+This property is ignored if the [GradientType](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientType 'Velaptor.Graphics.RectShape.GradientType') is set to a value of [None](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient.None').
 
 <a name='Velaptor.Graphics.RectShape.GradientType'></a>
 
-### GradientType 
+### GradientType \{#Velaptor.Graphics.RectShape.GradientType}
 
 Gets or sets the type of color gradient that will be applied to the rectangle.
 
@@ -142,22 +142,22 @@ public Velaptor.Graphics.ColorGradient GradientType { get; set; }
 
 #### Remarks
   
-A value of [None](Velaptor.Graphics.ColorGradient.md#none 'Velaptor.Graphics.ColorGradient.None') will use the [Color](Velaptor.Graphics.RectShape.md#color 'Velaptor.Graphics.RectShape.Color')  
+A value of [None](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient.None') will use the [Color](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Color 'Velaptor.Graphics.RectShape.Color')  
 property and render the rectangle with a solid color.  
   
-A value of [Horizontal](Velaptor.Graphics.ColorGradient.md#horizontal 'Velaptor.Graphics.ColorGradient.Horizontal') will ignore the [Color](Velaptor.Graphics.RectShape.md#color 'Velaptor.Graphics.RectShape.Color')  
-property and use the [GradientStart](Velaptor.Graphics.RectShape.md#gradientstart 'Velaptor.Graphics.RectShape.GradientStart')[GradientStop](Velaptor.Graphics.RectShape.md#gradientstop 'Velaptor.Graphics.RectShape.GradientStop') properties.  
-This will render the rectangle with [GradientStart](Velaptor.Graphics.RectShape.md#gradientstart 'Velaptor.Graphics.RectShape.GradientStart') color on the left side and gradually  
-render it to the right side as the [GradientStop](Velaptor.Graphics.RectShape.md#gradientstop 'Velaptor.Graphics.RectShape.GradientStop') color.  
+A value of [Horizontal](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient.Horizontal') will ignore the [Color](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Color 'Velaptor.Graphics.RectShape.Color')  
+property and use the [GradientStart](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStart 'Velaptor.Graphics.RectShape.GradientStart')[GradientStop](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStop 'Velaptor.Graphics.RectShape.GradientStop') properties.  
+This will render the rectangle with [GradientStart](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStart 'Velaptor.Graphics.RectShape.GradientStart') color on the left side and gradually  
+render it to the right side as the [GradientStop](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStop 'Velaptor.Graphics.RectShape.GradientStop') color.  
   
-A value of [Vertical](Velaptor.Graphics.ColorGradient.md#vertical 'Velaptor.Graphics.ColorGradient.Vertical') will ignore the [Color](Velaptor.Graphics.RectShape.md#color 'Velaptor.Graphics.RectShape.Color')  
-property and use the [GradientStart](Velaptor.Graphics.RectShape.md#gradientstart 'Velaptor.Graphics.RectShape.GradientStart') and [GradientStop](Velaptor.Graphics.RectShape.md#gradientstop 'Velaptor.Graphics.RectShape.GradientStop') properties.  
-This will render the rectangle with [GradientStart](Velaptor.Graphics.RectShape.md#gradientstart 'Velaptor.Graphics.RectShape.GradientStart') color on the top and gradually  
-render it to the bottom as the [GradientStop](Velaptor.Graphics.RectShape.md#gradientstop 'Velaptor.Graphics.RectShape.GradientStop') color.
+A value of [Vertical](Velaptor.Graphics.ColorGradient.md 'Velaptor.Graphics.ColorGradient.Vertical') will ignore the [Color](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Color 'Velaptor.Graphics.RectShape.Color')  
+property and use the [GradientStart](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStart 'Velaptor.Graphics.RectShape.GradientStart') and [GradientStop](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStop 'Velaptor.Graphics.RectShape.GradientStop') properties.  
+This will render the rectangle with [GradientStart](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStart 'Velaptor.Graphics.RectShape.GradientStart') color on the top and gradually  
+render it to the bottom as the [GradientStop](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.GradientStop 'Velaptor.Graphics.RectShape.GradientStop') color.
 
 <a name='Velaptor.Graphics.RectShape.HalfHeight'></a>
 
-### HalfHeight 
+### HalfHeight \{#Velaptor.Graphics.RectShape.HalfHeight}
 
 Gets the half height of the rectangle.
 
@@ -170,7 +170,7 @@ public float HalfHeight { get; }
 
 <a name='Velaptor.Graphics.RectShape.HalfWidth'></a>
 
-### HalfWidth 
+### HalfWidth \{#Velaptor.Graphics.RectShape.HalfWidth}
 
 Gets the half width of the rectangle.
 
@@ -183,7 +183,7 @@ public float HalfWidth { get; }
 
 <a name='Velaptor.Graphics.RectShape.Height'></a>
 
-### Height 
+### Height \{#Velaptor.Graphics.RectShape.Height}
 
 Gets or sets the height of the rectangle.
 
@@ -199,7 +199,7 @@ The height is restricted to a minimum value of one.
 
 <a name='Velaptor.Graphics.RectShape.IsSolid'></a>
 
-### IsSolid 
+### IsSolid \{#Velaptor.Graphics.RectShape.IsSolid}
 
 Gets or sets a value indicating whether the rectangle is solid.
 
@@ -212,7 +212,7 @@ public bool IsSolid { get; set; }
 
 <a name='Velaptor.Graphics.RectShape.Left'></a>
 
-### Left 
+### Left \{#Velaptor.Graphics.RectShape.Left}
 
 Gets or sets the location of the left side of the rectangle on the X axis.
 
@@ -224,11 +224,11 @@ public float Left { get; set; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.RectShape.md#position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
+Will automatically update the [Position](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
 
 <a name='Velaptor.Graphics.RectShape.Position'></a>
 
-### Position 
+### Position \{#Velaptor.Graphics.RectShape.Position}
 
 Gets or sets the position of the rectangle.
 
@@ -244,7 +244,7 @@ This position is the center of the rectangle.
 
 <a name='Velaptor.Graphics.RectShape.Right'></a>
 
-### Right 
+### Right \{#Velaptor.Graphics.RectShape.Right}
 
 Gets or sets the location of the right side of the rectangle on the X axis.
 
@@ -256,11 +256,11 @@ public float Right { get; set; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.RectShape.md#position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
+Will automatically update the [Position](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
 
 <a name='Velaptor.Graphics.RectShape.Top'></a>
 
-### Top 
+### Top \{#Velaptor.Graphics.RectShape.Top}
 
 Gets or sets the location of the top of the rectangle on the Y axis.
 
@@ -272,11 +272,11 @@ public float Top { get; set; }
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Remarks
-Will automatically update the [Position](Velaptor.Graphics.RectShape.md#position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
+Will automatically update the [Position](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Position 'Velaptor.Graphics.RectShape.Position') of the rectangle.
 
 <a name='Velaptor.Graphics.RectShape.Width'></a>
 
-### Width 
+### Width \{#Velaptor.Graphics.RectShape.Width}
 
 Gets or sets the width of the rectangle.
 
@@ -293,7 +293,7 @@ The width is restricted to a minimum value of one.
 
 <a name='Velaptor.Graphics.RectShape.Contains(System.Numerics.Vector2)'></a>
 
-### Contains(Vector2) 
+### Contains(Vector2) \{#Velaptor.Graphics.RectShape.Contains(System.Numerics.Vector2)}
 
 Returns a value indicating whether the rectangle contains the given [System.Numerics.Vector2](https://docs.microsoft.com/en-us/dotnet/api/System.Numerics.Vector2 'System.Numerics.Vector2').
 
@@ -310,14 +310,14 @@ The possibly contained [System.Numerics.Vector2](https://docs.microsoft.com/en-u
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-`true` if the [vector](Velaptor.Graphics.RectShape.md#vector 'Velaptor.Graphics.RectShape.Contains(System.Numerics.Vector2).vector') is contained.
+`true` if the [vector](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Contains(System.Numerics.Vector2) 'Velaptor.Graphics.RectShape.Contains(System.Numerics.Vector2).vector') is contained.
 
 #### Remarks
-The [Left](Velaptor.Graphics.RectShape.md#left 'Velaptor.Graphics.RectShape.Left') or [Right](Velaptor.Graphics.RectShape.md#right 'Velaptor.Graphics.RectShape.Right') or [Top](Velaptor.Graphics.RectShape.md#top 'Velaptor.Graphics.RectShape.Top') or [Bottom](Velaptor.Graphics.RectShape.md#bottom 'Velaptor.Graphics.RectShape.Bottom') are inclusive.
+The [Left](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Left 'Velaptor.Graphics.RectShape.Left') or [Right](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Right 'Velaptor.Graphics.RectShape.Right') or [Top](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Top 'Velaptor.Graphics.RectShape.Top') or [Bottom](Velaptor.Graphics.RectShape.md#Velaptor.Graphics.RectShape.Bottom 'Velaptor.Graphics.RectShape.Bottom') are inclusive.
 
 <a name='Velaptor.Graphics.RectShape.Empty()'></a>
 
-### Empty() 
+### Empty() \{#Velaptor.Graphics.RectShape.Empty()}
 
 Empties the struct.
 
@@ -327,7 +327,7 @@ public void Empty();
 
 <a name='Velaptor.Graphics.RectShape.IsEmpty()'></a>
 
-### IsEmpty() 
+### IsEmpty() \{#Velaptor.Graphics.RectShape.IsEmpty()}
 
 Returns a value indicating whether the [RectShape](Velaptor.Graphics.RectShape.md 'Velaptor.Graphics.RectShape') struct is empty.
 

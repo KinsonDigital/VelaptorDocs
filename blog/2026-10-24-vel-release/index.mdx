@@ -13,26 +13,75 @@ import Video from "@site/src/components/Video"
 
 Welcome to the biggest release in Velaptor's history! 🎉
 
-This release marks the completion of the largest technical undertaking we've ever done: the migration of the entire rendering
+This release marks the completion of the largest technical undertaking I have ever done: the migration of the entire rendering
 backend from OpenGL to **WebGPU**. The rendering stack has been rebuilt from the ground up with modern WGSL shaders, render
 pipelines, and buffer management—and the old OpenGL machinery is completely gone.
+
+This release consisted of the following:
+1. <span style={{ color: "white", fontWeight: "bold" }}>~4</span> months of work with a single developer (me).
+2. <span style={{ color: "#88B1F6", fontWeight: "bold" }}>440</span> files changed.
+3. <span style={{ color: "#80C893", fontWeight: "bold" }}>25,940</span> lines of code added.
+4. <span style={{ color: "#F18A81", fontWeight: "bold" }}>26,139</span> lines of code deleted.
+
+Needless to say, it has been a huge undertaking that I have been thinking about for at least 3 or so years.
 
 Because of the scope of this change, this release ships with several **breaking changes**. If you have an existing Velaptor
 project, please read the [breaking changes section](/blog/velaptor-release-v1.0.0-preview.48#breaking-changes) carefully before upgrading.
 
+It's a long one!
+
 :::info Release Notes
 Check out the <ReleaseNotes projName="Velaptor" version="v1.0.0-preview.48"/>
 :::
-
 
 {/*truncate*/}
 
 ## <span className="color-step">Quick Overview</span>
 
 The headline of this release is the **WebGPU rendering backend**. Every texture, font, shape, and line is now drawn through
-modern WebGPU pipelines instead of legacy OpenGL. Alongside that, we're shipping a brand new 2-D camera system, a built-in
+modern WebGPU native pipelines instead of legacy OpenGL. Alongside that, I shipped a brand new 2-D camera system, a built-in
 FPS counter with much more accurate frame metrics, reference-counted font unloading, and
-roughly two dozen bug fixes. This one is a big deal, so let's dig in.
+roughly 18 bug fixes. This one is a big deal, so let's dig in.
+
+<details>
+    <summary>Why did we switch render backends?</summary>
+
+Assuming you mean **native WebGPU** via implementations like **wgpu** (Rust) or **Dawn** (C++), here are the top 10 reasons to choose it over OpenGL:
+
+1. **Explicit pipelines and no global state**  
+   WebGPU uses prebuilt pipeline state objects and render pass descriptors. There’s no hidden “current state” that affects later draws like in OpenGL, so behavior is predictable, easier to debug, and less prone to state leakage bugs.
+
+2. **Much lower CPU overhead**  
+   Pipelines, bind groups, and command buffers are created once and reused. The driver does far less per‑draw validation and state tracking than OpenGL, which often re‑validates and re‑compiles behind the scenes.
+
+3. **True multithreaded command recording**  
+   You can record command buffers on multiple threads simultaneously and submit them to a single queue. OpenGL contexts are effectively single‑threaded; sharing them across threads is fragile and often unsupported.
+
+4. **First‑class compute shaders**  
+   Compute is core to WebGPU: storage buffers, workgroup memory, and dispatches are built in and work everywhere. OpenGL compute requires 4.3+ (not available on macOS, which is stuck at 4.1) and has inconsistent driver support.
+
+5. **Explicit memory and synchronization control**  
+   You specify buffer/texture usage and map memory explicitly. This avoids the driver secretly moving resources, stalling, or using unpredictable VRAM — a common source of OpenGL hitches.
+
+6. **Cross‑platform consistency**  
+   Native WebGPU runs on Vulkan, Metal, D3D12, and has an OpenGL fallback. The same API works across Windows, Linux, macOS, Android, and iOS. OpenGL behavior varies widely by vendor, and on macOS it’s deprecated and frozen.
+
+7. **Access to modern GPU features**  
+   Storage buffers, texture views, timestamp queries, depth‑clip control, and optional extensions (e.g., ray tracing, bindless) are exposed through a consistent API. OpenGL relies on a sprawling set of vendor‑specific extensions.
+
+8. **Robust validation and error reporting**  
+   WebGPU validation layers give clear, structured error messages and are designed to prevent undefined behavior. OpenGL misuse often leads to silent corruption, driver‑specific glitches, or hard crashes.
+
+9. **Active development and future‑proofing**  
+   wgpu and Dawn are under active development, adding features, improving performance, and supporting new GPUs. OpenGL is in maintenance mode — no new core features are coming.
+
+10. **Modern language bindings and safer resource management**  
+    wgpu offers a safe, idiomatic Rust API that enforces ownership and prevents misuse at compile time. Dawn provides a clean C++ object‑oriented API. OpenGL’s C API relies on manual resource management and global state, which is error‑prone.
+11. If you ever need to target the web, native WebGPU code ports to WebAssembly/browser almost unchanged — something OpenGL cannot do.
+    - This one really opens the door. This means we have a path to run Velaptor games in the browser!
+
+</details>
+
 
 <IssueOrPr repoName="Velaptor" issueOrPrNumber="1256" owner="KinsonDigital" urlText="View the full breakdown on issue #1256"/>
 
@@ -53,15 +102,15 @@ while the OpenGL stack below was replaced with the WebGPU stack.
 
 What does this mean for you? Your drawing code (`IBatcher`, renderers, `IContentManager`) keeps the same shape, but the
 rendering underneath is completely new. This does mean Velaptor now requires WebGPU's native libraries (`wgpu-native`)—but
-more on that below; we handle that part for you automatically.
+more on that below; all of that is handled for you automatically.
 
 WebGPU gives us a modern, cross-platform graphics API with far less driver overhead, a much cleaner resource ownership
-model, and a foundation we can build on for years to come. And it's been thoroughly battle-tested: manual testing was
-completed on Windows, Linux, and macOS, both from the IDE and from compiled binaries.
+model, and a foundation I can build on for years to come. It's been thoroughly tested with manual testing by physically,
+and manually testing out each Velaptor feature on full Windows, Linux, and macOS machines.  No testing was performed on VMs.
 
 ## <span className="color-step">Breaking Changes</span>
 
-With a change this large, some API churn is unavoidable. Velaptor is still in preview so this is to be expected. We've kept the breaking list as tight as possible, and each item
+With a change this large, some API churn is unavoidable. Velaptor is still in preview so this is to be expected. I have kept the breaking list as tight as possible, and each item
 below includes what changed and what you need to do.
 
 If you hit any snags while upgrading, please let me know in the
@@ -84,7 +133,7 @@ The `ILineRenderer` interface and `LineRenderer` class were deleted. All line-dr
 
 ### <span className="color-sub-step">3: Font Renderer Renamed to Text Renderer</span>
 
-You're not rendering fonts—you're rendering text *using* a font. The old name was semantically wrong, and we wanted to fix
+You're not rendering fonts—you're rendering text *using* a font. The old name was semantically wrong, and I wanted to fix
 it before v1.0.
 
 - `IFontRenderer` has been renamed to `ITextRenderer`.
@@ -226,9 +275,13 @@ objects share an atlas and unload out of order, this one's for you.
 
 ## <span className="color-step">Performance Improvements</span>
 
+All performance tests were done with:
+1. CPU: ROG Zephyrus G16 with an Intel Core Ultra 9 185H with 22 cores.
+2. GPU: NVIDIA GeForce RTX 4070
+
 | Benchmark | Before | After | Improvement |
 |-----------|-------:|------:|------------:|
-| 'Coordinate Renders' (500,000 items) | 928.9 ms | 887.8 ms | **~4.6% faster** |
+| Coordinate Renders (500,000 items) | 928.9 ms | 887.8 ms | **~4.6% faster** |
 
 Render dispatch is measurably faster—the benchmark above allocates the same 416 bytes, so all of that gain comes from the
 dispatch path itself. On top of that, a major per-frame allocation in the font renderer was eliminated, which

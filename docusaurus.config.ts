@@ -217,10 +217,10 @@ const config: Config = {
 						className: "header-bluesky-link"
 					},
 					{
-						href: "https://github.com/sponsors/KinsonDigital",
+						to: "/donate",
 						position: "right",
-						className: "header-github-sponsors-link"
-					}
+						className: "donate-link"
+					},
 				],
 			},
 			footer: {
@@ -250,7 +250,8 @@ const config: Config = {
 								html: `<a href="/community" target="_blank">Contribute</a>`,
 							},
 							{
-								html: `<a href="https://github.com/sponsors/KinsonDigital" target="_blank">Sponsor Us</a>`,
+								to: "/donate",
+								label: "Sponsor Us",
 							},
 							{
 								html: `<a href="https://github.com/KinsonDigital/.github/blob/main/docs/CONTRIBUTING.md" target="_blank">Contributing Guidelines</a>`,

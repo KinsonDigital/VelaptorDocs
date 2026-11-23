@@ -43,17 +43,15 @@ jobs:
       build-config: Release
 
 
-  perform_prod_release:
-    name: Perform Production Release
+  build_site:
+    name: Build Site
     needs: [validate_branch, build_tutorial_solution]
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pages: write
-      id-token: write
-    concurrency: 
-      group: "pages"
-      cancel-in-progress: true
+    outputs:
+      version: ${{ steps.apply_version_to_site.outputs.version }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
@@ -108,21 +106,41 @@ jobs:
         if: ${{ inputs.dry-run == false }}
         uses: actions/configure-pages@v6
 
+      # NOTE: The artifact upload and the deployment below run in separate jobs.  The
+      # 'deploy-pages' action can fail to find the just uploaded artifact when it looks it
+      # up immediately after the upload in the same job.  Separating the jobs gives the
+      # artifact service time to make the upload visible.
+      # See: https://github.com/actions/deploy-pages/issues/451
       - name: Upload Artifact
         if: ${{ inputs.dry-run == false }}
         uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: "${{ github.workspace }}/${{ vars.RELATIVE_ARTIFACT_DIR_PATH }}"
 
+
+  perform_prod_release:
+    name: Perform Production Release
+    needs: [validate_branch, build_tutorial_solution, build_site]
+    if: ${{ inputs.dry-run == false }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+
       - name: Deploy to GitHub Pages
         id: deployment
-        if: ${{ inputs.dry-run == false }}
         uses: actions/deploy-pages@v5
 
-      - name: Create Release Tag (${{ steps.apply_version_to_site.outputs.version }})
-        if: ${{ inputs.dry-run == false }}
+      - name: Create Release Tag (${{ needs.build_site.outputs.version }})
         run: |
-          $tag = "${{ steps.apply_version_to_site.outputs.version }}";
+          $tag = "${{ needs.build_site.outputs.version }}";
           
           git config --global user.email "${{ vars.GIT_CONFIG_EMAIL }}";
           git config --global user.name "Velaptor Docs Github Actions - (On behalf of Calvin Wilkinson)"; 

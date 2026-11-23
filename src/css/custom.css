@@ -145,11 +145,11 @@
 }
 
 /* GitHub Sponsor Logo for navbar link */
-.header-github-sponsors-link:hover:after {
+.donate-link:hover:after {
     opacity: 0.6;
 }
 
-.header-github-sponsors-link:after {
+.donate-link:after {
     /* transition: opacity 0.2s; */
     content: "";
     width: 26px;
@@ -186,7 +186,7 @@
     opacity: 0.6;
 }
 
-/* Bluesky Logo for navbar link */ 
+/* Bluesky Logo for navbar link */
 [data-theme='dark'] .header-bluesky-link:after {
     /* transition: opacity 0.2s; */
     content: "";
@@ -198,4 +198,41 @@
     background-repeat: no-repeat;
     background-position: center;
     margin-right: -10px;
+}
+
+/* Horizontal row of circular clickable profile pictures */
+.profile-picture-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.profile-picture-link {
+    display: flex;
+}
+
+.profile-picture-link:hover {
+    opacity: 0.8;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Donate page hero image */
+.donate-hero-image {
+    width: 45%;
+    margin-top: 1.5rem;
+    margin-inline: auto;
+}
+
+/* Donate page platform card logos */
+.donate-platform-logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.5rem;
+    margin-inline: auto;
 }

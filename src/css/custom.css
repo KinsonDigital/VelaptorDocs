@@ -126,6 +126,12 @@
     margin-right: -10px;
 }
 
+@keyframes docusaurus-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Discord Logo for navbar link */
 .header-discord-link:hover:after {
     opacity: 0.6;
